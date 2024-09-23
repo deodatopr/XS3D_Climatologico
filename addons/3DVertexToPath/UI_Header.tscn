@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://dagwnibu7orru"]
+
+[ext_resource type="Texture2D" uid="uid://dcimjy3esaws2" path="res://addons/3DVertexToPath/Icon_Header.png" id="1_pnb6j"]
+
+[node name="UiHeader" type="Control"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 144.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_pnb6j")
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Vertex to Path"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer2"]
+visibility_layer = 0
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Import a vertex polygon line to feed those points into a Path3D"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/HBoxContainer2"]
+visibility_layer = 0
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2

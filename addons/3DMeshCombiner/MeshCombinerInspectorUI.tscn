@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs7qwc67bqb40"]
+
+[ext_resource type="Texture2D" uid="uid://bjplnduqv030k" path="res://addons/3DMeshCombiner/Ico_Merge.png" id="2_u3nsl"]
+
+[node name="Mesh Combiner" type="Control"]
+custom_minimum_size = Vector2(270, 220)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 221.0
+offset_right = -229.0
+offset_bottom = -1380.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 11.8)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_u3nsl")
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mesh Combiner Tool
+"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 11.8)
+layout_mode = 2
+
+[node name="Title2" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 113.79)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Instructions:
+1. Add as children of this node all the objects you want to merge.
+2. Click \"Combine\".
+3. If you want to undo the merge, click \"Clear\""
+autowrap_mode = 3
+uppercase = true

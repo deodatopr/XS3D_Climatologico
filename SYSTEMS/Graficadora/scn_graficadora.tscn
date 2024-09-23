@@ -1,0 +1,1502 @@
+[gd_scene load_steps=7 format=3 uid="uid://cem68b85kcv5l"]
+
+[ext_resource type="Script" path="res://SYSTEMS/Graficadora/GDs_Graficadora.gd" id="1_rie1i"]
+[ext_resource type="Script" path="res://SYSTEMS/Graficadora/GDs_Graficadora_Valores.gd" id="2_gd4ch"]
+[ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="3_it075"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tqly"]
+atlas = ExtResource("3_it075")
+region = Rect2(443, 28, 40, 40)
+
+[sub_resource type="Gradient" id="Gradient_fd1tu"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.588235)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mg6qt"]
+gradient = SubResource("Gradient_fd1tu")
+
+[node name="Graficadora" type="Control" node_paths=PackedStringArray("ScriptGraficarPuntos", "ContLabelsSitio", "LblNombreAvenida", "LblIdLocal", "LblNombreSitio", "LblFechaAct", "ContGrafica", "ContLoading", "ContSinHistoricos", "ScrollGrafClip", "Lblcms", "Lblhrs", "Line1", "Line2", "Line3", "Dot1", "Dot2", "Dot3", "Dot4")]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 3
+anchors_preset = 0
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+script = ExtResource("1_rie1i")
+ScriptGraficarPuntos = NodePath("Script - Graficar Puntos")
+ContLabelsSitio = NodePath("Cont - Labels Sitio")
+LblNombreAvenida = NodePath("Cont - Labels Sitio/Label - NombreAvenida")
+LblIdLocal = NodePath("Cont - Labels Sitio/Label - #ID Local")
+LblNombreSitio = NodePath("Cont - Labels Sitio/Label - Nombre Sitio")
+LblFechaAct = NodePath("Cont - Labels Sitio/Label - Fecha Act")
+ContGrafica = NodePath("Cont - Graficadora")
+ContLoading = NodePath("Cont - Loading")
+ContSinHistoricos = NodePath("Cont - Sin Historicos")
+ScrollGrafClip = NodePath("Cont - Graficadora/Scroll - Graf_Clip")
+Lblcms = [NodePath("Cont - Graficadora/Cont  - Cms/Label - Val 1"), NodePath("Cont - Graficadora/Cont  - Cms/Label - Val 2"), NodePath("Cont - Graficadora/Cont  - Cms/Label - Val 3"), NodePath("Cont - Graficadora/Cont  - Cms/Label - Val 4"), NodePath("Cont - Graficadora/Cont  - Cms/Label - Val 5")]
+Lblhrs = [NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 1"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 2"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 3"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 4"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 5"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 6"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 7"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 8"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 9"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 10"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 11"), NodePath("Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs/Val - 12")]
+Line1 = NodePath("Cont - Loading/Contenedor/Logo/Line1")
+Line2 = NodePath("Cont - Loading/Contenedor/Logo/Line2")
+Line3 = NodePath("Cont - Loading/Contenedor/Logo/Line3")
+Dot1 = NodePath("Cont - Loading/Contenedor/Logo/Dot1")
+Dot2 = NodePath("Cont - Loading/Contenedor/Logo/Dot2")
+Dot3 = NodePath("Cont - Loading/Contenedor/Logo/Dot3")
+Dot4 = NodePath("Cont - Loading/Contenedor/Logo/Dot4")
+
+[node name="Script - Graficar Puntos" type="Node" parent="." node_paths=PackedStringArray("chartTools", "chartLine", "chartGradient", "pivotPosMin", "pivotPosMax", "pointsGraf", "labelsPoints")]
+script = ExtResource("2_gd4ch")
+chartTools = NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Chart - Tools")
+chartLine = NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Chart - Tools/Chart - Line")
+chartGradient = NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Chart - Tools/Chart - Gradient")
+pivotPosMin = NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pivot - PosMin")
+pivotPosMax = NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pivot - PosMax")
+pointsGraf = [NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 0"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 1"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 2"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 3"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 4"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 5"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 6"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 7"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 8"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 9"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 10"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 11")]
+labelsPoints = [NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 0/Label - Pt0"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 1/Label - Pt1"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 2/Label - Pt2"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 3/Label - Pt3"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 4/Label - Pt4"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 5/Label - Pt5"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 6/Label - Pt6"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 7/Label - Pt7"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 8/Label - Pt8"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 9/Label - Pt9"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 10/Label - Pt10"), NodePath("../Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 11/Label - Pt11")]
+colorNormal = Color(0, 0.701961, 1, 1)
+colorPrev = Color(1, 0.788235, 0, 1)
+colorCrit = Color(1, 0, 0, 1)
+colorError = Color(1, 1, 1, 0.27451)
+
+[node name="BackG" type="NinePatchRect" parent="."]
+self_modulate = Color(0.25, 0.25, 0.25, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.000760718
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("3_it075")
+region_rect = Rect2(496, 3, 10, 110)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Border" type="NinePatchRect" parent="BackG"]
+custom_minimum_size = Vector2(8, 4)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Cont - Loading" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 470)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Contenedor" type="Control" parent="Cont - Loading"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -71.0
+offset_right = 135.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackG" type="NinePatchRect" parent="Cont - Loading/Contenedor"]
+self_modulate = Color(1, 1, 1, 0.152941)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(42, 5, 50, 50)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Logo" type="Control" parent="Cont - Loading/Contenedor"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_right = 118.0
+offset_bottom = 236.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Line1" type="TextureProgressBar" parent="Cont - Loading/Contenedor/Logo"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 154.0
+offset_right = 106.825
+offset_bottom = 158.0
+rotation = -0.74514
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_7tqly")
+
+[node name="Line2" type="TextureProgressBar" parent="Cont - Loading/Contenedor/Logo"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 114.0
+offset_right = 168.0
+offset_bottom = 118.0
+rotation = 0.851519
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_7tqly")
+
+[node name="Line3" type="TextureProgressBar" parent="Cont - Loading/Contenedor/Logo"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 161.0
+offset_right = 241.35
+offset_bottom = 165.0
+rotation = -0.988949
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_7tqly")
+
+[node name="Dot1" type="NinePatchRect" parent="Cont - Loading/Contenedor/Logo"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 23.0
+offset_top = 138.0
+offset_right = -176.0
+offset_bottom = 175.0
+grow_horizontal = 2
+pivot_offset = Vector2(18, 18)
+texture = ExtResource("3_it075")
+region_rect = Rect2(179, 124, 37, 37)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Dot2" type="NinePatchRect" parent="Cont - Loading/Contenedor/Logo"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 74.0
+offset_top = 93.0
+offset_right = -125.0
+offset_bottom = 130.0
+grow_horizontal = 2
+pivot_offset = Vector2(18, 18)
+texture = ExtResource("3_it075")
+region_rect = Rect2(179, 124, 37, 37)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Dot3" type="NinePatchRect" parent="Cont - Loading/Contenedor/Logo"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 126.0
+offset_top = 150.0
+offset_right = -73.0
+offset_bottom = 187.0
+grow_horizontal = 2
+pivot_offset = Vector2(18, 18)
+texture = ExtResource("3_it075")
+region_rect = Rect2(179, 124, 37, 37)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Dot4" type="NinePatchRect" parent="Cont - Loading/Contenedor/Logo"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 184.0
+offset_top = 59.0
+offset_right = -15.0
+offset_bottom = 96.0
+grow_horizontal = 2
+pivot_offset = Vector2(18, 18)
+texture = ExtResource("3_it075")
+region_rect = Rect2(179, 124, 37, 37)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="Cont - Loading/Contenedor"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CARGANDO GRÁFICA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - Graficadora" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Border - Scroll Fake" type="NinePatchRect" parent="Cont - Graficadora"]
+self_modulate = Color(0.623529, 0.623529, 0.623529, 1)
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -36.0
+offset_right = -62.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Txt - Hrs" type="Label" parent="Cont - Graficadora"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -86.0
+offset_right = -9.0
+offset_bottom = -58.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Hrs."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Txt  - Cm" type="Label" parent="Cont - Graficadora"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 157.0
+offset_right = 62.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 25
+text = "cm."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont  - Cms" type="VBoxContainer" parent="Cont - Graficadora"]
+custom_minimum_size = Vector2(0, 255)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 59.0
+offset_bottom = 215.0
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label - Val 1" type="Label" parent="Cont - Graficadora/Cont  - Cms"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label - Val 2" type="Label" parent="Cont - Graficadora/Cont  - Cms"]
+modulate = Color(1, 0.788235, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label - Val 3" type="Label" parent="Cont - Graficadora/Cont  - Cms"]
+modulate = Color(1, 0.788235, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label - Val 4" type="Label" parent="Cont - Graficadora/Cont  - Cms"]
+modulate = Color(0, 0.701961, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label - Val 5" type="Label" parent="Cont - Graficadora/Cont  - Cms"]
+modulate = Color(0, 0.701961, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scroll - Graf_Clip" type="ScrollContainer" parent="Cont - Graficadora"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 77.0
+offset_top = 164.0
+offset_right = -58.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="Container" type="Control" parent="Cont - Graficadora/Scroll - Graf_Clip"]
+custom_minimum_size = Vector2(1440, 300)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LINEAS" type="Control" parent="Cont - Graficadora/Scroll - Graf_Clip/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 75.0
+offset_right = 6.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="ForeG - Semaforo" type="Control" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = -12.0
+offset_right = 1424.0
+offset_bottom = 10.0
+
+[node name="Linea - Base" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/ForeG - Semaforo"]
+self_modulate = Color(0, 0.247059, 0.901961, 1)
+layout_mode = 2
+offset_top = 257.0
+offset_right = 1437.0
+offset_bottom = 263.0
+grow_horizontal = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Linea - Preventivo" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/ForeG - Semaforo"]
+visible = false
+self_modulate = Color(1, 0.611765, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 220.0
+offset_right = 1.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - Critico" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/ForeG - Semaforo"]
+visible = false
+self_modulate = Color(1, 0, 0.0235294, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 87.0
+offset_right = 1.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="BackG - Horizontal" type="VBoxContainer" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS"]
+custom_minimum_size = Vector2(1375, 0)
+layout_mode = 1
+offset_left = -12.0
+offset_top = -3.0
+offset_right = 1425.0
+offset_bottom = 298.0
+theme_override_constants/separation = 62
+
+[node name="Linea - 2" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Horizontal"]
+self_modulate = Color(1, 1, 1, 0.313726)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 3" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Horizontal"]
+self_modulate = Color(1, 1, 1, 0.313726)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 4" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Horizontal"]
+self_modulate = Color(1, 1, 1, 0.313726)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 5" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Horizontal"]
+self_modulate = Color(1, 1, 1, 0.313726)
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="BackG - Verticales" type="HBoxContainer" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS"]
+layout_mode = 1
+offset_right = 1377.0
+offset_bottom = 252.255
+theme_override_constants/separation = 123
+
+[node name="Linea - 1" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 2" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 3" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 4" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 5" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 6" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 7" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 8" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 9" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 10" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 11" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Linea - 12" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/LINEAS/BackG - Verticales"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Hor - TIEMPO" type="VBoxContainer" parent="Cont - Graficadora/Scroll - Graf_Clip/Container"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 327.0
+offset_right = 1450.0
+offset_bottom = 386.0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Pts" type="BoxContainer" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 110
+
+[node name="Bolita - 1" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 2" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 3" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 4" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 5" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 6" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 7" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 8" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 9" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 10" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 11" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Bolita - 12" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Pts"]
+self_modulate = Color(0.0666667, 0.447059, 1, 1)
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Hrs" type="BoxContainer" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 53
+
+[node name="Val - 1" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 2" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 3" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 4" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 5" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 6" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 7" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 8" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 9" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 10" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 11" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Val - 12" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Hor - TIEMPO/Hrs"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chart - Tools" type="Control" parent="Cont - Graficadora/Scroll - Graf_Clip/Container"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 74.0
+offset_right = 1398.0
+offset_bottom = 334.0
+mouse_filter = 2
+
+[node name="Chart - Line" type="Line2D" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Chart - Tools"]
+position = Vector2(1, 258)
+points = PackedVector2Array(0, 0, 125, 0, 250, 0, 375, 0, 500, 0, 625, 0, 750, 0, 875, 0, 1000, 0, 1125, 0, 1250, 0, 1375, 0)
+width = 7.0
+default_color = Color(0, 0.588235, 1, 1)
+sharp_limit = 0.0
+
+[node name="Chart - Gradient" type="Polygon2D" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Chart - Tools"]
+position = Vector2(1, 258)
+color = Color(0.0666667, 0.447059, 1, 1)
+texture = SubResource("GradientTexture2D_mg6qt")
+texture_scale = Vector2(0.2, 0.2)
+texture_rotation = 1.5708
+polygon = PackedVector2Array(0, 0, 0, 0, 125, 0, 250, 0, 375, 0, 500, 0, 625, 0, 750, 0, 875, 0, 1000, 0, 1125, 0, 1250, 0, 1375, 0, 1375, 0)
+
+[node name="Ico - PTS" type="Control" parent="Cont - Graficadora/Scroll - Graf_Clip/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 8.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Pivot - PosMin" type="Control" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+anchors_preset = 0
+offset_left = -7.0
+offset_top = 238.0
+offset_right = 33.0
+offset_bottom = 278.0
+
+[node name="Pivot - PosMax" type="Control" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+anchors_preset = 0
+offset_left = -7.0
+offset_top = -16.0
+offset_right = 33.0
+offset_bottom = 24.0
+
+[node name="Pts - 0" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 238.0
+offset_right = 33.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt0" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 1" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 238.0
+offset_right = 158.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt1" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 2" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 238.0
+offset_right = 283.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt2" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 3" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 238.0
+offset_right = 408.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt3" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 4" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 238.0
+offset_right = 533.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt4" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 5" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 238.0
+offset_right = 658.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt5" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 5"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 6" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 238.0
+offset_right = 783.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt6" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 6"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 7" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 868.0
+offset_top = 238.0
+offset_right = 908.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt7" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 7"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 8" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 993.0
+offset_top = 238.0
+offset_right = 1033.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt8" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 8"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 9" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 1118.0
+offset_top = 238.0
+offset_right = 1158.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt9" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 9"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 10" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 1243.0
+offset_top = 238.0
+offset_right = 1283.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt10" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 10"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Pts - 11" type="NinePatchRect" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS"]
+layout_mode = 0
+offset_left = 1370.0
+offset_top = 238.0
+offset_right = 1410.0
+offset_bottom = 278.0
+texture = ExtResource("3_it075")
+region_rect = Rect2(178, 123, 40, 39)
+
+[node name="Label - Pt11" type="Label" parent="Cont - Graficadora/Scroll - Graf_Clip/Container/Ico - PTS/Pts - 11"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+
+[node name="Cont - Sin Historicos" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 470)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Contenedor" type="Control" parent="Cont - Sin Historicos"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -71.0
+offset_right = 135.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackG" type="NinePatchRect" parent="Cont - Sin Historicos/Contenedor"]
+self_modulate = Color(1, 1, 1, 0.152941)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(42, 5, 50, 50)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Icon" type="NinePatchRect" parent="Cont - Sin Historicos/Contenedor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 97.0
+offset_top = 50.0
+offset_right = -97.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(7, 110, 28, 28)
+
+[node name="Txt - Title" type="Label" parent="Cont - Sin Historicos/Contenedor"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -103.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "SIN HISTORICOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Txt - min" type="Label" parent="Cont - Sin Historicos/Contenedor"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.709804, 0.709804, 0.709804, 1)
+theme_override_font_sizes/font_size = 25
+text = "Act. cada 15 min."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - Tittle + Close" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 131.0
+grow_horizontal = 2
+
+[node name="Back" type="NinePatchRect" parent="Cont - Tittle + Close"]
+self_modulate = Color(0.129412, 0.129412, 0.129412, 1)
+custom_minimum_size = Vector2(8, 130)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Left" type="NinePatchRect" parent="Cont - Tittle + Close"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(8, 130)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0166667
+anchor_bottom = 0.216667
+offset_right = 7.33333
+grow_horizontal = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CERRAR" type="NinePatchRect" parent="Cont - Tittle + Close"]
+self_modulate = Color(0.08, 0.08, 0.08, 1)
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_bottom = 128.0
+grow_horizontal = 0
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="x" type="NinePatchRect" parent="Cont - Tittle + Close/CERRAR"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(128, 119, 38, 39)
+
+[node name="Button" type="Button" parent="Cont - Tittle + Close/CERRAR"]
+visibility_layer = 0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -63.5
+offset_bottom = 63.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="Glass" type="NinePatchRect" parent="Cont - Tittle + Close"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 8, 40, 19)
+patch_margin_left = 2
+patch_margin_top = 1
+patch_margin_right = 2
+
+[node name="Glow" type="NinePatchRect" parent="Cont - Tittle + Close"]
+self_modulate = Color(0.168627, 0.552941, 0.729412, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 92.0
+offset_bottom = 130.0
+grow_horizontal = 2
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("3_it075")
+region_rect = Rect2(221, 132, 39, 18)
+patch_margin_left = 2
+patch_margin_top = 1
+patch_margin_right = 2
+
+[node name="Light" type="NinePatchRect" parent="Cont - Tittle + Close"]
+self_modulate = Color(0.301961, 0.54902, 0.658824, 1)
+custom_minimum_size = Vector2(8, 4)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 126.0
+offset_bottom = 130.0
+grow_horizontal = 2
+texture = ExtResource("3_it075")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Cont - Labels Sitio" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_right = 360.0
+offset_bottom = 130.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Label - #ID Local" type="Label" parent="Cont - Labels Sitio"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -55.0
+offset_right = 124.0
+offset_bottom = 55.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label - NombreAvenida" type="Label" parent="Cont - Labels Sitio"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 137.0
+offset_top = 18.0
+offset_right = -133.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 35
+text = "NOMBRE AVENIDA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label - Nombre Sitio" type="Label" parent="Cont - Labels Sitio"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = 5.0
+offset_right = -132.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "NOMBRE SITIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label - Fecha Act" type="Label" parent="Cont - Labels Sitio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.0
+offset_top = 151.0
+offset_right = 180.0
+offset_bottom = 186.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.376471, 0.376471, 0.376471, 1)
+theme_override_font_sizes/font_size = 25
+text = "Ultima Act: 12:00 - 15/03/2024"
+horizontal_alignment = 1
+vertical_alignment = 1

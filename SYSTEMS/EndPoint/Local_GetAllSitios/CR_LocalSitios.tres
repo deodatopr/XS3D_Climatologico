@@ -1,0 +1,503 @@
+[gd_resource type="Resource" script_class="GDs_CR_LocalSitios" load_steps=64 format=3 uid="uid://d1wxkm3m5uj1h"]
+
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Local_GetAllSitios/GDs_CR_LocalSitios.gd" id="1_3ageh"]
+[ext_resource type="PackedScene" uid="uid://c5aw8ono0ggyy" path="res://LVLS/Particulares/Sitio_1.tscn" id="1_4hptn"]
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Local_GetAllSitios/GDs_LocalSitio.gd" id="1_sl152"]
+[ext_resource type="PackedScene" uid="uid://dx62urk6rn43h" path="res://LVLS/Particulares/Sitio_2.tscn" id="3_4bm2m"]
+[ext_resource type="PackedScene" uid="uid://ehp0swgxeshy" path="res://LVLS/Particulares/Sitio_3.tscn" id="4_qp31o"]
+[ext_resource type="PackedScene" uid="uid://d2h0t07jt0lqd" path="res://LVLS/Particulares/Sitio_4.tscn" id="5_hsu1e"]
+[ext_resource type="PackedScene" uid="uid://b2cgjojwnec5e" path="res://LVLS/Particulares/Sitio_5.tscn" id="6_ino2q"]
+[ext_resource type="PackedScene" uid="uid://ci0iwfji4u2gc" path="res://LVLS/Particulares/Sitio_7.tscn" id="7_7klyj"]
+[ext_resource type="PackedScene" uid="uid://583xib0kj50s" path="res://LVLS/Particulares/Sitio_6.tscn" id="7_payov"]
+[ext_resource type="PackedScene" uid="uid://hp7pnqspgakv" path="res://LVLS/Particulares/Sitio_8.tscn" id="7_s81tk"]
+[ext_resource type="PackedScene" uid="uid://chxo2dgbvr3pr" path="res://LVLS/Particulares/Sitio_10.tscn" id="8_eymjk"]
+[ext_resource type="PackedScene" uid="uid://c1n8m657dk8hw" path="res://LVLS/Particulares/Sitio_9.tscn" id="9_bfbjs"]
+[ext_resource type="PackedScene" uid="uid://d1f5bp6n3pjry" path="res://LVLS/Particulares/Sitio_27.tscn" id="12_pwsi4"]
+[ext_resource type="PackedScene" uid="uid://ba4c7s2vd30gk" path="res://LVLS/Particulares/Sitio_11.tscn" id="12_ve1fs"]
+[ext_resource type="PackedScene" uid="uid://hkntbiii7rrd" path="res://LVLS/Particulares/Sitio_12.tscn" id="12_vpdeo"]
+[ext_resource type="PackedScene" uid="uid://y1m4lm2ysxup" path="res://LVLS/Particulares/Sitio_13.tscn" id="12_xeh2r"]
+[ext_resource type="PackedScene" uid="uid://ytn1wk66k54x" path="res://LVLS/Particulares/Sitio_24.tscn" id="14_h6bi6"]
+[ext_resource type="PackedScene" uid="uid://cf1rgei6dgw2a" path="res://LVLS/Particulares/Sitio_25.tscn" id="15_jaqpg"]
+[ext_resource type="PackedScene" uid="uid://catqn7vsphpk4" path="res://LVLS/Particulares/Sitio_30.tscn" id="15_v7mbs"]
+[ext_resource type="PackedScene" uid="uid://dxk8hmrophgwf" path="res://LVLS/Particulares/Sitio_26.tscn" id="16_2fu5o"]
+[ext_resource type="PackedScene" uid="uid://0yno2vpebc03" path="res://LVLS/Particulares/Sitio_29.tscn" id="18_5ec62"]
+[ext_resource type="PackedScene" uid="uid://bp1xvg2ysaqiv" path="res://LVLS/Particulares/Sitio_28.tscn" id="18_yktag"]
+[ext_resource type="PackedScene" uid="uid://br2ausdpd1bq6" path="res://LVLS/Particulares/Sitio_14.tscn" id="20_hpjin"]
+[ext_resource type="PackedScene" uid="uid://dntgplpp8khol" path="res://LVLS/Particulares/Sitio_17.tscn" id="20_ylsak"]
+[ext_resource type="PackedScene" uid="uid://e4xl2xx8m6o8" path="res://LVLS/Particulares/Sitio_15.tscn" id="21_o5y58"]
+[ext_resource type="PackedScene" uid="uid://cwb1sb3txbpah" path="res://LVLS/Particulares/Sitio_16.tscn" id="22_3pvvm"]
+[ext_resource type="PackedScene" uid="uid://bokdy3ni2en1x" path="res://LVLS/Particulares/Sitio_19.tscn" id="23_jt5vk"]
+[ext_resource type="PackedScene" uid="uid://5e281cjvigtb" path="res://LVLS/Particulares/Sitio_18.tscn" id="24_dyx0y"]
+[ext_resource type="PackedScene" uid="uid://b7c1awj1are52" path="res://LVLS/Particulares/Sitio_20.tscn" id="25_m1j5p"]
+[ext_resource type="PackedScene" uid="uid://85l0lln37ti7" path="res://LVLS/Particulares/Sitio_22.tscn" id="27_4na1k"]
+[ext_resource type="PackedScene" uid="uid://dfhceixhujj85" path="res://LVLS/Particulares/Sitio_21.tscn" id="28_ouw7n"]
+[ext_resource type="PackedScene" uid="uid://hg2tmf5wrd7l" path="res://LVLS/Particulares/Sitio_23-31.tscn" id="29_fk6d7"]
+
+[sub_resource type="Resource" id="Resource_ebrpu"]
+script = ExtResource("1_sl152")
+IdLocal = 1
+IdSitio = 6000001
+Estructura = 0
+NombreEstructura = "INSURGENTES"
+Abreviacion = "Cantera"
+Direccion = "Insurgentes Nte. y Cantera"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("1_4hptn")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_e7cnc"]
+script = ExtResource("1_sl152")
+IdLocal = 2
+IdSitio = 6000002
+Estructura = 0
+NombreEstructura = "INSURGENTES"
+Abreviacion = "Montevideo"
+Direccion = "Insurgentes y Montevideo"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("3_4bm2m")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_u4mss"]
+script = ExtResource("1_sl152")
+IdLocal = 3
+IdSitio = 6000003
+Estructura = 0
+NombreEstructura = "INSURGENTES"
+Abreviacion = "Guerrero"
+Direccion = "Insurgentes y Guerrero"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("4_qp31o")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_sdk6k"]
+script = ExtResource("1_sl152")
+IdLocal = 4
+IdSitio = 6000004
+Estructura = 0
+NombreEstructura = "INSURGENTES"
+Abreviacion = "C. Interior"
+Direccion = "Circuito Interior e Insurgentes"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("5_hsu1e")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_a13q0"]
+script = ExtResource("1_sl152")
+IdLocal = 5
+IdSitio = 6000005
+Estructura = 1
+NombreEstructura = "CIRCUITO"
+Abreviacion = "C. Guadalupe"
+Direccion = "Circuito Interior y Calz. Guadalupe"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("6_ino2q")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_h8w7j"]
+script = ExtResource("1_sl152")
+IdLocal = 6
+IdSitio = 6000006
+Estructura = 1
+NombreEstructura = "CIRCUITO"
+Abreviacion = "Misterios"
+Direccion = "Circuito Interior y Calz. Misterios"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("7_payov")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_jpl8m"]
+script = ExtResource("1_sl152")
+IdLocal = 7
+IdSitio = 6000007
+Estructura = 1
+NombreEstructura = "CIRCUITO"
+Abreviacion = "E. Molina"
+Direccion = "Circuito Interior y Eduardo Molina"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("7_7klyj")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_ip3rd"]
+script = ExtResource("1_sl152")
+IdLocal = 8
+IdSitio = 6000008
+Estructura = 1
+NombreEstructura = "CIRCUITO"
+Abreviacion = "Marina N."
+Direccion = "Circuito Interior y Marina Nacional"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("7_s81tk")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_7tvbl"]
+script = ExtResource("1_sl152")
+IdLocal = 9
+IdSitio = 6000009
+Estructura = 1
+NombreEstructura = "CIRCUITO"
+Abreviacion = "Eje 1 norte"
+Direccion = "Circuito Interior y Eje 1 Norte"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("9_bfbjs")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_oiuci"]
+script = ExtResource("1_sl152")
+IdLocal = 10
+IdSitio = 6000010
+Estructura = 1
+NombreEstructura = "CIRCUITO"
+Abreviacion = "Oceanía"
+Direccion = "Circuito Interior (Río Consulado) y Oceanía"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("8_eymjk")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_t6oco"]
+script = ExtResource("1_sl152")
+IdLocal = 11
+IdSitio = 6000011
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "L. Alamán"
+Direccion = "Tlalpan y Lucas Alamán"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("12_ve1fs")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_j4lpd"]
+script = ExtResource("1_sl152")
+IdLocal = 12
+IdSitio = 6000012
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "20 de Nov."
+Direccion = "Tlalpan y 20 de Noviembre"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("12_vpdeo")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_8m1e5"]
+script = ExtResource("1_sl152")
+IdLocal = 24
+IdSitio = 6000024
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "M. Libre"
+Direccion = "P. a desnivel vehicular Municipio Libre"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("14_h6bi6")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_ncbe3"]
+script = ExtResource("1_sl152")
+IdLocal = 25
+IdSitio = 6000025
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "E. Zapata"
+Direccion = "P. a desnivel vehicular Emiliano Zapata"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("15_jaqpg")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_mmunc"]
+script = ExtResource("1_sl152")
+IdLocal = 26
+IdSitio = 6000026
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "Ermita Izt."
+Direccion = "P. a desnivel vehicular Ermita 3"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("16_2fu5o")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_l816e"]
+script = ExtResource("1_sl152")
+IdLocal = 27
+IdSitio = 6000027
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "Chimalpop."
+Direccion = "P. a desnivel vehicular Tlaxcoaque"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("12_pwsi4")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_1x43n"]
+script = ExtResource("1_sl152")
+IdLocal = 28
+IdSitio = 6000028
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "Taxqueña"
+Direccion = "Taxqueña"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("18_yktag")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_4j3g0"]
+script = ExtResource("1_sl152")
+IdLocal = 29
+IdSitio = 6000029
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "Napoleón"
+Direccion = "Napoleón"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("18_5ec62")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_klfdn"]
+script = ExtResource("1_sl152")
+IdLocal = 30
+IdSitio = 6000030
+Estructura = 2
+NombreEstructura = "TLALPAN"
+Abreviacion = "Santiago"
+Direccion = "Santiago"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("15_v7mbs")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_ka784"]
+script = ExtResource("1_sl152")
+IdLocal = 13
+IdSitio = 6000013
+Estructura = 3
+NombreEstructura = "PERIFERICO"
+Abreviacion = "Pic. Ajusco"
+Direccion = "Periférico Sur y Picacho Ajusco"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("12_xeh2r")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_67bty"]
+script = ExtResource("1_sl152")
+IdLocal = 14
+IdSitio = 6000014
+Estructura = 3
+NombreEstructura = "PERIFERICO"
+Abreviacion = "Sta. Teresa"
+Direccion = "Periférico Sur y Camino a Santa Teresa"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("20_hpjin")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_3qin7"]
+script = ExtResource("1_sl152")
+IdLocal = 15
+IdSitio = 6000015
+Estructura = 3
+NombreEstructura = "PERIFERICO"
+Abreviacion = "S. Jerónimo"
+Direccion = "Periférico Sur y San Jerónimo"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("21_o5y58")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_tb8b0"]
+script = ExtResource("1_sl152")
+IdLocal = 16
+IdSitio = 6000016
+Estructura = 3
+NombreEstructura = "PERIFERICO"
+Abreviacion = "Conscripto"
+Direccion = "Anillo Periférico y Av. del Conscripto"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("22_3pvvm")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_lsug3"]
+script = ExtResource("1_sl152")
+IdLocal = 17
+IdSitio = 6000017
+Estructura = 4
+NombreEstructura = "VIADUCTO"
+Abreviacion = "Tlalpan"
+Direccion = "Viaducto y San Antonio Abad"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("20_ylsak")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_f4qwb"]
+script = ExtResource("1_sl152")
+IdLocal = 18
+IdSitio = 6000018
+Estructura = 4
+NombreEstructura = "VIADUCTO"
+Abreviacion = "Cuauhtémoc"
+Direccion = "Viaducto y Av. Cuauhtémoc"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("24_dyx0y")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_1scqe"]
+script = ExtResource("1_sl152")
+IdLocal = 19
+IdSitio = 6000019
+Estructura = 4
+NombreEstructura = "VIADUCTO"
+Abreviacion = "Troncoso"
+Direccion = "Viaducto y Fco. del Paso y Troncoso"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("23_jt5vk")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_s4531"]
+script = ExtResource("1_sl152")
+IdLocal = 20
+IdSitio = 6000020
+Estructura = 4
+NombreEstructura = "VIADUCTO"
+Abreviacion = "Churubusco"
+Direccion = "Viaducto y Churubusco"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("25_m1j5p")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_8ygrj"]
+script = ExtResource("1_sl152")
+IdLocal = 21
+IdSitio = 6000021
+Estructura = 5
+NombreEstructura = "REFORMA"
+Abreviacion = "Eje Central"
+Direccion = "Eje Central y Av. Paseo de la Reforma"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("28_ouw7n")
+disponible = true
+unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_5q0n1"]
+script = ExtResource("1_sl152")
+IdLocal = 22
+IdSitio = 6000022
+Estructura = 5
+NombreEstructura = "REFORMA"
+Abreviacion = "Chivatito"
+Direccion = "Av. Paseo de la Reforma y Calz. Chivatito"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("27_4na1k")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_cx78f"]
+script = ExtResource("1_sl152")
+IdLocal = 23
+IdSitio = 6000023
+Estructura = 5
+NombreEstructura = "REFORMA"
+Abreviacion = "C. Marte C."
+Direccion = "Av. Paseo de la Reforma y Campo Marte"
+NvlNormal = 4.0
+NvlPreventivo = 4.0
+NvlCritico = 8.0
+lvlSitio = ExtResource("29_fk6d7")
+disponible = true
+unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_usxvg"]
+script = ExtResource("1_sl152")
+IdLocal = 31
+IdSitio = 6000031
+Estructura = 5
+NombreEstructura = "REFORMA"
+Abreviacion = "C. Marte P."
+Direccion = "Campo Marte Puente"
+NvlNormal = 0.0
+NvlPreventivo = 0.05
+NvlCritico = 0.25
+lvlSitio = ExtResource("29_fk6d7")
+disponible = true
+unSoloSentido = false
+
+[resource]
+script = ExtResource("1_3ageh")
+LocalSitios = Array[ExtResource("1_sl152")]([SubResource("Resource_ebrpu"), SubResource("Resource_e7cnc"), SubResource("Resource_u4mss"), SubResource("Resource_sdk6k"), SubResource("Resource_a13q0"), SubResource("Resource_h8w7j"), SubResource("Resource_jpl8m"), SubResource("Resource_ip3rd"), SubResource("Resource_7tvbl"), SubResource("Resource_oiuci"), SubResource("Resource_t6oco"), SubResource("Resource_j4lpd"), SubResource("Resource_8m1e5"), SubResource("Resource_ncbe3"), SubResource("Resource_mmunc"), SubResource("Resource_l816e"), SubResource("Resource_1x43n"), SubResource("Resource_4j3g0"), SubResource("Resource_klfdn"), SubResource("Resource_ka784"), SubResource("Resource_67bty"), SubResource("Resource_3qin7"), SubResource("Resource_tb8b0"), SubResource("Resource_lsug3"), SubResource("Resource_f4qwb"), SubResource("Resource_1scqe"), SubResource("Resource_s4531"), SubResource("Resource_8ygrj"), SubResource("Resource_5q0n1"), SubResource("Resource_cx78f"), SubResource("Resource_usxvg")])

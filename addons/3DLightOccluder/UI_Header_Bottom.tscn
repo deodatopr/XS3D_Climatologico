@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://u42y1tv72oga"]
+
+[node name="OcclDisUi" type="Control"]
+custom_minimum_size = Vector2(320, 3000)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(320, 3000)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

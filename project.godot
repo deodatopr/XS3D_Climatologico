@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="XS3D_Climatologico"
+config/features=PackedStringArray("4.3", "Mobile")
+
+[file_customization]
+
+folder_colors={
+"res://#DeosTools/": "red",
+"res://#Keystores/": "red",
+"res://#NoShare/": "red",
+"res://#Studies/": "red",
+"res://CONTENT/": "green",
+"res://LVLS/": "purple",
+"res://SYSTEMS/": "orange",
+"res://UI/": "yellow",
+"res://addons/": "blue"
+}
+
+[rendering]
+
+renderer/rendering_method="mobile"

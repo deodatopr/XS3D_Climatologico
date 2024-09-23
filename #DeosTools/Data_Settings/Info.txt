@@ -1,0 +1,18 @@
+-----------------------------------------------------
+Instrucciones para instalar 'Layout + Shortcuts'
+-----------------------------------------------------
+1) Abrir Godot Engine
+
+2) En 'FileSystem Panel' > En '_Files' dar Click derecho > Open in File Manager.
+
+3) Seleccionar y copiar los 2 siguientes archivos:
+	+ editor_layouts.cfg (Layouts Config)
+	+ editor_settings.tres (Settings/Shorcuts Config)
+
+4) En Godot ir al menu de arriba de 'Editor > Open Editor Data'
+5) Cerrar Godot (esto es forsozo).
+
+6) Pegar los 2 archivos en la carpeta del 'OpenEditorData' y sobrescribirlos.
+
+7) Abrir Godot ir a 'Editor > Editor Layout' y cargar el nuevo Layout 'DEV'
+	Nota: Los 'Settings y Shortcuts' ya estaran habilitados.

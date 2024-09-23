@@ -1,0 +1,127 @@
+[gd_scene load_steps=24 format=3 uid="uid://bb3utyfd45epl"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqll6nstu2t4y" path="res://addons/3DGizmos/Msh_Line.obj" id="1_aa33k"]
+[ext_resource type="Shader" path="res://addons/3DGizmos/Gizmo_Sha.gdshader" id="2_p4abi"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Line.gd" id="3_lxyei"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Arrow.gd" id="5_lfdih"]
+[ext_resource type="ArrayMesh" uid="uid://dm7d3321cn6k" path="res://addons/3DGizmos/Msh_Capsule.obj" id="6_c3phq"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Capsule.gd" id="7_2dudu"]
+[ext_resource type="ArrayMesh" uid="uid://vavh66sn6g1f" path="res://addons/3DGizmos/Msh_Cylinder.obj" id="8_w0fn3"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Cylinder.gd" id="9_q5tuh"]
+[ext_resource type="ArrayMesh" uid="uid://b6kxaqh88nkok" path="res://addons/3DGizmos/Msh_Box.obj" id="10_t7gkt"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Box.gd" id="11_wxhs8"]
+[ext_resource type="ArrayMesh" uid="uid://dex164ysl57n3" path="res://addons/3DGizmos/Msh_IcoSphere.obj" id="12_lsjdm"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Icosphere.gd" id="13_lo1u4"]
+[ext_resource type="ArrayMesh" uid="uid://dj5vdm4b1yqc5" path="res://addons/3DGizmos/Msh_Sphere.obj" id="14_rk05v"]
+[ext_resource type="ArrayMesh" uid="uid://d3gc0s7ncpxqm" path="res://addons/3DGizmos/Msh_Arrow.obj" id="14_ssul3"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Sphere.gd" id="15_cgl5y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48vbo"]
+render_priority = 0
+shader = ExtResource("2_p4abi")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4am"]
+render_priority = 0
+shader = ExtResource("2_p4abi")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnhgy"]
+render_priority = 0
+shader = ExtResource("2_p4abi")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1hnw"]
+render_priority = 0
+shader = ExtResource("2_p4abi")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdhe4"]
+render_priority = 0
+shader = ExtResource("2_p4abi")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7sr6"]
+render_priority = 0
+shader = ExtResource("2_p4abi")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pr2lm"]
+render_priority = 0
+shader = ExtResource("2_p4abi")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_l2hat"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54318, 16.41)
+
+[node name="Gizmo Line" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 0, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("1_aa33k")
+surface_material_override/0 = SubResource("ShaderMaterial_48vbo")
+script = ExtResource("3_lxyei")
+
+[node name="Gizmo Arrow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 0, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("14_ssul3")
+surface_material_override/0 = SubResource("ShaderMaterial_qx4am")
+script = ExtResource("5_lfdih")
+
+[node name="Gizmo Capsule" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("6_c3phq")
+surface_material_override/0 = SubResource("ShaderMaterial_qnhgy")
+script = ExtResource("7_2dudu")
+
+[node name="Gizmo Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("8_w0fn3")
+surface_material_override/0 = SubResource("ShaderMaterial_x1hnw")
+script = ExtResource("9_q5tuh")
+
+[node name="Gizmo Box" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("10_t7gkt")
+surface_material_override/0 = SubResource("ShaderMaterial_hdhe4")
+script = ExtResource("11_wxhs8")
+
+[node name="Gizmo IcoSphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.995231, 0, 0, 0, 0.995231, 0, 0, 0, 0.995231, 3, 0.5, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("12_lsjdm")
+surface_material_override/0 = SubResource("ShaderMaterial_y7sr6")
+script = ExtResource("13_lo1u4")
+
+[node name="Gizmo Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("14_rk05v")
+surface_material_override/0 = SubResource("ShaderMaterial_pr2lm")
+script = ExtResource("15_cgl5y")
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.157512, 0, 0, 0, 0.157512, 0, 0, 0, 0.157512, -5.53833, 1.91255, 0.48706)
+mesh = SubResource("SphereMesh_l2hat")
+skeleton = NodePath("")

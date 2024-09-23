@@ -1,0 +1,371 @@
+[gd_scene load_steps=2 format=3 uid="uid://mnv3leh2iyfh"]
+
+[ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="1_n2toy"]
+
+[node name="Filtros" type="Control"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_right = 719.0
+offset_bottom = 120.0
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+metadata/_edit_horizontal_guides_ = [62.0]
+
+[node name="ColorRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Btn - Expand All" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.14
+mouse_filter = 2
+
+[node name="Atlas_RectShadow" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Expand All"]
+self_modulate = Color(0.141176, 0.376471, 0.537255, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(321, 10, 50, 50)
+patch_margin_left = 23
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 23
+
+[node name="Cont - Arrows" type="Control" parent="VBoxContainer/HBoxContainer/Btn - Expand All"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Atlas_Ico_Arrow" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 24.0
+grow_vertical = 0
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(140, 30, 30, 30)
+
+[node name="Atlas_Ico_Arrow2" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+rotation = 3.14159
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(140, 30, 30, 30)
+
+[node name="Button - Expand All" type="Button" parent="VBoxContainer/HBoxContainer/Btn - Expand All"]
+self_modulate = Color(0, 0.0235294, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Btn - En Linea" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 2
+
+[node name="EnLinea - SELECTED" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - En Linea"]
+self_modulate = Color(0.137255, 0.368627, 0.52549, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(102, 60)
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(321, 9, 50, 50)
+
+[node name="Atlas_Crystal -  Glow" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - En Linea/EnLinea - SELECTED"]
+self_modulate = Color(0, 0.819608, 1, 1)
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 58)
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(220, 132, 41, 19)
+patch_margin_left = 39
+patch_margin_right = 39
+
+[node name="Atlas - Crystal" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - En Linea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(443, 8, 40, 19)
+patch_margin_left = 39
+patch_margin_top = 1
+patch_margin_right = 39
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Btn - En Linea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="EnLinea - TITLE" type="Label" parent="VBoxContainer/HBoxContainer/Btn - En Linea/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "EN LINEA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enlinea - LABEL" type="Label" parent="VBoxContainer/HBoxContainer/Btn - En Linea/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "[ 00 ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Btn - En Linea"]
+visibility_layer = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Btn - Sin Señal" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 2
+
+[node name="SinSeñal - SELECTED" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Sin Señal"]
+self_modulate = Color(0.137255, 0.368627, 0.52549, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(321, 9, 50, 50)
+
+[node name="Atlas_Crystal -  Glow" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Sin Señal/SinSeñal - SELECTED"]
+self_modulate = Color(0, 0.819608, 1, 1)
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 58)
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(220, 132, 41, 19)
+patch_margin_left = 39
+patch_margin_right = 39
+
+[node name="Atlas_RectShadow Crystal" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Sin Señal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(443, 8, 40, 19)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Btn - Sin Señal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="SinSenal - TITLE" type="Label" parent="VBoxContainer/HBoxContainer/Btn - Sin Señal/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "SIN SEÑAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SinSenal - LABEL" type="Label" parent="VBoxContainer/HBoxContainer/Btn - Sin Señal/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "[ 00 ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Btn - Sin Señal"]
+self_modulate = Color(0, 0.0235294, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Btn - Inundado" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 2
+
+[node name="Inundado - SELECTED" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Inundado"]
+self_modulate = Color(0.137255, 0.368627, 0.52549, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(321, 9, 50, 50)
+
+[node name="Atlas_Crystal -  Glow" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Inundado/Inundado - SELECTED"]
+self_modulate = Color(0, 0.819608, 1, 1)
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 58)
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(220, 132, 41, 19)
+patch_margin_left = 39
+patch_margin_right = 39
+
+[node name="Atlas_RectShadow Crystal" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Btn - Inundado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n2toy")
+region_rect = Rect2(443, 8, 40, 19)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Btn - Inundado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Inundado - TITLE" type="Label" parent="VBoxContainer/HBoxContainer/Btn - Inundado/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "INUNDANDO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inundado - LABEL" type="Label" parent="VBoxContainer/HBoxContainer/Btn - Inundado/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "[ 00 ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Btn - Inundado"]
+self_modulate = Color(0, 0.0235294, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Separator - BlackLineTop" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Separator - BlackLineTop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

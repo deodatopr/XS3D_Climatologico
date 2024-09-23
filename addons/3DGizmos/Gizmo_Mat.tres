@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cqjh3t421g7el"]
+
+[ext_resource type="Shader" path="res://addons/3DGizmos/Gizmo_Sha.gdshader" id="1_w3li0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_w3li0")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/Wireframe = true
