@@ -1,4 +1,4 @@
-[gd_resource type="EditorSettings" load_steps=61 format=3]
+[gd_resource type="EditorSettings" load_steps=55 format=3]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ygxp1"]
 device = -1
@@ -21,6 +21,10 @@ device = -1
 ctrl_pressed = true
 physical_keycode = 69
 
+[sub_resource type="InputEventKey" id="InputEventKey_peadx"]
+ctrl_pressed = true
+keycode = 4194343
+
 [sub_resource type="InputEventKey" id="InputEventKey_gwqqr"]
 device = -1
 physical_keycode = 4194341
@@ -32,6 +36,12 @@ keycode = 4194342
 [sub_resource type="InputEventKey" id="InputEventKey_qui0q"]
 device = -1
 physical_keycode = 4194342
+
+[sub_resource type="InputEventKey" id="InputEventKey_apl6p"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+physical_keycode = 67
 
 [sub_resource type="InputEventKey" id="InputEventKey_u8lfj"]
 keycode = 4194445
@@ -247,67 +257,23 @@ alt_pressed = true
 shift_pressed = true
 physical_keycode = 68
 
-[sub_resource type="InputEventKey" id="InputEventKey_cwb84"]
-device = -1
-alt_pressed = true
-shift_pressed = true
-physical_keycode = 88
-
-[sub_resource type="InputEventKey" id="InputEventKey_s67qg"]
-device = -1
-alt_pressed = true
-shift_pressed = true
-keycode = 83
-
-[sub_resource type="InputEventKey" id="InputEventKey_rfstv"]
-device = -1
-alt_pressed = true
-keycode = 88
-
-[sub_resource type="InputEventKey" id="InputEventKey_p4me6"]
-device = -1
-physical_keycode = 67
-unicode = 99
-
-[sub_resource type="InputEventKey" id="InputEventKey_s7eme"]
-device = -1
-alt_pressed = true
-shift_pressed = true
-physical_keycode = 68
-
-[sub_resource type="InputEventKey" id="InputEventKey_xwyk1"]
-device = -1
-keycode = 48
-unicode = 48
-
-[sub_resource type="InputEventKey" id="InputEventKey_3r0un"]
-device = -1
-keycode = 56
-unicode = 56
-
-[sub_resource type="InputEventKey" id="InputEventKey_h0kgl"]
-device = -1
-keycode = 57
-unicode = 57
-
 [resource]
 interface/editor/editor_language = "en"
 interface/editor/display_scale = 7
-interface/editor/custom_display_scale = 0.75
+interface/editor/custom_display_scale = 0.8
 interface/editor/code_font_size = 20.0
 interface/editor/show_update_spinner = false
 interface/editor/low_processor_mode_sleep_usec = 66000.0
-interface/inspector/default_color_picker_mode = 1
 interface/inspector/default_color_picker_shape = 1
 interface/theme/preset = "Custom"
-interface/theme/base_color = Color(0.141176, 0.141176, 0.141176, 1)
-interface/theme/accent_color = Color(0.44, 0.73, 0.98, 1)
+interface/theme/base_color = Color(0.133333, 0.101961, 0.168627, 1)
+interface/theme/accent_color = Color(0.678431, 0.439216, 0.980392, 1)
 interface/theme/contrast = 0.3
 interface/theme/draw_extra_borders = true
 interface/multi_window/maximize_window = true
 filesystem/directories/default_project_path = "D:/DOCS/GodotProjects"
 filesystem/import/blender/blender_path = "D:/APP PORTABLE/Blender\\blender.exe"
-filesystem/import/fbx/fbx2gltf_path = "D:/APP PORTABLE/Godot/FBX/FBX2glTF-windows-x86_64.exe"
+filesystem/import/fbx/fbx2gltf_path = "C:/Users/Diego/Documents/Projects_Godot/_Tool/FBX2glTF-windows-x86_64/FBX2glTF-windows-x86_64.exe"
 docks/scene_tree/auto_expand_to_selected = false
 text_editor/theme/highlighting/symbol_color = Color(0.67, 0.79, 1, 1)
 text_editor/theme/highlighting/keyword_color = Color(1, 0.44, 0.52, 1)
@@ -315,22 +281,22 @@ text_editor/theme/highlighting/control_flow_keyword_color = Color(1, 0.55, 0.8, 
 text_editor/theme/highlighting/base_type_color = Color(0.26, 1, 0.76, 1)
 text_editor/theme/highlighting/engine_type_color = Color(0.56, 1, 0.86, 1)
 text_editor/theme/highlighting/user_type_color = Color(0.78, 1, 0.93, 1)
-text_editor/theme/highlighting/comment_color = Color(0.785294, 0.785294, 0.785294, 0.5)
+text_editor/theme/highlighting/comment_color = Color(0.783333, 0.77549, 0.792157, 0.5)
 text_editor/theme/highlighting/doc_comment_color = Color(0.6, 0.7, 0.8, 0.8)
 text_editor/theme/highlighting/string_color = Color(1, 0.93, 0.63, 1)
-text_editor/theme/highlighting/background_color = Color(0.0776468, 0.0776468, 0.0776468, 1)
-text_editor/theme/highlighting/completion_background_color = Color(0.141176, 0.141176, 0.141176, 1)
+text_editor/theme/highlighting/background_color = Color(0.0733331, 0.0560785, 0.0927448, 1)
+text_editor/theme/highlighting/completion_background_color = Color(0.133333, 0.101961, 0.168627, 1)
 text_editor/theme/highlighting/completion_selected_color = Color(1, 1, 1, 0.07)
 text_editor/theme/highlighting/completion_existing_color = Color(1, 1, 1, 0.14)
-text_editor/theme/highlighting/completion_font_color = Color(0.785294, 0.785294, 0.785294, 1)
-text_editor/theme/highlighting/text_color = Color(0.785294, 0.785294, 0.785294, 1)
-text_editor/theme/highlighting/line_number_color = Color(0.785294, 0.785294, 0.785294, 0.5)
-text_editor/theme/highlighting/safe_line_number_color = Color(0.785294, 0.942353, 0.785294, 0.75)
+text_editor/theme/highlighting/completion_font_color = Color(0.783333, 0.77549, 0.792157, 1)
+text_editor/theme/highlighting/text_color = Color(0.783333, 0.77549, 0.792157, 1)
+text_editor/theme/highlighting/line_number_color = Color(0.783333, 0.77549, 0.792157, 0.5)
+text_editor/theme/highlighting/safe_line_number_color = Color(0.783333, 0.930588, 0.792157, 0.75)
 text_editor/theme/highlighting/caret_color = Color(1, 1, 1, 1)
-text_editor/theme/highlighting/selection_color = Color(0.44, 0.73, 0.98, 0.4)
+text_editor/theme/highlighting/selection_color = Color(0.678431, 0.439216, 0.980392, 0.4)
 text_editor/theme/highlighting/brace_mismatch_color = Color(1, 0.47, 0.42, 1)
 text_editor/theme/highlighting/current_line_color = Color(1, 1, 1, 0.07)
-text_editor/theme/highlighting/line_length_guideline_color = Color(0.141176, 0.141176, 0.141176, 1)
+text_editor/theme/highlighting/line_length_guideline_color = Color(0.133333, 0.101961, 0.168627, 1)
 text_editor/theme/highlighting/word_highlighted_color = Color(1, 1, 1, 0.07)
 text_editor/theme/highlighting/number_color = Color(0.63, 1, 0.88, 1)
 text_editor/theme/highlighting/function_color = Color(0.34, 0.7, 1, 1)
@@ -342,27 +308,23 @@ text_editor/theme/highlighting/search_result_color = Color(1, 1, 1, 0.07)
 text_editor/appearance/gutters/line_numbers_zero_padded = true
 text_editor/appearance/whitespace/draw_spaces = true
 text_editor/behavior/files/auto_reload_scripts_on_external_change = true
-text_editor/completion/add_type_hints = false
 text_editor/completion/use_single_quotes = true
 editors/3d/navigation/navigation_scheme = 1
 editors/3d/navigation/zoom_style = 1
 editors/3d/navigation/pan_modifier = 2
-editors/visual_editors/minimap_opacity = 0.5
-run/output/font_size = 15
+run/output/font_size = 12
 network/connection/network_mode = 1
-project_manager/default_renderer = "mobile"
-filesystem/import/blender/blender3_path = ""
 asset_library/available_urls = {
 "godotengine.org (Official)": "https://godotengine.org/asset-library/api"
 }
 asset_library/use_threads = true
-export/android/android_sdk_path = "C:\\Users\\deoda\\AppData\\Local\\Android\\Sdk"
-export/android/debug_keystore = "D:/GODOT/Android Keystores/debug.keystore"
+export/android/android_sdk_path = "C:/Users/Diego/AppData/Local/Android/Sdk"
+export/android/debug_keystore = "C:/Users/Diego/Documents/Projects_Godot/_KeyStoreConfig/Keystores/debug.keystore"
 export/android/debug_keystore_user = "androiddebugkey"
 export/android/debug_keystore_pass = "android"
 export/android/force_system_user = false
 export/android/shutdown_adb_on_exit = true
-export/android/one_click_deploy_clear_previous_install = true
+export/android/one_click_deploy_clear_previous_install = false
 export/macos/rcodesign = ""
 export/uwp/signtool = ""
 export/uwp/debug_certificate = ""
@@ -454,7 +416,8 @@ text_editor/theme/highlighting/comment_markers/notice_color = Color(0.56, 0.67, 
 text_editor/theme/highlighting/comment_markers/critical_list = "ALERT,ATTENTION,CAUTION,CRITICAL,DANGER,SECURITY"
 text_editor/theme/highlighting/comment_markers/warning_list = "BUG,DEPRECATED,FIXME,HACK,TASK,TBD,TODO,WARNING"
 text_editor/theme/highlighting/comment_markers/notice_list = "INFO,NOTE,NOTICE,TEST,TESTING"
-export/android/java_sdk_path = "C:/Program Files/Eclipse Adoptium/jdk-17.0.10.7-hotspot"
+debug_draw_3d/settings/telemetry_state = 1
+export/android/java_sdk_path = "C:\\Program Files\\Java\\jdk-20\\"
 network/language_server/poll_limit_usec = 100000
 shortcuts = [{
 "name": "editor/project_settings",
@@ -470,10 +433,13 @@ shortcuts = [{
 "shortcuts": [SubResource("InputEventKey_fwtqp")]
 }, {
 "name": "editor/take_screenshot",
-"shortcuts": [SubResource("InputEventKey_gwqqr")]
+"shortcuts": [SubResource("InputEventKey_peadx"), SubResource("InputEventKey_gwqqr")]
 }, {
 "name": "editor/fullscreen_mode",
 "shortcuts": [SubResource("InputEventKey_53yoi"), SubResource("InputEventKey_qui0q")]
+}, {
+"name": "editor/clear_output",
+"shortcuts": [SubResource("InputEventKey_apl6p")]
 }, {
 "name": "spatial_editor/top_view",
 "shortcuts": [SubResource("InputEventKey_u8lfj"), SubResource("InputEventKey_hmnmu")]
@@ -567,42 +533,6 @@ shortcuts = [{
 }, {
 "name": "script_text_editor/unfold_all_lines",
 "shortcuts": [SubResource("InputEventKey_btxtf")]
-}, {
-"name": "bottom_panels/toggle_output_bottom_panel",
-"shortcuts": [SubResource("InputEventKey_cwb84")]
-}, {
-"name": "bottom_panels/toggle_shader_editor_bottom_panel",
-"shortcuts": [SubResource("InputEventKey_s67qg")]
-}, {
-"name": "editor/clear_output",
-"shortcuts": [SubResource("InputEventKey_rfstv")]
-}, {
-"name": "spatial_editor/view_cinematic_preview",
-"shortcuts": [SubResource("InputEventKey_p4me6")]
-}, {
-"name": "editor/file_quit",
-"shortcuts": []
-}, {
-"name": "bottom_panels/toggle_debugger_bottom_panel",
-"shortcuts": [SubResource("InputEventKey_s7eme")]
-}, {
-"name": "spatial_editor/1_viewport",
-"shortcuts": [SubResource("InputEventKey_xwyk1")]
-}, {
-"name": "spatial_editor/2_viewports",
-"shortcuts": [SubResource("InputEventKey_3r0un")]
-}, {
-"name": "spatial_editor/2_viewports_alt",
-"shortcuts": [SubResource("InputEventKey_h0kgl")]
-}, {
-"name": "spatial_editor/3_viewports",
-"shortcuts": []
-}, {
-"name": "spatial_editor/3_viewports_alt",
-"shortcuts": []
-}, {
-"name": "spatial_editor/4_viewports",
-"shortcuts": []
 }]
 metadata/script_setup_templates_dictionary = {
 "Button": "0NodeDefault",
@@ -615,5 +545,5 @@ metadata/script_setup_templates_dictionary = {
 "RigidBody3D": "0NodeDefault",
 "SpringArm3D": "0NodeDefault"
 }
-metadata/export_template_download_directory = "C:/Users/deoda/AppData/Local/Godot"
+metadata/export_template_download_directory = "C:/Users/Diego/AppData/Local/Godot"
 metadata/script_setup_use_script_templates = true

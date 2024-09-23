@@ -13,6 +13,10 @@ config_version=5
 config/name="XS3D_Climatologico"
 config/features=PackedStringArray("4.3", "Mobile")
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/3DAutoMaterial/plugin.cfg", "res://addons/3DGizmos/plugin.cfg", "res://addons/3DLightOccluder/plugin.cfg", "res://addons/3DMeshCombiner/plugin.cfg", "res://addons/3DVertexToPath/plugin.cfg", "res://addons/LittleCameraPreview/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg", "res://addons/jigglebones/plugin.cfg", "res://addons/snappy/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
