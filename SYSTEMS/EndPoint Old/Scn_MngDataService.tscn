@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://6rh7y2fxyxlh"]
 
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/GDs_MngDataService.gd" id="1_ea60j"]
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Endpoint_GetAllSitios/GDs_Endpoint_GetAllSitios.gd" id="2_6rh3i"]
-[ext_resource type="Resource" uid="uid://d1wxkm3m5uj1h" path="res://SYSTEMS/EndPoint/Local_GetAllSitios/CR_LocalSitios.tres" id="2_vql5n"]
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Endpoint_GetAllSitios/GDs_Endpoint_Error.gd" id="4_beigd"]
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint Old/GDs_MngDataService.gd" id="1_ea60j"]
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint Old/Endpoint_GetAllSitios/GDs_Endpoint_GetAllSitios.gd" id="2_6rh3i"]
+[ext_resource type="Resource" uid="uid://d1wxkm3m5uj1h" path="res://SYSTEMS/EndPoint Old/Local_GetAllSitios/CR_LocalSitios.tres" id="2_vql5n"]
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint Old/Endpoint_GetAllSitios/GDs_Endpoint_Error.gd" id="4_beigd"]
 [ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="5_4kupm"]
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Endpoint_Historicos/GDs_Endpoint_Historicos.gd" id="5_afpvs"]
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint Old/Endpoint_Historicos/GDs_Endpoint_Historicos.gd" id="5_afpvs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6aund"]
 atlas = ExtResource("5_4kupm")

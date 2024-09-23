@@ -10,5 +10,3 @@ func GetSitio(idSitio : int) -> GDs_LocalSitio:
 			return sitio
 	
 	return null
-
-
