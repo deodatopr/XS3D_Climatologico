@@ -1,4 +1,5 @@
 extends Node
+class_name GDs_Splash
 
 @export_category("SPLASH")
 @export var DebugSkip : bool
@@ -7,16 +8,14 @@ extends Node
 @export var speedFadeAnim : float = .5
 
 
-@onready var bgk : Control = $Atls_Bgk
-@onready var timer : Timer = $"Timer - Splash Img Visible"
+@export var bgk : Control
+@export var timer : Timer
 
 var tween : Tween
 
-func _ready():
-	if DebugSkip:
-		print_rich ("[color=orange] -------- SPLASH IS DISABLED --------- [/color]")
-		
-		return
+signal OnFinishSplash
+
+func Show():
 	bgk.show()
 	
 	#Iniciar alpha de splashes en 0 
@@ -62,3 +61,5 @@ func _ready():
 	#Termina splash
 	bgk.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	bgk.hide()
+	
+	OnFinishSplash.emit()

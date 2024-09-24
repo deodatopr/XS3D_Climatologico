@@ -1,9 +1,10 @@
 extends Node
+class_name GDs_MngDataService
 
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
-@export var endpointGetAllEstaciones : GDs_EP_GetAllEstaciones
-@export var endpointGetAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
+@export var EP_GetAllEstaciones : GDs_EP_GetAllEstaciones
+@export var EP_GetAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
 @export var URL : String
 @export var secondsToRefreshEP : float = 4.0
 @export var timeoutEPGetAllEstaciones : float = 3.0
@@ -19,29 +20,31 @@ var estaciones_Estruc_Michoacan : GDs_Data_Estaciones_Estructura
 
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
+signal OnDataRefresh
+
 func Initialize():
 	#Connect with endpoint GetAllEstacion
-	endpointGetAllEstaciones.On_Request_Success.connect(_OnSuccessEP_GetAllEstaciones)
-	endpointGetAllEstaciones.On_Request_Failed_BY_INTERNET.connect(_OnErrorEP_GetAllEstaciones)
-	endpointGetAllEstaciones.Initialize(URL,timeoutEPGetAllEstaciones)
+	EP_GetAllEstaciones.On_Request_Success.connect(_OnSuccessEP_GetAllEstaciones)
+	EP_GetAllEstaciones.On_Request_Failed_BY_INTERNET.connect(_OnErrorEP_GetAllEstaciones)
+	EP_GetAllEstaciones.Initialize(URL,timeoutEPGetAllEstaciones)
 	
 	#Connect with endpoint error
-	endpointGetAllEstaciones_Error.Initialize()
-	endpointGetAllEstaciones_Error.OnFinishError.connect(endpointGetAllEstaciones.Request_GetAllEstaciones)
+	EP_GetAllEstaciones_Error.Initialize()
+	EP_GetAllEstaciones_Error.OnFinishError.connect(EP_GetAllEstaciones.Request_GetAllEstaciones)
 	
 	#Connect timer to refresh endpoint
-	timerEPGetAllEstaciones.timeoutEPGetAllEstaciones.connect(endpointGetAllEstaciones.Request_GetAllEstaciones)
+	timerEPGetAllEstaciones.timeoutEPGetAllEstaciones.connect(EP_GetAllEstaciones.Request_GetAllEstaciones)
 	
 	#Make request
-	endpointGetAllEstaciones.Request_GetAllEstaciones()
-	
+	EP_GetAllEstaciones.Request_GetAllEstaciones()
+
 #region [ EVENTS ]
 func _OnSuccessEP_GetAllEstaciones():
 	#Update data
 	_GetDataFromEP_GetAllEstaciones()
 	
 	#Close error popup in case it is opened
-	endpointGetAllEstaciones_Error.Close()
+	EP_GetAllEstaciones_Error.Close()
 	
 	#Start again the timer
 	if timerEPGetAllEstaciones.is_stopped():
@@ -52,7 +55,7 @@ func _OnErrorEP_GetAllEstaciones():
 	_GetDataFromEP_GetAllEstaciones()
 	
 	#Open error popup in case it is closed
-	endpointGetAllEstaciones_Error.Open()
+	EP_GetAllEstaciones_Error.Open()
 	
 	#Stop refresh EP timer
 	timerEPGetAllEstaciones.stop()
@@ -61,15 +64,17 @@ func _OnErrorEP_GetAllEstaciones():
 #region [ FILL DATA ]
 func _GetDataFromEP_GetAllEstaciones():
 	if isFirstTimeRequestGetAllEstaciones:
-		_FetchEndpointWithLocalData(endpointGetAllEstaciones.arrayEstaciones)
+		_FetchEndpointWithLocalData(EP_GetAllEstaciones.arrayEstaciones)
 		isFirstTimeRequestGetAllEstaciones = false
 	else:
-		_UpdateFromEP(endpointGetAllEstaciones.arrayEstaciones)
+		_UpdateFromEP(EP_GetAllEstaciones.arrayEstaciones)
 		
 	#Fill structs by estado
 	_FillStructure(estaciones_Estruc_Todas)
 	_FillStructure(estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
 	_FillStructure(estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
+	
+	OnDataRefresh.emit()
 	
 func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	for estacionEP in arrayEndPoint:

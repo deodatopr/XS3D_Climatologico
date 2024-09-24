@@ -39,7 +39,7 @@ var dataWasMerge : bool
 var ultAct : String
 
 func _ready():
-	SIGNALS.OnRequestEndpointSitiosByDBG.connect(RequestGetAllSitiosManuallyByDbg)
+	#SIGNALS.OnRequestEndpointSitiosByDBG.connect(RequestGetAllSitiosManuallyByDbg)
 	
 	endPoint_GetAllSitios.SetDebugOption(DBG_Respuesta_GetAllSitios)
 	endPoint_Historicos.SetDebugOption(DBG_Respuesta_Historicos,DBG_NivelesGraficaRnd)

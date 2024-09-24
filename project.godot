@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="XS3D_Climatologico"
+run/main_scene="res://LVLS/Lvl_Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 
 [autoload]
