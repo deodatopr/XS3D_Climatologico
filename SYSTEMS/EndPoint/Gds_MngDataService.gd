@@ -68,8 +68,8 @@ func _GetDataFromEP_GetAllEstaciones():
 		
 	#Fill structs by estado
 	_FillStructure(estaciones_Estruc_Todas)
-	_FillStructure(estaciones_Estruc_Mexico)
-	_FillStructure(estaciones_Estruc_Michoacan)
+	_FillStructure(estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
+	_FillStructure(estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
 	
 func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	for estacionEP in arrayEndPoint:

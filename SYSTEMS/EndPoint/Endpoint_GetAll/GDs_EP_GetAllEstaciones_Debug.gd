@@ -38,8 +38,8 @@ func GetDebugEstaciones()-> Array[GDs_Data_Estacion]:
 	
 	#FIXME: BORRAR DESPUES DE IMPLEMENTA ORQUESTADOR
 	_FillStructure(estaciones, estaciones_Estruc_Todas)
-	_FillStructure(estaciones, estaciones_Estruc_Mexico)
-	_FillStructure(estaciones, estaciones_Estruc_Michoacan)
+	_FillStructure(estaciones, estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
+	_FillStructure(estaciones, estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
 	return estaciones
 	
 #FIXME: BORRAR DESPUES DE IMPLEMENTA ORQUESTADOR
