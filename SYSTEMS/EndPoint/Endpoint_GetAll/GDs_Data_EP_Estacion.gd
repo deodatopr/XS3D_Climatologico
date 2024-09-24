@@ -20,7 +20,6 @@ var energia_electrica : bool
 var rebasa_nvls_presa : bool
 var rebasa_tlrncia_prep_pluv : bool
 
-
 func _init(_estacion : Dictionary) :
 	id = _estacion["IdSitio"]
 	fecha = _estacion["fecha"]

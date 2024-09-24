@@ -1,37 +1,10 @@
-[gd_resource type="Resource" script_class="GDs_CR_LocalSitios" load_steps=64 format=3 uid="uid://d1wxkm3m5uj1h"]
+[gd_resource type="Resource" script_class="GDs_CR_LocalSitios" load_steps=65 format=3 uid="uid://d1wxkm3m5uj1h"]
 
 [ext_resource type="Script" path="res://SYSTEMS/EndPoint Old/Local_GetAllSitios/GDs_CR_LocalSitios.gd" id="1_3ageh"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_1.tscn" id="1_4hptn"]
 [ext_resource type="Script" path="res://SYSTEMS/EndPoint Old/Local_GetAllSitios/GDs_LocalSitio.gd" id="1_sl152"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_2.tscn" id="3_4bm2m"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_3.tscn" id="4_qp31o"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_4.tscn" id="5_hsu1e"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_5.tscn" id="6_ino2q"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_7.tscn" id="7_7klyj"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_6.tscn" id="7_payov"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_8.tscn" id="7_s81tk"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_10.tscn" id="8_eymjk"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_9.tscn" id="9_bfbjs"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_27.tscn" id="12_pwsi4"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_11.tscn" id="12_ve1fs"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_12.tscn" id="12_vpdeo"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_13.tscn" id="12_xeh2r"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_24.tscn" id="14_h6bi6"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_25.tscn" id="15_jaqpg"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_30.tscn" id="15_v7mbs"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_26.tscn" id="16_2fu5o"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_29.tscn" id="18_5ec62"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_28.tscn" id="18_yktag"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_14.tscn" id="20_hpjin"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_17.tscn" id="20_ylsak"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_15.tscn" id="21_o5y58"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_16.tscn" id="22_3pvvm"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_19.tscn" id="23_jt5vk"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_18.tscn" id="24_dyx0y"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_20.tscn" id="25_m1j5p"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_22.tscn" id="27_4na1k"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_21.tscn" id="28_ouw7n"]
-[ext_resource type="PackedScene" path="res://LVLS/Particulares/Sitio_23-31.tscn" id="29_fk6d7"]
+
+[sub_resource type="Resource" id="Resource_0r8pw"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_1.tscn"
 
 [sub_resource type="Resource" id="Resource_ebrpu"]
 script = ExtResource("1_sl152")
@@ -44,9 +17,12 @@ Direccion = "Insurgentes Nte. y Cantera"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("1_4hptn")
+lvlSitio = SubResource("Resource_0r8pw")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_1gxea"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_2.tscn"
 
 [sub_resource type="Resource" id="Resource_e7cnc"]
 script = ExtResource("1_sl152")
@@ -59,9 +35,12 @@ Direccion = "Insurgentes y Montevideo"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("3_4bm2m")
+lvlSitio = SubResource("Resource_1gxea")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_mvcsx"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_3.tscn"
 
 [sub_resource type="Resource" id="Resource_u4mss"]
 script = ExtResource("1_sl152")
@@ -74,9 +53,12 @@ Direccion = "Insurgentes y Guerrero"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("4_qp31o")
+lvlSitio = SubResource("Resource_mvcsx")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_vkcpp"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_4.tscn"
 
 [sub_resource type="Resource" id="Resource_sdk6k"]
 script = ExtResource("1_sl152")
@@ -89,9 +71,12 @@ Direccion = "Circuito Interior e Insurgentes"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("5_hsu1e")
+lvlSitio = SubResource("Resource_vkcpp")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_m8hil"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_5.tscn"
 
 [sub_resource type="Resource" id="Resource_a13q0"]
 script = ExtResource("1_sl152")
@@ -104,9 +89,12 @@ Direccion = "Circuito Interior y Calz. Guadalupe"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("6_ino2q")
+lvlSitio = SubResource("Resource_m8hil")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_swctx"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_6.tscn"
 
 [sub_resource type="Resource" id="Resource_h8w7j"]
 script = ExtResource("1_sl152")
@@ -119,9 +107,12 @@ Direccion = "Circuito Interior y Calz. Misterios"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("7_payov")
+lvlSitio = SubResource("Resource_swctx")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_7l8j1"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_7.tscn"
 
 [sub_resource type="Resource" id="Resource_jpl8m"]
 script = ExtResource("1_sl152")
@@ -134,9 +125,12 @@ Direccion = "Circuito Interior y Eduardo Molina"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("7_7klyj")
+lvlSitio = SubResource("Resource_7l8j1")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_nc8v8"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_8.tscn"
 
 [sub_resource type="Resource" id="Resource_ip3rd"]
 script = ExtResource("1_sl152")
@@ -149,9 +143,12 @@ Direccion = "Circuito Interior y Marina Nacional"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("7_s81tk")
+lvlSitio = SubResource("Resource_nc8v8")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_k3ytu"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_9.tscn"
 
 [sub_resource type="Resource" id="Resource_7tvbl"]
 script = ExtResource("1_sl152")
@@ -164,9 +161,12 @@ Direccion = "Circuito Interior y Eje 1 Norte"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("9_bfbjs")
+lvlSitio = SubResource("Resource_k3ytu")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_ufidc"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_10.tscn"
 
 [sub_resource type="Resource" id="Resource_oiuci"]
 script = ExtResource("1_sl152")
@@ -179,9 +179,12 @@ Direccion = "Circuito Interior (Río Consulado) y Oceanía"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("8_eymjk")
+lvlSitio = SubResource("Resource_ufidc")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_tiw0v"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_11.tscn"
 
 [sub_resource type="Resource" id="Resource_t6oco"]
 script = ExtResource("1_sl152")
@@ -194,9 +197,12 @@ Direccion = "Tlalpan y Lucas Alamán"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("12_ve1fs")
+lvlSitio = SubResource("Resource_tiw0v")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_oc4gg"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_12.tscn"
 
 [sub_resource type="Resource" id="Resource_j4lpd"]
 script = ExtResource("1_sl152")
@@ -209,9 +215,12 @@ Direccion = "Tlalpan y 20 de Noviembre"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("12_vpdeo")
+lvlSitio = SubResource("Resource_oc4gg")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_27iin"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_24.tscn"
 
 [sub_resource type="Resource" id="Resource_8m1e5"]
 script = ExtResource("1_sl152")
@@ -224,9 +233,12 @@ Direccion = "P. a desnivel vehicular Municipio Libre"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("14_h6bi6")
+lvlSitio = SubResource("Resource_27iin")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_y4uj8"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_25.tscn"
 
 [sub_resource type="Resource" id="Resource_ncbe3"]
 script = ExtResource("1_sl152")
@@ -239,9 +251,12 @@ Direccion = "P. a desnivel vehicular Emiliano Zapata"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("15_jaqpg")
+lvlSitio = SubResource("Resource_y4uj8")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_t1lta"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_26.tscn"
 
 [sub_resource type="Resource" id="Resource_mmunc"]
 script = ExtResource("1_sl152")
@@ -254,9 +269,12 @@ Direccion = "P. a desnivel vehicular Ermita 3"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("16_2fu5o")
+lvlSitio = SubResource("Resource_t1lta")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_ani5y"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_27.tscn"
 
 [sub_resource type="Resource" id="Resource_l816e"]
 script = ExtResource("1_sl152")
@@ -269,9 +287,12 @@ Direccion = "P. a desnivel vehicular Tlaxcoaque"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("12_pwsi4")
+lvlSitio = SubResource("Resource_ani5y")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_rolq4"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_28.tscn"
 
 [sub_resource type="Resource" id="Resource_1x43n"]
 script = ExtResource("1_sl152")
@@ -284,9 +305,12 @@ Direccion = "Taxqueña"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("18_yktag")
+lvlSitio = SubResource("Resource_rolq4")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_xtj6f"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_29.tscn"
 
 [sub_resource type="Resource" id="Resource_4j3g0"]
 script = ExtResource("1_sl152")
@@ -299,9 +323,12 @@ Direccion = "Napoleón"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("18_5ec62")
+lvlSitio = SubResource("Resource_xtj6f")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_5y62g"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_30.tscn"
 
 [sub_resource type="Resource" id="Resource_klfdn"]
 script = ExtResource("1_sl152")
@@ -314,9 +341,12 @@ Direccion = "Santiago"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("15_v7mbs")
+lvlSitio = SubResource("Resource_5y62g")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_w6w72"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_13.tscn"
 
 [sub_resource type="Resource" id="Resource_ka784"]
 script = ExtResource("1_sl152")
@@ -329,9 +359,12 @@ Direccion = "Periférico Sur y Picacho Ajusco"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("12_xeh2r")
+lvlSitio = SubResource("Resource_w6w72")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_4u236"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_14.tscn"
 
 [sub_resource type="Resource" id="Resource_67bty"]
 script = ExtResource("1_sl152")
@@ -344,9 +377,12 @@ Direccion = "Periférico Sur y Camino a Santa Teresa"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("20_hpjin")
+lvlSitio = SubResource("Resource_4u236")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_mbocw"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_15.tscn"
 
 [sub_resource type="Resource" id="Resource_3qin7"]
 script = ExtResource("1_sl152")
@@ -359,9 +395,12 @@ Direccion = "Periférico Sur y San Jerónimo"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("21_o5y58")
+lvlSitio = SubResource("Resource_mbocw")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_qw3h4"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_16.tscn"
 
 [sub_resource type="Resource" id="Resource_tb8b0"]
 script = ExtResource("1_sl152")
@@ -374,9 +413,12 @@ Direccion = "Anillo Periférico y Av. del Conscripto"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("22_3pvvm")
+lvlSitio = SubResource("Resource_qw3h4")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_73loa"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_17.tscn"
 
 [sub_resource type="Resource" id="Resource_lsug3"]
 script = ExtResource("1_sl152")
@@ -389,9 +431,12 @@ Direccion = "Viaducto y San Antonio Abad"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("20_ylsak")
+lvlSitio = SubResource("Resource_73loa")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_iyv2v"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_18.tscn"
 
 [sub_resource type="Resource" id="Resource_f4qwb"]
 script = ExtResource("1_sl152")
@@ -404,9 +449,12 @@ Direccion = "Viaducto y Av. Cuauhtémoc"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("24_dyx0y")
+lvlSitio = SubResource("Resource_iyv2v")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_14ka7"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_19.tscn"
 
 [sub_resource type="Resource" id="Resource_1scqe"]
 script = ExtResource("1_sl152")
@@ -419,9 +467,12 @@ Direccion = "Viaducto y Fco. del Paso y Troncoso"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("23_jt5vk")
+lvlSitio = SubResource("Resource_14ka7")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_pmm38"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_20.tscn"
 
 [sub_resource type="Resource" id="Resource_s4531"]
 script = ExtResource("1_sl152")
@@ -434,9 +485,12 @@ Direccion = "Viaducto y Churubusco"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("25_m1j5p")
+lvlSitio = SubResource("Resource_pmm38")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_cwum0"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_21.tscn"
 
 [sub_resource type="Resource" id="Resource_8ygrj"]
 script = ExtResource("1_sl152")
@@ -449,9 +503,12 @@ Direccion = "Eje Central y Av. Paseo de la Reforma"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("28_ouw7n")
+lvlSitio = SubResource("Resource_cwum0")
 disponible = true
 unSoloSentido = true
+
+[sub_resource type="Resource" id="Resource_rhoub"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_22.tscn"
 
 [sub_resource type="Resource" id="Resource_5q0n1"]
 script = ExtResource("1_sl152")
@@ -464,9 +521,12 @@ Direccion = "Av. Paseo de la Reforma y Calz. Chivatito"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("27_4na1k")
+lvlSitio = SubResource("Resource_rhoub")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_i7wc2"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_23-31.tscn"
 
 [sub_resource type="Resource" id="Resource_cx78f"]
 script = ExtResource("1_sl152")
@@ -479,9 +539,12 @@ Direccion = "Av. Paseo de la Reforma y Campo Marte"
 NvlNormal = 4.0
 NvlPreventivo = 4.0
 NvlCritico = 8.0
-lvlSitio = ExtResource("29_fk6d7")
+lvlSitio = SubResource("Resource_i7wc2")
 disponible = true
 unSoloSentido = false
+
+[sub_resource type="Resource" id="Resource_okgh6"]
+metadata/__load_path__ = "res://LVLS/Particulares/Sitio_23-31.tscn"
 
 [sub_resource type="Resource" id="Resource_usxvg"]
 script = ExtResource("1_sl152")
@@ -494,7 +557,7 @@ Direccion = "Campo Marte Puente"
 NvlNormal = 0.0
 NvlPreventivo = 0.05
 NvlCritico = 0.25
-lvlSitio = ExtResource("29_fk6d7")
+lvlSitio = SubResource("Resource_okgh6")
 disponible = true
 unSoloSentido = false
 
