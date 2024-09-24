@@ -1,0 +1,416 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk6ptssimjsuh"]
+
+[ext_resource type="Script" path="res://SYSTEMS/Perfiles/GDS_Perf_Avenidas.gd" id="1_2yd4x"]
+[ext_resource type="PackedScene" uid="uid://igg6ifplh41v" path="res://SYSTEMS/Perfiles/Scn_Perf_Item.tscn" id="2_lx2ug"]
+[ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="2_y6i5t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukc7b"]
+font_size = 30
+
+[sub_resource type="Animation" id="Animation_spdk4"]
+resource_name = "Anim_BLueWater"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim - BlueWater:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Atlas_LineWater/Anim - LineWater:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Atlas_LineWater/Anim - LineWater:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(17, 22)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Atlas_LineWater/Anim - LineWater:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.517006, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dbbxy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Atlas_LineWater/Anim - LineWater:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.5, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_anjvu"]
+_data = {
+"Anim_BlueWater": SubResource("Animation_spdk4"),
+"RESET": SubResource("Animation_dbbxy")
+}
+
+[node name="Container - Insurgentes" type="BoxContainer" node_paths=PackedStringArray("RootContainer", "ItemContainer", "ButtonAvenida", "ImgArrowExpand", "vBoxContainer")]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -2.0
+offset_right = 2.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_2yd4x")
+RootContainer = NodePath(".")
+ItemContainer = NodePath("Cont - TitleItems/VBox - ItemContainer")
+ButtonAvenida = NodePath("Cont - TitleItems/Button Avenida")
+ImgArrowExpand = NodePath("Cont - TitleItems/Button Avenida/HBoxContainer/Cont - Expand/Img_ArrowExpand")
+sitioItem = ExtResource("2_lx2ug")
+vBoxContainer = NodePath("Cont - TitleItems/VBox - ItemContainer")
+
+[node name="Cont - TitleItems" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Button Avenida" type="Button" parent="Cont - TitleItems"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Atlas_Crystal" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida"]
+self_modulate = Color(1, 1, 1, 0.568627)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(443, 8, 40, 19)
+patch_margin_left = 6
+patch_margin_right = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Cont - TitleItems/Button Avenida"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Cont - Expand" type="Control" parent="Cont - TitleItems/Button Avenida/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Img_ArrowExpand" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/Cont - Expand"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -9.0
+offset_right = 14.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(14, 9)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(140, 5, 36, 23)
+
+[node name="Cont - Name" type="Control" parent="Cont - TitleItems/Button Avenida/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Label - Nombre Avenida" type="Label" parent="Cont - TitleItems/Button Avenida/HBoxContainer/Cont - Name"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -21.0
+offset_right = 317.0
+offset_bottom = 21.0
+grow_vertical = 2
+size_flags_horizontal = 3
+text = "SITIO NOMBRE"
+label_settings = SubResource("LabelSettings_ukc7b")
+vertical_alignment = 1
+
+[node name="HBox - Signal" type="HBoxContainer" parent="Cont - TitleItems/Button Avenida/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="Cont - ON" type="Control" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Atlas_Ico_Signal_ON" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - ON"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -19.0
+offset_right = 42.0
+offset_bottom = 19.0
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(19, 19)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(94, 59, 45, 45)
+
+[node name="Cont - #" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - ON"]
+self_modulate = Color(0, 0, 0, 0.784314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -30.715
+offset_right = 20.0
+offset_bottom = -2.715
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(14, 4)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(4, 198, 56, 57)
+
+[node name="Label ON" type="Label" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - ON/Cont - #"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - OFF" type="Control" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Atlas_Ico_Signal_OFF" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - OFF"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -19.0
+offset_right = 42.0
+offset_bottom = 19.0
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(19, 19)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(42, 60, 44, 43)
+
+[node name="Cont - #" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - OFF"]
+self_modulate = Color(0, 0, 0, 0.784314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -30.715
+offset_right = 20.0
+offset_bottom = -2.715
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(14, 4)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(4, 198, 56, 57)
+
+[node name="Label OFF" type="Label" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - OFF/Cont - #"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - INUNDADO" type="Control" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+mouse_filter = 2
+
+[node name="Anim - BlueWater" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - INUNDADO"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 31.0
+offset_bottom = 17.0
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(5, 45, 31, 17)
+
+[node name="Atlas_LineWater" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - INUNDADO"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -23.0
+offset_right = 34.0
+offset_bottom = 15.0
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(3, 64, 36, 43)
+
+[node name="Anim - LineWater" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - INUNDADO/Atlas_LineWater"]
+self_modulate = Color(1, 0.5, 0.5, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.27
+offset_top = -18.915
+offset_right = 16.73
+offset_bottom = 19.085
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(17, 22)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(3, 64, 36, 43)
+
+[node name="AnimPlayer_BlueWater" type="AnimationPlayer" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - INUNDADO"]
+libraries = {
+"": SubResource("AnimationLibrary_anjvu")
+}
+speed_scale = 1.25
+
+[node name="Cont - #" type="NinePatchRect" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - INUNDADO"]
+self_modulate = Color(0, 0, 0, 0.784314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -30.715
+offset_right = 30.0
+offset_bottom = -2.715
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(14, 4)
+texture = ExtResource("2_y6i5t")
+region_rect = Rect2(4, 198, 56, 57)
+
+[node name="Label Inun" type="Label" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal/Cont - INUNDADO/Cont - #"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="Cont - TitleItems/Button Avenida/HBoxContainer/HBox - Signal"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="VBox - ItemContainer" type="VBoxContainer" parent="Cont - TitleItems"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Control2" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+layout_mode = 2
+
+[node name="Control" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+layout_mode = 2
+
+[node name="Control3" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+layout_mode = 2
+
+[node name="Control4" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+layout_mode = 2
+
+[connection signal="pressed" from="Cont - TitleItems/Button Avenida" to="." method="_on_button_pressed"]

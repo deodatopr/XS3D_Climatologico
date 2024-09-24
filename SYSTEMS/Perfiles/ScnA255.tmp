@@ -1,0 +1,597 @@
+[gd_scene load_steps=11 format=3 uid="uid://8d06borx537"]
+
+[ext_resource type="PackedScene" uid="uid://bk6ptssimjsuh" path="res://SYSTEMS/Perfiles/Scn_Perf_Avenida.tscn" id="1_mjqgi"]
+[ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://ASSETS/UI/UI_Atlas.png" id="2_5inif"]
+[ext_resource type="PackedScene" uid="uid://igg6ifplh41v" path="res://SYSTEMS/Perfiles/Scn_Perf_Item.tscn" id="2_oncj6"]
+[ext_resource type="Texture2D" uid="uid://dt52catcugvh6" path="res://ASSETS/UI/Blanco.png" id="3_6bhbi"]
+[ext_resource type="Texture2D" uid="uid://c4imccrlw4qiy" path="res://ASSETS/UI/Amarillo.png" id="4_c0jrb"]
+[ext_resource type="Texture2D" uid="uid://dt3og83iih060" path="res://ASSETS/UI/Azul.png" id="4_ox8pn"]
+[ext_resource type="Texture2D" uid="uid://brloglk58qkhm" path="res://ASSETS/UI/Morado Int.png" id="5_v4sjx"]
+[ext_resource type="Texture2D" uid="uid://b04cd7w7wd17" path="res://ASSETS/UI/Verde.png" id="7_rm6se"]
+[ext_resource type="Texture2D" uid="uid://8rnq730um0kk" path="res://ASSETS/UI/Naranja.png" id="9_elmqt"]
+[ext_resource type="Texture2D" uid="uid://dsf03lp1bnpu8" path="res://ASSETS/UI/Morado.png" id="10_cv5ye"]
+
+[node name="ScnPerfiles" type="Control"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SCRIPTS" type="Node" parent="."]
+
+[node name="Manager" type="Node" parent="SCRIPTS"]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Filtros" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer2/Filtros"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/Filtros"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Btn - Expand All" type="Control" parent="VBoxContainer2/Filtros/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.14
+mouse_filter = 2
+
+[node name="Button - Expand All" type="Button" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Expand All"]
+self_modulate = Color(0, 0.0235294, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Atlas_RectShadow" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Expand All"]
+self_modulate = Color(0.141176, 0.376471, 0.537255, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(397, 322, 50, 50)
+patch_margin_left = 23
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 23
+
+[node name="Cont - Arrows" type="Control" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Expand All"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(38, 35)
+mouse_filter = 2
+
+[node name="Atlas_Ico_Arrow" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Expand All/Cont - Arrows"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 24.0
+grow_vertical = 0
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("2_5inif")
+region_rect = Rect2(134, 392, 31, 32)
+
+[node name="Atlas_Ico_Arrow2" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Expand All/Cont - Arrows"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+rotation = 3.14159
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("2_5inif")
+region_rect = Rect2(134, 392, 31, 32)
+
+[node name="Btn - Todos" type="Control" parent="VBoxContainer2/Filtros/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 2
+
+[node name="Button - Expand All" type="Button" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos"]
+self_modulate = Color(0, 0.0235294, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Atlas_RectShadow" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos"]
+self_modulate = Color(0.411765, 0.72549, 0.572549, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(397, 322, 50, 50)
+
+[node name="Atlas_RectShadow SELECTED" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(306, 118, 43, 20)
+patch_margin_left = 40
+patch_margin_right = 40
+
+[node name="Cont - Arrows" type="Label" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -33.155
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(38, 35)
+theme_override_font_sizes/font_size = 25
+text = "EN LINEA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - #" type="Label" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_bottom = 2.845
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(38, 35)
+theme_override_font_sizes/font_size = 25
+text = "23"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Atlas_Rect BottomLine" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos"]
+self_modulate = Color(0, 0.631373, 0.203922, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_5inif")
+region_rect = Rect2(202, 331, 40, 40)
+patch_margin_left = 2
+patch_margin_right = 2
+
+[node name="Btn - Todos2" type="Control" parent="VBoxContainer2/Filtros/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 2
+
+[node name="Button - Expand All" type="Button" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos2"]
+self_modulate = Color(0, 0.0235294, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Atlas_RectShadow" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(306, 118, 43, 20)
+patch_margin_left = 40
+patch_margin_right = 40
+
+[node name="Cont - Arrows" type="Label" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -33.155
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(38, 35)
+theme_override_font_sizes/font_size = 25
+text = "APAGADOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Atlas_Rect BottomLine" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos2"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_5inif")
+region_rect = Rect2(202, 331, 40, 40)
+patch_margin_left = 2
+patch_margin_right = 2
+
+[node name="Cont - #" type="Label" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_bottom = 2.845
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(38, 35)
+theme_override_font_sizes/font_size = 25
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Btn - Todos3" type="Control" parent="VBoxContainer2/Filtros/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 2
+
+[node name="Button - Expand All" type="Button" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos3"]
+visible = false
+self_modulate = Color(1, 0.0235294, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cont - Arrows" type="Label" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -33.155
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(38, 35)
+theme_override_font_sizes/font_size = 25
+text = "ALARMADOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Atlas_RectShadow2" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(306, 118, 43, 20)
+patch_margin_left = 40
+patch_margin_right = 40
+
+[node name="Atlas_Rect BottomLine" type="NinePatchRect" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos3"]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_5inif")
+region_rect = Rect2(202, 331, 40, 40)
+patch_margin_left = 2
+patch_margin_right = 2
+
+[node name="Cont - #" type="Label" parent="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_bottom = 2.845
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(38, 35)
+theme_override_font_sizes/font_size = 25
+text = "6
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Btn Expand All - Ult_ Act_" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+
+[node name="Atlas_Rect" type="NinePatchRect" parent="VBoxContainer2/Btn Expand All - Ult_ Act_"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(202, 331, 40, 40)
+patch_margin_left = 6
+patch_margin_right = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/Btn Expand All - Ult_ Act_"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ult Act" type="Control" parent="VBoxContainer2/Btn Expand All - Ult_ Act_/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/Btn Expand All - Ult_ Act_/HBoxContainer/Ult Act"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6bhbi")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/Btn Expand All - Ult_ Act_/HBoxContainer/Ult Act"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center] Ultima Actualizacion"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Atlas_Crystal" type="NinePatchRect" parent="VBoxContainer2/Btn Expand All - Ult_ Act_"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(307, 117, 42, 20)
+patch_margin_left = 6
+patch_margin_right = 6
+
+[node name="Separator - BlackLine" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer2/Separator - BlackLine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Separator - BlackLine2" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer2/Separator - BlackLine2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Estructura" type="Control" parent="VBoxContainer2"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Atlas_Rect" type="NinePatchRect" parent="VBoxContainer2/Estructura"]
+modulate = Color(0.05, 0.05, 0.05, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5inif")
+region_rect = Rect2(202, 331, 40, 40)
+patch_margin_left = 6
+patch_margin_right = 6
+
+[node name="Scroll - Avenidas" type="ScrollContainer" parent="VBoxContainer2/Estructura"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBox - Avenidas" type="VBoxContainer" parent="VBoxContainer2/Estructura/Scroll - Avenidas"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 15
+
+[node name="Cont - Insurgentes" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas" instance=ExtResource("1_mjqgi")]
+custom_minimum_size = Vector2(0, 430)
+layout_mode = 2
+
+[node name="Img - Color Header" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Insurgentes/VBoxContainer2/Button" index="0"]
+texture = ExtResource("4_ox8pn")
+
+[node name="Atlas_Crystal" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Insurgentes/VBoxContainer2/Button" index="1"]
+offset_bottom = 80.0
+
+[node name="Cont - Circuito" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas" instance=ExtResource("1_mjqgi")]
+custom_minimum_size = Vector2(0, 590)
+layout_mode = 2
+
+[node name="Img - Color Header" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Circuito/VBoxContainer2/Button" index="0"]
+texture = ExtResource("5_v4sjx")
+
+[node name="Item5" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Circuito/VBoxContainer2/VBoxContainer" index="4" instance=ExtResource("2_oncj6")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Item6" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Circuito/VBoxContainer2/VBoxContainer" index="5" instance=ExtResource("2_oncj6")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Cont - Tlalpan" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas" instance=ExtResource("1_mjqgi")]
+custom_minimum_size = Vector2(0, 830)
+layout_mode = 2
+
+[node name="Img - Color Header" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Tlalpan/VBoxContainer2/Button" index="0"]
+texture = ExtResource("7_rm6se")
+
+[node name="Item5" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Tlalpan/VBoxContainer2/VBoxContainer" index="4" instance=ExtResource("2_oncj6")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Item6" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Tlalpan/VBoxContainer2/VBoxContainer" index="5" instance=ExtResource("2_oncj6")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Item7" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Tlalpan/VBoxContainer2/VBoxContainer" index="6" instance=ExtResource("2_oncj6")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Item8" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Tlalpan/VBoxContainer2/VBoxContainer" index="7" instance=ExtResource("2_oncj6")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Item9" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Tlalpan/VBoxContainer2/VBoxContainer" index="8" instance=ExtResource("2_oncj6")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Cont - Periferico" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas" instance=ExtResource("1_mjqgi")]
+custom_minimum_size = Vector2(0, 430)
+layout_mode = 2
+
+[node name="Img - Color Header" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Periferico/VBoxContainer2/Button" index="0"]
+texture = ExtResource("4_c0jrb")
+
+[node name="Cont - Viaducto" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas" instance=ExtResource("1_mjqgi")]
+custom_minimum_size = Vector2(0, 430)
+layout_mode = 2
+
+[node name="Img - Color Header" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Viaducto/VBoxContainer2/Button" index="0"]
+texture = ExtResource("9_elmqt")
+
+[node name="Cont - Reforma" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas" instance=ExtResource("1_mjqgi")]
+custom_minimum_size = Vector2(0, 430)
+layout_mode = 2
+
+[node name="Img - Color Header" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Reforma/VBoxContainer2/Button" index="0"]
+texture = ExtResource("10_cv5ye")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Cont - Menu" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.0
+
+[connection signal="pressed" from="VBoxContainer2/Filtros/HBoxContainer/Btn - Expand All/Button - Expand All" to="SCRIPTS/Manager" method="_on_ExpandAll_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos/Button - Expand All" to="SCRIPTS/Manager" method="_on_ExpandAll_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos2/Button - Expand All" to="SCRIPTS/Manager" method="_on_ExpandAll_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Filtros/HBoxContainer/Btn - Todos3/Button - Expand All" to="SCRIPTS/Manager" method="_on_ExpandAll_pressed"]
+
+[editable path="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Insurgentes"]
+[editable path="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Circuito"]
+[editable path="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Tlalpan"]
+[editable path="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Periferico"]
+[editable path="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Viaducto"]
+[editable path="VBoxContainer2/Estructura/Scroll - Avenidas/VBox - Avenidas/Cont - Reforma"]

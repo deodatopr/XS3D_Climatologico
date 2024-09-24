@@ -1,3 +1,4 @@
+class_name GDs_DebugEstaciones
 extends Node
 
 @export var estacionesLocal: GDs_CR_LocalEstaciones

@@ -17,6 +17,20 @@ config/features=PackedStringArray("4.3", "Mobile")
 
 ENUMS="*res://SYSTEMS/GDs_ENUMS.gd"
 
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1600
+window/size/window_width_override=424
+window/size/window_height_override=941
+window/energy_saving/keep_screen_on=false
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+window/vsync/vsync_mode=0
+window/ios/allow_high_refresh_rate=false
+window/ios/hide_status_bar=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/3DAutoMaterial/plugin.cfg", "res://addons/3DGizmos/plugin.cfg", "res://addons/3DLightOccluder/plugin.cfg", "res://addons/3DMeshCombiner/plugin.cfg", "res://addons/3DVertexToPath/plugin.cfg", "res://addons/LittleCameraPreview/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg", "res://addons/jigglebones/plugin.cfg", "res://addons/snappy/plugin.cfg")
