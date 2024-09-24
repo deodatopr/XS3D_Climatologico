@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqmfo0633oxfm"]
 
 [ext_resource type="PackedScene" uid="uid://bpp16uxlmohuy" path="res://SYSTEMS/Perfiles/Lvl_Perfil_Template.tscn" id="1_smymm"]
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/GDs_Debug.gd" id="2_kv1hd"]
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Debug.gd" id="2_kv1hd"]
 [ext_resource type="Script" path="res://SYSTEMS/EndPoint/Local_GetAll/GDs_Data_Local_Estacion.gd" id="3_60xgb"]
 [ext_resource type="Script" path="res://SYSTEMS/EndPoint/Local_GetAll/GDs_CR_LocalEstaciones.gd" id="4_bkd8h"]
 
