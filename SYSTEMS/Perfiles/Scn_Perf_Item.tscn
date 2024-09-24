@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://igg6ifplh41v"]
+[gd_scene load_steps=13 format=3 uid="uid://igg6ifplh41v"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Perfiles/GDs_Perf_Item.gd" id="1_uhs1e"]
 [ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="1_vpbpm"]
+[ext_resource type="Script" path="res://addons/addons/SmoothScroll/SmoothScrollContainer.gd" id="3_bp8jg"]
+[ext_resource type="PackedScene" uid="uid://cphxomrf5ca0o" path="res://SYSTEMS/BarraNivel/Scn_BarraNivel.tscn" id="3_xx7dh"]
+[ext_resource type="Script" path="res://addons/addons/SmoothScroll/scroll_damper/expo_scroll_damper.gd" id="4_3wf1f"]
+[ext_resource type="Script" path="res://addons/addons/SmoothScroll/scroll_damper/linear_scroll_damper.gd" id="5_2ijj7"]
 
 [sub_resource type="Animation" id="Animation_51kgj"]
 resource_name = "Crit"
@@ -57,6 +61,17 @@ _data = {
 "RESET": SubResource("Animation_ams8m")
 }
 
+[sub_resource type="Resource" id="Resource_7q4w8"]
+script = ExtResource("4_3wf1f")
+friction = 4.0
+minimum_velocity = 0.4
+rebound_strength = 7.0
+
+[sub_resource type="Resource" id="Resource_uaqbg"]
+script = ExtResource("5_2ijj7")
+friction = 10.0
+rebound_strength = 15.0
+
 [node name="Control - Clip - Anim" type="Control" node_paths=PackedStringArray("buttonExpandir")]
 clip_contents = true
 custom_minimum_size = Vector2(720, 80)
@@ -72,6 +87,7 @@ buttonExpandir = NodePath("Button - Expandir")
 collapsedSize = 80.0
 expandedSize = 220.0
 metadata/_edit_horizontal_guides_ = [196.0, 90.0]
+metadata/_edit_vertical_guides_ = [360.0]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -140,12 +156,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Cont - Signal" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header"]
+[node name="Cont - Enlace" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header"]
+visible = false
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Img_Signal_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Signal"]
+[node name="Img_Enlace_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Enlace"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -163,7 +180,7 @@ pivot_offset = Vector2(15, 15)
 texture = ExtResource("1_vpbpm")
 region_rect = Rect2(94, 59, 45, 45)
 
-[node name="Img_Signal_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Signal"]
+[node name="Img_Enlace_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Enlace"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,7 +198,7 @@ pivot_offset = Vector2(15, 15)
 texture = ExtResource("1_vpbpm")
 region_rect = Rect2(42, 60, 44, 43)
 
-[node name="Img_Signal_INUNDANDO" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Signal"]
+[node name="Img_Signal_INUNDANDO" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Enlace"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -198,7 +215,7 @@ grow_vertical = 2
 texture = ExtResource("1_vpbpm")
 region_rect = Rect2(142, 72, 34, 41)
 
-[node name="Img_Signal_Inun_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Signal/Img_Signal_INUNDANDO"]
+[node name="Img_Signal_Inun_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Enlace/Img_Signal_INUNDANDO"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -215,7 +232,7 @@ grow_vertical = 2
 texture = ExtResource("1_vpbpm")
 region_rect = Rect2(116, 38, 16, 16)
 
-[node name="Img_Signal_Inun_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Signal/Img_Signal_INUNDANDO"]
+[node name="Img_Signal_Inun_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Enlace/Img_Signal_INUNDANDO"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -232,7 +249,7 @@ texture = ExtResource("1_vpbpm")
 region_rect = Rect2(96, 38, 16, 16)
 
 [node name="Cont - #ID" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 mouse_filter = 2
 
@@ -299,16 +316,189 @@ theme_override_font_sizes/font_size = 18
 text = "16:46 - 01/03/2024"
 vertical_alignment = 1
 
-[node name="Cont - Nivel" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header"]
+[node name="Cont - Barra Nivel" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header"]
 custom_minimum_size = Vector2(230, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header"]
+[node name="Alarmas" type="HBoxContainer" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Cont - Enlace" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Img_Enlace_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(94, 59, 45, 45)
+
+[node name="Img_Enlace_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(42, 60, 44, 43)
+
+[node name="Cont - Enlace2" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Img_Enlace_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(94, 59, 45, 45)
+
+[node name="Img_Enlace_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(42, 60, 44, 43)
+
+[node name="Cont - Enlace3" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Img_Enlace_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(94, 59, 45, 45)
+
+[node name="Img_Enlace_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(42, 60, 44, 43)
+
+[node name="Cont - Enlace4" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Img_Enlace_ON" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(94, 59, 45, 45)
+
+[node name="Img_Enlace_OFF" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Cont - Barra Nivel/Alarmas/Cont - Enlace4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_vpbpm")
+region_rect = Rect2(42, 60, 44, 43)
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Cont - Item info/HBox - Header"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
 
 [node name="Img - Arrow" type="NinePatchRect" parent="Control/VBoxContainer/Cont - Item info/HBox - Header/Control"]
 layout_mode = 1
@@ -482,10 +672,183 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido"]
+[node name="Datos" type="Control" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido"]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("3_bp8jg")
+wheel_scroll_damper = SubResource("Resource_7q4w8")
+dragging_scroll_damper = SubResource("Resource_uaqbg")
+just_snap_under = 200.0
+allow_vertical_scroll = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(440, 128)
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Cont - Nivel" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control/VBoxContainer" instance=ExtResource("3_xx7dh")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Cont - Nivel2" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control/VBoxContainer" instance=ExtResource("3_xx7dh")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Control2" type="Control" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(440, 128)
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Humedad" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Humedad"
+
+[node name="Evaporacion" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Evaporacion"
+
+[node name="Intensidad del viento" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Int. del viento"
+
+[node name="Temperatura" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Temperatura"
+
+[node name="VSeparator" type="VSeparator" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="VBoxContainer VAlores" type="VBoxContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Valor Humedad" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer VAlores"]
+layout_mode = 2
+mouse_filter = 1
+text = "00"
+horizontal_alignment = 2
+
+[node name="Valor Evaporacion" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer VAlores"]
+layout_mode = 2
+mouse_filter = 1
+text = "00"
+horizontal_alignment = 2
+
+[node name="Valor Intensidad del viento" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer VAlores"]
+layout_mode = 2
+mouse_filter = 1
+text = "00"
+horizontal_alignment = 2
+
+[node name="Valor Temperatura" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer VAlores"]
+layout_mode = 2
+mouse_filter = 1
+text = "00"
+horizontal_alignment = 2
+
+[node name="VSeparator3" type="VSeparator" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Direccion del viento" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+mouse_filter = 1
+text = "Dir. del viento"
+
+[node name="Disponibilidad de UTR" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+mouse_filter = 1
+text = "Disp. de UTR"
+
+[node name="Voltaje bateria" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+mouse_filter = 1
+text = "Voltaje bateria
+"
+
+[node name="VSeparator2" type="VSeparator" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="VBoxContainer Valores" type="VBoxContainer" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Valor  Direccion del viento" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer Valores"]
+layout_mode = 2
+mouse_filter = 1
+text = "00"
+horizontal_alignment = 2
+
+[node name="Valor Disponibilidad de UTR" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer Valores"]
+layout_mode = 2
+mouse_filter = 1
+text = "00"
+horizontal_alignment = 2
+
+[node name="Valor Voltaje bateria" type="Label" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido/Datos/ScrollContainer/HBoxContainer/Control2/MarginContainer/VBoxContainer/VBoxContainer Valores"]
+layout_mode = 2
+mouse_filter = 1
+text = "00
+"
+horizontal_alignment = 2
 
 [node name="Cont - BtnVerSitio" type="Control" parent="Control/VBoxContainer/Cont - Item Extra Info/Contenido"]
 self_modulate = Color(0, 0.25098, 0.376471, 1)

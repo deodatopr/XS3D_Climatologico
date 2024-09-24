@@ -27,14 +27,18 @@ var avenidas: Array[GDs_Perf_Avenida]
 
 func _ready():
 	InstantiateItems(numeroDeAvenidas)
+	
+func Initialize():
+	pass
 
-func InstantiateItems(_numAvenida: int):
-	for sitio in _numAvenida:
+func InstantiateItems(_numEstados: int):
+	for estado in _numEstados:
 		var newAvenida = avenidaItem.instantiate() as GDs_Perf_Avenida
 		contenedorAvenidas.add_child(newAvenida)
 		avenidas.append(newAvenida)
 		newAvenida.OnButtonExpandPressed.connect(CheckExpanded)
 		newAvenida.OnExpand.connect(EnsureIsVisible)
+		newAvenida.numeroDeSitios = 2
 
 func OnRefreshSitios():
 	pass

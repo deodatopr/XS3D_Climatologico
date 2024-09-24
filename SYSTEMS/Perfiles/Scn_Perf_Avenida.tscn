@@ -401,16 +401,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Control2" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+[node name="Control - Clip - Anim" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
 layout_mode = 2
 
-[node name="Control" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+[node name="Control - Clip - Anim2" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
 layout_mode = 2
 
-[node name="Control3" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
-layout_mode = 2
-
-[node name="Control4" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+[node name="Control - Clip - Anim3" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
 layout_mode = 2
 
 [connection signal="pressed" from="Cont - TitleItems/Button Avenida" to="." method="_on_button_pressed"]

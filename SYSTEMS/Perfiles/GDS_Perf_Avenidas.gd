@@ -24,7 +24,7 @@ signal OnButtonExpandPressed
 signal OnExpand(container:Control)
 
 func _ready():
-	InstantiateItems(numeroDeSitios)
+	pass
 
 func RefreshAvenida(_estructura: GDs_ESTRUCTURA):
 	
