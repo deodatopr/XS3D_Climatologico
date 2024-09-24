@@ -1,7 +1,6 @@
 extends Node
 class_name GDs_EP_GetAllEstaciones
 
-@export var URL : String
 @export var customResource_GetAllEstaciones : GDs_CR_LocalEstaciones
 @onready var http_request : HTTPRequest = $HTTPRequest
 
@@ -11,15 +10,13 @@ signal On_Request_Failed_BY_INTERNET
 
 var arrayEstaciones : Array[GDs_Data_EP_Estacion] = []
 var estacionesFromServer = {"Estaciones" : arrayEstaciones}
+var URL : String
 var isBusy : bool
-var firstTimeRequest : bool = true
 
-func _ready():
-	http_request.timeout = 3
+func Initialize(_url : String, _timeout : float):
+	URL = _url
+	http_request.timeout = _timeout
 	http_request.request_completed.connect(_on_request_completed_GetAllSitios)
-	
-	#Solicita request e inicia timer para ejecutarlo cada X Segundos
-	Request_GetAllEstaciones()
 
 func _on_request_completed_GetAllSitios(result, _response_code, _headers, body):
 	if result == HTTPRequest.RESULT_SUCCESS:
@@ -29,13 +26,8 @@ func _on_request_completed_GetAllSitios(result, _response_code, _headers, body):
 		#Guardar datos en un diccionario local
 		estacionesFromServer = dataFromServer["Estaciones"]
 		arrayEstaciones = CastJsonToArraySitio(estacionesFromServer)
-	
-		#Avisar si fue la primera vez que se hizo el request para hacer merge con datos locales o si es por un update cada x tiempo
-		if firstTimeRequest:
-			On_FirstTimeRquest.emit()
-			firstTimeRequest = false
-		else:
-			On_Request_Success.emit()
+#	
+		On_Request_Success.emit()
 		
 		print_rich("[color=green]Request [Get all Estaciones] success..![/color].")
 	else:
