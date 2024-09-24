@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqmfo0633oxfm"]
+[gd_scene load_steps=4 format=3 uid="uid://cqmfo0633oxfm"]
 
 [ext_resource type="PackedScene" uid="uid://bpp16uxlmohuy" path="res://SYSTEMS/Perfiles/Lvl_Perfil_Template.tscn" id="1_smymm"]
 [ext_resource type="Script" path="res://SYSTEMS/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Debug.gd" id="2_kv1hd"]
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Local_GetAll/GDs_Data_Local_Estacion.gd" id="3_60xgb"]
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Local_GetAll/GDs_CR_LocalEstaciones.gd" id="4_bkd8h"]
-
-[sub_resource type="Resource" id="Resource_ahene"]
-script = ExtResource("4_bkd8h")
-LocalEstaciones = Array[ExtResource("3_60xgb")]([])
+[ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://SYSTEMS/EndPoint/Local_GetAll/CR_Local_Estaciones.tres" id="3_7synx"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -23,4 +18,4 @@ debugEstaciones = NodePath("../Debug")
 
 [node name="Debug" type="Node" parent="."]
 script = ExtResource("2_kv1hd")
-estacionesLocal = SubResource("Resource_ahene")
+estacionesLocal = ExtResource("3_7synx")

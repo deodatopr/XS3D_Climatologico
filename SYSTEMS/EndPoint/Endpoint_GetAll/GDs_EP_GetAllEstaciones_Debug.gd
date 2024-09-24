@@ -4,18 +4,19 @@ extends Node
 @export var estacionesLocal: GDs_CR_LocalEstaciones
 
 #FIXME: BORRAR DESPUES DE IMPLEMENTA ORQUESTADOR
-var estaciones_Estruc_Todas : GDs_Data_Estaciones_Estructura
-var estaciones_Estruc_Mexico : GDs_Data_Estaciones_Estructura
-var estaciones_Estruc_Michoacan : GDs_Data_Estaciones_Estructura
+var estaciones_Estruc_Todas := GDs_Data_Estaciones_Estructura.new()
+var estaciones_Estruc_Mexico := GDs_Data_Estaciones_Estructura.new()
+var estaciones_Estruc_Michoacan := GDs_Data_Estaciones_Estructura.new()
 
 func GetDebugEstaciones()-> Array[GDs_Data_Estacion]:
 	var estaciones : Array[GDs_Data_Estacion]
-	estaciones.resize(estacionesLocal.LocalEstaciones.size())
-	
 	#Llenar array con valores Random
-	var idx = 0
-	for estacion in estaciones:
+	#var idx = 0
+	for idx in estacionesLocal.LocalEstaciones.size():
+		var estacion = GDs_Data_Estacion.new()
 		estacion.id = estacionesLocal.LocalEstaciones[idx].id
+		estacion.nombre = estacionesLocal.LocalEstaciones[idx].nombre
+		estacion.estado = estacionesLocal.LocalEstaciones[idx].estado
 		estacion.fecha = Time.get_datetime_string_from_system()
 		estacion.nivel = randf_range(0.0,80)
 		estacion.pptn_pluvial = randf_range(0.0,20)
@@ -34,7 +35,10 @@ func GetDebugEstaciones()-> Array[GDs_Data_Estacion]:
 		estacion.rebasa_nvls_presa = estacion.nivel >= estacionesLocal.LocalEstaciones[idx].nivelPrev
 		estacion.rebasa_tlrncia_prep_pluv = estacion.pptn_pluvial >= estacionesLocal.LocalEstaciones[idx].tlrncia_prep_pluv
 		
-		idx+=1
+		estacion.nivelPrev = estacionesLocal.LocalEstaciones[idx].nivelPrev
+		estacion.nivelCrit = estacionesLocal.LocalEstaciones[idx].nivelCrit
+		estacion.tlrncia_prep_pluv = estacionesLocal.LocalEstaciones[idx].tlrncia_prep_pluv
+		estaciones.append(estacion)
 	
 	#FIXME: BORRAR DESPUES DE IMPLEMENTA ORQUESTADOR
 	_FillStructure(estaciones, estaciones_Estruc_Todas)

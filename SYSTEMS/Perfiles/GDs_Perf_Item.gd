@@ -23,6 +23,14 @@ class_name Perf_Item
 @export var barraNvl:GDs_BarraNivel
 @export var barraPptn:GDs_BarraNivel
 
+@export var humedad:Label
+@export var evaporacion:Label
+@export var intViento:Label
+@export var temperatura:Label
+@export var dirViento:Label
+@export var DispUTR:Label
+@export var Voltaje:Label
+
 
 var isOpen : bool
 
@@ -44,9 +52,15 @@ func RefreshInfo(estacion:GDs_Data_Estacion):
 	pptnCrit.visible = estacion.rebasa_tlrncia_prep_pluv
 	
 	barraNvl.FillBarData(estacion.nivel,estacion.nivelPrev,estacion.nivelCrit)
-	pptnCrit.FillBarData(estacion.pptn_pluvial,estacion.tlrncia_prep_pluv,estacion.tlrncia_prep_pluv)
+	barraPptn.FillBarData(estacion.pptn_pluvial,estacion.tlrncia_prep_pluv,estacion.tlrncia_prep_pluv)
 	
-	
+	humedad.text = UTILITIES.FormatHumedad(estacion.humedad)
+	evaporacion.text = UTILITIES.FormatEvaporacion(estacion.evaporacion)
+	intViento.text = UTILITIES.FormatIntensidadViento(estacion.intsdad_viento)
+	temperatura.text = UTILITIES.FormatTemperatura(estacion.temperatura)
+	dirViento.text = UTILITIES.FormatDirViento(estacion.dir_viento)
+	DispUTR.text = "true"
+	Voltaje.text = UTILITIES.FormatBateriaV(estacion.volt_bat_resp)
 	
 	
 

@@ -1,10 +1,9 @@
 extends Node
 class_name Mng_Perfiles
 
-@export_group("Instantiate Items")
-@export var avenidaItem: PackedScene
 @export var contenedorAvenidas: Control
-@export var numeroDeAvenidas: int
+@export var estadoMexico:GDs_Perf_Avenida
+@export var estadoMichoacan:GDs_Perf_Avenida
 
 @export_group("Btn Expand All") 
 @export var Btn_ExpandAll: Button
@@ -22,26 +21,28 @@ var avenidas: Array[GDs_Perf_Avenida]
 
 
 @export_group("DEBUG") 
-@export var debugEstaciones: GDs_DebugEstaciones
+@export var debugEstaciones: GDs_EP_GetAllEstaciones_Debug
 
 
 func _ready():
-	InstantiateItems(numeroDeAvenidas)
+	Initialize()
 	
 func Initialize():
-	pass
-
-func InstantiateItems(_numEstados: int):
-	for estado in _numEstados:
-		var newAvenida = avenidaItem.instantiate() as GDs_Perf_Avenida
-		contenedorAvenidas.add_child(newAvenida)
-		avenidas.append(newAvenida)
-		newAvenida.OnButtonExpandPressed.connect(CheckExpanded)
-		newAvenida.OnExpand.connect(EnsureIsVisible)
-		newAvenida.numeroDeSitios = 2
+	estadoMexico.OnButtonExpandPressed.connect(CheckExpanded)
+	estadoMexico.OnExpand.connect(EnsureIsVisible)
+	estadoMichoacan.OnButtonExpandPressed.connect(CheckExpanded)
+	estadoMichoacan.OnExpand.connect(EnsureIsVisible)
+	OnRefreshSitios()
 
 func OnRefreshSitios():
-	pass
+	debugEstaciones.GetDebugEstaciones()
+	estadoMexico.nombre.text = "Mexico"
+	estadoMexico.InstantiateItems(debugEstaciones.estaciones_Estruc_Mexico.estaciones.size())
+	estadoMexico.RefreshAvenida(debugEstaciones.estaciones_Estruc_Mexico.estaciones)
+	
+	estadoMichoacan.nombre.text = "Michoacan"
+	estadoMichoacan.InstantiateItems(debugEstaciones.estaciones_Estruc_Michoacan.estaciones.size())
+	estadoMichoacan.RefreshAvenida(debugEstaciones.estaciones_Estruc_Michoacan.estaciones)
 
 
 func _on_ExpandAll_pressed():
@@ -54,7 +55,7 @@ func _on_ExpandAll_pressed():
 		
 func ExpandAll():
 	AnimExpandAll(0)
-	for child in avenidas:
+	for child in contenedorAvenidas.get_children():
 		child.Expand()
 		child.isExpanded = true
 	

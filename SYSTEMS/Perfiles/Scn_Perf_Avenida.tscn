@@ -79,7 +79,7 @@ _data = {
 "RESET": SubResource("Animation_dbbxy")
 }
 
-[node name="Container - Insurgentes" type="BoxContainer" node_paths=PackedStringArray("RootContainer", "ItemContainer", "ButtonAvenida", "ImgArrowExpand", "vBoxContainer")]
+[node name="Container - Insurgentes" type="BoxContainer" node_paths=PackedStringArray("nombre", "RootContainer", "ItemContainer", "ButtonAvenida", "ImgArrowExpand", "vBoxContainer")]
 custom_minimum_size = Vector2(0, 80)
 anchors_preset = 10
 anchor_right = 1.0
@@ -91,6 +91,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_2yd4x")
+nombre = NodePath("Cont - TitleItems/Button Avenida/HBoxContainer/Cont - Name/Label - Nombre Avenida")
 RootContainer = NodePath(".")
 ItemContainer = NodePath("Cont - TitleItems/VBox - ItemContainer")
 ButtonAvenida = NodePath("Cont - TitleItems/Button Avenida")
@@ -402,12 +403,15 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="Control - Clip - Anim" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+visible = false
 layout_mode = 2
 
 [node name="Control - Clip - Anim2" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+visible = false
 layout_mode = 2
 
 [node name="Control - Clip - Anim3" parent="Cont - TitleItems/VBox - ItemContainer" instance=ExtResource("2_lx2ug")]
+visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="Cont - TitleItems/Button Avenida" to="." method="_on_button_pressed"]

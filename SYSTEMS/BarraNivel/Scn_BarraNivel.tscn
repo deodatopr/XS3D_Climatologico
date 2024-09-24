@@ -27,6 +27,9 @@ script = ExtResource("1_w0egh")
 ProgressBarra = NodePath("Cont - Barra/TextureProgressBar")
 LabelNvl = NodePath("HBoxContainer/Label nvlValor")
 LabelCrit = NodePath("HBoxContainer/Label nvlCrit")
+normalColor = Color(0.211149, 0.497884, 1, 1)
+PrevColor = Color(0.874131, 0.710051, 0.0691464, 1)
+CritColor = Color(0.840119, 0.0456558, 0.0456558, 1)
 UseGlowingAnimation = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

@@ -28,9 +28,10 @@ func _validate_property(property: Dictionary) -> void:
 func FillBarData(nivel:float,nvlPreventivo: float, nvlCritico: float):
 	LabelNvl.text = UTILITIES.FormatNivel(nivel)
 	LabelCrit.text = UTILITIES.FormatNivel(nvlCritico)
-
+	ProgressBarra.value = nivel
+	ProgressBarra.max_value = nvlCritico
 	ChangeBarColor(nivel,nvlPreventivo, nvlCritico)
-	PlayBarAnimation(nivel)
+	#PlayBarAnimation(nivel)
 
 func ChangeBarColor(nivel:float,nvlPreventivo: float, nvlCritico: float):
 	if glowingTween:

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="2_hkbwf"]
 [ext_resource type="PackedScene" uid="uid://bk6ptssimjsuh" path="res://SYSTEMS/Perfiles/Scn_Perf_Avenida.tscn" id="3_dd0cs"]
 
-[node name="Lvl - Perfiles" type="Control" node_paths=PackedStringArray("contenedorAvenidas", "Btn_ExpandAll", "Cont_ExpandAll", "Arrow1", "Arrow2", "scroll_avenidas")]
+[node name="Lvl - Perfiles" type="Control" node_paths=PackedStringArray("contenedorAvenidas", "estadoMexico", "estadoMichoacan", "Btn_ExpandAll", "Cont_ExpandAll", "Arrow1", "Arrow2", "scroll_avenidas")]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -15,9 +15,9 @@ grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 script = ExtResource("1_f0ujq")
-avenidaItem = ExtResource("3_dd0cs")
 contenedorAvenidas = NodePath("VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas")
-numeroDeAvenidas = 2
+estadoMexico = NodePath("VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas/Estado - Mexico")
+estadoMichoacan = NodePath("VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas/Estado - Michoacan")
 Btn_ExpandAll = NodePath("VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Button - Expand All")
 Cont_ExpandAll = NodePath("VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows")
 Arrow1 = NodePath("VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows/Atlas_Ico_Arrow")
@@ -168,5 +168,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 15
+
+[node name="Estado - Mexico" parent="VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas" instance=ExtResource("3_dd0cs")]
+layout_mode = 2
+
+[node name="Estado - Michoacan" parent="VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas" instance=ExtResource("3_dd0cs")]
+layout_mode = 2
 
 [connection signal="pressed" from="VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Button - Expand All" to="." method="_on_ExpandAll_pressed"]
