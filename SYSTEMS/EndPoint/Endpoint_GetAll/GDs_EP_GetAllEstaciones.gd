@@ -4,7 +4,6 @@ class_name GDs_EP_GetAllEstaciones
 @export var customResource_GetAllEstaciones : GDs_CR_LocalEstaciones
 @onready var http_request : HTTPRequest = $HTTPRequest
 
-signal On_FirstTimeRquest
 signal On_Request_Success
 signal On_Request_Failed_BY_INTERNET
 

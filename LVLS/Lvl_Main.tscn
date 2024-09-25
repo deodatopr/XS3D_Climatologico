@@ -79,18 +79,20 @@ grow_vertical = 2
 
 [node name="SYSTEMS" type="Node" parent="."]
 
-[node name="Orchestrator_main" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("splash", "curtain", "mngServiceData")]
+[node name="Orchestrator_main" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("splash", "curtain", "serviceData_manager", "lvlPerfiles")]
 script = ExtResource("1_0r8tt")
 splash = NodePath("../../SPLASH")
 curtain = NodePath("../Curtain")
-mngServiceData = NodePath("../ServiceData_Manager (endpoints)")
+serviceData_manager = NodePath("../ServiceData_Manager (endpoints)")
+lvlPerfiles = NodePath("../../ASSETS/Lvl - Perfiles")
 
-[node name="ServiceData_Manager (endpoints)" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("EP_GetAllEstaciones", "EP_GetAllEstaciones_Error", "timerEPGetAllEstaciones")]
+[node name="ServiceData_Manager (endpoints)" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("EP_GetAllEstaciones", "EP_GetAllEstaciones_Error", "EP_GetAllEstaciones_Debug", "timerTicking")]
 script = ExtResource("2_1r54g")
 EP_GetAllEstaciones = NodePath("EP_GetAllEstaciones")
 EP_GetAllEstaciones_Error = NodePath("EP_GetAllEstaciones_Error")
+EP_GetAllEstaciones_Debug = NodePath("EP_GetAllEstaciones_Debug")
 timeoutEPGetAllEstaciones = 5.0
-timerEPGetAllEstaciones = NodePath("Timer - Ticking")
+timerTicking = NodePath("Timer - Ticking")
 crLocalEstaciones = ExtResource("6_vvobh")
 
 [node name="Timer - Ticking" type="Timer" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
@@ -340,9 +342,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Lvl - Perfiles" parent="ASSETS" node_paths=PackedStringArray("debugEstaciones") instance=ExtResource("1_smymm")]
+[node name="Lvl - Perfiles" parent="ASSETS" instance=ExtResource("1_smymm")]
 layout_mode = 1
-debugEstaciones = NodePath("../../SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones_Debug")
 
 [node name="CURTAIN" type="Control" parent="."]
 visible = false

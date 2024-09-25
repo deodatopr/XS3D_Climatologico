@@ -5,13 +5,16 @@ class_name GDs_DataService_Manager
 @export_group("Endpoint")
 @export var EP_GetAllEstaciones : GDs_EP_GetAllEstaciones
 @export var EP_GetAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
+@export var EP_GetAllEstaciones_Debug : GDs_EP_GetAllEstaciones_Debug
 @export var URL : String
 @export var secondsToRefreshEP : float = 4.0
 @export var timeoutEPGetAllEstaciones : float = 3.0
-@export var timerEPGetAllEstaciones : Timer
+@export var timerTicking : Timer
 
 @export_group("Local")
 @export var crLocalEstaciones : GDs_CR_LocalEstaciones
+
+var estacionesFromEP : Array[GDs_Data_EP_Estacion] = []
 
 var estaciones : Array[GDs_Data_Estacion] = []
 var estaciones_Estruc_Todas : GDs_Data_Estaciones_Estructura
@@ -30,13 +33,20 @@ func Initialize():
 	
 	#Connect with endpoint error
 	EP_GetAllEstaciones_Error.Initialize()
-	EP_GetAllEstaciones_Error.OnFinishError.connect(EP_GetAllEstaciones.Request_GetAllEstaciones)
+	EP_GetAllEstaciones_Error.OnFinishError.connect(MakeRequest_GetAllEstaciones)
 	
 	#Connect timer to refresh endpoint
-	timerEPGetAllEstaciones.timeoutEPGetAllEstaciones.connect(EP_GetAllEstaciones.Request_GetAllEstaciones)
-	
-	#Make request
+	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)
+
+func MakeRequest_GetAllEstaciones():
 	EP_GetAllEstaciones.Request_GetAllEstaciones()
+
+func GetEstacionById(_id : int) -> GDs_Data_Estacion:
+	for estacion in estaciones:
+		if estacion.id == _id:
+			return estacion
+			
+	return null
 
 #region [ EVENTS ]
 func _OnSuccessEP_GetAllEstaciones():
@@ -47,8 +57,8 @@ func _OnSuccessEP_GetAllEstaciones():
 	EP_GetAllEstaciones_Error.Close()
 	
 	#Start again the timer
-	if timerEPGetAllEstaciones.is_stopped():
-		timerEPGetAllEstaciones.start(secondsToRefreshEP)
+	if timerTicking.is_stopped():
+		timerTicking.start(secondsToRefreshEP)
 		
 func _OnErrorEP_GetAllEstaciones():
 	#Update data
@@ -58,11 +68,19 @@ func _OnErrorEP_GetAllEstaciones():
 	EP_GetAllEstaciones_Error.Open()
 	
 	#Stop refresh EP timer
-	timerEPGetAllEstaciones.stop()
+	timerTicking.stop()
 #endregion
 
 #region [ FILL DATA ]
 func _GetDataFromEP_GetAllEstaciones():
+	#Fill Data estacions from EP or random values for debug
+	estacionesFromEP.clear()
+	if APPSTATE.debug_EP_GetAllEstaciones:
+		estacionesFromEP = EP_GetAllEstaciones_Debug.GetDebugEstaciones()
+	else:
+		estacionesFromEP = EP_GetAllEstaciones.arrayEstaciones
+	
+	#Fetch EP with local or only update EP data
 	if isFirstTimeRequestGetAllEstaciones:
 		_FetchEndpointWithLocalData(EP_GetAllEstaciones.arrayEstaciones)
 		isFirstTimeRequestGetAllEstaciones = false

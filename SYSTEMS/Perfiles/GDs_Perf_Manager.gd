@@ -14,55 +14,47 @@ class_name GDs_Perf_Manager
 @export_group("Scroll") 
 @export var scroll_avenidas: ScrollContainer
 
-
+var dataService : GDs_DataService_Manager
 var isExpanded: bool = true
 var TweenArrow: Tween
 var avenidas: Array[GDs_Perf_Avenida]
-
-
-@export_group("DEBUG") 
-@export var debugEstaciones: GDs_EP_GetAllEstaciones_Debug
-
-
-func _ready():
-	Initialize()
 	
-func Initialize():
-	estadoMexico.OnButtonExpandPressed.connect(CheckExpanded)
-	estadoMexico.OnExpand.connect(EnsureIsVisible)
-	estadoMichoacan.OnButtonExpandPressed.connect(CheckExpanded)
-	estadoMichoacan.OnExpand.connect(EnsureIsVisible)
-	OnRefreshSitios()
+func Initialize(_dataService : GDs_DataService_Manager):
+	dataService = _dataService
+	
+	estadoMexico.OnButtonExpandPressed.connect(_CheckExpanded)
+	estadoMexico.OnExpand.connect(_EnsureIsVisible)
+	estadoMichoacan.OnButtonExpandPressed.connect(_CheckExpanded)
+	estadoMichoacan.OnExpand.connect(_EnsureIsVisible)
 
-func OnRefreshSitios():
-	debugEstaciones.GetDebugEstaciones()
+func OnDataRefresh():
 	estadoMexico.nombre.text = "Mexico"
-	estadoMexico.InstantiateItems(debugEstaciones.estaciones_Estruc_Mexico.estaciones.size())
-	estadoMexico.RefreshAvenida(debugEstaciones.estaciones_Estruc_Mexico.estaciones)
+	estadoMexico.InstantiateItems(dataService.estaciones_Estruc_Mexico.estaciones.size())
+	estadoMexico.RefreshAvenida(dataService.estaciones_Estruc_Mexico.estaciones)
 	
 	estadoMichoacan.nombre.text = "Michoacan"
-	estadoMichoacan.InstantiateItems(debugEstaciones.estaciones_Estruc_Michoacan.estaciones.size())
-	estadoMichoacan.RefreshAvenida(debugEstaciones.estaciones_Estruc_Michoacan.estaciones)
+	estadoMichoacan.InstantiateItems(dataService.estaciones_Estruc_Michoacan.estaciones.size())
+	estadoMichoacan.RefreshAvenida(dataService.estaciones_Estruc_Michoacan.estaciones)
 
 
-func _on_ExpandAll_pressed():
+func _OnExpandAll_pressed():
 	Btn_ExpandAll.disabled = true
 	isExpanded = !isExpanded
 	if isExpanded:
-		ExpandAll()
+		_ExpandAll()
 	else:
-		CollapseAll()
+		_CollapseAll()
 		
-func ExpandAll():
-	AnimExpandAll(0)
+func _ExpandAll():
+	_AnimExpandAll(0)
 	for child in contenedorAvenidas.get_children():
 		child.Expand()
 		child.isExpanded = true
 	
 	Btn_ExpandAll.disabled = false
 
-func CollapseAll():
-	AnimExpandAll(180,-1)
+func _CollapseAll():
+	_AnimExpandAll(180,-1)
 	
 	var children = contenedorAvenidas.get_children() as Array[GDs_Perf_Avenida]
 	for child in children:
@@ -71,27 +63,25 @@ func CollapseAll():
 
 	Btn_ExpandAll.disabled = false
 
-func CheckExpanded():
+func _CheckExpanded():
 	var areAllCollapsed = true
 	for child in avenidas:
 		if child.isExpanded and child.visible:
 			areAllCollapsed = true
 		
 	if areAllCollapsed and isExpanded:
-		AnimExpandAll(180,-1)
+		_AnimExpandAll(180,-1)
 		isExpanded = false
 	elif not areAllCollapsed and not isExpanded:
-		AnimExpandAll(0)
+		_AnimExpandAll(0)
 		isExpanded = true
 
-
-
 #----------SCROLL--------------
-func EnsureIsVisible(control:Control):
+func _EnsureIsVisible(control:Control):
 	scroll_avenidas.ensure_control_visible(control)
 
 #----------ANIMATIONS-------------
-func AnimExpandAll(_angle: float, _direction:float = 1):
+func _AnimExpandAll(_angle: float, _direction:float = 1):
 	TweenArrow = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	TweenArrow.tween_property(Cont_ExpandAll,"rotation_degrees",180,.5).from(0)
 	TweenArrow.parallel().tween_property(Arrow1,"rotation_degrees",_angle,.2).from_current()

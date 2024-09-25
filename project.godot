@@ -17,7 +17,8 @@ config/features=PackedStringArray("4.3", "Mobile")
 [autoload]
 
 ENUMS="*res://SYSTEMS/GDs_ENUMS.gd"
-UTILITIES="*res://SYSTEMS/GDs_Utilities.gd"
+UTILITIES="*res://SYSTEMS/GDs_UTILITIES.gd"
+APPSTATE="*res://SYSTEMS/GDs_APPSTATE.gd"
 
 [display]
 

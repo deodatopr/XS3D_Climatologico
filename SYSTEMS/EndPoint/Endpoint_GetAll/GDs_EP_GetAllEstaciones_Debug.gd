@@ -3,17 +3,12 @@ extends Node
 
 @export var estacionesLocal: GDs_CR_LocalEstaciones
 
-#FIXME: BORRAR DESPUES DE IMPLEMENTA ORQUESTADOR
-var estaciones_Estruc_Todas := GDs_Data_Estaciones_Estructura.new()
-var estaciones_Estruc_Mexico := GDs_Data_Estaciones_Estructura.new()
-var estaciones_Estruc_Michoacan := GDs_Data_Estaciones_Estructura.new()
-
-func GetDebugEstaciones()-> Array[GDs_Data_Estacion]:
-	var estaciones : Array[GDs_Data_Estacion]
+func GetDebugEstaciones()-> Array[GDs_Data_EP_Estacion]:
+	var estaciones : Array[GDs_Data_EP_Estacion]
 	#Llenar array con valores Random
 	#var idx = 0
 	for idx in estacionesLocal.LocalEstaciones.size():
-		var estacion = GDs_Data_Estacion.new()
+		var estacion : GDs_Data_EP_Estacion
 		estacion.id = estacionesLocal.LocalEstaciones[idx].id
 		estacion.nombre = estacionesLocal.LocalEstaciones[idx].nombre
 		estacion.estado = estacionesLocal.LocalEstaciones[idx].estado
@@ -35,37 +30,6 @@ func GetDebugEstaciones()-> Array[GDs_Data_Estacion]:
 		estacion.rebasa_nvls_presa = estacion.nivel >= estacionesLocal.LocalEstaciones[idx].nivelPrev
 		estacion.rebasa_tlrncia_prep_pluv = estacion.pptn_pluvial >= estacionesLocal.LocalEstaciones[idx].tlrncia_prep_pluv
 		
-		estacion.nivelPrev = estacionesLocal.LocalEstaciones[idx].nivelPrev
-		estacion.nivelCrit = estacionesLocal.LocalEstaciones[idx].nivelCrit
-		estacion.tlrncia_prep_pluv = estacionesLocal.LocalEstaciones[idx].tlrncia_prep_pluv
 		estaciones.append(estacion)
 	
-	#FIXME: BORRAR DESPUES DE IMPLEMENTA ORQUESTADOR
-	_FillStructure(estaciones, estaciones_Estruc_Todas)
-	_FillStructure(estaciones, estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
-	_FillStructure(estaciones, estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
 	return estaciones
-	
-#FIXME: BORRAR DESPUES DE IMPLEMENTA ORQUESTADOR
-func _FillStructure(_estaciones : Array[GDs_Data_Estacion] ,_estaciones_Estruc : GDs_Data_Estaciones_Estructura, _estado : int = -1):
-	_estaciones_Estruc.estaciones.clear()
-	
-	var alrmEnlace := 0
-	var alrmEnergiaElectrica := 0
-	var alrmRebasaNvlsPresa := 0
-	var alrmRebasaTlrnciaPrepPluv := 0
-	
-	for estacion in _estaciones:
-		if _estado == -1 || _estado == estacion.estado:
-			#Count alarms
-			if estacion.enlace: alrmEnlace+=1
-			if estacion.energia_electrica: alrmEnergiaElectrica+=1
-			if estacion.rebasa_nvls_presa: alrmRebasaNvlsPresa+=1
-			if estacion.rebasa_tlrncia_prep_pluv: alrmRebasaTlrnciaPrepPluv+=1
-			
-			#Set struct data
-			_estaciones_Estruc.alrmEnlace = alrmEnlace
-			_estaciones_Estruc.alrmEnergiaElectrica = alrmEnergiaElectrica
-			_estaciones_Estruc.alrmRebasaNvlsPresa = alrmRebasaNvlsPresa
-			_estaciones_Estruc.alrmRebasaTlrnciaPrepPluv = alrmRebasaTlrnciaPrepPluv
-			_estaciones_Estruc.estaciones.append(estacion)
