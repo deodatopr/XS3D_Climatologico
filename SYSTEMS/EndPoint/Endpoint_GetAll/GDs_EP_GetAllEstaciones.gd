@@ -51,6 +51,9 @@ func Request_GetAllEstaciones():
 
 	isBusy = true
 	http_request.request(URL)
+	
+func Request_GetAllEstaciones_Debug():
+	On_Request_Success.emit()
 
 func FillArrayEstacionesWithEmptyData()-> Array[GDs_Data_EP_Estacion]:
 	#Llenar datos vacios de endpoint para que la app pueda funcionar pero sin datos	
