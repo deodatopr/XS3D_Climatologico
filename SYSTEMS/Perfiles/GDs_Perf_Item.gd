@@ -33,11 +33,13 @@ class_name Perf_Item
 
 
 var isOpen : bool
+var estacionId:int
 
 func _ready():
 	buttonExpandir.toggled.connect(OnPressedShowExtraInfo)
 
 func RefreshInfo(estacion:GDs_Data_Estacion):
+	estacionId = estacion.id
 	id.text = str(estacion.id)
 	nombre.text = estacion.nombre
 	fecha.text = estacion.fecha
@@ -88,4 +90,4 @@ func On_Graficodora_Btn_Pressed():
 	pass
 
 func OnSitioPressed():
-	pass
+	SIGNALS.OnGoToEstacionBtnPressed.emit(estacionId)

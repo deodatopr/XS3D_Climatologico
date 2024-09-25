@@ -133,6 +133,8 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		instanceEstacionCombinada.longitud = estacionLocal.longitud
 		instanceEstacionCombinada.nivelPrev = estacionLocal.nivelPrev
 		instanceEstacionCombinada.nivelCrit = estacionLocal.nivelCrit
+		instanceEstacionCombinada.LvlEstacion = estacionLocal.LvlEstacion
+		instanceEstacionCombinada.disponible = estacionLocal.disponible
 		
 		#Add to Final array
 		estaciones.append(instanceEstacionCombinada)
