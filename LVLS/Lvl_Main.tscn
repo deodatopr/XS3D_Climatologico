@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SYSTEMS/Orchestrator/GDs_Orchestrator_Main.gd" id="1_0r8tt"]
 [ext_resource type="PackedScene" uid="uid://bpp16uxlmohuy" path="res://SYSTEMS/Perfiles/Lvl_Perfil_Template.tscn" id="1_smymm"]
-[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Gds_MngDataService.gd" id="2_1r54g"]
+[ext_resource type="Script" path="res://SYSTEMS/EndPoint/Gds_DataService_Manager.gd" id="2_1r54g"]
 [ext_resource type="Script" path="res://SYSTEMS/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Debug.gd" id="2_kv1hd"]
 [ext_resource type="Script" path="res://SYSTEMS/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones.gd" id="5_gsp7o"]
 [ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://SYSTEMS/EndPoint/Local_GetAll/CR_Local_Estaciones.tres" id="6_vvobh"]
@@ -83,9 +83,9 @@ grow_vertical = 2
 script = ExtResource("1_0r8tt")
 splash = NodePath("../../SPLASH")
 curtain = NodePath("../Curtain")
-mngServiceData = NodePath("../MngServiceData (endpoints)")
+mngServiceData = NodePath("../ServiceData_Manager (endpoints)")
 
-[node name="MngServiceData (endpoints)" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("EP_GetAllEstaciones", "EP_GetAllEstaciones_Error", "timerEPGetAllEstaciones")]
+[node name="ServiceData_Manager (endpoints)" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("EP_GetAllEstaciones", "EP_GetAllEstaciones_Error", "timerEPGetAllEstaciones")]
 script = ExtResource("2_1r54g")
 EP_GetAllEstaciones = NodePath("EP_GetAllEstaciones")
 EP_GetAllEstaciones_Error = NodePath("EP_GetAllEstaciones_Error")
@@ -93,17 +93,17 @@ timeoutEPGetAllEstaciones = 5.0
 timerEPGetAllEstaciones = NodePath("Timer - Ticking")
 crLocalEstaciones = ExtResource("6_vvobh")
 
-[node name="Timer - Ticking" type="Timer" parent="SYSTEMS/MngServiceData (endpoints)"]
+[node name="Timer - Ticking" type="Timer" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
 wait_time = 5.0
 
-[node name="EP_GetAllEstaciones" type="Node" parent="SYSTEMS/MngServiceData (endpoints)"]
+[node name="EP_GetAllEstaciones" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
 script = ExtResource("5_gsp7o")
 customResource_GetAllEstaciones = ExtResource("6_vvobh")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="SYSTEMS/MngServiceData (endpoints)/EP_GetAllEstaciones"]
+[node name="HTTPRequest" type="HTTPRequest" parent="SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones"]
 timeout = 10.0
 
-[node name="EP_GetAllEstaciones_Error" type="Node" parent="SYSTEMS/MngServiceData (endpoints)" node_paths=PackedStringArray("timer", "panelBgk", "panelError", "labelErrorType", "labelTimeToRetryValue", "btnReconectar")]
+[node name="EP_GetAllEstaciones_Error" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)" node_paths=PackedStringArray("timer", "panelBgk", "panelError", "labelErrorType", "labelTimeToRetryValue", "btnReconectar")]
 script = ExtResource("7_5fslp")
 timer = NodePath("Timer - Ticking")
 timeToRetry = 10.0
@@ -114,14 +114,14 @@ labelErrorType = NodePath("../UI - Error/Panel - Error_/Label - ErrorType")
 labelTimeToRetryValue = NodePath("../UI - Error/Panel - Error_/Label - TimeToRetry_value")
 btnReconectar = NodePath("../UI - Error/Panel - Error_/Cont ReIntentar/Btn - Reconectar")
 
-[node name="Timer - Ticking" type="Timer" parent="SYSTEMS/MngServiceData (endpoints)/EP_GetAllEstaciones_Error"]
+[node name="Timer - Ticking" type="Timer" parent="SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones_Error"]
 one_shot = true
 
-[node name="EP_GetAllEstaciones_Debug" type="Node" parent="SYSTEMS/MngServiceData (endpoints)"]
+[node name="EP_GetAllEstaciones_Debug" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
 script = ExtResource("2_kv1hd")
 estacionesLocal = ExtResource("6_vvobh")
 
-[node name="UI - Error" type="Control" parent="SYSTEMS/MngServiceData (endpoints)"]
+[node name="UI - Error" type="Control" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,7 +130,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel - Bgk" type="NinePatchRect" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error"]
+[node name="Panel - Bgk" type="NinePatchRect" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error"]
 visible = false
 self_modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.635294)
 layout_mode = 1
@@ -147,7 +147,7 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="Panel - Error_" type="Control" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error"]
+[node name="Panel - Error_" type="Control" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -163,7 +163,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(250, 192)
 
-[node name="Bgk" type="NinePatchRect" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_"]
+[node name="Bgk" type="NinePatchRect" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_"]
 self_modulate = Color(0.113725, 0.113725, 0.113725, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -173,7 +173,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_de51t")
 
-[node name="Degradado" type="NinePatchRect" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_"]
+[node name="Degradado" type="NinePatchRect" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 10
@@ -183,7 +183,7 @@ grow_horizontal = 2
 texture = ExtResource("8_crh64")
 region_rect = Rect2(443, 8, 40, 11)
 
-[node name="Label - Error" type="Label" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_"]
+[node name="Label - Error" type="Label" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -197,7 +197,7 @@ label_settings = SubResource("LabelSettings_1i4b4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Atls_NoConexion" type="NinePatchRect" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_"]
+[node name="Atls_NoConexion" type="NinePatchRect" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_"]
 self_modulate = Color(1, 0, 0, 1)
 custom_minimum_size = Vector2(60, 50)
 layout_mode = 1
@@ -216,7 +216,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_crh64")
 region_rect = Rect2(377, 3, 60, 50)
 
-[node name="Label - ErrorType" type="Label" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_"]
+[node name="Label - ErrorType" type="Label" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -231,7 +231,7 @@ label_settings = SubResource("LabelSettings_s78fg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label - TimeToRetry_value" type="Label" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_"]
+[node name="Label - TimeToRetry_value" type="Label" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -246,7 +246,7 @@ label_settings = SubResource("LabelSettings_76c4h")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cont ReIntentar" type="NinePatchRect" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_"]
+[node name="Cont ReIntentar" type="NinePatchRect" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_"]
 self_modulate = Color(0, 0.25098, 0.376471, 1)
 custom_minimum_size = Vector2(2.52, 90)
 layout_mode = 1
@@ -264,7 +264,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Img - Crystal" type="NinePatchRect" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar"]
+[node name="Img - Crystal" type="NinePatchRect" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar"]
 custom_minimum_size = Vector2(2.52, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -280,7 +280,7 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="Atlas_Crystal -  Glow" type="NinePatchRect" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar"]
+[node name="Atlas_Crystal -  Glow" type="NinePatchRect" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar"]
 self_modulate = Color(0, 0.819608, 1, 1)
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 1
@@ -297,7 +297,7 @@ region_rect = Rect2(220, 132, 41, 19)
 patch_margin_left = 39
 patch_margin_right = 39
 
-[node name="Btn - Reconectar" type="Button" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar"]
+[node name="Btn - Reconectar" type="Button" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -306,7 +306,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_gg6cb")
 
-[node name="Label" type="Label" parent="SYSTEMS/MngServiceData (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar/Btn - Reconectar"]
+[node name="Label" type="Label" parent="SYSTEMS/ServiceData_Manager (endpoints)/UI - Error/Panel - Error_/Cont ReIntentar/Btn - Reconectar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -342,7 +342,7 @@ mouse_filter = 2
 
 [node name="Lvl - Perfiles" parent="ASSETS" node_paths=PackedStringArray("debugEstaciones") instance=ExtResource("1_smymm")]
 layout_mode = 1
-debugEstaciones = NodePath("../../SYSTEMS/MngServiceData (endpoints)/EP_GetAllEstaciones_Debug")
+debugEstaciones = NodePath("../../SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones_Debug")
 
 [node name="CURTAIN" type="Control" parent="."]
 visible = false

@@ -1,5 +1,5 @@
 extends Node
-class_name Mng_Perfiles
+class_name GDs_Perf_Manager
 
 @export var contenedorAvenidas: Control
 @export var estadoMexico:GDs_Perf_Avenida

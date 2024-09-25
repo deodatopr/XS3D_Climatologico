@@ -1,5 +1,5 @@
 extends Node
-class_name GDs_MngDataService
+class_name GDs_DataService_Manager
 
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
