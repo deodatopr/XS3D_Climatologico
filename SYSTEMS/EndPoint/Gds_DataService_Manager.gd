@@ -37,9 +37,18 @@ func Initialize():
 	
 	#Connect timer to refresh endpoint
 	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)
+	
+	#Create objects
+	estaciones_Estruc_Todas = GDs_Data_Estaciones_Estructura.new()
+	estaciones_Estruc_Mexico = GDs_Data_Estaciones_Estructura.new()
+	estaciones_Estruc_Michoacan = GDs_Data_Estaciones_Estructura.new()
 
 func MakeRequest_GetAllEstaciones():
-	EP_GetAllEstaciones.Request_GetAllEstaciones()
+	if APPSTATE.debug_EP_GetAllEstaciones:
+		_OnSuccessEP_GetAllEstaciones()
+	else:
+		EP_GetAllEstaciones.Request_GetAllEstaciones()
+		
 
 func GetEstacionById(_id : int) -> GDs_Data_Estacion:
 	for estacion in estaciones:
@@ -82,10 +91,10 @@ func _GetDataFromEP_GetAllEstaciones():
 	
 	#Fetch EP with local or only update EP data
 	if isFirstTimeRequestGetAllEstaciones:
-		_FetchEndpointWithLocalData(EP_GetAllEstaciones.arrayEstaciones)
+		_FetchEndpointWithLocalData(estacionesFromEP)
 		isFirstTimeRequestGetAllEstaciones = false
 	else:
-		_UpdateFromEP(EP_GetAllEstaciones.arrayEstaciones)
+		_UpdateFromEP(estacionesFromEP)
 		
 	#Fill structs by estado
 	_FillStructure(estaciones_Estruc_Todas)
@@ -98,7 +107,7 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	for estacionEP in arrayEndPoint:
 		var estacionLocal = crLocalEstaciones.GetEstacion(estacionEP.id)
 		
-		var instanceEstacionCombinada : GDs_Data_Estacion
+		var instanceEstacionCombinada : GDs_Data_Estacion = GDs_Data_Estacion.new()
 		
 		#From EP
 		instanceEstacionCombinada.id = estacionEP.id
@@ -122,18 +131,17 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		instanceEstacionCombinada.estado = estacionLocal.estado
 		instanceEstacionCombinada.latitud = estacionLocal.latitud
 		instanceEstacionCombinada.longitud = estacionLocal.longitud
-		instanceEstacionCombinada.nvlPrev = estacionLocal.nivelPrev
-		instanceEstacionCombinada.nvlCrit = estacionLocal.nivelCrit
+		instanceEstacionCombinada.nivelPrev = estacionLocal.nivelPrev
+		instanceEstacionCombinada.nivelCrit = estacionLocal.nivelCrit
 		
 		#Add to Final array
 		estaciones.append(instanceEstacionCombinada)
 		
 func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
-	
 	#Update data only for properties from EP
 	
 	for estacionEP in arrayEndPoint:
-		var idxEstacionToUpdate :  int = estaciones.bsearch(estacionEP.id)
+		var idxEstacionToUpdate :  int = estaciones.bsearch(GetEstacionById(estacionEP.id))
 				
 		estaciones[idxEstacionToUpdate].fecha = estacionEP.fecha
 		estaciones[idxEstacionToUpdate].nivel = estacionEP.nivel

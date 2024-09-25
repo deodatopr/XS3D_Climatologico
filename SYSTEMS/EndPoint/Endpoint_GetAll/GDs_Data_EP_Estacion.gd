@@ -21,10 +21,10 @@ var rebasa_nvls_presa : bool
 var rebasa_tlrncia_prep_pluv : bool
 
 func _init(_estacion : Dictionary) :
-	id = _estacion["IdSitio"]
+	id = _estacion["id"]
 	fecha = _estacion["fecha"]
 	nivel = _estacion["nivel"]
-	pptn_pluvial = _estacion["pptn_pluvial"]
+	pptn_pluvial = _estacion["prtcion_pluvial"]
 	humedad = _estacion["humedad"]
 	evaporacion = _estacion["evaporacion"]
 	intsdad_viento = _estacion["intsdad_viento"]

@@ -59,7 +59,7 @@ func FillArrayEstacionesWithEmptyData()-> Array[GDs_Data_EP_Estacion]:
 	#Obtener y setear cada propiedad de la clase ENDPOINT_SITIO_EXT para agregarlo al array
 	for i in range(customResource_GetAllEstaciones.LocalEstaciones.size()):
 		var emptyEstacion = {
-		"id": customResource_GetAllEstaciones.LocalEstaciones[i].id,
+		"id": customResource_GetAllEstaciones.LocalEstaciones[i+1].id,
 		"fecha": "",
 		"nivel": 0.0,
 		"prtcion_pluvial": 0.0,

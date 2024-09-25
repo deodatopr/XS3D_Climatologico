@@ -7,35 +7,15 @@ class_name GDs_Orchestrator_Main
 @export var lvlPerfiles : GDs_Perf_Manager
 
 func _ready():
-	print("0")
 	#SPLASH
 	splash.Show()
-	await splash.OnFinishSplash
+	await get_tree().create_timer(0.1).timeout
 	
-	print("1")
-	#CURTAIN
-	curtain.Show()
-	await curtain.OnCurtainCovered
-	print("2")
-	
-	#SERVICE DATA
+	#ENDPOINT
 	serviceData_manager.Initialize()
-	print("2.1")
+	serviceData_manager.MakeRequest_GetAllEstaciones()
+	serviceData_manager.OnDataRefresh.connect(lvlPerfiles.OnDataRefresh)	
 	
 	#PERFILES
 	lvlPerfiles.Initialize(serviceData_manager)
-	print("2.2")
-	
-	#SEÑALES
-	serviceData_manager.OnDataRefresh.connect(lvlPerfiles.OnDataRefresh)
-	print("2.3")
-	
-	#REQUEST ENDPOINT
-	serviceData_manager.MakeRequest_GetAllEstaciones()
 	await serviceData_manager.OnDataRefresh
-	print("3")
-	
-	curtain.Hide()
-	await curtain.OnCurtainFinished
-	print("4")
-	

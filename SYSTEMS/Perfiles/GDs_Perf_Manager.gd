@@ -16,6 +16,7 @@ class_name GDs_Perf_Manager
 
 var dataService : GDs_DataService_Manager
 var isExpanded: bool = true
+var firstTime : bool
 var TweenArrow: Tween
 var avenidas: Array[GDs_Perf_Avenida]
 	
@@ -26,16 +27,16 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	estadoMexico.OnExpand.connect(_EnsureIsVisible)
 	estadoMichoacan.OnButtonExpandPressed.connect(_CheckExpanded)
 	estadoMichoacan.OnExpand.connect(_EnsureIsVisible)
-
-func OnDataRefresh():
+	
 	estadoMexico.nombre.text = "Mexico"
-	estadoMexico.InstantiateItems(dataService.estaciones_Estruc_Mexico.estaciones.size())
-	estadoMexico.RefreshAvenida(dataService.estaciones_Estruc_Mexico.estaciones)
+	estadoMexico.InstantiateItems(dataService.estaciones_Estruc_Mexico.estaciones.size())	
 	
 	estadoMichoacan.nombre.text = "Michoacan"
 	estadoMichoacan.InstantiateItems(dataService.estaciones_Estruc_Michoacan.estaciones.size())
-	estadoMichoacan.RefreshAvenida(dataService.estaciones_Estruc_Michoacan.estaciones)
 
+func OnDataRefresh():
+	estadoMexico.RefreshAvenida(dataService.estaciones_Estruc_Mexico.estaciones)
+	estadoMichoacan.RefreshAvenida(dataService.estaciones_Estruc_Michoacan.estaciones)
 
 func _OnExpandAll_pressed():
 	Btn_ExpandAll.disabled = true

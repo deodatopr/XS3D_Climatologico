@@ -91,6 +91,7 @@ script = ExtResource("2_1r54g")
 EP_GetAllEstaciones = NodePath("EP_GetAllEstaciones")
 EP_GetAllEstaciones_Error = NodePath("EP_GetAllEstaciones_Error")
 EP_GetAllEstaciones_Debug = NodePath("EP_GetAllEstaciones_Debug")
+URL = "https://example.com/api/GetAllEstaciones"
 timeoutEPGetAllEstaciones = 5.0
 timerTicking = NodePath("Timer - Ticking")
 crLocalEstaciones = ExtResource("6_vvobh")
