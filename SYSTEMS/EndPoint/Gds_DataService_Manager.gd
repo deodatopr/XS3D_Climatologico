@@ -45,7 +45,7 @@ func Initialize():
 
 func MakeRequest_GetAllEstaciones():
 	if APPSTATE.debug_EP_GetAllEstaciones:
-		_OnSuccessEP_GetAllEstaciones()
+		EP_GetAllEstaciones.Request_GetAllEstaciones_Debug()
 	else:
 		EP_GetAllEstaciones.Request_GetAllEstaciones()
 		

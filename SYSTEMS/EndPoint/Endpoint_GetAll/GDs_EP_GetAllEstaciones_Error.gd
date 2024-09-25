@@ -39,7 +39,7 @@ func Close():
 	
 func _process(_delta):
 	if panelErrorIsOpened:
-		var timeToRetry = timer.time_left
+		timeToRetry = timer.time_left
 		labelTimeToRetryValue.text = str(roundf(timeToRetry))
 		
 func _OnBtnReintentarPressed():

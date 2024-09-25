@@ -1,8 +1,8 @@
 #TODO:
 
 #PANI
-#- Meter perfiles en flujo de orquestador
-#- Global AppState controlar valores importantes únicamente desde ese punto
+# TERMINADO - Meter perfiles en flujo de orquestador
+# TERMINADO - Global AppState controlar valores importantes únicamente desde ese punto
 #- Debug Perf/Mapa y Particulares
 #- Endpoint graficadora
 
