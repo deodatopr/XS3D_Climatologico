@@ -1,8 +1,8 @@
-extends Node
-class_name GDs_Orchestrator_Main
+class_name GDs_Orchestrator_Main extends Node
 
 @export var splash : GDs_Splash
 @export var curtain : GDs_Curtain
+@export var scenes_manager : GDs_Scenes_Manager
 @export var serviceData_manager : GDs_DataService_Manager
 @export var lvlPerfiles : GDs_Perf_Manager
 
@@ -14,8 +14,11 @@ func _ready():
 	#ENDPOINT
 	serviceData_manager.Initialize()
 	serviceData_manager.MakeRequest_GetAllEstaciones()
-	serviceData_manager.OnDataRefresh.connect(lvlPerfiles.OnDataRefresh)	
+	await serviceData_manager.OnDataRefresh
+	
+	#ESCENAS
+	scenes_manager.Initialize()
 	
 	#PERFILES
 	lvlPerfiles.Initialize(serviceData_manager)
-	await serviceData_manager.OnDataRefresh
+	serviceData_manager.OnDataRefresh.connect(lvlPerfiles.OnDataRefresh)

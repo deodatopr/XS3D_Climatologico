@@ -33,6 +33,8 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	
 	estadoMichoacan.nombre.text = "Michoacan"
 	estadoMichoacan.InstantiateItems(dataService.estaciones_Estruc_Michoacan.estaciones.size())
+	
+	OnDataRefresh()
 
 func OnDataRefresh():
 	estadoMexico.RefreshAvenida(dataService.estaciones_Estruc_Mexico.estaciones)

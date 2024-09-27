@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cem68b85kcv5l"]
 
-[ext_resource type="Script" path="res://SYSTEMS/Graficadora/GDs_Graficadora.gd" id="1_rie1i"]
-[ext_resource type="Script" path="res://SYSTEMS/Graficadora/GDs_Graficadora_Valores.gd" id="2_gd4ch"]
+[ext_resource type="Script" path="res://SYSTEMS/z_Graficadora/GDs_Graficadora.gd" id="1_rie1i"]
+[ext_resource type="Script" path="res://SYSTEMS/z_Graficadora/GDs_Graficadora_Valores.gd" id="2_gd4ch"]
 [ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="3_it075"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7tqly"]

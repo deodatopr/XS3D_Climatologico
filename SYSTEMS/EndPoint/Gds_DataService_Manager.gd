@@ -1,5 +1,4 @@
-extends Node
-class_name GDs_DataService_Manager
+class_name GDs_DataService_Manager extends Node
 
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
@@ -23,12 +22,13 @@ var estaciones_Estruc_Michoacan : GDs_Data_Estaciones_Estructura
 
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
+signal OnDataReady_FirstTime
 signal OnDataRefresh
 
 func Initialize():
 	#Connect with endpoint GetAllEstacion
-	EP_GetAllEstaciones.On_Request_Success.connect(_OnSuccessEP_GetAllEstaciones)
-	EP_GetAllEstaciones.On_Request_Failed_BY_INTERNET.connect(_OnErrorEP_GetAllEstaciones)
+	EP_GetAllEstaciones.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
+	EP_GetAllEstaciones.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
 	EP_GetAllEstaciones.Initialize(URL,timeoutEPGetAllEstaciones)
 	
 	#Connect with endpoint error
@@ -48,7 +48,6 @@ func MakeRequest_GetAllEstaciones():
 		EP_GetAllEstaciones.Request_GetAllEstaciones_Debug()
 	else:
 		EP_GetAllEstaciones.Request_GetAllEstaciones()
-		
 
 func GetEstacionById(_id : int) -> GDs_Data_Estacion:
 	for estacion in estaciones:
@@ -59,6 +58,8 @@ func GetEstacionById(_id : int) -> GDs_Data_Estacion:
 
 #region [ EVENTS ]
 func _OnSuccessEP_GetAllEstaciones():
+	APPSTATE.EP_GetAllEstaciones = ENUMS.EP_GetAllEstaciones.Success
+	
 	#Update data
 	_GetDataFromEP_GetAllEstaciones()
 	
@@ -69,7 +70,9 @@ func _OnSuccessEP_GetAllEstaciones():
 	if timerTicking.is_stopped():
 		timerTicking.start(secondsToRefreshEP)
 		
-func _OnErrorEP_GetAllEstaciones():
+func _OnFailedEP_GetAllEstaciones():
+	APPSTATE.EP_GetAllEstaciones = ENUMS.EP_GetAllEstaciones.Error
+
 	#Update data
 	_GetDataFromEP_GetAllEstaciones()
 	
@@ -82,17 +85,12 @@ func _OnErrorEP_GetAllEstaciones():
 
 #region [ FILL DATA ]
 func _GetDataFromEP_GetAllEstaciones():
-	#Fill Data estacions from EP or random values for debug
-	estacionesFromEP.clear()
-	if APPSTATE.debug_EP_GetAllEstaciones:
-		estacionesFromEP = EP_GetAllEstaciones_Debug.GetDebugEstaciones()
-	else:
-		estacionesFromEP = EP_GetAllEstaciones.arrayEstaciones
+	#Fill Data estaciones from EP or random values for debug
+	_FillArrayFromEP()
 	
-	#Fetch EP with local or only update EP data
+	#Use data filled to fetch EP with local or only to update data
 	if isFirstTimeRequestGetAllEstaciones:
 		_FetchEndpointWithLocalData(estacionesFromEP)
-		isFirstTimeRequestGetAllEstaciones = false
 	else:
 		_UpdateFromEP(estacionesFromEP)
 		
@@ -101,8 +99,19 @@ func _GetDataFromEP_GetAllEstaciones():
 	_FillStructure(estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
 	_FillStructure(estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
 	
+	if isFirstTimeRequestGetAllEstaciones:
+		OnDataReady_FirstTime.emit()
+		isFirstTimeRequestGetAllEstaciones = false
+		
 	OnDataRefresh.emit()
-	
+
+func _FillArrayFromEP():
+	estacionesFromEP.clear()
+	if APPSTATE.debug_EP_GetAllEstaciones and APPSTATE.EP_GetAllEstaciones != ENUMS.EP_GetAllEstaciones.Error:
+		estacionesFromEP = EP_GetAllEstaciones_Debug.GetDebugEstaciones()
+	else:
+		estacionesFromEP = EP_GetAllEstaciones.arrayEstaciones
+
 func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	for estacionEP in arrayEndPoint:
 		var estacionLocal = crLocalEstaciones.GetEstacion(estacionEP.id)

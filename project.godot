@@ -47,6 +47,10 @@ folder_colors={
 "res://CONTENT/": "green",
 "res://LVLS/": "purple",
 "res://SYSTEMS/": "orange",
+"res://SYSTEMS/z_EndPoint Old/": "gray",
+"res://SYSTEMS/z_Graficadora/": "gray",
+"res://SYSTEMS/z_OclusionByHeight/": "gray",
+"res://SYSTEMS/z_Scn_Filtros/": "gray",
 "res://UI/": "yellow",
 "res://addons/": "blue"
 }

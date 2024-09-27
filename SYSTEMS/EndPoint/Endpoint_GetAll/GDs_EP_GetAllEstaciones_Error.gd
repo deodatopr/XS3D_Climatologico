@@ -1,12 +1,10 @@
-extends Node
-
-class_name GDs_EP_GetAllEstaciones_Error
+class_name GDs_EP_GetAllEstaciones_Error extends Node
 
 @export_category("GetAllEstaciones")
 @export var timer : Timer
 @export var timeToRetry : float
 
-@export_category("PANEL RECONECTANDO")
+@export_category("Panel")
 @export var panelBgk : Control
 @export var panelError : Control
 @export var scaleShow : float

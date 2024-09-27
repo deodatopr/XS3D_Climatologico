@@ -96,7 +96,7 @@ RootContainer = NodePath(".")
 ItemContainer = NodePath("Cont - TitleItems/VBox - ItemContainer")
 ButtonAvenida = NodePath("Cont - TitleItems/Button Avenida")
 ImgArrowExpand = NodePath("Cont - TitleItems/Button Avenida/HBoxContainer/Cont - Expand/Img_ArrowExpand")
-sitioItem = ExtResource("2_lx2ug")
+estacionItem = ExtResource("2_lx2ug")
 vBoxContainer = NodePath("Cont - TitleItems/VBox - ItemContainer")
 
 [node name="Cont - TitleItems" type="VBoxContainer" parent="."]

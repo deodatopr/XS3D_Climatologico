@@ -1,5 +1,4 @@
-class_name GDs_EP_GetAllEstaciones_Debug
-extends Node
+class_name GDs_EP_GetAllEstaciones_Debug extends Node
 
 @export var estacionesLocal: GDs_CR_LocalEstaciones
 
