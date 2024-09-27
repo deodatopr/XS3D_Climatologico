@@ -125,6 +125,7 @@ timeout = 10.0
 
 [node name="EP_GetAllEstaciones_Error" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)" node_paths=PackedStringArray("timer", "panelBgk", "panelError", "labelErrorType", "labelTimeToRetryValue", "btnReconectar")]
 script = ExtResource("7_5fslp")
+customResource_GetAllEstaciones = ExtResource("6_vvobh")
 timer = NodePath("Timer - Retry")
 timeToRetry = 10.0
 panelBgk = NodePath("../UI - Error/Panel - Bgk")

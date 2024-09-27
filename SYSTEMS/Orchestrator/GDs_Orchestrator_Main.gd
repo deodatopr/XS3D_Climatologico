@@ -7,6 +7,8 @@ class_name GDs_Orchestrator_Main extends Node
 @export var lvlPerfiles : GDs_Perf_Manager
 
 func _ready():
+	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
+	
 	#SPLASH
 	splash.Show()
 	await get_tree().create_timer(0.1).timeout

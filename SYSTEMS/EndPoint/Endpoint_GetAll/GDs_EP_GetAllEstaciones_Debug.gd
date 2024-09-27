@@ -2,10 +2,9 @@ class_name GDs_EP_GetAllEstaciones_Debug extends Node
 
 @export var estacionesLocal: GDs_CR_LocalEstaciones
 
-func GetDebugEstaciones()-> Array[GDs_Data_EP_Estacion]:
+func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 	var estaciones : Array[GDs_Data_EP_Estacion]
 	#Llenar array con valores Random
-	#var idx = 0
 	for idx in estacionesLocal.LocalEstaciones.size():
 		var estacionRndValues = {
 		"id" : idx + 1,
@@ -33,5 +32,5 @@ func GetDebugEstaciones()-> Array[GDs_Data_EP_Estacion]:
 		estacion.rebasa_tlrncia_prep_pluv = estacion.pptn_pluvial >= estacionesLocal.LocalEstaciones[idx].tlrncia_prep_pluv
 		
 		estaciones.append(estacion)
-	
+		
 	return estaciones

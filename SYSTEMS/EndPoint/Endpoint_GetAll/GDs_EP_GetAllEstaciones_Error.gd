@@ -1,5 +1,7 @@
 class_name GDs_EP_GetAllEstaciones_Error extends Node
 
+@export var customResource_GetAllEstaciones: GDs_CR_LocalEstaciones
+
 @export_category("GetAllEstaciones")
 @export var timer : Timer
 @export var timeToRetry : float
@@ -19,31 +21,69 @@ signal OnFinishError
 var panelErrorIsOpened : bool
 
 func Initialize():
+	timer.timeout.connect(_OnTimeOut)
 	btnReconectar.pressed.connect(_OnBtnReintentarPressed)
+	
 	labelErrorType.text =  str("Sin conexión reintentando en: ")
 	
 func Open():
 	if not panelErrorIsOpened:
 		_AnimPanelError(true)
 		panelErrorIsOpened = true
-		
-	timer.start(timeToRetry)
+		if timer.is_stopped():
+			timer.start(timeToRetry)
 	
 func Close():
 	if panelErrorIsOpened:
 		_AnimPanelError(false)
 		panelErrorIsOpened = false
-		timer.stop()
+		
+func GetEstaciones_Empty()-> Array[GDs_Data_EP_Estacion]:
+	#Llenar datos vacios de endpoint para que la app pueda funcionar pero sin datos	
+	var custom_array: Array[GDs_Data_EP_Estacion] = []
+
+	#Obtener y setear cada propiedad de la clase ENDPOINT_SITIO_EXT para agregarlo al array
+	for i in range(customResource_GetAllEstaciones.LocalEstaciones.size()):
+		var emptyEstacion = {
+		"id": customResource_GetAllEstaciones.LocalEstaciones[i].id,
+		"fecha": "--/--/-- T --:--:--",
+		"nivel": 0.0,
+		"prtcion_pluvial": 0.0,
+		"humedad": 0.0,
+		"evaporacion": 0.0,
+		"intsdad_viento": 0.0,
+		"dir_viento": 0.0,
+		"temperatura": 0.0,
+		
+		"disp_utr": false,
+		"fallo_alim_ac": false,
+		"volt_bat_resp": 0.0,
+		
+		"enlace": false,
+		"energia_electrica": false,
+		"rebasa_nvls_presa": false,
+		"rebasa_tlrncia_prep_pluv": false
+		}
+		
+		var custom_item = GDs_Data_EP_Estacion.new(emptyEstacion)
+		custom_array.append(custom_item)
+
+	return custom_array
 	
 func _process(_delta):
 	if panelErrorIsOpened:
 		timeToRetry = timer.time_left
 		labelTimeToRetryValue.text = str(roundf(timeToRetry))
-		
+
+func _OnTimeOut():
+	timer.stop()
+	OnFinishError.emit()
+
 func _OnBtnReintentarPressed():
 	OnFinishError.emit()
 		
 func _AnimPanelError(show : bool):
+	print("AnimPanel: ",show)
 	if show:
 		panelBgk.show()
 		panelError.show()
@@ -52,7 +92,7 @@ func _AnimPanelError(show : bool):
 	var tween = create_tween()
 	var targetScale : float =  scaleShow if show else scaleHide
 	var newScale : Vector2 = Vector2(targetScale,targetScale)
-	tween.tween_property(panelError, "scale", newScale, speed)
+	tween.tween_property(panelError, "scale", newScale, .001)
 	tween.play()
 	
 	if not show:
