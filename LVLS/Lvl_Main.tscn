@@ -123,6 +123,10 @@ customResource_GetAllEstaciones = ExtResource("6_vvobh")
 [node name="HTTPRequest" type="HTTPRequest" parent="SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones"]
 timeout = 10.0
 
+[node name="EP_GetAllEstaciones_Debug" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
+script = ExtResource("2_kv1hd")
+estacionesLocal = ExtResource("6_vvobh")
+
 [node name="EP_GetAllEstaciones_Error" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)" node_paths=PackedStringArray("timer", "panelBgk", "panelError", "labelErrorType", "labelTimeToRetryValue", "btnReconectar")]
 script = ExtResource("7_5fslp")
 customResource_GetAllEstaciones = ExtResource("6_vvobh")
@@ -137,10 +141,6 @@ btnReconectar = NodePath("../UI - Error/Panel - Error_/Cont ReIntentar/Btn - Rec
 
 [node name="Timer - Retry" type="Timer" parent="SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones_Error"]
 one_shot = true
-
-[node name="EP_GetAllEstaciones_Debug" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
-script = ExtResource("2_kv1hd")
-estacionesLocal = ExtResource("6_vvobh")
 
 [node name="UI - Error" type="Control" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
 layout_mode = 3

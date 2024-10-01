@@ -71,7 +71,7 @@ func _OnSuccessEP_GetAllEstaciones():
 		
 func _OnFailedEP_GetAllEstaciones():
 	APPSTATE.EP_GetAllEstaciones_State = ENUMS.EP_GetAllEstaciones.Error
-
+	
 	#Update data
 	_GetDataFromEP_GetAllEstaciones()
 	
@@ -112,7 +112,10 @@ func _FillArrayFromEP():
 	
 	match APPSTATE.EP_GetAllEstaciones_RequestType:
 		ENUMS.EP_RequestType.From_EP:
-			estacionesFromEP = EP_GetAllEstaciones.GetEstaciones()
+			if APPSTATE.EP_GetAllEstaciones_State == ENUMS.EP_GetAllEstaciones.Success:
+				estacionesFromEP = EP_GetAllEstaciones.GetEstaciones()
+			else:
+				estacionesFromEP = EP_GetAllEstaciones_Error.GetEstaciones_Empty()
 		ENUMS.EP_RequestType.From_Debug_Random:
 			estacionesFromEP = EP_GetAllEstaciones_Debug.GetEstaciones_Random()
 		ENUMS.EP_RequestType.From_Debug_Error:
