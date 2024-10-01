@@ -26,7 +26,6 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 		"rebasa_nvls_presa": randi() % 2 == 0,
 		"rebasa_tlrncia_prep_pluv": randi() % 2 == 0
 		}
-
 		var estacion : GDs_Data_EP_Estacion = GDs_Data_EP_Estacion.new(estacionRndValues)
 		estacion.rebasa_nvls_presa = estacion.nivel >= estacionesLocal.LocalEstaciones[idx].nivelPrev
 		estacion.rebasa_tlrncia_prep_pluv = estacion.pptn_pluvial >= estacionesLocal.LocalEstaciones[idx].tlrncia_prep_pluv

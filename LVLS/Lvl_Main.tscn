@@ -103,12 +103,13 @@ curtain = NodePath("../Curtain")
 sceneParentRoot = NodePath("../../ASSETS")
 lvlMapa = ExtResource("10_t52mi")
 
-[node name="ServiceData_Manager (endpoints)" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("EP_GetAllEstaciones", "EP_GetAllEstaciones_Error", "EP_GetAllEstaciones_Debug", "timerTicking")]
+[node name="ServiceData_Manager (endpoints)" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("endpoint", "endpoint_Debug", "endpoint_Error", "timerTicking")]
 script = ExtResource("2_1r54g")
-EP_GetAllEstaciones = NodePath("EP_GetAllEstaciones")
-EP_GetAllEstaciones_Error = NodePath("EP_GetAllEstaciones_Error")
-EP_GetAllEstaciones_Debug = NodePath("EP_GetAllEstaciones_Debug")
+endpoint = NodePath("GetAllEstaciones/endpoint")
+endpoint_Debug = NodePath("GetAllEstaciones/endpoint_Debug")
+endpoint_Error = NodePath("GetAllEstaciones/endpoint_Error")
 URL = "https://example.com/api/GetAllEstaciones"
+timeToRefresh = 5.0
 timeoutEPGetAllEstaciones = 5.0
 timerTicking = NodePath("Timer - Ticking")
 crLocalEstaciones = ExtResource("6_vvobh")
@@ -116,31 +117,31 @@ crLocalEstaciones = ExtResource("6_vvobh")
 [node name="Timer - Ticking" type="Timer" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
 wait_time = 5.0
 
-[node name="EP_GetAllEstaciones" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
+[node name="GetAllEstaciones" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
+
+[node name="endpoint" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)/GetAllEstaciones"]
 script = ExtResource("5_gsp7o")
 customResource_GetAllEstaciones = ExtResource("6_vvobh")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones"]
+[node name="HTTPRequest" type="HTTPRequest" parent="SYSTEMS/ServiceData_Manager (endpoints)/GetAllEstaciones/endpoint"]
 timeout = 10.0
 
-[node name="EP_GetAllEstaciones_Debug" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
+[node name="endpoint_Debug" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)/GetAllEstaciones"]
 script = ExtResource("2_kv1hd")
 estacionesLocal = ExtResource("6_vvobh")
 
-[node name="EP_GetAllEstaciones_Error" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)" node_paths=PackedStringArray("timer", "panelBgk", "panelError", "labelErrorType", "labelTimeToRetryValue", "btnReconectar")]
+[node name="endpoint_Error" type="Node" parent="SYSTEMS/ServiceData_Manager (endpoints)/GetAllEstaciones" node_paths=PackedStringArray("timer", "panelBgk", "panelError", "labelErrorType", "labelTimeToRetryValue", "btnReconectar")]
 script = ExtResource("7_5fslp")
 customResource_GetAllEstaciones = ExtResource("6_vvobh")
 timer = NodePath("Timer - Retry")
-timeToRetry = 10.0
-panelBgk = NodePath("../UI - Error/Panel - Bgk")
-panelError = NodePath("../UI - Error/Panel - Error_")
+panelBgk = NodePath("../../UI - Error/Panel - Bgk")
+panelError = NodePath("../../UI - Error/Panel - Error_")
 scaleShow = 1.0
-labelErrorType = NodePath("../UI - Error/Panel - Error_/Label - ErrorType")
-labelTimeToRetryValue = NodePath("../UI - Error/Panel - Error_/Label - TimeToRetry_value")
-btnReconectar = NodePath("../UI - Error/Panel - Error_/Cont ReIntentar/Btn - Reconectar")
+labelErrorType = NodePath("../../UI - Error/Panel - Error_/Label - ErrorType")
+labelTimeToRetryValue = NodePath("../../UI - Error/Panel - Error_/Label - TimeToRetry_value")
+btnReconectar = NodePath("../../UI - Error/Panel - Error_/Cont ReIntentar/Btn - Reconectar")
 
-[node name="Timer - Retry" type="Timer" parent="SYSTEMS/ServiceData_Manager (endpoints)/EP_GetAllEstaciones_Error"]
-one_shot = true
+[node name="Timer - Retry" type="Timer" parent="SYSTEMS/ServiceData_Manager (endpoints)/GetAllEstaciones/endpoint_Error"]
 
 [node name="UI - Error" type="Control" parent="SYSTEMS/ServiceData_Manager (endpoints)"]
 layout_mode = 3
