@@ -1,20 +1,23 @@
 #TODO:
 
-#PANI
-# TERMINADO - Meter perfiles en flujo de orquestador
-# TERMINADO - Global AppState controlar valores importantes únicamente desde ese punto
-#- Debug Perf/Mapa y Particulares
-#- Endpoint graficadora
-
-#BRIAN
-#- Crear escena de particulares para tener cascaron de flujo completo
+#- Test endpoint error
 #- Manager de escenas
-#- Sistema de inputs (será con teclado y con control)
+
+#- Crear escena de particulares para tener base de flujo completo
 #- Orquestador particulares
 #- MngParticulares
+
+#- Sistema de inputs (será con teclado y con control)
+#- Endpoint graficadora
 
 #===========================================
 #	PARA DESPUES DE TENER LA BASE DE LA APP
 #===========================================
 
+#MAPA
+#- Debug Perf/Mapa y Particulares
+#- Brujula en mapa
 #- Sistema Pines
+#- Minimapa (con icono como camara con angulo de vista)
+#- Subir y bajar por valores especificos
+#- Diferente rotacion de angulo al subir y bajar

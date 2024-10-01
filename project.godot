@@ -13,6 +13,7 @@ config_version=5
 config/name="XS3D_Climatologico"
 run/main_scene="res://LVLS/Lvl_Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+run/max_fps=60
 
 [autoload]
 
@@ -30,10 +31,7 @@ window/size/window_height_override=864
 window/energy_saving/keep_screen_on=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/handheld/orientation=1
 window/vsync/vsync_mode=0
-window/ios/allow_high_refresh_rate=false
-window/ios/hide_status_bar=false
 
 [editor_plugins]
 
@@ -49,10 +47,50 @@ folder_colors={
 "res://CONTENT/": "green",
 "res://LVLS/": "purple",
 "res://SYSTEMS/": "orange",
+"res://SYSTEMS/z_EndPoint Old/": "gray",
+"res://SYSTEMS/z_Graficadora/": "gray",
+"res://SYSTEMS/z_OclusionByHeight/": "gray",
+"res://SYSTEMS/z_Scn_Filtros/": "gray",
 "res://UI/": "yellow",
 "res://addons/": "blue"
+}
+
+[input]
+
+test={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+]
+}
+move_right={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
+]
+}
+move_left={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+]
+}
+move_up={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
+]
+}
+move_down={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
+]
 }
 
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+scaling_3d/mode=1
+anti_aliasing/quality/screen_space_aa=1
+occlusion_culling/use_occlusion_culling=true

@@ -1,28 +1,23 @@
-class_name GDs_Scenes_Manager
-extends Node
+class_name GDs_Scenes_Manager extends Node
 
 @export var dataService : GDs_DataService_Manager
 @export var curtain : GDs_Curtain
 @export var sceneParentRoot: Node
-
 @export var lvlMapa:PackedScene
 
-signal OnInstantiateMapa3D
+signal OnInstantiateMapa
 signal OnInstantiateEstacion
 signal OnUnloadScene
+
 var instanceEstacion : Node3D
+var instanceMapa : Node3D
 var estacion: GDs_Data_Estacion
+
 var lastIdEstacionVisited : int = -1
-var instanceMapa
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Initialize()
-	pass # Replace with function body.
 
 func Initialize():
 	SIGNALS.OnGoToEstacionBtnPressed.connect(GoToEstacion)
-	ProcessToLoadMapa()
-	pass
+	_ProcessToLoadMapa()
 
 func GoToMapa3D():
 	#Mostrar cortina
@@ -33,11 +28,11 @@ func GoToMapa3D():
 	#Descargar estacion si es que esta cargada
 	lastIdEstacionVisited = -1
 	if instanceEstacion:
-		ProcessToUnloadEstacion()
+		_ProcessToUnloadEstacion()
 		await get_tree().create_timer(0.25).timeout
 	
 	#cargar Mapa3D
-	ProcessToLoadMapa()
+	_ProcessToLoadMapa()
 	
 	await get_tree().create_timer(0.5).timeout
 	curtain.Hide()
@@ -54,18 +49,19 @@ func GoToEstacion(idEstacion:int):
 	await curtain.OnCurtainCovered
 	
 	if instanceMapa:
-		ProcessToUnloadMapa3D()
+		_ProcessToUnloadMapa()
 	
 	if instanceEstacion:
-		ProcessToUnloadEstacion()
+		_ProcessToUnloadEstacion()
 	
-	ProcessToLoadEstacion()
+	_ProcessToLoadEstacion()
 	lastIdEstacionVisited = idEstacion
 	
 	await get_tree().create_timer(0.5).timeout
 	curtain.Hide()
 
-func ProcessToLoadMapa():
+#region [ Load / Unload Mapa ]
+func _ProcessToLoadMapa():
 	instanceMapa = lvlMapa.instantiate()
 	instanceMapa.process_mode = Node.PROCESS_MODE_ALWAYS
 	sceneParentRoot.add_child(instanceMapa)
@@ -74,15 +70,15 @@ func ProcessToLoadMapa():
 	if not instanceMapa.is_node_ready():
 		await instanceMapa.ready
 	
-	
-	
-	OnInstantiateMapa3D.emit()
+	OnInstantiateMapa.emit()
 
-func ProcessToUnloadMapa3D():
+func _ProcessToUnloadMapa():
 	instanceMapa.free()
 	instanceMapa = null
+#endregion
 
-func ProcessToLoadEstacion():
+#region [ Load / Unload Estacion ]
+func _ProcessToLoadEstacion():
 	instanceEstacion = estacion.LvlEstacion.instantiate()
 	instanceEstacion.process_mode = Node.PROCESS_MODE_ALWAYS
 	sceneParentRoot.add_child(instanceEstacion)
@@ -93,6 +89,7 @@ func ProcessToLoadEstacion():
 	
 	OnInstantiateEstacion.emit()
 
-func ProcessToUnloadEstacion():
+func _ProcessToUnloadEstacion():
 	instanceEstacion.free()
 	instanceEstacion = null
+#endregion
