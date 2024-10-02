@@ -7,7 +7,7 @@ class_name GDs_Scenes_Manager extends Node
 
 signal OnInstantiateMapa
 signal OnInstantiateEstacion
-signal OnUnloadScene
+#signal OnUnloadScene
 
 var instanceEstacion : Node3D
 var instanceMapa : Node3D
