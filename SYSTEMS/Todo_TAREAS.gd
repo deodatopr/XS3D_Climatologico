@@ -4,7 +4,6 @@
 #	BASE DE LA APP
 #===========================================
 
-#- Test endpoint error - WIP
 #- Endpoint graficadora
 
 #===========================================
@@ -20,6 +19,7 @@
 		# WASD (Mov coords local)
 		# Mouse + click (Rot solo Y)
 		
+	#Inputs Control:
 		#Gatillos der (subir/bajar)
 		#Gatillos izq (modo)
 		#D-Pad (UI)
@@ -32,14 +32,14 @@
 #- Sistema camara
 	# movimiento con elastico, tween desacceleracion (CIRC) (Volar lento, que se sienta chido)
 	# rotation para poder ver el cielo y si sueltas se regrese lerp (multiplicado por curva) o ver is con tween nos sirve (TYPE_BACK)
-	# focus en un punto
-	# bounding
 	# *Altura variable (temporal) con gatillos subir y bajar
 	# Dos modos:
 			#Rotacion inclinada (zoom en local)
 			#Rotacion viendo suelo (zoom local)
 	# Si va navegando y detectar si hay montaña para subir o bajar la camara y no colisione o traspase
 		#Idea: ColisionArea3d lanzar rayo y subir camara
+	# bounding
+	# focus en un punto
 #- Minimapa (con icono como camara con angulo de vista)
 	# Que se expanda/minimize al presionarlo
 	# Si presionas un punto en el mapa te lleve ahí
