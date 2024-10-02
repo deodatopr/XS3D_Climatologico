@@ -16,7 +16,7 @@ var estacion: GDs_Data_Estacion
 var lastIdEstacionVisited : int = -1
 
 func Initialize():
-	SIGNALS.OnGoToEstacionBtnPressed.connect(GoToEstacion)
+	#SIGNALS.OnGoToEstacionBtnPressed.connect(GoToEstacion)
 	_ProcessToLoadMapa()
 
 func GoToMapa3D():
