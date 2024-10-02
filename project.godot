@@ -12,7 +12,7 @@ config_version=5
 
 config/name="XS3D_Climatologico"
 config/tags=PackedStringArray("xsoft3d")
-run/main_scene="res://LVLS/Lvl_Main.tscn"
+run/main_scene="res://SCENES/Scn_Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
 
@@ -46,7 +46,7 @@ folder_colors={
 "res://#NoShare/": "red",
 "res://#Studies/": "red",
 "res://CONTENT/": "green",
-"res://LVLS/": "purple",
+"res://SCENES/": "purple",
 "res://SYSTEMS/": "orange",
 "res://SYSTEMS/z_EndPoint Old/": "gray",
 "res://SYSTEMS/z_Graficadora/": "gray",
