@@ -11,6 +11,7 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 	pivot_panning = _pivot_panning
 	
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
+	cam.global_position.y = _modeConfig.initialHeight
 	cam.rotation_degrees.x = _modeConfig.inclination
 	speed_Pan = _modeConfig.speed_panning
 	speed_RotHor = _modeConfig.speed_rotHor

@@ -1,5 +1,9 @@
 class_name GDs_CR_Cam_ModeConfig extends Resource
 
+@export var initialHeight : float:
+	set(value):
+		initialHeight = value
+		emit_changed()
 @export var inclination : float:
 	set(value):
 		inclination = value

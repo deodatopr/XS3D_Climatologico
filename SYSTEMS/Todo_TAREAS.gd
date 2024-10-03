@@ -38,7 +38,8 @@
 			#Rotacion viendo suelo (zoom local) tweenw  diferente zoom
 	# Si va navegando y detectar si hay montaña para subir o bajar la camara y no colisione o traspase
 		#Idea: ColisionArea3d lanzar rayo y subir camara
-	# bounding del mapa
+	# bounding del mapa simple con x+- y z+- limite,  Usar navmesh para ese approach y nos daria la altura de montañas
+	# spring arm para subir la altura de la cámara
 	# focus en un punto
 #- Minimapa (con icono como camara con angulo de vista)
 	# Que se expanda/minimize al presionarlo (solo salga grande)
