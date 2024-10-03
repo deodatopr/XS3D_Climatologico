@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://jkw1uarjdt8w"]
+
+[ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
+[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Inclinada.tres" id="2_jbclm"]
+[ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
+[ext_resource type="Resource" uid="uid://cp3ti5niebxun" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Top.tres" id="3_vumw4"]
+
+[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("movement", "pivot_movement", "cam")]
+script = ExtResource("1_vxe6d")
+movement = NodePath("Movement")
+pivot_movement = NodePath("pivot_Movement")
+cam = NodePath("pivot_Movement/cam")
+cr_cam_Inclinada = ExtResource("2_jbclm")
+cr_cam_Top = ExtResource("3_vumw4")
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("2_s21o3")
+
+[node name="pivot_Movement" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.9674)
+
+[node name="cam" type="Camera3D" parent="pivot_Movement"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.43123, 0)

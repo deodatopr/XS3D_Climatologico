@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=2 format=3 uid="uid://cp3ti5niebxun"]
+
+[ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_0m05u"]
+
+[resource]
+script = ExtResource("1_0m05u")
+initialHeight = 5.0
+inclination = -80.0
+speed_panning = 6.0
+speed_rotHor = 0.5
+speed_rotVert = 1.5
+speed_zoom = 10.0
+allow_RotVert = false

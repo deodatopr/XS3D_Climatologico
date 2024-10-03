@@ -2,11 +2,12 @@ class_name GDs_DataService_Manager extends Node
 
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
-@export var EP_GetAllEstaciones : GDs_EP_GetAllEstaciones
-@export var EP_GetAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
-@export var EP_GetAllEstaciones_Debug : GDs_EP_GetAllEstaciones_Debug
+@export var endpoint : GDs_EP_GetAllEstaciones
+@export var endpoint_Debug : GDs_EP_GetAllEstaciones_Debug
+@export var endpoint_Error : GDs_EP_GetAllEstaciones_Error
 @export var URL : String
 @export var timeToRefresh : float = 4.0
+@export var timeToReconnect_Error : float = 10.0
 @export var timeoutEPGetAllEstaciones : float = 3.0
 @export var timerTicking : Timer
 
@@ -26,13 +27,13 @@ signal OnDataRefresh
 
 func Initialize():
 	#Connect with endpoint GetAllEstacion
-	EP_GetAllEstaciones.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
-	EP_GetAllEstaciones.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
-	EP_GetAllEstaciones.Initialize(URL,timeoutEPGetAllEstaciones)
+	endpoint.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
+	endpoint.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
+	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,endpoint_Debug,endpoint_Error)
 	
 	#Connect with endpoint error
-	EP_GetAllEstaciones_Error.Initialize()
-	EP_GetAllEstaciones_Error.OnFinishError.connect(MakeRequest_GetAllEstaciones)
+	endpoint_Error.Initialize(timeToReconnect_Error)
+	endpoint_Error.OnFinishError.connect(MakeRequest_GetAllEstaciones)
 	
 	#Connect timer to refresh endpoint
 	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)
@@ -43,10 +44,7 @@ func Initialize():
 	estaciones_Estruc_Michoacan = GDs_Data_Estaciones_Estructura.new()
 
 func MakeRequest_GetAllEstaciones():
-	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_EP:
-		EP_GetAllEstaciones.Request_GetAllEstaciones()
-	else:
-		_SkipRequest()
+	endpoint.Request_GetAllEstaciones()
 	
 func GetEstacionById(_id : int) -> GDs_Data_Estacion:
 	for estacion in estaciones:
@@ -63,7 +61,7 @@ func _OnSuccessEP_GetAllEstaciones():
 	_GetDataFromEP_GetAllEstaciones()
 	
 	#Close error popup in case it is opened
-	EP_GetAllEstaciones_Error.Close()
+	endpoint_Error.Close()
 	
 	#Start again the timer
 	if timerTicking.is_stopped():
@@ -71,27 +69,22 @@ func _OnSuccessEP_GetAllEstaciones():
 		
 func _OnFailedEP_GetAllEstaciones():
 	APPSTATE.EP_GetAllEstaciones_State = ENUMS.EP_GetAllEstaciones.Error
-
+	
 	#Update data
 	_GetDataFromEP_GetAllEstaciones()
 	
 	#Open error popup in case it is closed
-	EP_GetAllEstaciones_Error.Open()
+	endpoint_Error.Open()
 	
 	#Stop refresh EP timer
 	timerTicking.stop()
 #endregion
 
 #region [ FILL DATA ]
-func _SkipRequest():
-	_GetDataFromEP_GetAllEstaciones()
-	
-	if timerTicking.is_stopped():
-		timerTicking.start(timeToRefresh)
-
 func _GetDataFromEP_GetAllEstaciones():
-	#Fill Data estaciones from EP | random | empty
-	_FillArrayFromEP()
+	#Get Data estaciones from EP | random | empty
+	estacionesFromEP.clear()
+	estacionesFromEP = endpoint.GetEstaciones()
 	
 	#Use data filled to fetch EP with local or only to update data
 	if isFirstTimeRequestGetAllEstaciones:
@@ -104,19 +97,8 @@ func _GetDataFromEP_GetAllEstaciones():
 	_FillStructure(estaciones_Estruc_Todas)
 	_FillStructure(estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
 	_FillStructure(estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
-		
-	OnDataRefresh.emit()
-
-func _FillArrayFromEP():
-	estacionesFromEP.clear()
 	
-	match APPSTATE.EP_GetAllEstaciones_RequestType:
-		ENUMS.EP_RequestType.From_EP:
-			estacionesFromEP = EP_GetAllEstaciones.GetEstaciones()
-		ENUMS.EP_RequestType.From_Debug_Random:
-			estacionesFromEP = EP_GetAllEstaciones_Debug.GetEstaciones_Random()
-		ENUMS.EP_RequestType.From_Debug_Error:
-			estacionesFromEP = EP_GetAllEstaciones_Error.GetEstaciones_Empty()
+	OnDataRefresh.emit()
 
 func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	for estacionEP in arrayEndPoint:
@@ -157,22 +139,21 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	#Update data only for properties from EP
 	
 	for estacionEP in arrayEndPoint:
-		var idxEstacionToUpdate :  int = estaciones.bsearch(GetEstacionById(estacionEP.id))
-				
-		estaciones[idxEstacionToUpdate].fecha = estacionEP.fecha
-		estaciones[idxEstacionToUpdate].nivel = estacionEP.nivel
-		estaciones[idxEstacionToUpdate].pptn_pluvial = estacionEP.pptn_pluvial
-		estaciones[idxEstacionToUpdate].humedad = estacionEP.humedad
-		estaciones[idxEstacionToUpdate].evaporacion = estacionEP.evaporacion
-		estaciones[idxEstacionToUpdate].intsdad_viento = estacionEP.intsdad_viento
-		estaciones[idxEstacionToUpdate].temperatura = estacionEP.temperatura
-		estaciones[idxEstacionToUpdate].disp_utr = estacionEP.disp_utr
-		estaciones[idxEstacionToUpdate].fallo_alim_ac = estacionEP.fallo_alim_ac
-		estaciones[idxEstacionToUpdate].volt_bat_resp = estacionEP.volt_bat_resp
-		estaciones[idxEstacionToUpdate].enlace = estacionEP.enlace
-		estaciones[idxEstacionToUpdate].energia_electrica = estacionEP.energia_electrica
-		estaciones[idxEstacionToUpdate].rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
-		estaciones[idxEstacionToUpdate].rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
+		var estacionToUpdate = GetEstacionById(estacionEP.id)
+		estacionToUpdate.fecha = estacionEP.fecha
+		estacionToUpdate.nivel = estacionEP.nivel
+		estacionToUpdate.pptn_pluvial = estacionEP.pptn_pluvial
+		estacionToUpdate.humedad = estacionEP.humedad
+		estacionToUpdate.evaporacion = estacionEP.evaporacion
+		estacionToUpdate.intsdad_viento = estacionEP.intsdad_viento
+		estacionToUpdate.temperatura = estacionEP.temperatura
+		estacionToUpdate.disp_utr = estacionEP.disp_utr
+		estacionToUpdate.fallo_alim_ac = estacionEP.fallo_alim_ac
+		estacionToUpdate.volt_bat_resp = estacionEP.volt_bat_resp
+		estacionToUpdate.enlace = estacionEP.enlace
+		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
+		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
+		estacionToUpdate.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
 		
 func _FillStructure(_estaciones_Estruc : GDs_Data_Estaciones_Estructura, _estado : int = -1):
 	_estaciones_Estruc.estaciones.clear()

@@ -7,7 +7,7 @@ class_name GDs_Scenes_Manager extends Node
 
 signal OnInstantiateMapa
 signal OnInstantiateEstacion
-signal OnUnloadScene
+#signal OnUnloadScene
 
 var instanceEstacion : Node3D
 var instanceMapa : Node3D
@@ -16,7 +16,7 @@ var estacion: GDs_Data_Estacion
 var lastIdEstacionVisited : int = -1
 
 func Initialize():
-	SIGNALS.OnGoToEstacionBtnPressed.connect(GoToEstacion)
+	#SIGNALS.OnGoToEstacionBtnPressed.connect(GoToEstacion)
 	_ProcessToLoadMapa()
 
 func GoToMapa3D():

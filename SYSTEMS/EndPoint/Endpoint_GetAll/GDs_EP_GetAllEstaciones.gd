@@ -6,22 +6,42 @@ class_name GDs_EP_GetAllEstaciones extends Node
 signal OnRequest_Success
 signal OnRequest_Failed
 
+var getAllEstaciones_Debug : GDs_EP_GetAllEstaciones_Debug
+var getAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
 var arrayEstaciones : Array[GDs_Data_EP_Estacion] = []
 var estacionesFromServer = {"Estaciones" : arrayEstaciones}
 var URL : String
 var isBusy : bool
 
-func Initialize(_url : String, _timeout : float):
+func Initialize(_url : String, _timeout : float, _estacionesDebug : GDs_EP_GetAllEstaciones_Debug, _estacionesError : GDs_EP_GetAllEstaciones_Error):
 	URL = _url
 	http_request.timeout = _timeout
 	http_request.request_completed.connect(_OnRequestCompleted_GetAllEstaciones)
+	
+	getAllEstaciones_Debug = _estacionesDebug
+	getAllEstaciones_Error = _estacionesError
 	
 func Request_GetAllEstaciones():
 	if isBusy:
 		return
 
 	isBusy = true
-	http_request.request(URL)
+	
+	#Request endpoint
+	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_EP:
+		http_request.request(URL)
+	
+	#Debug random
+	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Random:
+		arrayEstaciones = getAllEstaciones_Debug.GetEstaciones_Random()
+		OnRequest_Success.emit()
+		isBusy = false
+		
+	#Debug error
+	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Error:
+		arrayEstaciones = getAllEstaciones_Error.GetEstaciones_Empty()
+		OnRequest_Failed.emit()
+		isBusy = false
 	
 func GetEstaciones()-> Array[GDs_Data_EP_Estacion]:
 	return arrayEstaciones

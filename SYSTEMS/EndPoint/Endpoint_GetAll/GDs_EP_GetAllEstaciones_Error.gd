@@ -4,7 +4,6 @@ class_name GDs_EP_GetAllEstaciones_Error extends Node
 
 @export_category("GetAllEstaciones")
 @export var timer : Timer
-@export var timeToRetry : float
 
 @export_category("Panel")
 @export var panelBgk : Control
@@ -18,20 +17,25 @@ class_name GDs_EP_GetAllEstaciones_Error extends Node
 
 signal OnFinishError
 
+var timeToRetry : float = 10
+var originalTimeRetry : float
 var panelErrorIsOpened : bool
 
-func Initialize():
+func Initialize(_timeToRetry : float):
 	timer.timeout.connect(_OnTimeOut)
 	btnReconectar.pressed.connect(_OnBtnReintentarPressed)
 	
+	originalTimeRetry = _timeToRetry
 	labelErrorType.text =  str("Sin conexión reintentando en: ")
 	
 func Open():
 	if not panelErrorIsOpened:
 		_AnimPanelError(true)
 		panelErrorIsOpened = true
-		if timer.is_stopped():
-			timer.start(timeToRetry)
+	
+	timer.stop()
+	timeToRetry = originalTimeRetry
+	timer.start(timeToRetry)
 	
 func Close():
 	if panelErrorIsOpened:
@@ -80,10 +84,13 @@ func _OnTimeOut():
 	OnFinishError.emit()
 
 func _OnBtnReintentarPressed():
+	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Error:
+		APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
+	
 	OnFinishError.emit()
+	timer.stop()
 		
 func _AnimPanelError(show : bool):
-	print("AnimPanel: ",show)
 	if show:
 		panelBgk.show()
 		panelError.show()
