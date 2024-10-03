@@ -19,3 +19,9 @@ enum Estado
 	Mexico,
 	Michoacan
 }
+
+enum Cam_Mode
+{
+	Inclinada,
+	Top
+}
