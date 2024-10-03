@@ -25,7 +25,7 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 
 func _physics_process(delta):
 	_Panning(delta)
-	_Zoom(delta)
+	_Height(delta)
 	_Rotation_Hor(delta)
 	
 	#if allow_RotVert:
@@ -78,9 +78,9 @@ func _Rotation_Vert(_delta : float):
 		if abs(axisY) > 0.1:
 			cam.rotation_degrees.x += (-axisY * speed_RotVert * _delta)
 
-func _Zoom(_delta : float):
-	if Input.is_action_pressed("3DMove_Zoom_+"):
-		cam.global_position += (-cam.global_basis.z * speed_Zoom * _delta)
+func _Height(_delta : float):
+	if Input.is_action_pressed("3DMove_Height_+") or Input.is_action_just_released("3DMove_Height_+"):
+		cam.global_position.y +=  speed_Zoom * _delta
 		
-	if Input.is_action_pressed("3DMove_Zoom_-"):
-		cam.global_position -= (-cam.global_basis.z * speed_Zoom * _delta)
+	if Input.is_action_pressed("3DMove_Height_-") or Input.is_action_just_released("3DMove_Height_-"):
+		cam.global_position.y -= speed_Zoom * _delta
