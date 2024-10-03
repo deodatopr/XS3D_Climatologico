@@ -28,8 +28,8 @@ func _physics_process(delta):
 	_Zoom(delta)
 	_Rotation_Hor(delta)
 	
-	if allow_RotVert:
-		_Rotation_Vert(delta)
+	#if allow_RotVert:
+		#_Rotation_Vert(delta)
 
 func _Panning(_delta:float):
 	if Input.is_action_pressed("3DMove_Forward"):
