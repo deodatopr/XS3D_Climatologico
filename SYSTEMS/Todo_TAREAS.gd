@@ -16,8 +16,11 @@
 	# Botones para UI
 	
 	#Inputs PC:
-		# WASD (Mov coords local)
-		# Mouse + click (Rot solo Y)
+		# WASD (Mov)
+		# Q - zoom +
+		# E - zoom -
+		# TAB - modo
+		# Mouse + click (Rot)
 		
 	#Inputs Control:
 		#Gatillos der (subir/bajar)

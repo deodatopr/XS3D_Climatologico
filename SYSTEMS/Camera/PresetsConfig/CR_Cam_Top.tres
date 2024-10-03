@@ -8,4 +8,6 @@ initialHeight = 5.0
 inclination = -80.0
 speed_panning = 6.0
 speed_rotHor = 0.5
+speed_rotVert = 1.5
 speed_zoom = 10.0
+allow_RotVert = false
