@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d4fqdfnjwyd21"]
 
 [ext_resource type="PackedScene" uid="uid://cir46dl2b7iex" path="res://CONTENT/Prototipo/Msh_Mapa Sector 1.glb" id="1_7en5m"]
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Camera_manager.tscn" id="2_ye5ed"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,7 +16,7 @@ sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Estacion1" type="Node3D"]
+[node name="test_cam" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r00s3")
