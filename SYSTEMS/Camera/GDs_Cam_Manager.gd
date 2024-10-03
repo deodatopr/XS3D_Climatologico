@@ -25,4 +25,3 @@ func _UpdatedCamConfig():
 		movement.SetModeConfig(cr_cam_Inclinada)
 	else:
 		movement.SetModeConfig(cr_cam_Top)
-		

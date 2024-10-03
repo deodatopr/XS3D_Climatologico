@@ -11,7 +11,7 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 	pivot_panning = _pivot_panning
 	
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
-	cam.rotate_x(deg_to_rad(_modeConfig.inclination))
+	cam.rotation_degrees.x = _modeConfig.inclination
 	speed_Pan = _modeConfig.speed_panning
 	speed_RotHor = _modeConfig.speed_rotHor
 	speed_Zoom = _modeConfig.speed_zoom
@@ -19,6 +19,7 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 func _physics_process(delta):
 	_Panning(delta)
 	_Rotation(delta)
+	_Zoom(delta)
 
 func _Panning(_delta:float):
 	if Input.is_action_pressed("3DMove_Forward"):
@@ -52,4 +53,8 @@ func _Rotation(_delta : float):
 			pivot_panning.rotate_y(-right_x * speed_RotHor * _delta)
 
 func _Zoom(_delta : float):
-	pass
+	if Input.is_action_pressed("3DMove_Zoom_+"):
+		cam.global_position += (-cam.basis.z * speed_Zoom * _delta)
+		
+	if Input.is_action_pressed("3DMove_Zoom_-"):
+		cam.global_position -= (-cam.basis.z * speed_Zoom * _delta)

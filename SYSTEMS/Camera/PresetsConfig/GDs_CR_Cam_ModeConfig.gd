@@ -12,7 +12,7 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		speed_rotHor = value
 		emit_changed()
-@export_range(1,5) var speed_zoom : float:
+@export_range(5,15) var speed_zoom : float:
 	set(value):
 		speed_zoom = value
 		emit_changed()
