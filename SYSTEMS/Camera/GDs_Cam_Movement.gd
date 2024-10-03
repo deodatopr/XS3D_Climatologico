@@ -55,7 +55,7 @@ func _Rotation(_delta : float):
 
 func _Zoom(_delta : float):
 	if Input.is_action_pressed("3DMove_Zoom_+"):
-		cam.global_position += (-cam.basis.z * speed_Zoom * _delta)
+		cam.global_position += (-cam.global_basis.z * speed_Zoom * _delta)
 		
 	if Input.is_action_pressed("3DMove_Zoom_-"):
-		cam.global_position -= (-cam.basis.z * speed_Zoom * _delta)
+		cam.global_position -= (-cam.global_basis.z * speed_Zoom * _delta)
