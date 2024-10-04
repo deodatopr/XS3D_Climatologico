@@ -78,7 +78,8 @@ func _Rotation_Hor(_delta : float):
 		
 		if abs(mouseDir.x) > THRESHOLD_ROT_MOUSE:
 			pivot_panning.rotate_y(-dirRotX * speed_RotHor * _delta)
-
+			SIGNALS.OnCameraRotation.emit(dirRotX)
+			
 	#Control
 	var joy_id = 0 
 	if Input.is_joy_known(joy_id):
@@ -86,6 +87,7 @@ func _Rotation_Hor(_delta : float):
 
 		if abs(axisX) > 0.5:
 			pivot_panning.rotate_y(-axisX * speed_RotHor * _delta)
+			SIGNALS.OnCameraRotation.emit(axisX)
 			
 func _Rotation_Vert(_delta : float):
 	#Mouse
