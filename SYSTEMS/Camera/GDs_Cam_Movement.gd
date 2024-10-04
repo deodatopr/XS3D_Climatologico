@@ -104,9 +104,38 @@ func _Rotation_Vert(_delta : float):
 		if abs(axisY) > 0.1:
 			cam.rotation_degrees.x += (-axisY * speed_RotVert * _delta)
 
+
+var height_acceleration := 15.0
+var height_max_acceleration := 1.0
+var height_deceleration := .6
+var height_velocity := 0.0
+var height_dir := 0
+var height_lastDir := 0
+
 func _Height(_delta : float):
-	if Input.is_action_pressed("3DMove_Height_+") or Input.is_action_just_released("3DMove_Height_+"):
-		cam.global_position.y +=  speed_Height * _delta
-		
-	if Input.is_action_pressed("3DMove_Height_-") or Input.is_action_just_released("3DMove_Height_-"):
-		cam.global_position.y -= speed_Height * _delta
+	#Input
+	if Input.is_action_pressed("3DMove_Height_+") or Input.is_action_just_pressed("3DMove_Height_+"):
+		height_dir = 1
+		height_lastDir = 1
+	elif Input.is_action_pressed("3DMove_Height_-") or Input.is_action_just_pressed("3DMove_Height_-"):
+		height_dir = -1
+		height_lastDir = -1
+	else:
+		height_dir = 0
+	
+	#Acceleration
+	if height_dir != 0:
+		height_velocity += height_dir * height_acceleration * _delta
+		#Limit acceleration
+		if abs(height_velocity) > height_max_acceleration:
+			height_velocity = sign(height_velocity) * height_max_acceleration
+	else:
+		#Deceleration
+		if abs(height_velocity) > 0:
+			height_velocity += (-height_lastDir) * height_deceleration * _delta
+
+			if abs(height_velocity) < 0.01:
+				height_velocity = 0.0
+	
+	#Apply velocity
+	cam.global_position.y += height_velocity * _delta
