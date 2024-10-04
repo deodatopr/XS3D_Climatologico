@@ -8,7 +8,7 @@ var speed_RotVert : float
 var speed_Zoom : float
 var allow_RotVert : bool
 
-var currentMouseVelocity : Vector2
+const THRESHOLD_ROT_MOUSE : float = .3
 
 func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 	cam = _cam
@@ -47,29 +47,29 @@ func _Panning(_delta:float):
 func _Rotation_Hor(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouseDir = Input.get_last_mouse_velocity()
+		var mouseDir = Input.get_last_mouse_velocity().normalized()
 		var dirRotX = sign(mouseDir.x)
 		
-		if abs(mouseDir.x) > 0.1:
+		if abs(mouseDir.x) > THRESHOLD_ROT_MOUSE:
 			pivot_panning.rotate_y(-dirRotX * speed_RotHor * _delta)
-	
+
 	#Control
 	var joy_id = 0 
 	if Input.is_joy_known(joy_id):
 		var axisX = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X)
 
-		if abs(axisX) > 0.1:
+		if abs(axisX) > 0.5:
 			pivot_panning.rotate_y(-axisX * speed_RotHor * _delta)
 			
 func _Rotation_Vert(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouseDir = Input.get_last_mouse_velocity()
+		var mouseDir = Input.get_last_mouse_velocity().normalized()
 		var dirRotY = sign(mouseDir.y)
 		
-		if abs(mouseDir.y) > 0.1:
+		if abs(mouseDir.y) > THRESHOLD_ROT_MOUSE:
 			cam.rotation_degrees.x += (-dirRotY * speed_RotVert * _delta)
-	
+
 	#Control
 	var joy_id = 0 
 	if Input.is_joy_known(joy_id):
