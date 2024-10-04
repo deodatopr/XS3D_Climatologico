@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://s3io6lwpsvtq"]
+
+[ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="1_1kj78"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_hfqm5"]
+[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://SYSTEMS/RenderTools/Viewport/Pfb_Viewport.tscn" id="3_d1vg5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_al770"]
+sky_material = SubResource("ProceduralSkyMaterial_u3110")
+
+[sub_resource type="Environment" id="Environment_nudmr"]
+background_mode = 2
+sky = SubResource("Sky_al770")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.466332, 0.615, 0.848622, 1)
+fog_light_energy = 3.0
+fog_density = 1.0
+fog_depth_end = 50.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
+dof_blur_near_enabled = true
+dof_blur_near_distance = 10.0
+dof_blur_near_transition = 10.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nudmr")
+camera_attributes = SubResource("CameraAttributesPractical_jryic")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera_manager" parent="." instance=ExtResource("2_hfqm5")]
+
+[node name="cam" parent="Camera_manager/pivot_Movement" index="0"]
+far = 50.0
+
+[node name="Msh" type="Node3D" parent="."]
+
+[node name="Msh_mapita" parent="Msh" instance=ExtResource("1_1kj78")]
+
+[node name="Msh_mapita2" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.586246, 0, -13.1698)
+
+[node name="Msh_mapita3" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05647, 0, 0)
+
+[node name="Msh_mapita4" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64271, 0, -13.1698)
+
+[node name="Msh_mapita5" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5881, 0, 0)
+
+[node name="Msh_mapita6" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1744, 0, -13.1698)
+
+[node name="Msh_mapita7" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.4561)
+
+[node name="Msh_mapita8" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.586246, 0, -37.6259)
+
+[node name="Msh_mapita9" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05647, 0, -24.4561)
+
+[node name="Msh_mapita10" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64271, 0, -37.6259)
+
+[node name="Msh_mapita11" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5881, 0, -24.4561)
+
+[node name="Msh_mapita12" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1744, 0, -37.6259)
+
+[node name="Msh_mapita13" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9615, 0, 0)
+
+[node name="Msh_mapita14" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5477, 0, -13.1698)
+
+[node name="Msh_mapita15" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0179, 0, 0)
+
+[node name="Msh_mapita16" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6042, 0, -13.1698)
+
+[node name="Msh_mapita17" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5496, 0, 0)
+
+[node name="Msh_mapita18" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1358, 0, -13.1698)
+
+[node name="Msh_mapita19" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9615, 0, -24.4561)
+
+[node name="Msh_mapita20" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5477, 0, -37.6259)
+
+[node name="Msh_mapita21" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0179, 0, -24.4561)
+
+[node name="Msh_mapita22" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6042, 0, -37.6259)
+
+[node name="Msh_mapita23" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5496, 0, -24.4561)
+
+[node name="Msh_mapita24" parent="Msh" instance=ExtResource("1_1kj78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1358, 0, -37.6259)
+
+[node name="RENDER TOOL (Viewport)" parent="." instance=ExtResource("3_d1vg5")]
+
+[editable path="Camera_manager"]
+[editable path="Msh/Msh_mapita"]
+[editable path="Msh/Msh_mapita2"]
+[editable path="Msh/Msh_mapita3"]
+[editable path="Msh/Msh_mapita4"]
+[editable path="Msh/Msh_mapita5"]
+[editable path="Msh/Msh_mapita6"]
+[editable path="Msh/Msh_mapita7"]
+[editable path="Msh/Msh_mapita8"]
+[editable path="Msh/Msh_mapita9"]
+[editable path="Msh/Msh_mapita10"]
+[editable path="Msh/Msh_mapita11"]
+[editable path="Msh/Msh_mapita12"]
+[editable path="Msh/Msh_mapita13"]
+[editable path="Msh/Msh_mapita14"]
+[editable path="Msh/Msh_mapita15"]
+[editable path="Msh/Msh_mapita16"]
+[editable path="Msh/Msh_mapita17"]
+[editable path="Msh/Msh_mapita18"]
+[editable path="Msh/Msh_mapita19"]
+[editable path="Msh/Msh_mapita20"]
+[editable path="Msh/Msh_mapita21"]
+[editable path="Msh/Msh_mapita22"]
+[editable path="Msh/Msh_mapita23"]
+[editable path="Msh/Msh_mapita24"]
