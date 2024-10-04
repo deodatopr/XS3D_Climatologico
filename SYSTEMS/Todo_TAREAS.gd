@@ -62,3 +62,6 @@
 #- Crear escena de particulares para tener base de flujo completo
 #- Orquestador particulares
 #- MngParticulares
+
+#Extras
+#Traducir los grados en la dirección del viento

@@ -2,11 +2,15 @@ class_name GDs_CamMovement extends Node
 
 var cam : Node3D
 var pivot_panning : Node3D
-var speed_Pan : float
+var acceleration : float
+var deceleration : float
+var max_acceleration : float
 var speed_RotHor : float
 var speed_RotVert : float
-var speed_Zoom : float
+var speed_Height : float
 var allow_RotVert : bool
+
+var velocity : Vector3 = Vector3.ZERO
 
 const THRESHOLD_ROT_MOUSE : float = .3
 
@@ -16,11 +20,13 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 	
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	cam.global_position.y = _modeConfig.initialHeight
-	cam.rotation_degrees.x = _modeConfig.inclination
-	speed_Pan = _modeConfig.speed_panning
+	cam.rotation_degrees.x = _modeConfig.initialInclination
+	acceleration = _modeConfig.acceleration
+	max_acceleration = _modeConfig.max_acceleration
+	deceleration = _modeConfig.deceleration
 	speed_RotHor = _modeConfig.speed_rotHor
 	speed_RotVert = _modeConfig.speed_rotVert
-	speed_Zoom = _modeConfig.speed_zoom
+	speed_Height = _modeConfig.speed_height
 	allow_RotVert = _modeConfig.allow_RotVert
 
 func _physics_process(delta):
@@ -32,17 +38,37 @@ func _physics_process(delta):
 		_Rotation_Vert(delta)
 
 func _Panning(_delta:float):
+	var inputDir = Vector3.ZERO
+	
 	if Input.is_action_pressed("3DMove_Forward"):
-		pivot_panning.global_position += (pivot_panning.basis.z * speed_Pan * _delta)
+		inputDir += pivot_panning.basis.z
 	
 	if Input.is_action_pressed("3DMove_Backward"):
-		pivot_panning.global_position += (-pivot_panning.basis.z * speed_Pan * _delta)
+		inputDir += -pivot_panning.basis.z
 		
 	if Input.is_action_pressed("3DMove_Right"):
-		pivot_panning.global_position += (-pivot_panning.basis.x * speed_Pan * _delta)
+		inputDir += -pivot_panning.basis.x
 	
 	if Input.is_action_pressed("3DMove_Left"):
-		pivot_panning.global_position += (pivot_panning.basis.x * speed_Pan * _delta)
+		inputDir += pivot_panning.basis.x
+	
+	#Acceleration
+	if inputDir.length() > 0:
+		inputDir = inputDir.normalized()
+		velocity += inputDir * acceleration * _delta
+		
+		#Limit acceleration
+		if velocity.length() > max_acceleration:
+			velocity = velocity.normalized() * max_acceleration
+	else:
+		#Deceleration
+		if velocity.length() > 0:
+			velocity -= velocity.normalized() * deceleration * _delta
+			if velocity.length() < 0.1:
+				velocity = Vector3.ZERO
+	
+	#Apply
+	pivot_panning.global_position += velocity * _delta
 		
 func _Rotation_Hor(_delta : float):
 	#Mouse
@@ -80,7 +106,7 @@ func _Rotation_Vert(_delta : float):
 
 func _Height(_delta : float):
 	if Input.is_action_pressed("3DMove_Height_+") or Input.is_action_just_released("3DMove_Height_+"):
-		cam.global_position.y +=  speed_Zoom * _delta
+		cam.global_position.y +=  speed_Height * _delta
 		
 	if Input.is_action_pressed("3DMove_Height_-") or Input.is_action_just_released("3DMove_Height_-"):
-		cam.global_position.y -= speed_Zoom * _delta
+		cam.global_position.y -= speed_Height * _delta

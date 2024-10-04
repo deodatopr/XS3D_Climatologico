@@ -5,9 +5,11 @@
 [resource]
 script = ExtResource("1_0m05u")
 initialHeight = 5.0
-inclination = -80.0
+initialInclination = 90.0
 allow_RotVert = false
-speed_panning = 6.0
+acceleration = 5.0
+max_acceleration = 10.0
+deceleration = 8.0
 speed_rotHor = 0.5
 speed_rotVert = 1.5
-speed_zoom = 10.0
+speed_height = 0.0

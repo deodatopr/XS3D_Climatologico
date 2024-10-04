@@ -5,9 +5,11 @@
 [resource]
 script = ExtResource("1_hx4by")
 initialHeight = 3.5
-inclination = -35.0
+initialInclination = 35.0
 allow_RotVert = true
-speed_panning = 10.0
+acceleration = 8.0
+max_acceleration = 8.0
+deceleration = 15.0
 speed_rotHor = 1.5
 speed_rotVert = 30.0
-speed_zoom = 10.0
+speed_height = 0.0
