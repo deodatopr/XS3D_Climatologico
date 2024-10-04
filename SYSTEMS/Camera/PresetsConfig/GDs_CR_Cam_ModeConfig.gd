@@ -13,17 +13,17 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 		allow_RotVert = value
 		emit_changed()
 @export_group("Panning")
-@export_range(3,15) var acceleration : float:
+@export_range(3,15) var pan_acceleration : float:
 	set(value):
-		acceleration = value
+		pan_acceleration = value
 		emit_changed()
-@export_range(3,15) var max_acceleration : float:
+@export_range(3,15) var pan_max_acceleration : float:
 	set(value):
-		max_acceleration = value
+		pan_max_acceleration = value
 		emit_changed()
-@export_range(5,20) var deceleration : float:
+@export_range(5,20) var pan_deceleration : float:
 	set(value):
-		deceleration = value
+		pan_deceleration = value
 		emit_changed()
 @export_group("Rotation")
 @export_range(.5,1.5) var speed_rotHor : float:
@@ -35,7 +35,15 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 		speed_rotVert = value
 		emit_changed()
 @export_group("Height")
-@export_range(5,15) var speed_height : float:
+@export_range(12,20) var height_acceleration:
 	set(value):
-		speed_height = value
+		height_acceleration = value
+		emit_changed()
+@export_range(0.5,3,0.25)var height_max_acceleration:
+	set(value):
+		height_max_acceleration = value
+		emit_changed()
+@export_range(.3,1)var height_deceleration:
+	set(value):
+		height_deceleration = value
 		emit_changed()

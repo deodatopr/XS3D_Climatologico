@@ -2,15 +2,27 @@ class_name GDs_CamMovement extends Node
 
 var cam : Node3D
 var pivot_panning : Node3D
-var acceleration : float
-var deceleration : float
-var max_acceleration : float
+
+#Panning
+var pan_acceleration : float
+var pan_deceleration : float
+var pan_max_acceleration : float
+
+var pan_velocity : Vector3 = Vector3.ZERO
+
+#Rotation
 var speed_RotHor : float
 var speed_RotVert : float
-var speed_Height : float
 var allow_RotVert : bool
 
-var velocity : Vector3 = Vector3.ZERO
+#Height
+var height_acceleration
+var height_max_acceleration
+var height_deceleration
+
+var height_velocity := 0.0
+var height_dir := 0
+var height_lastDir := 0
 
 const THRESHOLD_ROT_MOUSE : float = .3
 
@@ -21,13 +33,21 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	cam.global_position.y = _modeConfig.initialHeight
 	cam.rotation_degrees.x = _modeConfig.initialInclination
-	acceleration = _modeConfig.acceleration
-	max_acceleration = _modeConfig.max_acceleration
-	deceleration = _modeConfig.deceleration
+	
+	#Pannning
+	pan_acceleration = _modeConfig.pan_acceleration
+	pan_max_acceleration = _modeConfig.pan_max_acceleration
+	pan_deceleration = _modeConfig.pan_deceleration
+	
+	#Rotation
 	speed_RotHor = _modeConfig.speed_rotHor
 	speed_RotVert = _modeConfig.speed_rotVert
-	speed_Height = _modeConfig.speed_height
 	allow_RotVert = _modeConfig.allow_RotVert
+	
+	#Height
+	height_acceleration = _modeConfig.height_acceleration
+	height_max_acceleration = _modeConfig.height_max_acceleration
+	height_deceleration = _modeConfig.height_deceleration
 
 func _physics_process(delta):
 	_Panning(delta)
@@ -55,21 +75,22 @@ func _Panning(_delta:float):
 	#Acceleration
 	if inputDir.length() > 0:
 		inputDir = inputDir.normalized()
-		velocity += inputDir * acceleration * _delta
+		pan_velocity += inputDir * pan_acceleration * _delta
 		
-		#Limit acceleration
-		if velocity.length() > max_acceleration:
-			velocity = velocity.normalized() * max_acceleration
+		#Limit pan_acceleration
+		if pan_velocity.length() > pan_max_acceleration:
+			pan_velocity = pan_velocity.normalized() * pan_max_acceleration
 	else:
 		#Deceleration
-		if velocity.length() > 0:
-			velocity -= velocity.normalized() * deceleration * _delta
-			if velocity.length() < 0.1:
-				velocity = Vector3.ZERO
+		if pan_velocity.length() > 0:
+			pan_velocity -= pan_velocity.normalized() * pan_deceleration * _delta
+			if pan_velocity.length() < 0.1:
+				pan_velocity = Vector3.ZERO
 	
 	#Apply
-	pivot_panning.global_position += velocity * _delta
-		
+	pivot_panning.global_position += pan_velocity * _delta
+
+
 func _Rotation_Hor(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -89,6 +110,9 @@ func _Rotation_Hor(_delta : float):
 			pivot_panning.rotate_y(-axisX * speed_RotHor * _delta)
 			SIGNALS.OnCameraRotation.emit(axisX)
 			
+func CambiarInt(myint: int):
+	myint = 5
+
 func _Rotation_Vert(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -107,13 +131,6 @@ func _Rotation_Vert(_delta : float):
 			cam.rotation_degrees.x += (-axisY * speed_RotVert * _delta)
 
 
-var height_acceleration := 15.0
-var height_max_acceleration := 1.0
-var height_deceleration := .6
-var height_velocity := 0.0
-var height_dir := 0
-var height_lastDir := 0
-
 func _Height(_delta : float):
 	#Input
 	if Input.is_action_pressed("3DMove_Height_+") or Input.is_action_just_pressed("3DMove_Height_+"):
@@ -128,7 +145,7 @@ func _Height(_delta : float):
 	#Acceleration
 	if height_dir != 0:
 		height_velocity += height_dir * height_acceleration * _delta
-		#Limit acceleration
+		#Limit pan_acceleration
 		if abs(height_velocity) > height_max_acceleration:
 			height_velocity = sign(height_velocity) * height_max_acceleration
 	else:
@@ -139,5 +156,5 @@ func _Height(_delta : float):
 			if abs(height_velocity) < 0.01:
 				height_velocity = 0.0
 	
-	#Apply velocity
+	#Apply pan_velocity
 	cam.global_position.y += height_velocity * _delta
