@@ -8,7 +8,7 @@ var speed_RotVert : float
 var speed_Zoom : float
 var allow_RotVert : bool
 
-const THRESHOLD_ROT_MOUSE : float = .8
+const THRESHOLD_ROT_MOUSE : float = .3
 
 func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 	cam = _cam
