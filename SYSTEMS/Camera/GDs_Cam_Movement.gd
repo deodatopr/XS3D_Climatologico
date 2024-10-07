@@ -11,14 +11,12 @@ var pan_max_acceleration : float
 var pan_velocity : Vector3 = Vector3.ZERO
 
 #Rotation
-var speed_RotHor : float
-var speed_RotVert : float
-
-var rotHor_speed = 1
+var rotHor_speed : float
 var rotHor_velocity : float
-var rotHor_deceleration : float = .035
-var rotHor_isDeceleratiing : bool
-var allow_RotVert : bool
+var rotHor_deceleration : float
+
+var rotVert_speed : float
+var rotVert_allow : bool
 
 #Height
 var height_speed
@@ -44,9 +42,10 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	pan_deceleration = _modeConfig.pan_deceleration
 	
 	#Rotation
-	speed_RotHor = _modeConfig.speed_rotHor
-	speed_RotVert = _modeConfig.speed_rotVert
-	allow_RotVert = _modeConfig.allow_RotVert
+	rotHor_speed = _modeConfig.rotHor_speed
+	rotHor_deceleration = _modeConfig.rotHor_deceleration
+	rotVert_speed = _modeConfig.rotVert_speed
+	rotVert_allow = _modeConfig.rotVert_allow
 	
 	#Height
 	height_speed = _modeConfig.height_speed
@@ -57,7 +56,7 @@ func _physics_process(delta):
 	_Height(delta)
 	_Rotation_Hor(delta)
 	
-	if allow_RotVert:
+	if rotVert_allow:
 		_Rotation_Vert(delta)
 
 func _Panning(_delta:float):
@@ -131,11 +130,9 @@ func _Rotation_Hor(_delta : float):
 	var rotHor_velocity_abs = abs(rotHor_velocity)
 	var dir = sign(rotHor_velocity)
 	if rotHorReleased and rotHor_velocity_abs > 0:
-		rotHor_isDeceleratiing = true
 		rotHor_velocity -= dir * rotHor_deceleration * _delta
 		if rotHor_velocity_abs < 0.0001:
 			rotHor_velocity = 0
-			rotHor_isDeceleratiing = false
 		
 		pivot_panning.rotate_y(rotHor_velocity)
 
@@ -152,7 +149,7 @@ func _Rotation_Vert(_delta : float):
 		var dirRotY = sign(mouseDir.y)
 		
 		if abs(mouseDir.y) > THRESHOLD_ROT_MOUSE:
-			cam.rotation_degrees.x += (-dirRotY * speed_RotVert * _delta)
+			cam.rotation_degrees.x += (-dirRotY * rotVert_speed * _delta)
 
 	#Control
 	var joy_id = 0 
@@ -160,7 +157,7 @@ func _Rotation_Vert(_delta : float):
 		var axisY = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_Y)
 
 		if abs(axisY) > 0.1:
-			cam.rotation_degrees.x += (-axisY * speed_RotVert * _delta)
+			cam.rotation_degrees.x += (-axisY * rotVert_speed * _delta)
 
 
 func _Height(_delta : float):
