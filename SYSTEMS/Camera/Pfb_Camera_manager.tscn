@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
-[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Inclinada.tres" id="2_jbclm"]
+[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Bottom.tres" id="2_jbclm"]
 [ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
 [ext_resource type="Resource" uid="uid://cp3ti5niebxun" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Top.tres" id="3_vumw4"]
 
@@ -10,7 +10,7 @@ script = ExtResource("1_vxe6d")
 movement = NodePath("Movement")
 pivot_movement = NodePath("pivot_Movement")
 cam = NodePath("pivot_Movement/cam")
-cr_cam_Inclinada = ExtResource("2_jbclm")
+cr_cam_Bottom = ExtResource("2_jbclm")
 cr_cam_Top = ExtResource("3_vumw4")
 
 [node name="Movement" type="Node" parent="."]

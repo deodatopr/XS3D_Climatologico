@@ -1,7 +1,8 @@
 class_name GDs_CamMovement extends Node
 
-var cam : Node3D
+var cam : Camera3D
 var pivot_panning : Node3D
+var camFov : float
 
 #Panning
 var pan_acceleration : float
@@ -22,9 +23,12 @@ var rotVert_allow : bool
 var height_speed
 var height_deceleration
 
-var height_velocity := 0.0
-var height_dir := 0
-var height_lastDir := 0
+var height_velocity : float
+var height_dir : int
+var height_lastDir : int
+
+var height_limit_Max : float
+var height_limit_Min : float
 
 const THRESHOLD_ROT_MOUSE : float = .3
 
@@ -33,8 +37,10 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 	pivot_panning = _pivot_panning
 	
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
+	#Cam
 	cam.global_position.y = _modeConfig.initialHeight
 	cam.rotation_degrees.x = _modeConfig.initialInclination
+	cam.fov = _modeConfig.initialFOV
 	
 	#Pannning
 	pan_acceleration = _modeConfig.pan_acceleration
@@ -50,6 +56,8 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Height
 	height_speed = _modeConfig.height_speed
 	height_deceleration = _modeConfig.height_deceleration
+	height_limit_Min = _modeConfig.height_limit_min
+	height_limit_Max = _modeConfig.height_limit_max
 
 func _physics_process(delta):
 	_Panning(delta)
@@ -76,7 +84,6 @@ func _Panning(_delta:float):
 	
 	#Acceleration
 	if inputDir.length() > 0:
-		inputDir = inputDir.normalized()
 		pan_velocity += inputDir * pan_acceleration * _delta
 		
 		#Limit pan_acceleration
@@ -173,7 +180,7 @@ func _Height(_delta : float):
 	
 	#Movement
 	if height_dir != 0:
-		height_velocity = height_dir * height_speed * _delta
+			height_velocity = height_dir * height_speed * _delta
 	else:
 		#Deceleration
 		if abs(height_velocity) > 0:
@@ -182,5 +189,8 @@ func _Height(_delta : float):
 			if abs(height_velocity) < 0.01:
 				height_velocity = 0.0
 	
-	#Apply pan_velocity
-	cam.global_position.y += height_velocity * _delta
+	#Apply velocity
+	var targetHeight = cam.global_position.y
+	targetHeight += height_velocity * _delta
+	targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
+	cam.global_position.y = targetHeight

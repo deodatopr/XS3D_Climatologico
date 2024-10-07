@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=2 format=3 uid="uid://rwehnhdeuw80"]
 
-[ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_hx4by"]
+[ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_3hxfg"]
 
 [resource]
-script = ExtResource("1_hx4by")
+script = ExtResource("1_3hxfg")
+initialFOV = 90.0
 initialHeight = 3.5
 initialInclination = 35.0
 rotVert_allow = true
@@ -13,5 +14,7 @@ pan_deceleration = 9.0
 rotHor_speed = 1.0
 rotHor_deceleration = 0.035
 rotVert_speed = 30.0
-height_speed = 6.0
+height_speed = 5.0
 height_deceleration = 20.0
+height_limit_min = 5.0
+height_limit_max = 12.0

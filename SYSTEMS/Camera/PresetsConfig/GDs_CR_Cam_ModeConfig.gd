@@ -1,5 +1,9 @@
 class_name GDs_CR_Cam_ModeConfig extends Resource
 
+@export var initialFOV : float:
+	set(value):
+		initialFOV = value
+		emit_changed()
 @export var initialHeight : float:
 	set(value):
 		initialHeight = value
@@ -46,4 +50,12 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 @export_range(10,30)var height_deceleration:
 	set(value):
 		height_deceleration = value
+		emit_changed()
+@export_range(1,50,1)var height_limit_min:
+	set(value):
+		height_limit_min = value
+		emit_changed()
+@export_range(1,50,1)var height_limit_max:
+	set(value):
+		height_limit_max = value
 		emit_changed()
