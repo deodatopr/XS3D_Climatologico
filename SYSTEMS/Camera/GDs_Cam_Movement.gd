@@ -16,8 +16,7 @@ var speed_RotVert : float
 var allow_RotVert : bool
 
 #Height
-var height_acceleration
-var height_max_acceleration
+var height_speed
 var height_deceleration
 
 var height_velocity := 0.0
@@ -45,8 +44,7 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	allow_RotVert = _modeConfig.allow_RotVert
 	
 	#Height
-	height_acceleration = _modeConfig.height_acceleration
-	height_max_acceleration = _modeConfig.height_max_acceleration
+	height_speed = _modeConfig.height_speed
 	height_deceleration = _modeConfig.height_deceleration
 
 func _physics_process(delta):
@@ -94,24 +92,21 @@ func _Panning(_delta:float):
 func _Rotation_Hor(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouseDir = Input.get_last_mouse_velocity().normalized()
-		var dirRotX = sign(mouseDir.x)
+		var mouse_Dir = Input.get_last_mouse_velocity().normalized()
+		var mouse_dirRotX = sign(mouse_Dir.x)
 		
-		if abs(mouseDir.x) > THRESHOLD_ROT_MOUSE:
-			pivot_panning.rotate_y(-dirRotX * speed_RotHor * _delta)
-			SIGNALS.OnCameraRotation.emit(dirRotX)
+		if abs(mouse_Dir.x) > THRESHOLD_ROT_MOUSE:
+			pivot_panning.rotate_y(-mouse_dirRotX * speed_RotHor * _delta)
+			SIGNALS.OnCameraRotation.emit(mouse_dirRotX)
 			
 	#Control
 	var joy_id = 0 
 	if Input.is_joy_known(joy_id):
-		var axisX = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X)
+		var control_Dir = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X)
 
-		if abs(axisX) > 0.5:
-			pivot_panning.rotate_y(-axisX * speed_RotHor * _delta)
-			SIGNALS.OnCameraRotation.emit(axisX)
-			
-func CambiarInt(myint: int):
-	myint = 5
+		if abs(control_Dir) > 0.5:
+			pivot_panning.rotate_y(-control_Dir * speed_RotHor * _delta)
+			SIGNALS.OnCameraRotation.emit(control_Dir)
 
 func _Rotation_Vert(_delta : float):
 	#Mouse
@@ -142,12 +137,9 @@ func _Height(_delta : float):
 	else:
 		height_dir = 0
 	
-	#Acceleration
+	#Movement
 	if height_dir != 0:
-		height_velocity += height_dir * height_acceleration * _delta
-		#Limit pan_acceleration
-		if abs(height_velocity) > height_max_acceleration:
-			height_velocity = sign(height_velocity) * height_max_acceleration
+		height_velocity = height_dir * height_speed * _delta
 	else:
 		#Deceleration
 		if abs(height_velocity) > 0:

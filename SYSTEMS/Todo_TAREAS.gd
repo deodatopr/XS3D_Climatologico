@@ -67,3 +67,7 @@
 
 #Extras
 #Traducir los grados en la dirección del viento
+
+#UI
+#Lista
+#Mapa
