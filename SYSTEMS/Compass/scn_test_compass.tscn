@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=10 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://j0brkg78vlm7" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
+[ext_resource type="Material" uid="uid://eu6lh0fr601x" path="res://SYSTEMS/Compass/compassbar.material" id="2_qb365"]
+[ext_resource type="Script" path="res://SYSTEMS/Compass/GDs_Compass2D.gd" id="3_gfeev"]
 [ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="3_n65tm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
@@ -32,20 +34,53 @@ shadow_enabled = true
 
 [node name="UI_Compass" parent="." node_paths=PackedStringArray("Pivot", "MarkRef") instance=ExtResource("1_rup1u")]
 Pivot = NodePath("../Camera_manager/pivot_Movement")
-MarkRef = [NodePath("../MeshInstance3D"), NodePath("../MeshInstance3D2")]
+MarkRef = [NodePath("../MeshInstance3D2"), NodePath("../MeshInstance3D")]
+CompassLenght = 736.0
+
+[node name="TextureRect2" parent="UI_Compass" index="0"]
+offset_left = -378.04
+offset_right = 425.96
+
+[node name="TextureRect" parent="UI_Compass/TextureRect2" index="0" node_paths=PackedStringArray("parent")]
+visible = true
+texture_filter = 1
+material = ExtResource("2_qb365")
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 15.0
+offset_right = 781.0
+offset_bottom = 91.0
+grow_horizontal = 1
+expand_mode = 2
+stretch_mode = 0
+script = ExtResource("3_gfeev")
+parent = NodePath("../../../Camera_manager/pivot_Movement")
+
+[node name="Polygon2D" parent="UI_Compass/TextureRect2" index="1"]
+visible = false
+
+[node name="Polygon2D2" parent="UI_Compass" index="1"]
+visible = false
+position = Vector2(592.875, 40)
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -297.293, 0, 29.8758)
+
+[node name="pivot_Movement" parent="Camera_manager" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Msh_mapita" parent="." instance=ExtResource("3_n65tm")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 67.0844, -245.648, 216.873)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -218.714, 0, -458.447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284.683, -6.10352e-05, -466.592)
 mesh = SubResource("SphereMesh_ljww5")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384.71, 0, 74.949)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.546, 0, 26.5582)
 mesh = SubResource("SphereMesh_ljww5")
 
+[editable path="UI_Compass"]
 [editable path="Camera_manager"]
