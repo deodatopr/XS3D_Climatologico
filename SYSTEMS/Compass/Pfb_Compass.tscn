@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://drokt740jfxrh"]
+[gd_scene load_steps=5 format=3 uid="uid://drokt740jfxrh"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Compass/GDs_Compass.gd" id="1_y44kk"]
+[ext_resource type="Material" uid="uid://eu6lh0fr601x" path="res://SYSTEMS/Compass/compassbar.material" id="2_4reg7"]
 [ext_resource type="Texture2D" uid="uid://bg5fxjgjk8nfg" path="res://SYSTEMS/Compass/compassbar.png" id="2_f5lix"]
+[ext_resource type="Texture2D" uid="uid://euqeoxar08s8" path="res://SYSTEMS/Compass/d6sngt1-264af340-d0dd-42b9-b370-8b0520e566b7.png" id="4_arau1"]
 
-[node name="UI_Compass" type="Control" node_paths=PackedStringArray("Compass", "Parent", "Pivot", "MarkRef")]
+[node name="UI_Compass" type="Control" node_paths=PackedStringArray("Parent", "MarkRef")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,34 +14,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_y44kk")
-Compass = NodePath("TextureRect2/Polygon2D")
-Speed = 0.25
-Parent = NodePath("TextureRect2")
-Pivot = NodePath("")
-MarkRef = [NodePath(""), NodePath("")]
+Parent = NodePath("")
+MarkRef = [null, null]
 CompassLenght = 300.0
 
-[node name="TextureRect2" type="Control" parent="."]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -500.5
-offset_top = 40.0
-offset_right = 500.5
-offset_bottom = 134.0
-grow_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="TextureRect2"]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="."]
 texture_repeat = 2
+material = ExtResource("2_4reg7")
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -477.544
-offset_right = 10.9541
+offset_left = -244.249
+offset_right = 244.249
 offset_bottom = 40.0
 grow_horizontal = 2
 scale = Vector2(1.04, 1)
@@ -47,15 +34,15 @@ texture = ExtResource("2_f5lix")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Polygon2D" type="Polygon2D" parent="TextureRect2"]
-texture_repeat = 2
-position = Vector2(34.385, -7.545)
-scale = Vector2(18.331, 74.965)
-texture = ExtResource("2_f5lix")
-texture_offset = Vector2(-55.12, -2.505)
-texture_scale = Vector2(1.36, 6.495)
-polygon = PackedVector2Array(0, 0, 50, 0, 50, 1.5, 0, 1.5)
-
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-position = Vector2(566.885, 40)
-polygon = PackedVector2Array(363.5, -38, 461.5, -38, 419.5, 13)
+[node name="Flechita" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -15.375
+offset_top = 50.215
+offset_right = 15.375
+offset_bottom = 79.715
+grow_horizontal = 2
+texture = ExtResource("4_arau1")
+expand_mode = 1

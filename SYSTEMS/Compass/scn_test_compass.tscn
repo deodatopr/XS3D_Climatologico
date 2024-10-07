@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=9 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://j0brkg78vlm7" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
-[ext_resource type="Material" uid="uid://eu6lh0fr601x" path="res://SYSTEMS/Compass/compassbar.material" id="2_qb365"]
 [ext_resource type="Script" path="res://SYSTEMS/Compass/GDs_Compass2D.gd" id="3_gfeev"]
 [ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="3_n65tm"]
 
@@ -24,6 +23,7 @@ radius = 50.049
 height = 87.486
 
 [node name="test_compass" type="Node3D"]
+metadata/_edit_vertical_guides_ = [986.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r00s3")
@@ -32,38 +32,15 @@ environment = SubResource("Environment_r00s3")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="UI_Compass" parent="." node_paths=PackedStringArray("Pivot", "MarkRef") instance=ExtResource("1_rup1u")]
+[node name="UI_Compass" parent="." node_paths=PackedStringArray("Parent", "Pivot", "MarkRef") instance=ExtResource("1_rup1u")]
+Parent = NodePath("TextureRect")
 Pivot = NodePath("../Camera_manager/pivot_Movement")
 MarkRef = [NodePath("../MeshInstance3D2"), NodePath("../MeshInstance3D")]
-CompassLenght = 736.0
+CompassLenght = 460.0
 
-[node name="TextureRect2" parent="UI_Compass" index="0"]
-offset_left = -378.04
-offset_right = 425.96
-
-[node name="TextureRect" parent="UI_Compass/TextureRect2" index="0" node_paths=PackedStringArray("parent")]
-visible = true
-texture_filter = 1
-material = ExtResource("2_qb365")
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 0.0
-offset_top = 15.0
-offset_right = 781.0
-offset_bottom = 91.0
-grow_horizontal = 1
-expand_mode = 2
-stretch_mode = 0
+[node name="TextureRect" parent="UI_Compass" index="0" node_paths=PackedStringArray("parent")]
 script = ExtResource("3_gfeev")
-parent = NodePath("../../../Camera_manager/pivot_Movement")
-
-[node name="Polygon2D" parent="UI_Compass/TextureRect2" index="1"]
-visible = false
-
-[node name="Polygon2D2" parent="UI_Compass" index="1"]
-visible = false
-position = Vector2(592.875, 40)
+parent = NodePath("../../Camera_manager/pivot_Movement")
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -297.293, 0, 29.8758)

@@ -3,10 +3,9 @@ class_name GDs_CompassMark extends Node
 var Pivot : Node3D
 var MarkRef : Node3D
 var CompassLenght : float
-@export var CenterMark : float
 
 func _ready() -> void:
-	self.position = Vector2(366, 11)
+	self.position = Vector2(234, 0)
 	
 func _initialize(_pivot : Node3D, _markRef : Node3D, _compassLengt : float):
 		Pivot = _pivot
