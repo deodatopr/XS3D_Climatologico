@@ -122,10 +122,10 @@ func _Rotation_Hor(_delta : float):
 	#Check if rot input is released
 	var rotHorReleased : bool = false
 	if Input.is_joy_known(joy_id):
-		rotHorReleased =  Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X) == 0
+		rotHorReleased =  abs(Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X))< .4
 	else:
 		rotHorReleased = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-	
+
 	#Deceleration
 	var rotHor_velocity_abs = abs(rotHor_velocity)
 	var dir = sign(rotHor_velocity)
