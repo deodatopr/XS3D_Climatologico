@@ -48,6 +48,8 @@
 	# Que se expanda/minimize al presionarlo (solo salga grande)
 	# Si presionas un punto en el mapa te lleve ahí
 	# Icono de camara en minimapa para saber donde estas y hacia a donde miras
+	
+	#NUEVO AJUSTE: Mini mapa chico en una esquina y con flechas moverte entre sitios
 # 1 - Brujula en mapa
 	# Ref Brujula horizon: Al rotar te indique en donde hay presas
 #- Sistema Pines
@@ -62,3 +64,10 @@
 #- Crear escena de particulares para tener base de flujo completo
 #- Orquestador particulares
 #- MngParticulares
+
+#Extras
+#Traducir los grados en la dirección del viento
+
+#UI
+#Lista
+#Mapa

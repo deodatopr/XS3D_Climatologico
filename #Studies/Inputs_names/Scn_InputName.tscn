@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkoly2tvw2o2"]
+
+[ext_resource type="Script" path="res://#Studies/Inputs_names/GDs_InputsName.gd" id="1_ees7t"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ees7t")

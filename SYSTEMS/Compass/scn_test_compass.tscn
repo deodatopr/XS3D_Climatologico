@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://cib67etx4mqj8"]
+
+[ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
+[ext_resource type="PackedScene" uid="uid://j0brkg78vlm7" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
+[ext_resource type="Material" uid="uid://eu6lh0fr601x" path="res://SYSTEMS/Compass/compassbar.material" id="2_qb365"]
+[ext_resource type="Script" path="res://SYSTEMS/Compass/GDs_Compass2D.gd" id="3_gfeev"]
+[ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="3_n65tm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3xgfe"]
+sky_material = SubResource("ProceduralSkyMaterial_35h7c")
+
+[sub_resource type="Environment" id="Environment_r00s3"]
+background_mode = 2
+sky = SubResource("Sky_3xgfe")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ljww5"]
+radius = 50.049
+height = 87.486
+
+[node name="test_compass" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r00s3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="UI_Compass" parent="." node_paths=PackedStringArray("Pivot", "MarkRef") instance=ExtResource("1_rup1u")]
+Pivot = NodePath("../Camera_manager/pivot_Movement")
+MarkRef = [NodePath("../MeshInstance3D2"), NodePath("../MeshInstance3D")]
+CompassLenght = 736.0
+
+[node name="TextureRect2" parent="UI_Compass" index="0"]
+offset_left = -378.04
+offset_right = 425.96
+
+[node name="TextureRect" parent="UI_Compass/TextureRect2" index="0" node_paths=PackedStringArray("parent")]
+visible = true
+texture_filter = 1
+material = ExtResource("2_qb365")
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 15.0
+offset_right = 781.0
+offset_bottom = 91.0
+grow_horizontal = 1
+expand_mode = 2
+stretch_mode = 0
+script = ExtResource("3_gfeev")
+parent = NodePath("../../../Camera_manager/pivot_Movement")
+
+[node name="Polygon2D" parent="UI_Compass/TextureRect2" index="1"]
+visible = false
+
+[node name="Polygon2D2" parent="UI_Compass" index="1"]
+visible = false
+position = Vector2(592.875, 40)
+
+[node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -297.293, 0, 29.8758)
+
+[node name="pivot_Movement" parent="Camera_manager" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Msh_mapita" parent="." instance=ExtResource("3_n65tm")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 67.0844, -245.648, 216.873)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284.683, -6.10352e-05, -466.592)
+mesh = SubResource("SphereMesh_ljww5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.546, 0, 26.5582)
+mesh = SubResource("SphereMesh_ljww5")
+
+[editable path="UI_Compass"]
+[editable path="Camera_manager"]
