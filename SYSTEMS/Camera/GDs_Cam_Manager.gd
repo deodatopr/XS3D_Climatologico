@@ -6,7 +6,7 @@ class_name GDs_Cam_Manager extends Node
 @export var cam : Node3D
 
 @export_group("Configurations")
-@export var cr_cam_Inclinada : GDs_CR_Cam_ModeConfig
+@export var cr_cam_Bottom : GDs_CR_Cam_ModeConfig
 @export var cr_cam_Top : GDs_CR_Cam_ModeConfig
 
 func _ready():
@@ -14,15 +14,15 @@ func _ready():
 
 func Initialize():
 	#Update in realtime if CR is changed
-	cr_cam_Inclinada.changed.connect(_UpdatedCamConfig)
+	cr_cam_Bottom.changed.connect(_UpdatedCamConfig)
 	cr_cam_Top.changed.connect(_UpdatedCamConfig)
 	
 	movement.Initialize(cam,pivot_movement)
-	movement.SetModeConfig(cr_cam_Inclinada)
+	movement.SetModeConfig(cr_cam_Bottom)
 	
 func _input(event):
-	if event.is_action_pressed("3DMove_ChangeCamMode_Inclined") and APPSTATE.camMode != ENUMS.Cam_Mode.Inclinada:
-		_ChangeMode(ENUMS.Cam_Mode.Inclinada)
+	if event.is_action_pressed("3DMove_ChangeCamMode_Inclined") and APPSTATE.camMode != ENUMS.Cam_Mode.Bottom:
+		_ChangeMode(ENUMS.Cam_Mode.Bottom)
 		
 	if event.is_action_pressed("3DMove_ChangeCamMode_Top") and APPSTATE.camMode != ENUMS.Cam_Mode.Top:
 		_ChangeMode(ENUMS.Cam_Mode.Top)
@@ -32,7 +32,7 @@ func _ChangeMode(_camMode : int):
 	_UpdatedCamConfig()
 		
 func _UpdatedCamConfig():
-	if APPSTATE.camMode == ENUMS.Cam_Mode.Inclinada:
-		movement.SetModeConfig(cr_cam_Inclinada)
+	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
+		movement.SetModeConfig(cr_cam_Bottom)
 	else:
 		movement.SetModeConfig(cr_cam_Top)

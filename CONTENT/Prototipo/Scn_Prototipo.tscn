@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhlsqqwecq2jj"]
+[gd_scene load_steps=9 format=3 uid="uid://bk5sdxx58vcbv"]
 
 [ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="1_1kj78"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_hfqm5"]
@@ -27,8 +27,8 @@ adjustment_contrast = 0.8
 adjustment_saturation = 1.3
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
-dof_blur_near_distance = 20.0
-dof_blur_near_transition = 20.0
+dof_blur_near_distance = 8.0
+dof_blur_near_transition = 7.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_44aav"]
 
@@ -47,12 +47,6 @@ shadow_enabled = true
 [node name="RENDER TOOL (Viewport)" parent="." instance=ExtResource("3_d1vg5")]
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_hfqm5")]
-
-[node name="cam" parent="Camera_manager/pivot_Movement" index="0"]
-current = true
-fov = 50.0
-size = 0.1
-far = 50.0
 
 [node name="________________________________" type="Node" parent="."]
 
@@ -136,7 +130,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1358, 0, -37.6259)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8343, 1.24695, -1.03738)
 mesh = SubResource("BoxMesh_44aav")
 
-[editable path="Camera_manager"]
 [editable path="Msh/Msh_mapita"]
 [editable path="Msh/Msh_mapita2"]
 [editable path="Msh/Msh_mapita3"]

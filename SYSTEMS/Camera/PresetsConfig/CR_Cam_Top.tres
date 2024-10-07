@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_0m05u")
-initialHeight = 5.0
+initialFOV = 100.0
+initialHeight = 20.0
 initialInclination = 90.0
 rotVert_allow = false
 pan_acceleration = 8.0
@@ -15,3 +16,5 @@ rotHor_deceleration = 0.035
 rotVert_speed = 0.0
 height_speed = 5.0
 height_deceleration = 20.0
+height_limit_min = 15.0
+height_limit_max = 30.0
