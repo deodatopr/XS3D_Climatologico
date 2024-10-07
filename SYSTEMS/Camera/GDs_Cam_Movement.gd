@@ -13,6 +13,11 @@ var pan_velocity : Vector3 = Vector3.ZERO
 #Rotation
 var speed_RotHor : float
 var speed_RotVert : float
+
+var rotHor_speed = 1
+var rotHor_velocity : float
+var rotHor_deceleration : float = .035
+var rotHor_isDeceleratiing : bool
 var allow_RotVert : bool
 
 #Height
@@ -95,13 +100,14 @@ func _Rotation_Hor(_delta : float):
 		var mouseDir = Input.get_last_mouse_velocity().normalized()
 		
 		#Avoid combine with rot Vert
-		if mouseDir.y > 0.4:
+		if abs(mouseDir.y) > 0.4:
 			return
 			
 		var mouseDirRotX = sign(mouseDir.x)
 		
 		if abs(mouseDir.x) > THRESHOLD_ROT_MOUSE:
-			pivot_panning.rotate_y(-mouseDirRotX * speed_RotHor * _delta)
+			rotHor_velocity = -mouseDirRotX * rotHor_speed * _delta
+			pivot_panning.rotate_y(rotHor_velocity)
 			SIGNALS.OnCameraRotation.emit(mouseDirRotX)
 			
 	#Control
@@ -110,8 +116,28 @@ func _Rotation_Hor(_delta : float):
 		var control_Dir = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X)
 
 		if abs(control_Dir) > 0.5:
-			pivot_panning.rotate_y(-control_Dir * speed_RotHor * _delta)
+			rotHor_velocity = -control_Dir * rotHor_speed * _delta
+			pivot_panning.rotate_y(rotHor_velocity)
 			SIGNALS.OnCameraRotation.emit(control_Dir)
+	
+	#Check if rot input is released
+	var rotHorReleased : bool = false
+	if Input.is_joy_known(joy_id):
+		rotHorReleased =  Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X) == 0
+	else:
+		rotHorReleased = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	
+	#Deceleration
+	var rotHor_velocity_abs = abs(rotHor_velocity)
+	var dir = sign(rotHor_velocity)
+	if rotHorReleased and rotHor_velocity_abs > 0:
+		rotHor_isDeceleratiing = true
+		rotHor_velocity -= dir * rotHor_deceleration * _delta
+		if rotHor_velocity_abs < 0.0001:
+			rotHor_velocity = 0
+			rotHor_isDeceleratiing = false
+		
+		pivot_panning.rotate_y(rotHor_velocity)
 
 func _Rotation_Vert(_delta : float):
 	#Mouse
@@ -119,8 +145,10 @@ func _Rotation_Vert(_delta : float):
 		var mouseDir = Input.get_last_mouse_velocity().normalized()
 		
 		#Avoid combine with rot Hor
-		if mouseDir.x > 0.4:
+		if abs(mouseDir.x) > 0.4:
 			return
+			
+		rotHor_velocity = 0
 		var dirRotY = sign(mouseDir.y)
 		
 		if abs(mouseDir.y) > THRESHOLD_ROT_MOUSE:
