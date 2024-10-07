@@ -92,12 +92,17 @@ func _Panning(_delta:float):
 func _Rotation_Hor(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouse_Dir = Input.get_last_mouse_velocity().normalized()
-		var mouse_dirRotX = sign(mouse_Dir.x)
+		var mouseDir = Input.get_last_mouse_velocity().normalized()
 		
-		if abs(mouse_Dir.x) > THRESHOLD_ROT_MOUSE:
-			pivot_panning.rotate_y(-mouse_dirRotX * speed_RotHor * _delta)
-			SIGNALS.OnCameraRotation.emit(mouse_dirRotX)
+		#Avoid combine with rot Vert
+		if mouseDir.y > 0.4:
+			return
+			
+		var mouseDirRotX = sign(mouseDir.x)
+		
+		if abs(mouseDir.x) > THRESHOLD_ROT_MOUSE:
+			pivot_panning.rotate_y(-mouseDirRotX * speed_RotHor * _delta)
+			SIGNALS.OnCameraRotation.emit(mouseDirRotX)
 			
 	#Control
 	var joy_id = 0 
@@ -112,6 +117,10 @@ func _Rotation_Vert(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouseDir = Input.get_last_mouse_velocity().normalized()
+		
+		#Avoid combine with rot Hor
+		if mouseDir.x > 0.4:
+			return
 		var dirRotY = sign(mouseDir.y)
 		
 		if abs(mouseDir.y) > THRESHOLD_ROT_MOUSE:
