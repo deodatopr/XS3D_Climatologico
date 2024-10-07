@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://kec5lotmg3ba"]
+
+[ext_resource type="Texture2D" uid="uid://dtk07xoi5fs3r" path="res://CONTENT/Prototipo/Msh_mapita_Huehuetoca-00032-texture.png" id="1_ppvu4"]
+
+[resource]
+resource_name = "BuildingMat-00032.001"
+specular_mode = 2
+albedo_texture = ExtResource("1_ppvu4")
+roughness = 0.0
+normal_scale = 0.0

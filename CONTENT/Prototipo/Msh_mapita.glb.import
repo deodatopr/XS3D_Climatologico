@@ -20,7 +20,7 @@ nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
-meshes/create_shadow_meshes=false
+meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
@@ -34,12 +34,492 @@ import_script/path=""
 _subresources={
 "materials": {
 "BuildingMat-00000.001": {
-"use_external/enabled": false,
-"use_external/path": ""
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00000.001.tres"
+},
+"BuildingMat-00001.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00001.001.tres"
+},
+"BuildingMat-00002.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00002.001.tres"
+},
+"BuildingMat-00003.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00003.001.tres"
+},
+"BuildingMat-00004.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00004.001.tres"
+},
+"BuildingMat-00005.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00005.001.tres"
+},
+"BuildingMat-00006.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00006.001.tres"
+},
+"BuildingMat-00007.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00007.001.tres"
+},
+"BuildingMat-00008.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00008.001.tres"
+},
+"BuildingMat-00009.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00009.001.tres"
+},
+"BuildingMat-00010.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00010.001.tres"
+},
+"BuildingMat-00011.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00011.001.tres"
+},
+"BuildingMat-00012.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00012.001.tres"
+},
+"BuildingMat-00013.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00013.001.tres"
+},
+"BuildingMat-00014.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00014.001.tres"
+},
+"BuildingMat-00015.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00015.001.tres"
+},
+"BuildingMat-00016.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00016.001.tres"
 },
 "BuildingMat-00017.001": {
-"use_external/enabled": false,
-"use_external/path": ""
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00017.001.tres"
+},
+"BuildingMat-00018.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00018.001.tres"
+},
+"BuildingMat-00019.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00019.001.tres"
+},
+"BuildingMat-00020.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00020.001.tres"
+},
+"BuildingMat-00021.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00021.001.tres"
+},
+"BuildingMat-00022.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00022.001.tres"
+},
+"BuildingMat-00023.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00023.001.tres"
+},
+"BuildingMat-00024.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00024.001.tres"
+},
+"BuildingMat-00025.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00025.001.tres"
+},
+"BuildingMat-00026.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00026.001.tres"
+},
+"BuildingMat-00027.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00027.001.tres"
+},
+"BuildingMat-00028.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00028.001.tres"
+},
+"BuildingMat-00029.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00029.001.tres"
+},
+"BuildingMat-00030.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00030.001.tres"
+},
+"BuildingMat-00031.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00031.001.tres"
+},
+"BuildingMat-00032.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00032.001.tres"
+},
+"BuildingMat-00033.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00033.001.tres"
+},
+"BuildingMat-00034.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00034.001.tres"
+},
+"BuildingMat-00035.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00035.001.tres"
+},
+"BuildingMat-00036.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00036.001.tres"
+},
+"BuildingMat-00037.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00037.001.tres"
+},
+"BuildingMat-00038.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00038.001.tres"
+},
+"BuildingMat-00039.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00039.001.tres"
+},
+"BuildingMat-00040.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00040.001.tres"
+},
+"BuildingMat-00041.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00041.001.tres"
+},
+"BuildingMat-00042.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00042.001.tres"
+},
+"BuildingMat-00043.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00043.001.tres"
+},
+"BuildingMat-00044.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00044.001.tres"
+},
+"BuildingMat-00045.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00045.001.tres"
+},
+"BuildingMat-00046.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00046.001.tres"
+},
+"BuildingMat-00047.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00047.001.tres"
+},
+"BuildingMat-00048.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00048.001.tres"
+},
+"BuildingMat-00049.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00049.001.tres"
+},
+"BuildingMat-00050.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00050.001.tres"
+},
+"BuildingMat-00051.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00051.001.tres"
+},
+"BuildingMat-00052.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00052.001.tres"
+},
+"BuildingMat-00053.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00053.001.tres"
+},
+"BuildingMat-00054.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00054.001.tres"
+},
+"BuildingMat-00055.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00055.001.tres"
+},
+"BuildingMat-00056.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00056.001.tres"
+},
+"BuildingMat-00057.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00057.001.tres"
+},
+"BuildingMat-00058.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00058.001.tres"
+},
+"BuildingMat-00059.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00059.001.tres"
+},
+"BuildingMat-00060.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00060.001.tres"
+},
+"BuildingMat-00061.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00061.001.tres"
+},
+"BuildingMat-00062.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00062.001.tres"
+},
+"BuildingMat-00063.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00063.001.tres"
+},
+"BuildingMat-00064.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00064.001.tres"
+},
+"BuildingMat-00065.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00065.001.tres"
+},
+"BuildingMat-00066.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00066.001.tres"
+},
+"BuildingMat-00067.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00067.001.tres"
+},
+"BuildingMat-00068.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00068.001.tres"
+},
+"BuildingMat-00069.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00069.001.tres"
+},
+"BuildingMat-00070.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00070.001.tres"
+},
+"BuildingMat-00071.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00071.001.tres"
+},
+"BuildingMat-00072.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00072.001.tres"
+},
+"BuildingMat-00073.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00073.001.tres"
+},
+"BuildingMat-00074.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00074.001.tres"
+},
+"BuildingMat-00075.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00075.001.tres"
+},
+"BuildingMat-00076.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00076.001.tres"
+},
+"BuildingMat-00077.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00077.001.tres"
+},
+"BuildingMat-00078.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00078.001.tres"
+},
+"BuildingMat-00079.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00079.001.tres"
+},
+"BuildingMat-00080.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00080.001.tres"
+},
+"BuildingMat-00081.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00081.001.tres"
+},
+"BuildingMat-00082.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00082.001.tres"
+},
+"BuildingMat-00083.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00083.001.tres"
+},
+"BuildingMat-00084.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00084.001.tres"
+},
+"BuildingMat-00085.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00085.001.tres"
+},
+"BuildingMat-00086.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00086.001.tres"
+},
+"BuildingMat-00087.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00087.001.tres"
+},
+"BuildingMat-00088.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00088.001.tres"
+},
+"BuildingMat-00089.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00089.001.tres"
+},
+"BuildingMat-00090.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00090.001.tres"
+},
+"BuildingMat-00091.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00091.001.tres"
+},
+"BuildingMat-00092.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00092.001.tres"
+},
+"BuildingMat-00093.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00093.001.tres"
+},
+"BuildingMat-00094.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00094.001.tres"
+},
+"BuildingMat-00095.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00095.001.tres"
+},
+"BuildingMat-00096.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00096.001.tres"
+},
+"BuildingMat-00097.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00097.001.tres"
+},
+"BuildingMat-00098.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00098.001.tres"
+},
+"BuildingMat-00099.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00099.001.tres"
+},
+"BuildingMat-00100.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00100.001.tres"
+},
+"BuildingMat-00101.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00101.001.tres"
+},
+"BuildingMat-00102.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00102.001.tres"
+},
+"BuildingMat-00103.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00103.001.tres"
+},
+"BuildingMat-00104.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00104.001.tres"
+},
+"BuildingMat-00105.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00105.001.tres"
+},
+"BuildingMat-00106.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00106.001.tres"
+},
+"BuildingMat-00107.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00107.001.tres"
+},
+"BuildingMat-00108.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00108.001.tres"
+},
+"BuildingMat-00109.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00109.001.tres"
+},
+"BuildingMat-00110.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00110.001.tres"
+},
+"BuildingMat-00111.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00111.001.tres"
+},
+"BuildingMat-00112.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00112.001.tres"
+},
+"BuildingMat-00113.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00113.001.tres"
+},
+"BuildingMat-00114.001": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00114.001.tres"
+},
+"BuildingMat-00115": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00115.tres"
+},
+"BuildingMat-00116": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00116.tres"
+},
+"BuildingMat-00117": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00117.tres"
+},
+"BuildingMat-00118": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00118.tres"
+},
+"BuildingMat-00119": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00119.tres"
+},
+"BuildingMat-00120": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00120.tres"
+},
+"BuildingMat-00121": {
+"use_external/enabled": true,
+"use_external/path": "res://CONTENT/Prototipo/BuildingMat-00121.tres"
 }
 },
 "nodes": {
