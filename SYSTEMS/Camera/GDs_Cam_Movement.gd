@@ -8,7 +8,6 @@ var camFov : float
 var pan_acceleration : float
 var pan_deceleration : float
 var pan_max_acceleration : float
-
 var pan_velocity : Vector3 = Vector3.ZERO
 
 #Rotation
@@ -29,7 +28,7 @@ var height_deceleration
 
 var height_velocity : float
 var height_dir : int
-var height_lastDir : int
+var height_validDir : int
 
 var height_limit_Max : float
 var height_limit_Min : float
@@ -92,7 +91,7 @@ func _Panning(_delta:float):
 		
 		#Limit pan_acceleration
 		if pan_velocity.length() > pan_max_acceleration:
-			pan_velocity = pan_velocity.normalized() * pan_max_acceleration
+			pan_velocity = pan_velocity.limit_length(pan_max_acceleration)
 	else:
 		#Deceleration
 		if pan_velocity.length() > 0:
@@ -110,14 +109,14 @@ func _Rotation_Hor(_delta : float):
 			rotHor_initdir = get_viewport().get_mouse_position()
 			rotHor_initDirCaptured = true
 			
-		rotHor_currentDir = get_viewport().get_mouse_position()		
+		rotHor_currentDir = get_viewport().get_mouse_position()
 		var mouseDir : Vector2 = rotHor_currentDir - rotHor_initdir
 		
 		#Avoid combine with rot Vert
 		#if abs(mouseDir.y) > 0.4:
 			#return
 		
-		var mouseDirRotX = sign(mouseDir.x)		
+		var mouseDirRotX = sign(mouseDir.x)
 		
 		if mouseDirRotX != 0:
 			rotHor_velocity = -mouseDirRotX * rotHor_speed * _delta
@@ -177,15 +176,14 @@ func _Rotation_Vert(_delta : float):
 		if abs(axisY) > 0.1:
 			cam.rotation_degrees.x += (-axisY * rotVert_speed * _delta)
 
-
 func _Height(_delta : float):
 	#Input
 	if Input.is_action_pressed("3DMove_Height_+") or Input.is_action_just_pressed("3DMove_Height_+"):
 		height_dir = 1
-		height_lastDir = 1
+		height_validDir = 1
 	elif Input.is_action_pressed("3DMove_Height_-") or Input.is_action_just_pressed("3DMove_Height_-"):
 		height_dir = -1
-		height_lastDir = -1
+		height_validDir = -1
 	else:
 		height_dir = 0
 	
@@ -195,7 +193,7 @@ func _Height(_delta : float):
 	else:
 		#Deceleration
 		if abs(height_velocity) > 0:
-			height_velocity += (-height_lastDir) * height_deceleration * _delta
+			height_velocity += (-height_validDir) * height_deceleration * _delta
 
 			if abs(height_velocity) < 0.01:
 				height_velocity = 0.0

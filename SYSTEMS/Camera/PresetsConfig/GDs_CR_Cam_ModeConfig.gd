@@ -21,7 +21,7 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		pan_acceleration = value
 		emit_changed()
-@export_range(3,15) var pan_max_acceleration : float:
+@export_range(5,15) var pan_max_acceleration : float:
 	set(value):
 		pan_max_acceleration = value
 		emit_changed()
