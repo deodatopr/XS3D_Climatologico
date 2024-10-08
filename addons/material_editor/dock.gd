@@ -23,6 +23,7 @@ const EXTRA_TEXTURE_NAMES: Array[String] = [
 @onready var transparency_mode_buttons: HBoxContainer = box.get_node('transparency_mode/vbox/hbox/buttons_hbox')
 @onready var albedo_color_picker: ColorPickerButton = box.get_node('albedo_color/vbox/hbox/color_picker')
 @onready var cull_mode_buttons: HBoxContainer = box.get_node('cull_mode/vbox/hbox/buttons_hbox')
+@onready var shading_mode_buttons: HBoxContainer = box.get_node('shading_mode/vbox/hbox/buttons_hbox')
 @onready var for_surface_checkbox_label: CheckBox = box.get_node('for_surface/vbox/hbox/checkbox_label')
 @onready var for_surface_spinbox: SpinBox = box.get_node('for_surface/vbox/hbox/spinbox')
 @onready var for_surfaces_up_to_checkbox_label: CheckBox = box.get_node('for_surfaces_up_to/vbox/hbox/checkbox_label')
@@ -34,6 +35,7 @@ var mode := 'selected_objects'
 var cull_mode := 'back'
 var transparency_mode := 'disabled'
 var strict_mode := false
+var shading_mode := 'per_pixel'
 
 var plugin_script: EditorPlugin
 #Set from script plugin.gd
@@ -55,10 +57,13 @@ func _ready() -> void:
 			v.pressed.connect(func() -> void:		transparency_mode = v.name )
 		for v: Button in cull_mode_buttons.get_children():
 			v.pressed.connect(func() -> void:		cull_mode = v.name )
+		for v: Button in shading_mode_buttons.get_children():
+			v.pressed.connect(func() -> void:		shading_mode = v.name )
 	
 	up_hbox.get_node('buttons_hbox').get_node('selected_objects').button_pressed = true
 	transparency_mode_buttons.get_node('disabled').button_pressed = true
 	cull_mode_buttons.get_node('back').button_pressed = true
+	shading_mode_buttons.get_node('per_pixel').button_pressed = true
 	
 	
 	if 1:
@@ -202,6 +207,9 @@ func apply() -> void:
 		if box.get_node('cull_mode/vbox/hbox/checkbox_label').button_pressed:
 			_add_material_change(material_object, 'cull_mode', BaseMaterial3D['CULL_'  + cull_mode.to_upper()], changes_dict)
 			#CULL_DISABLED, CULL_BACK ...
+		if box.get_node('shading_mode/vbox/hbox/checkbox_label').button_pressed:
+			_add_material_change(material_object, 'shading_mode', BaseMaterial3D['SHADING_MODE_' + shading_mode.to_upper()], changes_dict)
+			#SHADING_PER-PIXEL, SHADING_PER-VERTEX
 		
 		
 		if box.get_node('disable_pbr/vbox/hbox/checkbox_label').button_pressed:
