@@ -22,6 +22,10 @@ var rotHor_currentDir : Vector2
 var rotVert_speed : float
 var rotVert_allow : bool
 
+var rotVert_initDirCaptured : bool
+var rotVert_initdir : Vector2
+var rotVert_currentDir : Vector2
+
 #Height
 var height_speed
 var height_deceleration
@@ -33,6 +37,11 @@ var height_validDir : int
 var height_limit_Max : float
 var height_limit_Min : float
 
+#FOV
+var fov_changeByHeight : bool
+var fov_min : float
+var fov_max : float
+
 const THRESHOLD_ROT_MOUSE : float = .3
 
 func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
@@ -41,9 +50,19 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
 	
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Cam
-	cam.global_position.y = _modeConfig.initialHeight
 	cam.rotation_degrees.x = _modeConfig.initialInclination
-	cam.fov = _modeConfig.initialFOV
+	
+	var initHeight = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_min, _modeConfig.height_limit_max)
+	cam.global_position.y = initHeight
+	
+	if _modeConfig.fov_changeByHeight:
+		var height01 = inverse_lerp(height_limit_Min,height_limit_Max,cam.global_position.y)
+		var targetFov = lerpf(fov_min,fov_max,height01)
+		cam.fov = targetFov
+	else:
+		cam.fov = _modeConfig.fov_static
+		
+	_ResetVelocities()
 	
 	#Pannning
 	pan_acceleration = _modeConfig.pan_acceleration
@@ -61,14 +80,20 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	height_deceleration = _modeConfig.height_deceleration
 	height_limit_Min = _modeConfig.height_limit_min
 	height_limit_Max = _modeConfig.height_limit_max
+	
+	#FOV
+	fov_changeByHeight = _modeConfig.fov_changeByHeight
+	fov_min = _modeConfig.fov_height_min
+	fov_max = _modeConfig.fov_height_max
 
 func _physics_process(delta):
 	_Panning(delta)
 	_Height(delta)
+	_FOV()
 	_Rotation_Hor(delta)
 	
-	if rotVert_allow:
-		_Rotation_Vert(delta)
+	#if rotVert_allow:
+		#_Rotation_Vert(delta)
 
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
@@ -111,10 +136,13 @@ func _Rotation_Hor(_delta : float):
 			
 		rotHor_currentDir = get_viewport().get_mouse_position()
 		var mouseDir : Vector2 = rotHor_currentDir - rotHor_initdir
+
 		
 		#Avoid combine with rot Vert
-		#if abs(mouseDir.y) > 0.4:
-			#return
+		var dotX = mouseDir.normalized().dot(Vector2.RIGHT)
+		if abs(dotX) < .95:
+			rotHor_velocity = 0
+			return
 		
 		var mouseDirRotX = sign(mouseDir.x)
 		
@@ -156,16 +184,16 @@ func _Rotation_Hor(_delta : float):
 func _Rotation_Vert(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouseDir = Input.get_last_mouse_velocity().normalized()
-		
-		#Avoid combine with rot Hor
-		if abs(mouseDir.x) > 0.4:
-			return
+		if not rotVert_initDirCaptured:
+			rotVert_initdir = get_viewport().get_mouse_position()
+			rotVert_initDirCaptured = true
 			
-		rotHor_velocity = 0
+		rotVert_currentDir = get_viewport().get_mouse_position()
+		var mouseDir : Vector2 = rotVert_currentDir - rotVert_initdir
+
 		var dirRotY = sign(mouseDir.y)
 		
-		if abs(mouseDir.y) > THRESHOLD_ROT_MOUSE:
+		if dirRotY != 0:
 			cam.rotation_degrees.x += (-dirRotY * rotVert_speed * _delta)
 
 	#Control
@@ -203,3 +231,14 @@ func _Height(_delta : float):
 	targetHeight += height_velocity * _delta
 	targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
 	cam.global_position.y = targetHeight
+	
+func _FOV():
+	if fov_changeByHeight:
+		var height01 = inverse_lerp(height_limit_Min,height_limit_Max,cam.global_position.y)
+		var targetFov = lerpf(fov_min,fov_max,height01)
+		cam.fov = targetFov
+		
+func _ResetVelocities():
+	pan_velocity = Vector3.ZERO
+	rotHor_velocity = 0
+	height_velocity = 0

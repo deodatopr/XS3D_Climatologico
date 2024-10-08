@@ -1,9 +1,5 @@
 class_name GDs_CR_Cam_ModeConfig extends Resource
 
-@export var initialFOV : float:
-	set(value):
-		initialFOV = value
-		emit_changed()
 @export var initialHeight : float:
 	set(value):
 		initialHeight = value
@@ -12,9 +8,22 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		initialInclination = -value
 		emit_changed()
-@export var rotVert_allow : bool:
+@export_group("FOV")
+@export var fov_changeByHeight : bool:
 	set(value):
-		rotVert_allow = value
+		fov_changeByHeight = value
+		emit_changed()
+@export var fov_static : float:
+	set(value):
+		fov_static = value
+		emit_changed()
+@export_range(30,120)var fov_height_min : float:
+	set(value):
+		fov_height_min = value
+		emit_changed()
+@export_range(30,120)var fov_height_max : float:
+	set(value):
+		fov_height_max = value
 		emit_changed()
 @export_group("Panning")
 @export_range(3,15) var pan_acceleration : float:
@@ -30,6 +39,14 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 		pan_deceleration = value
 		emit_changed()
 @export_group("Rotation")
+@export var rotVert_allow : bool:
+	set(value):
+		rotVert_allow = value
+		emit_changed()
+@export_range(15,50) var rotVert_speed : float:
+	set(value):
+		rotVert_speed = value
+		emit_changed()
 @export_range(.5,1.5) var rotHor_speed : float:
 	set(value):
 		rotHor_speed = value
@@ -37,10 +54,6 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 @export_range(0.01,.3) var rotHor_deceleration : float:
 	set(value):
 		rotHor_deceleration = value
-		emit_changed()
-@export_range(10,30) var rotVert_speed : float:
-	set(value):
-		rotVert_speed = value
 		emit_changed()
 @export_group("Height")
 @export_range(2,8) var height_speed:
