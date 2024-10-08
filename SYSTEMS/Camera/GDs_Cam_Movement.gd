@@ -16,6 +16,10 @@ var rotHor_speed : float
 var rotHor_velocity : float
 var rotHor_deceleration : float
 
+var rotHor_initDirCaptured : bool
+var rotHor_initdir : Vector2
+var rotHor_currentDir : Vector2
+
 var rotVert_speed : float
 var rotVert_allow : bool
 
@@ -99,23 +103,30 @@ func _Panning(_delta:float):
 	#Apply
 	pivot_panning.global_position += pan_velocity * _delta
 
-
 func _Rotation_Hor(_delta : float):
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouseDir = Input.get_last_mouse_velocity().normalized()
+		if not rotHor_initDirCaptured:
+			rotHor_initdir = get_viewport().get_mouse_position()
+			rotHor_initDirCaptured = true
+			
+		rotHor_currentDir = get_viewport().get_mouse_position()		
+		var mouseDir : Vector2 = rotHor_currentDir - rotHor_initdir
 		
 		#Avoid combine with rot Vert
-		if abs(mouseDir.y) > 0.4:
-			return
-			
-		var mouseDirRotX = sign(mouseDir.x)
+		#if abs(mouseDir.y) > 0.4:
+			#return
 		
-		if abs(mouseDir.x) > THRESHOLD_ROT_MOUSE:
+		var mouseDirRotX = sign(mouseDir.x)		
+		
+		if mouseDirRotX != 0:
 			rotHor_velocity = -mouseDirRotX * rotHor_speed * _delta
 			pivot_panning.rotate_y(rotHor_velocity)
 			SIGNALS.OnCameraRotation.emit(mouseDirRotX)
 			
+	if rotHor_initDirCaptured and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		rotHor_initDirCaptured = false
+	
 	#Control
 	var joy_id = 0 
 	if Input.is_joy_known(joy_id):
