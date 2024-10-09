@@ -42,7 +42,7 @@ shadow_enabled = true
 
 [node name="______________________________" type="Node" parent="."]
 
-[node name="RENDER TOOL (Viewport)" parent="." instance=ExtResource("1_5wtxl")]
+[node name="RENDER TOOL" parent="." instance=ExtResource("1_5wtxl")]
 visible = false
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_lf2mx")]
