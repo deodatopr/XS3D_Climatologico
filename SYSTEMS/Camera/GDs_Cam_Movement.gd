@@ -7,6 +7,8 @@ var pivot_panning : Node3D
 var camFov : float
 
 #Panning
+var pan_currentBoost : float
+var pan_boost : float
 var pan_acceleration : float
 var pan_deceleration : float
 var pan_max_acceleration : float
@@ -92,6 +94,7 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Pannning
 	pan_acceleration = _modeConfig.pan_acceleration
 	pan_max_acceleration = _modeConfig.pan_max_acceleration
+	pan_boost = _modeConfig.pan_boostSpeed
 	pan_deceleration = _modeConfig.pan_deceleration
 	pan_bounding_X_min = _modeConfig.boundings_X_min
 	pan_bounding_X_max = _modeConfig.boundings_X_max
@@ -145,14 +148,17 @@ func _Panning(_delta:float):
 	
 	if Input.is_action_pressed("3DMove_Left"):
 		inputDir += pivot_panning.basis.x
-	
+		
 	#Acceleration
 	if inputDir.length() > 0:
-		pan_velocity += inputDir * pan_acceleration * _delta
+		pan_currentBoost = pan_boost if Input.is_key_pressed(KEY_SHIFT) else 0.0
+		pan_velocity += (inputDir * pan_acceleration * _delta) + pan_velocity.normalized() * pan_currentBoost
 		#Limit pan_acceleration
 		if pan_velocity.length() > pan_max_acceleration:
 			pan_velocity = pan_velocity.limit_length(pan_max_acceleration)
+			
 		SIGNALS.OnCameraUpdate.emit(true)
+
 	else:
 		#Deceleration
 		if pan_velocity.length() > 0:

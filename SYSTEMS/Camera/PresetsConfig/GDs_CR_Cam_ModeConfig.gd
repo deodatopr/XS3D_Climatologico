@@ -9,6 +9,10 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 		initialInclination = -value
 		emit_changed()
 @export_group("Panning")
+@export var pan_boostSpeed : float:
+	set(value):
+		pan_boostSpeed = value
+		emit_changed()
 @export_range(3,15) var pan_acceleration : float:
 	set(value):
 		pan_acceleration = value

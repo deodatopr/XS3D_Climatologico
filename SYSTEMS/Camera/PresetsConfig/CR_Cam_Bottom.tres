@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=2 format=3 uid="uid://q3b5rf3rr7dn"]
+[gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=2 format=3 uid="uid://rwehnhdeuw80"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_3hxfg"]
 
@@ -6,6 +6,7 @@
 script = ExtResource("1_3hxfg")
 initialHeight = 3.5
 initialInclination = 35.0
+pan_boostSpeed = 10.0
 pan_acceleration = 8.0
 pan_max_acceleration = 10.0
 pan_deceleration = 15.0
@@ -23,7 +24,7 @@ fov_changeByHeight = false
 fov_static = 90.0
 fov_height_min = 0.0
 fov_height_max = 0.0
-boundings_X_min = -7.0
-boundings_X_max = 32.0
-boundings_Z_min = -46.0
-boundings_Z_max = 3.0
+boundings_X_min = -100.0
+boundings_X_max = 100.0
+boundings_Z_min = -100.0
+boundings_Z_max = 100.0
