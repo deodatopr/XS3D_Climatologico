@@ -46,6 +46,7 @@ folder_colors={
 "res://#NoShare/": "red",
 "res://#Wip/": "red",
 "res://CONTENT/": "green",
+"res://SCENES/": "purple",
 "res://SOUND/": "pink",
 "res://SYSTEMS/": "orange",
 "res://SYSTEMS/z_EndPoint Old/": "gray",
@@ -53,7 +54,6 @@ folder_colors={
 "res://SYSTEMS/z_OclusionByHeight/": "gray",
 "res://SYSTEMS/z_Scn_Filtros/": "gray",
 "res://UI/": "yellow",
-"res://_SCENES/": "purple",
 "res://addons/": "blue"
 }
 
