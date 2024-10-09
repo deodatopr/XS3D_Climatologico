@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=2 format=3 uid="uid://rwehnhdeuw80"]
+[gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=2 format=3 uid="uid://q3b5rf3rr7dn"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_3hxfg"]
 

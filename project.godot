@@ -174,7 +174,7 @@ wind_uplift={
 }
 wind_vector={
 "type": "vec2",
-"value": Vector2(1, 0)
+"value": Vector2(2, 0)
 }
 cloud_base_texture={
 "type": "sampler3D",
