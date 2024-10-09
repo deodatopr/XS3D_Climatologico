@@ -13,11 +13,18 @@ cam = NodePath("pivot_cam/cam")
 cr_cam_Bottom = ExtResource("2_jbclm")
 cr_cam_Top = ExtResource("3_vumw4")
 
-[node name="Movement" type="Node" parent="."]
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("raycast")]
 script = ExtResource("2_s21o3")
+raycast = NodePath("../pivot_cam/cam/RayCast3D")
 
 [node name="pivot_cam" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.9674)
 
 [node name="cam" type="Camera3D" parent="pivot_cam"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.43123, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="pivot_cam/cam"]
+transform = Transform3D(1, -7.96956e-08, 5.14874e-08, 7.96956e-08, 0.411053, -0.911611, 5.14874e-08, 0.911611, 0.411053, 0, 0, 0)
+target_position = Vector3(0, -8.5, 0)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0.0966405, 0.0966405, 1)

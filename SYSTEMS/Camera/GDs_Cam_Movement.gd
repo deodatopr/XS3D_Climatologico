@@ -1,5 +1,7 @@
 class_name GDs_CamMovement extends Node
 
+@export var raycast : RayCast3D
+
 var cam : Camera3D
 var pivot_panning : Node3D
 var camFov : float
@@ -13,7 +15,6 @@ var pan_bounding_X_min : float
 var pan_bounding_X_max : float
 var pan_bounding_Z_min : float
 var pan_bounding_Z_max : float
-
 
 #Rotation
 var rot_initialRotX : float
@@ -47,6 +48,10 @@ var height_validDir : int
 
 var height_limit_Max : float
 var height_limit_Min : float
+
+#Height by collision
+var heightColl_collided : bool
+var heightColl_lastHeightBeforeCollided : float
 
 #FOV
 var fov_changeByHeight : bool
@@ -114,7 +119,10 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 
 func _physics_process(delta):
 	_Panning(delta)
+	
 	_Height(delta)
+	_HeightByCollision(delta)
+	
 	_FOV()
 	
 	if rotVert_allow and not rotHor_isRotating:
@@ -301,6 +309,36 @@ func _Height(_delta : float):
 	targetHeight += height_velocity * _delta
 	targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
 	cam.global_position.y = targetHeight
+	
+func _HeightByCollision(_delta : float):
+	raycast.enabled = pan_velocity.length() > 0
+	
+	#Increase height
+	if raycast.enabled and raycast.is_colliding():
+		#Save last height
+		if not heightColl_collided:
+			heightColl_collided = true
+			heightColl_lastHeightBeforeCollided = cam.global_position.y
+		
+		#Increasing height
+		height_velocity = 1 * 80 * _delta		
+		var targetHeight = cam.global_position.y
+		targetHeight += height_velocity * _delta
+		targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
+		cam.global_position.y = targetHeight
+		
+	#Decrease height
+	if heightColl_collided and not raycast.is_colliding():
+		height_velocity = -1 * 70 * _delta
+		var targetHeight = cam.global_position.y
+		targetHeight += height_velocity * _delta
+		targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
+		cam.global_position.y = targetHeight
+		
+		if (cam.global_position.y - heightColl_lastHeightBeforeCollided) < 0.005:
+			heightColl_collided = false
+			cam.global_position.y = heightColl_lastHeightBeforeCollided
+			
 	
 func _FOV():
 	if fov_changeByHeight:

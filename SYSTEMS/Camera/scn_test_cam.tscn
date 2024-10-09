@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4fqdfnjwyd21"]
+[gd_scene load_steps=8 format=3 uid="uid://d4fqdfnjwyd21"]
 
 [ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="2_mpbqf"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
+[ext_resource type="PackedScene" uid="uid://ddhb310l5i7jg" path="res://#Studies/Cam_HeightCollision/Msh_Test_CamHeight.glb" id="3_r5jpj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,6 +17,9 @@ sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bvg4s"]
+points = PackedVector3Array(0.421507, 0.0306733, 1.80678, -0.120962, 0.0258409, -1.93691, 0.0592878, 2.00665, -0.0592878, -1.98493, 0.0964347, 0.191754, 1.98493, 0.0964347, -0.191754, -1.42381, 0.00302731, 1.42381, 1.42381, 0.00302731, -1.42381, -1.47265, 0.0964347, -1.40847, 1.42381, 0.00302731, 1.42381, -0.232407, 1.86735, 0.290691, -0.290691, 1.86735, -0.232407, -0.191754, 0.0964347, 1.98493, 0.232407, 1.86735, 0.290691, 0.232407, 1.86735, -0.290691, 0.191754, 0.0964347, -1.98493, 1.40847, 0.160144, 1.40847, -1.42381, 0.00302731, -1.42381, -1.40847, 0.160144, 1.40847, 1.40847, 0.160144, -1.40847, -0.191754, 0.0964347, -1.98493, 0.191754, 0.0964347, 1.98493, 1.98493, 0.0964347, 0.191754, -1.98493, 0.0964347, -0.191754, 0.345006, 1.85863, -0.115002, -0.345006, 1.85863, 0.115002, -0.115002, 1.85863, -0.345006, -1.93691, 0.0258409, 0.120962, 1.9369, 0.0258426, 0.120962, 0.345006, 1.85863, 0.115002, -1.2805, 0.0964347, -1.53684, 0.115002, 1.85863, 0.345006, -0.120962, 0.0258426, 1.9369)
+
 [node name="test_cam" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -26,98 +30,115 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_ye5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3846, 0, -39.2836)
 
-[node name="Msh_mapita" parent="." instance=ExtResource("2_mpbqf")]
+[node name="Msh_Test_CamHeight" parent="." instance=ExtResource("3_r5jpj")]
+transform = Transform3D(4.20318, 0, 0, 0, 4.20318, 0, 0, 0, 4.20318, 13.5798, 0.0664101, -22.5936)
 
-[node name="Msh_mapita2" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7465, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Msh_Test_CamHeight/Sphere" index="0"]
 
-[node name="Msh_mapita3" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.9688)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Msh_Test_CamHeight/Sphere/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bvg4s")
 
-[node name="Msh_mapita4" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7465, 0, -12.9688)
+[node name="Msh" type="Node3D" parent="."]
 
-[node name="Msh_mapita5" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.5693)
+[node name="Msh_mapita" parent="Msh" instance=ExtResource("2_mpbqf")]
 
-[node name="Msh_mapita6" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7465, 0, 25.5693)
+[node name="BuildingMesh-00017_001" parent="Msh/Msh_mapita" index="0"]
+gi_mode = 0
 
-[node name="Msh_mapita7" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.6005)
+[node name="Msh_mapita2" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.586246, 0, -13.1698)
 
-[node name="Msh_mapita8" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7465, 0, 12.6005)
+[node name="Msh_mapita3" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05647, 0, 0)
 
-[node name="Msh_mapita9" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751, 0, 0)
+[node name="Msh_mapita4" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64271, 0, -13.1698)
 
-[node name="Msh_mapita10" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00455, 0, 0)
+[node name="Msh_mapita5" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5881, 0, 0)
 
-[node name="Msh_mapita11" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751, 0, -12.9688)
+[node name="Msh_mapita6" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1744, 0, -13.1698)
 
-[node name="Msh_mapita12" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00455, 0, -12.9688)
+[node name="Msh_mapita7" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.4561)
 
-[node name="Msh_mapita13" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751, 0, 25.5693)
+[node name="Msh_mapita8" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.586246, 0, -37.6259)
 
-[node name="Msh_mapita14" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00455, 0, 25.5693)
+[node name="Msh_mapita9" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05647, 0, -24.4561)
 
-[node name="Msh_mapita15" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751, 0, 12.6005)
+[node name="Msh_mapita10" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64271, 0, -37.6259)
 
-[node name="Msh_mapita16" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00455, 0, 12.6005)
+[node name="Msh_mapita11" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5881, 0, -24.4561)
 
-[node name="Msh_mapita17" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5606, 0, 0)
+[node name="Msh_mapita12" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1744, 0, -37.6259)
 
-[node name="Msh_mapita18" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3071, 0, 0)
+[node name="Msh_mapita13" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9615, 0, 0)
 
-[node name="Msh_mapita19" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5606, 0, -12.9688)
+[node name="Msh_mapita14" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5477, 0, -13.1698)
 
-[node name="Msh_mapita20" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3071, 0, -12.9688)
+[node name="Msh_mapita15" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0179, 0, 0)
 
-[node name="Msh_mapita21" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5606, 0, 25.5693)
+[node name="Msh_mapita16" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6042, 0, -13.1698)
 
-[node name="Msh_mapita22" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3071, 0, 25.5693)
+[node name="Msh_mapita17" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5496, 0, 0)
 
-[node name="Msh_mapita23" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5606, 0, 12.6005)
+[node name="Msh_mapita18" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1358, 0, -13.1698)
 
-[node name="Msh_mapita24" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3071, 0, 12.6005)
+[node name="Msh_mapita19" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9615, 0, -24.4561)
 
-[node name="Msh_mapita25" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8096, 0, 0)
+[node name="Msh_mapita20" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5477, 0, -37.6259)
 
-[node name="Msh_mapita26" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5561, 0, 0)
+[node name="Msh_mapita21" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0179, 0, -24.4561)
 
-[node name="Msh_mapita27" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8096, 0, -12.9688)
+[node name="Msh_mapita22" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6042, 0, -37.6259)
 
-[node name="Msh_mapita28" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5561, 0, -12.9688)
+[node name="Msh_mapita23" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5496, 0, -24.4561)
 
-[node name="Msh_mapita29" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8096, 0, 25.5693)
+[node name="Msh_mapita24" parent="Msh" instance=ExtResource("2_mpbqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1358, 0, -37.6259)
 
-[node name="Msh_mapita30" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5561, 0, 25.5693)
-
-[node name="Msh_mapita31" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8096, 0, 12.6005)
-
-[node name="Msh_mapita32" parent="." instance=ExtResource("2_mpbqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5561, 0, 12.6005)
+[editable path="Camera_manager"]
+[editable path="Msh_Test_CamHeight"]
+[editable path="Msh/Msh_mapita"]
+[editable path="Msh/Msh_mapita2"]
+[editable path="Msh/Msh_mapita3"]
+[editable path="Msh/Msh_mapita4"]
+[editable path="Msh/Msh_mapita5"]
+[editable path="Msh/Msh_mapita6"]
+[editable path="Msh/Msh_mapita7"]
+[editable path="Msh/Msh_mapita8"]
+[editable path="Msh/Msh_mapita9"]
+[editable path="Msh/Msh_mapita10"]
+[editable path="Msh/Msh_mapita11"]
+[editable path="Msh/Msh_mapita12"]
+[editable path="Msh/Msh_mapita13"]
+[editable path="Msh/Msh_mapita14"]
+[editable path="Msh/Msh_mapita15"]
+[editable path="Msh/Msh_mapita16"]
+[editable path="Msh/Msh_mapita17"]
+[editable path="Msh/Msh_mapita18"]
+[editable path="Msh/Msh_mapita19"]
+[editable path="Msh/Msh_mapita20"]
+[editable path="Msh/Msh_mapita21"]
+[editable path="Msh/Msh_mapita22"]
+[editable path="Msh/Msh_mapita23"]
+[editable path="Msh/Msh_mapita24"]
