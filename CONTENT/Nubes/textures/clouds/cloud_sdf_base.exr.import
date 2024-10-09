@@ -1,0 +1,26 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://bwvwaoihjy78g"
+path="res://.godot/imported/cloud_sdf_base.exr-430dad11c1df4216578250ae32ead7bd.ctex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://CONTENT/Nubes/textures/clouds/cloud_sdf_base.exr"
+dest_files=["res://.godot/imported/cloud_sdf_base.exr-430dad11c1df4216578250ae32ead7bd.ctex3d"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=8
+slices/vertical=8
