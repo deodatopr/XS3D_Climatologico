@@ -21,14 +21,14 @@ func Initialize():
 	movement.SetModeConfig(cr_cam_Bottom)
 	
 func _input(event):
-	if event.is_action_pressed("3DMove_ChangeCamMode_Inclined") and APPSTATE.camMode != ENUMS.Cam_Mode.Bottom:
-		_ChangeMode(ENUMS.Cam_Mode.Bottom)
+	if event.is_action_pressed("3DMove_ChangeCamMode"):
+		_ChangeMode()
 		
-	if event.is_action_pressed("3DMove_ChangeCamMode_Top") and APPSTATE.camMode != ENUMS.Cam_Mode.Top:
-		_ChangeMode(ENUMS.Cam_Mode.Top)
-		
-func _ChangeMode(_camMode : int):
-	APPSTATE.camMode =_camMode
+func _ChangeMode():
+	var modeToChange : int = ENUMS.Cam_Mode.Bottom if APPSTATE.camMode == ENUMS.Cam_Mode.Top else ENUMS.Cam_Mode.Top 
+	
+	APPSTATE.camMode = modeToChange
+	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
 		movement.SetModeConfig(cr_cam_Bottom)
 	else:

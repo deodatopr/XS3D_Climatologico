@@ -151,11 +151,12 @@ func _Panning(_delta:float):
 		
 	#Acceleration
 	if inputDir.length() > 0:
-		pan_currentBoost = pan_boost if Input.is_key_pressed(KEY_SHIFT) else 0.0
+		pan_currentBoost = pan_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
 		pan_velocity += (inputDir * pan_acceleration * _delta) + pan_velocity.normalized() * pan_currentBoost
+		
 		#Limit pan_acceleration
 		if pan_velocity.length() > pan_max_acceleration:
-			pan_velocity = pan_velocity.limit_length(pan_max_acceleration)
+			pan_velocity = pan_velocity.limit_length(pan_max_acceleration + pan_currentBoost)
 			
 		SIGNALS.OnCameraUpdate.emit(true)
 
@@ -280,6 +281,7 @@ func _Rotation_Hor(_delta : float):
 		rotHor_velocity -= dir * rotHor_deceleration * _delta
 		if rotHor_velocity_abs < 0.0005:
 			rotHor_velocity = 0
+			SIGNALS.OnCameraUpdate.emit(false)
 		
 		pivot_panning.rotate_y(rotHor_velocity)
 	

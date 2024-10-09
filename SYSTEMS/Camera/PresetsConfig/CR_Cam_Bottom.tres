@@ -6,7 +6,7 @@
 script = ExtResource("1_3hxfg")
 initialHeight = 3.5
 initialInclination = 35.0
-pan_boostSpeed = 10.0
+pan_boostSpeed = 15.0
 pan_acceleration = 8.0
 pan_max_acceleration = 10.0
 pan_deceleration = 15.0
