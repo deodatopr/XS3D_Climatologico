@@ -296,7 +296,7 @@ func _Height(_delta : float):
 			height_velocity = height_dir * height_speed * _delta
 	else:
 		#Deceleration
-		if abs(height_velocity) > 0:
+		if height_dir == 0 and abs(height_velocity) > 0:
 			height_velocity -= sign(height_velocity) * height_deceleration * _delta
 
 			if abs(height_velocity) < 0.01:
@@ -307,7 +307,7 @@ func _Height(_delta : float):
 	targetHeight += height_velocity * _delta
 	targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
 	cam.global_position.y = targetHeight
-	
+
 func _HeightByCollision(_delta : float):
 	raycast.enabled = pan_velocity.length() > 0
 	
