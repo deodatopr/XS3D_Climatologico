@@ -16,7 +16,6 @@ background_mode = 2
 background_color = Color(0.569364, 0.755638, 0.889216, 1)
 sky = SubResource("Sky_al770")
 tonemap_mode = 2
-fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.4758, 0.527243, 0.61, 1)
 fog_density = 0.8819
@@ -45,6 +44,7 @@ shadow_enabled = true
 [node name="______________________________" type="Node" parent="."]
 
 [node name="RENDER TOOL (Viewport)" parent="." instance=ExtResource("3_d1vg5")]
+visible = false
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_hfqm5")]
 
@@ -142,7 +142,6 @@ mesh = SubResource("BoxMesh_44aav")
 transform = Transform3D(2.9366, 0, 0, 0, 2.9366, 0, 0, 0, 2.9366, 26.4529, 1.24695, -20.4995)
 mesh = SubResource("BoxMesh_44aav")
 
-[editable path="Camera_manager"]
 [editable path="Msh/Msh_mapita"]
 [editable path="Msh/Msh_mapita2"]
 [editable path="Msh/Msh_mapita3"]

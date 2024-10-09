@@ -2,7 +2,7 @@ class_name GDs_Cam_Manager extends Node
 
 @export_group("Components")
 @export var movement : GDs_CamMovement
-@export var pivot_movement : Node3D
+@export var pivot_cam : Node3D
 @export var cam : Node3D
 
 @export_group("Configurations")
@@ -17,7 +17,7 @@ func Initialize():
 	cr_cam_Bottom.changed.connect(_UpdatedCamConfig)
 	cr_cam_Top.changed.connect(_UpdatedCamConfig)
 	
-	movement.Initialize(cam,pivot_movement)
+	movement.Initialize(cam,pivot_cam)
 	movement.SetModeConfig(cr_cam_Bottom)
 	
 func _input(event):
@@ -29,10 +29,13 @@ func _input(event):
 		
 func _ChangeMode(_camMode : int):
 	APPSTATE.camMode =_camMode
-	_UpdatedCamConfig()
-		
-func _UpdatedCamConfig():
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
 		movement.SetModeConfig(cr_cam_Bottom)
 	else:
 		movement.SetModeConfig(cr_cam_Top)
+		
+func _UpdatedCamConfig():
+	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
+		movement.OnUpdateCRCam(cr_cam_Bottom)
+	else:
+		movement.OnUpdateCRCam(cr_cam_Top)
