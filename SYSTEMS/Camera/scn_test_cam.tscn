@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://d4fqdfnjwyd21"]
 
-[ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="2_mpbqf"]
+[ext_resource type="PackedScene" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="2_mpbqf"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
-[ext_resource type="PackedScene" uid="uid://ddhb310l5i7jg" path="res://#Studies/Cam_HeightCollision/Msh_Test_CamHeight.glb" id="3_r5jpj"]
+[ext_resource type="PackedScene" uid="uid://ddhb310l5i7jg" path="res://#Wip/Prototipo Mapa/Msh_Test_Height.glb" id="3_r5jpj"]
 [ext_resource type="Material" path="res://CONTENT/Prototipo/BuildingMat-00000.001.tres" id="3_r33ji"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]

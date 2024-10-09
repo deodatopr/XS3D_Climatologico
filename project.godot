@@ -12,7 +12,7 @@ config_version=5
 
 config/name="XS3D_Climatologico"
 config/tags=PackedStringArray("xsoft3d")
-run/main_scene="res://SCENES/Scn_Main.tscn"
+run/main_scene="res://#Wip/Prototipo Mapa/Scn_Mapa.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
 
@@ -36,7 +36,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/3DAutoMaterial/plugin.cfg", "res://addons/LittleCameraPreview/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg", "res://addons/snappy/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg")
 
 [file_customization]
 
@@ -44,15 +44,16 @@ folder_colors={
 "res://#DeosTools/": "red",
 "res://#Keystores/": "red",
 "res://#NoShare/": "red",
-"res://#Studies/": "red",
+"res://#Wip/": "red",
 "res://CONTENT/": "green",
-"res://SCENES/": "purple",
+"res://SOUND/": "pink",
 "res://SYSTEMS/": "orange",
 "res://SYSTEMS/z_EndPoint Old/": "gray",
 "res://SYSTEMS/z_Graficadora/": "gray",
 "res://SYSTEMS/z_OclusionByHeight/": "gray",
 "res://SYSTEMS/z_Scn_Filtros/": "gray",
 "res://UI/": "yellow",
+"res://_SCENES/": "purple",
 "res://addons/": "blue"
 }
 

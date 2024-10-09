@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://18lddgnvbqsx"]
+
+[ext_resource type="PackedScene" path="res://SYSTEMS/RenderTools/Viewport/Pfb_Viewport.tscn" id="1_5wtxl"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_lf2mx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_al770"]
+sky_material = SubResource("ProceduralSkyMaterial_u3110")
+
+[sub_resource type="Environment" id="Environment_nudmr"]
+background_mode = 2
+background_color = Color(0.569364, 0.755638, 0.889216, 1)
+sky = SubResource("Sky_al770")
+tonemap_mode = 2
+fog_mode = 1
+fog_light_color = Color(0.4758, 0.527243, 0.61, 1)
+fog_density = 0.8819
+fog_depth_end = 35.0
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_contrast = 0.8
+adjustment_saturation = 1.3
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
+dof_blur_near_distance = 8.0
+dof_blur_near_transition = 7.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_44aav"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nudmr")
+camera_attributes = SubResource("CameraAttributesPractical_jryic")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="______________________________" type="Node" parent="."]
+
+[node name="RENDER TOOL (Viewport)" parent="." instance=ExtResource("1_5wtxl")]
+visible = false
+
+[node name="Camera_manager" parent="." instance=ExtResource("2_lf2mx")]
+
+[node name="________________________________" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3009, 1.24695, -6.88243)
+mesh = SubResource("BoxMesh_44aav")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.33458, 0, 0, 0, 6.33458, 0, 0, 0, 6.33458, 13.6079, 1.24695, -6.09439)
+mesh = SubResource("BoxMesh_44aav")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.06662, 0, 1.99948, 0, 3.66089, 0, -1.99948, 0, 3.06662, 11.5993, 1.24695, -27.7446)
+mesh = SubResource("BoxMesh_44aav")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.9366, 0, 0, 0, 2.9366, 0, 0, 0, 2.9366, 26.4529, 1.24695, -20.4995)
+mesh = SubResource("BoxMesh_44aav")
