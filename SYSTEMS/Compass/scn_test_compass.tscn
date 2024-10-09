@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=7 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
-[ext_resource type="PackedScene" uid="uid://c0eabsbp5e3mh" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="3_n65tm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,20 +30,15 @@ environment = SubResource("Environment_r00s3")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="UI_Compass" parent="." node_paths=PackedStringArray("pivotCam", "MarkRef") instance=ExtResource("1_rup1u")]
-pivotCam = NodePath("../Camera_manager/pivot_cam")
+[node name="UI_Compass" parent="." node_paths=PackedStringArray("camManager", "MarkRef") instance=ExtResource("1_rup1u")]
+camManager = NodePath("../Camera_manager")
 MarkRef = NodePath("../MeshInstance3D")
-CompassLenght = 220.0
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 216.311, 0)
 
-[node name="Msh_mapita" parent="." instance=ExtResource("3_n65tm")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 274.521, -71.7497, 193.412)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 16.9245, -466.592)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 24.2797, 6.10462, -32.8826)
 mesh = SubResource("SphereMesh_ljww5")
 
 [editable path="UI_Compass"]
-[editable path="Camera_manager"]

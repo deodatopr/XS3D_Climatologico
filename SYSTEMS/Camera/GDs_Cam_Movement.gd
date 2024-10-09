@@ -152,6 +152,7 @@ func _Panning(_delta:float):
 		#Limit pan_acceleration
 		if pan_velocity.length() > pan_max_acceleration:
 			pan_velocity = pan_velocity.limit_length(pan_max_acceleration)
+		SIGNALS.OnCameraUpdate.emit(true)
 	else:
 		#Deceleration
 		if pan_velocity.length() > 0:
@@ -241,7 +242,7 @@ func _Rotation_Hor(_delta : float):
 			var mouseDirRotX = sign(mouseDir.x)
 			rotHor_velocity = -mouseDirRotX * rotHor_speed * _delta
 			pivot_panning.rotate_y(rotHor_velocity)
-			SIGNALS.OnCameraRotation.emit(mouseDirRotX)
+			SIGNALS.OnCameraUpdate.emit(true)
 			
 	if rotHor_initDirCaptured and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		rotHor_initDirCaptured = false
@@ -256,7 +257,7 @@ func _Rotation_Hor(_delta : float):
 		if abs(control_Dir) > ROTHOR_THRESHOLD:
 			rotHor_velocity = -control_Dir * rotHor_speed * _delta
 			pivot_panning.rotate_y(rotHor_velocity)
-			SIGNALS.OnCameraRotation.emit(control_Dir)
+			SIGNALS.OnCameraUpdate.emit(true)
 #endregion
 	
 #region [ DECELERATION ]
@@ -275,7 +276,7 @@ func _Rotation_Hor(_delta : float):
 			rotHor_velocity = 0
 		
 		pivot_panning.rotate_y(rotHor_velocity)
-
+	
 #endregion
 	
 	rotHor_isRotating = rotHor_velocity_abs > 0

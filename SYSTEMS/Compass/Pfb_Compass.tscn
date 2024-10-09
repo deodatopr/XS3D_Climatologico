@@ -13,20 +13,24 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_y44kk")
-CompassLenght = 300.0
 
-[node name="CompassMask" type="Control" parent="."]
+[node name="CompassParent" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CompassMask" type="Control" parent="CompassParent"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -239.5
-offset_right = 239.5
+offset_left = 700.5
+offset_right = 1179.5
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Compass" type="TextureRect" parent="CompassMask"]
+[node name="Compass" type="TextureRect" parent="CompassParent/CompassMask"]
 clip_children = 2
 texture_filter = 2
 texture_repeat = 2
@@ -43,38 +47,42 @@ texture = ExtResource("3_sgkla")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="PinSite" type="Panel" parent="CompassMask"]
+[node name="PinSite" type="Panel" parent="CompassParent/CompassMask"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -10.0
+offset_top = 9.84
+offset_right = 10.0
+offset_bottom = 29.84
 grow_horizontal = 2
 pivot_offset = Vector2(20, 0)
 
-[node name="Arrow" type="TextureRect" parent="."]
+[node name="Arrow" type="TextureRect" parent="CompassParent"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -15.375
+offset_left = 924.625
 offset_top = 50.215
-offset_right = 15.375
+offset_right = 955.375
 offset_bottom = 79.715
 grow_horizontal = 2
 pivot_offset = Vector2(15.375, 0)
 texture = ExtResource("4_arau1")
 expand_mode = 1
 
-[node name="CenterRef" type="Panel" parent="."]
+[node name="CenterRef" type="Panel" parent="CompassParent"]
+visible = false
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = 937.5
+offset_right = 942.5
 grow_horizontal = 2
 grow_vertical = 2
