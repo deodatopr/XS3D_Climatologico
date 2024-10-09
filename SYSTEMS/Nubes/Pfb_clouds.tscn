@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://djl3q6ynbkau0"]
+[gd_scene load_steps=14 format=3 uid="uid://djl3q6ynbkau0"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Nubes/GDs_clouds.gd" id="1_artgg"]
+[ext_resource type="CompressedTexture3D" uid="uid://bwvwaoihjy78g" path="res://CONTENT/Nubes/textures/clouds/cloud_sdf_base.exr" id="2_3jdk8"]
+[ext_resource type="CompressedTexture3D" uid="uid://437feiv1oerc" path="res://CONTENT/Nubes/textures/clouds/cloud_sdf_detail.exr" id="3_mltgp"]
 [ext_resource type="Shader" path="res://CONTENT/Nubes/shaders/cloud_sdf.gdshader" id="3_p8xnm"]
+[ext_resource type="CompressedTexture3D" uid="uid://4ncscg8jgec0" path="res://CONTENT/Nubes/textures/clouds/cloud_volume_a.png" id="4_72y56"]
 [ext_resource type="Shader" path="res://CONTENT/Nubes/shaders/buffer_sky.gdshader" id="5_11ck4"]
 
 [sub_resource type="Environment" id="Environment_upbsr"]
@@ -61,6 +64,9 @@ rings = 4
 
 [node name="clouds" type="Node"]
 script = ExtResource("1_artgg")
+cloud_base_texture = ExtResource("2_3jdk8")
+cloud_detail_texture = ExtResource("3_mltgp")
+cloud_volume_texture = ExtResource("4_72y56")
 
 [node name="buffer_sky" type="SubViewport" parent="."]
 own_world_3d = true
