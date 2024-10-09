@@ -38,6 +38,10 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		rotVert_maxRotFromInitial = value
 		emit_changed()
+@export var rotVert_curveBackToRot : Curve:
+	set(value):
+		rotVert_curveBackToRot = value
+		emit_changed()
 @export var rotHor_allow : bool:
 	set(value):
 		rotHor_allow = value

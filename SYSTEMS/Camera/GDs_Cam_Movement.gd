@@ -33,6 +33,7 @@ var rotHor_isRotating : bool
 
 var rotVert_speed : float
 var rotVert_allow : bool
+var rotVert_curve_backToRot : Curve
 
 var rotVert_initDirCaptured : bool
 var rotVert_initdir : Vector2
@@ -76,8 +77,8 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	cam.global_position.y = initHeight
 	
 	if _modeConfig.fov_changeByHeight:
-		var height01 = inverse_lerp(height_limit_Min,height_limit_Max,cam.global_position.y)
-		var targetFov = lerpf(fov_min,fov_max,height01)
+		var height01 : float = inverse_lerp(height_limit_Min,height_limit_Max,cam.global_position.y)
+		var targetFov : float = lerpf(fov_min,fov_max,height01)
 		cam.fov = targetFov
 	else:
 		cam.fov = _modeConfig.fov_static
@@ -108,6 +109,8 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	rotVert_speed = _modeConfig.rotVert_speed
 	rotVert_allow = _modeConfig.rotVert_allow
 	rotVert_maxRotFromInitial = _modeConfig.rotVert_maxRotFromInitial
+	if _modeConfig.rotVert_curveBackToRot:
+		rotVert_curve_backToRot = _modeConfig.rotVert_curveBackToRot
 	
 	#Height
 	height_speed = _modeConfig.height_speed
@@ -181,7 +184,7 @@ func _Panning(_delta:float):
 	
 	pivot_panning.global_position = targetPosition
 
-func _Rotation_Vert(_delta : float):	
+func _Rotation_Vert(_delta : float):
 #region [ MOUSE ]
 	#Mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -224,7 +227,16 @@ func _Rotation_Vert(_delta : float):
 		var current_rotation = cam.rotation_degrees.x
 		var difference = rot_initialRotX - current_rotation
 		if abs(difference) > 0.2:
-			cam.rotation_degrees.x += sign(difference) * 20 * _delta
+			var rotDir : float = sign(difference)
+			var currentRotProgress01 : float
+			if rotDir == 1:
+				currentRotProgress01 = 1 - inverse_lerp(rot_initialRotX - rotVert_maxRotFromInitial, rot_initialRotX, cam.rotation_degrees.x)
+			else:
+				currentRotProgress01 = 1 - inverse_lerp( rot_initialRotX + rotVert_maxRotFromInitial, rot_initialRotX, cam.rotation_degrees.x)
+
+			if currentRotProgress01 < .0015:
+				currentRotProgress01 = 1
+			cam.rotation_degrees.x += (rotDir * 20 * _delta) * rotVert_curve_backToRot.sample_baked(currentRotProgress01)
 		else:
 			rotVert_isRotating = false
 			cam.rotation_degrees.x = rot_initialRotX

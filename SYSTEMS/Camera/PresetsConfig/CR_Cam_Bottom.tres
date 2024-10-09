@@ -1,6 +1,10 @@
-[gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=2 format=3 uid="uid://rwehnhdeuw80"]
+[gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=3 format=3 uid="uid://rwehnhdeuw80"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_3hxfg"]
+
+[sub_resource type="Curve" id="Curve_plxow"]
+_data = [Vector2(0, 0), 0.0, 3.17904, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [resource]
 script = ExtResource("1_3hxfg")
@@ -13,6 +17,7 @@ pan_deceleration = 15.0
 rotVert_allow = true
 rotVert_speed = 50.0
 rotVert_maxRotFromInitial = 30.0
+rotVert_curveBackToRot = SubResource("Curve_plxow")
 rotHor_allow = true
 rotHor_speed = 0.5
 rotHor_deceleration = 0.042
