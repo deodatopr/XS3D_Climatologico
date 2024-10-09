@@ -9,6 +9,11 @@ var pan_acceleration : float
 var pan_deceleration : float
 var pan_max_acceleration : float
 var pan_velocity : Vector3 = Vector3.ZERO
+var pan_bounding_X_min : float
+var pan_bounding_X_max : float
+var pan_bounding_Z_min : float
+var pan_bounding_Z_max : float
+
 
 #Rotation
 var rot_initialRotX : float
@@ -60,7 +65,7 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	rot_initialRotX = _modeConfig.initialInclination
 	cam.rotation_degrees.x = rot_initialRotX
 	
-	var initHeight = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_min, _modeConfig.height_limit_max)
+	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_min, _modeConfig.height_limit_max)
 	cam.global_position.y = initHeight
 	
 	if _modeConfig.fov_changeByHeight:
@@ -83,6 +88,10 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	pan_acceleration = _modeConfig.pan_acceleration
 	pan_max_acceleration = _modeConfig.pan_max_acceleration
 	pan_deceleration = _modeConfig.pan_deceleration
+	pan_bounding_X_min = _modeConfig.boundings_X_min
+	pan_bounding_X_max = _modeConfig.boundings_X_max
+	pan_bounding_Z_min = _modeConfig.boundings_Z_min
+	pan_bounding_Z_max = _modeConfig.boundings_Z_max
 	
 	#Rotation
 	rotHor_allow = _modeConfig.rotHor_allow
@@ -144,7 +153,18 @@ func _Panning(_delta:float):
 				pan_velocity = Vector3.ZERO
 	
 	#Apply
-	pivot_panning.global_position += pan_velocity * _delta
+	var targetPosition : Vector3 = pivot_panning.global_position
+	targetPosition += pan_velocity * _delta
+	targetPosition.x = clampf(targetPosition.x, pan_bounding_X_min, pan_bounding_X_max)
+	targetPosition.z = clampf(targetPosition.z, pan_bounding_Z_min, pan_bounding_Z_max)
+	
+	var isInBoundX = abs(pivot_panning.global_position.x -  pan_bounding_X_min) < 0.01 or abs(pivot_panning.global_position.x -  pan_bounding_X_max) < 0.01
+	var isInBoundZ = abs(pivot_panning.global_position.z -  pan_bounding_Z_min) < 0.01 or abs(pivot_panning.global_position.z -  pan_bounding_Z_max) < 0.01
+	
+	if isInBoundX || isInBoundZ:
+		pan_velocity = Vector3.ZERO
+	
+	pivot_panning.global_position = targetPosition
 
 func _Rotation_Vert(_delta : float):	
 #region [ MOUSE ]
@@ -167,6 +187,7 @@ func _Rotation_Vert(_delta : float):
 			cam.rotation_degrees.x = targetRotX
 			
 	if rotVert_initDirCaptured and not  Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		@warning_ignore('standalone_expression')
 		rotVert_initDirCaptured
 #endregion
 
@@ -175,11 +196,11 @@ func _Rotation_Vert(_delta : float):
 	var joy_id = 0 
 	if Input.is_joy_known(joy_id):
 		var axisY = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_Y)
-
+		print(axisY)
 		if abs(axisY) >= ROTVERT_THRESHOLD:
 			rotVert_isRotating = true
 			var targetRotX : float = cam.rotation_degrees.x
-			targetRotX +=(-sign(axisY) * rotVert_speed * _delta)
+			targetRotX += (-sign(axisY) * rotVert_speed * _delta)
 			targetRotX = clampf(targetRotX, rot_initialRotX - rotVert_maxRotFromInitial, rot_initialRotX + rotVert_maxRotFromInitial)
 			cam.rotation_degrees.x = targetRotX 
 #endregion

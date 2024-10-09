@@ -44,6 +44,13 @@
 	# bounding del mapa simple con x+- y z+- limite,  Usar navmesh para ese approach y nos daria la altura de montañas
 	# spring arm para subir la altura de la cámara
 	# focus en un punto
+	
+	#TODO CAM:
+	#Elevación cuando hay objeto
+	#Focus en un punto
+	
+	
+	
 #- Minimapa (con icono como camara con angulo de vista)
 	# Que se expanda/minimize al presionarlo (solo salga grande)
 	# Si presionas un punto en el mapa te lleve ahí

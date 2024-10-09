@@ -80,3 +80,22 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		fov_height_max = value
 		emit_changed()
+@export_group("Boundings")
+@export var boundings_X_min : float:
+	set(value):
+		boundings_X_min = value
+		emit_changed()
+@export var boundings_X_max : float:
+	set(value):
+		boundings_X_max = value
+		emit_changed()
+@export var boundings_Z_min : float:
+	set(value):
+		boundings_Z_min = value
+		emit_changed()
+@export var boundings_Z_max : float:
+	set(value):
+		boundings_Z_max = value
+		emit_changed()
+
+		
