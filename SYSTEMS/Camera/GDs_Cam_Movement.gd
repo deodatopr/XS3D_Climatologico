@@ -149,7 +149,6 @@ func _Panning(_delta:float):
 	#Acceleration
 	if inputDir.length() > 0:
 		pan_velocity += inputDir * pan_acceleration * _delta
-		
 		#Limit pan_acceleration
 		if pan_velocity.length() > pan_max_acceleration:
 			pan_velocity = pan_velocity.limit_length(pan_max_acceleration)
@@ -204,7 +203,6 @@ func _Rotation_Vert(_delta : float):
 	var joy_id = 0 
 	if Input.is_joy_known(joy_id):
 		var axisY = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_Y)
-		print(axisY)
 		if abs(axisY) >= ROTVERT_THRESHOLD:
 			rotVert_isRotating = true
 			var targetRotX : float = cam.rotation_degrees.x

@@ -17,19 +17,25 @@
 	
 	#Inputs PC:
 		# WASD (Mov)
-		# Q - zoom +
-		# E - zoom -
-		# TAB - modo
+		# Mouse Scroll UP = zoom +
+		# Mouse Scroll DOWN = zoom -
+		# 1 = modo cam Bottom
+		# 2 = modo cam Top
 		# Mouse + click (Rot)
 		
 	#Inputs Control:
-		#Gatillos der (subir/bajar)
-		#Gatillos izq (modo)
-		#Select (menu; ver perfil, tutorial control)
-		#Start mapa
-		#Botones derecha todos (Aceptar)
-		#Joystick (mover cam)
-		#Joystick (rot cam)
+		#Gatillos der (adelante) = subir
+		#Gatillos der (atras) = bajar
+		#Gatillos izq (adelante) = modo cam Top
+		#Gatillos izq (atras) = modo cam Bottom
+		#Boton der = cancelar
+		#Boton abajo = confirmar
+		#Joystick izq = paneo cam
+		
+	#Movimientos separados (solo uno a la vez)
+		#Joystick der Vert = cam rot vert 
+		#Joystick der hor = cam rot hor
+		
 
 #MAPA
 #- Sistema camara
@@ -46,10 +52,7 @@
 	# focus en un punto
 	
 	#TODO CAM:
-	#Elevación cuando hay objeto
 	#Focus en un punto
-	
-	
 	
 #- Minimapa (con icono como camara con angulo de vista)
 	# Que se expanda/minimize al presionarlo (solo salga grande)
