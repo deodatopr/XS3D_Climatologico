@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4fqdfnjwyd21"]
+[gd_scene load_steps=15 format=3 uid="uid://d4fqdfnjwyd21"]
 
-[ext_resource type="PackedScene" path="res://CONTENT/Prototipo/Msh_mapita.glb" id="2_mpbqf"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
 [ext_resource type="PackedScene" uid="uid://ddhb310l5i7jg" path="res://#Wip/Prototipo Mapa/Msh_Test_Height.glb" id="3_r5jpj"]
-[ext_resource type="Material" path="res://CONTENT/Prototipo/BuildingMat-00000.001.tres" id="3_r33ji"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,10 +17,30 @@ tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_prqfy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o28rm"]
+noise = SubResource("FastNoiseLite_prqfy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b41gw"]
+albedo_color = Color(0.400433, 0.291344, 0.217773, 1)
+albedo_texture = SubResource("NoiseTexture2D_o28rm")
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bvg4s"]
 points = PackedVector3Array(0.421507, 0.0306733, 1.80678, -0.120962, 0.0258409, -1.93691, 0.0592878, 2.00665, -0.0592878, -1.98493, 0.0964347, 0.191754, 1.98493, 0.0964347, -0.191754, -1.42381, 0.00302731, 1.42381, 1.42381, 0.00302731, -1.42381, -1.47265, 0.0964347, -1.40847, 1.42381, 0.00302731, 1.42381, -0.232407, 1.86735, 0.290691, -0.290691, 1.86735, -0.232407, -0.191754, 0.0964347, 1.98493, 0.232407, 1.86735, 0.290691, 0.232407, 1.86735, -0.290691, 0.191754, 0.0964347, -1.98493, 1.40847, 0.160144, 1.40847, -1.42381, 0.00302731, -1.42381, -1.40847, 0.160144, 1.40847, 1.40847, 0.160144, -1.40847, -0.191754, 0.0964347, -1.98493, 0.191754, 0.0964347, 1.98493, 1.98493, 0.0964347, 0.191754, -1.98493, 0.0964347, -0.191754, 0.345006, 1.85863, -0.115002, -0.345006, 1.85863, 0.115002, -0.115002, 1.85863, -0.345006, -1.93691, 0.0258409, 0.120962, 1.9369, 0.0258426, 0.120962, 0.345006, 1.85863, 0.115002, -1.2805, 0.0964347, -1.53684, 0.115002, 1.85863, 0.345006, -0.120962, 0.0258426, 1.9369)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xbry"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ys01s"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bgbms"]
+noise = SubResource("FastNoiseLite_ys01s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwycr"]
+albedo_color = Color(0.232463, 0.5, 0.261407, 1)
+albedo_texture = SubResource("NoiseTexture2D_bgbms")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g7w6c"]
 
 [node name="test_cam" type="Node3D"]
 
@@ -40,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3846, 0, -39.2836)
 transform = Transform3D(4.20318, 0, 0, 0, 4.20318, 0, 0, 0, 4.20318, 13.5798, 0.0664101, -22.5936)
 
 [node name="Sphere" parent="Msh_Test_CamHeight" index="0"]
-material_override = ExtResource("3_r33ji")
+material_override = SubResource("StandardMaterial3D_b41gw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Msh_Test_CamHeight/Sphere" index="0"]
 
@@ -49,79 +67,316 @@ shape = SubResource("ConvexPolygonShape3D_bvg4s")
 
 [node name="Msh" type="Node3D" parent="."]
 
-[node name="Msh_mapita" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
-[node name="BuildingMesh-00017_001" parent="Msh/Msh_mapita" index="0"]
-gi_mode = 0
-
-[node name="Msh_mapita2" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita2" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.586246, 0, -13.1698)
+script = null
 
-[node name="Msh_mapita3" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita3" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05647, 0, 0)
+script = null
 
-[node name="Msh_mapita4" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita4" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64271, 0, -13.1698)
+script = null
 
-[node name="Msh_mapita5" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita5" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5881, 0, 0)
+script = null
 
-[node name="Msh_mapita6" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita6" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1744, 0, -13.1698)
+script = null
 
-[node name="Msh_mapita7" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita7" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.4561)
+script = null
 
-[node name="Msh_mapita8" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita8" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.586246, 0, -37.6259)
+script = null
 
-[node name="Msh_mapita9" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita9" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05647, 0, -24.4561)
+script = null
 
-[node name="Msh_mapita10" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita10" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64271, 0, -37.6259)
+script = null
 
-[node name="Msh_mapita11" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita11" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5881, 0, -24.4561)
+script = null
 
-[node name="Msh_mapita12" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita12" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1744, 0, -37.6259)
+script = null
 
-[node name="Msh_mapita13" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita13" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9615, 0, 0)
+script = null
 
-[node name="Msh_mapita14" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita14" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5477, 0, -13.1698)
+script = null
 
-[node name="Msh_mapita15" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita15" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0179, 0, 0)
+script = null
 
-[node name="Msh_mapita16" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita16" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6042, 0, -13.1698)
+script = null
 
-[node name="Msh_mapita17" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita17" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5496, 0, 0)
+script = null
 
-[node name="Msh_mapita18" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita18" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1358, 0, -13.1698)
+script = null
 
-[node name="Msh_mapita19" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita19" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9615, 0, -24.4561)
+script = null
 
-[node name="Msh_mapita20" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita20" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5477, 0, -37.6259)
+script = null
 
-[node name="Msh_mapita21" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita21" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0179, 0, -24.4561)
+script = null
 
-[node name="Msh_mapita22" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita22" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6042, 0, -37.6259)
+script = null
 
-[node name="Msh_mapita23" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita23" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5496, 0, -24.4561)
+script = null
 
-[node name="Msh_mapita24" parent="Msh" instance=ExtResource("2_mpbqf")]
+[node name="Msh_mapita24" parent="Msh"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1358, 0, -37.6259)
+script = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.85479, 0, 0, 0, 4.85479, 0, 0, 0, 4.85479, 3.47632, 2.02322, -11.5222)
@@ -139,29 +394,10 @@ mesh = SubResource("BoxMesh_1xbry")
 transform = Transform3D(4.50682, 0, 0, 0, 4.25441, 0, 0, 0, 4.50682, 2.43323, 2.09827, -36.5125)
 mesh = SubResource("BoxMesh_1xbry")
 
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(98.8334, 0, 0, 0, 98.8334, 0, 0, 0, 98.8334, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_gwycr")
+mesh = SubResource("PlaneMesh_g7w6c")
+
 [editable path="Camera_manager"]
 [editable path="Msh_Test_CamHeight"]
-[editable path="Msh/Msh_mapita"]
-[editable path="Msh/Msh_mapita2"]
-[editable path="Msh/Msh_mapita3"]
-[editable path="Msh/Msh_mapita4"]
-[editable path="Msh/Msh_mapita5"]
-[editable path="Msh/Msh_mapita6"]
-[editable path="Msh/Msh_mapita7"]
-[editable path="Msh/Msh_mapita8"]
-[editable path="Msh/Msh_mapita9"]
-[editable path="Msh/Msh_mapita10"]
-[editable path="Msh/Msh_mapita11"]
-[editable path="Msh/Msh_mapita12"]
-[editable path="Msh/Msh_mapita13"]
-[editable path="Msh/Msh_mapita14"]
-[editable path="Msh/Msh_mapita15"]
-[editable path="Msh/Msh_mapita16"]
-[editable path="Msh/Msh_mapita17"]
-[editable path="Msh/Msh_mapita18"]
-[editable path="Msh/Msh_mapita19"]
-[editable path="Msh/Msh_mapita20"]
-[editable path="Msh/Msh_mapita21"]
-[editable path="Msh/Msh_mapita22"]
-[editable path="Msh/Msh_mapita23"]
-[editable path="Msh/Msh_mapita24"]
