@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=8 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
@@ -20,6 +20,8 @@ glow_enabled = true
 radius = 50.049
 height = 87.486
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_xhk6t"]
+
 [node name="test_compass" type="Node3D"]
 metadata/_edit_vertical_guides_ = [986.0]
 
@@ -33,12 +35,22 @@ shadow_enabled = true
 [node name="UI_Compass" parent="." node_paths=PackedStringArray("camManager", "MarkRef") instance=ExtResource("1_rup1u")]
 camManager = NodePath("../Camera_manager")
 MarkRef = NodePath("../MeshInstance3D")
+minDistance = 40.0
+maxDistance = 100.0
+
+[node name="CompassParent" parent="UI_Compass" index="0"]
+visible = false
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 216.311, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.98594, -28.2872)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 24.2797, 6.10462, -32.8826)
 mesh = SubResource("SphereMesh_ljww5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(33.3253, 0, 0, 0, 1, 0, 0, 0, 42.5377, 13.7415, 2.52822, -13.13)
+mesh = SubResource("PlaneMesh_xhk6t")
+skeleton = NodePath("../Camera_manager")
 
 [editable path="UI_Compass"]
