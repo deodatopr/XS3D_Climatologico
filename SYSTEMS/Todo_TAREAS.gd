@@ -52,7 +52,16 @@
 	# focus en un punto
 	
 	#TODO CAM:
-	#Focus en un punto
+	# Focus en un punto
+	# Tween camara
+	# Cam abajo: 80-90mm
+	# Cam abajo: 60mm
+	# Rotacion abajo mas hacia abajo
+	# Toogle 
+	# Camaras apretar y te vas ahí
+	
+	# UI Animada
+	# Cuando pase mouse animar
 	
 #- Minimapa (con icono como camara con angulo de vista)
 	# Que se expanda/minimize al presionarlo (solo salga grande)

@@ -1,17 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=4 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
-[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Bottom.tres" id="2_jbclm"]
+[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Config.tres" id="2_jbclm"]
 [ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
-[ext_resource type="Resource" uid="uid://cp3ti5niebxun" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Top.tres" id="3_vumw4"]
 
 [node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("movement", "pivot_cam", "cam")]
 script = ExtResource("1_vxe6d")
 movement = NodePath("Movement")
 pivot_cam = NodePath("pivot_cam")
 cam = NodePath("pivot_cam/cam")
-cr_cam_Bottom = ExtResource("2_jbclm")
-cr_cam_Top = ExtResource("3_vumw4")
+cr_cam_config = ExtResource("2_jbclm")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("raycast")]
 script = ExtResource("2_s21o3")

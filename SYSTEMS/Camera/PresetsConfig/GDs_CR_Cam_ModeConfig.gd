@@ -4,15 +4,9 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		initialHeight = value
 		emit_changed()
-@export_range(0,360,1,"degress") var initialInclination : float:
-	set(value):
-		initialInclination = -value
-		emit_changed()
+
+#region [ Panning ]
 @export_group("Panning")
-@export var pan_boostSpeed : float:
-	set(value):
-		pan_boostSpeed = value
-		emit_changed()
 @export_range(3,15) var pan_acceleration : float:
 	set(value):
 		pan_acceleration = value
@@ -21,11 +15,30 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		pan_max_acceleration = value
 		emit_changed()
+@export var pan_boostSpeed : float:
+	set(value):
+		pan_boostSpeed = value
+		emit_changed()
 @export_range(5,20) var pan_deceleration : float:
 	set(value):
 		pan_deceleration = value
 		emit_changed()
+#endregion
+
+#region [ Inclination ]
+@export_group("Inclination")
+@export var incl_bottom : float:
+	set(value):
+		incl_bottom = value
+		emit_changed()
+@export var incl_top : float:
+	set(value):
+		incl_top = value
+		emit_changed()
+
+#region [ Rotation ]
 @export_group("Rotation")
+@export_subgroup("Vertical")
 @export var rotVert_allow : bool:
 	set(value):
 		rotVert_allow = value
@@ -42,6 +55,7 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		rotVert_curveBackToRot = value
 		emit_changed()
+@export_subgroup("Horizontal")
 @export var rotHor_allow : bool:
 	set(value):
 		rotHor_allow = value
@@ -54,6 +68,9 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		rotHor_deceleration = value
 		emit_changed()
+#endregion
+
+#region [ Height ]
 @export_group("Height")
 @export_range(2,15) var height_speed:
 	set(value):
@@ -63,31 +80,29 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		height_deceleration = value
 		emit_changed()
-@export_range(1,50,1)var height_limit_min:
+@export_range(1,50,1)var height_limit_bottom:
 	set(value):
-		height_limit_min = value
+		height_limit_bottom = value
 		emit_changed()
-@export_range(1,50,1)var height_limit_max:
+@export_range(1,50,1)var height_limit_top:
 	set(value):
-		height_limit_max = value
+		height_limit_top = value
 		emit_changed()
+#endregion
+
+#region [ FOV ]
 @export_group("FOV")
-@export var fov_changeByHeight : bool:
+@export_range(30,120)var fov_height_bottom : float:
 	set(value):
-		fov_changeByHeight = value
+		fov_height_bottom = value
 		emit_changed()
-@export var fov_static : float:
+@export_range(30,120)var fov_height_top : float:
 	set(value):
-		fov_static = value
+		fov_height_top = value
 		emit_changed()
-@export_range(30,120)var fov_height_min : float:
-	set(value):
-		fov_height_min = value
-		emit_changed()
-@export_range(30,120)var fov_height_max : float:
-	set(value):
-		fov_height_max = value
-		emit_changed()
+#endregion
+
+#region [ Boundings ]
 @export_group("Boundings")
 @export var boundings_X_min : float:
 	set(value):
@@ -105,5 +120,4 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		boundings_Z_max = value
 		emit_changed()
-
-		
+#endregion

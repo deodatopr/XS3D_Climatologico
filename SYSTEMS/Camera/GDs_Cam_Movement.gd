@@ -4,7 +4,6 @@ class_name GDs_CamMovement extends Node
 
 var cam : Camera3D
 var pivot_panning : Node3D
-var camFov : float
 
 #Panning
 var pan_currentBoost : float
@@ -17,6 +16,10 @@ var pan_bounding_X_min : float
 var pan_bounding_X_max : float
 var pan_bounding_Z_min : float
 var pan_bounding_Z_max : float
+
+#Inclination
+var incl_bottom : float
+var incl_top : float
 
 #Rotation
 var rot_initialRotX : float
@@ -49,42 +52,25 @@ var height_velocity : float
 var height_dir : int
 var height_validDir : int
 
-var height_limit_Max : float
-var height_limit_Min : float
+var height_limit_top : float
+var height_limit_bottom : float
 
 #Height by collision
 var heightColl_collided : bool
 var heightColl_lastHeightBeforeCollided : float
 
 #FOV
-var fov_changeByHeight : bool
-var fov_min : float
-var fov_max : float
+var fov_bottom : float
+var fov_top : float
 
 const ROTVERT_THRESHOLD : float = 0.8
 const ROTHOR_THRESHOLD : float = 0.8
 
-func Initialize(_cam : Camera3D, _pivot_panning : Node3D):
+func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_Cam_ModeConfig):
 	cam = _cam
 	pivot_panning = _pivot_panning
 	
-func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
-	#Cam
-	rot_initialRotX = _modeConfig.initialInclination
-	cam.rotation_degrees.x = rot_initialRotX
-	
-	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_min, _modeConfig.height_limit_max)
-	cam.global_position.y = initHeight
-	
-	if _modeConfig.fov_changeByHeight:
-		var height01 : float = inverse_lerp(height_limit_Min,height_limit_Max,cam.global_position.y)
-		var targetFov : float = lerpf(fov_min,fov_max,height01)
-		cam.fov = targetFov
-	else:
-		cam.fov = _modeConfig.fov_static
-		
-	OnUpdateCRCam(_modeConfig)
-
+	_SetModeConfig(_modeConfig)
 	
 func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Reset velocities
@@ -97,15 +83,21 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	pan_max_acceleration = _modeConfig.pan_max_acceleration
 	pan_boost = _modeConfig.pan_boostSpeed
 	pan_deceleration = _modeConfig.pan_deceleration
+	
 	pan_bounding_X_min = _modeConfig.boundings_X_min
 	pan_bounding_X_max = _modeConfig.boundings_X_max
 	pan_bounding_Z_min = _modeConfig.boundings_Z_min
 	pan_bounding_Z_max = _modeConfig.boundings_Z_max
 	
+	#Inclination
+	incl_bottom = _modeConfig.incl_bottom
+	incl_top = _modeConfig.incl_top
+	
 	#Rotation
 	rotHor_allow = _modeConfig.rotHor_allow
 	rotHor_speed = _modeConfig.rotHor_speed
 	rotHor_deceleration = _modeConfig.rotHor_deceleration
+	
 	rotVert_speed = _modeConfig.rotVert_speed
 	rotVert_allow = _modeConfig.rotVert_allow
 	rotVert_maxRotFromInitial = _modeConfig.rotVert_maxRotFromInitial
@@ -115,16 +107,17 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Height
 	height_speed = _modeConfig.height_speed
 	height_deceleration = _modeConfig.height_deceleration
-	height_limit_Min = _modeConfig.height_limit_min
-	height_limit_Max = _modeConfig.height_limit_max
+	height_limit_bottom = _modeConfig.height_limit_bottom
+	height_limit_top = _modeConfig.height_limit_top
 	
 	#FOV
-	fov_changeByHeight = _modeConfig.fov_changeByHeight
-	fov_min = _modeConfig.fov_height_min
-	fov_max = _modeConfig.fov_height_max
+	fov_bottom = _modeConfig.fov_height_bottom
+	fov_top = _modeConfig.fov_height_top
 
 func _physics_process(delta):
 	_Panning(delta)
+	
+	_Inclination()
 	
 	_Height(delta)
 	_HeightByCollision(delta)
@@ -136,6 +129,12 @@ func _physics_process(delta):
 		
 	if rotHor_allow and not rotVert_isRotating:
 		_Rotation_Hor(delta)
+
+func _SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
+	#Cam	
+	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_bottom, _modeConfig.height_limit_top)
+	cam.global_position.y = initHeight
+	OnUpdateCRCam(_modeConfig)
 
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
@@ -184,6 +183,10 @@ func _Panning(_delta:float):
 	
 	pivot_panning.global_position = targetPosition
 
+func _Inclination():
+	var targetInclination : float = lerp(incl_bottom,incl_top,APPSTATE.camHeight01)
+	cam.rotation_degrees.x = -targetInclination
+
 func _Rotation_Vert(_delta : float):
 #region [ MOUSE ]
 	#Mouse
@@ -206,7 +209,7 @@ func _Rotation_Vert(_delta : float):
 			
 	if rotVert_initDirCaptured and not  Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		@warning_ignore('standalone_expression')
-		rotVert_initDirCaptured
+		rotVert_initDirCaptured = false
 #endregion
 
 #region [ CONTROL ]
@@ -326,8 +329,11 @@ func _Height(_delta : float):
 	#Apply velocity
 	var targetHeight = cam.global_position.y
 	targetHeight += height_velocity * _delta
-	targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
+	targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
 	cam.global_position.y = targetHeight
+	
+	#Save global camHeight01
+	APPSTATE.camHeight01 = inverse_lerp(height_limit_bottom,height_limit_top,cam.global_position.y)
 
 func _HeightByCollision(_delta : float):
 	raycast.enabled = pan_velocity.length() > 0
@@ -343,7 +349,7 @@ func _HeightByCollision(_delta : float):
 		height_velocity = 1 * 80 * _delta		
 		var targetHeight = cam.global_position.y
 		targetHeight += height_velocity * _delta
-		targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
+		targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
 		cam.global_position.y = targetHeight
 		
 	#Decrease height
@@ -351,17 +357,13 @@ func _HeightByCollision(_delta : float):
 		height_velocity = -1 * 70 * _delta
 		var targetHeight = cam.global_position.y
 		targetHeight += height_velocity * _delta
-		targetHeight = clampf(targetHeight,height_limit_Min,height_limit_Max)
+		targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
 		cam.global_position.y = targetHeight
 		
 		if (cam.global_position.y - heightColl_lastHeightBeforeCollided) < 0.005:
 			heightColl_collided = false
 			cam.global_position.y = heightColl_lastHeightBeforeCollided
-			
-	
+
 func _FOV():
-	if fov_changeByHeight:
-		var height01 = inverse_lerp(height_limit_Min,height_limit_Max,cam.global_position.y)
-		var targetFov = lerpf(fov_min,fov_max,height01)
-		cam.fov = targetFov
-		
+	var targetFov = lerpf(fov_bottom,fov_top,APPSTATE.camHeight01)
+	cam.fov = targetFov
