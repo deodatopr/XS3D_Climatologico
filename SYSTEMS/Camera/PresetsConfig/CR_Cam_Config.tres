@@ -1,34 +1,33 @@
 [gd_resource type="Resource" script_class="GDs_CR_Cam_ModeConfig" load_steps=3 format=3 uid="uid://rwehnhdeuw80"]
 
-[ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_3hxfg"]
+[ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_4k4gx"]
 
 [sub_resource type="Curve" id="Curve_plxow"]
 _data = [Vector2(0, 0), 0.0, 3.17904, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [resource]
-script = ExtResource("1_3hxfg")
-initialHeight = 3.5
-initialInclination = 35.0
-pan_boostSpeed = 15.0
-pan_acceleration = 8.0
-pan_max_acceleration = 10.0
+script = ExtResource("1_4k4gx")
+initialHeight = 15.0
+pan_acceleration = 15.0
+pan_max_acceleration = 15.0
+pan_boostSpeed = 30.0
 pan_deceleration = 15.0
-rotVert_allow = true
+incl_bottom = 45.0
+incl_top = 90.0
+rotVert_allow = false
 rotVert_speed = 50.0
 rotVert_maxRotFromInitial = 30.0
 rotVert_curveBackToRot = SubResource("Curve_plxow")
-rotHor_allow = true
+rotHor_allow = false
 rotHor_speed = 0.5
 rotHor_deceleration = 0.042
-height_speed = 4.0
-height_deceleration = 12.0
-height_limit_min = 6.0
-height_limit_max = 12.0
-fov_changeByHeight = false
-fov_static = 90.0
-fov_height_min = 0.0
-fov_height_max = 0.0
+height_speed = 15.0
+height_deceleration = 25.0
+height_limit_bottom = 10.0
+height_limit_top = 50.0
+fov_height_bottom = 90.0
+fov_height_top = 50.0
 boundings_X_min = -100.0
 boundings_X_max = 100.0
 boundings_Z_min = -100.0
