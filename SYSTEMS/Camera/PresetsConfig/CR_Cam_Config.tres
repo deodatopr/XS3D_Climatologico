@@ -2,33 +2,30 @@
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_4k4gx"]
 
-[sub_resource type="Curve" id="Curve_plxow"]
-_data = [Vector2(0, 0), 0.0, 3.17904, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_4d03d"]
+_data = [Vector2(0, 0), 0.0, 3.04111, 0, 0, Vector2(1, 0.984906), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [resource]
 script = ExtResource("1_4k4gx")
 initialHeight = 15.0
-pan_acceleration = 15.0
-pan_max_acceleration = 15.0
-pan_boostSpeed = 30.0
-pan_deceleration = 15.0
+height_limit_bottom = 10.0
+height_limit_top = 25.0
+height_speed = 50.0
+height_deceleration = 20.0
+incl_curve = SubResource("Curve_4d03d")
 incl_bottom = 45.0
 incl_top = 90.0
-rotVert_allow = false
-rotVert_speed = 50.0
-rotVert_maxRotFromInitial = 30.0
-rotVert_curveBackToRot = SubResource("Curve_plxow")
-rotHor_allow = false
-rotHor_speed = 0.5
-rotHor_deceleration = 0.042
-height_speed = 15.0
-height_deceleration = 25.0
-height_limit_bottom = 10.0
-height_limit_top = 50.0
-fov_height_bottom = 90.0
+fov_height_bottom = 100.0
 fov_height_top = 50.0
+pan_acceleration = 20.0
+pan_max_acceleration = 15.0
+pan_boostSpeed = 20.0
+pan_deceleration = 15.0
 boundings_X_min = -100.0
 boundings_X_max = 100.0
 boundings_Z_min = -100.0
 boundings_Z_max = 100.0
+rotHor_allow = true
+rotHor_speed = 0.6
+rotHor_deceleration = 0.025

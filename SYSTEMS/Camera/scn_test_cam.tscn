@@ -63,6 +63,4 @@ transform = Transform3D(98.8334, 0, 0, 0, 98.8334, 0, 0, 0, 98.8334, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_gwycr")
 mesh = SubResource("PlaneMesh_g7w6c")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-
 [editable path="Camera_manager"]
