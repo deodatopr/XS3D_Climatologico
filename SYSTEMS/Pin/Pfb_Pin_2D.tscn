@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7ksllhnb58g"]
 
 [ext_resource type="Texture2D" uid="uid://cpl48chvmjymd" path="res://SYSTEMS/Pin/location.png" id="1_3t2i5"]
-[ext_resource type="Script" path="res://SYSTEMS/Pin/GDs_Pin.gd" id="2_xbsf1"]
+[ext_resource type="Script" path="res://SYSTEMS/Pin/GDs_Pin2D.gd" id="2_xbsf1"]
 
 [node name="Pin2D" type="Node3D" node_paths=PackedStringArray("label_3d", "sprite_pin")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 22.5851, 9.72214, 0.569534)

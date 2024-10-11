@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://buldaccfdos5u"]
+
+[ext_resource type="Script" path="res://SYSTEMS/Pin/GDs_Pin3D.gd" id="1_a2p2i"]
+[ext_resource type="Material" uid="uid://d2nvo2wvjg3q2" path="res://SYSTEMS/Pin/BilboardTestMaterial.tres" id="2_x0yc2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4pa3j"]
+material = ExtResource("2_x0yc2")
+
+[node name="Pin3D" type="Node3D" node_paths=PackedStringArray("label_3d", "mesh_Pin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.3277, 0)
+script = ExtResource("1_a2p2i")
+label_3d = NodePath("Mesh_Pin/Site_Name")
+mesh_Pin = NodePath("Mesh_Pin")
+
+[node name="Mesh_Pin" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("CylinderMesh_4pa3j")
+skeleton = NodePath("../..")
+
+[node name="Site_Name" type="Label3D" parent="Mesh_Pin"]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0, 0, 0)
+pixel_size = 0.15
+offset = Vector2(65.09, 0)
+billboard = 1
+double_sided = false
+text = "Sitio"
