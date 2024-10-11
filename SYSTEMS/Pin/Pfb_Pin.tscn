@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ksllhnb58g"]
+
+[ext_resource type="Texture2D" uid="uid://cpl48chvmjymd" path="res://SYSTEMS/Pin/location.png" id="1_3t2i5"]
+[ext_resource type="Script" path="res://SYSTEMS/Pin/GDs_Pin.gd" id="2_xbsf1"]
+
+[node name="Sprite_Pin" type="Sprite3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 22.5851, 9.72214, 0.569534)
+billboard = 1
+double_sided = false
+texture = ExtResource("1_3t2i5")
+script = ExtResource("2_xbsf1")
+pinColor = null
+
+[node name="Site_Name" type="Label3D" parent="."]
+transform = Transform3D(-0.197839, 0, -0.0293202, 0, 0.2, 0, 0.0293202, 0, -0.197839, -0.0273113, 0.118692, 0)
+pixel_size = 0.2
+offset = Vector2(101.26, 0)
+billboard = 1
+text = "Site"
