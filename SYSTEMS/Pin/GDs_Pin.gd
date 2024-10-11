@@ -1,8 +1,8 @@
 @tool
 extends Node
 
-@onready var label_3d: Label3D = $Site_Name
-@onready var sprite_pin: Sprite3D = $'.'
+@export var label_3d : Label3D
+@export var sprite_pin: Sprite3D
 
 @export var siteName : String = "Site":
 	set(value):

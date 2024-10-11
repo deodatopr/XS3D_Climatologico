@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=8 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
-[ext_resource type="PackedScene" uid="uid://b7ksllhnb58g" path="res://SYSTEMS/Pin/Pfb_Pin.tscn" id="3_m38ta"]
+[ext_resource type="PackedScene" uid="uid://b7ksllhnb58g" path="res://SYSTEMS/Pin/Pfb_Pin_2D.tscn" id="3_m38ta"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,10 +16,6 @@ background_mode = 2
 sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_ljww5"]
-radius = 50.049
-height = 87.486
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xhk6t"]
 
@@ -35,19 +31,12 @@ shadow_enabled = true
 
 [node name="UI_Compass" parent="." node_paths=PackedStringArray("camManager", "MarkRef") instance=ExtResource("1_rup1u")]
 camManager = NodePath("../Camera_manager")
-MarkRef = NodePath("../SiteRef")
-minDistance = 40.0
-maxDistance = 100.0
-
-[node name="CompassParent" parent="UI_Compass" index="0"]
-visible = false
+MarkRef = NodePath("../Sprite_Pin")
+minDistance = 10.0
+maxDistance = 60.0
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.98594, -28.2872)
-
-[node name="SiteRef" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 24.2797, 6.10462, -32.8826)
-mesh = SubResource("SphereMesh_ljww5")
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(33.3253, 0, 0, 0, 1, 0, 0, 0, 42.5377, 13.7415, 2.52822, -13.13)
@@ -55,9 +44,7 @@ mesh = SubResource("PlaneMesh_xhk6t")
 skeleton = NodePath("../Camera_manager")
 
 [node name="Sprite_Pin" parent="." instance=ExtResource("3_m38ta")]
-modulate = Color(1, 0.0709808, 0, 1)
-siteName = "otro lugar diferente"
-pinColor = Color(1, 0.0709808, 0, 1)
-textOffset = Vector2(208.75, -2.76)
-
-[editable path="UI_Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.756, 7.77718, -33.2955)
+siteName = "otro lugar"
+pinColor = Color(0.147922, 0, 1, 1)
+textOffset = Vector2(131.935, 0)
