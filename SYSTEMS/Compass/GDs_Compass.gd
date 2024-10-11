@@ -67,13 +67,13 @@ func _CalculateCompassPoints() -> void:
 		compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
 
 		#calculate dot product between pivot cam and mark
-		var pivotCamNormal := pivotCam.transform.basis.z
-		var MarkNormal := (MarkRef.position - pivotCam.position).normalized()
-		var dot := pivotCamNormal.dot(MarkNormal)
+		var pivotCamNormal := pivotCam.global_basis.z
+		var MarkNormal := (MarkRef.global_position - pivotCam.global_position).normalized()
+		var dot := MarkNormal.dot(pivotCamNormal)
 		var OffsetMark = abs(dot - 1) * (CompassLenght/2)
 		
 		#check if look to left or right
-		var RightVectorNormal := pivotCam.transform.basis.x
+		var RightVectorNormal := pivotCam.global_basis.x
 		var RightDot := RightVectorNormal.dot(MarkNormal)
 
 		if RightDot > 0:

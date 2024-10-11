@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=9 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
@@ -19,6 +19,8 @@ glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xhk6t"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_2qq2s"]
+
 [node name="test_compass" type="Node3D"]
 metadata/_edit_vertical_guides_ = [986.0]
 
@@ -31,7 +33,7 @@ shadow_enabled = true
 
 [node name="UI_Compass" parent="." node_paths=PackedStringArray("camManager", "MarkRef") instance=ExtResource("1_rup1u")]
 camManager = NodePath("../Camera_manager")
-MarkRef = NodePath("../Sprite_Pin")
+MarkRef = NodePath("../MeshInstance3D")
 minDistance = 10.0
 maxDistance = 60.0
 
@@ -48,3 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.756, 7.77718, -33.2955)
 siteName = "otro lugar"
 pinColor = Color(0.147922, 0, 1, 1)
 textOffset = Vector2(131.935, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 6.24353, 0)
+mesh = SubResource("SphereMesh_2qq2s")
