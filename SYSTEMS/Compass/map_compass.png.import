@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg5fxjgjk8nfg"
-path="res://.godot/imported/compassbar.png-fec98dfa6d15b3e83ce2d3beafec2998.ctex"
+uid="uid://b48ttf00fe7e7"
+path="res://.godot/imported/map_compass.png-483d27efd7535805ec80c5692d62d82a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SYSTEMS/Compass/compassbar.png"
-dest_files=["res://.godot/imported/compassbar.png-fec98dfa6d15b3e83ce2d3beafec2998.ctex"]
+source_file="res://SYSTEMS/Compass/map_compass.png"
+dest_files=["res://.godot/imported/map_compass.png-483d27efd7535805ec80c5692d62d82a.ctex"]
 
 [params]
 

@@ -53,11 +53,11 @@
 	
 # Brujula en mapa
 	# -- 1: Brujula volando en bottom (ref horizon)
-	# 2: Brujula volando en top (ref overwatch)
+	# -- 2: Brujula volando en top (ref overwatch)
 	
 # Sistema Pines
-	#Para lagunas (Pin3D)
-	#Para lugares medio iconicos (personalizar color, icono, nombre) (Pin2D)
+	#--Para lagunas (Pin3D)
+	#--Para lugares medio iconicos (personalizar color, icono, nombre) (Pin2D)
 
 # MiniMapa
 	#Abajo a la derecha este el minimapa (anim in/out)

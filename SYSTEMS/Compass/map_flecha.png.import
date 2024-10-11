@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b48ttf00fe7e7"
-path="res://.godot/imported/Newcompassbar.png-1336a201a0bdbc1f80489df17052a3df.ctex"
+uid="uid://euqeoxar08s8"
+path="res://.godot/imported/map_flecha.png-05e3932bff4a87c002d965470c65b4ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SYSTEMS/Compass/Newcompassbar.png"
-dest_files=["res://.godot/imported/Newcompassbar.png-1336a201a0bdbc1f80489df17052a3df.ctex"]
+source_file="res://SYSTEMS/Compass/map_flecha.png"
+dest_files=["res://.godot/imported/map_flecha.png-05e3932bff4a87c002d965470c65b4ad.ctex"]
 
 [params]
 

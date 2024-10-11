@@ -106,6 +106,4 @@ func _CalculateTopDownPoint() -> void:
 	#update top down mark position in screen
 	var screenSize := get_viewport().get_visible_rect().size/2
 	top_down_mark.global_position = centerScreen + Vector2(clamp(dir.x * (centerScreen.x * nearMark), -screenSize.x, screenSize.x - top_down_mark.size.x), clamp(dir.y * (centerScreen.y * nearMark), -screenSize.y, screenSize.y - top_down_mark.size.y))
-	#top_down_mark.global_position = centerScreen + Vector2(dir.x * (centerScreen.x * nearMark), dir.y * (centerScreen.y * nearMark))
-	print(dir.x * (centerScreen.x * nearMark))
-	print(nearMark)
+	

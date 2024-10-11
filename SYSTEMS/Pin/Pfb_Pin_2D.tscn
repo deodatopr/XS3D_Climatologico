@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7ksllhnb58g"]
 
-[ext_resource type="Texture2D" uid="uid://cpl48chvmjymd" path="res://SYSTEMS/Pin/location.png" id="1_3t2i5"]
+[ext_resource type="Texture2D" uid="uid://cpl48chvmjymd" path="res://SYSTEMS/Pin/map_pin_locaion.png" id="1_3t2i5"]
 [ext_resource type="Script" path="res://SYSTEMS/Pin/GDs_Pin2D.gd" id="2_xbsf1"]
 
 [node name="Pin2D" type="Node3D" node_paths=PackedStringArray("label_3d", "sprite_pin")]
