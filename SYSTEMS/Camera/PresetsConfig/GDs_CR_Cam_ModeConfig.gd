@@ -17,7 +17,7 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 		emit_changed()
 @export_range(20,100) var height_speed:
 	set(value):
-		height_speed = value*10
+		height_speed = value * 10
 		emit_changed()
 @export_range(10,50)var height_deceleration:
 	set(value):
