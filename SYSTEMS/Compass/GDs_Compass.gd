@@ -20,6 +20,7 @@ var dir : Vector2
 @onready var compass_parent: Control = $CompassParent
 @onready var top_down_mark: ColorRect = $CompassTopDown/TopDownMark
 @onready var compass_top_down: Control = $CompassTopDown
+@onready var distance_text: Label = $CompassParent/DistanceBackground/DistanceText
 
 var canRotate : bool
 
@@ -53,6 +54,9 @@ func _process(delta: float) -> void:
 		_CalculateCompassPoints()
 	
 func _CalculateCompassPoints() -> void:
+	var distance := pivotCam.global_position.distance_to(MarkRef.global_position)
+	distance_text.text = String.num(distance, 0)
+	
 	if canRotate:
 		#calculate degrees of pivot cam
 		var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
@@ -97,10 +101,11 @@ func _CalculateTopDownPoint() -> void:
 	centerScreen = get_viewport().get_visible_rect().size/2
 	dir = postarget2d - centerScreen
 	dir = dir.normalized()
-	var nearMark := (clampf(distance, minDistance, maxDistance)*.87)/maxDistance
-	if top_down_mark.global_position.x < 0:
-		nearMark -= .23
+	var nearMark := (clampf(distance, minDistance, maxDistance)*1.6)/maxDistance
 	
 	#update top down mark position in screen
-	top_down_mark.global_position = centerScreen + Vector2(dir.x * (centerScreen.x * nearMark), dir.y * (centerScreen.y * nearMark))
-	
+	var screenSize := get_viewport().get_visible_rect().size/2
+	top_down_mark.global_position = centerScreen + Vector2(clamp(dir.x * (centerScreen.x * nearMark), -screenSize.x, screenSize.x - top_down_mark.size.x), clamp(dir.y * (centerScreen.y * nearMark), -screenSize.y, screenSize.y - top_down_mark.size.y))
+	#top_down_mark.global_position = centerScreen + Vector2(dir.x * (centerScreen.x * nearMark), dir.y * (centerScreen.y * nearMark))
+	print(dir.x * (centerScreen.x * nearMark))
+	print(nearMark)
