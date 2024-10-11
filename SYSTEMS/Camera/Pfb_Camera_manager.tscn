@@ -62,7 +62,7 @@ GizmoBaseColor = Color(0, 1, 0.648052, 1)
 Length = 4.87
 
 [node name="cam" type="Camera3D" parent="pivot_cam"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.43123, 0)
+transform = Transform3D(-1, -0.0005616, -0.000261241, -0.000581847, 0.707107, 0.707107, -0.000212384, 0.707107, -0.707107, -1.13687e-12, 3.43123, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="pivot_cam/cam"]
 target_position = Vector3(0, -8.5, 0)

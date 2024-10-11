@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/3DGizmos/plugin.cfg", "res://addons/Todo
 
 folder_colors={
 "res://#DeosTools/": "red",
+"res://#ExtraResources/": "red",
 "res://#Keystores/": "red",
 "res://#NoShare/": "red",
 "res://#Wip/": "red",

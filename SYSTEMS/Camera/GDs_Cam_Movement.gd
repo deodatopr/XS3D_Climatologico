@@ -235,11 +235,13 @@ func _Height(_delta : float):
 			if abs(height_velocity) < 0.01:
 				height_velocity = 0
 	
-	#Apply velocity
-	var targetHeight = cam.global_position.y
-	targetHeight += height_velocity * _delta
-	targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
-	cam.global_position.y = targetHeight
+	# Apply velocity in the forward direction
+	var forward_vector : Vector3 = cam.global_transform.basis.z.normalized()
+	
+	# Apply the new position to the camera
+	var targetPos : Vector3 = cam.global_position
+	targetPos += forward_vector * height_velocity * _delta
+	cam.global_position = targetPos
 	
 	#Save global camHeight01
 	APPSTATE.camHeight01 = inverse_lerp(height_limit_bottom,height_limit_top,cam.global_position.y)
