@@ -1,28 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=12 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
-[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Config.tres" id="2_jbclm"]
+[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Config_Bottom.tres" id="2_jbclm"]
 [ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
+[ext_resource type="Resource" uid="uid://qjomkgpet6c4" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Config_Top.tres" id="3_bvohc"]
+[ext_resource type="ArrayMesh" uid="uid://b6kxaqh88nkok" path="res://addons/3DGizmos/Msh_Box.obj" id="4_wyt4d"]
+[ext_resource type="Shader" path="res://addons/3DGizmos/Gizmo_Sha.gdshader" id="5_pptyd"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Box.gd" id="6_1j17x"]
+[ext_resource type="ArrayMesh" uid="uid://bqll6nstu2t4y" path="res://addons/3DGizmos/Msh_Line.obj" id="7_hjx72"]
+[ext_resource type="Script" path="res://addons/3DGizmos/Node_Line.gd" id="8_xfpvb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yehu1"]
+render_priority = 0
+shader = ExtResource("5_pptyd")
+shader_parameter/basecolor = Color(1, 0, 0, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqblp"]
+render_priority = 0
+shader = ExtResource("5_pptyd")
+shader_parameter/basecolor = Color(0, 1, 0.648052, 1)
+shader_parameter/Wireframe = true
 
 [node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("movement", "pivot_cam", "cam")]
 script = ExtResource("1_vxe6d")
 movement = NodePath("Movement")
 pivot_cam = NodePath("pivot_cam")
 cam = NodePath("pivot_cam/cam")
-cr_cam_config = ExtResource("2_jbclm")
+cr_cam_config_bottom = ExtResource("2_jbclm")
+cr_cam_config_top = ExtResource("3_bvohc")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("raycast")]
 script = ExtResource("2_s21o3")
 raycast = NodePath("../pivot_cam/cam/RayCast3D")
 
 [node name="pivot_cam" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.9674)
+transform = Transform3D(1, 3.44374e-05, 0.000808501, -3.34931e-05, 0.999999, -0.00118043, -0.00080854, 0.0011804, 0.999999, 0, 0, 0)
+
+[node name="Gizmo Box" type="MeshInstance3D" parent="pivot_cam"]
+transform = Transform3D(0.33153, 0, 0, 0, 0.33153, 0, 0, 0, 0.33153, 0, 3.49311, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("4_wyt4d")
+surface_material_override/0 = SubResource("ShaderMaterial_yehu1")
+script = ExtResource("6_1j17x")
+GizmoBaseColor = Color(1, 0, 0, 1)
+
+[node name="GizmoLine" type="Node3D" parent="pivot_cam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.7307e-12, 3.43123, 0)
+
+[node name="Gizmo Line" type="MeshInstance3D" parent="pivot_cam/GizmoLine"]
+transform = Transform3D(-1, 0, 7.3535e-07, 0, 1, 0, -1.50996e-07, 0, -4.87, 0, 0, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = ExtResource("7_hjx72")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_yqblp")
+script = ExtResource("8_xfpvb")
+GizmoWireframe = true
+GizmoBaseColor = Color(0, 1, 0.648052, 1)
+Length = 4.87
 
 [node name="cam" type="Camera3D" parent="pivot_cam"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.43123, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="pivot_cam/cam"]
-transform = Transform3D(1, -7.96956e-08, 5.14874e-08, 7.96956e-08, 0.411053, -0.911611, 5.14874e-08, 0.911611, 0.411053, 0, 0, 0)
 target_position = Vector3(0, -8.5, 0)
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.0966405, 0.0966405, 1)

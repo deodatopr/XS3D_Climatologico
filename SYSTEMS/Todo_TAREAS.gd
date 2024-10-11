@@ -40,12 +40,15 @@
 # Sistema camara
 	# -- movimiento con elastico, tween desacceleracion (CIRC) (Volar lento, que se sienta chido)
 	# -- *Altura variable (temporal) con gatillos subir y bajar
-	# -- Inclinar mientras sube o baja (bottom/top)
-		# FOV Cam bottom: 80-90mm
-		# FOV Cam abajo: 60mm
+	# Solo dos modos
+		# FOV Cam bottom: 35mm (45°) (3400) - 7000
+		# FOV Cam top: 60mm
 	# -- Bounding del mapa simple con x+- y z+- limite,  Usar navmesh para ese approach y nos daria la altura de montañas
 	# Si va navegando y detectar si hay montaña para subir o bajar la camara y no colisione o traspase
 		#Idea: ColisionArea3d lanzar rayo y subir camara
+	#Rotar con pivote como si estuviera al centro y mostrar un plano del centro
+		#aparecer .25
+		#desaparecer .5
 	# Focus en un punto usando tween (cambio de cámara o la misma pero ir con transición ahí)
 	
 # Brujula en mapa
@@ -55,9 +58,14 @@
 # Sistema Pines
 	#Para lagunas (Pin3D)
 	#Para lugares medio iconicos (personalizar color, icono, nombre) (Pin2D)
-	
-# Minimapa (con icono como camara con angulo de vista)
-	# Mini mapa chico en una esquina y con flechas moverte entre sitios
+
+# MiniMapa
+	#Abajo a la derecha este el minimapa (anim in/out)
+	#Distancia al sitio
+	#Dirección de la cámara
+
+# Mapa
+	# mapa grande  con flechas moverte entre sitios
 	# Si presionas un punto en el mapa te lleve ahí
 
 # UI Animada: Cuando pase mouse animar

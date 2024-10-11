@@ -4,6 +4,14 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		initialHeight = value
 		emit_changed()
+@export_range(30,120)var fov: float:
+	set(value):
+		fov = value
+		emit_changed()
+@export var inclination: float:
+	set(value):
+		inclination = -value
+		emit_changed()
 
 #region [ Height ]
 @export_group("Height")
@@ -22,32 +30,6 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 @export_range(10,50)var height_deceleration:
 	set(value):
 		height_deceleration = value
-		emit_changed()
-#endregion
-
-#region [ Inclination ]
-@export_group("Inclination")
-@export var incl_curve : Curve:
-	set(value):
-		incl_curve = value
-@export var incl_bottom : float:
-	set(value):
-		incl_bottom = value
-		emit_changed()
-@export var incl_top : float:
-	set(value):
-		incl_top = value
-		emit_changed()
-
-#region [ FOV ]
-@export_group("FOV")
-@export_range(30,120)var fov_height_bottom : float:
-	set(value):
-		fov_height_bottom = value
-		emit_changed()
-@export_range(30,120)var fov_height_top : float:
-	set(value):
-		fov_height_top = value
 		emit_changed()
 #endregion
 

@@ -5,6 +5,12 @@ class_name GDs_CamMovement extends Node
 var cam : Camera3D
 var pivot_panning : Node3D
 
+#Inclination
+var inclination : float
+
+#FOV
+var fov_bottom : float
+
 #Panning
 var pan_currentBoost : float
 var pan_boost : float
@@ -17,11 +23,6 @@ var pan_bounding_X_min : float
 var pan_bounding_X_max : float
 var pan_bounding_Z_min : float
 var pan_bounding_Z_max : float
-
-#Inclination
-var incl_curve : Curve
-var incl_bottom : float
-var incl_top : float
 
 #Rotation
 var rot_initialRotX : float
@@ -51,17 +52,13 @@ var height_limit_bottom : float
 var heightColl_collided : bool
 var heightColl_lastHeightBeforeCollided : float
 
-#FOV
-var fov_bottom : float
-var fov_top : float
-
 const ROTVERT_THRESHOLD : float = 0.8
 const ROTHOR_THRESHOLD : float = 0.8
 
 func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_Cam_ModeConfig):
 	cam = _cam
 	pivot_panning = _pivot_panning
-	_SetModeConfig(_modeConfig)
+	SetModeConfig(_modeConfig)
 	
 func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Reset velocities
@@ -80,11 +77,6 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	pan_bounding_Z_min = _modeConfig.boundings_Z_min
 	pan_bounding_Z_max = _modeConfig.boundings_Z_max
 	
-	#Inclination
-	incl_curve = _modeConfig.incl_curve
-	incl_bottom = _modeConfig.incl_bottom
-	incl_top = _modeConfig.incl_top
-	
 	#Rotation
 	rotHor_allow = _modeConfig.rotHor_allow
 	rotHor_speed = _modeConfig.rotHor_speed
@@ -95,30 +87,25 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	height_limit_top = _modeConfig.height_limit_top
 	height_speed = _modeConfig.height_speed
 	height_deceleration = _modeConfig.height_deceleration
-	
-	#FOV
-	fov_bottom = _modeConfig.fov_height_bottom
-	fov_top = _modeConfig.fov_height_top
 
-func _physics_process(delta):
-	_Panning(delta)
-	
-	_Inclination()
-	
-	_Height(delta)
-	_HeightByCollision(delta)
-	
-	_FOV()
-		
-	if rotHor_allow:
-		_Rotation_Hor(delta)
-
-func _SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
+func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Cam	
 	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_bottom, _modeConfig.height_limit_top)
 	cam.global_position.y = initHeight
 	
+	cam.rotation_degrees.x = _modeConfig.inclination
+	cam.fov = _modeConfig.fov
+	
 	OnUpdateCRCam(_modeConfig)
+
+func _physics_process(delta):
+	_Panning(delta)
+	
+	_Height(delta)
+	_HeightByCollision(delta)
+		
+	if rotHor_allow:
+		_Rotation_Hor(delta)
 
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
@@ -166,12 +153,6 @@ func _Panning(_delta:float):
 		pan_velocity = Vector3.ZERO
 	
 	pivot_panning.global_position = targetPosition
-
-func _Inclination():
-	var height01 : float = APPSTATE.camHeight01
-	height01 *= incl_curve.sample(1 - height01)
-	var targetInclination : float = lerp(incl_bottom,incl_top,height01)
-	cam.rotation_degrees.x = -targetInclination
 		
 func _Rotation_Hor(_delta : float):
 #region [ MOUSE ]
@@ -293,7 +274,3 @@ func _HeightByCollision(_delta : float):
 		if (cam.global_position.y - heightColl_lastHeightBeforeCollided) < 0.005:
 			heightColl_collided = false
 			cam.global_position.y = heightColl_lastHeightBeforeCollided
-
-func _FOV():
-	var targetFov = lerpf(fov_bottom,fov_top,APPSTATE.camHeight01)
-	cam.fov = targetFov

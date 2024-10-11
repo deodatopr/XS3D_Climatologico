@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4fqdfnjwyd21"]
+[gd_scene load_steps=13 format=3 uid="uid://d4fqdfnjwyd21"]
 
+[ext_resource type="Shader" path="res://addons/3DGizmos/Gizmo_Sha.gdshader" id="2_vwosc"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
@@ -14,6 +15,18 @@ background_mode = 2
 sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42d2c"]
+render_priority = 0
+shader = ExtResource("2_vwosc")
+shader_parameter/basecolor = Color(1, 0, 0, 1)
+shader_parameter/Wireframe = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rfb5"]
+render_priority = 0
+shader = ExtResource("2_vwosc")
+shader_parameter/basecolor = Color(0, 1, 0.648052, 1)
+shader_parameter/Wireframe = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xbry"]
 
@@ -39,6 +52,12 @@ shadow_enabled = true
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_ye5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3846, 0, -39.2836)
+
+[node name="Gizmo Box" parent="Camera_manager/pivot_cam" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_42d2c")
+
+[node name="Gizmo Line" parent="Camera_manager/pivot_cam/GizmoLine" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_1rfb5")
 
 [node name="Msh" type="Node3D" parent="."]
 
