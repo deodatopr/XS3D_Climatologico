@@ -169,10 +169,9 @@ func _Panning(_delta:float):
 
 func _Inclination():
 	var height01 : float = APPSTATE.camHeight01
-	var fixedHeight01 : float = incl_curve.sample(height01)
-	fixedHeight01 = clampf(fixedHeight01,0,1.0)
-	
-	var targetInclination : float = lerp(incl_bottom,incl_top,fixedHeight01)
+	height01 *= incl_curve.sample(1 - height01)
+
+	var targetInclination : float = lerp(incl_bottom,incl_top,height01)
 	cam.rotation_degrees.x = -targetInclination
 		
 func _Rotation_Hor(_delta : float):
@@ -224,7 +223,6 @@ func _Rotation_Hor(_delta : float):
 	var dir = sign(rotHor_velocity)
 	if rotHorReleased and rotHor_velocity_abs > 0:
 		rotHor_velocity -= dir * rotHor_deceleration * _delta
-		print(rotHor_velocity)
 		if rotHor_velocity_abs < 0.0005:
 			rotHor_velocity = 0
 			SIGNALS.OnCameraUpdate.emit(false)

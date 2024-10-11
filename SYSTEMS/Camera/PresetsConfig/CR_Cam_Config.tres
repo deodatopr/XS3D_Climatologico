@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://SYSTEMS/Camera/PresetsConfig/GDs_CR_Cam_ModeConfig.gd" id="1_4k4gx"]
 
-[sub_resource type="Curve" id="Curve_4d03d"]
-_data = [Vector2(0, 0), 0.0, 3.04111, 0, 0, Vector2(1, 0.984906), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_m0ur5"]
+_data = [Vector2(0.00917993, 0.996153), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.46793, 0.0, 0, 0]
 point_count = 2
 
 [resource]
@@ -11,10 +11,10 @@ script = ExtResource("1_4k4gx")
 initialHeight = 15.0
 height_limit_bottom = 10.0
 height_limit_top = 25.0
-height_speed = 50.0
-height_deceleration = 20.0
-incl_curve = SubResource("Curve_4d03d")
-incl_bottom = 45.0
+height_speed = 45.0
+height_deceleration = 10.0
+incl_curve = SubResource("Curve_m0ur5")
+incl_bottom = 50.0
 incl_top = 90.0
 fov_height_bottom = 100.0
 fov_height_top = 50.0
