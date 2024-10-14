@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	
 	var markDirection = Vector2(map_texture.size/2).direction_to(mark_Start_Position)
 	mark_test.position = (map_texture.size/2) + (markDirection * 100)
-	print(markDirection)
+	#print(markDirection)
 	
 	cam_ref.rotation_degrees = -pivot_cam.rotation_degrees.y + 180
 	

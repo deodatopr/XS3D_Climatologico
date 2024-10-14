@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4fqdfnjwyd21"]
+[gd_scene load_steps=14 format=3 uid="uid://d4fqdfnjwyd21"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
 [ext_resource type="Material" uid="uid://c3mch4vry3068" path="res://#ExtraResources/Mat_Debug/mat_grid_red.tres" id="3_3wffj"]
@@ -33,6 +33,8 @@ dof_blur_amount = 0.0
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lg6gr"]
 points = PackedVector3Array(0.322191, -0.0266984, 1.72116, -0.322191, -0.0266984, -1.72116, -0.537547, -0.0266984, -1.66758, -0.094396, 0.932728, -0.141446, 1.72116, 0.0270195, -0.322191, -1.66758, 0.0270195, 0.537547, -1.61365, -0.0266984, -0.699317, 1.12935, -0.0266984, -1.34437, 1.34437, 0.0808374, 1.02184, -0.860412, 0.0808374, 1.45188, 0.188299, 0.884513, 0.235226, 0.188304, 0.884525, -0.235232, -0.278418, 0.879214, 0.139209, 0.322191, 0.0808374, -1.66758, -0.968259, 0.0808374, -1.39863, 1.66758, -0.0266984, 0.537547, -1.34437, -0.0266984, 1.12935, 0.322191, 0.0808374, 1.66758, -1.61365, 0.0808374, -0.430038, 1.29112, 0.0808374, -1.07543, -0.322191, 0.0808374, -1.66758, -0.322191, 0.0808374, 1.66758, 0.968259, 0.0808374, 1.39863, 1.61365, 0.0808374, 0.430038, -1.34437, 0.0808374, -1.02184, 0.370795, 0.831942, -0.138903, -1.29112, 0.0808374, 1.07543, -0.139206, 0.879205, 0.278411, 0.860412, 0.0808374, -1.45188, -0.235243, 0.884544, -0.188313, -0.138919, 0.831983, -0.370839, 1.12935, -0.0266984, 1.34437)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x2cs2"]
+
 [node name="test_cam" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -42,10 +44,6 @@ camera_attributes = SubResource("CameraAttributesPractical_h1c62")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-
-[node name="Camera_manager" parent="." node_paths=PackedStringArray("worldEnv") instance=ExtResource("2_ye5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54969, 24.463, -64.8488)
-worldEnv = NodePath("../WorldEnvironment")
 
 [node name="Msh" type="Node3D" parent="."]
 
@@ -189,7 +187,7 @@ mesh = SubResource("BoxMesh_1xbry")
 skeleton = NodePath("../..")
 
 [node name="Msh_test_cerro" parent="." instance=ExtResource("5_6pq1q")]
-transform = Transform3D(26.1336, 0, 0, 0, 26.1336, 0, 0, 0, 26.1336, 0, 0, 0)
+transform = Transform3D(26.1336, 0, 0, 0, 26.1336, 0, 0, 0, 26.1336, 0, -9.49337, 0)
 
 [node name="Sphere" parent="Msh_test_cerro" index="0"]
 surface_material_override/0 = ExtResource("6_y3g0y")
@@ -200,7 +198,13 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Msh_test_cerro/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_lg6gr")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6661, 13.0446, -33.377)
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(61.7333, 0, 0, 0, 61.7333, 0, 0, 0, 61.7333, 0, 0, 0)
+shape = SubResource("BoxShape3D_x2cs2")
+
+[node name="Camera_manager" parent="." instance=ExtResource("2_ye5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92457, 0, -51.6986)
 
 [editable path="Msh_test_cerro"]

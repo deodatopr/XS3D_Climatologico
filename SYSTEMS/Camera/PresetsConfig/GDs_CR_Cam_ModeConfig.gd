@@ -12,6 +12,10 @@ class_name GDs_CR_Cam_ModeConfig extends Resource
 	set(value):
 		inclination = -value
 		emit_changed()
+@export var distFromPivotCam: float:
+	set(value):
+		distFromPivotCam = value
+		emit_changed()
 
 #region [ Height ]
 @export_group("Height")

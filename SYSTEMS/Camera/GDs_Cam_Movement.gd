@@ -1,9 +1,12 @@
 class_name GDs_CamMovement extends Node
 
 @export var raycast : RayCast3D
+@export var mshRotBottom : Node3D
+@export var triggerRaycast  : Area3D
 
 var cam : Camera3D
 var pivot_panning : Node3D
+var distFromPivotCam : float
 
 #Inclination
 var inclination : float
@@ -56,17 +59,21 @@ const ROTVERT_THRESHOLD : float = 0.8
 const ROTHOR_THRESHOLD : float = 0.8
 
 var tweenMovCamera : Tween
-var tweenEffects : Tween
-var worldEnv : WorldEnvironment
-var environment : Environment
-var camAttribute : CameraAttributes
+#var tweenEffects : Tween
+#var worldEnv : WorldEnvironment
+#var environment : Environment
+#var camAttribute : CameraAttributes
 
-func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_Cam_ModeConfig, _worldEnv : WorldEnvironment):
+func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_Cam_ModeConfig):
+	triggerRaycast.area_entered.connect(_OnTriggerEntered)
+	triggerRaycast.area_exited.connect(_OnTriggerExit)
+	
 	cam = _cam
 	pivot_panning = _pivot_panning
-	worldEnv = _worldEnv
-	environment = worldEnv.environment
-	camAttribute = worldEnv.camera_attributes
+	#worldEnv = _worldEnv
+	#environment = worldEnv.environment
+	#camAttribute = worldEnv.camera_attributes
+	distFromPivotCam = _modeConfig.distFromPivotCam
 	
 	SetModeConfig(_modeConfig)
 	
@@ -102,8 +109,18 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Cam
 	# Height
 	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_bottom, _modeConfig.height_limit_top)
-	var targetHeight = cam.global_position
+	var targetHeight : Vector3
 	targetHeight.y = initHeight
+	
+	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
+		#Bottom
+		var offsetFromPivot : Vector3 = pivot_panning.global_position + (-pivot_panning.basis.z * distFromPivotCam)
+		targetHeight.x = offsetFromPivot.x
+		targetHeight.z = offsetFromPivot.z
+	else:
+		#Top
+		targetHeight.x = pivot_panning.global_position.x
+		targetHeight.z = pivot_panning.global_position.z
 	
 	# Degress
 	var targetDegress = cam.rotation_degrees
@@ -116,10 +133,10 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	var typeTransitionBottom =  Tween.TRANS_QUAD
 	
 	tweenMovCamera = get_tree().create_tween().set_parallel(true)
-	tweenEffects = get_tree().create_tween().set_parallel(true)
-	
-	tweenEffects.tween_property(environment,"adjustment_saturation",.2,.7)
-	tweenEffects.chain().tween_property(environment,"adjustment_saturation",1,.7)
+	#tweenEffects = get_tree().create_tween().set_parallel(true)
+	#
+	#tweenEffects.tween_property(environment,"adjustment_saturation",.2,.7)
+	#tweenEffects.chain().tween_property(environment,"adjustment_saturation",1,.7)
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
 		tweenMovCamera.tween_property(cam,"global_position",targetHeight, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
@@ -141,6 +158,12 @@ func _physics_process(delta):
 		
 	if rotHor_allow:
 		_Rotation_Hor(delta)
+
+func _OnTriggerEntered(_area3d : Area3D):
+	UTILITIES.TurnOnObject(raycast)
+
+func _OnTriggerExit(_area3d : Area3D):
+	UTILITIES.TurnOffObject(raycast)	
 
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
@@ -211,6 +234,7 @@ func _Rotation_Hor(_delta : float):
 			var mouseDirRotX = sign(mouseDir.x)
 			rotHor_velocity = -mouseDirRotX * rotHor_speed * _delta
 			pivot_panning.rotate_y(rotHor_velocity)
+			
 			SIGNALS.OnCameraUpdate.emit(true)
 			
 	if rotHor_initDirCaptured and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -250,6 +274,12 @@ func _Rotation_Hor(_delta : float):
 #endregion
 	
 	rotHor_isRotating = rotHor_velocity_abs > 0
+	
+	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom and not rotHorReleased:
+		UTILITIES.TurnOnObject(mshRotBottom)
+	else:
+		if mshRotBottom.visible:
+			UTILITIES.TurnOffObject(mshRotBottom)
 
 func _Height(_delta : float):
 	#Input
@@ -307,7 +337,7 @@ func _HeightByCollision(_delta : float):
 	#Decrease height
 	if heightColl_collided and not raycast.is_colliding():
 		#(static value (70) to avoid more properties in cam config)
-		height_velocity = -1 * 400 * _delta
+		height_velocity = -400 * _delta
 		var targetHeight = cam.global_position.y
 		targetHeight += height_velocity * _delta
 		targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
