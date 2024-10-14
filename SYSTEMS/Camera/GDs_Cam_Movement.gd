@@ -157,6 +157,9 @@ func _Panning(_delta:float):
 	if Input.is_action_pressed("3DMove_Left"):
 		inputDir += pivot_panning.basis.x
 	
+	#Save global input to use in other systems (minimap)
+	APPSTATE.camInputPan = inputDir
+	
 	#Acceleration
 	if inputDir.length() > 0:
 		pan_currentBoost = pan_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
@@ -279,9 +282,6 @@ func _Height(_delta : float):
 	
 	if targetPos.y >= height_limit_bottom and targetPos.y <= height_limit_top:
 		cam.global_position = targetPos
-	
-		#Save global camHeight01
-		APPSTATE.camHeight01 = inverse_lerp(height_limit_bottom,height_limit_top,cam.global_position.y)
 	else:
 		height_velocity = 0
 
