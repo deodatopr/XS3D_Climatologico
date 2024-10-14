@@ -63,6 +63,14 @@ const ROTHOR_THRESHOLD : float = 0.8
 var canMoveCam : bool
 var tweenMovCamera : Tween
 var tweenMshVfxRotCam : Tween
+
+	
+var typeEaseTop : int = Tween.EASE_OUT
+var typeTransitionTop: int  = Tween.TRANS_EXPO
+
+var typeEaseBottom: int  = Tween.EASE_IN_OUT
+var typeTransitionBottom: int  =  Tween.TRANS_QUAD
+
 #var tweenEffects : Tween
 #var worldEnv : WorldEnvironment
 #var environment : Environment
@@ -83,9 +91,7 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_C
 	
 func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	#Reset velocities
-	pan_velocity = Vector3.ZERO
-	rotHor_velocity = 0
-	height_velocity = 0
+	_ResetVelocities()
 	
 	#Pannning
 	pan_acceleration = _modeConfig.pan_acceleration
@@ -131,12 +137,6 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 	var targetDegress = cam.rotation_degrees
 	targetDegress.x = _modeConfig.inclination
 	
-	var typeEaseTop = Tween.EASE_OUT
-	var typeTransitionTop = Tween.TRANS_EXPO
-	
-	var typeEaseBottom = Tween.EASE_IN_OUT
-	var typeTransitionBottom =  Tween.TRANS_QUAD
-	
 	tweenMovCamera = get_tree().create_tween().set_parallel(true)
 	#tweenEffects = get_tree().create_tween().set_parallel(true)
 	#
@@ -161,6 +161,10 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 func _physics_process(delta):
 	if not canMoveCam:
 		return 
+	
+	#TEST: Probando ir a punto, esto llegará por alguna señal
+	if Input.is_key_pressed(KEY_SPACE):
+		_GoToPoint(Vector3.ZERO)
 	
 	_Panning(delta)
 
@@ -372,3 +376,22 @@ func _HeightByCollision(_delta : float):
 		if (cam.global_position.y - heightColl_lastHeightBeforeCollided) < 0.005:
 			heightColl_collided = false
 			cam.global_position.y = heightColl_lastHeightBeforeCollided
+			
+func _GoToPoint(_targetPoint : Vector3):
+	_targetPoint.y = 0
+	canMoveCam = false
+	
+	_ResetVelocities()
+	tweenMovCamera = create_tween()
+	var setEase : int = Tween.EASE_IN_OUT
+	var setTrans : int = Tween.TRANS_EXPO
+	
+	tweenMovCamera.tween_property(pivot_panning,"global_position",_targetPoint, 1.5).set_ease(setEase).set_trans(setTrans)
+	await tweenMovCamera.finished
+	
+	canMoveCam = true
+	
+func _ResetVelocities():
+	pan_velocity = Vector3.ZERO
+	height_velocity = 0
+	rotHor_velocity = 0
