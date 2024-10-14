@@ -58,6 +58,7 @@ var heightColl_lastHeightBeforeCollided : float
 const ROTVERT_THRESHOLD : float = 0.8
 const ROTHOR_THRESHOLD : float = 0.8
 
+var canMoveCam : bool
 var tweenMovCamera : Tween
 #var tweenEffects : Tween
 #var worldEnv : WorldEnvironment
@@ -106,6 +107,7 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	height_deceleration = _modeConfig.height_deceleration
 
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
+	canMoveCam = false
 	#Cam
 	# Height
 	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_bottom, _modeConfig.height_limit_top)
@@ -149,8 +151,14 @@ func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
 
 	#tweenMovCamera.tween_property(environment,"adjustment_saturation",1,.5)
 	OnUpdateCRCam(_modeConfig)
+	
+	await tweenMovCamera.finished
+	canMoveCam = true
 
 func _physics_process(delta):
+	if not canMoveCam:
+		return 
+	
 	_Panning(delta)
 
 	_Height(delta)
@@ -163,7 +171,7 @@ func _OnTriggerEntered(_area3d : Area3D):
 	UTILITIES.TurnOnObject(raycast)
 
 func _OnTriggerExit(_area3d : Area3D):
-	UTILITIES.TurnOffObject(raycast)	
+	UTILITIES.TurnOffObject(raycast)
 
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
