@@ -22,6 +22,7 @@
 		# 1 = modo cam Bottom
 		# 2 = modo cam Top
 		# Mouse + click (Rot)
+		# Scroll button mouse = minimapa 
 		
 	#Inputs Control:
 		#Gatillos der (adelante) = subir
@@ -31,6 +32,8 @@
 		#Boton der = cancelar
 		#Boton abajo = confirmar
 		#Joystick izq = paneo cam
+		
+		#Boton izq / arriba = minimapa 
 		
 	#Movimientos separados (solo uno a la vez)
 		#Joystick der hor = cam rot hor
@@ -54,6 +57,7 @@
 # Brujula en mapa
 	# -- 1: Brujula volando en bottom (ref horizon)
 	# -- 2: Brujula volando en top (ref overwatch)
+	
 	
 # Sistema Pines
 	#--Para lagunas (Pin3D)

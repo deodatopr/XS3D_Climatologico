@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=13 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://SYSTEMS/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
+[ext_resource type="Texture2D" uid="uid://cglj1vhqxomwx" path="res://SYSTEMS/Minimap/map_mapa2_test.jpg" id="3_depbj"]
 [ext_resource type="PackedScene" uid="uid://b7ksllhnb58g" path="res://SYSTEMS/Pin/Pfb_Pin_2D.tscn" id="3_m38ta"]
 [ext_resource type="PackedScene" uid="uid://buldaccfdos5u" path="res://SYSTEMS/Pin/Pfb_Pin_3D.tscn" id="4_h2xf7"]
 [ext_resource type="Material" path="res://SYSTEMS/Pin/mat_BilboardTestMaterial.tres" id="5_utd2f"]
@@ -19,6 +20,9 @@ background_mode = 2
 sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pg2ux"]
+albedo_texture = ExtResource("3_depbj")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xhk6t"]
 
@@ -43,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.98594, -28.2872)
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(33.3253, 0, 0, 0, 1, 0, 0, 0, 42.5377, 13.7415, 2.52822, -13.13)
+material_override = SubResource("StandardMaterial3D_pg2ux")
 mesh = SubResource("PlaneMesh_xhk6t")
 skeleton = NodePath("../Camera_manager")
 

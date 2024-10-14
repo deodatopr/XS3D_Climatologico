@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource("1_1cnuc")
-initialHeight = 30.0
-fov = 60.0
+initialHeight = 50.0
+fov = 50.0
 inclination = 90.0
 distFromPivotCam = 0.0
 height_limit_bottom = 15.0
-height_limit_top = 45.0
+height_limit_top = 50.0
 height_speed = 65.0
 height_deceleration = 10.0
 pan_acceleration = 20.0
