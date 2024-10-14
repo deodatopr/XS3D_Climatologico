@@ -4,6 +4,8 @@ class_name GDs_CamMovement extends Node
 @export var mshRotBottom : Node3D
 @export var triggerRaycast  : Area3D
 
+@onready var mat_vfx_camRot : StandardMaterial3D = preload("uid://djj8aafmjyy0h")
+
 var cam : Camera3D
 var pivot_panning : Node3D
 var distFromPivotCam : float
@@ -60,6 +62,7 @@ const ROTHOR_THRESHOLD : float = 0.8
 
 var canMoveCam : bool
 var tweenMovCamera : Tween
+var tweenMshVfxRotCam : Tween
 #var tweenEffects : Tween
 #var worldEnv : WorldEnvironment
 #var environment : Environment
@@ -283,10 +286,25 @@ func _Rotation_Hor(_delta : float):
 	
 	rotHor_isRotating = rotHor_velocity_abs > 0
 	
+	#Msh_Rot_Bottom
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom and not rotHorReleased:
 		UTILITIES.TurnOnObject(mshRotBottom)
+		
+		mat_vfx_camRot.albedo_color.a = 0
+		var originalColor : Color =  mat_vfx_camRot.albedo_color
+		var targetColor : Color =  originalColor
+		targetColor.a = 1 
+		tweenMshVfxRotCam = get_tree().create_tween()
+		tweenMshVfxRotCam.tween_property(mat_vfx_camRot,'albedo_color',targetColor, 0.25)
 	else:
 		if mshRotBottom.visible:
+			var originalColor : Color =  mat_vfx_camRot.albedo_color
+			var targetColor : Color =  originalColor
+			targetColor.a = 0
+			tweenMshVfxRotCam = get_tree().create_tween()
+			tweenMshVfxRotCam.tween_property(mat_vfx_camRot,'albedo_color',targetColor, 0.3)
+			
+			await tweenMshVfxRotCam.finished
 			UTILITIES.TurnOffObject(mshRotBottom)
 
 func _Height(_delta : float):

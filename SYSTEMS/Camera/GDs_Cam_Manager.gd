@@ -38,7 +38,7 @@ func _input(event):
 		else:
 			_ChangeMode(ENUMS.Cam_Mode.Bottom)
 			
-
+			
 func _ChangeMode(_changeTo : int):
 	APPSTATE.camMode = _changeTo
 	if _changeTo == ENUMS.Cam_Mode.Bottom:

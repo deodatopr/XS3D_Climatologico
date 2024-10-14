@@ -49,7 +49,9 @@ collide_with_bodies = false
 debug_shape_custom_color = Color(1, 0.0966405, 0.0966405, 1)
 
 [node name="Msh_Rot_Bottom" parent="pivot_cam/cam" instance=ExtResource("5_t184v")]
+process_mode = 4
 transform = Transform3D(-1, 1.00868e-08, 8.5216e-08, 4.9622e-08, 0.819152, 0.573577, -7.09551e-08, 0.573576, -0.819152, 0.00800166, 0.0652847, -26.2449)
+visible = false
 
 [node name="Msh_vfx_camRot" parent="pivot_cam/cam/Msh_Rot_Bottom" index="0"]
 material_override = ExtResource("6_anvks")
