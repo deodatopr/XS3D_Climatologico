@@ -14,6 +14,7 @@ var postarget2d : Vector2
 var Camera : Camera3D
 var centerScreen : Vector2
 var dir : Vector2
+var distance : float
 
 @onready var pin_sitio: Panel = $CompassParent/CompassMask/PinSite
 @onready var compass: TextureRect = $CompassParent/CompassMask/Compass
@@ -46,16 +47,25 @@ func _ToggleCompass(visible : bool) -> void:
 	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
+	#calculate distance between pivot and mark
+	distance = pivotCam.global_position.distance_to(MarkRef.global_position)
+	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
 		_ToggleCompass(false)
-		_CalculateTopDownPoint()
+		_CalculateTopDownPoint(distance)
 	else:
 		_ToggleCompass(true)
-		_CalculateCompassPoints()
+		_CalculateCompassPoints(distance)
 	
-func _CalculateCompassPoints() -> void:
-	var distance := pivotCam.global_position.distance_to(MarkRef.global_position)
-	distance_text.text = String.num(distance, 0)
+func _CalculateCompassPoints(_distance : float) -> void:
+	
+	distance_text.text = String.num(_distance, 0)
+
+	#check if is enough near to hide or show. min distance need a value higher to not hide the pin very near of site and add value to not create a separete var
+	if _distance < minDistance + 15 and pin_sitio.visible:
+		pin_sitio.visible = false
+	elif _distance > minDistance + 15 and !pin_sitio.visible:
+		pin_sitio.visible = true
 	
 	if canRotate:
 		#calculate degrees of pivot cam
@@ -86,14 +96,12 @@ func _CalculateCompassPoints() -> void:
 		#update pin mark in compass
 		pin_sitio.position.x = OffsetMark + pinSiteInitialXPosition
 
-func _CalculateTopDownPoint() -> void:
-	#calculate distance between pivot and mark
-	var distance := pivotCam.global_position.distance_to(MarkRef.global_position)
+func _CalculateTopDownPoint(_distance : float) -> void:
 	
 	#check if is enough near to hide or show
-	if distance < minDistance and compass_top_down.visible:
+	if _distance < minDistance and compass_top_down.visible:
 		compass_top_down.visible = false
-	elif distance > minDistance and !compass_top_down.visible:
+	elif _distance > minDistance and !compass_top_down.visible:
 		compass_top_down.visible = true
 	
 	#calculate the position in screen of top down mark
@@ -101,7 +109,8 @@ func _CalculateTopDownPoint() -> void:
 	centerScreen = get_viewport().get_visible_rect().size/2
 	dir = postarget2d - centerScreen
 	dir = dir.normalized()
-	var nearMark := (clampf(distance, minDistance, maxDistance)*1.6)/maxDistance
+	#value 1.6 is a coeficient wthat define the value from center of screen to edge to adjust the mark to screen 
+	var nearMark := (clampf(_distance, minDistance, maxDistance)*1.6)/maxDistance
 	
 	#update top down mark position in screen
 	var screenSize := get_viewport().get_visible_rect().size/2
