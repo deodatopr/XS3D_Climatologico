@@ -60,9 +60,9 @@
 	#--Para lugares medio iconicos (personalizar color, icono, nombre) (Pin2D)
 
 # MiniMapa
-	#Abajo a la derecha este el minimapa (anim in/out)
-	#Distancia al sitio
-	#Dirección de la cámara
+	# Abajo a la derecha este el minimapa (anim in/out)
+	# Distancia al sitio
+	# Dirección de la cámara
 
 # Mapa
 	# mapa grande  con flechas moverte entre sitios

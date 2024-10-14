@@ -46,7 +46,7 @@ func _ToggleCompass(visible : bool) -> void:
 	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
-	if APPSTATE.camHeight01 == 1:
+	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
 		_ToggleCompass(false)
 		_CalculateTopDownPoint()
 	else:

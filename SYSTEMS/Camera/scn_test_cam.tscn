@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4fqdfnjwyd21"]
+[gd_scene load_steps=13 format=3 uid="uid://d4fqdfnjwyd21"]
 
-[ext_resource type="Shader" path="res://addons/3DGizmos/Gizmo_Sha.gdshader" id="2_vwosc"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
 [ext_resource type="Material" uid="uid://c3mch4vry3068" path="res://#ExtraResources/Mat_Debug/mat_grid_red.tres" id="3_3wffj"]
 [ext_resource type="Material" uid="uid://bp3yxprxwed6i" path="res://#ExtraResources/Mat_Debug/mat_grid_green.tres" id="3_qkbqw"]
+[ext_resource type="PackedScene" uid="uid://b4t37awxd4iyt" path="res://SYSTEMS/Camera/Msh_test_cerro.glb" id="5_6pq1q"]
+[ext_resource type="Material" uid="uid://6mi22r3qgh48" path="res://#ExtraResources/Mat_Debug/mat_grid_blue.tres" id="6_y3g0y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,43 +16,36 @@ sky_material = SubResource("ProceduralSkyMaterial_35h7c")
 [sub_resource type="Environment" id="Environment_r00s3"]
 background_mode = 2
 sky = SubResource("Sky_3xgfe")
-tonemap_mode = 2
+ambient_light_color = Color(0.961629, 0.961629, 0.961629, 1)
 glow_enabled = true
+adjustment_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkrs3"]
-render_priority = 0
-shader = ExtResource("2_vwosc")
-shader_parameter/basecolor = Color(1, 0, 0, 1)
-shader_parameter/Wireframe = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2ljn"]
-render_priority = 0
-shader = ExtResource("2_vwosc")
-shader_parameter/basecolor = Color(0, 1, 0.648052, 1)
-shader_parameter/Wireframe = true
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_h1c62"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_far_transition = -1.0
+dof_blur_amount = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g7w6c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1xbry"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lg6gr"]
+points = PackedVector3Array(0.322191, -0.0266984, 1.72116, -0.322191, -0.0266984, -1.72116, -0.537547, -0.0266984, -1.66758, -0.094396, 0.932728, -0.141446, 1.72116, 0.0270195, -0.322191, -1.66758, 0.0270195, 0.537547, -1.61365, -0.0266984, -0.699317, 1.12935, -0.0266984, -1.34437, 1.34437, 0.0808374, 1.02184, -0.860412, 0.0808374, 1.45188, 0.188299, 0.884513, 0.235226, 0.188304, 0.884525, -0.235232, -0.278418, 0.879214, 0.139209, 0.322191, 0.0808374, -1.66758, -0.968259, 0.0808374, -1.39863, 1.66758, -0.0266984, 0.537547, -1.34437, -0.0266984, 1.12935, 0.322191, 0.0808374, 1.66758, -1.61365, 0.0808374, -0.430038, 1.29112, 0.0808374, -1.07543, -0.322191, 0.0808374, -1.66758, -0.322191, 0.0808374, 1.66758, 0.968259, 0.0808374, 1.39863, 1.61365, 0.0808374, 0.430038, -1.34437, 0.0808374, -1.02184, 0.370795, 0.831942, -0.138903, -1.29112, 0.0808374, 1.07543, -0.139206, 0.879205, 0.278411, 0.860412, 0.0808374, -1.45188, -0.235243, 0.884544, -0.188313, -0.138919, 0.831983, -0.370839, 1.12935, -0.0266984, 1.34437)
+
 [node name="test_cam" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r00s3")
+camera_attributes = SubResource("CameraAttributesPractical_h1c62")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Camera_manager" parent="." instance=ExtResource("2_ye5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3846, 0, -39.2836)
-
-[node name="Gizmo Box" parent="Camera_manager/pivot_cam" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_bkrs3")
-
-[node name="Gizmo Line" parent="Camera_manager/pivot_cam/GizmoLine" index="0"]
-transform = Transform3D(-1, 0, 7.3535e-07, 0, 1, 0, -1.50996e-07, 0, -4.87, 0, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_r2ljn")
+[node name="Camera_manager" parent="." node_paths=PackedStringArray("worldEnv") instance=ExtResource("2_ye5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54969, 24.463, -64.8488)
+worldEnv = NodePath("../WorldEnvironment")
 
 [node name="Msh" type="Node3D" parent="."]
 
@@ -68,20 +62,8 @@ material_override = ExtResource("3_3wffj")
 mesh = SubResource("BoxMesh_1xbry")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cubos"]
-transform = Transform3D(4.68881, 0, 1.84206, 0, 8.40033, 0, -1.84206, 0, 4.68881, 26.3651, 2.02322, -33.2547)
-material_override = ExtResource("3_3wffj")
-mesh = SubResource("BoxMesh_1xbry")
-skeleton = NodePath("../..")
-
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Cubos"]
 transform = Transform3D(3.44128, -0.109527, 2.90785, 0.115665, 4.25282, 0.0428748, -2.90786, 0.0395441, 3.44297, 21.9108, 2.16405, -5.27674)
-material_override = ExtResource("3_3wffj")
-mesh = SubResource("BoxMesh_1xbry")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cubos"]
-transform = Transform3D(4.50682, 0, 0, 0, 4.25441, 0, 0, 0, 4.50682, 2.43323, 2.09827, -36.5125)
 material_override = ExtResource("3_3wffj")
 mesh = SubResource("BoxMesh_1xbry")
 skeleton = NodePath("../..")
@@ -206,4 +188,19 @@ material_override = ExtResource("3_3wffj")
 mesh = SubResource("BoxMesh_1xbry")
 skeleton = NodePath("../..")
 
-[editable path="Camera_manager"]
+[node name="Msh_test_cerro" parent="." instance=ExtResource("5_6pq1q")]
+transform = Transform3D(26.1336, 0, 0, 0, 26.1336, 0, 0, 0, 26.1336, 0, 0, 0)
+
+[node name="Sphere" parent="Msh_test_cerro" index="0"]
+surface_material_override/0 = ExtResource("6_y3g0y")
+
+[node name="Area3D" type="Area3D" parent="Msh_test_cerro"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Msh_test_cerro/Area3D"]
+shape = SubResource("ConvexPolygonShape3D_lg6gr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6661, 13.0446, -33.377)
+
+[editable path="Msh_test_cerro"]

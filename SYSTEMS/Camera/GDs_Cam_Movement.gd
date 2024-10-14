@@ -55,9 +55,19 @@ var heightColl_lastHeightBeforeCollided : float
 const ROTVERT_THRESHOLD : float = 0.8
 const ROTHOR_THRESHOLD : float = 0.8
 
-func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_Cam_ModeConfig):
+var tweenMovCamera : Tween
+var tweenEffects : Tween
+var worldEnv : WorldEnvironment
+var environment : Environment
+var camAttribute : CameraAttributes
+
+func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_Cam_ModeConfig, _worldEnv : WorldEnvironment):
 	cam = _cam
 	pivot_panning = _pivot_panning
+	worldEnv = _worldEnv
+	environment = worldEnv.environment
+	camAttribute = worldEnv.camera_attributes
+	
 	SetModeConfig(_modeConfig)
 	
 func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
@@ -89,18 +99,43 @@ func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
 	height_deceleration = _modeConfig.height_deceleration
 
 func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
-	#Cam	
+	#Cam
+	# Height
 	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_bottom, _modeConfig.height_limit_top)
-	cam.global_position.y = initHeight
+	var targetHeight = cam.global_position
+	targetHeight.y = initHeight
 	
-	cam.rotation_degrees.x = _modeConfig.inclination
-	cam.fov = _modeConfig.fov
+	# Degress
+	var targetDegress = cam.rotation_degrees
+	targetDegress.x = _modeConfig.inclination
 	
+	var typeEaseTop = Tween.EASE_OUT
+	var typeTransitionTop = Tween.TRANS_EXPO
+	
+	var typeEaseBottom = Tween.EASE_IN_OUT
+	var typeTransitionBottom =  Tween.TRANS_QUAD
+	
+	tweenMovCamera = get_tree().create_tween().set_parallel(true)
+	tweenEffects = get_tree().create_tween().set_parallel(true)
+	
+	tweenEffects.tween_property(environment,"adjustment_saturation",.2,.7)
+	tweenEffects.chain().tween_property(environment,"adjustment_saturation",1,.7)
+	
+	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
+		tweenMovCamera.tween_property(cam,"global_position",targetHeight, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+		tweenMovCamera.tween_property(cam,"fov",_modeConfig.fov, 1).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+	else:
+		tweenMovCamera.tween_property(cam,"global_position",targetHeight, 1.5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+		tweenMovCamera.tween_property(cam,"fov",_modeConfig.fov, 1).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, 1.5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+
+	#tweenMovCamera.tween_property(environment,"adjustment_saturation",1,.5)
 	OnUpdateCRCam(_modeConfig)
 
 func _physics_process(delta):
 	_Panning(delta)
-	
+
 	_Height(delta)
 	_HeightByCollision(delta)
 		
@@ -241,11 +276,16 @@ func _Height(_delta : float):
 	# Apply the new position to the camera
 	var targetPos : Vector3 = cam.global_position
 	targetPos += forward_vector * height_velocity * _delta
-	cam.global_position = targetPos
 	
-	#Save global camHeight01
-	APPSTATE.camHeight01 = inverse_lerp(height_limit_bottom,height_limit_top,cam.global_position.y)
+	if targetPos.y >= height_limit_bottom and targetPos.y <= height_limit_top:
+		cam.global_position = targetPos
+	
+		#Save global camHeight01
+		APPSTATE.camHeight01 = inverse_lerp(height_limit_bottom,height_limit_top,cam.global_position.y)
+	else:
+		height_velocity = 0
 
+		
 func _HeightByCollision(_delta : float):
 	raycast.enabled = pan_velocity.length() > 0
 	
@@ -258,7 +298,7 @@ func _HeightByCollision(_delta : float):
 		
 		#Increasing height 
 		#(static value (80) to avoid more properties in cam config)
-		height_velocity = 80 * _delta
+		height_velocity = 200 * _delta
 		var targetHeight = cam.global_position.y
 		targetHeight += height_velocity * _delta
 		targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
@@ -267,7 +307,7 @@ func _HeightByCollision(_delta : float):
 	#Decrease height
 	if heightColl_collided and not raycast.is_colliding():
 		#(static value (70) to avoid more properties in cam config)
-		height_velocity = -1 * 70 * _delta
+		height_velocity = -1 * 400 * _delta
 		var targetHeight = cam.global_position.y
 		targetHeight += height_velocity * _delta
 		targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)

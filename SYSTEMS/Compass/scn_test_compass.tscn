@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://SYSTEMS/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
 [ext_resource type="PackedScene" uid="uid://b7ksllhnb58g" path="res://SYSTEMS/Pin/Pfb_Pin_2D.tscn" id="3_m38ta"]
 [ext_resource type="PackedScene" uid="uid://buldaccfdos5u" path="res://SYSTEMS/Pin/Pfb_Pin_3D.tscn" id="4_h2xf7"]
-[ext_resource type="Material" uid="uid://d2nvo2wvjg3q2" path="res://SYSTEMS/Pin/mat_BilboardTestMaterial.tres" id="5_utd2f"]
+[ext_resource type="Material" path="res://SYSTEMS/Pin/mat_BilboardTestMaterial.tres" id="5_utd2f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -37,8 +37,9 @@ MarkRef = NodePath("../Sprite_Pin")
 minDistance = 20.0
 maxDistance = 60.0
 
-[node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
+[node name="Camera_manager" parent="." node_paths=PackedStringArray("worldEnv") instance=ExtResource("2_e7jn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.98594, -28.2872)
+worldEnv = NodePath("../WorldEnvironment")
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(33.3253, 0, 0, 0, 1, 0, 0, 0, 42.5377, 13.7415, 2.52822, -13.13)
