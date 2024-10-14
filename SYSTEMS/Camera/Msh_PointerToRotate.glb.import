@@ -31,6 +31,24 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"mat_vfx_camRot": {
+"use_external/enabled": true,
+"use_external/path": "res://SYSTEMS/Camera/mat_vfx_camRot.tres"
+}
+},
+"meshes": {
+"Msh_PointerToRotate_Msh_vfx_camRot": {
+"generate/lightmap_uv": 2,
+"generate/lods": 2,
+"generate/shadow_meshes": 2,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

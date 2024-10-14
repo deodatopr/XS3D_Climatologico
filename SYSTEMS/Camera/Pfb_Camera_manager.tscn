@@ -5,14 +5,10 @@
 [ext_resource type="Script" path="res://SYSTEMS/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
 [ext_resource type="Resource" uid="uid://qjomkgpet6c4" path="res://SYSTEMS/Camera/PresetsConfig/CR_Cam_Config_Top.tres" id="3_bvohc"]
 [ext_resource type="PackedScene" uid="uid://bsg8jtio8vbsm" path="res://SYSTEMS/Camera/Msh_PointerToRotate.glb" id="5_t184v"]
+[ext_resource type="Material" uid="uid://djj8aafmjyy0h" path="res://SYSTEMS/Camera/mat_vfx_camRot.tres" id="6_anvks"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ox8l2"]
 size = Vector3(0.731384, 0.125671, 1.08496)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xh0tu"]
-no_depth_test = true
-shading_mode = 0
-albedo_color = Color(0.767537, 0.535075, 1, 1)
 
 [node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("movement", "pivot_cam", "cam")]
 script = ExtResource("1_vxe6d")
@@ -55,7 +51,7 @@ debug_shape_custom_color = Color(1, 0.0966405, 0.0966405, 1)
 [node name="Msh_Rot_Bottom" parent="pivot_cam/cam" instance=ExtResource("5_t184v")]
 transform = Transform3D(-1, 1.00868e-08, 8.5216e-08, 4.9622e-08, 0.819152, 0.573577, -7.09551e-08, 0.573576, -0.819152, 0.00800166, 0.0652847, -26.2449)
 
-[node name="Cylinder" parent="pivot_cam/cam/Msh_Rot_Bottom" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_xh0tu")
+[node name="Msh_vfx_camRot" parent="pivot_cam/cam/Msh_Rot_Bottom" index="0"]
+material_override = ExtResource("6_anvks")
 
 [editable path="pivot_cam/cam/Msh_Rot_Bottom"]
