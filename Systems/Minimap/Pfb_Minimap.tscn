@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Systems/Minimap/GDs_Minimap.gd" id="1_3l741"]
 [ext_resource type="Texture2D" uid="uid://bkf83i3oek7l6" path="res://Systems/Minimap/Map_Mask.png" id="2_rxnpi"]
-[ext_resource type="Texture2D" uid="uid://cglj1vhqxomwx" path="res://Systems/Minimap/map_mapa2_test.jpg" id="3_5rhla"]
-[ext_resource type="Texture2D" uid="uid://dws7ifd43kbsn" path="res://Systems/Minimap/Map_Cam_ref.png" id="4_8wku4"]
+[ext_resource type="Texture2D" uid="uid://dsyl7rya7uyr3" path="res://Systems/Minimap/Map_Grid_Minimap.PNG" id="3_7ovak"]
+[ext_resource type="Texture2D" uid="uid://dws7ifd43kbsn" path="res://Systems/Minimap/map_cam_ref.png" id="4_8wku4"]
 
 [node name="UI_Minimap" type="Control"]
 layout_mode = 3
@@ -13,36 +13,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3l741")
+map_Movement_Speed = 0.2
 
 [node name="Minimap_Parent" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(1920, 1080)
 
-[node name="Circle_Mask" type="Sprite2D" parent="Minimap_Parent"]
+[node name="Circle_Mask" type="TextureRect" parent="Minimap_Parent"]
 clip_children = 2
-position = Vector2(1553, 705)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -512.0
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("2_rxnpi")
 
 [node name="Map_Texture" type="TextureRect" parent="Minimap_Parent/Circle_Mask"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1340.0
-offset_top = -1073.0
-offset_right = 360.0
-offset_bottom = 93.0
+offset_left = -512.0
+offset_top = -512.0
+offset_right = 512.0
+offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset = Vector2(850, 583)
-texture = ExtResource("3_5rhla")
+pivot_offset = Vector2(512, 512)
+texture = ExtResource("3_7ovak")
 metadata/_edit_use_anchors_ = true
 
 [node name="Mark_Test" type="ColorRect" parent="Minimap_Parent/Circle_Mask/Map_Texture"]
@@ -80,15 +90,16 @@ color = Color(1, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Cam_Ref" type="TextureRect" parent="Minimap_Parent/Circle_Mask"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -716.0
-offset_top = -733.5
-offset_right = -264.0
-offset_bottom = -246.5
+offset_left = -226.0
+offset_top = -243.5
+offset_right = 226.0
+offset_bottom = 243.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.2, 0.2)

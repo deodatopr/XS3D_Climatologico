@@ -88,11 +88,11 @@
 
 #CAMBIOS:
 # - Velocidad rot
-# - Fix distancia de brujula arriba
-# - Cambio minimapa de textura grid
+# - --Fix distancia de brujula arriba
+# - --Cambio minimapa de textura grid
 # - Arreglar textura 
 # - Tiempo al subir es lento, usar misma curva
-# - Mini mapa aparece desaparece
+# - --Mini mapa aparece desaparece
 # - Cambiar nombre Inclination -> Tilt
 # - Rot en crudo sin acceleración
 # - Quitar propiedades rot

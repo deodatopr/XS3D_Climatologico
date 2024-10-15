@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=12 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="1_rup1u"]
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_Manager.tscn" id="2_e7jn5"]
-[ext_resource type="Texture2D" uid="uid://cglj1vhqxomwx" path="res://Systems/Minimap/map_mapa2_test.jpg" id="3_depbj"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
+[ext_resource type="Texture2D" uid="uid://dsyl7rya7uyr3" path="res://Systems/Minimap/Map_Grid_Minimap.PNG" id="3_3sypv"]
 [ext_resource type="PackedScene" uid="uid://b7ksllhnb58g" path="res://Systems/Pin/Pfb_Pin_2D.tscn" id="3_m38ta"]
 [ext_resource type="PackedScene" uid="uid://buldaccfdos5u" path="res://Systems/Pin/Pfb_Pin_3D.tscn" id="4_h2xf7"]
-[ext_resource type="Material" uid="uid://d2nvo2wvjg3q2" path="res://Systems/Pin/Mat_Pin_Bilboard.tres" id="5_utd2f"]
 [ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="6_ikisg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
@@ -22,7 +21,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pg2ux"]
-albedo_texture = ExtResource("3_depbj")
+albedo_texture = ExtResource("3_3sypv")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xhk6t"]
 
@@ -59,8 +58,8 @@ textOffset = Vector2(131.935, 0)
 
 [node name="Mesh_Pin" parent="." instance=ExtResource("4_h2xf7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.47835, 0)
-billboard_Material = ExtResource("5_utd2f")
 textOffset = Vector2(52.085, -9.805)
 
 [node name="UI_Minimap" parent="." node_paths=PackedStringArray("pivot_cam") instance=ExtResource("6_ikisg")]
 pivot_cam = NodePath("../Camera_manager/pivot_cam")
+map_Movement_Speed = 0.4

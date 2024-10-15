@@ -16,7 +16,7 @@ var centerScreen : Vector2
 var dir : Vector2
 var distance : float
 
-@onready var pin_sitio: ColorRect = $CompassParent/CompassMask/PinSite
+@onready var pin_sitio: Control = $CompassParent/CompassMask/PinSite
 @onready var compass: TextureRect = $CompassParent/CompassMask/Compass
 @onready var compass_parent: Control = $CompassParent
 @onready var top_down_mark: ColorRect = $CompassTopDown/TopDownMark
@@ -48,7 +48,7 @@ func _ToggleCompass(visible : bool) -> void:
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	#calculate distance between pivot and mark
-	distance = pivotCam.global_position.distance_to(MarkRef.global_position)
+	distance = Vector3(pivotCam.global_position.x, 0, pivotCam.global_position.z).distance_to(Vector3(MarkRef.global_position.x, 0, MarkRef.global_position.z))
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
 		_ToggleCompass(false)
