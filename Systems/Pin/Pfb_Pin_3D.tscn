@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://buldaccfdos5u"]
 
 [ext_resource type="Script" path="res://Systems/Pin/GDs_Pin3D.gd" id="1_a2p2i"]
-[ext_resource type="Material" uid="uid://d2nvo2wvjg3q2" path="res://Systems/Pin/mat_BilboardTestMaterial.tres" id="2_x0yc2"]
+[ext_resource type="Material" uid="uid://d2nvo2wvjg3q2" path="res://Systems/Pin/Mat_Pin_Bilboard.tres" id="2_x0yc2"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4pa3j"]
 material = ExtResource("2_x0yc2")

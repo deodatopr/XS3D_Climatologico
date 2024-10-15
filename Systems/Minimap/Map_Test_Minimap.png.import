@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkf83i3oek7l6"
-path="res://.godot/imported/map_circulo.png-eceee87ace2429d2ca18aa9d032c14dc.ctex"
+uid="uid://e50puicwnqq4"
+path="res://.godot/imported/Map_Test_Minimap.png-4a8250a72eb7e9ce07dbbb2a84b54a86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Systems/Minimap/map_circulo.png"
-dest_files=["res://.godot/imported/map_circulo.png-eceee87ace2429d2ca18aa9d032c14dc.ctex"]
+source_file="res://Systems/Minimap/Map_Test_Minimap.png"
+dest_files=["res://.godot/imported/Map_Test_Minimap.png-4a8250a72eb7e9ce07dbbb2a84b54a86.ctex"]
 
 [params]
 

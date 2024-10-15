@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bsg8jtio8vbsm"
-path="res://.godot/imported/Msh_PointerToRotate.glb-732248c6f2bf8ce74eb1ef62cc6c58d0.scn"
+uid="uid://b4t37awxd4iyt"
+path="res://.godot/imported/Msh_Test_Heights.glb-b836c153866c2a34ad7867f23b86a208.scn"
 
 [deps]
 
-source_file="res://Systems/Camera/Msh_PointerToRotate.glb"
-dest_files=["res://.godot/imported/Msh_PointerToRotate.glb-732248c6f2bf8ce74eb1ef62cc6c58d0.scn"]
+source_file="res://Systems/Camera/Msh_Test_Heights.glb"
+dest_files=["res://.godot/imported/Msh_Test_Heights.glb-b836c153866c2a34ad7867f23b86a208.scn"]
 
 [params]
 
@@ -33,20 +33,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"mat_vfx_camRot": {
+"@MATERIAL:0": {
 "use_external/enabled": true,
-"use_external/path": "res://SYSTEMS/Camera/mat_vfx_camRot.tres"
-}
-},
-"meshes": {
-"Msh_PointerToRotate_Msh_vfx_camRot": {
-"generate/lightmap_uv": 2,
-"generate/lods": 2,
-"generate/shadow_meshes": 2,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/path": ""
+"use_external/path": "res://#ExtraResources/Mat_Debug/mat_grid_blue.tres"
 }
 }
 }

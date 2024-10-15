@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Error.gd" id="7_5fslp"]
 [ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="8_crh64"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_Curtain.gd" id="8_nclgr"]
-[ext_resource type="Script" path="res://Systems/ChangeScenes/GDs_Scenes_Manager.gd" id="9_hkbot"]
+[ext_resource type="Script" path="res://Systems/ManagerScenes/GDs_Manager_Scenes.gd" id="9_hkbot"]
 [ext_resource type="Script" path="res://Systems/Splash/GDs_Splash.gd" id="9_hxvwc"]
 [ext_resource type="PackedScene" path="res://SCENES/Scn_Mapa.tscn" id="10_t52mi"]
 [ext_resource type="Texture2D" uid="uid://kx576vlm5ckp" path="res://UI/Splash/Splash_Empresas.png" id="10_v6qur"]

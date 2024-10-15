@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3k2kgkp18wn1"]
 
 [ext_resource type="Script" path="res://Systems/Minimap/GDs_Minimap.gd" id="1_3l741"]
-[ext_resource type="Texture2D" uid="uid://bkf83i3oek7l6" path="res://Systems/Minimap/map_circulo.png" id="2_rxnpi"]
+[ext_resource type="Texture2D" uid="uid://bkf83i3oek7l6" path="res://Systems/Minimap/Map_Mask.png" id="2_rxnpi"]
 [ext_resource type="Texture2D" uid="uid://cglj1vhqxomwx" path="res://Systems/Minimap/map_mapa2_test.jpg" id="3_5rhla"]
-[ext_resource type="Texture2D" uid="uid://dws7ifd43kbsn" path="res://Systems/Minimap/map_cam_ref.png" id="4_8wku4"]
+[ext_resource type="Texture2D" uid="uid://dws7ifd43kbsn" path="res://Systems/Minimap/Map_Cam_ref.png" id="4_8wku4"]
 
 [node name="UI_Minimap" type="Control"]
 layout_mode = 3

@@ -18,10 +18,10 @@ run/max_fps=60
 
 [autoload]
 
-ENUMS="*res://Systems/GDs_ENUMS.gd"
-UTILITIES="*res://Systems/GDs_UTILITIES.gd"
-APPSTATE="*res://Systems/GDs_APPSTATE.gd"
-SIGNALS="*res://Systems/GDs_SIGNALS.gd"
+ENUMS="*res://Systems/#GLOBALS/GDs_ENUMS.gd"
+UTILITIES="*res://Systems/#GLOBALS/GDs_UTILITIES.gd"
+APPSTATE="*res://Systems/#GLOBALS/GDs_APPSTATE.gd"
+SIGNALS="*res://Systems/#GLOBALS/GDs_SIGNALS.gd"
 
 [display]
 

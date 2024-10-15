@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfufhjgae0mue"
-path.s3tc="res://.godot/imported/map_vfx_CamRot.png-a7dade223fea0df88d38fabc619b50f8.s3tc.ctex"
+path.s3tc="res://.godot/imported/Map_Fx_CamRot.png-98d15b020932ccdc9437a92ded90d6bd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Systems/Camera/map_vfx_CamRot.png"
-dest_files=["res://.godot/imported/map_vfx_CamRot.png-a7dade223fea0df88d38fabc619b50f8.s3tc.ctex"]
+source_file="res://Systems/Camera/Map_Fx_CamRot.png"
+dest_files=["res://.godot/imported/Map_Fx_CamRot.png-98d15b020932ccdc9437a92ded90d6bd.s3tc.ctex"]
 
 [params]
 

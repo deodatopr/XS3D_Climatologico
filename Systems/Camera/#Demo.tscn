@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://d4fqdfnjwyd21"]
 
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_Manager.tscn" id="2_ye5ed"]
 [ext_resource type="Material" uid="uid://c3mch4vry3068" path="res://#Wip/Mat_Debug/mat_grid_red.tres" id="3_3wffj"]
 [ext_resource type="Material" uid="uid://bp3yxprxwed6i" path="res://#Wip/Mat_Debug/mat_grid_green.tres" id="3_qkbqw"]
-[ext_resource type="PackedScene" uid="uid://b4t37awxd4iyt" path="res://Systems/Camera/Msh_test_cerro.glb" id="5_6pq1q"]
+[ext_resource type="PackedScene" uid="uid://b4t37awxd4iyt" path="res://Systems/Camera/Msh_Test_Heights.glb" id="5_6pq1q"]
 [ext_resource type="Material" uid="uid://6mi22r3qgh48" path="res://#Wip/Mat_Debug/mat_grid_blue.tres" id="6_y3g0y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]

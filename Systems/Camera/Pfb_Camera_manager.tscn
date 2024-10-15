@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://Systems/Camera/PresetsConfig/CR_Cam_Config_Bottom.tres" id="2_jbclm"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
 [ext_resource type="Resource" uid="uid://qjomkgpet6c4" path="res://Systems/Camera/PresetsConfig/CR_Cam_Config_Top.tres" id="3_bvohc"]
-[ext_resource type="Material" uid="uid://djj8aafmjyy0h" path="res://Systems/Camera/mat_vfx_camRot.tres" id="6_anvks"]
+[ext_resource type="Material" uid="uid://djj8aafmjyy0h" path="res://Systems/Camera/Mat_Fx_CamRot.tres" id="6_anvks"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xpf4w"]
 
