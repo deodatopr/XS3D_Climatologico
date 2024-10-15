@@ -265,8 +265,8 @@ func _Rotation_Hor(_delta : float):
 #endregion
 	
 #Check if there are no input pressed
-	var rotHorReleased : bool = false
-	if Input.is_joy_known(joy_id):
+	var rotHorReleased : bool
+	if Input.is_joy_known(joy_id) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		rotHorReleased =  abs(Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X))< .4
 	else:
 		rotHorReleased = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
