@@ -16,7 +16,7 @@ var centerScreen : Vector2
 var dir : Vector2
 var distance : float
 
-@onready var pin_sitio: Panel = $CompassParent/CompassMask/PinSite
+@onready var pin_sitio: ColorRect = $CompassParent/CompassMask/PinSite
 @onready var compass: TextureRect = $CompassParent/CompassMask/Compass
 @onready var compass_parent: Control = $CompassParent
 @onready var top_down_mark: ColorRect = $CompassTopDown/TopDownMark
