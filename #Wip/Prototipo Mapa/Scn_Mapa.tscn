@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems_/RenderTools/Viewport/Pfb_Viewport.tscn" id="1_5wtxl"]
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems_/Camera/Pfb_Camera_manager.tscn" id="2_lf2mx"]
+[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Viewport/Pfb_Viewport.tscn" id="1_5wtxl"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_lf2mx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

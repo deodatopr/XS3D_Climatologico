@@ -1,0 +1,197 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds8p74qmynqr1"]
+
+[ext_resource type="Script" path="res://Systems/RenderTools/Viewport/GDs_Viewport.gd" id="1_avnqn"]
+[ext_resource type="Script" path="res://Systems/RenderTools/Viewport/GDs_Drag_Panel.gd" id="3_0p6gl"]
+[ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="3_hs6x1"]
+
+[node name="RENDER TOOL (Viewport)" type="Control" node_paths=PackedStringArray("FPS_Realtime", "FPS_limited", "resolutionOS", "resolutionViewport", "renderScale", "DrawCalls", "PolyCount")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_avnqn")
+FPS_Realtime = NodePath("Panel Stats/VBoxContainer/Cont - Fps/Fps_RealTime")
+FPS_limited = NodePath("Panel Stats/VBoxContainer/Cont - Fps/Fps_Limited")
+resolutionOS = NodePath("Panel Stats/VBoxContainer/Cont - Resolution/Resolution OS")
+resolutionViewport = NodePath("Panel Stats/VBoxContainer/Cont - Viewport/Resolution  Viewport")
+renderScale = NodePath("Panel Stats/VBoxContainer/Cont - Render Scale/Render Scale")
+DrawCalls = NodePath("Panel Stats/VBoxContainer/Cont - DrawCalls/Info - DrawCalls")
+PolyCount = NodePath("Panel Stats/VBoxContainer/Cont - PolyCount/Info - PolyCount")
+
+[node name="Panel Stats" type="NinePatchRect" parent="."]
+self_modulate = Color(0.345098, 0.345098, 0.345098, 0.839216)
+custom_minimum_size = Vector2(200, 135)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -114.0
+offset_right = 100.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("3_hs6x1")
+region_rect = Rect2(95.3798, 5.78484, 21.4195, 20.602)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 8
+patch_margin_bottom = 7
+script = ExtResource("3_0p6gl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel Stats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -84.0
+offset_right = 89.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Cont - Fps" type="HBoxContainer" parent="Panel Stats/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Txt - FPS" type="Label" parent="Panel Stats/VBoxContainer/Cont - Fps"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 20
+text = "FPS:   "
+vertical_alignment = 1
+uppercase = true
+
+[node name="Fps_RealTime" type="Label" parent="Panel Stats/VBoxContainer/Cont - Fps"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Txt - Space" type="Label" parent="Panel Stats/VBoxContainer/Cont - Fps"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 20
+text = " / "
+vertical_alignment = 1
+
+[node name="Fps_Limited" type="Label" parent="Panel Stats/VBoxContainer/Cont - Fps"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 20
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - Resolution" type="HBoxContainer" parent="Panel Stats/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Txt - OS" type="Label" parent="Panel Stats/VBoxContainer/Cont - Resolution"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 17
+text = "OS:   "
+vertical_alignment = 1
+uppercase = true
+
+[node name="Resolution OS" type="Label" parent="Panel Stats/VBoxContainer/Cont - Resolution"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "0000x0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - Viewport" type="HBoxContainer" parent="Panel Stats/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Txt - Rndr" type="Label" parent="Panel Stats/VBoxContainer/Cont - Viewport"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 17
+text = "RND:"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Resolution  Viewport" type="Label" parent="Panel Stats/VBoxContainer/Cont - Viewport"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "0000x0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - Render Scale" type="HBoxContainer" parent="Panel Stats/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Txt - RScale" type="Label" parent="Panel Stats/VBoxContainer/Cont - Render Scale"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 17
+text = "RScale:"
+vertical_alignment = 1
+
+[node name="Render Scale" type="Label" parent="Panel Stats/VBoxContainer/Cont - Render Scale"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - DrawCalls" type="HBoxContainer" parent="Panel Stats/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Txt - DrawCalls" type="Label" parent="Panel Stats/VBoxContainer/Cont - DrawCalls"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 17
+text = "Draw Calls:"
+vertical_alignment = 1
+
+[node name="Info - DrawCalls" type="Label" parent="Panel Stats/VBoxContainer/Cont - DrawCalls"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cont - PolyCount" type="HBoxContainer" parent="Panel Stats/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Txt - PolyCount" type="Label" parent="Panel Stats/VBoxContainer/Cont - PolyCount"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.689816, 1, 0.728884, 1)
+theme_override_font_sizes/font_size = 17
+text = "Poly Count:"
+vertical_alignment = 1
+
+[node name="Info - PolyCount" type="Label" parent="Panel Stats/VBoxContainer/Cont - PolyCount"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1

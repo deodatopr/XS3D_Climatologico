@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://djj8aafmjyy0h"]
+
+[ext_resource type="Texture2D" uid="uid://dfufhjgae0mue" path="res://Systems/Camera/map_vfx_CamRot.png" id="1_mc6l7"]
+
+[resource]
+transparency = 1
+no_depth_test = true
+albedo_texture = ExtResource("1_mc6l7")
+disable_receive_shadows = true

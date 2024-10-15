@@ -18,10 +18,10 @@ run/max_fps=60
 
 [autoload]
 
-ENUMS="*res://Systems_/GDs_ENUMS.gd"
-UTILITIES="*res://Systems_/GDs_UTILITIES.gd"
-APPSTATE="*res://Systems_/GDs_APPSTATE.gd"
-SIGNALS="*res://Systems_/GDs_SIGNALS.gd"
+ENUMS="*res://Systems/GDs_ENUMS.gd"
+UTILITIES="*res://Systems/GDs_UTILITIES.gd"
+APPSTATE="*res://Systems/GDs_APPSTATE.gd"
+SIGNALS="*res://Systems/GDs_SIGNALS.gd"
 
 [display]
 
@@ -45,14 +45,14 @@ folder_colors={
 "res://#ExtraResources/#Keystores/": "red",
 "res://#NoShare/": "red",
 "res://#Wip/": "red",
-"res://Content_/": "green",
+"res://Content/": "green",
 "res://SYSTEMS/z_EndPoint Old/": "gray",
 "res://SYSTEMS/z_Graficadora/": "gray",
 "res://SYSTEMS/z_OclusionByHeight/": "gray",
 "res://SYSTEMS/z_Scn_Filtros/": "gray",
-"res://Scenes_/": "purple",
-"res://Sounds_/": "pink",
-"res://Systems_/": "orange",
+"res://Scenes/": "purple",
+"res://Sounds/": "pink",
+"res://Systems/": "orange",
 "res://UI/": "yellow",
 "res://addons/": "blue"
 }
