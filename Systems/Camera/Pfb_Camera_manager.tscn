@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=7 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
+[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://Systems/Camera/PresetsConfig/CR_Cam_Config.tres" id="2_5ql7k"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
-[ext_resource type="Material" uid="uid://djj8aafmjyy0h" path="res://Systems/Camera/Mat_Fx_CamRot.tres" id="6_anvks"]
+[ext_resource type="Material" uid="uid://rohx5pwh5cc2" path="res://Systems/Camera/Mat_Fx_CamRot.tres" id="6_anvks"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xpf4w"]
 
@@ -14,6 +15,7 @@ script = ExtResource("1_vxe6d")
 movement = NodePath("Movement")
 pivot_cam = NodePath("pivot_cam")
 cam = NodePath("pivot_cam/cam")
+cr_cam_config = ExtResource("2_5ql7k")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("raycast", "mshMarkRot", "triggerRaycast")]
 script = ExtResource("2_s21o3")
