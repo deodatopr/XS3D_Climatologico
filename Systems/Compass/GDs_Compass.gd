@@ -67,34 +67,34 @@ func _CalculateCompassPoints(_distance : float) -> void:
 	elif _distance > minDistance + 15 and !pin_sitio.visible:
 		pin_sitio.visible = true
 	
-	if canRotate:
+	#if canRotate:
 		#calculate degrees of pivot cam
-		var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
-		var compassPosition = rotationDegrees * (compass.size.x/6)/180
+	var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
+	var compassPosition = rotationDegrees * (compass.size.x/6)/180
 
-		#check if look to left or right
-		var rotationDir := 1
-		if pivotCam.rotation.y < 0:
-			rotationDir = -1
+	#check if look to left or right
+	var rotationDir := 1
+	if pivotCam.rotation.y < 0:
+		rotationDir = -1
 
-		#update compass direction
-		compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
+	#update compass direction
+	compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
 
-		#calculate dot product between pivot cam and mark
-		var pivotCamNormal := pivotCam.global_basis.z
-		var MarkNormal := (MarkRef.global_position - pivotCam.global_position).normalized()
-		var dot := MarkNormal.dot(pivotCamNormal)
-		var OffsetMark = abs(dot - 1) * (CompassLenght/2)
-		
-		#check if look to left or right
-		var RightVectorNormal := pivotCam.global_basis.x
-		var RightDot := RightVectorNormal.dot(MarkNormal)
+	#calculate dot product between pivot cam and mark
+	var pivotCamNormal := pivotCam.global_basis.z
+	var MarkNormal := (MarkRef.global_position - pivotCam.global_position).normalized()
+	var dot := MarkNormal.dot(pivotCamNormal)
+	var OffsetMark = abs(dot - 1) * (CompassLenght/2)
+	
+	#check if look to left or right
+	var RightVectorNormal := pivotCam.global_basis.x
+	var RightDot := RightVectorNormal.dot(MarkNormal)
 
-		if RightDot > 0:
-			OffsetMark *= -1
-		
-		#update pin mark in compass
-		pin_sitio.position.x = OffsetMark + pinSiteInitialXPosition
+	if RightDot > 0:
+		OffsetMark *= -1
+	
+	#update pin mark in compass
+	pin_sitio.position.x = OffsetMark + pinSiteInitialXPosition
 
 func _CalculateTopDownPoint(_distance : float) -> void:
 	
