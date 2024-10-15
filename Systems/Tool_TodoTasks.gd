@@ -85,7 +85,6 @@
 #Extras
 #Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 
-
 #CAMBIOS:
 # - Velocidad rot
 # - Fix distancia de brujula arriba

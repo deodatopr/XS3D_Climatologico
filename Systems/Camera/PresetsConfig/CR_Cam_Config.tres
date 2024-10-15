@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GDs_CR_Cam_Config" load_steps=2 format=3 uid="uid://rwehnhdeuw80"]
+
+[ext_resource type="Script" path="res://Systems/Camera/PresetsConfig/GDs_CR_Cam_Config.gd" id="1_m3peb"]
+
+[resource]
+script = ExtResource("1_m3peb")
+bot_pivotDist = 25.0
+bot_height = 15.0
+top_height = 30.0
+height_speed = 120.0
+bot_fov = 80.0
+top_fov = 50.0
+bot_tilt = 45.0
+top_tilt = 90.0
+bot_mov_speed = 20.0
+top_mov_speed = 25.0
+boundings_X_min = -100.0
+boundings_X_max = 100.0
+boundings_Z_min = -100.0
+boundings_Z_max = 100.0
+bot_rotHor_speed = 2.0
+top_rotHor_speed = 2.0
