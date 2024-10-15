@@ -41,9 +41,9 @@ enabled=PackedStringArray("res://addons/3DAutoMaterial/plugin.cfg", "res://addon
 [file_customization]
 
 folder_colors={
-"res://#ExtraResources/": "red",
-"res://#ExtraResources/#Keystores/": "red",
 "res://#NoShare/": "red",
+"res://#Resources/": "red",
+"res://#Resources/#AndroidKeystores/": "red",
 "res://#Wip/": "red",
 "res://Content/": "green",
 "res://SYSTEMS/z_EndPoint Old/": "gray",
