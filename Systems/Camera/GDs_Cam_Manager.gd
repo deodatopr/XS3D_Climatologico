@@ -1,13 +1,14 @@
 class_name GDs_Cam_Manager extends Node
 
 @export_group("Components")
-#@export var worldEnv : WorldEnvironment
 @export var movement : GDs_CamMovement
 @export var pivot_cam : Node3D
 @export var cam : Node3D
 
 @export_group("Configurations")
 @export var cr_cam_config : GDs_CR_Cam_Config
+
+signal OnCamChangeMode
 
 func _ready():
 	Initialize(ENUMS.Cam_Mode.Bottom)
@@ -27,6 +28,8 @@ func _input(event):
 			_ChangeMode(ENUMS.Cam_Mode.Top)
 		else:
 			_ChangeMode(ENUMS.Cam_Mode.Bottom)
+		
+		OnCamChangeMode.emit()
 
 func _ChangeMode(_changeTo : int):
 	APPSTATE.camMode = _changeTo
