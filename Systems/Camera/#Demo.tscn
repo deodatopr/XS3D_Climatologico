@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4fqdfnjwyd21"]
+[gd_scene load_steps=15 format=3 uid="uid://d4fqdfnjwyd21"]
 
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_Manager.tscn" id="2_ye5ed"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
 [ext_resource type="Material" uid="uid://c3mch4vry3068" path="res://#Wip/Mat_Debug/mat_grid_red.tres" id="3_3wffj"]
 [ext_resource type="Material" uid="uid://bp3yxprxwed6i" path="res://#Wip/Mat_Debug/mat_grid_green.tres" id="3_qkbqw"]
 [ext_resource type="PackedScene" uid="uid://b4t37awxd4iyt" path="res://Systems/Camera/Msh_Test_Heights.glb" id="5_6pq1q"]
+[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://Systems/Camera/PresetsConfig/CR_Cam_Config.tres" id="6_d4scb"]
 [ext_resource type="Material" uid="uid://6mi22r3qgh48" path="res://#Wip/Mat_Debug/mat_grid_blue.tres" id="6_y3g0y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
@@ -206,5 +207,6 @@ shape = SubResource("BoxShape3D_x2cs2")
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_ye5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92457, 0, -51.6986)
+cr_cam_config = ExtResource("6_d4scb")
 
 [editable path="Msh_test_cerro"]

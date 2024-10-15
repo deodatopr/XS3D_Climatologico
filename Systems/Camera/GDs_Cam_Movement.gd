@@ -8,43 +8,20 @@ class_name GDs_CamMovement extends Node
 
 var cam : Camera3D
 var pivot_panning : Node3D
+var cr_cam_config : GDs_CR_Cam_Config
+
+var camModeBottom : bool:
+	get:
+		return APPSTATE.camMode == ENUMS.Cam_Mode.Bottom
+		
+		
+#Pivot dist
 var distFromPivotCam : float
 
-#Inclination
-var inclination : float
-
-#FOV
-var fov_bottom : float
-
-#Panning
-var pan_currentBoost : float
-var pan_boost : float
-var pan_acceleration : float
-var pan_deceleration : float
-var pan_max_acceleration : float
-var pan_velocity : Vector3 = Vector3.ZERO
-
-var pan_bounding_X_min : float
-var pan_bounding_X_max : float
-var pan_bounding_Z_min : float
-var pan_bounding_Z_max : float
-
-#Rotation
-var rot_initialRotX : float
-
-var rotHor_allow : bool
-var rotHor_speed : float
-var rotHor_velocity : float
-var rotHor_deceleration : float
-
-var rotHor_initDirCaptured : bool
-var rotHor_initdir : Vector2
-var rotHor_currentDir : Vector2
-var rotHor_isRotating : bool
-
 #Height
-var height_speed
-var height_deceleration
+var height : float
+var height_speed : float
+var height_deceleration : float
 
 var height_velocity : float
 var height_dir : int
@@ -53,107 +30,130 @@ var height_validDir : int
 var height_limit_top : float
 var height_limit_bottom : float
 
+#Fov
+var fov : float
+
+#Tilt
+var tilt : float
+
+#Panning
+var mov_currentBoost : float
+var mov_speed_boost : float
+var mov_speed : float
+var mov_deceleration : float
+var mov_max_acceleration : float
+var mov_velocity : Vector3 = Vector3.ZERO
+
+var bounding_X_min : float
+var bounding_X_max : float
+var bounding_Z_min : float
+var bounding_Z_max : float
+
+#Rotation
+var rotHor_speed : float
+
+var rotHor_initDirCaptured : bool
+var rotHor_initdir : Vector2
+var rotHor_currentDir : Vector2
+var rotHor_isRotating : bool
+
 #Height by collision
 var heightColl_collided : bool
 var heightColl_lastHeightBeforeCollided : float
 
-const ROTVERT_THRESHOLD : float = 0.8
-const ROTHOR_THRESHOLD : float = 0.8
-
+#Tweens
 var canMoveCam : bool
 var tweenMovCamera : Tween
 var tweenMshVfxRotCam : Tween
 
-	
-var typeEaseTop : int = Tween.EASE_OUT
-var typeTransitionTop: int  = Tween.TRANS_EXPO
+var typeEaseTop : int = Tween.EASE_IN_OUT
+var typeTransitionTop: int  = Tween.TRANS_QUAD
 
 var typeEaseBottom: int  = Tween.EASE_IN_OUT
 var typeTransitionBottom: int  =  Tween.TRANS_QUAD
 
-#var tweenEffects : Tween
-#var worldEnv : WorldEnvironment
-#var environment : Environment
-#var camAttribute : CameraAttributes
+const ROTHOR_THRESHOLD : float = 0.8
 
-func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _modeConfig : GDs_CR_Cam_ModeConfig):
+func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _cr_cam_config : GDs_CR_Cam_Config):
 	triggerRaycast.area_entered.connect(_OnTriggerEntered)
 	triggerRaycast.area_exited.connect(_OnTriggerExit)
 	
 	cam = _cam
 	pivot_panning = _pivot_panning
-	#worldEnv = _worldEnv
-	#environment = worldEnv.environment
-	#camAttribute = worldEnv.camera_attributes
-	distFromPivotCam = _modeConfig.distFromPivotCam
+	cr_cam_config = _cr_cam_config
 	
-	SetModeConfig(_modeConfig)
+	SetModeConfig()
 	
-func OnUpdateCRCam(_modeConfig : GDs_CR_Cam_ModeConfig):
+func UpdateProperties():
 	#Reset velocities
 	_ResetVelocities()
 	
-	#Pannning
-	pan_acceleration = _modeConfig.pan_acceleration
-	pan_max_acceleration = _modeConfig.pan_max_acceleration
-	pan_boost = _modeConfig.pan_boostSpeed
-	pan_deceleration = _modeConfig.pan_deceleration
-	
-	pan_bounding_X_min = _modeConfig.boundings_X_min
-	pan_bounding_X_max = _modeConfig.boundings_X_max
-	pan_bounding_Z_min = _modeConfig.boundings_Z_min
-	pan_bounding_Z_max = _modeConfig.boundings_Z_max
-	
-	#Rotation
-	rotHor_allow = _modeConfig.rotHor_allow
-	rotHor_speed = _modeConfig.rotHor_speed
-	rotHor_deceleration = _modeConfig.rotHor_deceleration
+	#Pivot dist
+	distFromPivotCam = cr_cam_config.bot_pivotDist
 	
 	#Height
-	height_limit_bottom = _modeConfig.height_limit_bottom
-	height_limit_top = _modeConfig.height_limit_top
-	height_speed = _modeConfig.height_speed
-	height_deceleration = _modeConfig.height_deceleration
-
-func SetModeConfig(_modeConfig : GDs_CR_Cam_ModeConfig):
-	canMoveCam = false
-	#Cam
-	# Height
-	var initHeight : float = clampf(_modeConfig.initialHeight, _modeConfig.height_limit_bottom, _modeConfig.height_limit_top)
-	var targetHeight : Vector3
-	targetHeight.y = initHeight
+	height = cr_cam_config.bot_height if camModeBottom else  cr_cam_config.top_height
+	var maxMinHeight = 5
+	height_limit_bottom = height - maxMinHeight
+	height_limit_top = height + maxMinHeight
+	height_speed = cr_cam_config.height_speed
+	height_deceleration = height_speed * .035
 	
-	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
+	#Fov
+	fov =  cr_cam_config.bot_fov if camModeBottom else  cr_cam_config.top_fov
+	
+	#Tilt
+	tilt =  cr_cam_config.bot_tilt if camModeBottom else  cr_cam_config.top_tilt
+	
+	#Movement
+	mov_speed = cr_cam_config.bot_mov_speed if camModeBottom else  cr_cam_config.top_mov_speed
+	mov_max_acceleration = mov_speed * .75
+	mov_speed_boost = mov_speed
+	mov_deceleration = mov_speed - 10
+	
+	bounding_X_min = cr_cam_config.boundings_X_min
+	bounding_X_max = cr_cam_config.boundings_X_max
+	bounding_Z_min = cr_cam_config.boundings_Z_min
+	bounding_Z_max = cr_cam_config.boundings_Z_max
+	
+	#Rotation
+	rotHor_speed = cr_cam_config.bot_rotHor_speed if camModeBottom else  cr_cam_config.top_rotHor_speed
+	
+
+func SetModeConfig():
+	canMoveCam = false
+	
+	UpdateProperties()
+	
+	#Cam
+	var camPosTarget : Vector3 = Vector3.ZERO
+	camPosTarget.y = height
+	
+	if camModeBottom:
 		#Bottom
 		var offsetFromPivot : Vector3 = pivot_panning.global_position + (-pivot_panning.basis.z * distFromPivotCam)
-		targetHeight.x = offsetFromPivot.x
-		targetHeight.z = offsetFromPivot.z
+		camPosTarget.x = offsetFromPivot.x
+		camPosTarget.z = offsetFromPivot.z
 	else:
 		#Top
-		targetHeight.x = pivot_panning.global_position.x
-		targetHeight.z = pivot_panning.global_position.z
+		camPosTarget.x = pivot_panning.global_position.x
+		camPosTarget.z = pivot_panning.global_position.z
 	
 	# Degress
 	var targetDegress = cam.rotation_degrees
-	targetDegress.x = _modeConfig.inclination
+	targetDegress.x = tilt
 	
 	tweenMovCamera = get_tree().create_tween().set_parallel(true)
-	#tweenEffects = get_tree().create_tween().set_parallel(true)
-	#
-	#tweenEffects.tween_property(environment,"adjustment_saturation",.2,.7)
-	#tweenEffects.chain().tween_property(environment,"adjustment_saturation",1,.7)
 	
-	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
-		tweenMovCamera.tween_property(cam,"global_position",targetHeight, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
-		tweenMovCamera.tween_property(cam,"fov",_modeConfig.fov, 1).set_ease(typeEaseTop).set_trans(typeTransitionTop)
-		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
-	else:
-		tweenMovCamera.tween_property(cam,"global_position",targetHeight, 1.5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
-		tweenMovCamera.tween_property(cam,"fov",_modeConfig.fov, 1).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+	if camModeBottom:
+		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, 1.5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+		tweenMovCamera.tween_property(cam,"fov",fov, 1).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
 		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, 1.5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+	else:
+		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+		tweenMovCamera.tween_property(cam,"fov",fov, 1).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
 
-	#tweenMovCamera.tween_property(environment,"adjustment_saturation",1,.5)
-	OnUpdateCRCam(_modeConfig)
 	
 	await tweenMovCamera.finished
 	canMoveCam = true
@@ -171,8 +171,7 @@ func _physics_process(delta):
 	_Height(delta)
 	_HeightByCollision(delta)
 		
-	if rotHor_allow:
-		_Rotation_Hor(delta)
+	_Rotation_Hor(delta)
 
 func _OnTriggerEntered(_area3d : Area3D):
 	UTILITIES.TurnOnObject(raycast)
@@ -200,33 +199,32 @@ func _Panning(_delta:float):
 	
 	#Acceleration
 	if inputDir.length() > 0:
-		pan_currentBoost = pan_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
-		pan_velocity += (inputDir * pan_acceleration * _delta) + pan_velocity.normalized() * pan_currentBoost
+		mov_currentBoost = mov_speed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
+		mov_velocity += (inputDir * mov_speed * _delta) + mov_velocity.normalized() * mov_currentBoost
 		
-		#Limit pan_acceleration
-		if pan_velocity.length() > pan_max_acceleration:
-			pan_velocity = pan_velocity.limit_length(pan_max_acceleration + pan_currentBoost)
+		#Limit mov_speed
+		if mov_velocity.length() > mov_max_acceleration:
+			mov_velocity = mov_velocity.limit_length(mov_max_acceleration + mov_currentBoost)
 			
 		SIGNALS.OnCameraUpdate.emit(true)
-
 	else:
 		#Deceleration
-		if pan_velocity.length() > 0:
-			pan_velocity -= pan_velocity.normalized() * pan_deceleration * _delta
-			if pan_velocity.length() < 0.1:
-				pan_velocity = Vector3.ZERO
+		if mov_velocity.length() > 0:
+			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
+			if mov_velocity.length() < 0.1:
+				mov_velocity = Vector3.ZERO
 	
 	#Apply
 	var targetPosition : Vector3 = pivot_panning.global_position
-	targetPosition += pan_velocity * _delta
-	targetPosition.x = clampf(targetPosition.x, pan_bounding_X_min, pan_bounding_X_max)
-	targetPosition.z = clampf(targetPosition.z, pan_bounding_Z_min, pan_bounding_Z_max)
+	targetPosition += mov_velocity * _delta
+	targetPosition.x = clampf(targetPosition.x, bounding_X_min, bounding_X_max)
+	targetPosition.z = clampf(targetPosition.z, bounding_Z_min, bounding_Z_max)
 	
-	var isInBoundX = abs(pivot_panning.global_position.x -  pan_bounding_X_min) < 0.01 or abs(pivot_panning.global_position.x -  pan_bounding_X_max) < 0.01
-	var isInBoundZ = abs(pivot_panning.global_position.z -  pan_bounding_Z_min) < 0.01 or abs(pivot_panning.global_position.z -  pan_bounding_Z_max) < 0.01
+	var isInBoundX = abs(pivot_panning.global_position.x -  bounding_X_min) < 0.01 or abs(pivot_panning.global_position.x -  bounding_X_max) < 0.01
+	var isInBoundZ = abs(pivot_panning.global_position.z -  bounding_Z_min) < 0.01 or abs(pivot_panning.global_position.z -  bounding_Z_max) < 0.01
 	
 	if isInBoundX || isInBoundZ:
-		pan_velocity = Vector3.ZERO
+		mov_velocity = Vector3.ZERO
 	
 	pivot_panning.global_position = targetPosition
 		
@@ -247,8 +245,7 @@ func _Rotation_Hor(_delta : float):
 		var mouseIsMovingHor = abs(mouseDir.dot(Vector2.RIGHT)) >= ROTHOR_THRESHOLD
 		if mouseIsMovingHor:
 			var mouseDirRotX = sign(mouseDir.x)
-			rotHor_velocity = -mouseDirRotX * rotHor_speed * _delta
-			pivot_panning.rotate_y(rotHor_velocity)
+			pivot_panning.rotate_y(-mouseDirRotX * rotHor_speed * _delta)
 			
 			SIGNALS.OnCameraUpdate.emit(true)
 			
@@ -263,32 +260,19 @@ func _Rotation_Hor(_delta : float):
 		var control_Dir = Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X)
 
 		if abs(control_Dir) > ROTHOR_THRESHOLD:
-			rotHor_velocity = -control_Dir * rotHor_speed * _delta
-			pivot_panning.rotate_y(rotHor_velocity)
+			pivot_panning.rotate_y(-control_Dir * rotHor_speed * _delta)
 			SIGNALS.OnCameraUpdate.emit(true)
 #endregion
 	
-#region [ DECELERATION ]
-	#Deceleration
+#Check if there are no input pressed
 	var rotHorReleased : bool = false
 	if Input.is_joy_known(joy_id):
 		rotHorReleased =  abs(Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X))< .4
 	else:
 		rotHorReleased = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 
-	var rotHor_velocity_abs = abs(rotHor_velocity)
-	var dir = sign(rotHor_velocity)
-	if rotHorReleased and rotHor_velocity_abs > 0:
-		rotHor_velocity -= dir * rotHor_deceleration * _delta
-		if rotHor_velocity_abs < 0.0005:
-			rotHor_velocity = 0
-			SIGNALS.OnCameraUpdate.emit(false)
-		
-		pivot_panning.rotate_y(rotHor_velocity)
-	
-#endregion
-	
-	rotHor_isRotating = rotHor_velocity_abs > 0
+	if rotHorReleased:
+		SIGNALS.OnCameraUpdate.emit(false)
 	
 	#Msh_Rot_Bottom
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom and not rotHorReleased:
@@ -347,7 +331,7 @@ func _Height(_delta : float):
 
 		
 func _HeightByCollision(_delta : float):
-	raycast.enabled = pan_velocity.length() > 0
+	raycast.enabled = mov_velocity.length() > 0
 	
 	#Increase height
 	if raycast.enabled and raycast.is_colliding():
@@ -392,6 +376,5 @@ func _GoToPoint(_targetPoint : Vector3):
 	canMoveCam = true
 	
 func _ResetVelocities():
-	pan_velocity = Vector3.ZERO
+	mov_velocity = Vector3.ZERO
 	height_velocity = 0
-	rotHor_velocity = 0

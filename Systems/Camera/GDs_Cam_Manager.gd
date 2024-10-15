@@ -7,8 +7,7 @@ class_name GDs_Cam_Manager extends Node
 @export var cam : Node3D
 
 @export_group("Configurations")
-@export var cr_cam_config_bottom : GDs_CR_Cam_ModeConfig
-@export var cr_cam_config_top : GDs_CR_Cam_ModeConfig
+@export var cr_cam_config : GDs_CR_Cam_Config
 
 func _ready():
 	Initialize(ENUMS.Cam_Mode.Bottom)
@@ -17,18 +16,9 @@ func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
 	
 	#Update in realtime if CR is changed
-	cr_cam_config_bottom.changed.connect(_UpdatedCamConfig_Bottom)
-	cr_cam_config_top.changed.connect(_UpdatedCamConfig_Top)
-	
-	#if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
-		#movement.Initialize(cam,pivot_cam, cr_cam_config_bottom,worldEnv)
-	#else:
-		#movement.Initialize(cam,pivot_cam, cr_cam_config_top,worldEnv)
+	cr_cam_config.changed.connect(_UpdatedCamConfig)
 		
-	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom:
-		movement.Initialize(cam,pivot_cam, cr_cam_config_bottom)
-	else:
-		movement.Initialize(cam,pivot_cam, cr_cam_config_top)
+	movement.Initialize(cam,pivot_cam, cr_cam_config)
 		
 	
 func _input(event):
@@ -37,17 +27,11 @@ func _input(event):
 			_ChangeMode(ENUMS.Cam_Mode.Top)
 		else:
 			_ChangeMode(ENUMS.Cam_Mode.Bottom)
-			
-			
+
 func _ChangeMode(_changeTo : int):
 	APPSTATE.camMode = _changeTo
-	if _changeTo == ENUMS.Cam_Mode.Bottom:
-		movement.SetModeConfig(cr_cam_config_bottom)
-	else:
-		movement.SetModeConfig(cr_cam_config_top)
+	movement.SetModeConfig()
 
-func _UpdatedCamConfig_Bottom():
-	movement.OnUpdateCRCam(cr_cam_config_bottom)
+func _UpdatedCamConfig():
+	movement.UpdateProperties()
 	
-func _UpdatedCamConfig_Top():
-	movement.OnUpdateCRCam(cr_cam_config_top)
