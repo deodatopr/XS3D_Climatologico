@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://6mi22r3qgh48"]
-
-[ext_resource type="Texture2D" uid="uid://bvp4vnt16xd4q" path="res://#ExtraResources/Mat_Debug/map_grid.png" id="1_q1nlk"]
-
-[resource]
-albedo_color = Color(0, 0.206926, 0.427588, 1)
-albedo_texture = ExtResource("1_q1nlk")
-uv1_scale = Vector3(10.55, 10.55, 10.55)
-uv1_triplanar = true

@@ -18,10 +18,10 @@ run/max_fps=60
 
 [autoload]
 
-ENUMS="*res://SYSTEMS/GDs_ENUMS.gd"
-UTILITIES="*res://SYSTEMS/GDs_UTILITIES.gd"
-APPSTATE="*res://SYSTEMS/GDs_APPSTATE.gd"
-SIGNALS="*res://SYSTEMS/GDs_SIGNALS.gd"
+ENUMS="*res://Systems_/GDs_ENUMS.gd"
+UTILITIES="*res://Systems_/GDs_UTILITIES.gd"
+APPSTATE="*res://Systems_/GDs_APPSTATE.gd"
+SIGNALS="*res://Systems_/GDs_SIGNALS.gd"
 
 [display]
 
@@ -36,24 +36,23 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/3DGizmos/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg")
+enabled=PackedStringArray("res://addons/3DAutoMaterial/plugin.cfg", "res://addons/3DGizmos/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/coi_serviceworker/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
-"res://#DeosTools/": "red",
 "res://#ExtraResources/": "red",
-"res://#Keystores/": "red",
+"res://#ExtraResources/#Keystores/": "red",
 "res://#NoShare/": "red",
 "res://#Wip/": "red",
-"res://CONTENT/": "green",
-"res://SCENES/": "purple",
-"res://SOUND/": "pink",
-"res://SYSTEMS/": "orange",
+"res://Content_/": "green",
 "res://SYSTEMS/z_EndPoint Old/": "gray",
 "res://SYSTEMS/z_Graficadora/": "gray",
 "res://SYSTEMS/z_OclusionByHeight/": "gray",
 "res://SYSTEMS/z_Scn_Filtros/": "gray",
+"res://Scenes_/": "purple",
+"res://Sounds_/": "pink",
+"res://Systems_/": "orange",
 "res://UI/": "yellow",
 "res://addons/": "blue"
 }
@@ -119,74 +118,3 @@ pointing/emulate_touch_from_mouse=true
 scaling_3d/mode=1
 anti_aliasing/quality/screen_space_aa=1
 occlusion_culling/use_occlusion_culling=true
-
-[shader_globals]
-
-cloud_base_height={
-"type": "float",
-"value": 1000.0
-}
-cloud_base_scale={
-"type": "float",
-"value": 2000.0
-}
-cloud_base_squeeze={
-"type": "float",
-"value": 0.5
-}
-cloud_detail_amount={
-"type": "float",
-"value": 0.5
-}
-cloud_detail_dist={
-"type": "float",
-"value": 10.0
-}
-cloud_detail_scale={
-"type": "float",
-"value": 420.0
-}
-cloud_volume_density_high={
-"type": "float",
-"value": 10.0
-}
-cloud_volume_density_low={
-"type": "float",
-"value": 4.0
-}
-cloud_volume_scale={
-"type": "float",
-"value": 150.0
-}
-sun_light_color={
-"type": "vec3",
-"value": Vector3(1, 0.812, 0.553)
-}
-sun_light_direction={
-"type": "vec3",
-"value": Vector3(0.563, 0.821, 0.093)
-}
-sun_light_energy={
-"type": "float",
-"value": 0.3
-}
-wind_uplift={
-"type": "float",
-"value": 2.0
-}
-wind_vector={
-"type": "vec2",
-"value": Vector2(1, 0)
-}
-cloud_base_texture={
-"type": "sampler3D",
-"value": ""
-}
-cloud_detail_texture={
-"type": "sampler3D",
-"value": ""
-}
-cloud_volume_texture={
-"type": "sampler3D",
-"value": ""
-}

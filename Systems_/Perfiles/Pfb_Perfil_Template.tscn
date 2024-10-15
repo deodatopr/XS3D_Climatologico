@@ -1,0 +1,178 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpp16uxlmohuy"]
+
+[ext_resource type="Script" path="res://Systems_/Perfiles/GDs_Perf_Manager.gd" id="1_f0ujq"]
+[ext_resource type="Texture2D" uid="uid://bf2g73pxnclhg" path="res://UI/UI_Atlas.png" id="2_hkbwf"]
+[ext_resource type="PackedScene" uid="uid://bk6ptssimjsuh" path="res://Systems_/Perfiles/Pfb_Perf_Avenida.tscn" id="3_dd0cs"]
+
+[node name="Lvl - Perfiles" type="Control" node_paths=PackedStringArray("contenedorAvenidas", "estadoMexico", "estadoMichoacan", "Btn_ExpandAll", "Cont_ExpandAll", "Arrow1", "Arrow2", "scroll_avenidas")]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+script = ExtResource("1_f0ujq")
+contenedorAvenidas = NodePath("VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas")
+estadoMexico = NodePath("VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas/Estado - Mexico")
+estadoMichoacan = NodePath("VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas/Estado - Michoacan")
+Btn_ExpandAll = NodePath("VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Button - Expand All")
+Cont_ExpandAll = NodePath("VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows")
+Arrow1 = NodePath("VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows/Atlas_Ico_Arrow")
+Arrow2 = NodePath("VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows/Atlas_Ico_Arrow2")
+scroll_avenidas = NodePath("VBox - PERFILES/Scroll - Avenidas")
+
+[node name="VBox - PERFILES" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="Control" parent="VBox - PERFILES"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+metadata/_edit_horizontal_guides_ = [62.0]
+
+[node name="Background" type="NinePatchRect" parent="VBox - PERFILES/Header"]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hkbwf")
+region_rect = Rect2(443, 28, 40, 40)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox - PERFILES/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox - PERFILES/Header/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Btn - Expand All" type="Control" parent="VBox - PERFILES/Header/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.14
+mouse_filter = 2
+
+[node name="Atlas_RectShadow" type="NinePatchRect" parent="VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All"]
+self_modulate = Color(0.141176, 0.376471, 0.537255, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hkbwf")
+region_rect = Rect2(321, 10, 50, 50)
+patch_margin_left = 23
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 23
+
+[node name="Cont - Arrows" type="Control" parent="VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Atlas_Ico_Arrow" type="NinePatchRect" parent="VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 24.0
+grow_vertical = 0
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("2_hkbwf")
+region_rect = Rect2(140, 30, 30, 30)
+
+[node name="Atlas_Ico_Arrow2" type="NinePatchRect" parent="VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Cont - Arrows"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+rotation = 3.14159
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("2_hkbwf")
+region_rect = Rect2(140, 30, 30, 30)
+
+[node name="Button - Expand All" type="Button" parent="VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All"]
+self_modulate = Color(0, 0.0235294, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cont - Filtros" type="Control" parent="VBox - PERFILES/Header/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Separator - BlackLineTop" type="Control" parent="VBox - PERFILES/Header/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBox - PERFILES/Header/VBoxContainer/Separator - BlackLineTop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Scroll - Avenidas" type="ScrollContainer" parent="VBox - PERFILES"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+scroll_deadzone = -10
+
+[node name="VBox Cont  - Avenidas" type="VBoxContainer" parent="VBox - PERFILES/Scroll - Avenidas"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 15
+
+[node name="Estado - Mexico" parent="VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas" instance=ExtResource("3_dd0cs")]
+layout_mode = 2
+
+[node name="Estado - Michoacan" parent="VBox - PERFILES/Scroll - Avenidas/VBox Cont  - Avenidas" instance=ExtResource("3_dd0cs")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBox - PERFILES/Header/VBoxContainer/HBoxContainer/Btn - Expand All/Button - Expand All" to="." method="_on_ExpandAll_pressed"]

@@ -1,0 +1,632 @@
+[gd_resource type="EditorSettings" load_steps=63 format=3]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ygxp1"]
+device = -1
+alt_pressed = true
+physical_keycode = 83
+
+[sub_resource type="InputEventKey" id="InputEventKey_hasj7"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+physical_keycode = 69
+
+[sub_resource type="InputEventKey" id="InputEventKey_uavxr"]
+device = -1
+alt_pressed = true
+physical_keycode = 69
+
+[sub_resource type="InputEventKey" id="InputEventKey_fwtqp"]
+device = -1
+ctrl_pressed = true
+physical_keycode = 69
+
+[sub_resource type="InputEventKey" id="InputEventKey_gwqqr"]
+device = -1
+physical_keycode = 4194341
+
+[sub_resource type="InputEventKey" id="InputEventKey_53yoi"]
+shift_pressed = true
+keycode = 4194342
+
+[sub_resource type="InputEventKey" id="InputEventKey_qui0q"]
+device = -1
+physical_keycode = 4194342
+
+[sub_resource type="InputEventKey" id="InputEventKey_u8lfj"]
+keycode = 4194445
+
+[sub_resource type="InputEventKey" id="InputEventKey_hmnmu"]
+device = -1
+physical_keycode = 4194334
+
+[sub_resource type="InputEventKey" id="InputEventKey_7l8sv"]
+keycode = 4194439
+
+[sub_resource type="InputEventKey" id="InputEventKey_j23yo"]
+device = -1
+physical_keycode = 4194332
+
+[sub_resource type="InputEventKey" id="InputEventKey_clgbk"]
+alt_pressed = true
+keycode = 4194441
+
+[sub_resource type="InputEventKey" id="InputEventKey_n6e3x"]
+device = -1
+physical_keycode = 4194333
+
+[sub_resource type="InputEventKey" id="InputEventKey_ku4cp"]
+device = -1
+physical_keycode = 4194335
+
+[sub_resource type="InputEventKey" id="InputEventKey_hwtsl"]
+command_or_control_autoremap = true
+keycode = 80
+unicode = 80
+
+[sub_resource type="InputEventKey" id="InputEventKey_u8gk0"]
+device = -1
+physical_keycode = 4194335
+
+[sub_resource type="InputEventKey" id="InputEventKey_8lohs"]
+device = -1
+alt_pressed = true
+physical_keycode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_8lr5j"]
+device = -1
+alt_pressed = true
+physical_keycode = 52
+
+[sub_resource type="InputEventKey" id="InputEventKey_sk51l"]
+device = -1
+alt_pressed = true
+physical_keycode = 53
+
+[sub_resource type="InputEventKey" id="InputEventKey_hpyg5"]
+device = -1
+alt_pressed = true
+physical_keycode = 51
+
+[sub_resource type="InputEventKey" id="InputEventKey_myc8r"]
+device = -1
+alt_pressed = true
+physical_keycode = 50
+
+[sub_resource type="InputEventKey" id="InputEventKey_veg4g"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+physical_keycode = 82
+
+[sub_resource type="InputEventKey" id="InputEventKey_jhnqy"]
+device = -1
+physical_keycode = 71
+unicode = 103
+
+[sub_resource type="InputEventKey" id="InputEventKey_jksdd"]
+device = -1
+physical_keycode = 53
+unicode = 53
+
+[sub_resource type="InputEventKey" id="InputEventKey_ctvc4"]
+device = -1
+physical_keycode = 52
+unicode = 52
+
+[sub_resource type="InputEventKey" id="InputEventKey_siid0"]
+shift_pressed = true
+ctrl_pressed = true
+keycode = 4194342
+
+[sub_resource type="InputEventKey" id="InputEventKey_1e0xu"]
+device = -1
+shift_pressed = true
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_41d35"]
+device = -1
+physical_keycode = 50
+unicode = 50
+
+[sub_resource type="InputEventKey" id="InputEventKey_iu8lm"]
+device = -1
+physical_keycode = 49
+unicode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_xxrm0"]
+device = -1
+physical_keycode = 51
+unicode = 51
+
+[sub_resource type="InputEventKey" id="InputEventKey_1wm25"]
+command_or_control_autoremap = true
+keycode = 78
+unicode = 78
+
+[sub_resource type="InputEventKey" id="InputEventKey_nwfrh"]
+device = -1
+physical_keycode = 70
+
+[sub_resource type="InputEventKey" id="InputEventKey_1ppo5"]
+command_or_control_autoremap = true
+keycode = 75
+unicode = 75
+
+[sub_resource type="InputEventKey" id="InputEventKey_owm78"]
+device = -1
+ctrl_pressed = true
+physical_keycode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_axpo7"]
+shift_pressed = true
+ctrl_pressed = true
+keycode = 68
+unicode = 68
+
+[sub_resource type="InputEventKey" id="InputEventKey_7321s"]
+device = -1
+alt_pressed = true
+physical_keycode = 68
+
+[sub_resource type="InputEventKey" id="InputEventKey_2heak"]
+shift_pressed = true
+keycode = 4194335
+
+[sub_resource type="InputEventKey" id="InputEventKey_i15h4"]
+device = -1
+alt_pressed = true
+physical_keycode = 67
+
+[sub_resource type="InputEventKey" id="InputEventKey_fbybp"]
+shift_pressed = true
+keycode = 4194336
+
+[sub_resource type="InputEventKey" id="InputEventKey_pep4h"]
+device = -1
+alt_pressed = true
+physical_keycode = 88
+
+[sub_resource type="InputEventKey" id="InputEventKey_tj5qf"]
+keycode = 4194339
+
+[sub_resource type="InputEventKey" id="InputEventKey_n186f"]
+device = -1
+physical_keycode = 4194336
+
+[sub_resource type="InputEventKey" id="InputEventKey_lkico"]
+device = -1
+physical_keycode = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_6t51u"]
+command_or_control_autoremap = true
+shift_pressed = true
+keycode = 87
+unicode = 87
+
+[sub_resource type="InputEventKey" id="InputEventKey_r43pr"]
+device = -1
+ctrl_pressed = true
+physical_keycode = 87
+
+[sub_resource type="InputEventKey" id="InputEventKey_lhe4s"]
+shift_pressed = true
+keycode = 4194343
+
+[sub_resource type="InputEventKey" id="InputEventKey_trta6"]
+device = -1
+ctrl_pressed = true
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_l48bn"]
+device = -1
+alt_pressed = true
+physical_keycode = 87
+
+[sub_resource type="InputEventKey" id="InputEventKey_0by1q"]
+device = -1
+alt_pressed = true
+physical_keycode = 69
+
+[sub_resource type="InputEventKey" id="InputEventKey_osgpa"]
+device = -1
+alt_pressed = true
+physical_keycode = 82
+
+[sub_resource type="InputEventKey" id="InputEventKey_6o7gu"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+physical_keycode = 70
+
+[sub_resource type="InputEventKey" id="InputEventKey_btxtf"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+physical_keycode = 68
+
+[sub_resource type="InputEventKey" id="InputEventKey_cwb84"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+physical_keycode = 88
+
+[sub_resource type="InputEventKey" id="InputEventKey_s67qg"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+keycode = 83
+
+[sub_resource type="InputEventKey" id="InputEventKey_rfstv"]
+device = -1
+alt_pressed = true
+keycode = 88
+
+[sub_resource type="InputEventKey" id="InputEventKey_p4me6"]
+device = -1
+physical_keycode = 67
+unicode = 99
+
+[sub_resource type="InputEventKey" id="InputEventKey_s7eme"]
+device = -1
+alt_pressed = true
+shift_pressed = true
+physical_keycode = 68
+
+[sub_resource type="InputEventKey" id="InputEventKey_xwyk1"]
+device = -1
+keycode = 48
+unicode = 48
+
+[sub_resource type="InputEventKey" id="InputEventKey_3r0un"]
+device = -1
+keycode = 56
+unicode = 56
+
+[sub_resource type="InputEventKey" id="InputEventKey_h0kgl"]
+device = -1
+keycode = 57
+unicode = 57
+
+[sub_resource type="InputEventKey" id="InputEventKey_dk4pd"]
+shift_pressed = true
+keycode = 4194337
+
+[sub_resource type="InputEventKey" id="InputEventKey_vds34"]
+device = -1
+shift_pressed = true
+ctrl_pressed = true
+physical_keycode = 4194320
+
+[resource]
+interface/editor/editor_language = "en"
+interface/editor/display_scale = 7
+interface/editor/custom_display_scale = 0.75
+interface/editor/code_font_size = 18.0
+interface/editor/show_update_spinner = false
+interface/editor/low_processor_mode_sleep_usec = 66000.0
+interface/inspector/default_color_picker_mode = 1
+interface/inspector/default_color_picker_shape = 1
+interface/theme/preset = "Custom"
+interface/theme/base_color = Color(0.141176, 0.141176, 0.141176, 1)
+interface/theme/accent_color = Color(0.44, 0.73, 0.98, 1)
+interface/theme/contrast = 0.3
+interface/theme/draw_extra_borders = true
+interface/multi_window/maximize_window = true
+filesystem/directories/default_project_path = "D:/DOCS/GodotProjects"
+filesystem/import/blender/blender_path = "D:/APP PORTABLE/Blender\\blender.exe"
+filesystem/import/fbx/fbx2gltf_path = "D:/APP PORTABLE/Godot/FBX/FBX2glTF-windows-x86_64.exe"
+docks/scene_tree/auto_expand_to_selected = false
+text_editor/theme/highlighting/symbol_color = Color(0.67, 0.79, 1, 1)
+text_editor/theme/highlighting/keyword_color = Color(1, 0.44, 0.52, 1)
+text_editor/theme/highlighting/control_flow_keyword_color = Color(1, 0.55, 0.8, 1)
+text_editor/theme/highlighting/base_type_color = Color(0.26, 1, 0.76, 1)
+text_editor/theme/highlighting/engine_type_color = Color(0.56, 1, 0.86, 1)
+text_editor/theme/highlighting/user_type_color = Color(0.78, 1, 0.93, 1)
+text_editor/theme/highlighting/comment_color = Color(0.785294, 0.785294, 0.785294, 0.5)
+text_editor/theme/highlighting/doc_comment_color = Color(0.6, 0.7, 0.8, 0.8)
+text_editor/theme/highlighting/string_color = Color(1, 0.93, 0.63, 1)
+text_editor/theme/highlighting/background_color = Color(0.0776468, 0.0776468, 0.0776468, 1)
+text_editor/theme/highlighting/completion_background_color = Color(0.141176, 0.141176, 0.141176, 1)
+text_editor/theme/highlighting/completion_selected_color = Color(1, 1, 1, 0.07)
+text_editor/theme/highlighting/completion_existing_color = Color(1, 1, 1, 0.14)
+text_editor/theme/highlighting/completion_font_color = Color(0.785294, 0.785294, 0.785294, 1)
+text_editor/theme/highlighting/text_color = Color(0.785294, 0.785294, 0.785294, 1)
+text_editor/theme/highlighting/line_number_color = Color(0.785294, 0.785294, 0.785294, 0.5)
+text_editor/theme/highlighting/safe_line_number_color = Color(0.785294, 0.942353, 0.785294, 0.75)
+text_editor/theme/highlighting/caret_color = Color(1, 1, 1, 1)
+text_editor/theme/highlighting/selection_color = Color(0.44, 0.73, 0.98, 0.4)
+text_editor/theme/highlighting/brace_mismatch_color = Color(1, 0.47, 0.42, 1)
+text_editor/theme/highlighting/current_line_color = Color(1, 1, 1, 0.07)
+text_editor/theme/highlighting/line_length_guideline_color = Color(0.141176, 0.141176, 0.141176, 1)
+text_editor/theme/highlighting/word_highlighted_color = Color(1, 1, 1, 0.07)
+text_editor/theme/highlighting/number_color = Color(0.63, 1, 0.88, 1)
+text_editor/theme/highlighting/function_color = Color(0.34, 0.7, 1, 1)
+text_editor/theme/highlighting/member_variable_color = Color(0.736, 0.88, 1, 1)
+text_editor/theme/highlighting/mark_color = Color(1, 0.47, 0.42, 0.3)
+text_editor/theme/highlighting/breakpoint_color = Color(1, 0.47, 0.42, 1)
+text_editor/theme/highlighting/code_folding_color = Color(1, 1, 1, 0.27)
+text_editor/theme/highlighting/search_result_color = Color(1, 1, 1, 0.07)
+text_editor/appearance/gutters/line_numbers_zero_padded = true
+text_editor/appearance/whitespace/draw_spaces = true
+text_editor/behavior/files/auto_reload_scripts_on_external_change = true
+text_editor/completion/add_type_hints = false
+text_editor/completion/use_single_quotes = true
+editors/3d/navigation/navigation_scheme = 1
+editors/3d/navigation/zoom_style = 1
+editors/3d/navigation/pan_modifier = 2
+editors/visual_editors/minimap_opacity = 0.5
+run/output/font_size = 15
+network/connection/network_mode = 1
+project_manager/default_renderer = "mobile"
+filesystem/import/blender/blender3_path = ""
+asset_library/available_urls = {
+"godotengine.org (Official)": "https://godotengine.org/asset-library/api"
+}
+asset_library/use_threads = true
+export/android/android_sdk_path = "C:\\Users\\deoda\\AppData\\Local\\Android\\Sdk"
+export/android/debug_keystore = "D:/GODOT/Android Keystores/debug.keystore"
+export/android/debug_keystore_user = "androiddebugkey"
+export/android/debug_keystore_pass = "android"
+export/android/force_system_user = false
+export/android/shutdown_adb_on_exit = true
+export/android/one_click_deploy_clear_previous_install = true
+export/macos/rcodesign = ""
+export/uwp/signtool = ""
+export/uwp/debug_certificate = ""
+export/uwp/debug_password = ""
+export/uwp/debug_algorithm = 2
+export/web/http_host = "localhost"
+export/web/http_port = 8060
+export/web/use_tls = false
+export/web/tls_key = ""
+export/web/tls_certificate = ""
+export/windows/rcedit = "D:/APP PORTABLE/Godot/rcedit/rcedit-x64.exe"
+export/windows/signtool = ""
+_default_feature_profile = ""
+interface/editors/show_scene_tree_root_selection = true
+interface/editors/derive_script_globals_by_name = true
+docks/scene_tree/ask_before_deleting_related_animation_tracks = true
+_use_favorites_root_selection = false
+filesystem/file_server/port = 6010
+filesystem/file_server/password = ""
+editors/3d/manipulator_gizmo_size = 80
+editors/3d/manipulator_gizmo_opacity = 0.9
+editors/3d/navigation/show_viewport_rotation_gizmo = true
+editors/3d/navigation/show_viewport_navigation_gizmo = false
+text_editor/behavior/files/auto_reload_and_parse_scripts_on_save = true
+text_editor/behavior/files/open_dominant_script_on_scene_change = true
+text_editor/external/use_external_editor = false
+text_editor/external/exec_path = ""
+text_editor/script_list/script_temperature_enabled = true
+text_editor/script_list/script_temperature_history_size = 15
+text_editor/script_list/group_help_pages = true
+text_editor/script_list/sort_scripts_by = 0
+text_editor/script_list/list_script_names_as = 0
+text_editor/external/exec_flags = "{file}"
+version_control/username = ""
+version_control/ssh_public_key_path = ""
+version_control/ssh_private_key_path = ""
+editors/bone_mapper/handle_colors/unset = Color(0.3, 0.3, 0.3, 1)
+editors/bone_mapper/handle_colors/set = Color(0.1, 0.6, 0.25, 1)
+editors/bone_mapper/handle_colors/missing = Color(0.8, 0.2, 0.8, 1)
+editors/bone_mapper/handle_colors/error = Color(0.8, 0.2, 0.2, 1)
+network/debug_adapter/remote_port = 6006
+network/debug_adapter/request_timeout = 1000
+network/debug_adapter/sync_breakpoints = false
+editors/3d_gizmos/gizmo_colors/path = Color(0.5, 0.5, 1, 0.8)
+editors/3d_gizmos/gizmo_colors/skeleton = Color(1, 0.8, 0.4, 1)
+editors/3d_gizmos/gizmo_colors/selected_bone = Color(0.8, 0.3, 0, 1)
+editors/3d_gizmos/gizmo_settings/bone_axis_length = 0.1
+editors/3d_gizmos/gizmo_settings/bone_shape = 1
+editors/3d_gizmos/gizmo_colors/csg = Color(0, 0.4, 1, 0.15)
+editors/grid_map/editor_side = 1
+editors/grid_map/palette_min_width = 230
+editors/grid_map/preview_size = 64
+export/ssh/ssh = ""
+export/ssh/scp = ""
+network/language_server/remote_host = "127.0.0.1"
+network/language_server/remote_port = 6005
+network/language_server/enable_smart_resolve = true
+network/language_server/show_native_symbols_in_editor = false
+network/language_server/use_thread = false
+editors/3d_gizmos/gizmo_colors/camera = Color(0.8, 0.4, 0.8, 1)
+editors/3d_gizmos/gizmo_colors/stream_player_3d = Color(0.4, 0.8, 1, 1)
+editors/3d_gizmos/gizmo_colors/occluder = Color(0.8, 0.5, 1, 1)
+editors/3d_gizmos/gizmo_colors/visibility_notifier = Color(0.8, 0.5, 0.7, 1)
+editors/3d_gizmos/gizmo_colors/particles = Color(0.8, 0.7, 0.4, 1)
+editors/3d_gizmos/gizmo_colors/particle_attractor = Color(1, 0.7, 0.5, 1)
+editors/3d_gizmos/gizmo_colors/particle_collision = Color(0.5, 0.7, 1, 1)
+editors/3d_gizmos/gizmo_colors/reflection_probe = Color(0.6, 1, 0.5, 1)
+editors/3d_gizmos/gizmo_colors/decal = Color(0.6, 0.5, 1, 1)
+editors/3d_gizmos/gizmo_colors/voxel_gi = Color(0.5, 1, 0.6, 1)
+editors/3d_gizmos/gizmo_colors/lightmap_lines = Color(0.5, 0.6, 1, 1)
+editors/3d_gizmos/gizmo_colors/lightprobe_lines = Color(0.5, 0.6, 1, 1)
+editors/3d_gizmos/gizmo_colors/joint_body_a = Color(0.6, 0.8, 1, 1)
+editors/3d_gizmos/gizmo_colors/joint_body_b = Color(0.6, 0.9, 1, 1)
+editors/3d_gizmos/gizmo_colors/fog_volume = Color(0.5, 0.7, 1, 1)
+text_editor/theme/highlighting/gdscript/function_definition_color = Color(0.4, 0.9, 1, 1)
+text_editor/theme/highlighting/gdscript/global_function_color = Color(0.64, 0.64, 0.96, 1)
+text_editor/theme/highlighting/gdscript/node_path_color = Color(0.72, 0.77, 0.49, 1)
+text_editor/theme/highlighting/gdscript/node_reference_color = Color(0.39, 0.76, 0.35, 1)
+text_editor/theme/highlighting/gdscript/annotation_color = Color(1, 0.7, 0.45, 1)
+text_editor/theme/highlighting/gdscript/string_name_color = Color(1, 0.76, 0.65, 1)
+text_editor/help/sort_functions_alphabetically = true
+export/android/use_wifi_for_remote_debug = false
+export/android/wifi_remote_debug_host = "localhost"
+editors/3d_gizmos/gizmo_settings/path3d_tilt_disk_size = 0.8
+editors/3d_gizmos/gizmo_colors/path_tilt = Color(1, 1, 0.4, 0.9)
+text_editor/theme/highlighting/comment_markers/critical_color = Color(0.77, 0.35, 0.35, 1)
+text_editor/theme/highlighting/comment_markers/warning_color = Color(0.72, 0.61, 0.48, 1)
+text_editor/theme/highlighting/comment_markers/notice_color = Color(0.56, 0.67, 0.51, 1)
+text_editor/theme/highlighting/comment_markers/critical_list = "ALERT,ATTENTION,CAUTION,CRITICAL,DANGER,SECURITY"
+text_editor/theme/highlighting/comment_markers/warning_list = "BUG,DEPRECATED,FIXME,HACK,TASK,TBD,TODO,WARNING"
+text_editor/theme/highlighting/comment_markers/notice_list = "INFO,NOTE,NOTICE,TEST,TESTING"
+export/android/java_sdk_path = "C:/Program Files/Eclipse Adoptium/jdk-17.0.10.7-hotspot"
+network/language_server/poll_limit_usec = 100000
+shortcuts = [{
+"name": "editor/project_settings",
+"shortcuts": [SubResource("InputEventKey_ygxp1")]
+}, {
+"name": "editor/export",
+"shortcuts": [SubResource("InputEventKey_hasj7")]
+}, {
+"name": "editor/editor_settings",
+"shortcuts": [SubResource("InputEventKey_uavxr")]
+}, {
+"name": "filesystem_dock/show_in_explorer",
+"shortcuts": [SubResource("InputEventKey_fwtqp")]
+}, {
+"name": "editor/take_screenshot",
+"shortcuts": [SubResource("InputEventKey_gwqqr")]
+}, {
+"name": "editor/fullscreen_mode",
+"shortcuts": [SubResource("InputEventKey_53yoi"), SubResource("InputEventKey_qui0q")]
+}, {
+"name": "spatial_editor/top_view",
+"shortcuts": [SubResource("InputEventKey_u8lfj"), SubResource("InputEventKey_hmnmu")]
+}, {
+"name": "spatial_editor/front_view",
+"shortcuts": [SubResource("InputEventKey_7l8sv"), SubResource("InputEventKey_j23yo")]
+}, {
+"name": "spatial_editor/left_view",
+"shortcuts": [SubResource("InputEventKey_clgbk"), SubResource("InputEventKey_n6e3x")]
+}, {
+"name": "spatial_editor/switch_perspective_orthogonal",
+"shortcuts": [SubResource("InputEventKey_ku4cp")]
+}, {
+"name": "spatial_editor/toggle_camera_preview",
+"shortcuts": [SubResource("InputEventKey_hwtsl"), SubResource("InputEventKey_u8gk0")]
+}, {
+"name": "spatial_editor/view_display_normal",
+"shortcuts": [SubResource("InputEventKey_8lohs")]
+}, {
+"name": "spatial_editor/view_display_wireframe",
+"shortcuts": [SubResource("InputEventKey_8lr5j")]
+}, {
+"name": "spatial_editor/view_display_overdraw",
+"shortcuts": [SubResource("InputEventKey_sk51l")]
+}, {
+"name": "spatial_editor/view_display_lighting",
+"shortcuts": [SubResource("InputEventKey_hpyg5")]
+}, {
+"name": "spatial_editor/view_display_unshaded",
+"shortcuts": [SubResource("InputEventKey_myc8r")]
+}, {
+"name": "editor/reload_current_project",
+"shortcuts": [SubResource("InputEventKey_veg4g")]
+}, {
+"name": "spatial_editor/view_gizmos",
+"shortcuts": [SubResource("InputEventKey_jhnqy")]
+}, {
+"name": "spatial_editor/view_information",
+"shortcuts": [SubResource("InputEventKey_jksdd")]
+}, {
+"name": "spatial_editor/view_fps",
+"shortcuts": [SubResource("InputEventKey_ctvc4")]
+}, {
+"name": "editor/distraction_free_mode",
+"shortcuts": [SubResource("InputEventKey_siid0"), SubResource("InputEventKey_1e0xu")]
+}, {
+"name": "spatial_editor/view_grid",
+"shortcuts": [SubResource("InputEventKey_41d35")]
+}, {
+"name": "spatial_editor/view_origin",
+"shortcuts": [SubResource("InputEventKey_iu8lm")]
+}, {
+"name": "spatial_editor/view_environment",
+"shortcuts": [SubResource("InputEventKey_xxrm0")]
+}, {
+"name": "file_dialog/create_folder",
+"shortcuts": [SubResource("InputEventKey_1wm25"), SubResource("InputEventKey_nwfrh")]
+}, {
+"name": "script_text_editor/toggle_comment",
+"shortcuts": [SubResource("InputEventKey_1ppo5"), SubResource("InputEventKey_owm78")]
+}, {
+"name": "script_text_editor/duplicate_selection",
+"shortcuts": [SubResource("InputEventKey_axpo7"), SubResource("InputEventKey_7321s")]
+}, {
+"name": "script_text_editor/convert_to_uppercase",
+"shortcuts": [SubResource("InputEventKey_2heak"), SubResource("InputEventKey_i15h4")]
+}, {
+"name": "script_text_editor/convert_to_lowercase",
+"shortcuts": [SubResource("InputEventKey_fbybp"), SubResource("InputEventKey_pep4h")]
+}, {
+"name": "editor/stop_running_project",
+"shortcuts": [SubResource("InputEventKey_tj5qf"), SubResource("InputEventKey_n186f"), SubResource("InputEventKey_lkico")]
+}, {
+"name": "editor/close_scene",
+"shortcuts": [SubResource("InputEventKey_6t51u"), SubResource("InputEventKey_r43pr")]
+}, {
+"name": "editor/bottom_panel_expand",
+"shortcuts": [SubResource("InputEventKey_lhe4s"), SubResource("InputEventKey_trta6")]
+}, {
+"name": "spatial_editor/instant_translate",
+"shortcuts": [SubResource("InputEventKey_l48bn")]
+}, {
+"name": "spatial_editor/instant_rotate",
+"shortcuts": [SubResource("InputEventKey_0by1q")]
+}, {
+"name": "spatial_editor/instant_scale",
+"shortcuts": [SubResource("InputEventKey_osgpa")]
+}, {
+"name": "script_text_editor/fold_all_lines",
+"shortcuts": [SubResource("InputEventKey_6o7gu")]
+}, {
+"name": "script_text_editor/unfold_all_lines",
+"shortcuts": [SubResource("InputEventKey_btxtf")]
+}, {
+"name": "bottom_panels/toggle_output_bottom_panel",
+"shortcuts": [SubResource("InputEventKey_cwb84")]
+}, {
+"name": "bottom_panels/toggle_shader_editor_bottom_panel",
+"shortcuts": [SubResource("InputEventKey_s67qg")]
+}, {
+"name": "editor/clear_output",
+"shortcuts": [SubResource("InputEventKey_rfstv")]
+}, {
+"name": "spatial_editor/view_cinematic_preview",
+"shortcuts": [SubResource("InputEventKey_p4me6")]
+}, {
+"name": "editor/file_quit",
+"shortcuts": []
+}, {
+"name": "bottom_panels/toggle_debugger_bottom_panel",
+"shortcuts": [SubResource("InputEventKey_s7eme")]
+}, {
+"name": "spatial_editor/1_viewport",
+"shortcuts": [SubResource("InputEventKey_xwyk1")]
+}, {
+"name": "spatial_editor/2_viewports",
+"shortcuts": [SubResource("InputEventKey_3r0un")]
+}, {
+"name": "spatial_editor/2_viewports_alt",
+"shortcuts": [SubResource("InputEventKey_h0kgl")]
+}, {
+"name": "spatial_editor/3_viewports",
+"shortcuts": []
+}, {
+"name": "spatial_editor/3_viewports_alt",
+"shortcuts": []
+}, {
+"name": "spatial_editor/4_viewports",
+"shortcuts": []
+}, {
+"name": "script_text_editor/capitalize",
+"shortcuts": [SubResource("InputEventKey_dk4pd"), SubResource("InputEventKey_vds34")]
+}]
+metadata/script_setup_templates_dictionary = {
+"Button": "0NodeDefault",
+"CharacterBody2D": "0CharacterBody2DBasic Movement",
+"CharacterBody3D": "0CharacterBody3DBasic Movement",
+"MeshInstance3D": "0NodeDefault",
+"NinePatchRect": "0NodeDefault",
+"Node": "0NodeDefault",
+"Node3D": "0NodeDefault",
+"RigidBody3D": "0NodeDefault",
+"SpringArm3D": "0NodeDefault"
+}
+metadata/export_template_download_directory = "C:/Users/deoda/AppData/Local/Godot"
+metadata/script_setup_use_script_templates = true
