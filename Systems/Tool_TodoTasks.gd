@@ -84,3 +84,19 @@
 
 #Extras
 #Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
+
+
+#CAMBIOS:
+# - Velocidad rot
+# - Fix distancia de brujula arriba
+# - Cambio minimapa de textura grid
+# - Arreglar textura 
+# - Tiempo al subir es lento, usar misma curva
+# - Mini mapa aparece desaparece
+# - Cambiar nombre Inclination -> Tilt
+# - Rot en crudo sin acceleración
+# - Quitar propiedades rot
+# - Noimbre dist from pivot -> pivot dist
+# - Panning -> Movement
+# - Movement acceleration -> acceleration quitar max acceleration 
+# - Misma curva
