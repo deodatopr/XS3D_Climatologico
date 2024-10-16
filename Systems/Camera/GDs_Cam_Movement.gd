@@ -72,6 +72,8 @@ var typeTransitionTop: int  = Tween.TRANS_QUAD
 var typeEaseBottom: int  = Tween.EASE_IN_OUT
 var typeTransitionBottom: int  =  Tween.TRANS_QUAD
 
+var signalUpdateWasEmitted : bool
+
 const ROTHOR_THRESHOLD : float = 0.8
 
 func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _cr_cam_config : GDs_CR_Cam_Config):
@@ -172,9 +174,11 @@ func _physics_process(delta):
 	if Input.is_key_pressed(KEY_SPACE):
 		_GoToPoint(Vector3.ZERO)
 	
+	#TEST: Ver angulo necesario con la distancia de cam a pivot y la altura
 	if debug_lookAt and camModeBottom:
 		_LookAt()
 		
+	#TEST: Update siempre FOV al cambiarlo en el CR
 	if debug_fov:
 		cam.fov = fov
 	
@@ -186,6 +190,13 @@ func _physics_process(delta):
 	_Rotation_Hor(delta)
 	
 	_ShowMshMarkPivot(mov_isMoving or rotHor_isRotating or debug_pivotMsh)
+	
+	if (mov_isMoving or rotHor_isRotating) and not signalUpdateWasEmitted:
+		SIGNALS.OnCameraUpdate.emit(true)
+		signalUpdateWasEmitted = true
+	elif (not mov_isMoving and not rotHor_isRotating) and signalUpdateWasEmitted:
+		SIGNALS.OnCameraUpdate.emit(false)
+		signalUpdateWasEmitted = false
 
 func _OnTriggerEntered(_area3d : Area3D):
 	UTILITIES.TurnOnObject(raycast)
