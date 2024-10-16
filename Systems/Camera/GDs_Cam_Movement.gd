@@ -91,6 +91,7 @@ func UpdateProperties():
 	#Debug
 	debug_lookAt = cr_cam_config.debug_alwaysLookAt
 	debug_pivotMsh = cr_cam_config.debug_alwaysPivotMsh
+	debug_fov = cr_cam_config.debug_alwaysFov
 	
 	#Pivot dist
 	camFocus = cr_cam_config.bottom_focus
@@ -174,7 +175,7 @@ func _physics_process(delta):
 	if debug_lookAt and camModeBottom:
 		_LookAt()
 		
-	if cr_cam_config.debug_alwaysFov:
+	if debug_fov:
 		cam.fov = fov
 	
 	_Panning(delta)
