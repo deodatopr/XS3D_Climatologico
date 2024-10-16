@@ -13,9 +13,10 @@ var pinSiteInitialXPosition := 0.0
 
 var postarget2d : Vector2
 var Camera : Camera3D
-var centerScreen : Vector2
-var dir : Vector2
 var distance : float
+var screenSize : Vector2
+var maxMark_TopDown_PosX : float
+var maxMark_TopDown_PosY : float
 
 @onready var pin_sitio: ColorRect = $CompassParent/CompassMask/PinSite
 @onready var compass: TextureRect = $CompassParent/CompassMask/Compass
@@ -31,6 +32,10 @@ func Initialize(_camManager : GDs_Cam_Manager)-> void:
 	compassInitialXPosition = compass.position.x
 	pinSiteInitialXPosition = pin_sitio.position.x
 	SIGNALS.OnCameraUpdate.connect(_OnCanRotate)
+	
+	screenSize = get_viewport().get_visible_rect().size
+	maxMark_TopDown_PosX = screenSize.x - top_down_mark.size.x
+	maxMark_TopDown_PosY = screenSize.y - top_down_mark.size.y
 	
 	Camera = camManager.cam
 	
@@ -96,14 +101,12 @@ func _CalculateCompassPoints(_distance : float) -> void:
 
 func _CalculateTopDownPoint(_distance : float) -> void:
 	#calculate the position in screen of top down mark
+	var targetUnprojectPos :Vector3 = PinPos.global_position
+	targetUnprojectPos.y = 0
 	postarget2d = Camera.unproject_position(PinPos.global_position)
-	centerScreen = get_viewport().get_visible_rect().size/2
-	dir = postarget2d - centerScreen
-	dir = dir.normalized()
-	#value 1.6 is a coeficient wthat define the value from center of screen to edge to adjust the mark to screen 
-	var nearMark := (clampf(_distance, 1, maxDistance)*1.6)/maxDistance
 	
-	#update top down mark position in screen
-	var screenSize := get_viewport().get_visible_rect().size/2
-	top_down_mark.global_position = centerScreen + Vector2(clamp(dir.x * (centerScreen.x * nearMark), -screenSize.x, screenSize.x - top_down_mark.size.x), clamp(dir.y * (centerScreen.y * nearMark), -screenSize.y, screenSize.y - top_down_mark.size.y))
+	postarget2d.x = clampf(postarget2d.x,0,maxMark_TopDown_PosX)
+	postarget2d.y = clampf(postarget2d.y,0,maxMark_TopDown_PosY)
+	
+	top_down_mark.global_position = postarget2d
 	
