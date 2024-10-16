@@ -2,7 +2,7 @@ extends Node
 
 var pivotCam : Node3D
 @export var camManager : GDs_Cam_Manager
-@export var MarkRef : Node3D
+@export var PinPos : Node3D
 @export var minDistance : float
 @export var maxDistance : float
 @export var site_color : Color
@@ -52,7 +52,13 @@ func _ToggleCompass(visible : bool) -> void:
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	#calculate distance between pivot and mark
-	distance = Vector3(pivotCam.global_position.x, 0, pivotCam.global_position.z).distance_to(Vector3(MarkRef.global_position.x, 0, MarkRef.global_position.z))
+	var fixedCamPos : Vector3 = -pivotCam.basis.z * 18
+	fixedCamPos = Camera.global_position + fixedCamPos
+	fixedCamPos.y = 0
+	
+	distance = fixedCamPos.distance_to(Vector3(PinPos.global_position.x, 0, PinPos.global_position.z))
+	#distance = abs(distance)
+	
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
 		_ToggleCompass(false)
@@ -62,14 +68,8 @@ func _process(delta: float) -> void:
 		_CalculateCompassPoints(distance)
 	
 func _CalculateCompassPoints(_distance : float) -> void:
-	
-	distance_text.text = String.num(_distance, 0)
-
-	#check if is enough near to hide or show. min distance need a value higher to not hide the pin very near of site and add value to not create a separete var
-	if _distance < minDistance + 15 and pin_sitio.visible:
-		pin_sitio.visible = false
-	elif _distance > minDistance + 15 and !pin_sitio.visible:
-		pin_sitio.visible = true
+	_distance = floorf(_distance)
+	distance_text.text = String.num(_distance, 1)
 	
 	#if canRotate:
 		#calculate degrees of pivot cam
@@ -86,7 +86,7 @@ func _CalculateCompassPoints(_distance : float) -> void:
 
 	#calculate dot product between pivot cam and mark
 	var pivotCamNormal := pivotCam.global_basis.z
-	var MarkNormal := (MarkRef.global_position - pivotCam.global_position).normalized()
+	var MarkNormal := (PinPos.global_position - pivotCam.global_position).normalized()
 	var dot := MarkNormal.dot(pivotCamNormal)
 	var OffsetMark = abs(dot - 1) * (CompassLenght/2)
 	
@@ -101,20 +101,13 @@ func _CalculateCompassPoints(_distance : float) -> void:
 	pin_sitio.position.x = OffsetMark + pinSiteInitialXPosition
 
 func _CalculateTopDownPoint(_distance : float) -> void:
-	
-	#check if is enough near to hide or show
-	if _distance < minDistance and compass_top_down.visible:
-		compass_top_down.visible = false
-	elif _distance > minDistance and !compass_top_down.visible:
-		compass_top_down.visible = true
-	
 	#calculate the position in screen of top down mark
-	postarget2d = Camera.unproject_position(MarkRef.global_position)
+	postarget2d = Camera.unproject_position(PinPos.global_position)
 	centerScreen = get_viewport().get_visible_rect().size/2
 	dir = postarget2d - centerScreen
 	dir = dir.normalized()
 	#value 1.6 is a coeficient wthat define the value from center of screen to edge to adjust the mark to screen 
-	var nearMark := (clampf(_distance, minDistance, maxDistance)*1.6)/maxDistance
+	var nearMark := (clampf(_distance, 1, maxDistance)*1.6)/maxDistance
 	
 	#update top down mark position in screen
 	var screenSize := get_viewport().get_visible_rect().size/2

@@ -238,9 +238,9 @@ textOffset = Vector2(52.085, -9.805)
 
 [node name="---------------  [ UI ]" type="Node" parent="."]
 
-[node name="UI_Compass" parent="---------------  [ UI ]" node_paths=PackedStringArray("camManager", "MarkRef") instance=ExtResource("10_cf2s4")]
+[node name="UI_Compass" parent="---------------  [ UI ]" node_paths=PackedStringArray("camManager", "PinPos") instance=ExtResource("10_cf2s4")]
 camManager = NodePath("../../---------------  [ SYSTEMS ]/Camera")
-MarkRef = NodePath("../../---------------  [ SYSTEMS ]/Pines_3D/Mesh_Pin")
+PinPos = NodePath("../../---------------  [ SYSTEMS ]/Pines_3D/Mesh_Pin")
 minDistance = 20.0
 maxDistance = 60.0
 

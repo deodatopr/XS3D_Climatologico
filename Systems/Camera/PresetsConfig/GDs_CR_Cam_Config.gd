@@ -1,49 +1,47 @@
 class_name GDs_CR_Cam_Config extends Resource
-@export_category("Pivot dist")
-@export_range(10,120)var bot_pivotDist: float:
+
+@export_category("CAMERAS")
+@export_range(30,120)var bottom_fov: float:
 	set(value):
-		bot_pivotDist = value
-		emit_changed()
-@export_category("Height")
-@export_range(10,120)var bot_height: float:
-	set(value):
-		bot_height = value
-		emit_changed()
-@export_range(10,120)var top_height: float:
-	set(value):
-		top_height = value
-		emit_changed()
-@export_range(5,20)var height_speed: float:
-	set(value):
-		height_speed = value * 10
-		emit_changed()
-@export_category("Fov")
-@export_range(30,120)var bot_fov: float:
-	set(value):
-		bot_fov = value
+		bottom_fov = value
 		emit_changed()
 @export_range(30,120)var top_fov: float:
 	set(value):
 		top_fov = value
 		emit_changed()
-@export_category("Tilt")
-@export_range(10,120)var bot_tilt: float:
+@export_range(10,120)var top_height: float:
 	set(value):
-		bot_tilt = -value
+		top_height = value
 		emit_changed()
-@export_range(10,120)var top_tilt: float:
+@export_range(10,120)var bottom_height: float:
 	set(value):
-		top_tilt = -value
+		bottom_height = value
 		emit_changed()
-@export_category("Movement")
-@export_range(10,120)var bot_mov_speed: float:
+@export_range(10,120)var bottom_focus: float:
 	set(value):
-		bot_mov_speed = value
+		bottom_focus = value
+		emit_changed()
+
+@export_category("MOVEMENTS")
+@export_range(3,15)var zoom_range: float:
+	set(value):
+		zoom_range = value
+		emit_changed()
+@export_range(0.5,3)var transition_speed: float:
+	set(value):
+		transition_speed = value
+		emit_changed()
+@export_range(10,120)var bottom_mov_speed: float:
+	set(value):
+		bottom_mov_speed = value
 		emit_changed()
 @export_range(10,120)var top_mov_speed: float:
 	set(value):
 		top_mov_speed = value
 		emit_changed()
+		
+		
+@export_category("LIMITS")
 @export var boundings_X_min : float:
 	set(value):
 		boundings_X_min = value
@@ -60,12 +58,9 @@ class_name GDs_CR_Cam_Config extends Resource
 	set(value):
 		boundings_Z_max = value
 		emit_changed()
-@export_category("Rotation Horizontal")
-@export var bot_rotHor_speed : float:
+		
+@export_category("DEBUG")
+@export var debug_alwaysLookAt : bool:
 	set(value):
-		bot_rotHor_speed = value
-		emit_changed()
-@export var top_rotHor_speed : float:
-	set(value):
-		top_rotHor_speed = value
+		debug_alwaysLookAt = value
 		emit_changed()

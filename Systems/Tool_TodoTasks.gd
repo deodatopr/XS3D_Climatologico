@@ -15,25 +15,23 @@
 	# Botones para 3D
 	# Botones para UI
 	
-	#Inputs PC:
+#Inputs PC:
 		# WASD (Mov)
-		# Mouse Scroll UP = zoom +
-		# Mouse Scroll DOWN = zoom -
-		# 1 = modo cam Bottom
-		# 2 = modo cam Top
-		# Mouse + click (Rot)
-		# Scroll button mouse = minimapa 
-		
+		# Mouse Scroll UP = subir+
+		# Mouse Scroll DOWN = bajar-
+		# TAB = Cambio modo cam
+		# Mouse + click (Rot Horizontal)
+		 # SHIFT IZQ = Acelerar
+
 	#Inputs Control:
-		#Gatillos der (adelante) = subir
+		#Gatillos der (adelante) = Subir
 		#Gatillos der (atras) = bajar
-		#Gatillos izq (adelante) = modo cam Top
-		#Gatillos izq (atras) = modo cam Bottom
-		#Boton der = cancelar
-		#Boton abajo = confirmar
-		#Joystick izq = paneo cam
-		
-		#Boton izq / arriba = minimapa 
+		#Gatillos izq (adelante) = Acelerar
+		#Gatillos izq (atras) =  Acelerar
+		#Boton der = Cancelar
+		#Boton abajo = Confirmar
+		#Boton arriba = Cambio modo cam
+		#Joystick izq = Movimiento cam
 		
 	#Movimientos separados (solo uno a la vez)
 		#Joystick der hor = cam rot hor
@@ -86,6 +84,15 @@
 #Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 
 #CAMBIOS:
+#Abrir por primera vez guia de input y opcion para ya no mostrar
+#Con boton menos 
+#Parpadear opcion de menu guia
+#Tutorial guiado cuando aparece home (primero como que se presiona home y luego se prenda guia)
+#Boton home abre laúltima opcion en la que te quedaste
+#Eliminar pivot dist (meter de momento en proccess para ver a cuanto)
+
+# (pivot dist) -> distance focus / camera height / bool para activar o desactivar dinamico. Juntar con altura
+
 # - Velocidad rot
 # - --Fix distancia de brujula arriba
 # - --Cambio minimapa de textura grid
@@ -99,3 +106,5 @@
 # - Panning -> Movement
 # - Movement acceleration -> acceleration quitar max acceleration 
 # - Misma curva
+
+#Colores de sitios

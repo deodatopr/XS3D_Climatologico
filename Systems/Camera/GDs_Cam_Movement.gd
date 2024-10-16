@@ -15,26 +15,24 @@ var camModeBottom : bool:
 		return APPSTATE.camMode == ENUMS.Cam_Mode.Bottom
 		
 		
-#Pivot dist
-var distFromPivotCam : float
+#Cameras
+var camFocus : float
+var transition_speed : float
+var fov : float
+var tilt : float
+var debug_alwaysLookAt : bool
 
 #Height
 var height : float
-var height_speed : float
 var height_deceleration : float
 
+var height_speed : float
 var height_velocity : float
 var height_dir : int
 var height_validDir : int
 
 var height_limit_top : float
 var height_limit_bottom : float
-
-#Fov
-var fov : float
-
-#Tilt
-var tilt : float
 
 #Panning
 var mov_currentBoost : float
@@ -83,33 +81,34 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _cr_cam_config : GDs_C
 	cr_cam_config = _cr_cam_config
 	
 	SetModeConfig()
-	
+
 func UpdateProperties():
 	#Reset velocities
 	_ResetVelocities()
 	
 	#Pivot dist
-	distFromPivotCam = cr_cam_config.bot_pivotDist
+	camFocus = cr_cam_config.bottom_focus
+	transition_speed = cr_cam_config.transition_speed
 	
 	#Height
-	height = cr_cam_config.bot_height if camModeBottom else  cr_cam_config.top_height
-	var maxMinHeight = 5
-	height_limit_bottom = height - maxMinHeight
-	height_limit_top = height + maxMinHeight
-	height_speed = cr_cam_config.height_speed
+	height = cr_cam_config.bottom_height if camModeBottom else  cr_cam_config.top_height
+	height_speed = 700
+	var zoom_range = cr_cam_config.zoom_range
+	height_limit_bottom = height - zoom_range
+	height_limit_top = height + zoom_range
 	height_deceleration = height_speed * .035
 	
 	#Fov
-	fov =  cr_cam_config.bot_fov if camModeBottom else  cr_cam_config.top_fov
+	fov =  cr_cam_config.bottom_fov if camModeBottom else  cr_cam_config.top_fov
 	
 	#Tilt
-	tilt =  cr_cam_config.bot_tilt if camModeBottom else  cr_cam_config.top_tilt
+	tilt = -35 if camModeBottom else  -90
 	
 	#Movement
-	mov_speed = cr_cam_config.bot_mov_speed if camModeBottom else  cr_cam_config.top_mov_speed
+	mov_speed = cr_cam_config.bottom_mov_speed if camModeBottom else  cr_cam_config.top_mov_speed
 	mov_max_acceleration = mov_speed * .75
 	mov_speed_boost = mov_speed
-	mov_deceleration = mov_speed - 10
+	mov_deceleration = mov_speed - 5
 	
 	bounding_X_min = cr_cam_config.boundings_X_min
 	bounding_X_max = cr_cam_config.boundings_X_max
@@ -117,8 +116,7 @@ func UpdateProperties():
 	bounding_Z_max = cr_cam_config.boundings_Z_max
 	
 	#Rotation
-	rotHor_speed = cr_cam_config.bot_rotHor_speed if camModeBottom else  cr_cam_config.top_rotHor_speed
-	
+	rotHor_speed = 1.6
 
 func SetModeConfig():
 	canMoveCam = false
@@ -131,7 +129,7 @@ func SetModeConfig():
 	
 	if camModeBottom:
 		#Bottom
-		var offsetFromPivot : Vector3 = pivot_panning.global_position + (-pivot_panning.basis.z * distFromPivotCam)
+		var offsetFromPivot : Vector3 = pivot_panning.global_position + (-pivot_panning.basis.z * camFocus)
 		camPosTarget.x = offsetFromPivot.x
 		camPosTarget.z = offsetFromPivot.z
 	else:
@@ -139,20 +137,21 @@ func SetModeConfig():
 		camPosTarget.x = pivot_panning.global_position.x
 		camPosTarget.z = pivot_panning.global_position.z
 	
-	# Degress
+	# Tilt
 	var targetDegress = cam.rotation_degrees
 	targetDegress.x = tilt
 	
 	tweenMovCamera = get_tree().create_tween().set_parallel(true)
-	
+	print(transition_speed - .5)
 	if camModeBottom:
-		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, 1.5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
-		tweenMovCamera.tween_property(cam,"fov",fov, 1).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
-		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, 1.5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, transition_speed).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+		tweenMovCamera.tween_property(cam,"fov",fov, transition_speed - .5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
+		#cam.look_at(pivot_panning.global_position)
+		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, transition_speed).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
 	else:
-		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
-		tweenMovCamera.tween_property(cam,"fov",fov, 1).set_ease(typeEaseTop).set_trans(typeTransitionTop)
-		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, 1.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, transition_speed).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+		tweenMovCamera.tween_property(cam,"fov",fov, transition_speed -.5).set_ease(typeEaseTop).set_trans(typeTransitionTop)
+		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, transition_speed).set_ease(typeEaseTop).set_trans(typeTransitionTop)
 
 	
 	await tweenMovCamera.finished
@@ -172,6 +171,7 @@ func _physics_process(delta):
 	_HeightByCollision(delta)
 		
 	_Rotation_Hor(delta)
+
 
 func _OnTriggerEntered(_area3d : Area3D):
 	UTILITIES.TurnOnObject(raycast)
