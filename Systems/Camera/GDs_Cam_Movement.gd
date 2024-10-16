@@ -21,6 +21,7 @@ var transition_speed : float
 var fov : float
 var tilt : float
 var debug_alwaysLookAt : bool
+var debug_alwaysPivotMsh : bool
 
 #Height
 var height : float
@@ -41,6 +42,7 @@ var mov_speed : float
 var mov_deceleration : float
 var mov_max_acceleration : float
 var mov_velocity : Vector3 = Vector3.ZERO
+var mov_isMoving : bool
 
 var bounding_X_min : float
 var bounding_X_max : float
@@ -85,6 +87,10 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _cr_cam_config : GDs_C
 func UpdateProperties():
 	#Reset velocities
 	_ResetVelocities()
+	
+	#Debug
+	debug_alwaysLookAt = cr_cam_config.debug_alwaysLookAt
+	debug_alwaysPivotMsh = cr_cam_config.debug_alwaysPivotMsh
 	
 	#Pivot dist
 	camFocus = cr_cam_config.bottom_focus
@@ -142,11 +148,9 @@ func SetModeConfig():
 	targetDegress.x = tilt
 	
 	tweenMovCamera = get_tree().create_tween().set_parallel(true)
-	print(transition_speed - .5)
 	if camModeBottom:
 		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, transition_speed).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
 		tweenMovCamera.tween_property(cam,"fov",fov, transition_speed - .5).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
-		#cam.look_at(pivot_panning.global_position)
 		tweenMovCamera.tween_property(cam,"rotation_degrees",targetDegress, transition_speed).set_ease(typeEaseBottom).set_trans(typeTransitionBottom)
 	else:
 		tweenMovCamera.tween_property(cam,"global_position",camPosTarget, transition_speed).set_ease(typeEaseTop).set_trans(typeTransitionTop)
@@ -165,13 +169,17 @@ func _physics_process(delta):
 	if Input.is_key_pressed(KEY_SPACE):
 		_GoToPoint(Vector3.ZERO)
 	
+	if debug_alwaysLookAt and camModeBottom:
+		_TestLookAt()
+	
 	_Panning(delta)
 
 	_Height(delta)
 	_HeightByCollision(delta)
 		
 	_Rotation_Hor(delta)
-
+	
+	_ShowMshMarkPivot(mov_isMoving or rotHor_isRotating or debug_alwaysPivotMsh)
 
 func _OnTriggerEntered(_area3d : Area3D):
 	UTILITIES.TurnOnObject(raycast)
@@ -196,6 +204,7 @@ func _Panning(_delta:float):
 	
 	#Save global input to use in other systems (minimap)
 	APPSTATE.camInputPan = inputDir
+	mov_isMoving = inputDir.length()
 	
 	#Acceleration
 	if inputDir.length() > 0:
@@ -228,6 +237,19 @@ func _Panning(_delta:float):
 	
 	pivot_panning.global_position = targetPosition
 		
+func _TestLookAt():
+	var camPosTarget : Vector3 = Vector3.ZERO
+	camPosTarget.y = height
+	
+	#Bottom
+	var offsetFromPivot : Vector3 = pivot_panning.global_position + (-pivot_panning.basis.z * camFocus)
+	camPosTarget.x = offsetFromPivot.x
+	camPosTarget.z = offsetFromPivot.z
+	
+	cam.global_position = camPosTarget
+	cam.look_at(pivot_panning.global_position)
+	print("Rot X: " ,ceilf(cam.rotation_degrees.x))
+
 func _Rotation_Hor(_delta : float):
 #region [ MOUSE ]
 	#Mouse
@@ -265,17 +287,17 @@ func _Rotation_Hor(_delta : float):
 #endregion
 	
 #Check if there are no input pressed
-	var rotHorReleased : bool
 	if Input.is_joy_known(joy_id) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		rotHorReleased =  abs(Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X))< .4
+		rotHor_isRotating =  abs(Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X)) > .4
 	else:
-		rotHorReleased = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+		rotHor_isRotating = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 
-	if rotHorReleased:
+	if not rotHor_isRotating:
 		SIGNALS.OnCameraUpdate.emit(false)
-	
+
+func _ShowMshMarkPivot(_show : bool):
 	#Msh_Rot_Bottom
-	if APPSTATE.camMode == ENUMS.Cam_Mode.Bottom and not rotHorReleased:
+	if _show:
 		UTILITIES.TurnOnObject(mshMarkRot)
 		
 		mat_fx_camRot.albedo_color.a = 0

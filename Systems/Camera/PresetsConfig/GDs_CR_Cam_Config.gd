@@ -60,6 +60,10 @@ class_name GDs_CR_Cam_Config extends Resource
 		emit_changed()
 		
 @export_category("DEBUG")
+@export var debug_alwaysPivotMsh : bool:
+	set(value):
+		debug_alwaysPivotMsh = value
+		emit_changed()
 @export var debug_alwaysLookAt : bool:
 	set(value):
 		debug_alwaysLookAt = value
