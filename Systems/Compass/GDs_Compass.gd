@@ -52,13 +52,7 @@ func _ToggleCompass(visible : bool) -> void:
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	#calculate distance between pivot and mark
-	var fixedCamPos : Vector3 = -pivotCam.basis.z * 18
-	fixedCamPos = Camera.global_position + fixedCamPos
-	fixedCamPos.y = 0
-	
-	distance = fixedCamPos.distance_to(Vector3(PinPos.global_position.x, 0, PinPos.global_position.z))
-	#distance = abs(distance)
-	
+	distance = pivotCam.global_position.distance_to(Vector3(PinPos.global_position.x, 0, PinPos.global_position.z))
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
 		_ToggleCompass(false)
