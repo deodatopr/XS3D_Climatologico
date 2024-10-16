@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	var mark_x_position = clampf(mark_Start_Position.x + (-Vector2(markDirection.x, markDirection.z) * distance * 10).x, mark_Start_Position.x - circle_mask.size.x/3, mark_Start_Position.x + circle_mask.size.x/3)
 	var mark_y_position = clampf(mark_Start_Position.y + (-Vector2(markDirection.x, markDirection.z) * distance * 10).y, mark_Start_Position.y - circle_mask.size.y/3, mark_Start_Position.y + circle_mask.size.y/3)
 	mark_test.position = Vector2(mark_x_position, mark_y_position)#mark_Start_Position + (-Vector2(markDirection.x, markDirection.z) * distance * 10)
-	print(mark_test.position)
+	#print(mark_test.position)
 	
 	cam_ref.rotation_degrees = -cam_pivot.rotation_degrees.y + 180
 	

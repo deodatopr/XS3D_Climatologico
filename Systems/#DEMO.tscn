@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://d4fqdfnjwyd21"]
+[gd_scene load_steps=19 format=3 uid="uid://kivkb0ssvvng"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
 [ext_resource type="Script" path="res://Systems/WorldEnvironment/GDs_WorldEnv.gd" id="3_2o16y"]
 [ext_resource type="Material" uid="uid://c3mch4vry3068" path="res://#Wip/Mat_Debug/mat_grid_red.tres" id="3_3wffj"]
 [ext_resource type="Material" uid="uid://bp3yxprxwed6i" path="res://#Wip/Mat_Debug/mat_grid_green.tres" id="3_qkbqw"]
 [ext_resource type="PackedScene" uid="uid://b4t37awxd4iyt" path="res://Systems/Camera/Msh_Test_Heights.glb" id="5_6pq1q"]
-[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://Systems/Camera/PresetsConfig/CR_Cam_Config.tres" id="6_d4scb"]
 [ext_resource type="Material" uid="uid://6mi22r3qgh48" path="res://#Wip/Mat_Debug/mat_grid_blue.tres" id="6_y3g0y"]
 [ext_resource type="PackedScene" uid="uid://b7ksllhnb58g" path="res://Systems/Pin/Pfb_Pin_2D.tscn" id="8_7032c"]
 [ext_resource type="PackedScene" uid="uid://buldaccfdos5u" path="res://Systems/Pin/Pfb_Pin_3D.tscn" id="9_jl2it"]
@@ -217,20 +216,23 @@ shape = SubResource("BoxShape3D_x2cs2")
 
 [node name="Camera" parent="---------------  [ SYSTEMS ]" instance=ExtResource("2_ye5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92457, 0, -51.6986)
-cr_cam_config = ExtResource("6_d4scb")
 
 [node name="WoldEnv" type="Node" parent="---------------  [ SYSTEMS ]" node_paths=PackedStringArray("camManager", "worldEnv")]
 script = ExtResource("3_2o16y")
 camManager = NodePath("../Camera")
 worldEnv = NodePath("../../---------------  [ CONTENT ]/WorldEnvironment")
 
-[node name="Sprite_Pin" parent="---------------  [ SYSTEMS ]" instance=ExtResource("8_7032c")]
+[node name="Pines_2D" type="Node" parent="---------------  [ SYSTEMS ]"]
+
+[node name="Sprite_Pin" parent="---------------  [ SYSTEMS ]/Pines_2D" instance=ExtResource("8_7032c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.756, 7.77718, -33.2955)
 siteName = "otro lugar"
 pinColor = Color(0.147922, 0, 1, 1)
 textOffset = Vector2(131.935, 0)
 
-[node name="Mesh_Pin" parent="---------------  [ SYSTEMS ]" instance=ExtResource("9_jl2it")]
+[node name="Pines_3D" type="Node" parent="---------------  [ SYSTEMS ]"]
+
+[node name="Mesh_Pin" parent="---------------  [ SYSTEMS ]/Pines_3D" instance=ExtResource("9_jl2it")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.47835, 0)
 textOffset = Vector2(52.085, -9.805)
 
@@ -238,13 +240,14 @@ textOffset = Vector2(52.085, -9.805)
 
 [node name="UI_Compass" parent="---------------  [ UI ]" node_paths=PackedStringArray("camManager", "MarkRef") instance=ExtResource("10_cf2s4")]
 camManager = NodePath("../../---------------  [ SYSTEMS ]/Camera")
-MarkRef = NodePath("../../---------------  [ SYSTEMS ]/Sprite_Pin")
+MarkRef = NodePath("../../---------------  [ SYSTEMS ]/Pines_3D/Mesh_Pin")
 minDistance = 20.0
 maxDistance = 60.0
 
-[node name="UI_Minimap" parent="---------------  [ UI ]" node_paths=PackedStringArray("pivot_cam") instance=ExtResource("11_jmruk")]
-pivot_cam = NodePath("../../---------------  [ SYSTEMS ]/Camera/pivot_cam")
+[node name="UI_Minimap" parent="---------------  [ UI ]" node_paths=PackedStringArray("cam_Manager", "mark_target") instance=ExtResource("11_jmruk")]
+cam_Manager = NodePath("../../---------------  [ SYSTEMS ]/Camera")
 map_Movement_Speed = 0.4
+mark_target = NodePath("../../---------------  [ SYSTEMS ]/Pines_3D/Mesh_Pin")
 
 [editable path="---------------  [ CONTENT ]/test_cerro/Msh_test_cerro"]
 [editable path="---------------  [ SYSTEMS ]/Camera"]
