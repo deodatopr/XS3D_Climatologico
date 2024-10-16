@@ -14,14 +14,14 @@ var camModeBottom : bool:
 	get:
 		return APPSTATE.camMode == ENUMS.Cam_Mode.Bottom
 		
-		
 #Cameras
 var camFocus : float
 var transition_speed : float
 var fov : float
 var tilt : float
-var debug_alwaysLookAt : bool
-var debug_alwaysPivotMsh : bool
+var debug_lookAt : bool
+var debug_pivotMsh : bool
+var debug_fov : bool
 
 #Height
 var height : float
@@ -89,8 +89,8 @@ func UpdateProperties():
 	_ResetVelocities()
 	
 	#Debug
-	debug_alwaysLookAt = cr_cam_config.debug_alwaysLookAt
-	debug_alwaysPivotMsh = cr_cam_config.debug_alwaysPivotMsh
+	debug_lookAt = cr_cam_config.debug_alwaysLookAt
+	debug_pivotMsh = cr_cam_config.debug_alwaysPivotMsh
 	
 	#Pivot dist
 	camFocus = cr_cam_config.bottom_focus
@@ -98,8 +98,9 @@ func UpdateProperties():
 	
 	#Height
 	height = cr_cam_config.bottom_height if camModeBottom else  cr_cam_config.top_height
-	height_speed = 700
-	var zoom_range = cr_cam_config.zoom_range
+	height_speed = 700 if camModeBottom else  1400
+	
+	var zoom_range = height * .25
 	height_limit_bottom = height - zoom_range
 	height_limit_top = height + zoom_range
 	height_deceleration = height_speed * .035
@@ -108,7 +109,7 @@ func UpdateProperties():
 	fov =  cr_cam_config.bottom_fov if camModeBottom else  cr_cam_config.top_fov
 	
 	#Tilt
-	tilt = -35 if camModeBottom else  -90
+	tilt = -26 if camModeBottom else  -90
 	
 	#Movement
 	mov_speed = cr_cam_config.bottom_mov_speed if camModeBottom else  cr_cam_config.top_mov_speed
@@ -144,7 +145,8 @@ func SetModeConfig():
 		camPosTarget.z = pivot_panning.global_position.z
 	
 	# Tilt
-	var targetDegress = cam.rotation_degrees
+	var targetDegress : Vector3 = cam.rotation_degrees
+	
 	targetDegress.x = tilt
 	
 	tweenMovCamera = get_tree().create_tween().set_parallel(true)
@@ -164,13 +166,16 @@ func SetModeConfig():
 func _physics_process(delta):
 	if not canMoveCam:
 		return 
-	
+		
 	#TEST: Probando ir a punto, esto llegará por alguna señal
 	if Input.is_key_pressed(KEY_SPACE):
 		_GoToPoint(Vector3.ZERO)
 	
-	if debug_alwaysLookAt and camModeBottom:
-		_TestLookAt()
+	if debug_lookAt and camModeBottom:
+		_LookAt()
+		
+	if cr_cam_config.debug_alwaysFov:
+		cam.fov = fov
 	
 	_Panning(delta)
 
@@ -179,7 +184,7 @@ func _physics_process(delta):
 		
 	_Rotation_Hor(delta)
 	
-	_ShowMshMarkPivot(mov_isMoving or rotHor_isRotating or debug_alwaysPivotMsh)
+	_ShowMshMarkPivot(mov_isMoving or rotHor_isRotating or debug_pivotMsh)
 
 func _OnTriggerEntered(_area3d : Area3D):
 	UTILITIES.TurnOnObject(raycast)
@@ -237,7 +242,7 @@ func _Panning(_delta:float):
 	
 	pivot_panning.global_position = targetPosition
 		
-func _TestLookAt():
+func _LookAt():
 	var camPosTarget : Vector3 = Vector3.ZERO
 	camPosTarget.y = height
 	
@@ -248,7 +253,6 @@ func _TestLookAt():
 	
 	cam.global_position = camPosTarget
 	cam.look_at(pivot_panning.global_position)
-	print("Rot X: " ,ceilf(cam.rotation_degrees.x))
 
 func _Rotation_Hor(_delta : float):
 #region [ MOUSE ]
