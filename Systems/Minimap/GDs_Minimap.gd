@@ -3,6 +3,7 @@ extends Node
 @export var cam_Manager : GDs_Cam_Manager
 @export var map_Movement_Speed : float = 1
 @export var mark_target : Node3D
+@export var site_color : Color
 var cam_pivot : Node3D
 var cam : Node3D
 var movement_Vector : Vector2
@@ -19,15 +20,17 @@ func _ready() -> void:
 	cam = cam_Manager.cam
 	mark_Start_Position = mark_test.position
 	
+	mark_test.color = site_color
+	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	movement_Vector = Vector2(APPSTATE.camInputPan.x, APPSTATE.camInputPan.z)
 	map_texture.position += movement_Vector * map_Movement_Speed
 	
-	var distance := Vector3(cam.global_position.x, 0, cam.global_position.z).distance_to(Vector3(mark_target.global_position.x, 0, mark_target.global_position.z))
-	var markDirection := Vector3(cam.global_position.x, 0, cam.global_position.z).direction_to(Vector3(mark_target.global_position.x, 0, mark_target.global_position.z))
-	var mark_x_position = clampf(mark_Start_Position.x + (-Vector2(markDirection.x, markDirection.z) * distance * 10).x, mark_Start_Position.x - circle_mask.size.x/3, mark_Start_Position.x + circle_mask.size.x/3)
-	var mark_y_position = clampf(mark_Start_Position.y + (-Vector2(markDirection.x, markDirection.z) * distance * 10).y, mark_Start_Position.y - circle_mask.size.y/3, mark_Start_Position.y + circle_mask.size.y/3)
+	var distance := Vector3(cam_pivot.global_position.x, 0, cam_pivot.global_position.z).distance_to(Vector3(mark_target.global_position.x, 0, mark_target.global_position.z))
+	var markDirection := Vector3(cam_pivot.global_position.x, 0, cam_pivot.global_position.z).direction_to(Vector3(mark_target.global_position.x, 0, mark_target.global_position.z))
+	var mark_x_position := clampf(mark_Start_Position.x + (-Vector2(markDirection.x, markDirection.z) * distance * 10).x, mark_Start_Position.x - circle_mask.size.x/3, mark_Start_Position.x + circle_mask.size.x/3)
+	var mark_y_position := clampf(mark_Start_Position.y + (-Vector2(markDirection.x, markDirection.z) * distance * 10).y, mark_Start_Position.y - circle_mask.size.y/3, mark_Start_Position.y + circle_mask.size.y/3)
 	mark_test.position = Vector2(mark_x_position, mark_y_position)#mark_Start_Position + (-Vector2(markDirection.x, markDirection.z) * distance * 10)
 	#print(mark_test.position)
 	

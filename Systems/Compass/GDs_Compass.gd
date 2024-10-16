@@ -5,6 +5,7 @@ var pivotCam : Node3D
 @export var MarkRef : Node3D
 @export var minDistance : float
 @export var maxDistance : float
+@export var site_color : Color
 var CompassLenght : float = 220
 
 var compassInitialXPosition := 0.0
@@ -16,7 +17,7 @@ var centerScreen : Vector2
 var dir : Vector2
 var distance : float
 
-@onready var pin_sitio: Control = $CompassParent/CompassMask/PinSite
+@onready var pin_sitio: ColorRect = $CompassParent/CompassMask/PinSite
 @onready var compass: TextureRect = $CompassParent/CompassMask/Compass
 @onready var compass_parent: Control = $CompassParent
 @onready var top_down_mark: ColorRect = $CompassTopDown/TopDownMark
@@ -34,6 +35,9 @@ func Initialize(_camManager : GDs_Cam_Manager)-> void:
 	Camera = camManager.cam
 	
 	canRotate = true
+	
+	pin_sitio.color = site_color
+	top_down_mark.color = site_color
 
 func _ready() -> void:
 	Initialize(camManager)
