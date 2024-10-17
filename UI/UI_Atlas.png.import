@@ -2,25 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf2g73pxnclhg"
-path.bptc="res://.godot/imported/UI_Atlas.png-639af2c74f5c0756fb222324b89d20a5.bptc.ctex"
+uid="uid://dlpsshgfxheun"
+path="res://.godot/imported/UI_Atlas.png-639af2c74f5c0756fb222324b89d20a5.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://UI/UI_Atlas.png"
-dest_files=["res://.godot/imported/UI_Atlas.png-639af2c74f5c0756fb222324b89d20a5.bptc.ctex"]
+dest_files=["res://.godot/imported/UI_Atlas.png-639af2c74f5c0756fb222324b89d20a5.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=0
-compress/normal_map=2
+compress/hdr_compression=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
