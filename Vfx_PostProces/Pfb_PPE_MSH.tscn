@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b84r3ah8yckvi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fk3yt"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="PPE - Mesh" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997055, 0)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_fk3yt")
