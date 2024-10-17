@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqmfo0633oxfm"]
+[gd_scene load_steps=21 format=3 uid="uid://cqmfo0633oxfm"]
 
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orchestrator_Main.gd" id="1_0r8tt"]
-[ext_resource type="PackedScene" uid="uid://bpp16uxlmohuy" path="res://Systems/Perfiles/Pfb_Perfil_Template.tscn" id="1_smymm"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Gds_DataService_Manager.gd" id="2_1r54g"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Debug.gd" id="2_kv1hd"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones.gd" id="5_gsp7o"]
@@ -11,7 +10,6 @@
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_Curtain.gd" id="8_nclgr"]
 [ext_resource type="Script" path="res://Systems/ManagerScenes/GDs_Manager_Scenes.gd" id="9_hkbot"]
 [ext_resource type="Script" path="res://Systems/Splash/GDs_Splash.gd" id="9_hxvwc"]
-[ext_resource type="PackedScene" path="res://SCENES/Scn_Mapa.tscn" id="10_t52mi"]
 [ext_resource type="Texture2D" uid="uid://kx576vlm5ckp" path="res://UI/Splash/Splash_Empresas.png" id="10_v6qur"]
 [ext_resource type="Texture2D" uid="uid://bu08kjkfn1ilc" path="res://UI/Splash/Splash_CDMX.png" id="11_gndby"]
 
@@ -87,7 +85,7 @@ splash = NodePath("../../SPLASH")
 curtain = NodePath("../Curtain")
 scenes_manager = NodePath("../Scenes_Manager")
 serviceData_manager = NodePath("../ServiceData_Manager (endpoints)")
-lvlPerfiles = NodePath("../../ASSETS/Lvl - Perfiles")
+lvlPerfiles = NodePath("")
 
 [node name="Curtain" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("curtain", "imgCurtain", "lblCargando", "inputBlocker")]
 script = ExtResource("8_nclgr")
@@ -101,7 +99,6 @@ script = ExtResource("9_hkbot")
 dataService = NodePath("../ServiceData_Manager (endpoints)")
 curtain = NodePath("../Curtain")
 sceneParentRoot = NodePath("../../ASSETS")
-lvlMapa = ExtResource("10_t52mi")
 
 [node name="ServiceData_Manager (endpoints)" type="Node" parent="SYSTEMS" node_paths=PackedStringArray("endpoint", "endpoint_Debug", "endpoint_Error", "timerTicking")]
 script = ExtResource("2_1r54g")
@@ -354,12 +351,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Lvl - Perfiles" parent="ASSETS" instance=ExtResource("1_smymm")]
-layout_mode = 1
-anchors_preset = 9
-anchor_right = 0.0
-grow_horizontal = 1
 
 [node name="Particulares" type="Control" parent="ASSETS"]
 layout_mode = 1
