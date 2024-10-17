@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
-[ext_resource type="PackedScene" uid="uid://bmxqlsgmk1md" path="res://Cont_Models/Sector6/Msh_Sector6.glb" id="3_wog50"]
+[ext_resource type="PackedScene" uid="uid://bwf3e5luercrk" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="3_mr5e7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -55,4 +55,4 @@ shadow_enabled = true
 transform = Transform3D(1500, 0, 0, 0, -6.55671e-05, 1500, 0, -1500, -6.55671e-05, 0, 565.133, 0)
 mesh = SubResource("QuadMesh_2ocno")
 
-[node name="Msh_Sector6" parent="." instance=ExtResource("3_wog50")]
+[node name="Msh_Sector_06" parent="[ CONTENT ]" instance=ExtResource("3_mr5e7")]
