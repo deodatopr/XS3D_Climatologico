@@ -365,7 +365,6 @@ void fragment() {
 	var_World_Projection = vec3(0.0);
 }
 "
-graph_offset = Vector2(-48.8831, -266.625)
 flags/shadows_disabled = true
 varyings/World_Projection = "1,4"
 nodes/fragment/0/position = Vector2(720, 140)
