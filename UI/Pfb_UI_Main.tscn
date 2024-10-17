@@ -1,0 +1,325 @@
+[gd_scene load_steps=9 format=3 uid="uid://y1iugd6uyl42"]
+
+[ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://UI/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://UI/UI_Atlas.png" id="1_ka4js"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cb5l"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(378, 114, 65, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_443rp"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(469, 763, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kmdm"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(473, 301, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftuh5"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(474, 40, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7yjq"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(477, 326, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y3ll"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(478, 358, 21, 26)
+
+[node name="Pfb_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
+layout_mode = 1
+
+[node name="Barra menus" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_right = 330.0
+grow_vertical = 0
+
+[node name="Background" type="NinePatchRect" parent="Barra menus"]
+self_modulate = Color(0, 0, 0, 0.8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Frame" type="NinePatchRect" parent="Barra menus/Background"]
+self_modulate = Color(0.447059, 0.447059, 0.447059, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(474, 111, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="DPAD" type="TextureRect" parent="Barra menus"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.5
+offset_top = -32.0
+offset_right = 32.5
+offset_bottom = 33.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_7cb5l")
+
+[node name="Home" type="TextureRect" parent="Barra menus"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+offset_left = 5.0
+offset_top = -21.0
+offset_right = 49.0
+offset_bottom = 23.0
+texture = SubResource("AtlasTexture_443rp")
+
+[node name="Frame" type="TextureRect" parent="Barra menus/Home"]
+self_modulate = Color(0.254902, 0.254902, 0.254902, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_443rp")
+
+[node name="Home Icon" type="TextureRect" parent="Barra menus/Home"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_4kmdm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Barra menus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sitios" type="VBoxContainer" parent="Barra menus/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="Control" parent="Barra menus/HBoxContainer/Sitios"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="Barra menus/HBoxContainer/Sitios/Icon"]
+self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -38.0
+offset_right = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_ftuh5")
+
+[node name="Icon" type="TextureRect" parent="Barra menus/HBoxContainer/Sitios/Icon/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x7yjq")
+
+[node name="Label" type="Label" parent="Barra menus/HBoxContainer/Sitios"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SITIOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mapa" type="VBoxContainer" parent="Barra menus/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="Control" parent="Barra menus/HBoxContainer/Mapa"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="Barra menus/HBoxContainer/Mapa/Icon"]
+self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -38.0
+offset_right = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_ftuh5")
+
+[node name="Icon" type="TextureRect" parent="Barra menus/HBoxContainer/Mapa/Icon/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -13.0
+offset_right = 10.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0y3ll")
+
+[node name="Label" type="Label" parent="Barra menus/HBoxContainer/Mapa"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "MAPA"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Configuracion" type="VBoxContainer" parent="Barra menus/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="Control" parent="Barra menus/HBoxContainer/Configuracion"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="Barra menus/HBoxContainer/Configuracion/Icon"]
+self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -38.0
+offset_right = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_ftuh5")
+
+[node name="Icon" type="TextureRect" parent="Barra menus/HBoxContainer/Configuracion/Icon/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x7yjq")
+
+[node name="Label" type="Label" parent="Barra menus/HBoxContainer/Configuracion"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SITIOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guia" type="VBoxContainer" parent="Barra menus/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="Control" parent="Barra menus/HBoxContainer/Guia"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="TextureRect" parent="Barra menus/HBoxContainer/Guia/Icon"]
+self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -38.0
+offset_right = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_ftuh5")
+
+[node name="Icon" type="TextureRect" parent="Barra menus/HBoxContainer/Guia/Icon/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x7yjq")
+
+[node name="Label" type="Label" parent="Barra menus/HBoxContainer/Guia"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SITIOS"
+horizontal_alignment = 1
+vertical_alignment = 1
