@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://euqeoxar08s8"
-path="res://.godot/imported/map_flecha.png-cb3f5793cdbeb705d9100123fec92af1.ctex"
+path="res://.godot/imported/Map_flecha.png-61c7ceb4866ca64b73149690e3e1e1fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Systems/Compass/map_flecha.png"
-dest_files=["res://.godot/imported/map_flecha.png-cb3f5793cdbeb705d9100123fec92af1.ctex"]
+source_file="res://Systems/Compass/Map_flecha.png"
+dest_files=["res://.godot/imported/Map_flecha.png-61c7ceb4866ca64b73149690e3e1e1fe.ctex"]
 
 [params]
 

@@ -37,6 +37,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Content/Mat_Shared/Mat_Buildings.tres"
 },
+"Mat_Roads": {
+"use_external/enabled": true,
+"use_external/path": "res://Content/Mat_Shared/Mat_Roads.tres"
+},
 "Mat_Sector6_1": {
 "use_external/enabled": true,
 "use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_1.tres"
@@ -71,7 +75,7 @@ _subresources={
 },
 "Mat_Sector6_9": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_9.tres"
+"use_external/path": "res://Content/Sector6/Mat_Sector6_9.tres"
 },
 "Mat_Water": {
 "use_external/enabled": true,
