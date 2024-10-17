@@ -24,6 +24,7 @@ var maxMark_TopDown_PosY : float
 @onready var compass_top_down: Control = $CompassTopDown
 @onready var distance_text: Label = $CompassParent/DistanceBackground/DistanceText
 @onready var compass_mask = $CompassParent/CompassMask
+@onready var distance_top_down = $CompassTopDown/TopDownMark/DistanceTopDown
 
 @onready var local_estaciones : GDs_CR_LocalEstaciones = preload("uid://3nj42mys6ryu")
 
@@ -37,7 +38,7 @@ func Initialize(_camManager : GDs_Cam_Manager)-> void:
 	
 	screenSize = get_viewport().get_visible_rect().size
 	maxMark_TopDown_PosX = screenSize.x - top_down_mark.size.x
-	maxMark_TopDown_PosY = screenSize.y - top_down_mark.size.y
+	maxMark_TopDown_PosY = screenSize.y - top_down_mark.size.y - distance_top_down.size.y
 	
 	Camera = camManager.cam
 	
@@ -107,6 +108,8 @@ func _CalculateCompassPoints(_distance : float) -> void:
 		pin_sitio.position.x = pinSiteInitialXPosition + offset
 	
 func _CalculateTopDownPoint(_distance : float) -> void:
+	_distance = floorf(_distance)
+	distance_top_down.text = String.num(_distance, 1)
 	#calculate the position in screen of top down mark
 	var targetUnprojectPos :Vector3 = PinPos.global_position
 	targetUnprojectPos.y = 0
