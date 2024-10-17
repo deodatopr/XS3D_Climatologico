@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dws7ifd43kbsn"
-path="res://.godot/imported/map_cam_ref.png-0fbbde04fd965ad5c945970a28f509df.ctex"
+uid="uid://h5kpi6rvi0w7"
+path="res://.godot/imported/Map_Cam_Ref.png-6afc288d65887ae100f7fe4db596f8a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Systems/Minimap/map_cam_ref.png"
-dest_files=["res://.godot/imported/map_cam_ref.png-0fbbde04fd965ad5c945970a28f509df.ctex"]
+source_file="res://Systems/Minimap/Map_Cam_Ref.png"
+dest_files=["res://.godot/imported/Map_Cam_Ref.png-6afc288d65887ae100f7fe4db596f8a2.ctex"]
 
 [params]
 
