@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfgpbu7le1hia"]
+[gd_scene load_steps=16 format=3 uid="uid://bfgpbu7le1hia"]
 
-[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://UI/UI_Atlas.png" id="1_gkrbn"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_gkrbn"]
+[ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_5qgwa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htr5a"]
 atlas = ExtResource("1_gkrbn")
@@ -33,6 +34,26 @@ region = Rect2(98, 170, 62, 12)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcvnr"]
 atlas = ExtResource("1_gkrbn")
 region = Rect2(492, 306, 4, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6owle"]
+atlas = ExtResource("2_5qgwa")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs58k"]
+atlas = ExtResource("2_5qgwa")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhosd"]
+atlas = ExtResource("2_5qgwa")
+region = Rect2(0, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s87bt"]
+atlas = ExtResource("2_5qgwa")
+region = Rect2(0, 121, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0eo7"]
+atlas = ExtResource("2_5qgwa")
+region = Rect2(160, 163, 36, 34)
 
 [node name="Estacion" type="Control"]
 custom_minimum_size = Vector2(400, 91)
@@ -373,12 +394,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Crit2" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles"]
+[node name="Crit" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ope0u")
 
-[node name="Lbl Nvl Crit" type="Label" parent="VBoxContainer/Datos/Nivel/Niveles/Crit2"]
+[node name="Lbl Nvl Crit" type="Label" parent="VBoxContainer/Datos/Nivel/Niveles/Crit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -390,38 +411,8 @@ text = "80.0mts."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles/Crit2"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles/Crit"]
 self_modulate = Color(0.94902, 0.137255, 0.141176, 1)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = -7.0
-offset_right = 2.0
-offset_bottom = 7.0
-grow_vertical = 2
-texture = SubResource("AtlasTexture_hcvnr")
-
-[node name="Norm" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-texture = SubResource("AtlasTexture_ope0u")
-
-[node name="Lbl Nvl Norm" type="Label" parent="VBoxContainer/Datos/Nivel/Niveles/Norm"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 10
-text = "10.0mts."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles/Norm"]
-self_modulate = Color(0.964706, 0.67451, 0.0156863, 1)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -438,7 +429,37 @@ self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ope0u")
 
-[node name="Lbl Nvl Prev" type="Label" parent="VBoxContainer/Datos/Nivel/Niveles/Prev"]
+[node name="Lbl Nvl Norm" type="Label" parent="VBoxContainer/Datos/Nivel/Niveles/Prev"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "10.0mts."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles/Prev"]
+self_modulate = Color(0.964706, 0.67451, 0.0156863, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -7.0
+offset_right = 2.0
+offset_bottom = 7.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hcvnr")
+
+[node name="Norm" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ope0u")
+
+[node name="Lbl Nvl Prev" type="Label" parent="VBoxContainer/Datos/Nivel/Niveles/Norm"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -450,7 +471,7 @@ text = "50.0mts."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles/Prev"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Datos/Nivel/Niveles/Norm"]
 self_modulate = Color(0, 0.556863, 0.760784, 1)
 layout_mode = 1
 anchors_preset = 4
@@ -470,7 +491,259 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_wge0h")
 expand_mode = 1
 
-[node name="Datos" type="Control" parent="VBoxContainer/Datos"]
+[node name="Datos" type="HBoxContainer" parent="VBoxContainer/Datos"]
 custom_minimum_size = Vector2(155, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Datos/Datos"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Datos/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Precipitacion" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ope0u")
+
+[node name="TextureRect" type="NinePatchRect" parent="VBoxContainer/Datos/Datos/VBoxContainer/Precipitacion"]
+self_modulate = Color(0.690196, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hcvnr")
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Datos/Datos/VBoxContainer/Precipitacion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Datos/Datos/VBoxContainer/Precipitacion/HBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer/Precipitacion/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_6owle")
+expand_mode = 1
+
+[node name="Lbl Precipitacion" type="Label" parent="VBoxContainer/Datos/Datos/VBoxContainer/Precipitacion/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "50mm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Humedad" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ope0u")
+
+[node name="TextureRect" type="NinePatchRect" parent="VBoxContainer/Datos/Datos/VBoxContainer/Humedad"]
+self_modulate = Color(0.690196, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hcvnr")
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Datos/Datos/VBoxContainer/Humedad"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Datos/Datos/VBoxContainer/Humedad/HBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer/Humedad/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_vs58k")
+expand_mode = 1
+
+[node name="Lbl Humedad" type="Label" parent="VBoxContainer/Datos/Datos/VBoxContainer/Humedad/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "62%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Evaporacion" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ope0u")
+
+[node name="TextureRect" type="NinePatchRect" parent="VBoxContainer/Datos/Datos/VBoxContainer/Evaporacion"]
+self_modulate = Color(0.690196, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hcvnr")
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Datos/Datos/VBoxContainer/Evaporacion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Datos/Datos/VBoxContainer/Evaporacion/HBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer/Evaporacion/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_lhosd")
+expand_mode = 1
+
+[node name="Lbl Nvl Prev" type="Label" parent="VBoxContainer/Datos/Datos/VBoxContainer/Evaporacion/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "80mm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Datos/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Temperatura" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ope0u")
+
+[node name="TextureRect" type="NinePatchRect" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura"]
+self_modulate = Color(0.690196, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -9.0
+offset_right = 2.0
+offset_bottom = 9.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hcvnr")
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura/HBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_s87bt")
+expand_mode = 1
+
+[node name="Lbl Nvl Prev" type="Label" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "24°C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Viento" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ope0u")
+
+[node name="TextureRect" type="NinePatchRect" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Viento"]
+self_modulate = Color(0.690196, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -9.0
+offset_right = 2.0
+offset_bottom = 9.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hcvnr")
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Viento"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Viento/HBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Viento/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_r0eo7")
+expand_mode = 1
+
+[node name="Lbl Nvl Prev" type="Label" parent="VBoxContainer/Datos/Datos/VBoxContainer2/Viento/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "NE 70km/hr"
+horizontal_alignment = 1
+vertical_alignment = 1
