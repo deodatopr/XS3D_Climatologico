@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://kivkb0ssvvng"]
+[gd_scene load_steps=18 format=3 uid="uid://kivkb0ssvvng"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_ye5ed"]
-[ext_resource type="Script" path="res://Systems/WorldEnvironment/GDs_WorldEnv.gd" id="3_2o16y"]
 [ext_resource type="Material" uid="uid://c3mch4vry3068" path="res://#Wip/Mat_Debug/mat_grid_red.tres" id="3_3wffj"]
 [ext_resource type="Material" uid="uid://bp3yxprxwed6i" path="res://#Wip/Mat_Debug/mat_grid_green.tres" id="3_qkbqw"]
 [ext_resource type="PackedScene" uid="uid://b4t37awxd4iyt" path="res://Systems/Camera/Msh_Test_Heights.glb" id="5_6pq1q"]
@@ -193,6 +192,7 @@ mesh = SubResource("BoxMesh_1xbry")
 skeleton = NodePath("../../..")
 
 [node name="test_cerro" type="Node3D" parent="---------------  [ CONTENT ]"]
+transform = Transform3D(2.74576, 0, 0, 0, 2.74576, 0, 0, 0, 2.74576, 106.049, 0, 87.2596)
 
 [node name="Msh_test_cerro" parent="---------------  [ CONTENT ]/test_cerro" instance=ExtResource("5_6pq1q")]
 transform = Transform3D(26.1336, 0, 0, 0, 26.1336, 0, 0, 0, 26.1336, -62.471, -9.49337, -62.785)
@@ -215,19 +215,13 @@ shape = SubResource("BoxShape3D_x2cs2")
 [node name="---------------  [ SYSTEMS ]" type="Node" parent="."]
 
 [node name="Camera" parent="---------------  [ SYSTEMS ]" instance=ExtResource("2_ye5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92457, 0, -51.6986)
-
-[node name="WoldEnv" type="Node" parent="---------------  [ SYSTEMS ]" node_paths=PackedStringArray("camManager", "worldEnv")]
-script = ExtResource("3_2o16y")
-camManager = NodePath("../Camera")
-worldEnv = NodePath("../../---------------  [ CONTENT ]/WorldEnvironment")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.269, 0, -8.11007)
 
 [node name="Pines_2D" type="Node" parent="---------------  [ SYSTEMS ]"]
 
 [node name="Sprite_Pin" parent="---------------  [ SYSTEMS ]/Pines_2D" instance=ExtResource("8_7032c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.756, 7.77718, -33.2955)
 siteName = "otro lugar"
-pinColor = Color(0.147922, 0, 1, 1)
 textOffset = Vector2(131.935, 0)
 
 [node name="Pines_3D" type="Node" parent="---------------  [ SYSTEMS ]"]
