@@ -1,0 +1,745 @@
+[gd_scene load_steps=16 format=3 uid="uid://y1iugd6uyl42"]
+
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Content/UI/UI_Atlas.png" id="1_ka4js"]
+[ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Content/UI/Sprites_Atlas.png" id="2_gi4g8"]
+[ext_resource type="Script" path="res://Systems/Sprites/GDs_SpriteAnim.gd" id="3_hc7ky"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jcsu"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(481, 15, 1, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m7jt"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(471, 462, 24, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlsw6"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(470, 525, 40, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi5is"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(469, 763, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw5sd"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(473, 560, 34, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmxh6"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(469, 592, 41, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhaul"]
+atlas = ExtResource("1_ka4js")
+region = Rect2(0, 170, 97, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yto5a"]
+atlas = ExtResource("2_gi4g8")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b2pq"]
+atlas = ExtResource("2_gi4g8")
+region = Rect2(0, 39, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgxgu"]
+atlas = ExtResource("2_gi4g8")
+region = Rect2(0, 79, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yh3a"]
+atlas = ExtResource("2_gi4g8")
+region = Rect2(0, 120, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qv2d"]
+atlas = ExtResource("2_gi4g8")
+region = Rect2(0, 160, 40, 40)
+
+[node name="Pfb_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Barra Info" type="Control" parent="."]
+custom_minimum_size = Vector2(1580, 105)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 340.0
+offset_top = -104.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="NinePatchRect" parent="Barra Info"]
+self_modulate = Color(0.0666667, 0.0666667, 0.0666667, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Pattern" type="NinePatchRect" parent="Barra Info/Background"]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(72, 199, 16, 16)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Frame" type="NinePatchRect" parent="Barra Info/Background"]
+self_modulate = Color(0.448982, 0.448982, 0.448982, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(473, 110, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Barra Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Nombre" type="VBoxContainer" parent="Barra Info/HBoxContainer"]
+custom_minimum_size = Vector2(415, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Nombre" type="Control" parent="Barra Info/HBoxContainer/Nombre"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Barra Info/HBoxContainer/Nombre/Nombre"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -34.0
+offset_right = 341.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "CAMPAMENTO LOS BERROS"
+vertical_alignment = 2
+
+[node name="ID - Estado" type="Control" parent="Barra Info/HBoxContainer/Nombre"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ID Frame" type="NinePatchRect" parent="Barra Info/HBoxContainer/Nombre/ID - Estado"]
+self_modulate = Color(0, 0.698039, 0.662745, 1)
+layout_mode = 1
+offset_left = 24.0
+offset_right = 65.0
+offset_bottom = 31.0
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(470, 146, 41, 31)
+
+[node name="Label" type="Label" parent="Barra Info/HBoxContainer/Nombre/ID - Estado/ID Frame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -16.0
+offset_right = 12.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="Barra Info/HBoxContainer/Nombre/ID - Estado"]
+layout_mode = 1
+offset_left = 74.0
+offset_right = 91.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "EDOMEX"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Division Line" type="TextureRect" parent="Barra Info/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.705882)
+custom_minimum_size = Vector2(2, 85)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_3jcsu")
+
+[node name="Senales" type="HBoxContainer" parent="Barra Info/HBoxContainer"]
+custom_minimum_size = Vector2(185, 0)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Barra Info/HBoxContainer/Senales"]
+visibility_layer = 0
+custom_minimum_size = Vector2(11.685, 0)
+layout_mode = 2
+
+[node name="Bateria" type="Control" parent="Barra Info/HBoxContainer/Senales"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Senales/Bateria"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -36.5
+offset_right = 12.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_2m7jt")
+
+[node name="Label" type="Label" parent="Barra Info/HBoxContainer/Senales/Bateria"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 20.5
+offset_right = 20.0
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "25.0V"
+
+[node name="Senales" type="VBoxContainer" parent="Barra Info/HBoxContainer/Senales"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HBox - Senal" type="HBoxContainer" parent="Barra Info/HBoxContainer/Senales/Senales"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - Senal"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_qlsw6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - Senal"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Dot" type="Control" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - Senal/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - Senal/VBoxContainer/Dot"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.5
+offset_top = -11.0
+offset_right = 5.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
+
+[node name="SEÑAL" type="Label" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - Senal/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "SEÑAL"
+horizontal_alignment = 1
+
+[node name="HBox - UTR" type="HBoxContainer" parent="Barra Info/HBoxContainer/Senales/Senales"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - UTR"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_dw5sd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - UTR"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Dot" type="Control" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer/Dot"]
+self_modulate = Color(0.698039, 0.0913459, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.5
+offset_top = -11.0
+offset_right = 5.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
+
+[node name="SEÑAL" type="Label" parent="Barra Info/HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "UTR"
+horizontal_alignment = 1
+
+[node name="Division Line2" type="TextureRect" parent="Barra Info/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.705882)
+custom_minimum_size = Vector2(2, 85)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_3jcsu")
+
+[node name="Nivel" type="HBoxContainer" parent="Barra Info/HBoxContainer"]
+custom_minimum_size = Vector2(216, 0)
+layout_mode = 2
+theme_override_constants/separation = -25
+alignment = 1
+
+[node name="Valor Nivel" type="Control" parent="Barra Info/HBoxContainer/Nivel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Barra Info/HBoxContainer/Nivel/Valor Nivel"]
+self_modulate = Color(0.141176, 0.768627, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_right = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="Barra Info/HBoxContainer/Nivel/Valor Nivel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="Lbl Valor Nivel" type="Label" parent="Barra Info/HBoxContainer/Nivel/Valor Nivel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "12.0m"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Nivel/Valor Nivel/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_kmxh6")
+
+[node name="Lbl Valor Nivel2" type="Label" parent="Barra Info/HBoxContainer/Nivel/Valor Nivel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "NIVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Niveles" type="VBoxContainer" parent="Barra Info/HBoxContainer/Nivel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Crit" type="TextureRect" parent="Barra Info/HBoxContainer/Nivel/Niveles"]
+self_modulate = Color(1, 0.141176, 0.141176, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bhaul")
+
+[node name="Lbl Nvl Crit" type="Label" parent="Barra Info/HBoxContainer/Nivel/Niveles/Crit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "80.0mts."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Prev" type="TextureRect" parent="Barra Info/HBoxContainer/Nivel/Niveles"]
+self_modulate = Color(1, 0.694118, 0.0117647, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bhaul")
+
+[node name="Lbl Nvl Prev" type="Label" parent="Barra Info/HBoxContainer/Nivel/Niveles/Prev"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "50.0mts."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Norm" type="TextureRect" parent="Barra Info/HBoxContainer/Nivel/Niveles"]
+self_modulate = Color(0.141176, 0.768627, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bhaul")
+
+[node name="Lbl Nvl Norm" type="Label" parent="Barra Info/HBoxContainer/Nivel/Niveles/Norm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "10.0mts."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Division Line3" type="TextureRect" parent="Barra Info/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.705882)
+custom_minimum_size = Vector2(2, 85)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_3jcsu")
+
+[node name="Datos" type="HBoxContainer" parent="Barra Info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -15
+
+[node name="Precipitacion" type="Control" parent="Barra Info/HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Barra Info/HBoxContainer/Datos/Precipitacion"]
+self_modulate = Color(1, 0, 0.415686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_right = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="Barra Info/HBoxContainer/Datos/Precipitacion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Precipitacion" type="Label" parent="Barra Info/HBoxContainer/Datos/Precipitacion/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "15mm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Datos/Precipitacion/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_yto5a")
+script = ExtResource("3_hc7ky")
+
+[node name="Lbl" type="Label" parent="Barra Info/HBoxContainer/Datos/Precipitacion/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Precipitacion"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Humedad" type="Control" parent="Barra Info/HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Barra Info/HBoxContainer/Datos/Humedad"]
+self_modulate = Color(1, 0, 0.415686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_right = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="Barra Info/HBoxContainer/Datos/Humedad"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Humedad" type="Label" parent="Barra Info/HBoxContainer/Datos/Humedad/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "62%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Datos/Humedad/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_4b2pq")
+script = ExtResource("3_hc7ky")
+
+[node name="Lbl" type="Label" parent="Barra Info/HBoxContainer/Datos/Humedad/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Humedad"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+uppercase = true
+
+[node name="Evaporacion" type="Control" parent="Barra Info/HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Barra Info/HBoxContainer/Datos/Evaporacion"]
+self_modulate = Color(1, 0, 0.415686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_right = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="Barra Info/HBoxContainer/Datos/Evaporacion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Evaporacion" type="Label" parent="Barra Info/HBoxContainer/Datos/Evaporacion/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "80mm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Datos/Evaporacion/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_tgxgu")
+script = ExtResource("3_hc7ky")
+
+[node name="Lbl" type="Label" parent="Barra Info/HBoxContainer/Datos/Evaporacion/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Evaporacion
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Temperatura" type="Control" parent="Barra Info/HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Barra Info/HBoxContainer/Datos/Temperatura"]
+self_modulate = Color(1, 0, 0.415686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_right = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="Barra Info/HBoxContainer/Datos/Temperatura"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Temp" type="Label" parent="Barra Info/HBoxContainer/Datos/Temperatura/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "24°C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Datos/Temperatura/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_7yh3a")
+script = ExtResource("3_hc7ky")
+
+[node name="Lbl" type="Label" parent="Barra Info/HBoxContainer/Datos/Temperatura/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Temperatura"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Viento" type="Control" parent="Barra Info/HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Barra Info/HBoxContainer/Datos/Viento"]
+self_modulate = Color(1, 0, 0.415686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_right = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ka4js")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="Barra Info/HBoxContainer/Datos/Viento"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Viento" type="Label" parent="Barra Info/HBoxContainer/Datos/Viento/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "NE 70km/hr"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Barra Info/HBoxContainer/Datos/Viento/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_6qv2d")
+script = ExtResource("3_hc7ky")
+
+[node name="Lbl" type="Label" parent="Barra Info/HBoxContainer/Datos/Viento/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Viento"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Left Line" type="TextureRect" parent="Barra Info"]
+self_modulate = Color(0.529412, 0.0588235, 1, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -36.5
+offset_right = 3.0
+offset_bottom = 37.5
+grow_vertical = 2
+texture = SubResource("AtlasTexture_3jcsu")
