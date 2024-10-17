@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://y1iugd6uyl42"]
 
-[ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://UI/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
-[ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://UI/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
+[ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
+[ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://Systems/Barra Menus/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
 
 [node name="Pfb_UI" type="Control"]
 layout_mode = 3
