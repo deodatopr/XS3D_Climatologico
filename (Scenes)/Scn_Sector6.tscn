@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=9 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_jcit7"]
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_12ipk"]
-[ext_resource type="PackedScene" uid="uid://bmxqlsgmk1md" path="res://Content/Sector6/Msh_Sector6.glb" id="3_2oa5y"]
+[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
+[ext_resource type="PackedScene" uid="uid://bmxqlsgmk1md" path="res://Content/Sector6/Msh_Sector6.glb" id="3_wog50"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,13 +29,15 @@ adjustment_saturation = 1.3
 dof_blur_near_distance = 8.0
 dof_blur_near_transition = 7.0
 
+[sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
+
 [node name="SECTOR 6" type="Node3D"]
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="RENDER TOOL" parent="[ SYSTEMS ]" instance=ExtResource("1_jcit7")]
+[node name="RENDER TOOL" parent="[ SYSTEMS ]" instance=ExtResource("1_wesxv")]
 
-[node name="Camera_manager" parent="[ SYSTEMS ]" instance=ExtResource("2_12ipk")]
+[node name="Camera_manager" parent="[ SYSTEMS ]" instance=ExtResource("2_g73ks")]
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
@@ -49,6 +51,10 @@ shadow_enabled = true
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
-[node name="Msh_Sector6" parent="[ CONTENT ]" instance=ExtResource("3_2oa5y")]
+[node name="Msh_Sector6" parent="[ CONTENT ]" instance=ExtResource("3_wog50")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(1500, 0, 0, 0, -6.55671e-05, 1500, 0, -1500, -6.55671e-05, 0, 565.133, 0)
+mesh = SubResource("QuadMesh_2ocno")
 
 [editable path="[ CONTENT ]/Msh_Sector6"]

@@ -24,11 +24,11 @@ meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=true
-animation/import=true
+skins/use_named_skins=false
+animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
@@ -39,39 +39,39 @@ _subresources={
 },
 "Mat_Sector6_1": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_1.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_1.tres"
 },
 "Mat_Sector6_2": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_2.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_2.tres"
 },
 "Mat_Sector6_3": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_3.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_3.tres"
 },
 "Mat_Sector6_4": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_4.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_4.tres"
 },
 "Mat_Sector6_5": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_5.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_5.tres"
 },
 "Mat_Sector6_6": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_6.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_6.tres"
 },
 "Mat_Sector6_7": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_7.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_7.tres"
 },
 "Mat_Sector6_8": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_8.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_8.tres"
 },
 "Mat_Sector6_9": {
 "use_external/enabled": true,
-"use_external/path": "res://Content/Sector6/Mat_Sector6_9.tres"
+"use_external/path": "res://Content/Sector6/Assets/Mat_Sector6_9.tres"
 },
 "Mat_Water": {
 "use_external/enabled": true,

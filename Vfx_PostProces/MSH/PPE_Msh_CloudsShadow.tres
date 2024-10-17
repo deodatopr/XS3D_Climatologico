@@ -1,0 +1,117 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://cr8u432ddj0an"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ac3oj"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_fjnme"]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_24qg5"]
+parameter_name = "Speed"
+hint = 1
+max = 0.1
+default_value_enabled = true
+default_value = 0.01
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_t4dht"]
+parameter_name = "Threshold"
+hint = 1
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ky22l"]
+constant = 0.2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_bechb"]
+parameter_name = "Texture2DParameter"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ud1sw"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_fuwfr"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8nce2"]
+input_name = "time"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_disabled, unshaded, ambient_light_disabled, fog_disabled;
+
+uniform float Speed : hint_range(0, 0.10000000149012) = 0.00999999977648;
+uniform sampler2D Texture2DParameter;
+uniform float Threshold : hint_range(0, 1) = 0.5;
+
+
+
+void fragment() {
+// FloatConstant:14
+	float n_out14p0 = 0.200000;
+
+
+// Input:9
+	float n_out9p0 = TIME;
+
+
+// FloatParameter:12
+	float n_out12p0 = Speed;
+
+
+// FloatOp:10
+	float n_out10p0 = n_out9p0 * n_out12p0;
+
+
+// VectorCompose:11
+	float n_in11p1 = 0.00000;
+	vec2 n_out11p0 = vec2(n_out10p0, n_in11p1);
+
+
+// UVFunc:8
+	vec2 n_in8p1 = vec2(1.00000, 1.00000);
+	vec2 n_out8p0 = n_out11p0 * n_in8p1 + UV;
+
+
+	vec4 n_out4p0;
+// Texture2D:4
+	n_out4p0 = texture(Texture2DParameter, n_out8p0);
+	float n_out4p1 = n_out4p0.r;
+
+
+// FloatParameter:13
+	float n_out13p0 = Threshold;
+
+
+// Output:0
+	ALBEDO = vec3(n_out14p0);
+	ALPHA = n_out4p1;
+	ALPHA_SCISSOR_THRESHOLD = n_out13p0;
+
+
+}
+"
+graph_offset = Vector2(-90.1381, 46.3667)
+modes/cull = 2
+modes/specular = 2
+flags/unshaded = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+nodes/fragment/0/position = Vector2(1120, 80)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_bechb")
+nodes/fragment/3/position = Vector2(520, 260)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_ud1sw")
+nodes/fragment/4/position = Vector2(800, 180)
+nodes/fragment/8/node = SubResource("VisualShaderNodeUVFunc_fuwfr")
+nodes/fragment/8/position = Vector2(580, 100)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_8nce2")
+nodes/fragment/9/position = Vector2(40, 100)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_ac3oj")
+nodes/fragment/10/position = Vector2(260, 120)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorCompose_fjnme")
+nodes/fragment/11/position = Vector2(420, 120)
+nodes/fragment/12/node = SubResource("VisualShaderNodeFloatParameter_24qg5")
+nodes/fragment/12/position = Vector2(60, 180)
+nodes/fragment/13/node = SubResource("VisualShaderNodeFloatParameter_t4dht")
+nodes/fragment/13/position = Vector2(860, 520)
+nodes/fragment/14/node = SubResource("VisualShaderNodeFloatConstant_ky22l")
+nodes/fragment/14/position = Vector2(820, 80)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 8, 0, 4, 0, 9, 0, 10, 0, 11, 0, 8, 2, 10, 0, 11, 0, 12, 0, 10, 1, 4, 1, 0, 1, 13, 0, 0, 19, 14, 0, 0, 0)

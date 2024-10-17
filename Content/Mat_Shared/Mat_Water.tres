@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ck6keiqe7mklq"]
 
-[ext_resource type="Shader" uid="uid://bwotc7qnvnl5t" path="res://Shaders/Water/Sha_Water.tres" id="1_d7mvh"]
-[ext_resource type="Texture2D" uid="uid://b2picf87gw7ha" path="res://Shaders/Water/Map_Waves_N.jpg" id="2_e0mtd"]
+[ext_resource type="Shader" uid="uid://bwotc7qnvnl5t" path="res://Vfx_Shaders/Water/Sha_Water.tres" id="1_d7mvh"]
+[ext_resource type="Texture2D" uid="uid://b2picf87gw7ha" path="res://Vfx_Shaders/Water/Map_Waves_N.jpg" id="2_e0mtd"]
 
 [resource]
 render_priority = 0

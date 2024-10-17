@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crfc8166mfrr0"
-path.s3tc="res://.godot/imported/Map_Sec6_2.jpg-bc363c628d8b5f101c926f014c27c72d.s3tc.ctex"
+uid="uid://b2picf87gw7ha"
+path.s3tc="res://.godot/imported/Map_Waves_N.jpg-f1811b4b680cdccb033bea375ef08061.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,22 +11,22 @@ metadata={
 
 [deps]
 
-source_file="res://Content/Sector6/Textures/Map_Sec6_2.jpg"
-dest_files=["res://.godot/imported/Map_Sec6_2.jpg-bc363c628d8b5f101c926f014c27c72d.s3tc.ctex"]
+source_file="res://Vfx_Shaders/Water/Map_Waves_N.jpg"
+dest_files=["res://.godot/imported/Map_Waves_N.jpg-f1811b4b680cdccb033bea375ef08061.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=1
-compress/normal_map=0
+compress/hdr_compression=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
