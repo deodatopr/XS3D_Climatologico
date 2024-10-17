@@ -23,6 +23,7 @@ var tilt : float
 var debug_lookAt : bool
 var debug_pivotMsh : bool
 var debug_fov : bool
+var debug_height : bool
 
 #Height
 var height : float
@@ -97,6 +98,7 @@ func UpdateProperties():
 	debug_lookAt = cr_cam_config.debug_alwaysLookAt
 	debug_pivotMsh = cr_cam_config.debug_alwaysPivotMsh
 	debug_fov = cr_cam_config.debug_alwaysFov
+	debug_height = cr_cam_config.debug_alwaysHeight
 	
 	#Pivot dist
 	camFocus = cr_cam_config.bottom_focus
@@ -115,7 +117,7 @@ func UpdateProperties():
 	fov =  cr_cam_config.bottom_fov if camModeBottom else  cr_cam_config.top_fov
 	
 	#Tilt
-	tilt = -26 if camModeBottom else  -90
+	tilt = -15 if camModeBottom else  -90
 	
 	#Movement
 	mov_speed = cr_cam_config.bottom_mov_speed if camModeBottom else  cr_cam_config.top_mov_speed
@@ -185,6 +187,10 @@ func _physics_process(delta):
 	if debug_fov:
 		cam.fov = fov
 	
+	#TEST: Update siempre altura al cambiarlo en el CR
+	if debug_height:
+		cam.global_position.y = height
+	
 	_Panning(delta)
 
 	_Height(delta)
@@ -244,14 +250,14 @@ func _Panning(_delta:float):
 	#Apply
 	var targetPosition : Vector3 = pivot_panning.global_position
 	targetPosition += mov_velocity * _delta
-	targetPosition.x = clampf(targetPosition.x, bounding_X_min, bounding_X_max)
-	targetPosition.z = clampf(targetPosition.z, bounding_Z_min, bounding_Z_max)
+	#targetPosition.x = clampf(targetPosition.x, bounding_X_min, bounding_X_max)
+	#targetPosition.z = clampf(targetPosition.z, bounding_Z_min, bounding_Z_max)
 	
-	var isInBoundX = abs(pivot_panning.global_position.x -  bounding_X_min) < 0.01 or abs(pivot_panning.global_position.x -  bounding_X_max) < 0.01
-	var isInBoundZ = abs(pivot_panning.global_position.z -  bounding_Z_min) < 0.01 or abs(pivot_panning.global_position.z -  bounding_Z_max) < 0.01
-	
-	if isInBoundX || isInBoundZ:
-		mov_velocity = Vector3.ZERO
+	#var isInBoundX = abs(pivot_panning.global_position.x -  bounding_X_min) < 0.01 or abs(pivot_panning.global_position.x -  bounding_X_max) < 0.01
+	#var isInBoundZ = abs(pivot_panning.global_position.z -  bounding_Z_min) < 0.01 or abs(pivot_panning.global_position.z -  bounding_Z_max) < 0.01
+	#
+	#if isInBoundX || isInBoundZ:
+		#mov_velocity = Vector3.ZERO
 	
 	pivot_panning.global_position = targetPosition
 		

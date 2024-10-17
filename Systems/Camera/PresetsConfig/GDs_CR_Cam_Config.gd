@@ -9,11 +9,11 @@ class_name GDs_CR_Cam_Config extends Resource
 	set(value):
 		bottom_fov = value
 		emit_changed()
-@export_range(10,120)var top_height: float:
+@export var top_height: float:
 	set(value):
 		top_height = value
 		emit_changed()
-@export_range(10,120)var bottom_height: float:
+@export var bottom_height: float:
 	set(value):
 		bottom_height = value
 		emit_changed()
@@ -29,11 +29,11 @@ class_name GDs_CR_Cam_Config extends Resource
 		emit_changed()
 @export_range(10,120)var bottom_mov_speed: float:
 	set(value):
-		bottom_mov_speed = value
+		bottom_mov_speed = value * 10
 		emit_changed()
 @export_range(10,120)var top_mov_speed: float:
 	set(value):
-		top_mov_speed = value
+		top_mov_speed = value * 10
 		emit_changed()
 		
 		
@@ -67,4 +67,8 @@ class_name GDs_CR_Cam_Config extends Resource
 @export var debug_alwaysFov : bool:
 	set(value):
 		debug_alwaysFov = value
+		emit_changed()
+@export var debug_alwaysHeight : bool:
+	set(value):
+		debug_alwaysHeight = value
 		emit_changed()
