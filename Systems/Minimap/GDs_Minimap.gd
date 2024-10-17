@@ -31,8 +31,8 @@ func _process(delta: float) -> void:
 	
 	var distance := Vector3(cam_pivot.global_position.x, 0, cam_pivot.global_position.z).distance_to(Vector3(mark_target.global_position.x, 0, mark_target.global_position.z))
 	var markDirection := Vector3(cam_pivot.global_position.x, 0, cam_pivot.global_position.z).direction_to(Vector3(mark_target.global_position.x, 0, mark_target.global_position.z))
-	var mark_x_position := clampf(mark_Start_Position.x + (-Vector2(markDirection.x, markDirection.z) * distance * 10).x, mark_Start_Position.x - circle_mask.size.x/3, mark_Start_Position.x + circle_mask.size.x/3)
-	var mark_y_position := clampf(mark_Start_Position.y + (-Vector2(markDirection.x, markDirection.z) * distance * 10).y, mark_Start_Position.y - circle_mask.size.y/3, mark_Start_Position.y + circle_mask.size.y/3)
+	var mark_x_position := mark_Start_Position.x + (-Vector2(markDirection.x, markDirection.z) * distance * 10).x
+	var mark_y_position := mark_Start_Position.y + (-Vector2(markDirection.x, markDirection.z) * distance * 10).y
 	mark.position = Vector2(mark_x_position, mark_y_position)
 	#print(markDirection)
 	
