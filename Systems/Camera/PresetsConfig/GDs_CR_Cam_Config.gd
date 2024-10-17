@@ -13,11 +13,11 @@ class_name GDs_CR_Cam_Config extends Resource
 	set(value):
 		top_height = value
 		emit_changed()
-@export var bottom_height: float:
+@export_range (1,200) var bottom_height: float:
 	set(value):
 		bottom_height = value
 		emit_changed()
-@export var bottom_focus: float:
+@export_range (1,200) var bottom_focus: float:
 	set(value):
 		bottom_focus = value
 		emit_changed()
