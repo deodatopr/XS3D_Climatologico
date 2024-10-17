@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bmxqlsgmk1md"
-path="res://.godot/imported/Msh_Sector6.glb-dfc9efacb29e3de50e94b42a95d48b83.scn"
+uid="uid://bwf3e5luercrk"
+path="res://.godot/imported/Msh_Sector_06.glb-d6c2c91590c20dfc2bd21095a8f8c07a.scn"
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Msh_Sector6.glb"
-dest_files=["res://.godot/imported/Msh_Sector6.glb-dfc9efacb29e3de50e94b42a95d48b83.scn"]
+source_file="res://Cont_Models/Sector6/Msh_Sector_06.glb"
+dest_files=["res://.godot/imported/Msh_Sector_06.glb-d6c2c91590c20dfc2bd21095a8f8c07a.scn"]
 
 [params]
 
@@ -24,11 +24,11 @@ meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=false
-animation/import=false
+skins/use_named_skins=true
+animation/import=true
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
@@ -75,7 +75,7 @@ _subresources={
 },
 "Mat_Sector6_9": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Mat_Sector6_9.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_9.tres"
 },
 "Mat_Water": {
 "use_external/enabled": true,
