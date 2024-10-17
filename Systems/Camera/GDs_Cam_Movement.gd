@@ -197,7 +197,7 @@ func _physics_process(delta):
 	if (mov_isMoving or rotHor_isRotating) and not signalUpdateWasEmitted:
 		SIGNALS.OnCameraUpdate.emit(true)
 		signalUpdateWasEmitted = true
-	elif (not mov_isMoving and not rotHor_isRotating) and signalUpdateWasEmitted:
+	elif (not mov_isMoving and not rotHor_isRotating and mov_velocity.length() == 0) and signalUpdateWasEmitted:
 		SIGNALS.OnCameraUpdate.emit(false)
 		signalUpdateWasEmitted = false
 
