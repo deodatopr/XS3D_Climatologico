@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 @export var label_3d : Label3D
