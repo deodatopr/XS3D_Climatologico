@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=37 format=3 uid="uid://bwotc7qnvnl5t"]
 
-[ext_resource type="Texture2D" uid="uid://b2picf87gw7ha" path="res://SHADERS/Water/Map_Waves_N.jpg" id="1_22ah5"]
+[ext_resource type="Texture2D" uid="uid://b2picf87gw7ha" path="res://Shaders/Water/Map_Waves_N.jpg" id="1_22ah5"]
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_s27w1"]
 linked_parent_graph_frame = 63
@@ -61,7 +61,7 @@ texture = ExtResource("1_22ah5")
 texture_type = 2
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_7d0df"]
-size = Vector2(1011.2, 424)
+size = Vector2(1002.25, 419)
 title = "World Projection"
 attached_nodes = PackedInt32Array(8, 36, 9, 7, 39, 38, 37, 11, 10)
 
@@ -84,7 +84,7 @@ default_value_enabled = true
 default_value = 1.0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_grva6"]
-size = Vector2(1311.2, 897)
+size = Vector2(1302.25, 890)
 title = "Normals"
 attached_nodes = PackedInt32Array(40, 55, 86, 79, 80, 84, 78, 76, 81, 61, 87, 77, 3, 65, 52)
 
@@ -156,7 +156,6 @@ default_value = Color(0.203922, 0.219608, 0.0941176, 1)
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_sw5xa"]
 parameter_name = "WaterDepth"
-hint = 1
 default_value_enabled = true
 default_value = 1.0
 
@@ -174,7 +173,7 @@ varying vec3 var_World_Projection;
 
 uniform vec4 ColorWaterSurface : source_color = vec4(0.203922, 0.219608, 0.094118, 1.000000);
 uniform vec4 ColorWaterDepth : source_color = vec4(0.203922, 0.219608, 0.094118, 1.000000);
-uniform float WaterDepth : hint_range(0, 1) = 1;
+uniform float WaterDepth = 1;
 uniform sampler2D depth_tex_frg_90 : hint_depth_texture;
 uniform float Roughness : hint_range(0, 1) = 0.15000000596046;
 uniform float WaveSize = 1;
@@ -366,7 +365,7 @@ void fragment() {
 	var_World_Projection = vec3(0.0);
 }
 "
-graph_offset = Vector2(-1980.96, 90.9775)
+graph_offset = Vector2(-48.8831, -266.625)
 flags/shadows_disabled = true
 varyings/World_Projection = "1,4"
 nodes/fragment/0/position = Vector2(720, 140)
