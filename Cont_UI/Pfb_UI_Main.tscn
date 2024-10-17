@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://Systems/Barra Menus/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
 [ext_resource type="PackedScene" uid="uid://cqmfo0633oxfm" path="res://Systems/Menus/Sitios/Pfb_MenuSitios.tscn" id="3_g57u8"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/UI/PPE_UI_BlurredBack.gdshader" id="3_syhq8"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_BlurredBack.gdshader" id="3_syhq8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="4_vpxt2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]

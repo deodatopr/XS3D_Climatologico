@@ -131,7 +131,7 @@ func UpdateProperties():
 	bounding_Z_max = cr_cam_config.boundings_Z_max
 	
 	#Rotation
-	rotHor_speed = 1.6
+	rotHor_speed = 0.3
 
 func SetModeConfig():
 	canMoveCam = false

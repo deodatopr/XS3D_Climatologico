@@ -1,12 +1,13 @@
 //CHROMATIC ABERRATION
-
 shader_type canvas_item;
+
+// Texel Albedo
 uniform lowp sampler2D screen_texture : hint_screen_texture, filter_nearest;
 
 //Chromatic
 uniform lowp float chromaticRedPx = 3.0;
 uniform lowp float chromaticBluePx =3.0;
-uniform lowp float chromaticIntensity : hint_range(0.0, 10.0) = 1.0;
+uniform lowp float chromaticIntensity : hint_range(0.0, 1.0) = 1.0;
 
 uniform int _ : hint_range(0, 0) = 0; // Spacer
 

@@ -1,6 +1,7 @@
 // PIN ALARM (CIRCULAR DISTORTION)
 shader_type canvas_item;
 
+// Parameters
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform float distort: hint_range(0.0, 0.1, 0.001) = 0.05;
 uniform float chromatic: hint_range(0.0, 0.1, 0.01) = 0.025;
