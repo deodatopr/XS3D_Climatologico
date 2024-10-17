@@ -9,6 +9,7 @@ class_name GDs_CamMovement extends Node
 var cam : Camera3D
 var pivot_panning : Node3D
 var cr_cam_config : GDs_CR_Cam_Config
+var navMeshRegion : NavigationRegion3D
 
 var camModeBottom : bool:
 	get:
@@ -76,6 +77,7 @@ var signalUpdateWasEmitted : bool
 
 const ROTHOR_THRESHOLD : float = 0.8
 
+#func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _cr_cam_config : GDs_CR_Cam_Config, _navMeshRegion : NavigationRegion3D):
 func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _cr_cam_config : GDs_CR_Cam_Config):
 	triggerRaycast.area_entered.connect(_OnTriggerEntered)
 	triggerRaycast.area_exited.connect(_OnTriggerExit)
@@ -83,6 +85,7 @@ func Initialize(_cam : Camera3D, _pivot_panning : Node3D, _cr_cam_config : GDs_C
 	cam = _cam
 	pivot_panning = _pivot_panning
 	cr_cam_config = _cr_cam_config
+	#navMeshRegion = _navMeshRegion
 	
 	SetModeConfig()
 
@@ -185,7 +188,7 @@ func _physics_process(delta):
 	_Panning(delta)
 
 	_Height(delta)
-	_HeightByCollision(delta)
+	#_HeightByCollision(delta)
 		
 	_Rotation_Hor(delta)
 	
@@ -231,8 +234,6 @@ func _Panning(_delta:float):
 		#Limit mov_speed
 		if mov_velocity.length() > mov_max_acceleration:
 			mov_velocity = mov_velocity.limit_length(mov_max_acceleration + mov_currentBoost)
-			
-		SIGNALS.OnCameraUpdate.emit(true)
 	else:
 		#Deceleration
 		if mov_velocity.length() > 0:
@@ -285,8 +286,6 @@ func _Rotation_Hor(_delta : float):
 			var mouseDirRotX = sign(mouseDir.x)
 			pivot_panning.rotate_y(-mouseDirRotX * rotHor_speed * _delta)
 			
-			SIGNALS.OnCameraUpdate.emit(true)
-			
 	if rotHor_initDirCaptured and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		rotHor_initDirCaptured = false
 #endregion
@@ -299,7 +298,6 @@ func _Rotation_Hor(_delta : float):
 
 		if abs(control_Dir) > ROTHOR_THRESHOLD:
 			pivot_panning.rotate_y(-control_Dir * rotHor_speed * _delta)
-			SIGNALS.OnCameraUpdate.emit(true)
 #endregion
 	
 #Check if there are no input pressed
@@ -307,9 +305,6 @@ func _Rotation_Hor(_delta : float):
 		rotHor_isRotating =  abs(Input.get_joy_axis(joy_id, JOY_AXIS_RIGHT_X)) > .4
 	else:
 		rotHor_isRotating = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-
-	if not rotHor_isRotating:
-		SIGNALS.OnCameraUpdate.emit(false)
 
 func _ShowMshMarkPivot(_show : bool):
 	#Msh_Rot_Bottom
@@ -368,36 +363,8 @@ func _Height(_delta : float):
 		height_velocity = 0
 
 		
-func _HeightByCollision(_delta : float):
-	raycast.enabled = mov_velocity.length() > 0
-	
-	#Increase height
-	if raycast.enabled and raycast.is_colliding():
-		#Save last height
-		if not heightColl_collided:
-			heightColl_collided = true
-			heightColl_lastHeightBeforeCollided = cam.global_position.y
-		
-		#Increasing height 
-		#(static value (80) to avoid more properties in cam config)
-		height_velocity = 200 * _delta
-		var targetHeight = cam.global_position.y
-		targetHeight += height_velocity * _delta
-		targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
-		cam.global_position.y = targetHeight
-		
-	#Decrease height
-	if heightColl_collided and not raycast.is_colliding():
-		#(static value (70) to avoid more properties in cam config)
-		height_velocity = -400 * _delta
-		var targetHeight = cam.global_position.y
-		targetHeight += height_velocity * _delta
-		targetHeight = clampf(targetHeight,height_limit_bottom,height_limit_top)
-		cam.global_position.y = targetHeight
-		
-		if (cam.global_position.y - heightColl_lastHeightBeforeCollided) < 0.005:
-			heightColl_collided = false
-			cam.global_position.y = heightColl_lastHeightBeforeCollided
+#func _HeightByCollision(_delta : float):
+	#navMeshRegion.
 			
 func _GoToPoint(_targetPoint : Vector3):
 	_targetPoint.y = 0
