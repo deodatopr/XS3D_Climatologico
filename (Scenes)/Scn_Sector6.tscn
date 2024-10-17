@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_5wtxl"]
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_lf2mx"]
-[ext_resource type="PackedScene" uid="uid://bmxqlsgmk1md" path="res://Content/Sector6/Msh_Sector6.glb" id="3_och2w"]
+[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_jcit7"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_12ipk"]
+[ext_resource type="PackedScene" uid="uid://bmxqlsgmk1md" path="res://Content/Sector6/Msh_Sector6.glb" id="3_2oa5y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,25 +29,26 @@ adjustment_saturation = 1.3
 dof_blur_near_distance = 8.0
 dof_blur_near_transition = 7.0
 
-[node name="Node3D" type="Node3D"]
+[node name="SECTOR 6" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="[ SYSTEMS ]" type="Node" parent="."]
+
+[node name="RENDER TOOL" parent="[ SYSTEMS ]" instance=ExtResource("1_jcit7")]
+
+[node name="Camera_manager" parent="[ SYSTEMS ]" instance=ExtResource("2_12ipk")]
+
+[node name="[ ENVIRONMENT ]" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
 environment = SubResource("Environment_nudmr")
 camera_attributes = SubResource("CameraAttributesPractical_jryic")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="______________________________" type="Node" parent="."]
+[node name="[ CONTENT ]" type="Node" parent="."]
 
-[node name="RENDER TOOL" parent="." instance=ExtResource("1_5wtxl")]
-visible = false
+[node name="Msh_Sector6" parent="[ CONTENT ]" instance=ExtResource("3_2oa5y")]
 
-[node name="Camera_manager" parent="." instance=ExtResource("2_lf2mx")]
-
-[node name="________________________________" type="Node" parent="."]
-
-[node name="Msh_Sector6" parent="." instance=ExtResource("3_och2w")]
-
-[editable path="Msh_Sector6"]
+[editable path="[ CONTENT ]/Msh_Sector6"]
