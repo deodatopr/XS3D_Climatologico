@@ -1,8 +1,14 @@
-@tool
 extends Node
 
 @export var label_3d : Label3D
-@export var mesh_Pin: MeshInstance3D
+@export var mesh_Pin : MeshInstance3D
+
+@onready var local_estaciones : GDs_CR_LocalEstaciones = preload("uid://3nj42mys6ryu")
+
+@export var estacion_index : int = 0:	
+	set(value):
+		estacion_index = value
+		mesh_Pin.get_mesh().get_material().albedo_color = local_estaciones.LocalEstaciones[value].color
 
 @export var siteName : String = "Site":
 	set(value):

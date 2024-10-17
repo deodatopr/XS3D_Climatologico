@@ -31,3 +31,4 @@ var latitud:String
 var longitud:String 
 var LvlEstacion:PackedScene
 var disponible:bool
+var color:Color

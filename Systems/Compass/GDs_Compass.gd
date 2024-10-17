@@ -5,8 +5,7 @@ var pivotCam : Node3D
 @export var PinPos : Node3D
 @export var minDistance : float
 @export var maxDistance : float
-@export var site_color : Color
-var CompassLenght : float = 220
+@export var estacion_index : int = 0
 
 var compassInitialXPosition := 0.0
 var pinSiteInitialXPosition := 0.0
@@ -24,6 +23,9 @@ var maxMark_TopDown_PosY : float
 @onready var top_down_mark: ColorRect = $CompassTopDown/TopDownMark
 @onready var compass_top_down: Control = $CompassTopDown
 @onready var distance_text: Label = $CompassParent/DistanceBackground/DistanceText
+@onready var compass_mask = $CompassParent/CompassMask
+
+@onready var local_estaciones : GDs_CR_LocalEstaciones = preload("uid://3nj42mys6ryu")
 
 var canRotate : bool
 
@@ -41,8 +43,8 @@ func Initialize(_camManager : GDs_Cam_Manager)-> void:
 	
 	canRotate = true
 	
-	pin_sitio.color = site_color
-	top_down_mark.color = site_color
+	pin_sitio.color = local_estaciones.LocalEstaciones[estacion_index].color
+	top_down_mark.color = local_estaciones.LocalEstaciones[estacion_index].color
 
 func _ready() -> void:
 	Initialize(camManager)
@@ -51,9 +53,15 @@ func _OnCanRotate(can : bool)-> void:
 	canRotate = can
 	
 func _ToggleCompass(visible : bool) -> void:
-	compass_parent.visible = visible
 	compass_top_down.visible = !visible
-	
+
+	var compass_animation : Tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	if !visible:
+		compass_animation.tween_property(compass_parent, "modulate", Color(1, 1, 1, 0), .15)
+	else:
+		compass_animation.tween_property(compass_parent, "modulate", Color(1, 1, 1, 1), .15)
+
+
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	#calculate distance between pivot and mark
@@ -83,22 +91,21 @@ func _CalculateCompassPoints(_distance : float) -> void:
 	#update compass direction
 	compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
 
-	#calculate dot product between pivot cam and mark
 	var pivotCamNormal := pivotCam.global_basis.z
+	pivotCamNormal.y = 0;
 	var MarkNormal := (PinPos.global_position - pivotCam.global_position).normalized()
-	var dot := MarkNormal.dot(pivotCamNormal)
-	var OffsetMark = abs(dot - 1) * (CompassLenght/2)
+	MarkNormal.y = 0
+	var dot := pivotCamNormal.dot(MarkNormal)
+	var degrees = acos(dot/(pivotCamNormal.length() * MarkNormal.length()))
+	degrees = degrees * (180/ PI)
+	var cross := pivotCamNormal.cross(MarkNormal)
+	var offset = ((-degrees * (compass_mask.size.x/2))/180)
 	
-	#check if look to left or right
-	var RightVectorNormal := pivotCam.global_basis.x
-	var RightDot := RightVectorNormal.dot(MarkNormal)
-
-	if RightDot > 0:
-		OffsetMark *= -1
+	if cross.y < 0:
+		offset = -offset
+		
+	pin_sitio.position.x = pinSiteInitialXPosition + offset
 	
-	#update pin mark in compass
-	pin_sitio.position.x = OffsetMark + pinSiteInitialXPosition
-
 func _CalculateTopDownPoint(_distance : float) -> void:
 	#calculate the position in screen of top down mark
 	var targetUnprojectPos :Vector3 = PinPos.global_position

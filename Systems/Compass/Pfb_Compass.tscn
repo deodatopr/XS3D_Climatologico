@@ -28,13 +28,17 @@ grow_horizontal = 2
 [node name="CompassMask" type="Control" parent="CompassParent"]
 clip_contents = true
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -239.5
-offset_right = 239.5
-offset_bottom = 40.0
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -20.0
+offset_right = 235.0
+offset_bottom = 20.0
 grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(239, 0)
 
 [node name="PinSite" type="ColorRect" parent="CompassParent/CompassMask"]

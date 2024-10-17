@@ -9,6 +9,7 @@ class_name GDs_Data_Local_Estacion
 @export var tlrncia_prep_pluv:= 15
 @export var latitud:String 
 @export var longitud:String 
+@export var color:Color
 
 @export var LvlEstacion:PackedScene
 @export var disponible:bool
