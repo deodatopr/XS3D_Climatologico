@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://hu5k41b7gh1x"]
 
-[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://UI/UI_Atlas.png" id="1_bm6wi"]
-[ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://UI/Sprites_Atlas.png" id="2_om8fc"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
+[ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_om8fc"]
 [ext_resource type="Script" path="res://Systems/Sprites/GDs_SpriteAnim.gd" id="3_qdbvn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jcsu"]
