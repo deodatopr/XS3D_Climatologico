@@ -1,15 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://y1iugd6uyl42"]
+[gd_scene load_steps=9 format=3 uid="uid://y1iugd6uyl42"]
 
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://Systems/Barra Menus/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
+[ext_resource type="PackedScene" uid="uid://cqmfo0633oxfm" path="res://Systems/Menus/Sitios/Pfb_MenuSitios.tscn" id="3_g57u8"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/UI/PPE_UI_BlurredBack.gdshader" id="3_syhq8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="4_vpxt2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qgbh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]
 shader = ExtResource("3_syhq8")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.5
 shader_parameter/blur = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
+atlas = ExtResource("4_vpxt2")
+region = Rect2(8, 322, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu4t7"]
+atlas = ExtResource("4_vpxt2")
+region = Rect2(0, 375, 464, 649)
 
 [node name="Pfb_UI" type="Control"]
 layout_mode = 3
@@ -19,33 +28,86 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
-layout_mode = 1
-
-[node name="Barra menus" parent="." instance=ExtResource("2_j5wup")]
-layout_mode = 1
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -932.0
-offset_right = 415.0
-offset_bottom = -117.0
-grow_vertical = 0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
-material = SubResource("ShaderMaterial_0qgbh")
+[node name="Menu Controles" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.6)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_vpxt2")
-region_rect = Rect2(474, 40, 30, 30)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+color = Color(0, 0, 0, 1)
+
+[node name="Blur" type="ColorRect" parent="Menu Controles"]
+material = SubResource("ShaderMaterial_n3bx0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 119.0
+offset_top = 66.0
+offset_right = -126.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Corner" type="TextureRect" parent="Menu Controles/Blur"]
+layout_mode = 1
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Control" type="Control" parent="Menu Controles/Blur"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = 78.0
+offset_right = -336.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control Left" type="TextureRect" parent="Menu Controles/Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -465.5
+offset_top = -324.5
+offset_right = -0.5
+offset_bottom = 324.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_cu4t7")
+
+[node name="Control Right" type="TextureRect" parent="Menu Controles/Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 464.5
+offset_top = -324.5
+offset_right = 929.5
+offset_bottom = 324.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_cu4t7")
+
+[node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
+layout_mode = 1
+
+[node name="Barra menus" parent="." instance=ExtResource("2_j5wup")]
+layout_mode = 1
+
+[node name="Menu Sitios" parent="." instance=ExtResource("3_g57u8")]
+layout_mode = 1
