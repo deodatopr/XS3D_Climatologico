@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnxc3stvbv0gf"]
+[gd_scene load_steps=14 format=3 uid="uid://bnxc3stvbv0gf"]
 
-[ext_resource type="Shader" path="res://Vfx_PostProces/UI/PPE_UI_BlurredBack.gdshader" id="1_8mdf7"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_8mdf7"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bu15u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik81r"]
@@ -21,13 +21,27 @@ region = Rect2(469, 763, 42, 42)
 atlas = ExtResource("1_bu15u")
 region = Rect2(473, 301, 16, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ftuh5"]
-atlas = ExtResource("1_bu15u")
-region = Rect2(474, 40, 30, 30)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxxn3"]
+bg_color = Color(0.529412, 0.0588235, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njtr6"]
+bg_color = Color(0.333333, 0.333333, 0.337255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7yjq"]
 atlas = ExtResource("1_bu15u")
 region = Rect2(477, 326, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftuh5"]
+atlas = ExtResource("1_bu15u")
+region = Rect2(474, 40, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0y3ll"]
 atlas = ExtResource("1_bu15u")
@@ -150,8 +164,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="TextureRect" parent="HBoxContainer/Sitios/Icon"]
-self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+[node name="Button - Sitios" type="Button" parent="HBoxContainer/Sitios/Icon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -163,9 +176,11 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("AtlasTexture_ftuh5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
+toggle_mode = true
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Sitios/Icon/Background"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Sitios/Icon/Button - Sitios"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
