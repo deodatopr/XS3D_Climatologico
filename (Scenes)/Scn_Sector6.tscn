@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/Mat_Shared/Mat_Clouds.tres" id="2_ycbq6"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharped.gdshader" id="3_a8ov3"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="3_a8ov3"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="3_mr5e7"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="3_vao1q"]
 
@@ -16,14 +16,15 @@ sky_material = SubResource("ProceduralSkyMaterial_u3110")
 
 [sub_resource type="Environment" id="Environment_nudmr"]
 background_mode = 2
-background_energy_multiplier = 1.5
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_al770")
 tonemap_mode = 3
 ssil_radius = 15.51
 ssil_intensity = 0.0
 sdfgi_use_occlusion = true
+glow_enabled = true
 glow_normalized = true
-glow_strength = 0.68
+glow_blend_mode = 0
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.477915, 0.599145, 0.789649, 1)
@@ -31,7 +32,6 @@ fog_density = 1.0
 fog_depth_curve = 0.420448
 fog_depth_begin = 400.0
 fog_depth_end = 3000.0
-volumetric_fog_enabled = true
 adjustment_enabled = true
 adjustment_contrast = 0.9
 adjustment_saturation = 1.2
@@ -48,12 +48,12 @@ dof_blur_near_transition = 240.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krxms"]
 shader = ExtResource("3_a8ov3")
 shader_parameter/pixel = 1.0
-shader_parameter/sharpening = 0.0
+shader_parameter/sharpening = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjg68"]
 shader = ExtResource("3_vao1q")
-shader_parameter/chromaticRedPx = 3.0
-shader_parameter/chromaticBluePx = 3.0
+shader_parameter/chromaticRedPx = 2.0
+shader_parameter/chromaticBluePx = 2.0
 shader_parameter/chromaticIntensity = 1.0
 shader_parameter/_ = 0
 shader_parameter/vignetteOpacity = 1.0
@@ -76,14 +76,16 @@ camera_attributes = SubResource("CameraAttributesPractical_jryic")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="[ CONTENT ]"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 light_color = Color(1, 0.937428, 0.850747, 1)
-light_energy = 2.0
+light_energy = 1.5
+light_angular_distance = 1.0
 shadow_enabled = true
+shadow_opacity = 0.9
 directional_shadow_mode = 0
 directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(3634.97, 0, 0, 0, -0.00015889, 3634.97, 0, -3634.97, -0.00015889, 662.314, 874.294, 767.682)
+transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
 material_override = ExtResource("2_ycbq6")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -110,7 +112,6 @@ grow_vertical = 2
 
 [node name="PPE - Lens" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="PPE - Lens"]
 material = SubResource("ShaderMaterial_xjg68")
@@ -122,6 +123,5 @@ grow_vertical = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 5
-visible = false
 
 [node name="RENDER TOOL" parent="UI" instance=ExtResource("1_wesxv")]

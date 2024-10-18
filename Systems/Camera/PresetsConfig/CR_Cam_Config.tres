@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_m3peb")
 bottom_mov_speed = 6.0
-bottom_fov = 90.0
-bottom_height = 200.0
-bottom_focus = 300.0
+bottom_fov = 120.0
+bottom_height = 300.0
+bottom_focus = 150.5
 top_height = 0.0
 top_fov = 0.0
 transition_speed = 1.25
@@ -16,7 +16,7 @@ boundings_X_min = -100.0
 boundings_X_max = 100.0
 boundings_Z_min = -100.0
 boundings_Z_max = 100.0
-debug_alwaysPivotMsh = false
-debug_alwaysLookAt = false
-debug_alwaysFov = false
-debug_alwaysHeight = false
+debug_alwaysPivotMsh = true
+debug_alwaysLookAt = true
+debug_alwaysFov = true
+debug_alwaysHeight = true

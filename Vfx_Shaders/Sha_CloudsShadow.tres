@@ -22,7 +22,7 @@ default_value = 0.5
 constant = 0.2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_m2v8n"]
-default_input_values = [0, 0.0, 1, 0.001]
+default_input_values = [0, 0.0, 1, 0.002]
 operator = 2
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_bechb"]
@@ -61,7 +61,7 @@ void fragment() {
 
 
 // FloatOp:15
-	float n_in15p1 = 0.00100;
+	float n_in15p1 = 0.00200;
 	float n_out15p0 = n_out12p0 * n_in15p1;
 
 
@@ -97,7 +97,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-245.333, 137.333)
+graph_offset = Vector2(-534.667, 217.333)
 flags/unshaded = true
 flags/shadows_disabled = true
 flags/ambient_light_disabled = true

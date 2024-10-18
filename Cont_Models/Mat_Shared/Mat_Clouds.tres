@@ -5,11 +5,13 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2iwiy"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l53r2"]
+generate_mipmaps = false
+seamless = true
 noise = SubResource("FastNoiseLite_2iwiy")
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_emdrm")
-shader_parameter/Speed = 0.5
-shader_parameter/Threshold = 0.5
+shader_parameter/Speed = 0.75
+shader_parameter/Threshold = 0.6
 shader_parameter/Texture2DParameter = SubResource("NoiseTexture2D_l53r2")
