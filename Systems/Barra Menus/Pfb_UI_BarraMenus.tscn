@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnxc3stvbv0gf"]
+[gd_scene load_steps=13 format=3 uid="uid://bnxc3stvbv0gf"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_8mdf7"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bu15u"]
@@ -39,10 +39,6 @@ corner_radius_bottom_left = 5
 atlas = ExtResource("1_bu15u")
 region = Rect2(477, 326, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ftuh5"]
-atlas = ExtResource("1_bu15u")
-region = Rect2(474, 40, 30, 30)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0y3ll"]
 atlas = ExtResource("1_bu15u")
 region = Rect2(478, 358, 21, 26)
@@ -63,6 +59,7 @@ anchor_bottom = 1.0
 offset_top = -80.0
 offset_right = 330.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_ik81r")
@@ -149,6 +146,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
 visibility_layer = 0
@@ -163,6 +161,7 @@ theme_override_constants/separation = 0
 [node name="Icon" type="Control" parent="HBoxContainer/Sitios"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Button - Sitios" type="Button" parent="HBoxContainer/Sitios/Icon"]
 layout_mode = 1
@@ -176,9 +175,9 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
+focus_neighbor_left = NodePath("../../../Guia/Icon/Button - Guia")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
-toggle_mode = true
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/Sitios/Icon/Button - Sitios"]
 layout_mode = 1
@@ -211,8 +210,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="TextureRect" parent="HBoxContainer/Mapa/Icon"]
-self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+[node name="Button - Mapa" type="Button" parent="HBoxContainer/Mapa/Icon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -224,9 +222,10 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("AtlasTexture_ftuh5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Mapa/Icon/Background"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Mapa/Icon/Button - Mapa"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -263,8 +262,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="TextureRect" parent="HBoxContainer/Configuracion/Icon"]
-self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+[node name="Button - Config" type="Button" parent="HBoxContainer/Configuracion/Icon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -276,19 +274,20 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("AtlasTexture_ftuh5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Configuracion/Icon/Background"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Configuracion/Icon/Button - Config"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_11ur8")
@@ -309,8 +308,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="TextureRect" parent="HBoxContainer/Guia/Icon"]
-self_modulate = Color(0.333333, 0.333333, 0.337255, 1)
+[node name="Button - Guia" type="Button" parent="HBoxContainer/Guia/Icon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -322,19 +320,21 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("AtlasTexture_ftuh5")
+focus_neighbor_right = NodePath("../../../Sitios/Icon/Button - Sitios")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Guia/Icon/Background"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Guia/Icon/Button - Guia"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
+offset_left = -15.5
+offset_top = -12.5
+offset_right = 15.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_ai44o")
