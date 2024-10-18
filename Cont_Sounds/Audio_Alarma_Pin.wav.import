@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ck3u4muc2vnsu"
-path="res://.godot/imported/Audio_Splash_Pin.wav-1e913d5c37d2465c681903f7d119a176.sample"
+path="res://.godot/imported/Audio_Alarma_Pin.wav-01b27fbb90535e57ac93f3d70a066627.sample"
 
 [deps]
 
-source_file="res://Cont_Sounds/Audio_Splash_Pin.wav"
-dest_files=["res://.godot/imported/Audio_Splash_Pin.wav-1e913d5c37d2465c681903f7d119a176.sample"]
+source_file="res://Cont_Sounds/Audio_Alarma_Pin.wav"
+dest_files=["res://.godot/imported/Audio_Alarma_Pin.wav-01b27fbb90535e57ac93f3d70a066627.sample"]
 
 [params]
 

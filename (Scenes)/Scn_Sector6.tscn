@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=16 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="3_a8ov3"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="3_mr5e7"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="3_vao1q"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="6_rs820"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,17 +28,17 @@ glow_normalized = true
 glow_blend_mode = 0
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.477915, 0.599145, 0.789649, 1)
+fog_light_color = Color(0.424189, 0.509992, 0.644825, 1)
 fog_density = 1.0
-fog_depth_curve = 0.420448
-fog_depth_begin = 400.0
-fog_depth_end = 3000.0
+fog_depth_curve = 3.36359
+fog_depth_begin = 0.0
+fog_depth_end = 2000.0
 adjustment_enabled = true
 adjustment_contrast = 0.9
 adjustment_saturation = 1.2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
-dof_blur_far_distance = 600.0
+dof_blur_far_distance = 300.0
 dof_blur_far_transition = 600.0
 dof_blur_near_enabled = true
 dof_blur_near_distance = 250.0
@@ -48,7 +49,7 @@ dof_blur_near_transition = 240.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krxms"]
 shader = ExtResource("3_a8ov3")
 shader_parameter/pixel = 1.0
-shader_parameter/sharpening = 1.5
+shader_parameter/sharpening = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjg68"]
 shader = ExtResource("3_vao1q")
@@ -60,6 +61,10 @@ shader_parameter/vignetteOpacity = 1.0
 shader_parameter/vignetteSize = 0.8
 shader_parameter/vignetteFeather = 0.6
 shader_parameter/vignetteColor = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w3e5"]
+shader = ExtResource("6_rs820")
+shader_parameter/lensDistortion = 0.0
 
 [node name="SECTOR 6" type="Node3D"]
 
@@ -75,8 +80,8 @@ camera_attributes = SubResource("CameraAttributesPractical_jryic")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="[ CONTENT ]"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-light_color = Color(1, 0.937428, 0.850747, 1)
-light_energy = 1.5
+light_color = Color(1, 0.896991, 0.754292, 1)
+light_energy = 2.0
 light_angular_distance = 1.0
 shadow_enabled = true
 shadow_opacity = 0.9
@@ -122,6 +127,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 5
+layer = 3
 
 [node name="RENDER TOOL" parent="UI" instance=ExtResource("1_wesxv")]
+
+[node name="PPE - FishEye" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="ColorRect" type="ColorRect" parent="PPE - FishEye"]
+material = SubResource("ShaderMaterial_4w3e5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

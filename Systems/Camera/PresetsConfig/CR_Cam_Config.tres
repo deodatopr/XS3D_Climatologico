@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_m3peb")
 bottom_mov_speed = 6.0
-bottom_fov = 120.0
+bottom_fov = 0.0
 bottom_height = 300.0
-bottom_focus = 150.5
+bottom_focus = 57.772
 top_height = 0.0
 top_fov = 0.0
 transition_speed = 1.25

@@ -1,11 +1,12 @@
 class_name GDs_CR_Cam_Config extends Resource
 
 @export_category("CAMERAS")
+const test : float = 50;
 @export var bottom_mov_speed: float:
 	set(value):
 		bottom_mov_speed = value * 10
 		emit_changed()
-@export_range (50,120) var bottom_fov: float:
+@export_range (test,120) var bottom_fov: float:
 	set(value):
 		bottom_fov = value
 		emit_changed()

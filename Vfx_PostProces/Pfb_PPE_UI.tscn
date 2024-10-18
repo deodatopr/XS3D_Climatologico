@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cxi2h3f0o5fxk"]
 
-[node name="PPE - UI" type="CanvasLayer"]
+[node name="PPE - Name" type="CanvasLayer"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
