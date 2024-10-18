@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://euqeoxar08s8"
-path="res://.godot/imported/map_flecha.png-cb3f5793cdbeb705d9100123fec92af1.ctex"
+uid="uid://biwg3qggjgv8e"
+path="res://.godot/imported/Map_Demo_Minimap.png-998db589e831f9c815a1bf223d5cb8de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Systems/Compass/map_flecha.png"
-dest_files=["res://.godot/imported/map_flecha.png-cb3f5793cdbeb705d9100123fec92af1.ctex"]
+source_file="res://Systems/Minimap/Map_Demo_Minimap.png"
+dest_files=["res://.godot/imported/Map_Demo_Minimap.png-998db589e831f9c815a1bf223d5cb8de.ctex"]
 
 [params]
 
