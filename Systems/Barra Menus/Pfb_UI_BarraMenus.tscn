@@ -1,6 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnxc3stvbv0gf"]
+[gd_scene load_steps=12 format=3 uid="uid://bnxc3stvbv0gf"]
 
+[ext_resource type="Shader" path="res://Vfx_PostProces/UI/PPE_UI_BlurredBack.gdshader" id="1_8mdf7"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bu15u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ik81r"]
+shader = ExtResource("1_8mdf7")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.1
+shader_parameter/blur = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7cb5l"]
 atlas = ExtResource("1_bu15u")
@@ -43,24 +50,20 @@ offset_top = -80.0
 offset_right = 330.0
 grow_vertical = 0
 
-[node name="Background" type="NinePatchRect" parent="."]
-self_modulate = Color(0, 0, 0, 0.8)
+[node name="Background BLUR" type="NinePatchRect" parent="."]
+material = SubResource("ShaderMaterial_ik81r")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bu15u")
-region_rect = Rect2(474, 40, 30, 30)
-patch_margin_left = 5
+region_rect = Rect2(480, 40, 24, 25)
 patch_margin_top = 5
 patch_margin_right = 5
-patch_margin_bottom = 5
 
-[node name="Frame" type="NinePatchRect" parent="Background"]
+[node name="Frame" type="NinePatchRect" parent="Background BLUR"]
 self_modulate = Color(0.447059, 0.447059, 0.447059, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -69,11 +72,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bu15u")
-region_rect = Rect2(474, 111, 30, 30)
-patch_margin_left = 5
+region_rect = Rect2(480, 111, 24, 23)
 patch_margin_top = 5
 patch_margin_right = 5
-patch_margin_bottom = 5
 
 [node name="DPAD" type="TextureRect" parent="."]
 layout_mode = 1

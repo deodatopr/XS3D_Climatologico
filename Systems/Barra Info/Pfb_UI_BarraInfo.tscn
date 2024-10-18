@@ -1,8 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://hu5k41b7gh1x"]
+[gd_scene load_steps=18 format=3 uid="uid://hu5k41b7gh1x"]
 
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/UI/PPE_UI_BlurredBack.gdshader" id="1_n0q2v"]
 [ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_om8fc"]
 [ext_resource type="Script" path="res://Systems/Sprites/GDs_SpriteAnim.gd" id="3_qdbvn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2g4pr"]
+shader = ExtResource("1_n0q2v")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.1
+shader_parameter/blur = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jcsu"]
 atlas = ExtResource("1_bm6wi")
@@ -65,24 +72,21 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Background" type="NinePatchRect" parent="."]
-self_modulate = Color(0.0666667, 0.0666667, 0.0666667, 1)
+[node name="Background BLUR" type="NinePatchRect" parent="."]
+material = SubResource("ShaderMaterial_2g4pr")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3.0
-offset_bottom = 3.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
-region_rect = Rect2(474, 40, 30, 30)
+region_rect = Rect2(474, 40, 25.1138, 23.6754)
 patch_margin_left = 5
 patch_margin_top = 5
-patch_margin_right = 7
-patch_margin_bottom = 7
 
-[node name="Pattern" type="NinePatchRect" parent="Background"]
+[node name="Pattern" type="NinePatchRect" parent="Background BLUR"]
 self_modulate = Color(0.2, 0.2, 0.2, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -90,31 +94,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 3.0
-offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
-region_rect = Rect2(72, 199, 16, 16)
+region_rect = Rect2(65, 292, 8, 8)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Frame" type="NinePatchRect" parent="Background"]
+[node name="Frame" type="NinePatchRect" parent="Background BLUR"]
 self_modulate = Color(0.448982, 0.448982, 0.448982, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3.0
-offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
-region_rect = Rect2(474, 111, 30, 30)
+region_rect = Rect2(474, 111, 25, 24)
 patch_margin_left = 5
 patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -122,6 +120,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 8.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0

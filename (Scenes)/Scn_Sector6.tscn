@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=12 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
 [ext_resource type="PackedScene" uid="uid://bwf3e5luercrk" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="3_mr5e7"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/UI/PPE_UI_Lens.gdshader" id="4_2pdgi"]
+[ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="5_t8tyr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u3110"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -87,5 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Pfb_UI" parent="." instance=ExtResource("5_t8tyr")]
 
 [editable path="[ CONTENT ]/Msh_Sector_06"]
