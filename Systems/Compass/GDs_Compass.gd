@@ -66,46 +66,46 @@ func _ToggleCompass(visible : bool) -> void:
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	#calculate distance between pivot and mark
-	distance = pivotCam.global_position.distance_to(Vector3(PinPos.global_position.x, 0, PinPos.global_position.z))
-	
-	if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
-		_ToggleCompass(false)
-		_CalculateTopDownPoint(distance)
-	else:
-		_ToggleCompass(true)
-		_CalculateCompassPoints(distance)
+	if canRotate:
+		distance = pivotCam.global_position.distance_to(Vector3(PinPos.global_position.x, 0, PinPos.global_position.z))
+		
+		if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
+			_ToggleCompass(false)
+			_CalculateTopDownPoint(distance)
+		else:
+			_ToggleCompass(true)
+			_CalculateCompassPoints(distance)
 	
 func _CalculateCompassPoints(_distance : float) -> void:
 	_distance = floorf(_distance)
 	distance_text.text = String.num(_distance, 1)
 	
-	if canRotate:
-		#calculate degrees of pivot cam
-		var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
-		var compassPosition = rotationDegrees * (compass.size.x/6)/180
+	#calculate degrees of pivot cam
+	var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
+	var compassPosition = rotationDegrees * (compass.size.x/6)/180
 
-		#check if look to left or right
-		var rotationDir := 1
-		if pivotCam.rotation.y < 0:
-			rotationDir = -1
+	#check if look to left or right
+	var rotationDir := 1
+	if pivotCam.rotation.y < 0:
+		rotationDir = -1
 
-		#update compass direction
-		compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
+	#update compass direction
+	compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
 
-		var pivotCamNormal := pivotCam.global_basis.z
-		pivotCamNormal.y = 0;
-		var MarkNormal := (PinPos.global_position - pivotCam.global_position).normalized()
-		MarkNormal.y = 0
-		var dot := pivotCamNormal.dot(MarkNormal)
-		var degrees = acos(dot/(pivotCamNormal.length() * MarkNormal.length()))
-		degrees = degrees * (180/ PI)
-		var cross := pivotCamNormal.cross(MarkNormal)
-		var offset = ((-degrees * (compass_mask.size.x/2))/180)
+	var pivotCamNormal := pivotCam.global_basis.z
+	pivotCamNormal.y = 0;
+	var MarkNormal := (PinPos.global_position - pivotCam.global_position).normalized()
+	MarkNormal.y = 0
+	var dot := pivotCamNormal.dot(MarkNormal)
+	var degrees = acos(dot/(pivotCamNormal.length() * MarkNormal.length()))
+	degrees = degrees * (180/ PI)
+	var cross := pivotCamNormal.cross(MarkNormal)
+	var offset = ((-degrees * (compass_mask.size.x/2))/180)
+	
+	if cross.y < 0:
+		offset = -offset
 		
-		if cross.y < 0:
-			offset = -offset
-			
-		pin_sitio.position.x = pinSiteInitialXPosition + offset
+	pin_sitio.position.x = pinSiteInitialXPosition + offset
 	
 func _CalculateTopDownPoint(_distance : float) -> void:
 	_distance = floorf(_distance)

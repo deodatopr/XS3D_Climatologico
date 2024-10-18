@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=9 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="1_rup1u"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
-[ext_resource type="Texture2D" uid="uid://dsyl7rya7uyr3" path="res://Systems/Minimap/Map_Grid_Minimap.PNG" id="3_3sypv"]
-[ext_resource type="PackedScene" uid="uid://b7ksllhnb58g" path="res://Systems/Pin/Pfb_Pin_2D.tscn" id="3_m38ta"]
 [ext_resource type="PackedScene" uid="uid://buldaccfdos5u" path="res://Systems/Pin/Pfb_Pin_3D.tscn" id="4_h2xf7"]
+[ext_resource type="PackedScene" uid="uid://bmxqlsgmk1md" path="res://Cont_Models/Sector6/Msh_Sector6.glb" id="5_1tuny"]
 [ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="6_ikisg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
@@ -20,11 +19,6 @@ sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pg2ux"]
-albedo_texture = ExtResource("3_3sypv")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_xhk6t"]
-
 [node name="test_compass" type="Node3D"]
 metadata/_edit_vertical_guides_ = [986.0]
 
@@ -35,32 +29,23 @@ environment = SubResource("Environment_r00s3")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="UI_Compass" parent="." node_paths=PackedStringArray("camManager", "MarkRef") instance=ExtResource("1_rup1u")]
+[node name="UI_Compass" parent="." node_paths=PackedStringArray("camManager", "PinPos") instance=ExtResource("1_rup1u")]
 camManager = NodePath("../Camera_manager")
-MarkRef = NodePath("../Sprite_Pin")
+PinPos = NodePath("../Mesh_Pin")
 minDistance = 20.0
 maxDistance = 60.0
 
 [node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.98594, -28.2872)
-
-[node name="Plane" type="MeshInstance3D" parent="."]
-transform = Transform3D(33.3253, 0, 0, 0, 1, 0, 0, 0, 42.5377, 13.7415, 2.52822, -13.13)
-material_override = SubResource("StandardMaterial3D_pg2ux")
-mesh = SubResource("PlaneMesh_xhk6t")
-skeleton = NodePath("../Camera_manager")
-
-[node name="Sprite_Pin" parent="." instance=ExtResource("3_m38ta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.756, 7.77718, -33.2955)
-siteName = "otro lugar"
-pinColor = Color(0.147922, 0, 1, 1)
-textOffset = Vector2(131.935, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -309.946, 0)
 
 [node name="Mesh_Pin" parent="." instance=ExtResource("4_h2xf7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.47835, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -307.089, 68.2044)
 textOffset = Vector2(52.085, -9.805)
 
-[node name="UI_Minimap" parent="." node_paths=PackedStringArray("cam_Manager", "mark_target") instance=ExtResource("6_ikisg")]
+[node name="UI_Minimap" parent="." node_paths=PackedStringArray("cam_Manager", "map") instance=ExtResource("6_ikisg")]
 cam_Manager = NodePath("../Camera_manager")
 map_Movement_Speed = 0.4
-mark_target = NodePath("../Sprite_Pin")
+map = NodePath("../Msh_Sector6")
+
+[node name="Msh_Sector6" parent="." instance=ExtResource("5_1tuny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -423, 0)
