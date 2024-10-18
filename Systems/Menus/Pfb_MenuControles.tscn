@@ -1,0 +1,1512 @@
+[gd_scene load_steps=19 format=3 uid="uid://8ogd5844tnm4"]
+
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_xwbp0"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_x6xqf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]
+shader = ExtResource("1_xwbp0")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(8, 322, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej2gg"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(473, 429, 31, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu4t7"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(0, 375, 464, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfj12"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(130, 202, 165, 165)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4520s"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(301, 205, 162, 163)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4uqc"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(8, 264, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr55t"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(473, 301, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctu50"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(472, 838, 38, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbndl"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(499, 812, 8, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glfil"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(476, 646, 29, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwpjb"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(470, 813, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4jj7"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(479, 616, 22, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifned"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(8, 264, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f75ov"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(5, 197, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01tll"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(473, 301, 16, 18)
+
+[node name="Menu Controles" type="ColorRect"]
+self_modulate = Color(1, 1, 1, 0.6)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_n3bx0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 119.0
+offset_top = 66.0
+offset_right = -126.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Corner" type="TextureRect" parent="Blur"]
+layout_mode = 1
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 24.0
+offset_bottom = 25.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Corner2" type="TextureRect" parent="Blur"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -44.0
+offset_right = 46.0
+grow_vertical = 0
+rotation = -1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Corner3" type="TextureRect" parent="Blur"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_right = -2.0
+offset_bottom = 44.0
+grow_horizontal = 0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Corner4" type="TextureRect" parent="Blur"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -44.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Top Left Icon" type="NinePatchRect" parent="Blur"]
+self_modulate = Color(1, 1, 1, 0.301961)
+layout_mode = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 112.0
+offset_bottom = 112.0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="Blur/Top Left Icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -30.0
+offset_right = 37.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ej2gg")
+
+[node name="Control" type="Control" parent="Blur"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = 155.0
+offset_right = -336.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control Left" type="TextureRect" parent="Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -465.5
+offset_top = -324.5
+offset_right = -0.5
+offset_bottom = 324.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_cu4t7")
+
+[node name="Control Right" type="TextureRect" parent="Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 464.5
+offset_top = -324.5
+offset_right = 929.5
+offset_bottom = 324.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_cu4t7")
+
+[node name="Pad" type="TextureRect" parent="Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.5
+offset_top = -55.5
+offset_right = -50.5
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_lfj12")
+
+[node name="Joystick" type="TextureRect" parent="Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.5
+offset_top = -204.5
+offset_right = -168.5
+offset_bottom = -41.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_4520s")
+
+[node name="Joystick2" type="TextureRect" parent="Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 54.5
+offset_top = -56.5
+offset_right = 216.5
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_4520s")
+
+[node name="Botones" type="Control" parent="Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 190.5
+offset_top = -185.5
+offset_right = 328.5
+offset_bottom = -55.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="X" type="TextureRect" parent="Blur/Control/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -91.0
+offset_right = 32.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x4uqc")
+
+[node name="Label" type="Label" parent="Blur/Control/Botones/X"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 43
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="A" type="TextureRect" parent="Blur/Control/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -32.0
+offset_right = 90.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x4uqc")
+
+[node name="Label" type="Label" parent="Blur/Control/Botones/A"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 43
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="B" type="TextureRect" parent="Blur/Control/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 25.0
+offset_right = 32.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x4uqc")
+
+[node name="Label" type="Label" parent="Blur/Control/Botones/B"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 43
+text = "B
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Y" type="TextureRect" parent="Blur/Control/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -32.0
+offset_right = -26.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x4uqc")
+
+[node name="Label" type="Label" parent="Blur/Control/Botones/Y"]
+self_modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 43
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Home" type="TextureRect" parent="Blur/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -104.5
+offset_right = 31.0
+offset_bottom = -40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_x4uqc")
+
+[node name="Label" type="TextureRect" parent="Blur/Control/Home"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -14.0
+offset_right = 12.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_pr55t")
+
+[node name="Labels" type="Control" parent="Blur"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Abrir Cerrar Menu" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -297.5
+offset_right = 159.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Abrir Cerrar Menu"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_right = 122.0
+offset_bottom = 31.0
+grow_horizontal = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Abrir Cerrar Menu/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "abrir/cerrar menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Abrir Cerrar Menu"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 41.0
+offset_right = 1.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Subir Bajar" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 264.5
+offset_top = -297.5
+offset_right = 724.5
+offset_bottom = -214.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Subir Bajar"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -425.0
+offset_top = 15.0
+offset_right = -238.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Subir Bajar"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -423.0
+offset_top = 16.0001
+offset_right = -357.145
+offset_bottom = 18.0001
+grow_horizontal = 0
+rotation = 2.00713
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Subir Bajar"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_top = 1.0
+offset_right = -74.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Subir Bajar/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "subir / bajar"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="_" type="Label" parent="Blur/Labels/Subir Bajar"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = -12.0
+offset_right = -24.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Mouse" type="TextureRect" parent="Blur/Labels/Subir Bajar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_top = -12.0
+offset_bottom = 39.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_ctu50")
+
+[node name="Scroll" type="TextureRect" parent="Blur/Labels/Subir Bajar/Mouse"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 20.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_bbndl")
+
+[node name="Camaras" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 282.5
+offset_top = -119.5
+offset_right = 724.5
+offset_bottom = -80.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Camaras"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -433.0
+offset_top = 15.0
+offset_right = -238.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Camaras"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_top = 1.0
+offset_right = -118.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Camaras/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "camaras"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="_" type="Label" parent="Blur/Labels/Camaras"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_top = -12.0
+offset_right = -95.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Tab" type="NinePatchRect" parent="Blur/Labels/Camaras"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -86.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 38.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Scroll" type="TextureRect" parent="Blur/Labels/Camaras/Tab"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 41.0
+offset_bottom = 29.0
+texture = SubResource("AtlasTexture_glfil")
+
+[node name="Cancelar" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 280.5
+offset_top = -59.5
+offset_right = 753.5
+offset_bottom = -20.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Cancelar"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -404.0
+offset_top = 15.0
+offset_right = -238.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Cancelar"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -235.0
+offset_top = 1.0
+offset_right = -115.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Cancelar/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "cancelar"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Aceptar" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 283.5
+offset_top = -2.5
+offset_right = 753.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Aceptar"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -462.0
+offset_top = 15.0
+offset_right = -238.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Aceptar"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -231.0
+offset_top = 1.0
+offset_right = -119.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Aceptar/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Aceptar
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Rotacion" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 281.5
+offset_top = 226.5
+offset_right = 753.5
+offset_bottom = 265.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Rotacion"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -451.0
+offset_top = 15.0
+offset_right = -238.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Rotacion"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -451.15
+offset_top = 17.0
+offset_right = -234.49
+offset_bottom = 19.0
+grow_horizontal = 0
+rotation = -2.44346
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Rotacion"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -235.0
+offset_top = 1.0
+offset_right = -107.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Rotacion/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "rotación"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="_" type="Label" parent="Blur/Labels/Rotacion"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -95.0
+offset_top = -12.0
+offset_right = -55.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Scroll" type="TextureRect" parent="Blur/Labels/Rotacion"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 168.5
+offset_top = -11.0
+offset_right = 187.5
+offset_bottom = 8.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_uwpjb")
+
+[node name="Mouse" type="TextureRect" parent="Blur/Labels/Rotacion"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -69.0
+offset_top = -12.0
+offset_right = -31.0
+offset_bottom = 39.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_ctu50")
+
+[node name="Navegar UI" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -646.5
+offset_top = 226.5
+offset_right = -233.5
+offset_bottom = 265.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Navegar UI"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 19.0
+offset_right = -70.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Navegar UI"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.62
+offset_top = 19.0
+offset_right = 152.38
+offset_bottom = 21.0
+grow_horizontal = 0
+rotation = -0.698132
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Navegar UI"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -15.5
+offset_right = 141.0
+offset_bottom = 15.5
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Navegar UI/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "navegar ui"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Paneo" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -737.5
+offset_top = 81.5
+offset_right = -350.5
+offset_bottom = 120.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Paneo"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 19.0
+offset_right = -70.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Paneo"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.62
+offset_top = 19.0
+offset_right = 152.38
+offset_bottom = 21.0
+grow_horizontal = 0
+rotation = -0.698132
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Paneo"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 162.0
+offset_top = -15.5
+offset_right = 242.0
+offset_bottom = 15.5
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Paneo/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Paneo"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="_" type="Label" parent="Blur/Labels/Paneo"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 138.0
+offset_top = -27.5
+offset_right = 178.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Keys" type="Control" parent="Blur/Labels/Paneo"]
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 40.0
+
+[node name="w" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -84.0
+offset_right = 21.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/w"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="A" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -38.0
+offset_right = -25.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/A"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="S" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -38.0
+offset_right = 21.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/S"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="D" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -38.0
+offset_right = 67.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Acelerar" type="Control" parent="Blur/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -703.5
+offset_top = -302.5
+offset_right = -350.5
+offset_bottom = -263.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 19.0
+offset_right = 7.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 7.54999
+offset_top = 19.0
+offset_right = 100.225
+offset_bottom = 21.0
+grow_horizontal = 0
+rotation = 0.698132
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 124.0
+offset_top = -15.5
+offset_right = 204.0
+offset_bottom = 15.5
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Blur/Labels/Acelerar/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Paneo"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="_" type="Label" parent="Blur/Labels/Acelerar"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -27.5
+offset_right = 140.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="W" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -24.5
+offset_right = 89.0
+offset_bottom = 24.5
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="TextureRect" parent="Blur/Labels/Acelerar/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -10.5
+offset_right = 11.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_g4jj7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = 257.0
+offset_right = 156.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -27.0
+offset_right = 54.0
+offset_bottom = 27.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ifned")
+
+[node name="Frame" type="TextureRect" parent="Control/TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_f75ov")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/TextureRect/Frame"]
+self_modulate = Color(0.654902, 0.309804, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -29.0
+offset_right = 29.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_f75ov")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_01tll")
+
+[node name="Frame" type="NinePatchRect" parent="Control"]
+self_modulate = Color(0.654902, 0.309804, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(485, 257, 23, 35)
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Right Patch" type="NinePatchRect" parent="Control/Frame"]
+self_modulate = Color(0.654902, 0.309804, 1, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -17.0
+offset_right = -2.0
+offset_bottom = 19.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(482, 40, 22, 30)
+patch_margin_top = 5
+patch_margin_right = 10
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Control/Frame/Right Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/Frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "cerrar menu"
+vertical_alignment = 1
+uppercase = true
