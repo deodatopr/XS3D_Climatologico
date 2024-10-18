@@ -1,35 +1,36 @@
 class_name GDs_CR_Cam_Config extends Resource
 
 @export_category("CAMERAS")
-@export var top_fov: float:
+const test : float = 50;
+@export var bottom_mov_speed: float:
 	set(value):
-		top_fov = value
+		bottom_mov_speed = value * 10
 		emit_changed()
-@export var bottom_fov: float:
+@export_range (test,120) var bottom_fov: float:
 	set(value):
 		bottom_fov = value
 		emit_changed()
-@export var top_height: float:
-	set(value):
-		top_height = value
-		emit_changed()
-@export_range (1,200) var bottom_height: float:
+@export_range (1,300) var bottom_height: float:
 	set(value):
 		bottom_height = value
 		emit_changed()
-@export_range (1,200) var bottom_focus: float:
+@export_range (1,300) var bottom_focus: float:
 	set(value):
 		bottom_focus = value
 		emit_changed()
 
 @export_category("MOVEMENTS")
+@export var top_height: float:
+	set(value):
+		top_height = value
+		emit_changed()
+@export var top_fov: float:
+	set(value):
+		top_fov = value
+		emit_changed()
 @export var transition_speed: float:
 	set(value):
 		transition_speed = value
-		emit_changed()
-@export var bottom_mov_speed: float:
-	set(value):
-		bottom_mov_speed = value * 10
 		emit_changed()
 @export var top_mov_speed: float:
 	set(value):

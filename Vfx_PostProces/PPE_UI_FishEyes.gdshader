@@ -2,7 +2,7 @@
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform float effect_amount : hint_range(-0.5, 2.0) = 1.0;
+uniform float lensDistortion : hint_range(-0.5, 2.0) = 0.0;
 
 void fragment() {
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
@@ -14,7 +14,7 @@ void fragment() {
 	vec2 m = vec2(0.5, 0.5 / prop);						//center coords
 	vec2 d = p - m; 									//vector from center to current fragment
 	float r = sqrt(dot(d, d)); 							// distance of pixel from center
-	float power = effect_amount;
+	float power = lensDistortion+0.05;
 	float bind; 										//radius of 1:1 effect
 	
 	//stick to borders

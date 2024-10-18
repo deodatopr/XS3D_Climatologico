@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d0e7qg1abor5s"]
 
-[ext_resource type="Shader" uid="uid://dsohjru3rpcse" path="res://Vfx_Shaders/Sha_MapSurface.tres" id="1_ryeav"]
+[ext_resource type="Shader" uid="uid://dsohjru3rpcse" path="res://Vfx_Shaders/Sha_Terrain.tres" id="1_ryeav"]
 [ext_resource type="Texture2D" uid="uid://5craw3dt6tx" path="res://Cont_Models/Sector6/Assets/Map_Sec6_8.jpg" id="2_twiwf"]
 
 [resource]

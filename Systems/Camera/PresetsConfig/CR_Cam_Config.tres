@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource("1_m3peb")
-top_fov = 30.0
-bottom_fov = 120.0
-top_height = 300.0
-bottom_height = 200.0
-bottom_focus = 31.228
-transition_speed = 1.25
 bottom_mov_speed = 6.0
+bottom_fov = 0.0
+bottom_height = 300.0
+bottom_focus = 57.772
+top_height = 0.0
+top_fov = 0.0
+transition_speed = 1.25
 top_mov_speed = 22.0
 boundings_X_min = -100.0
 boundings_X_max = 100.0

@@ -4,7 +4,7 @@
 flip_faces = true
 size = Vector2(2, 2)
 
-[node name="PPE - Mesh" type="MeshInstance3D"]
+[node name="PPE Vol - Name" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997055, 0)
 cast_shadow = 0
 extra_cull_margin = 16384.0

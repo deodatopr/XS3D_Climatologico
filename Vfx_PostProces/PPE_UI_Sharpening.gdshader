@@ -1,13 +1,10 @@
-// Adapted from YouTube tutorial:
-// Ben Cloward - Blur and Sharpen Filter - Shader Graph Basics - Episode 51
-
+// SHARPENING PIXLES
 shader_type canvas_item;
-render_mode unshaded;
 
+// Parameters
 uniform sampler2D screen_tex : hint_screen_texture, filter_nearest, repeat_disable;
-//Blur Sharp
-uniform float blur_sharp: hint_range(-5.0, 5.0, 0.1) = 0.0;
 uniform float pixel: hint_range(1.0, 5.0, 1.0) = 1.0;
+uniform float sharpening: hint_range(0.0, 5.0, 0.01) = 0.0;
 
 void fragment() {
 	// Screen Coordinates
@@ -25,6 +22,6 @@ void fragment() {
 	vec3 sample = ((N + S + NE + SE + NW + SW) / 6.0) * 0.7;
 	vec3 blur_sample = clamp((screen * 0.3) + sample, 0.0, 1.0);
 	//Final COLOR
-	vec3 mix_blur_sharp = mix(screen, blur_sample, blur_sharp);
-	COLOR.rgb = mix_blur_sharp ;
+	vec3 mix_sharpening = mix(screen, blur_sample, 1.0-sharpening);
+	COLOR.rgb = mix_sharpening ;
 }

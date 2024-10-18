@@ -16,7 +16,7 @@ texture_filter = 4
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_disabled;
 
 uniform sampler2D Albedo_Map : source_color, filter_linear_mipmap;
 
@@ -44,6 +44,7 @@ void fragment() {
 
 }
 "
+modes/diffuse = 3
 modes/specular = 2
 nodes/fragment/2/node = SubResource("VisualShaderNodeFloatConstant_wce54")
 nodes/fragment/2/position = Vector2(120, 200)
