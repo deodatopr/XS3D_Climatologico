@@ -107,7 +107,7 @@ func _Panning(_delta:float):
 	mov_isMoving = mov_velocity.length() > 0
 	
 func _Rotation_Hor(_delta : float):
-	if mov_isPressingMove:
+	if mov_isPressingMove and mov_velocity.length() >= camAereaConfig.movement_speed:
 		if Input.is_action_pressed("3DMove_RotHor_-"):
 			cam.rotate_y(1 * camAereaConfig.rotHor_speed * _delta)
 		if Input.is_action_pressed("3DMove_RotHor_+"):
@@ -115,13 +115,13 @@ func _Rotation_Hor(_delta : float):
 			
 func _Rotation_Vert(_delta : float):
 		if Input.is_action_pressed("3DMove_RotVert_+"):
-			cam.rotate_x(-1 * camAereaConfig.rotHor_speed * _delta)
+			cam.global_rotation.x += -1 * camAereaConfig.rotHor_speed * _delta
 		if Input.is_action_pressed("3DMove_RotVert_-"):
-			cam.rotate_x(1 * camAereaConfig.rotHor_speed * _delta)
+			cam.global_rotation.x += 1 * camAereaConfig.rotHor_speed * _delta
 		
 		var minRotVer : float = deg_to_rad(-80)
 		var maxRotVert : float = deg_to_rad(-45) 
-		cam.rotation.x = clampf(cam.rotation.x,minRotVer, maxRotVert) 
+		cam.global_rotation.x = clampf(cam.rotation.x,minRotVer, maxRotVert) 
 
 func _Fov(_delta : float):
 	if Input.is_action_pressed("3DMove_Fov_+") or Input.is_action_just_pressed("3DMove_Fov_+"):
