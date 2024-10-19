@@ -119,9 +119,10 @@ func _Rotation_Vert(_delta : float):
 		if Input.is_action_pressed("3DMove_RotVert_-"):
 			cam.global_rotation.x += 1 * camAereaConfig.rotHor_speed * _delta
 		
-		var minRotVer : float = deg_to_rad(-80)
-		var maxRotVert : float = deg_to_rad(-45) 
-		cam.global_rotation.x = clampf(cam.rotation.x,minRotVer, maxRotVert) 
+		if Input.is_action_pressed("3DMove_RotVert_+") or  Input.is_action_pressed("3DMove_RotVert_-"):
+			var minRotVer : float = deg_to_rad(-80)
+			var maxRotVert : float = deg_to_rad(-45) 
+			cam.global_rotation.x = clampf(cam.rotation.x,minRotVer, maxRotVert) 
 
 func _Fov(_delta : float):
 	if Input.is_action_pressed("3DMove_Fov_+") or Input.is_action_just_pressed("3DMove_Fov_+"):
