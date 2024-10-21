@@ -108,3 +108,26 @@
 # - Misma curva
 
 #Colores de sitios
+
+# Armado flujo completo (orquestador, datos,etc)
+# Cambio entre sitios
+# Detalles navMesh:
+# hay dos meshes el plano y otro arriba
+# Modo camara 1 (dron):
+#	Como lo que tenemos con parámetros y jugar con FOV, Focus, height
+# Modo cámara 2 (modo libre):
+#	Como camara libre del godot
+# Sonidos Dron 
+# Random  noise clouds shadows
+# Ver el sistema de audio del godot
+
+#Camara dron
+# Fov gatillos (80 - 120)
+# Height min 30
+# Fov tansition / min - max y lerp
+# Rotation en su posicion camara
+# tansition / min - max  igual con aim
+# rotar rango de abajo y al otro lado (limitado a que nunca se )
+
+# Rot vertical limitado
+# 

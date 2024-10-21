@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=7 format=3 uid="uid://cib67etx4mqj8"]
 
-[ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="1_rup1u"]
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_e7jn5"]
-[ext_resource type="PackedScene" uid="uid://buldaccfdos5u" path="res://Systems/Pin/Pfb_Pin_3D.tscn" id="4_h2xf7"]
-[ext_resource type="PackedScene" uid="uid://bmxqlsgmk1md" path="res://Cont_Models/Sector6/Msh_Sector6.glb" id="5_1tuny"]
-[ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="6_ikisg"]
+[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="5_okpvp"]
+[ext_resource type="Script" path="res://Systems/Camera/Free Cam/GDs_FreeCam.gd" id="5_t4qbx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +16,10 @@ sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="Curve" id="Curve_i6mua"]
+_data = [Vector2(0, 0), 0.0, 3.44273, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="test_compass" type="Node3D"]
 metadata/_edit_vertical_guides_ = [986.0]
 
@@ -29,23 +30,22 @@ environment = SubResource("Environment_r00s3")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="UI_Compass" parent="." node_paths=PackedStringArray("camManager", "PinPos") instance=ExtResource("1_rup1u")]
-camManager = NodePath("../Camera_manager")
-PinPos = NodePath("../Mesh_Pin")
-minDistance = 20.0
-maxDistance = 60.0
+[node name="Msh_Sector_06" parent="." instance=ExtResource("5_okpvp")]
 
-[node name="Camera_manager" parent="." instance=ExtResource("2_e7jn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -309.946, 0)
+[node name="Free_Cam" type="Node3D" parent="." node_paths=PackedStringArray("cam", "pivot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 205.165, 0)
+script = ExtResource("5_t4qbx")
+cam = NodePath("Pivot/Camera3D")
+pivot = NodePath("Pivot")
+mov_currentBoost = 20.0
+mov_speed_boost = 50.0
+mov_speed = 100.0
+mov_max_acceleration = 200.0
+rot_speed = 10.0
+rot_hor_speed = 10.0
+return_camera_speed = 5.0
+curveSpeed = SubResource("Curve_i6mua")
 
-[node name="Mesh_Pin" parent="." instance=ExtResource("4_h2xf7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -307.089, 68.2044)
-textOffset = Vector2(52.085, -9.805)
+[node name="Pivot" type="Node3D" parent="Free_Cam"]
 
-[node name="UI_Minimap" parent="." node_paths=PackedStringArray("cam_Manager", "map") instance=ExtResource("6_ikisg")]
-cam_Manager = NodePath("../Camera_manager")
-map_Movement_Speed = 0.4
-map = NodePath("../Msh_Sector6")
-
-[node name="Msh_Sector6" parent="." instance=ExtResource("5_1tuny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -423, 0)
+[node name="Camera3D" type="Camera3D" parent="Free_Cam/Pivot"]

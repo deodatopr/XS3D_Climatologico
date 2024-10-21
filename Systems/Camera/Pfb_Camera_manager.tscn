@@ -1,56 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=5 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
-[ext_resource type="Resource" uid="uid://rwehnhdeuw80" path="res://Systems/Camera/PresetsConfig/CR_Cam_Config.tres" id="2_5ql7k"]
-[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Movement.gd" id="2_s21o3"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Aerea_Movement.gd" id="2_s21o3"]
 [ext_resource type="Material" uid="uid://rohx5pwh5cc2" path="res://Systems/Camera/Mat_Fx_CamRot.tres" id="6_anvks"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xpf4w"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ox8l2"]
-size = Vector3(0.731384, 0.125671, 1.08496)
-
-[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("movement", "pivot_cam", "cam")]
+[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("camAereaMovement", "pivot_cam", "cam")]
+transform = Transform3D(0.447075, 0, 0, 0, 0.447075, 0, 0, 0, 0.447075, 0, 0, 0)
 script = ExtResource("1_vxe6d")
-movement = NodePath("Movement")
-pivot_cam = NodePath("pivot_cam")
-cam = NodePath("pivot_cam/cam")
-cr_cam_config = ExtResource("2_5ql7k")
+camAereaMovement = NodePath("Aerea_Movement")
+pivot_cam = NodePath("pivot_ground")
+cam = NodePath("pivot_ground/cam")
+camAerea_height_initial = 500.0
+camAerea_tilt_initial = 80.0
+camAerea_movement_speed = 5.0
+camAerea_rotHor_speed = 2.0
+camAerea_fov_initital = 80.0
+camAerea_fov_min = 70.0
+camAerea_fov_max = 90.0
 
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("raycast", "mshMarkRot", "triggerRaycast")]
+[node name="Aerea_Movement" type="Node" parent="." node_paths=PackedStringArray("mshMarkRot")]
 script = ExtResource("2_s21o3")
-raycast = NodePath("../pivot_cam/cam/RayCast3D")
-mshMarkRot = NodePath("../pivot_cam/Msh_MarkRot")
-triggerRaycast = NodePath("../pivot_cam/trigger_raycast")
+mshMarkRot = NodePath("../pivot_ground/Msh_MarkRot")
 
-[node name="pivot_cam" type="Node3D" parent="."]
+[node name="pivot_ground" type="Node3D" parent="."]
 transform = Transform3D(1, 3.44374e-05, 0.000808501, -3.34931e-05, 0.999999, -0.00118043, -0.00080854, 0.0011804, 0.999999, 0, 0, 0)
 
-[node name="Msh_MarkRot" type="MeshInstance3D" parent="pivot_cam"]
+[node name="Msh_MarkRot" type="MeshInstance3D" parent="pivot_ground"]
 process_mode = 4
-transform = Transform3D(2.48344, -2.04636e-12, 0, 2.95586e-12, 2.48344, 2.32831e-10, 2.32831e-10, -2.32831e-10, 2.48344, 0, 0, 0)
-visible = false
+transform = Transform3D(13.7666, 4.63842e-11, 3.72529e-09, 3.63798e-12, 13.7666, -5.58794e-09, 2.79397e-09, 1.86265e-09, 13.7666, 0, 0, 0)
 mesh = SubResource("PlaneMesh_xpf4w")
 skeleton = NodePath("../cam")
 surface_material_override/0 = ExtResource("6_anvks")
 
-[node name="trigger_raycast" type="Area3D" parent="pivot_cam"]
-transform = Transform3D(1, 2.59775e-12, -9.17274e-11, -2.59775e-12, 1, -1.83455e-10, 9.17274e-11, 1.83455e-10, 1, 0, 0, 0)
-input_ray_pickable = false
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pivot_cam/trigger_raycast"]
-transform = Transform3D(10.572, -1.99634e-09, -6.33299e-08, 8.29459e-10, 10.5721, -1.00955e-06, -2.32831e-08, -2.61702e-07, 10.5721, -0.0503838, 0.0138244, -0.458494)
-shape = SubResource("BoxShape3D_ox8l2")
-
-[node name="cam" type="Camera3D" parent="pivot_cam"]
-transform = Transform3D(-1, 5.71308e-08, -6.40284e-08, 4.66116e-12, 0.819152, 0.573577, 8.65548e-08, 0.573577, -0.819152, 0.00799997, 15, -21.536)
+[node name="cam" type="Camera3D" parent="pivot_ground"]
+transform = Transform3D(-2.23676, -1.76369e-07, 9.35979e-08, -6.82121e-13, 0.819777, 2.08112, -1.95345e-07, 2.08112, -0.819776, 0.15, 499.782, -500)
 fov = 35.0
-
-[node name="RayCast3D" type="RayCast3D" parent="pivot_cam/cam"]
-process_mode = 4
-transform = Transform3D(-1, -6.18172e-08, 6.18172e-08, 0, 0.707107, 0.707107, -8.74228e-08, 0.707107, -0.707107, 0, 0, 0)
-target_position = Vector3(0, -10, 0)
-collide_with_areas = true
-collide_with_bodies = false
-debug_shape_custom_color = Color(1, 0.0966405, 0.0966405, 1)
