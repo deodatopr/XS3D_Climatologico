@@ -4,17 +4,16 @@ extends Node
 @export var cam : Node3D
 @export var pivot : Node3D
 
-@export_group("Properties")
-@export var mov_currentBoost : float
-@export var mov_speed_boost : float
-@export var mov_speed : float
-@export var mov_max_acceleration : float
-@export var rot_speed : float
-@export var rot_hor_speed : float
-@export var max_pitch : float = 90.0
-@export var min_pitch : float = -90.0
-@export var return_camera_speed : float = 1
-@export var curveSpeed : Curve
+@export_group("Camera Controllers")
+@export var speedAccDecc : float = 200
+@export var speed : float = 200
+@export_range(1, 4) var speedTurbo : float = 2
+@export var rotHorSpeed : float = 1.5
+@export var rotVertSpeed : float = 5
+@export_range(0, 90) var rotVertMax : float = 90.0
+@export_range(-90, 0) var rotVertMin : float = -90.0
+@export var rotVertReturn : float = 1
+@export var rotCurveAcc : Curve
 
 var mov_deceleration : float
 var mov_velocity : Vector3 = Vector3.ZERO
@@ -26,6 +25,7 @@ var is_start_to_move : bool = false
 var last_cam_rotation : Vector3
 var last_pivot_rotation : Vector3
 var return_cam_time_elpased : float = 0
+var last_pitch : float = 0
 
 const RETURN_CAMERA_ADJUST : float = 0.1
 
@@ -34,7 +34,7 @@ func Initialize(_cam : Camera3D, _pivot : Node3D):
 	pivot = _pivot
 	
 func _ready():
-	mov_deceleration = mov_max_acceleration
+	mov_deceleration = speedAccDecc
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -62,24 +62,26 @@ func _movement(_delta:float):
 		inputDir += pivot.basis.x
 		
 	if Input.is_action_pressed("3DMove_Up"):
-		print("Up")
-		pivot.global_position += Vector3.UP * mov_speed * _delta
+		inputDir += pivot.basis.y
 
 	if Input.is_action_pressed("3DMove_Down"):
-		pivot.global_position += Vector3.DOWN * mov_speed * _delta
+		inputDir -= pivot.basis.y
 
 	if inputDir.length() > 0:
-		mov_currentBoost = mov_speed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
-		mov_velocity += (-inputDir * mov_speed * _delta) + mov_velocity.normalized() * mov_currentBoost
+		var FinalSpeedTurbo = speedTurbo
+		FinalSpeedTurbo = speedTurbo if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
+		mov_velocity += (-inputDir * speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
 		
-		if mov_velocity.length() > mov_max_acceleration:
-					mov_velocity = mov_velocity.limit_length(mov_max_acceleration + mov_currentBoost)
+		if mov_velocity.length() > speedAccDecc:
+			mov_velocity = mov_velocity.limit_length(speedAccDecc + (FinalSpeedTurbo * 10))
+		print(FinalSpeedTurbo)
 	else:
 		if mov_velocity.length() > 0:
 			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
 			if mov_velocity.length() < 0.1:
 				mov_velocity = Vector3.ZERO
-		
+	
+	print(mov_velocity)
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
 
@@ -90,26 +92,33 @@ func _rotation(_delta:float):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 		if not is_start_to_move:
-			last_cam_rotation = cam.rotation_degrees
-			last_pivot_rotation = pivot.rotation_degrees
 			return_cam_time_elpased = 0
 			is_start_to_move = true
+			pitch = last_pitch
 			
 		if MouseMotion != null:
-			print(MouseMotion.relative.x)
-			yaw -= MouseMotion.relative.x * rot_hor_speed  * _delta
-			pitch -= MouseMotion.relative.y * rot_speed * _delta
+			yaw -= MouseMotion.relative.x * rotHorSpeed  * _delta
+			pitch -= MouseMotion.relative.y * rotVertSpeed  * _delta
+			last_pitch = pitch
 
-			pitch = clampf(pitch, min_pitch, max_pitch)
+			pitch = clampf(pitch, rotVertMin, rotVertMax)
 
 			pivot.rotation_degrees.y = yaw
 			cam.rotation_degrees.x = pitch
 
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, last_cam_rotation.x, return_cam_time_elpased / (return_camera_speed / RETURN_CAMERA_ADJUST))
-		pivot.rotation_degrees.y = lerpf(pivot.rotation_degrees.y, last_pivot_rotation.y, return_cam_time_elpased / (return_camera_speed / RETURN_CAMERA_ADJUST))
-		return_cam_time_elpased += _delta
-		yaw = 0
-		pitch = 0
-		is_start_to_move = false
+		if abs(cam.rotation_degrees.x) > .1:
+			cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (rotVertReturn / RETURN_CAMERA_ADJUST))
+			return_cam_time_elpased += _delta
+			last_pitch = cam.rotation_degrees.x
+			is_start_to_move = false
+		else:
+			cam.rotation_degrees.x = 0
+			pitch = 0
+			last_pitch = 0
+		
+	if Input.is_action_pressed("3DMove_Right"):
+		pass
+		#yaw -= MouseMotion.relative.x * rotHorSpeed * _delta
+		#pitch -= MouseMotion.relative.y * rotVertSpeed * _delta
