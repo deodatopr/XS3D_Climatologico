@@ -16,6 +16,10 @@ run/main_scene="res://(Scenes)/Scn_Sector6.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 ENUMS="*res://Systems/#GLOBALS/GDs_ENUMS.gd"
@@ -51,8 +55,15 @@ folder_colors={
 "res://#Resources/#AndroidKeystores/": "red",
 "res://#Wip/": "red",
 "res://(Scenes)/": "gray",
+<<<<<<< Updated upstream
 "res://Content/": "green",
 "res://PPE/": "purple",
+=======
+"res://Cont_Models/": "green",
+"res://Cont_Shared/": "green",
+"res://Cont_Sounds/": "pink",
+"res://Cont_UI/": "yellow",
+>>>>>>> Stashed changes
 "res://SYSTEMS/z_EndPoint Old/": "gray",
 "res://SYSTEMS/z_Graficadora/": "gray",
 "res://SYSTEMS/z_OclusionByHeight/": "gray",

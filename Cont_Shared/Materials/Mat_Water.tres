@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ck6keiqe7mklq"]
+
+[ext_resource type="Shader" uid="uid://bwotc7qnvnl5t" path="res://Vfx_Shaders/Water/Sha_Water.tres" id="1_yd7vu"]
+[ext_resource type="Texture2D" uid="uid://b2picf87gw7ha" path="res://Vfx_Shaders/Water/Map_Waves_N.jpg" id="2_40j5m"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yd7vu")
+shader_parameter/ColorWaterSurface = Color(0.317421, 0.318969, 0.156688, 1)
+shader_parameter/ColorWaterDepth = Color(0.152422, 0.165093, 0.063727, 1)
+shader_parameter/WaterDepth = 3.0
+shader_parameter/Roughness = 0.2
+shader_parameter/WaveSize = 0.6
+shader_parameter/Speed = 0.3
+shader_parameter/Intensity = 1.0
+shader_parameter/Texture2DParameter = ExtResource("2_40j5m")

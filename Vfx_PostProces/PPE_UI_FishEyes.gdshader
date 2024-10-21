@@ -8,7 +8,6 @@ void fragment() {
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
 	vec4 fragCoord = FRAGCOORD;
 
-	
 	vec2 p = fragCoord.xy / iResolution.x;				//normalized coords 
 	float prop = iResolution.x / iResolution.y;			//screen proroptio
 	vec2 m = vec2(0.5, 0.5 / prop);						//center coords
