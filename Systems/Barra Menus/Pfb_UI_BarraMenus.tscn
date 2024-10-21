@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnxc3stvbv0gf"]
+[gd_scene load_steps=14 format=3 uid="uid://bnxc3stvbv0gf"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_8mdf7"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bu15u"]
+[ext_resource type="Script" path="res://Systems/Barra Menus/GDs_BarraMenus.gd" id="1_ie0yi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ik81r"]
 shader = ExtResource("1_8mdf7")
@@ -51,7 +52,7 @@ region = Rect2(476, 392, 26, 26)
 atlas = ExtResource("1_bu15u")
 region = Rect2(473, 429, 31, 25)
 
-[node name="Barra menus" type="Control"]
+[node name="Barra menus" type="Control" node_paths=PackedStringArray("BtnSitios", "BtnMapa", "BtnConfig", "BtnGuia")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -60,6 +61,11 @@ offset_top = -80.0
 offset_right = 330.0
 grow_vertical = 0
 mouse_filter = 2
+script = ExtResource("1_ie0yi")
+BtnSitios = NodePath("HBoxContainer/Sitios/Icon/Button - Sitios")
+BtnMapa = NodePath("HBoxContainer/Mapa/Icon/Button - Mapa")
+BtnConfig = NodePath("HBoxContainer/Configuracion/Icon/Button - Config")
+BtnGuia = NodePath("HBoxContainer/Guia/Icon/Button - Guia")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_ik81r")
