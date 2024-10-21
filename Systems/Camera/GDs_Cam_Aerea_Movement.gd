@@ -95,25 +95,15 @@ func _Panning(_delta:float):
 	
 	#Acceleration
 	if mov_isPressingMove:
-		if not curvAccelerationReset:
-			currentCurvValue = 0
-			curvAccelerationReset = true
-			curvDecelerationReset = false
-		
 		var currentSpeed : float = (aerialConfig.movement_speed * mov_speed_boost) if Input.is_action_pressed('3DMove_SpeedBoost') else aerialConfig.movement_speed
 		mov_velocity = inputDir * currentSpeed * _delta
 
 		#Limit acceleration
-		var curvePoint : float = _GetCurvePoint(curAcceleration,.05,_delta)
-		mov_velocity = mov_velocity.limit_length((mov_max_acceleration + currentSpeed) * curvePoint)
+		var curvePoint : float = _GetCurvePoint(curAcceleration,.5,_delta)
+		mov_velocity = mov_velocity.limit_length(mov_velocity.length() * curvePoint)
 	elif not mov_isPressingMove and mov_isMoving:
 		#Deceleration
-		if not curvDecelerationReset:
-			currentCurvValue = 0
-			curvAccelerationReset = false
-			curvDecelerationReset = true
-		
-		var curvePoint : float = _GetCurvePoint(curDeceleration,.05,_delta,true)
+		var curvePoint : float = _GetCurvePoint(curDeceleration,.35,_delta,true)
 		mov_velocity = mov_velocity.limit_length(mov_velocity.length() * curvePoint)
 
 	#Apply
@@ -175,14 +165,14 @@ func _ShowMshMarkPivot(_show : bool):
 			UTILITIES.TurnOffObject(mshMarkRot)
 
 func _GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: float, _reverse : bool = false) -> float:
-	currentCurvValue += _speedTransition * _delta
-	currentCurvValue = clampf(currentCurvValue,0,1)
-	curvIsRunning = currentCurvValue <= 1
-	
 	if _reverse:
-		return 1 - _curveToEvaluate.sample(currentCurvValue)
+		currentCurvValue -= _speedTransition * _delta
 	else:
-		return _curveToEvaluate.sample(currentCurvValue)
+		currentCurvValue += _speedTransition * _delta
+		
+	currentCurvValue = clampf(currentCurvValue,0,1)
+	
+	return _curveToEvaluate.sample(currentCurvValue)
 		
 
 func _ResetVelocities():
