@@ -1,5 +1,6 @@
-class_name GDs_Utilities
-extends Node
+class_name GDs_Utilities extends Node
+
+var currentCurvValue : float
 
 func TurnOffObject(object):
 	object.hide()
@@ -8,6 +9,15 @@ func TurnOffObject(object):
 func TurnOnObject(object):
 	object.show()
 	object.process_mode = Node.PROCESS_MODE_INHERIT
+	
+func _GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: float, _reverse : bool = false) -> float:
+	if _reverse:
+		currentCurvValue -= _speedTransition * _delta
+	else:
+		currentCurvValue += _speedTransition * _delta
+	
+	currentCurvValue = clampf(currentCurvValue,0,1)
+	return _curveToEvaluate.sample(currentCurvValue) 
 
 #region Formato strings
 func FormatNivel(nivel:float)->String:

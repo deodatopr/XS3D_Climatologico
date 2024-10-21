@@ -77,7 +77,7 @@ func _physics_process(delta):
 	elif (not mov_isMoving and not rotHor_isRotating and mov_velocity.length() == 0) and signalUpdateWasEmitted:
 		SIGNALS.OnCameraUpdate.emit(false)
 		signalUpdateWasEmitted = false
-
+var curr01 : float
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
 	
@@ -99,11 +99,11 @@ func _Panning(_delta:float):
 		mov_velocity = inputDir * currentSpeed * _delta
 
 		#Limit acceleration
-		var curvePoint : float = _GetCurvePoint(curAcceleration,.5,_delta)
+		var curvePoint : float = UTILITIES._GetCurvePoint(curAcceleration,.5,_delta)
 		mov_velocity = mov_velocity.limit_length(mov_velocity.length() * curvePoint)
 	elif not mov_isPressingMove and mov_isMoving:
 		#Deceleration
-		var curvePoint : float = _GetCurvePoint(curDeceleration,.35,_delta,true)
+		var curvePoint : float = UTILITIES._GetCurvePoint(curDeceleration,.4,_delta,true)
 		mov_velocity = mov_velocity.limit_length(mov_velocity.length() * curvePoint)
 
 	#Apply
@@ -164,16 +164,6 @@ func _ShowMshMarkPivot(_show : bool):
 			await tweenMshVfxRotCam.finished
 			UTILITIES.TurnOffObject(mshMarkRot)
 
-func _GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: float, _reverse : bool = false) -> float:
-	if _reverse:
-		currentCurvValue -= _speedTransition * _delta
-	else:
-		currentCurvValue += _speedTransition * _delta
-		
-	currentCurvValue = clampf(currentCurvValue,0,1)
-	
-	return _curveToEvaluate.sample(currentCurvValue)
-		
 
 func _ResetVelocities():
 	mov_velocity = Vector3.ZERO
