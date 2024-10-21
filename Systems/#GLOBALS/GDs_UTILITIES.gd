@@ -10,7 +10,7 @@ func TurnOnObject(object):
 	object.show()
 	object.process_mode = Node.PROCESS_MODE_INHERIT
 	
-func _GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: float, _reverse : bool = false) -> float:
+func GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: float, _reverse : bool = false) -> float:
 	if _reverse:
 		currentCurvValue -= _speedTransition * _delta
 	else:

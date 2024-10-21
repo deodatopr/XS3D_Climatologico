@@ -99,11 +99,11 @@ func _Panning(_delta:float):
 		mov_velocity = inputDir * currentSpeed * _delta
 
 		#Limit acceleration
-		var curvePoint : float = UTILITIES._GetCurvePoint(curAcceleration,.5,_delta)
+		var curvePoint : float = UTILITIES.GetCurvePoint(curAcceleration,.5,_delta)
 		mov_velocity = mov_velocity.limit_length(mov_velocity.length() * curvePoint)
 	elif not mov_isPressingMove and mov_isMoving:
 		#Deceleration
-		var curvePoint : float = UTILITIES._GetCurvePoint(curDeceleration,.4,_delta,true)
+		var curvePoint : float = UTILITIES.GetCurvePoint(curDeceleration,.4,_delta,true)
 		mov_velocity = mov_velocity.limit_length(mov_velocity.length() * curvePoint)
 
 	#Apply
