@@ -1,10 +1,12 @@
 class_name GDs_AerialConfig extends Node 
 
-var height_initial : float
-var tilt_initial : float
-
+var height : float
+var rotation : float
+var distPivotsRot : float
 var movement_speed: float
 var rotHor_speed : float
+var rotVert_min : float
+var rotVert_max : float
 
 var curvAcceleration : Curve
 var curvDeceleration : Curve

@@ -14,6 +14,7 @@ class_name GDs_Cam_Manager extends Node
 @export var aerial_rotation_speed : float = .3
 @export var aerial_curveAccel : Curve
 @export var aerial_curveDecel : Curve
+@export var aerial_distPivotsRot : float = 50
 
 @export_subgroup("Camera")
 @export var aerial_camRotAngle : float = 50
@@ -50,14 +51,17 @@ func Initialize(_modeToIntializeCam : int):
 	aerialMovement.Initialize(cam,pivot_cam,aerialConfig)
 	
 func GetCamAereoValues():
-	aerialConfig.height_initial = aerial_height
-	aerialConfig.tilt_initial = -aerial_camRotAngle
+	aerialConfig.height = aerial_height
+	aerialConfig.rotation = -aerial_camRotAngle
+	aerialConfig.distPivotsRot = aerial_distPivotsRot
 	
 	aerialConfig.curvAcceleration = aerial_curveAccel
 	aerialConfig.curvDeceleration = aerial_curveDecel
 	
 	aerialConfig.movement_speed = aerial_flying_speed
 	aerialConfig.rotHor_speed = aerial_rotation_speed
+	aerialConfig.rotVert_min = aerial_camRot_min
+	aerialConfig.rotVert_max = aerial_camRot_max
 	
 	aerialConfig.fov_initial = aerial_fov
 	aerialConfig.fov_min = aerial_fov_min

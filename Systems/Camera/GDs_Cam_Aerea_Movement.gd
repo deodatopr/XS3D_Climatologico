@@ -1,6 +1,8 @@
 class_name GDs_AerialMovement extends Node
 
 @export var mshMarkRot : Node3D
+@export var pivot_rotLeft : Node3D
+@export var pivot_rotRight : Node3D
 
 @onready var mat_fx_camRot : StandardMaterial3D = preload("uid://rohx5pwh5cc2")
 
@@ -45,10 +47,14 @@ func Initialize(_cam : Camera3D, _pivot_cam : Node3D, _aerialConfig : GDs_Aerial
 	UpdateCamConfig(_aerialConfig)
 	
 	#Set initial values
-	cam.position.y = aerialConfig.height_initial
-	cam.rotation_degrees.x = aerialConfig.tilt_initial
+	cam.global_position.y = aerialConfig.height
+	cam.rotation_degrees.x = aerialConfig.rotation
 	cam.fov = aerialConfig.fov_initial
 	currentFov = aerialConfig.fov_initial
+	
+	var rightVector : Vector3 = pivot_cam.basis.x.normalized()
+	pivot_rotLeft.position = rightVector * aerialConfig.distPivotsRot
+	pivot_rotRight.position = -rightVector * aerialConfig.distPivotsRot
 	
 func UpdateCamConfig(_aerialConfig : GDs_AerialConfig):
 	aerialConfig = _aerialConfig
@@ -77,15 +83,15 @@ func _physics_process(delta):
 	elif (not mov_isMoving and not rotHor_isRotating and mov_velocity.length() == 0) and signalUpdateWasEmitted:
 		SIGNALS.OnCameraUpdate.emit(false)
 		signalUpdateWasEmitted = false
-var curr01 : float
+
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
 	
-	if Input.is_action_pressed("3DMove_Forward"):
-		inputDir += -cam.basis.z
+	if Input.is_action_pressed("3DMove_Forward") or rotHor_isRotating:
+		inputDir += -cam.global_basis.z
 	
 	if Input.is_action_pressed("3DMove_Backward"):
-		inputDir += cam.basis.z
+		inputDir += cam.global_basis.z
 		
 	inputDir.y = 0
 	
@@ -114,11 +120,23 @@ func _Panning(_delta:float):
 	mov_isMoving = mov_velocity.length() > 0
 	
 func _Rotation_Hor(_delta : float):
-	if mov_isPressingMove and mov_velocity.length() >= 0:
-		if Input.is_action_pressed("3DMove_RotHor_-"):
-			cam.rotate_y(1 * aerialConfig.rotHor_speed * _delta)
-		if Input.is_action_pressed("3DMove_RotHor_+"):
-			cam.rotate_y(-1 * aerialConfig.rotHor_speed * _delta)
+	var pivotToRotate : Node3D
+	
+	if Input.is_action_pressed("3DMove_RotHor_-"):
+		pivotToRotate = _ParentToRotate(-1)
+		var curvePoint : float = UTILITIES.GetCurvePoint(curAcceleration,.5,_delta)
+		var rotationOffset : float = 1 * aerialConfig.rotHor_speed * _delta
+		pivotToRotate.rotate_y(rotationOffset * curvePoint)
+	if Input.is_action_pressed("3DMove_RotHor_+"):
+		pivotToRotate = _ParentToRotate(1)
+		var curvePoint : float = UTILITIES.GetCurvePoint(curAcceleration,.5,_delta)
+		var rotationOffset : float = -1 * aerialConfig.rotHor_speed * _delta
+		pivotToRotate.rotate_y(rotationOffset * curvePoint)
+	
+	rotHor_isRotating = Input.is_action_pressed("3DMove_RotHor_-") or Input.is_action_pressed("3DMove_RotHor_+")
+	if not rotHor_isRotating:
+		_ParentToRotate(0)
+	
 			
 func _Rotation_Vert(_delta : float):
 		if Input.is_action_pressed("3DMove_RotVert_+"):
@@ -164,6 +182,16 @@ func _ShowMshMarkPivot(_show : bool):
 			await tweenMshVfxRotCam.finished
 			UTILITIES.TurnOffObject(mshMarkRot)
 
+func _ParentToRotate(_rotatingDir : int) -> Node3D:
+	if _rotatingDir == 1:
+		cam.reparent(pivot_rotRight)
+		return pivot_rotRight
+	elif _rotatingDir == -1:
+		cam.reparent(pivot_rotLeft)
+		return pivot_rotLeft
+	else:
+		cam.reparent(pivot_cam)
+		return null
 
 func _ResetVelocities():
 	mov_velocity = Vector3.ZERO
