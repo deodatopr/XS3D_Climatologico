@@ -130,4 +130,6 @@
 # rotar rango de abajo y al otro lado (limitado a que nunca se )
 
 # Rot vertical limitado
-# 
+
+# Dron
+# Modificar DOF cuando tengas un minimo

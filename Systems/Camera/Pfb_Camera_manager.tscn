@@ -1,24 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=6 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Aerea_Movement.gd" id="2_s21o3"]
 [ext_resource type="Material" uid="uid://rohx5pwh5cc2" path="res://Systems/Camera/Mat_Fx_CamRot.tres" id="6_anvks"]
 
+[sub_resource type="Curve" id="Curve_gqkmu"]
+_data = [Vector2(0, 0), 0.0, 2.72, 0, 0, Vector2(1, 1), -0.279026, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_xpf4w"]
 
-[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("camAereaMovement", "pivot_cam", "cam")]
+[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("aerialMovement", "pivot_cam", "cam")]
 transform = Transform3D(0.447075, 0, 0, 0, 0.447075, 0, 0, 0, 0.447075, 0, 0, 0)
 script = ExtResource("1_vxe6d")
-camAereaMovement = NodePath("Aerea_Movement")
+aerialMovement = NodePath("Aerea_Movement")
 pivot_cam = NodePath("pivot_ground")
 cam = NodePath("pivot_ground/cam")
-camAerea_height_initial = 500.0
-camAerea_tilt_initial = 80.0
-camAerea_movement_speed = 5.0
-camAerea_rotHor_speed = 2.0
-camAerea_fov_initital = 80.0
-camAerea_fov_min = 70.0
-camAerea_fov_max = 90.0
+aerial_curveDecel = SubResource("Curve_gqkmu")
 
 [node name="Aerea_Movement" type="Node" parent="." node_paths=PackedStringArray("mshMarkRot")]
 script = ExtResource("2_s21o3")

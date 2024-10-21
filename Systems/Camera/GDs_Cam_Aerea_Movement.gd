@@ -1,9 +1,8 @@
-class_name GDs_CamAereaMovement extends Node
+class_name GDs_AerialMovement extends Node
 
 @export var mshMarkRot : Node3D
 
 @onready var mat_fx_camRot : StandardMaterial3D = preload("uid://rohx5pwh5cc2")
-@export var mng : GDs_Cam_Manager
 
 var cam : Camera3D
 var pivot_cam : Node3D
@@ -24,37 +23,45 @@ var mov_isPressingMove : bool
 var rotHor_isRotating : bool
 
 # Misc
+var curvIsRunning : bool
 var canMoveCam : bool
 var signalUpdateWasEmitted : bool
-var camAereaConfig : GDs_CamAereaConfig
+var aerialConfig : GDs_AerialConfig
 var tweenMovCamera : Tween
 var tweenMshVfxRotCam : Tween
+var curAcceleration : Curve
+var curDeceleration : Curve
+
+var currentCurvValue : float
+var curvAccelerationReset : bool
+var curvDecelerationReset : bool
 
 const ROTHOR_THRESHOLD : float = 0.8
 
-func Initialize(_cam : Camera3D, _pivot_cam : Node3D, _camAereaConfig : GDs_CamAereaConfig):
+func Initialize(_cam : Camera3D, _pivot_cam : Node3D, _aerialConfig : GDs_AerialConfig):
 	cam = _cam
 	pivot_cam = _pivot_cam
-	camAereaConfig = _camAereaConfig
+	
+	UpdateCamConfig(_aerialConfig)
 	
 	#Set initial values
-	cam.position.y = camAereaConfig.height_initial
-	cam.rotation_degrees.x = camAereaConfig.tilt_initial
-	cam.fov = camAereaConfig.fov_initial
-	currentFov = camAereaConfig.fov_initial	
+	cam.position.y = aerialConfig.height_initial
+	cam.rotation_degrees.x = aerialConfig.tilt_initial
+	cam.fov = aerialConfig.fov_initial
+	currentFov = aerialConfig.fov_initial
 	
-	UpdateCamConfig(_camAereaConfig)
-	
-func UpdateCamConfig(_camAereaConfig : GDs_CamAereaConfig):
-	camAereaConfig = _camAereaConfig
+func UpdateCamConfig(_aerialConfig : GDs_AerialConfig):
+	aerialConfig = _aerialConfig
 	
 	#Movement
-	mov_max_acceleration = camAereaConfig.movement_speed
-	mov_deceleration = camAereaConfig.movement_speed * 1.3
+	mov_max_acceleration = aerialConfig.movement_speed
+	mov_deceleration = aerialConfig.movement_speed * 1.3
 	mov_speed_boost = 5
 	
+	curAcceleration = aerialConfig.curvAcceleration
+	curDeceleration = aerialConfig.curvDeceleration
 	
-func _physics_process(delta):	
+func _physics_process(delta):
 	_Panning(delta)
 	
 	_Fov(delta)
@@ -81,23 +88,33 @@ func _Panning(_delta:float):
 		inputDir += cam.basis.z
 		
 	inputDir.y = 0
+	
 	#Save global input to use in other systems (minimap)
-	APPSTATE.camInputPan = inputDir	
+	APPSTATE.camInputPan = inputDir
 	mov_isPressingMove = inputDir.length() > 0
 	
 	#Acceleration
-	if inputDir.length() > 0:
-		var currentSpeed : float = (camAereaConfig.movement_speed * mov_speed_boost) if Input.is_action_pressed('3DMove_SpeedBoost') else camAereaConfig.movement_speed
-		mov_velocity += inputDir * currentSpeed * _delta
+	if mov_isPressingMove:
+		if not curvAccelerationReset:
+			currentCurvValue = 0
+			curvAccelerationReset = true
+			curvDecelerationReset = false
 		
-		#Limit mov_speed
-		mov_velocity = mov_velocity.limit_length(mov_max_acceleration + currentSpeed)
-	else:
+		var currentSpeed : float = (aerialConfig.movement_speed * mov_speed_boost) if Input.is_action_pressed('3DMove_SpeedBoost') else aerialConfig.movement_speed
+		mov_velocity = inputDir * currentSpeed * _delta
+
+		#Limit acceleration
+		var curvePoint : float = _GetCurvePoint(curAcceleration,.05,_delta)
+		mov_velocity = mov_velocity.limit_length((mov_max_acceleration + currentSpeed) * curvePoint)
+	elif not mov_isPressingMove and mov_isMoving:
 		#Deceleration
-		if mov_velocity.length() > 0:
-			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
-			if mov_velocity.length() < 0.1:
-				mov_velocity = Vector3.ZERO
+		if not curvDecelerationReset:
+			currentCurvValue = 0
+			curvAccelerationReset = false
+			curvDecelerationReset = true
+		
+		var curvePoint : float = _GetCurvePoint(curDeceleration,.05,_delta,true)
+		mov_velocity = mov_velocity.limit_length(mov_velocity.length() * curvePoint)
 
 	#Apply
 	var targetPosition : Vector3 = pivot_cam.global_position
@@ -107,17 +124,17 @@ func _Panning(_delta:float):
 	mov_isMoving = mov_velocity.length() > 0
 	
 func _Rotation_Hor(_delta : float):
-	if mov_isPressingMove and mov_velocity.length() >= camAereaConfig.movement_speed:
+	if mov_isPressingMove and mov_velocity.length() >= 0:
 		if Input.is_action_pressed("3DMove_RotHor_-"):
-			cam.rotate_y(1 * camAereaConfig.rotHor_speed * _delta)
+			cam.rotate_y(1 * aerialConfig.rotHor_speed * _delta)
 		if Input.is_action_pressed("3DMove_RotHor_+"):
-			cam.rotate_y(-1 * camAereaConfig.rotHor_speed * _delta)
+			cam.rotate_y(-1 * aerialConfig.rotHor_speed * _delta)
 			
 func _Rotation_Vert(_delta : float):
 		if Input.is_action_pressed("3DMove_RotVert_+"):
-			cam.global_rotation.x += -1 * camAereaConfig.rotHor_speed * _delta
+			cam.global_rotation.x += -1 * aerialConfig.rotHor_speed * _delta
 		if Input.is_action_pressed("3DMove_RotVert_-"):
-			cam.global_rotation.x += 1 * camAereaConfig.rotHor_speed * _delta
+			cam.global_rotation.x += 1 * aerialConfig.rotHor_speed * _delta
 		
 		if Input.is_action_pressed("3DMove_RotVert_+") or  Input.is_action_pressed("3DMove_RotVert_-"):
 			var minRotVer : float = deg_to_rad(-80)
@@ -127,12 +144,12 @@ func _Rotation_Vert(_delta : float):
 func _Fov(_delta : float):
 	if Input.is_action_pressed("3DMove_Fov_+") or Input.is_action_just_pressed("3DMove_Fov_+"):
 		currentFov += 50 * _delta
-		currentFov = clampf(currentFov, camAereaConfig.fov_min, camAereaConfig.fov_max)
+		currentFov = clampf(currentFov, aerialConfig.fov_min, aerialConfig.fov_max)
 		cam.fov = currentFov
-		cam.fov = clampf(currentFov, camAereaConfig.fov_min, camAereaConfig.fov_max)
+		cam.fov = clampf(currentFov, aerialConfig.fov_min, aerialConfig.fov_max)
 	if Input.is_action_pressed("3DMove_Fov_-") or Input.is_action_just_pressed("3DMove_Fov_-"):
 		currentFov -= 50 * _delta
-		currentFov = clampf(currentFov, camAereaConfig.fov_min, camAereaConfig.fov_max)
+		currentFov = clampf(currentFov, aerialConfig.fov_min, aerialConfig.fov_max)
 		cam.fov = currentFov
 
 func _ShowMshMarkPivot(_show : bool):
@@ -156,6 +173,17 @@ func _ShowMshMarkPivot(_show : bool):
 			
 			await tweenMshVfxRotCam.finished
 			UTILITIES.TurnOffObject(mshMarkRot)
+
+func _GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: float, _reverse : bool = false) -> float:
+	currentCurvValue += _speedTransition * _delta
+	currentCurvValue = clampf(currentCurvValue,0,1)
+	curvIsRunning = currentCurvValue <= 1
 	
+	if _reverse:
+		return 1 - _curveToEvaluate.sample(currentCurvValue)
+	else:
+		return _curveToEvaluate.sample(currentCurvValue)
+		
+
 func _ResetVelocities():
 	mov_velocity = Vector3.ZERO

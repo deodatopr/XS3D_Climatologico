@@ -1,28 +1,35 @@
 class_name GDs_Cam_Manager extends Node
 
-@export_group("Refs")
-@export var camAereaMovement : GDs_CamAereaMovement
+@export_group("SCENE REFERENCES")
+@export var aerialMovement : GDs_AerialMovement
 @export var pivot_cam : Node3D
 @export var cam : Node3D
 
-@export_group("Cam Dron Config")
-@export var updateValuesInRuntime : bool
+@export_group("AERIAL CAMERA")
+@export var valuesInRuntime : bool
 
-@export var camAerea_height_initial : float
-@export var camAerea_tilt_initial : float
-@export var camAerea_movement_speed: float
-@export var camAerea_rotHor_speed : float
+@export_subgroup("Movements")
+@export var aerial_height : float = 800
+@export var aerial_flying_speed: float = 50
+@export var aerial_rotation_speed : float = .3
+@export var aerial_curveAccel : Curve
+@export var aerial_curveDecel : Curve
 
-#FOV
-@export_subgroup("FOV")
-@export var camAerea_fov_initital : float
-@export var camAerea_fov_min : float
-@export var camAerea_fov_max : float
-@export_range(0,1) var camAerea_fov_transition : float
+@export_subgroup("Camera")
+@export var aerial_camRotAngle : float = 50
+@export var aerial_camRot_min: float
+@export var aerial_camRot_max : float
+@export var aerial_camRot_Speed : float = 50
 
+@export var aerial_fov : float = 100
+@export var aerial_fov_min : float = 90
+@export var aerial_fov_max : float = 110
+@export_range(0,1) var aerial_fov_transition : float
 
+@export_group("DRON CAMERA")
+@export var test : float
 
-var camAereaConfig : GDs_CamAereaConfig = GDs_CamAereaConfig.new()
+var aerialConfig : GDs_AerialConfig = GDs_AerialConfig.new()
 
 signal OnCamChangeMode
 
@@ -30,27 +37,31 @@ func _ready():
 	Initialize(ENUMS.Cam_Mode.Bottom)
 	
 func _process(_delta : float):
-	if updateValuesInRuntime:
-		cam.global_position.y = camAerea_height_initial
-		cam.fov = lerpf(camAerea_fov_min,camAerea_fov_max, camAerea_fov_transition)
+	if valuesInRuntime:
+		cam.global_position.y = aerial_height
+		cam.fov = lerpf(aerial_fov_min,aerial_fov_max, aerial_fov_transition)
 		
 		GetCamAereoValues()
-		camAereaMovement.UpdateCamConfig(camAereaConfig)
+		aerialMovement.UpdateCamConfig(aerialConfig)
 
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
 	GetCamAereoValues()
-	camAereaMovement.Initialize(cam,pivot_cam,camAereaConfig)
+	aerialMovement.Initialize(cam,pivot_cam,aerialConfig)
 	
 func GetCamAereoValues():
-	camAereaConfig.movement_speed = camAerea_movement_speed
-	camAereaConfig.rotHor_speed = camAerea_rotHor_speed
+	aerialConfig.height_initial = aerial_height
+	aerialConfig.tilt_initial = -aerial_camRotAngle
 	
-	camAereaConfig.fov_initial = camAerea_fov_initital
-	camAereaConfig.fov_min = camAerea_fov_min
-	camAereaConfig.fov_max = camAerea_fov_max
-	camAereaConfig.fov_transition = camAerea_fov_transition
+	aerialConfig.curvAcceleration = aerial_curveAccel
+	aerialConfig.curvDeceleration = aerial_curveDecel
 	
-	camAereaConfig.height_initial = camAerea_height_initial
-	camAereaConfig.tilt_initial = -camAerea_tilt_initial
+	aerialConfig.movement_speed = aerial_flying_speed
+	aerialConfig.rotHor_speed = aerial_rotation_speed
+	
+	aerialConfig.fov_initial = aerial_fov
+	aerialConfig.fov_min = aerial_fov_min
+	aerialConfig.fov_max = aerial_fov_max
+	aerialConfig.fov_transition = aerial_fov_transition
+	
 	
