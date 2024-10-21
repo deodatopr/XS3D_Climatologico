@@ -1,23 +1,29 @@
 extends Node
-
+@export_group("Refs Externas")
+@export var menuSitios: Control
+@export var menuGuia: Control
 @export_group("Botones")
 @export var BtnSitios:Button   #0
 @export var BtnMapa:Button     #1
 @export var BtnConfig:Button   #2
 @export var BtnGuia:Button     #3
 
-var lastOneOnFocus: int
+var lastOneOnFocus:=0
 var isFocusingMenu:= false
 func _ready():
-	pass # Replace with function body.
+	BtnSitios.focus_entered.connect(OnBtnSitiosFocus)
+	BtnSitios.focus_exited.connect(OnBtnSitiosFocusExited)
+	BtnGuia.focus_entered.connect(OnBtnGuiaFocus)
+	BtnGuia.focus_exited.connect(OnBtnGuiaFocusExited)
 
 func _input(event):
 	if event.is_action_pressed("UIFocusMenus"):
-		isFocusingMenu != isFocusingMenu
+		isFocusingMenu = !isFocusingMenu
 		if isFocusingMenu:
 			FocusLastMenu()
 		else:
 			StopFocusOnMenus()
+	
 
 func FocusLastMenu():
 	match lastOneOnFocus:
@@ -31,6 +37,7 @@ func FocusLastMenu():
 			BtnGuia.grab_focus()
 
 func StopFocusOnMenus():
+	GetCurrentFocus()
 	BtnSitios.release_focus()
 	BtnMapa.release_focus()
 	BtnConfig.release_focus()
@@ -45,3 +52,15 @@ func GetCurrentFocus():
 		lastOneOnFocus = 2
 	if BtnGuia.has_focus():
 		lastOneOnFocus = 3
+
+func OnBtnSitiosFocus():
+	menuSitios.show()
+
+func OnBtnSitiosFocusExited():
+	menuSitios.hide()
+
+func OnBtnGuiaFocus():
+	menuGuia.show()
+
+func OnBtnGuiaFocusExited():
+	menuGuia.hide()

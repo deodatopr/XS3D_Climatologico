@@ -13,14 +13,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Menu Controles" parent="." instance=ExtResource("1_pql5o")]
+[node name="Menu Guia" parent="." instance=ExtResource("1_pql5o")]
+visible = false
 layout_mode = 1
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
 layout_mode = 1
 
-[node name="Barra menus" parent="." instance=ExtResource("2_j5wup")]
+[node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuGuia") instance=ExtResource("2_j5wup")]
 layout_mode = 1
+menuSitios = NodePath("../Menu Sitios")
+menuGuia = NodePath("../Menu Guia")
 
 [node name="Menu Sitios" parent="." instance=ExtResource("3_g57u8")]
 visible = false
