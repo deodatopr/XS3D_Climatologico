@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfgpbu7le1hia"]
+[gd_scene load_steps=18 format=3 uid="uid://bfgpbu7le1hia"]
 
+[ext_resource type="Script" path="res://Systems/Menus/Perfiles/GDs_Perf_Sitio.gd" id="1_8nspj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_gkrbn"]
 [ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_5qgwa"]
 
@@ -55,12 +56,16 @@ region = Rect2(0, 121, 40, 40)
 atlas = ExtResource("2_5qgwa")
 region = Rect2(160, 163, 36, 34)
 
-[node name="Estacion" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvcfw"]
+
+[node name="Estacion" type="Control" node_paths=PackedStringArray("button")]
 custom_minimum_size = Vector2(400, 91)
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_8nspj")
+button = NodePath("Button")
 
 [node name="Frame" type="NinePatchRect" parent="."]
 self_modulate = Color(0.113725, 0.411765, 1, 1)
@@ -747,3 +752,12 @@ theme_override_font_sizes/font_size = 8
 text = "NE 70km/hr"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vvcfw")

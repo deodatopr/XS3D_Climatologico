@@ -1,3 +1,4 @@
+class_name GDs_BarraMenus
 extends Node
 @export_group("Refs Externas")
 @export var menuSitios: Control
@@ -12,9 +13,12 @@ var lastOneOnFocus:=0
 var isFocusingMenu:= false
 func _ready():
 	BtnSitios.focus_entered.connect(OnBtnSitiosFocus)
-	BtnSitios.focus_exited.connect(OnBtnSitiosFocusExited)
 	BtnGuia.focus_entered.connect(OnBtnGuiaFocus)
 	BtnGuia.focus_exited.connect(OnBtnGuiaFocusExited)
+	BtnMapa.focus_entered.connect(OnBtnMapaFocus)
+	BtnMapa.focus_exited.connect(OnBtnMapaFocusExited)
+	BtnConfig.focus_entered.connect(OnBtnConfigFocus)
+	BtnConfig.focus_exited.connect(OnBtnConfigFocusExited)
 
 func _input(event):
 	if event.is_action_pressed("UIFocusMenus"):
@@ -39,6 +43,9 @@ func FocusLastMenu():
 func StopFocusOnMenus():
 	GetCurrentFocus()
 	BtnSitios.release_focus()
+	BtnSitios.button_pressed = false
+	menuSitios.hide()
+	
 	BtnMapa.release_focus()
 	BtnConfig.release_focus()
 	BtnGuia.release_focus()
@@ -55,12 +62,28 @@ func GetCurrentFocus():
 
 func OnBtnSitiosFocus():
 	menuSitios.show()
+	BtnSitios.button_pressed = true
 
-func OnBtnSitiosFocusExited():
+
+func OnBtnMapaFocus():
 	menuSitios.hide()
+	BtnSitios.button_pressed = false
+	
+	pass
+
+func OnBtnMapaFocusExited():
+	pass
+
+func OnBtnConfigFocus():
+	pass
+
+func OnBtnConfigFocusExited():
+	pass
 
 func OnBtnGuiaFocus():
 	menuGuia.show()
+	menuSitios.hide()
+	BtnSitios.button_pressed = false
 
 func OnBtnGuiaFocusExited():
 	menuGuia.hide()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqmfo0633oxfm"]
+[gd_scene load_steps=8 format=3 uid="uid://cqmfo0633oxfm"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_3wx1s"]
+[ext_resource type="Script" path="res://Systems/Menus/Perfiles/GDs_MenuPerfiles.gd" id="1_rsnj0"]
 [ext_resource type="PackedScene" uid="uid://bfgpbu7le1hia" path="res://Systems/Sitio/Pfb_SitioItem.tscn" id="3_birqo"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_crh64"]
 
@@ -18,7 +19,7 @@ region = Rect2(371, 4, 79, 80)
 atlas = ExtResource("8_crh64")
 region = Rect2(8, 264, 54, 54)
 
-[node name="Menu Sitios" type="Control"]
+[node name="Menu Sitios" type="Control" node_paths=PackedStringArray("sitios")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -27,6 +28,8 @@ offset_top = -932.0
 offset_right = 415.0
 offset_bottom = -117.0
 grow_vertical = 0
+script = ExtResource("1_rsnj0")
+sitios = [NodePath("NinePatchRect/VBoxContainer/Estacion"), NodePath("NinePatchRect/VBoxContainer/Estacion2"), NodePath("NinePatchRect/VBoxContainer/Estacion3"), NodePath("NinePatchRect/VBoxContainer/Estacion4"), NodePath("NinePatchRect/VBoxContainer/Estacion5"), NodePath("NinePatchRect/VBoxContainer/Estacion6"), NodePath("NinePatchRect/VBoxContainer/Estacion7"), NodePath("NinePatchRect/VBoxContainer/Estacion8")]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_0qgbh")

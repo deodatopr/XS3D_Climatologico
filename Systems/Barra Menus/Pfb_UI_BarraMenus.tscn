@@ -183,7 +183,9 @@ grow_horizontal = 2
 grow_vertical = 0
 focus_neighbor_left = NodePath("../../../Guia/Icon/Button - Guia")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
+toggle_mode = true
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/Sitios/Icon/Button - Sitios"]
 layout_mode = 1
