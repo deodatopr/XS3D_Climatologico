@@ -76,7 +76,6 @@ shader_parameter/lensDistortion = 0.0
 aerial_rotation_speed = 0.2
 aerial_curveAccel = ExtResource("2_ukc4e")
 aerial_curveDecel = ExtResource("3_45i4v")
-aerial_distPivotsRot = 15.0
 aerial_camRotAngle = 75.0
 aerial_camRot_Speed = 0.3
 

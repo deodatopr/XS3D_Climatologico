@@ -14,7 +14,7 @@ class_name GDs_Cam_Manager extends Node
 @export var aerial_rotation_speed : float = 20
 @export var aerial_curveAccel : Curve
 @export var aerial_curveDecel : Curve
-@export var aerial_distPivotsRot : float = 50
+@export var aerial_movRot_speed : float = 15
 
 @export_subgroup("Camera")
 @export var aerial_camRotAngle : float = 70

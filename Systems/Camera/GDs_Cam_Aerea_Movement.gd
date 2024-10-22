@@ -140,13 +140,13 @@ func _Rotation_Hor(_delta : float):
 			var axisValue : float = abs(axisLeftHor)
 			var curvePoint : float = UTILITIES.GetCurvePoint(curvAccl, 1, _delta)
 			cam.rotate_y(-camMng.aerial_rotation_speed * _delta * curvePoint * axisValue)
-			rotHor_velocity = forward * camMng.aerial_flying_speed * camMng.aerial_distPivotsRot * _delta * curvePoint * axisValue
+			rotHor_velocity = forward * camMng.aerial_flying_speed * camMng.aerial_movRot_speed * _delta * curvePoint * axisValue
 			rotHor_velocity.y = 0
 		if axisLeftHor < 0:
 			var axisValue : float = abs(axisLeftHor)
 			var curvePoint : float = UTILITIES.GetCurvePoint(curvAccl, 1, _delta)
 			cam.rotate_y(camMng.aerial_rotation_speed * _delta * curvePoint * axisValue)
-			rotHor_velocity = forward * camMng.aerial_flying_speed * camMng.aerial_distPivotsRot * _delta * curvePoint * axisValue
+			rotHor_velocity = forward * camMng.aerial_flying_speed * camMng.aerial_movRot_speed * _delta * curvePoint * axisValue
 			rotHor_velocity.y = 0
 	else:
 		if rotHor_velocity.length() > 0:
