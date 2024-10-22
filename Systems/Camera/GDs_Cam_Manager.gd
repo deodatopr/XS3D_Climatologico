@@ -9,22 +9,19 @@ class_name GDs_Cam_Manager extends Node
 @export var valuesInRuntime : bool
 
 @export_subgroup("Movements")
-@export var aerial_height : float = 300
-@export var aerial_flying_speed: float = 20
-@export var aerial_rotation_speed : float = 20
+@export var aerial_height : float = 600
+@export var aerial_move: float = 2
+@export_range(1,5) var aerial_boost: float = 3
 @export var aerial_curveAccel : Curve
 @export var aerial_curveDecel : Curve
-@export var aerial_movRot_speed : float = 15
 
 @export_subgroup("Camera")
-@export var aerial_camRotAngle : float = 70
-@export var aerial_camRot_min: float = 45
-@export var aerial_camRot_max : float = 80
-@export var aerial_camRot_Speed : float = 20
+@export var aerial_camRot_speed : float = .07
 
-@export var aerial_fov : float = 100
-@export var aerial_fov_min : float = 90
-@export var aerial_fov_max : float = 110
+# FOV speed
+# Fov EL INICIAL ES EL MINIMO Y solo un max
+@export_range(30,130) var aerial_zoom_in : float = 30
+@export var aerial_zoom_out : float = 130
 
 @export_group("DRON CAMERA")
 @export var test : float

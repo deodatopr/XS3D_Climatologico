@@ -25,9 +25,8 @@ pivot_cam = NodePath("pivot_ground")
 cam = NodePath("pivot_ground/cam")
 aerial_curveDecel = SubResource("Curve_gqkmu")
 
-[node name="Aerea_Movement" type="Node" parent="." node_paths=PackedStringArray("mshMarkRot")]
+[node name="Aerea_Movement" type="Node" parent="."]
 script = ExtResource("2_s21o3")
-mshMarkRot = NodePath("../pivot_ground/Msh_MarkRot")
 
 [node name="pivot_ground" type="Node3D" parent="."]
 
@@ -40,3 +39,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8khyu")
 [node name="cam" type="Camera3D" parent="pivot_ground"]
 transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 499.782, -500)
 fov = 35.0
+
+[node name="pivot_rot" type="Node3D" parent="pivot_ground"]
+transform = Transform3D(0.663326, 0, 0.748331, 0, 1, 0, -0.748331, 0, 0.663326, 0, 0, 0)

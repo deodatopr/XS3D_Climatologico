@@ -121,15 +121,26 @@
 # Random  noise clouds shadows
 # Ver el sistema de audio del godot
 
-#Camara dron
-# Fov gatillos (80 - 120)
-# Height min 30
-# Fov tansition / min - max y lerp
-# Rotation en su posicion camara
-# tansition / min - max  igual con aim
-# rotar rango de abajo y al otro lado (limitado a que nunca se )
 
 # Rot vertical limitado
 
 # Dron
 # Modificar DOF cuando tengas un minimo
+
+
+#Track de punto, al acercarte salgan unos puntos que indiquen donde está la estación
+
+#Tomar screenshots
+
+#Cam arriba
+# - Fish eye
+# - DOF color rect apagar
+# - carreteras sin transp
+
+#Cambio modo
+# - Cortina
+# - Glich
+
+#Cam abajo
+# - Cierta altura de acuerdo a navMesh prender DOF
+# - carreteras con transp
