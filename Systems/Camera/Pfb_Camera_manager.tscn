@@ -1,11 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=7 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Aerea_Movement.gd" id="2_s21o3"]
-[ext_resource type="ArrayMesh" uid="uid://bqll6nstu2t4y" path="res://addons/3DGizmos/Msh_Line.obj" id="4_lfxrq"]
-[ext_resource type="Shader" path="res://addons/3DGizmos/Gizmo_Sha.gdshader" id="5_4bpse"]
-[ext_resource type="Material" uid="uid://rohx5pwh5cc2" path="res://Systems/Camera/Mat_Fx_CamRot.tres" id="6_anvks"]
-[ext_resource type="Script" path="res://addons/3DGizmos/Node_Line.gd" id="6_au62n"]
+[ext_resource type="Texture2D" uid="uid://dfufhjgae0mue" path="res://Systems/Camera/Map_Fx_CamRot.png" id="3_3lbjk"]
 
 [sub_resource type="Curve" id="Curve_gqkmu"]
 _data = [Vector2(0, 0), 0.0, 2.72, 0, 0, Vector2(1, 1), -0.279026, 0.0, 0, 0]
@@ -13,20 +10,15 @@ point_count = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xpf4w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhj3l"]
-render_priority = 0
-shader = ExtResource("5_4bpse")
-shader_parameter/basecolor = Color(1, 0, 0.929376, 1)
-shader_parameter/Wireframe = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmsru"]
-render_priority = 0
-shader = ExtResource("5_4bpse")
-shader_parameter/basecolor = Color(1, 0, 0.929376, 1)
-shader_parameter/Wireframe = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8khyu"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+disable_ambient_light = true
+albedo_texture = ExtResource("3_3lbjk")
+disable_receive_shadows = true
 
 [node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("aerialMovement", "pivot_cam", "cam")]
-transform = Transform3D(0.447075, 0, 0, 0, 0.447075, 0, 0, 0, 0.447075, 0, 0, 0)
 script = ExtResource("1_vxe6d")
 aerialMovement = NodePath("Aerea_Movement")
 pivot_cam = NodePath("pivot_ground")
@@ -40,46 +32,19 @@ pivot_rotLeft = NodePath("../pivot_ground/pivot_rotLeft")
 pivot_rotRight = NodePath("../pivot_ground/pivot_rotRight")
 
 [node name="pivot_ground" type="Node3D" parent="."]
-transform = Transform3D(1, 3.44374e-05, 0.000808501, -3.34931e-05, 0.999999, -0.00118043, -0.00080854, 0.0011804, 0.999999, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Msh_MarkRot" type="MeshInstance3D" parent="pivot_ground"]
-process_mode = 4
-transform = Transform3D(13.7666, 4.63842e-11, 3.72529e-09, 3.63798e-12, 13.7666, -5.58794e-09, 2.79397e-09, 1.86265e-09, 13.7666, 0, 0, 0)
+transform = Transform3D(54.2059, 1.82637e-10, 1.46683e-08, 1.43245e-11, 54.2059, -2.20025e-08, 1.10012e-08, 7.33417e-09, 54.2059, 0, 0, 0)
 mesh = SubResource("PlaneMesh_xpf4w")
 skeleton = NodePath("../cam")
-surface_material_override/0 = ExtResource("6_anvks")
-
-[node name="cam" type="Camera3D" parent="pivot_ground"]
-transform = Transform3D(-2.23676, -1.76369e-07, 9.35979e-08, -6.82121e-13, 0.819777, 2.08112, -1.95345e-07, 2.08112, -0.819776, 0.15, 499.782, -500)
-fov = 35.0
+surface_material_override/0 = SubResource("StandardMaterial3D_8khyu")
 
 [node name="pivot_rotLeft" type="Node3D" parent="pivot_ground"]
-transform = Transform3D(0.999999, -3.3483e-05, -0.000808541, 3.44475e-05, 1, 0.0011804, 0.000808499, -0.00118043, 0.999999, 0, 0, 0)
-
-[node name="Gizmo Line" type="MeshInstance3D" parent="pivot_ground/pivot_rotLeft"]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 84.145, 0, -10, -3.67809e-06, 0, 0, 0)
-cast_shadow = 0
-gi_mode = 0
-mesh = ExtResource("4_lfxrq")
-surface_material_override/0 = SubResource("ShaderMaterial_dhj3l")
-script = ExtResource("6_au62n")
-GizmoWireframe = true
-GizmoBaseColor = Color(1, 0, 0.929376, 1)
-Size = 10.0
-Length = 84.145
 
 [node name="pivot_rotRight" type="Node3D" parent="pivot_ground"]
-transform = Transform3D(0.999999, -3.3483e-05, -0.000808541, 3.44475e-05, 1, 0.0011804, 0.000808499, -0.00118043, 0.999999, 0, 0, 0)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Gizmo Line2" type="MeshInstance3D" parent="pivot_ground/pivot_rotRight"]
-transform = Transform3D(10, -4.03897e-28, -1.48557e-34, 0, -4.37114e-07, 84.145, -4.03897e-28, -10, -3.67809e-06, 0, 0, 0)
-cast_shadow = 0
-gi_mode = 0
-mesh = ExtResource("4_lfxrq")
-skeleton = NodePath("../../pivot_rotLeft")
-surface_material_override/0 = SubResource("ShaderMaterial_mmsru")
-script = ExtResource("6_au62n")
-GizmoWireframe = true
-GizmoBaseColor = Color(1, 0, 0.929376, 1)
-Size = 10.0
-Length = 84.145
+[node name="cam" type="Camera3D" parent="pivot_ground"]
+transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0.149994, 499.782, -500)
+fov = 35.0

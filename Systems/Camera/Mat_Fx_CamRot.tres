@@ -7,5 +7,6 @@ transparency = 1
 no_depth_test = true
 shading_mode = 0
 disable_ambient_light = true
+albedo_color = Color(1, 0.0878718, 0.0878718, 1)
 albedo_texture = ExtResource("1_mc6l7")
 disable_receive_shadows = true
