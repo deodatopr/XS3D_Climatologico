@@ -10,6 +10,11 @@ var camMng : GDs_Cam_Manager
 var cam : Camera3D
 var pivot_cam : Node3D
 
+var axisLeftVert : float
+var axisLeftHorizontal : float
+
+var axisRightVert : float
+
 #FOV
 var currentFov : float
 
@@ -17,7 +22,6 @@ var currentFov : float
 var mov_speed : float
 var mov_currentBoost : float
 var mov_speed_boost : float
-var mov_deceleration : float
 var mov_max_acceleration : float
 var mov_velocity : Vector3
 var mov_isMoving : bool
@@ -43,10 +47,10 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	pivot_cam = camMng.pivot_cam
 	
 	UpdateCamConfig()
+	cam.rotation_degrees.x = -camMng.aerial_camRotAngle
 	
 func UpdateCamConfig():
 	cam.global_position.y = camMng.aerial_height
-	cam.rotation_degrees.x = -camMng.aerial_camRotAngle
 	cam.fov = camMng.aerial_fov
 	currentFov = camMng.aerial_fov
 	
@@ -59,8 +63,7 @@ func UpdateCamConfig():
 	
 	#Movement
 	mov_speed = camMng.aerial_flying_speed * 10
-	mov_max_acceleration = mov_speed
-	mov_deceleration = mov_max_acceleration * 1.3
+	mov_max_acceleration = camMng.aerial_flying_speed
 	mov_speed_boost = 5
 	
 	curvAccl = camMng.aerial_curveAccel
@@ -86,18 +89,19 @@ func _physics_process(delta):
 func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
 	
-	if Input.is_action_pressed("3DMove_Forward") or rotHor_isRotating:
+	axisLeftVert = Input.get_axis('3DMove_Backward','3DMove_Forward')
+	if axisLeftVert > 0 or rotHor_isRotating:
 		inputDir += -cam.global_basis.z
 	
-	if Input.is_action_pressed("3DMove_Backward"):
+	if axisLeftVert < 0:
 		inputDir += cam.global_basis.z
 		
 	inputDir.y = 0
+	axisLeftVert = absf(axisLeftVert)
 	
 	#Save global input to use in other systems (minimap)
 	APPSTATE.camInputPan = inputDir
 	mov_isPressingMove = inputDir.length() > 0
-	
 	#Acceleration
 	if mov_isPressingMove:
 		var currentSpeed : float = (mov_speed * mov_speed_boost) if Input.is_action_pressed('3DMove_SpeedBoost') else mov_speed
@@ -105,7 +109,7 @@ func _Panning(_delta:float):
 
 		#Limit acceleration
 		var curvePoint : float = UTILITIES.GetCurvePoint(curvAccl,.5,_delta)
-		mov_velocity = mov_velocity.limit_length(5 * curvePoint)
+		mov_velocity = mov_velocity.limit_length((5 * curvePoint) * axisLeftVert)
 	elif not mov_isPressingMove and mov_isMoving:
 		#Deceleration
 		var curvePoint : float = UTILITIES.GetCurvePoint(curvDecl,.4,_delta,true)
@@ -117,19 +121,19 @@ func _Panning(_delta:float):
 	pivot_cam.global_position = targetPosition
 	
 	mov_isMoving = mov_velocity.length() > 0
-	
 
 	
 func _Rotation_Vert(_delta : float):
-		if Input.is_action_pressed("3DMove_RotVert_+"):
-			cam.global_rotation.x += 1 * camMng.aerial_camRot_Speed * _delta
-		if Input.is_action_pressed("3DMove_RotVert_-"):
-			cam.global_rotation.x += -1 * camMng.aerial_camRot_Speed * _delta
+		axisRightVert = Input.get_axis("3DMove_RotVert_-","3DMove_RotVert_+")
+		if axisRightVert > 0:
+			cam.global_rotation.x += (1 * camMng.aerial_camRot_Speed * _delta) * abs(axisRightVert)
+		if axisRightVert < 0:
+			cam.global_rotation.x -= (1 * camMng.aerial_camRot_Speed * _delta) * abs(axisRightVert)
 		
-		if Input.is_action_pressed("3DMove_RotVert_+") or  Input.is_action_pressed("3DMove_RotVert_-"):
-			var minRotVer : float = deg_to_rad(-80)
-			var maxRotVert : float = deg_to_rad(-45) 
-			cam.global_rotation.x = clampf(cam.rotation.x,minRotVer, maxRotVert) 
+		if axisRightVert != 0:
+			var minRotVer : float = deg_to_rad(-camMng.aerial_camRot_min)
+			var maxRotVert : float = deg_to_rad(-camMng.aerial_camRot_max) 
+			cam.global_rotation.x = clampf(cam.rotation.x,maxRotVert,minRotVer) 
 
 func _Fov(_delta : float):
 	if Input.is_action_pressed("3DMove_Fov_+") or Input.is_action_just_pressed("3DMove_Fov_+"):

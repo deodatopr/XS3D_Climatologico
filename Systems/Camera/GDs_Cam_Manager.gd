@@ -9,17 +9,17 @@ class_name GDs_Cam_Manager extends Node
 @export var valuesInRuntime : bool
 
 @export_subgroup("Movements")
-@export var aerial_height : float = 800
-@export var aerial_flying_speed: float = 50
-@export var aerial_rotation_speed : float = .3
+@export var aerial_height : float = 300
+@export var aerial_flying_speed: float = 20
+@export var aerial_rotation_speed : float = 20
 @export var aerial_curveAccel : Curve
 @export var aerial_curveDecel : Curve
 @export var aerial_distPivotsRot : float = 50
 
 @export_subgroup("Camera")
-@export var aerial_camRotAngle : float = 50
-#@export var aerial_camRot_min: float = 
-@export var aerial_camRot_max : float
+@export var aerial_camRotAngle : float = 70
+@export var aerial_camRot_min: float = 45
+@export var aerial_camRot_max : float = 80
 @export var aerial_camRot_Speed : float = 50
 
 @export var aerial_fov : float = 100
@@ -41,6 +41,3 @@ func _process(_delta : float):
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
 	aerialMovement.Initialize(self)
-	
-	
-	
