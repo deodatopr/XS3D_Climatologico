@@ -3,16 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
 [ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Curves/Curv_Accl.tres" id="2_ukc4e"]
-[ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/Mat_Shared/Mat_Clouds.tres" id="2_ycbq6"]
+[ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_ycbq6"]
 [ext_resource type="Curve" uid="uid://0ba50dmp0tfd" path="res://Systems/Camera/Curves/Curv_Dcel.tres" id="3_45i4v"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="3_a8ov3"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="3_mr5e7"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="3_vao1q"]
-[ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="4_fof3p"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="6_rs820"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jbtbj"]
+load_path = "res://.godot/imported/Sky_2.hdr-a5fdddc36789585fe8afa6da37a2360e.bptc.ctex"
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
-panorama = ExtResource("4_fof3p")
+panorama = SubResource("CompressedTexture2D_jbtbj")
 
 [sub_resource type="Sky" id="Sky_al770"]
 sky_material = SubResource("PanoramaSkyMaterial_rsk6i")

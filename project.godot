@@ -56,6 +56,7 @@ folder_colors={
 "res://#Wip/": "red",
 "res://(Scenes)/": "gray",
 "res://Cont_Models/": "green",
+"res://Cont_Shared/": "green",
 "res://Cont_Sounds/": "pink",
 "res://Cont_UI/": "yellow",
 "res://Content/": "green",
