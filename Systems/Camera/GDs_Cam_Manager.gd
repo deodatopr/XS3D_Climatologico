@@ -20,7 +20,7 @@ class_name GDs_Cam_Manager extends Node
 @export var aerial_camRotAngle : float = 70
 @export var aerial_camRot_min: float = 45
 @export var aerial_camRot_max : float = 80
-@export var aerial_camRot_Speed : float = 50
+@export var aerial_camRot_Speed : float = 20
 
 @export var aerial_fov : float = 100
 @export var aerial_fov_min : float = 90
@@ -30,7 +30,6 @@ class_name GDs_Cam_Manager extends Node
 @export var test : float
 
 signal OnCamChangeMode
-
 func _ready():
 	Initialize(ENUMS.Cam_Mode.Bottom)
 	

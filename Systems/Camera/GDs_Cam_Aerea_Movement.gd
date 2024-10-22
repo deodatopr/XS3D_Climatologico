@@ -1,8 +1,6 @@
 class_name GDs_AerialMovement extends Node
 
 @export var mshMarkRot : Node3D
-@export var pivot_rotLeft : Node3D
-@export var pivot_rotRight : Node3D
 
 @onready var mat_fx_camRot : StandardMaterial3D = preload("uid://rohx5pwh5cc2")
 
@@ -11,7 +9,7 @@ var cam : Camera3D
 var pivot_cam : Node3D
 
 var axisLeftVert : float
-var axisLeftHorizontal : float
+var axisLeftHor : float
 
 var axisRightVert : float
 
@@ -29,6 +27,7 @@ var mov_isPressingMove : bool
 
 #Rotation
 var rotHor_isRotating : bool
+var rotHor_velocity : Vector3
 
 # Misc
 var curvIsRunning : bool
@@ -45,21 +44,14 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
 	cam = camMng.cam
 	pivot_cam = camMng.pivot_cam
+	cam.rotation_degrees.x = -camMng.aerial_camRotAngle
 	
 	UpdateCamConfig()
-	cam.rotation_degrees.x = -camMng.aerial_camRotAngle
 	
 func UpdateCamConfig():
 	cam.global_position.y = camMng.aerial_height
 	cam.fov = camMng.aerial_fov
 	currentFov = camMng.aerial_fov
-	
-	#Set pivots to rotate around them
-	var pivotPos : Vector3 = cam.global_position
-	pivotPos.y = 0	
-	var rightVector : Vector3 = cam.basis.x.normalized()
-	pivot_rotLeft.position = pivotPos + rightVector * camMng.aerial_distPivotsRot
-	pivot_rotRight.position = pivotPos + -rightVector * camMng.aerial_distPivotsRot
 	
 	#Movement
 	mov_speed = camMng.aerial_flying_speed * 10
@@ -71,11 +63,13 @@ func UpdateCamConfig():
 	
 	
 func _physics_process(delta):
-	_Panning(delta)
+	if not rotHor_isRotating:
+		_Panning(delta)
 	
 	_Fov(delta)
 	
 	_Rotation_Vert(delta)
+	_Rotation_Hor(delta)
 	
 	_ShowMshMarkPivot(true)
 	
@@ -90,7 +84,7 @@ func _Panning(_delta:float):
 	var inputDir = Vector3.ZERO
 	
 	axisLeftVert = Input.get_axis('3DMove_Backward','3DMove_Forward')
-	if axisLeftVert > 0 or rotHor_isRotating:
+	if axisLeftVert > 0:
 		inputDir += -cam.global_basis.z
 	
 	if axisLeftVert < 0:
@@ -124,16 +118,42 @@ func _Panning(_delta:float):
 
 	
 func _Rotation_Vert(_delta : float):
-		axisRightVert = Input.get_axis("3DMove_RotVert_-","3DMove_RotVert_+")
-		if axisRightVert > 0:
-			cam.global_rotation.x += (1 * camMng.aerial_camRot_Speed * _delta) * abs(axisRightVert)
-		if axisRightVert < 0:
-			cam.global_rotation.x -= (1 * camMng.aerial_camRot_Speed * _delta) * abs(axisRightVert)
+	axisRightVert = Input.get_axis("3DMove_RotVert_-","3DMove_RotVert_+")
+	if axisRightVert > 0:
+		cam.global_rotation.x += (camMng.aerial_camRot_Speed * _delta) * abs(axisRightVert)
+	if axisRightVert < 0:
+		cam.global_rotation.x -= (camMng.aerial_camRot_Speed * _delta) * abs(axisRightVert)
+	
+	if axisRightVert != 0:
+		var minRotVer : float = deg_to_rad(-camMng.aerial_camRot_min)
+		var maxRotVert : float = deg_to_rad(-camMng.aerial_camRot_max) 
+		cam.rotation.x = clampf(cam.rotation.x,maxRotVert,minRotVer) 
+
+func _Rotation_Hor(_delta : float):
+	axisLeftHor = Input.get_axis('3DMove_RotHor_-',"3DMove_RotHor_+")
+	rotHor_isRotating = axisLeftHor != 0
+	
+	if rotHor_isRotating:
+		var forward : Vector3 = -cam.transform.basis.z.normalized()
 		
-		if axisRightVert != 0:
-			var minRotVer : float = deg_to_rad(-camMng.aerial_camRot_min)
-			var maxRotVert : float = deg_to_rad(-camMng.aerial_camRot_max) 
-			cam.global_rotation.x = clampf(cam.rotation.x,maxRotVert,minRotVer) 
+		if axisLeftHor > 0:
+			var axisValue : float = abs(axisLeftHor)
+			var curvePoint : float = UTILITIES.GetCurvePoint(curvAccl, 1, _delta)
+			cam.rotate_y(-camMng.aerial_rotation_speed * _delta * curvePoint * axisValue)
+			rotHor_velocity = forward * camMng.aerial_flying_speed * camMng.aerial_distPivotsRot * _delta * curvePoint * axisValue
+			rotHor_velocity.y = 0
+		if axisLeftHor < 0:
+			var axisValue : float = abs(axisLeftHor)
+			var curvePoint : float = UTILITIES.GetCurvePoint(curvAccl, 1, _delta)
+			cam.rotate_y(camMng.aerial_rotation_speed * _delta * curvePoint * axisValue)
+			rotHor_velocity = forward * camMng.aerial_flying_speed * camMng.aerial_distPivotsRot * _delta * curvePoint * axisValue
+			rotHor_velocity.y = 0
+	else:
+		if rotHor_velocity.length() > 0:
+			var curvePoint : float = UTILITIES.GetCurvePoint(curvAccl, .05, _delta,true)
+			rotHor_velocity = rotHor_velocity.limit_length(rotHor_velocity.length() * curvePoint)
+	
+	cam.position += rotHor_velocity
 
 func _Fov(_delta : float):
 	if Input.is_action_pressed("3DMove_Fov_+") or Input.is_action_just_pressed("3DMove_Fov_+"):
@@ -166,17 +186,6 @@ func _ShowMshMarkPivot(_show : bool):
 			
 			await tweenMshVfxRotCam.finished
 			UTILITIES.TurnOffObject(mshMarkRot)
-
-func _ParentToRotate(_rotatingDir : int) -> Node3D:
-	if _rotatingDir == 1:
-		cam.reparent(pivot_rotRight)
-		return pivot_rotRight
-	elif _rotatingDir == -1:
-		cam.reparent(pivot_rotLeft)
-		return pivot_rotLeft
-	else:
-		cam.reparent(pivot_cam)
-		return null
 
 func _ResetVelocities():
 	mov_velocity = Vector3.ZERO
