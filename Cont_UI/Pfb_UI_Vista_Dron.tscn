@@ -1,0 +1,610 @@
+[gd_scene load_steps=13 format=3 uid="uid://djyvw3ftsu25d"]
+
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_qw0d6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lauy"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(809, 74, 158, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5631b"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(522, 783, 149, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85ul5"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(767, 538, 70, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjcu7"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(763, 661, 126, 297)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74sa0"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(763, 661, 126, 297)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb1no"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(766, 248, 124, 284)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jktiy"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(953, 303, 35, 644)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv5k5"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(523, 978, 366, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1240t"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(809, 145, 26, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woa4e"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(847, 147, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4ggt"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(883, 138, 22, 28)
+
+[node name="Vista Dron" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 26.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dron Icon" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -203.0
+offset_top = 26.0
+offset_right = -45.0
+offset_bottom = 67.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_0lauy")
+
+[node name="Crosshair" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -86.0
+offset_right = 361.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -100.0
+offset_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qw0d6")
+region_rect = Rect2(475, 9, 25, 24)
+
+[node name="Line2" type="NinePatchRect" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.5
+offset_top = -1.0
+offset_right = 362.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qw0d6")
+region_rect = Rect2(475, 9, 25, 24)
+
+[node name="Indicadores Interiores" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -723.0
+offset_top = -290.0
+offset_right = 723.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Linea Abajo" type="Control" parent="Indicadores Interiores"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -38.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CurveLine" type="TextureRect" parent="Indicadores Interiores/Linea Abajo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -20.0
+offset_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5631b")
+
+[node name="CurveLine2" type="TextureRect" parent="Indicadores Interiores/Linea Abajo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -20.0
+offset_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(149, 0)
+texture = SubResource("AtlasTexture_5631b")
+
+[node name="Linea Arriba" type="Control" parent="Indicadores Interiores"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 38.0
+grow_horizontal = 2
+rotation = 3.14159
+pivot_offset = Vector2(150, 19)
+
+[node name="CurveLine" type="TextureRect" parent="Indicadores Interiores/Linea Arriba"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -20.0
+offset_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5631b")
+
+[node name="CurveLine2" type="TextureRect" parent="Indicadores Interiores/Linea Arriba"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -20.0
+offset_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(149, 0)
+texture = SubResource("AtlasTexture_5631b")
+
+[node name="Derecha" type="Control" parent="Indicadores Interiores"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -302.0
+offset_top = -299.0
+offset_bottom = 299.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Indicadores Interiores/Derecha"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -114.0
+offset_bottom = 114.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Derecha/Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 114.0
+grow_horizontal = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(35, 57)
+texture = SubResource("AtlasTexture_85ul5")
+
+[node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Derecha/Control2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -114.0
+offset_right = 35.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(-1, -1)
+pivot_offset = Vector2(35, 57)
+texture = SubResource("AtlasTexture_85ul5")
+
+[node name="Control3" type="Control" parent="Indicadores Interiores/Derecha"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -295.0
+offset_right = 131.0
+offset_bottom = 295.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Derecha/Control3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_right = 63.0
+offset_bottom = 297.0
+grow_horizontal = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(63, 198)
+texture = SubResource("AtlasTexture_vjcu7")
+
+[node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Derecha/Control3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -297.0
+offset_right = 63.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(-1, -1)
+pivot_offset = Vector2(63, 150)
+texture = SubResource("AtlasTexture_74sa0")
+
+[node name="Izquierda" type="Control" parent="Indicadores Interiores"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -299.0
+offset_right = 302.0
+offset_bottom = 299.0
+grow_vertical = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(151, 299)
+
+[node name="Control2" type="Control" parent="Indicadores Interiores/Izquierda"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -114.0
+offset_bottom = 114.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 114.0
+grow_horizontal = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(35, 57)
+texture = SubResource("AtlasTexture_85ul5")
+
+[node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -114.0
+offset_right = 35.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(-1, -1)
+pivot_offset = Vector2(35, 57)
+texture = SubResource("AtlasTexture_85ul5")
+
+[node name="Control3" type="Control" parent="Indicadores Interiores/Izquierda"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -295.0
+offset_right = 131.0
+offset_bottom = 295.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_right = 63.0
+offset_bottom = 297.0
+grow_horizontal = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(63, 198)
+texture = SubResource("AtlasTexture_vjcu7")
+
+[node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -297.0
+offset_right = 63.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(-1, -1)
+pivot_offset = Vector2(63, 150)
+texture = SubResource("AtlasTexture_74sa0")
+
+[node name="Exteriores y Datos" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -828.0
+offset_top = -366.0
+offset_right = 828.0
+offset_bottom = 406.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Esquinas" type="Control" parent="Exteriores y Datos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Esquina" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
+layout_mode = 1
+offset_right = 158.0
+offset_bottom = 284.0
+texture = SubResource("AtlasTexture_bb1no")
+
+[node name="Esquina2" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_bottom = 284.0
+grow_horizontal = 0
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(79, 142)
+texture = SubResource("AtlasTexture_bb1no")
+
+[node name="Esquina3" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -284.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(-1, -1)
+pivot_offset = Vector2(79, 142)
+texture = SubResource("AtlasTexture_bb1no")
+
+[node name="Esquina4" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -284.0
+offset_right = 158.0
+grow_vertical = 0
+scale = Vector2(1, -1)
+pivot_offset = Vector2(79, 142)
+texture = SubResource("AtlasTexture_bb1no")
+
+[node name="Inferior" type="Control" parent="Exteriores y Datos"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -643.0
+offset_top = -5.0
+offset_right = 643.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Inferior" type="TextureRect" parent="Exteriores y Datos/Inferior"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -339.5
+offset_top = -322.0
+offset_right = -304.5
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(17, 322)
+texture = SubResource("AtlasTexture_jktiy")
+
+[node name="Inferior2" type="TextureRect" parent="Exteriores y Datos/Inferior"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 304.5
+offset_top = -322.0
+offset_right = 339.5
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(1, -1)
+pivot_offset = Vector2(17, 322)
+texture = SubResource("AtlasTexture_jktiy")
+
+[node name="Superior" type="Control" parent="Exteriores y Datos"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -610.0
+offset_top = -30.0
+offset_right = 610.0
+offset_bottom = 10.0
+grow_horizontal = 2
+
+[node name="Superior" type="TextureRect" parent="Exteriores y Datos/Superior"]
+layout_mode = 1
+offset_right = 366.0
+offset_bottom = 34.0
+texture = SubResource("AtlasTexture_nv5k5")
+
+[node name="Superior2" type="TextureRect" parent="Exteriores y Datos/Superior"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -366.0
+offset_bottom = 34.0
+grow_horizontal = 0
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(183, 17)
+texture = SubResource("AtlasTexture_nv5k5")
+
+[node name="Datos" type="HBoxContainer" parent="Exteriores y Datos"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.0
+offset_top = -19.0
+offset_right = 266.0
+offset_bottom = 21.0
+grow_horizontal = 2
+
+[node name="Altura" type="HBoxContainer" parent="Exteriores y Datos/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Exteriores y Datos/Datos/Altura"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_1240t")
+
+[node name="Lbl Altura" type="Label" parent="Exteriores y Datos/Datos/Altura"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "3000m"
+
+[node name="Velocidad" type="HBoxContainer" parent="Exteriores y Datos/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Exteriores y Datos/Datos/Velocidad"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_woa4e")
+
+[node name="Lbl Velocidad" type="Label" parent="Exteriores y Datos/Datos/Velocidad"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "30 km/hr"
+
+[node name="Rotacion" type="HBoxContainer" parent="Exteriores y Datos/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Exteriores y Datos/Datos/Rotacion"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_g4ggt")
+
+[node name="Lbl Rotacion" type="Label" parent="Exteriores y Datos/Datos/Rotacion"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "(0°, -30°)"

@@ -87,9 +87,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -88.5
-offset_top = -93.0
-offset_right = 88.5
+offset_left = 209.5
+offset_top = 717.0
+offset_right = 386.5
+offset_bottom = 810.0
 grow_horizontal = 2
 
 [node name="Pad" type="TextureRect" parent="NinePatchRect/Controles"]

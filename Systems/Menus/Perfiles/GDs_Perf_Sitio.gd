@@ -3,4 +3,10 @@ extends Control
 
 @export var button:Button
 
-#func _ready():
+signal OnSitioPressed 
+
+func _ready():
+	button.pressed.connect(OnBtnPressed)
+
+func OnBtnPressed():
+	OnSitioPressed.emit()

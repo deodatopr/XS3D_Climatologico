@@ -1,0 +1,349 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvrx7m3ppga3d"]
+
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_b0h8j"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pvpg3"]
+[ext_resource type="Script" path="res://Systems/Menus/PopUp_VerSitio/GDs_PopUpVerSitio.gd" id="3_dbed1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flypi"]
+shader = ExtResource("1_b0h8j")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfla7"]
+atlas = ExtResource("2_pvpg3")
+region = Rect2(8, 322, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oduyb"]
+atlas = ExtResource("2_pvpg3")
+region = Rect2(7, 263, 55, 55)
+
+[node name="PopUp Ver Sitio" type="NinePatchRect" node_paths=PackedStringArray("btnAceptar")]
+material = SubResource("ShaderMaterial_flypi")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.5
+offset_top = -132.5
+offset_right = 252.5
+offset_bottom = 132.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pvpg3")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("3_dbed1")
+btnAceptar = NodePath("")
+
+[node name="Background Interior - Mask" type="NinePatchRect" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -13.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pvpg3")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Background Interior - Mask"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(238.5, 119)
+texture = ExtResource("2_pvpg3")
+region_rect = Rect2(485, 931, 14, 75)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Esquinas" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Esquina" type="TextureRect" parent="Esquinas"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 50.0
+offset_bottom = 50.0
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_bfla7")
+
+[node name="Esquina2" type="TextureRect" parent="Esquinas"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -49.0
+offset_right = 50.0
+offset_bottom = -5.0
+grow_vertical = 0
+rotation = -1.5708
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_bfla7")
+
+[node name="Esquina3" type="TextureRect" parent="Esquinas"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -49.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 49.0
+grow_horizontal = 0
+rotation = 1.5708
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_bfla7")
+
+[node name="Esquina4" type="TextureRect" parent="Esquinas"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_bfla7")
+
+[node name="Control" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -11.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titulo" type="Control" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/Titulo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+text = "¿Ir al sitio?"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Titulo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -1.0
+offset_right = 149.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_pvpg3")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Nombre Sitio" type="Control" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Frame Nombre" type="NinePatchRect" parent="Control/Nombre Sitio"]
+self_modulate = Color(0.113725, 0.411765, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -16.0
+offset_right = 184.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pvpg3")
+region_rect = Rect2(474, 111, 30, 30)
+patch_margin_left = 10
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Patch" type="NinePatchRect" parent="Control/Nombre Sitio/Frame Nombre"]
+self_modulate = Color(0.113725, 0.411765, 1, 1)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 33.0
+grow_vertical = 2
+texture = ExtResource("2_pvpg3")
+region_rect = Rect2(474, 40, 16, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_bottom = 5
+
+[node name="Lbl ID" type="Label" parent="Control/Nombre Sitio/Frame Nombre/Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nombre" type="Label" parent="Control/Nombre Sitio/Frame Nombre"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 39.0
+offset_top = -13.5
+offset_right = 366.0
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "CAMPAMENTO LOS BERROS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Botones" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Aceptar" type="Control" parent="Control/Botones"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Control/Botones/Aceptar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -27.0
+offset_right = -9.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_oduyb")
+
+[node name="Label" type="Label" parent="Control/Botones/Aceptar/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/Botones/Aceptar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.5
+offset_top = -15.0
+offset_right = 92.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "aceptar"
+uppercase = true
+
+[node name="Cancelar" type="Control" parent="Control/Botones"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Control/Botones/Cancelar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -27.0
+offset_right = -49.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_oduyb")
+
+[node name="Label" type="Label" parent="Control/Botones/Cancelar/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control/Botones/Cancelar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -15.0
+offset_right = 62.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "cancelar"
+uppercase = true
