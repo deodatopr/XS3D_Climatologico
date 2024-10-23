@@ -26,6 +26,7 @@ ENUMS="*res://Systems/#GLOBALS/GDs_ENUMS.gd"
 UTILITIES="*res://Systems/#GLOBALS/GDs_UTILITIES.gd"
 APPSTATE="*res://Systems/#GLOBALS/GDs_APPSTATE.gd"
 SIGNALS="*res://Systems/#GLOBALS/GDs_SIGNALS.gd"
+CAM="*res://Systems/#GLOBALS/GDs_CAMSTATE.gd"
 
 [display]
 

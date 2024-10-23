@@ -4,7 +4,7 @@ class_name GDs_Cam_Manager extends Node
 @export var movAerial : GDs_Cam_Mov_Aerial
 @export var movDron : GDs_Cam_Mov_Dron
 @export var pivot_cam : Node3D
-@export var cam : Node3D
+@export var cam : Camera3D
 @export var curveAccel : Curve
 @export var curveDecel : Curve
 @export var debug_skipCurtainToChangeMode : bool = true
@@ -34,23 +34,25 @@ class_name GDs_Cam_Manager extends Node
 @export var dron_vert_min : float = -90
 @export var dron_vert_return : float = 1
 
-var currentCamMode : int
+var camMode : int
 
 func _ready():
-	currentCamMode = ENUMS.Cam_Mode.Dron
-	Initialize(currentCamMode)
+	camMode = ENUMS.Cam_Mode.Dron
+	Initialize(camMode)
 	
 func _input(event):
 	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
+		camMode = ENUMS.Cam_Mode.Dron if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else ENUMS.Cam_Mode.Aerial
+		SIGNALS.OnCameraRequestChangeMode.emit(camMode)
+		
 		if not debug_skipCurtainToChangeMode:
-			SIGNALS.OnCameraRequestChangeMode.emit()
-			
 			await SIGNALS.OnCameraCanChangeMode
 		
-		APPSTATE.camMode = ENUMS.Cam_Mode.Dron if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else ENUMS.Cam_Mode.Aerial
+		APPSTATE.camMode = camMode
 		ChangeToMode(APPSTATE.camMode)
 	
 func _process(_delta : float):
+	UpdateCamState()
 	if valuesInRuntime:
 		movAerial.UpdateCamConfig()
 
@@ -60,6 +62,11 @@ func Initialize(_modeToIntializeCam : int):
 	movDron.Initialize(self)
 	
 	ChangeToMode(_modeToIntializeCam)
+	
+func UpdateCamState():
+	CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(cam.global_rotation_degrees.y))
+	CAM.height = ceili(cam.global_position.y)
+	CAM.fov = ceili(cam.fov)
 	
 func ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.Aerial:
