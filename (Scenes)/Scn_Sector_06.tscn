@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=19 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="1_sjpgl"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
+[ext_resource type="PackedScene" uid="uid://bqa2ciul3qjye" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jbtbj"]
 load_path = "res://.godot/imported/Sky_2.hdr-a5fdddc36789585fe8afa6da37a2360e.bptc.ctex"
@@ -43,7 +44,6 @@ adjustment_saturation = 1.2
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
 dof_blur_far_distance = 300.0
 dof_blur_far_transition = 600.0
-dof_blur_near_enabled = true
 dof_blur_near_distance = 250.0
 dof_blur_near_transition = 240.0
 
@@ -150,3 +150,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Msh_Sect06_Sitio" parent="." instance=ExtResource("9_s7pct")]
