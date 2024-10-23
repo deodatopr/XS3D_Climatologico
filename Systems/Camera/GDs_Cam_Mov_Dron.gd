@@ -80,7 +80,7 @@ func _movement(_delta:float):
 
 func _rotation(_delta:float):
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 		if MouseMotion != null:
@@ -91,7 +91,7 @@ func _rotation(_delta:float):
 			_rotHorPivot(MouseMotion.relative.x, _delta)
 			_rotVertCam(MouseMotion.relative.y, _delta)
 
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT): 
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 	if Input.is_action_pressed("3DLook_Up") or Input.is_action_pressed("3DLook_Down"):
