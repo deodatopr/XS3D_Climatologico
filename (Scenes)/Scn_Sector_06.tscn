@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
-[ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_ycbq6"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="3_a8ov3"]
-[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect06_Terrain.glb" id="3_mr5e7"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="3_vao1q"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="6_rs820"]
-[ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="9_amj4v"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="1_sjpgl"]
+[ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
+[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect06_Terrain.glb" id="3_htqi2"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="4_u55j2"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="5_ipad4"]
+[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
+[ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jbtbj"]
 load_path = "res://.godot/imported/Sky_2.hdr-a5fdddc36789585fe8afa6da37a2360e.bptc.ctex"
@@ -50,12 +50,12 @@ dof_blur_near_transition = 240.0
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krxms"]
-shader = ExtResource("3_a8ov3")
+shader = ExtResource("4_u55j2")
 shader_parameter/pixel = 1.0
 shader_parameter/sharpening = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjg68"]
-shader = ExtResource("3_vao1q")
+shader = ExtResource("5_ipad4")
 shader_parameter/chromaticRedPx = 2.0
 shader_parameter/chromaticBluePx = 2.0
 shader_parameter/chromaticIntensity = 1.0
@@ -66,14 +66,14 @@ shader_parameter/vignetteFeather = 0.777
 shader_parameter/vignetteColor = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4w3e5"]
-shader = ExtResource("6_rs820")
+shader = ExtResource("8_pnisj")
 shader_parameter/lensDistortion = 1.7
 
 [node name="SECTOR 6" type="Node3D"]
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="Camera_manager" parent="[ SYSTEMS ]" instance=ExtResource("2_g73ks")]
+[node name="Camera_manager" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
 aerial_height = 500.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
@@ -95,18 +95,18 @@ sky_mode = 1
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
-material_override = ExtResource("2_ycbq6")
+material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
 
-[node name="Msh_Sector_06" parent="[ CONTENT ]" instance=ExtResource("3_mr5e7")]
+[node name="Msh_Sector_06" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
 
-[node name="Msh_Sector_07" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_mr5e7")]
+[node name="Msh_Sector_07" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1470.77, 0, 0)
 
-[node name="Msh_Sector_08" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_mr5e7")]
+[node name="Msh_Sector_08" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1.10112, 0, 0, 1649.4)
 
-[node name="Msh_Sector_09" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_mr5e7")]
+[node name="Msh_Sector_09" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
 transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1470.77, 0, 1649.4)
 
 [node name="PPE - Sharpening" type="CanvasLayer" parent="."]
@@ -135,9 +135,9 @@ mouse_filter = 2
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="RENDER TOOL" parent="UI" instance=ExtResource("1_wesxv")]
+[node name="RENDER TOOL" parent="UI" instance=ExtResource("6_7j046")]
 
-[node name="Pfb_UI" parent="UI" instance=ExtResource("9_amj4v")]
+[node name="Pfb_UI" parent="UI" instance=ExtResource("7_hy666")]
 
 [node name="PPE - FishEye" type="CanvasLayer" parent="."]
 layer = 4
