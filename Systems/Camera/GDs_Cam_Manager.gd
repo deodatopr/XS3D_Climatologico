@@ -7,6 +7,7 @@ class_name GDs_Cam_Manager extends Node
 @export var cam : Node3D
 @export var curveAccel : Curve
 @export var curveDecel : Curve
+@export var debug_skipCurtainToChangeMode : bool = true
 
 @export_group("AERIAL CAMERA")
 @export var valuesInRuntime : bool
@@ -33,13 +34,19 @@ class_name GDs_Cam_Manager extends Node
 @export var dron_vert_min : float = -90
 @export var dron_vert_return : float = 1
 
-signal OnCamChangeMode
+var currentCamMode : int
 
 func _ready():
-	Initialize(ENUMS.Cam_Mode.Aerial)
+	currentCamMode = ENUMS.Cam_Mode.Dron
+	Initialize(currentCamMode)
 	
 func _input(event):
 	if Input.is_action_pressed('3DMove_ChangeCamMode'):
+		if not debug_skipCurtainToChangeMode:
+			SIGNALS.OnCameraRequestChangeMode.emit()
+			
+			await SIGNALS.OnCameraCanChangeMode
+		
 		APPSTATE.camMode = ENUMS.Cam_Mode.Dron if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else ENUMS.Cam_Mode.Aerial
 		ChangeToMode(APPSTATE.camMode)
 	

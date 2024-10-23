@@ -29,7 +29,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 func SetCamera():
 	cam.position.y = camMng.dron_initialHeight
 	
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
 		MouseMotion = event
 	else:
@@ -63,7 +63,7 @@ func _movement(_delta:float):
 	if inputDir.length() > 0:
 		var FinalSpeedTurbo : float = camMng.aerial_boost
 		FinalSpeedTurbo = camMng.aerial_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
-		mov_velocity += (-inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
+		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
 		
 		if mov_velocity.length() > camMng.dron_speed_accel_decel:
 			mov_velocity = mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10))
