@@ -27,7 +27,9 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	mov_deceleration = camMng.dron_speed_accel_decel
 	
 func SetCamera():
-	cam.position.y = camMng.dron_initialHeight
+	pivot.global_position.y = camMng.dron_initialHeight
+	pivot.global_position = cam.global_position
+	cam.global_position = pivot.global_position
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -75,6 +77,12 @@ func _movement(_delta:float):
 	
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
+	
+	if targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0)) < camMng.minDistGround:
+		if targetPosition.y - UTILITIES._get_point_on_map(targetPosition, cam,0).y > .1:
+			targetPosition.y = lerpf(targetPosition.y, UTILITIES._get_point_on_map(cam.global_position, cam,0).y + (Vector3.UP * (camMng.minDistGround - 5)).y, .5)
+		else:
+			targetPosition.y = UTILITIES._get_point_on_map(cam.global_position, cam,0).y + (Vector3.UP * 50).y
 
 	pivot.global_position = targetPosition
 
