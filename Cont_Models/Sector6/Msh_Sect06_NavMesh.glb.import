@@ -42,6 +42,11 @@ _subresources={
 "save_to_file/enabled": false,
 "save_to_file/path": ""
 }
+},
+"nodes": {
+"PATH:Msh_navMesh_Sector_6": {
+"generate/navmesh": 2
+}
 }
 }
 gltf/naming_version=1

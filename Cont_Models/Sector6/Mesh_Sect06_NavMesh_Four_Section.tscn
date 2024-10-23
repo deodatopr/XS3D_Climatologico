@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cypsj58fjq2il"]
+
+[ext_resource type="PackedScene" uid="uid://cb8i1vwv4ij62" path="res://Cont_Models/Sector6/Msh_Sect06_NavMesh.glb" id="1_yh20a"]
+
+[node name="NavMesh" type="Node3D"]
+
+[node name="Msh_Sect06_NavMesh" parent="." instance=ExtResource("1_yh20a")]
+
+[node name="Msh_Sect06_NavMesh2" parent="." instance=ExtResource("1_yh20a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1476.93, 0, 1574.05)
+
+[node name="Msh_Sect06_NavMesh3" parent="." instance=ExtResource("1_yh20a")]
+transform = Transform3D(0.999848, 0, -0.0174525, 0, 1, 0, -0.0174525, 0, -0.999848, 13.432, 0, 1587.24)
+
+[node name="Msh_Sect06_NavMesh4" parent="." instance=ExtResource("1_yh20a")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1476.83, 0, 0)

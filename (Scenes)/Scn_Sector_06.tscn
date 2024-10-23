@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=20 format=3 uid="uid://bpcy80vu32nh0"]
 
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
+[ext_resource type="PackedScene" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect06_Terrain.glb" id="3_htqi2"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="4_u55j2"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="5_ipad4"]
+[ext_resource type="PackedScene" uid="uid://cypsj58fjq2il" path="res://Cont_Models/Sector6/Mesh_Sect06_NavMesh_Four_Section.tscn" id="5_tuwm2"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
@@ -110,6 +111,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1.10112, 0, 0, 1649.4)
 transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1470.77, 0, 1649.4)
 
 [node name="Msh_Sect06_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
+
+[node name="NavMesh" parent="[ CONTENT ]" instance=ExtResource("5_tuwm2")]
 
 [node name="[ POST PROCESS ]" type="Node" parent="."]
 
