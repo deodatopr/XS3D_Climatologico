@@ -1,44 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=6 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
-[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Aerea_Movement.gd" id="2_s21o3"]
-[ext_resource type="Texture2D" uid="uid://dfufhjgae0mue" path="res://Systems/Camera/Map_Fx_CamRot.png" id="3_3lbjk"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Aerial.gd" id="2_s21o3"]
+[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Curves/Curv_Accl.tres" id="2_xldol"]
+[ext_resource type="Curve" uid="uid://0ba50dmp0tfd" path="res://Systems/Camera/Curves/Curv_Dcel.tres" id="3_goarf"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Dron.gd" id="4_iwq67"]
 
-[sub_resource type="Curve" id="Curve_gqkmu"]
-_data = [Vector2(0, 0), 0.0, 2.72, 0, 0, Vector2(1, 1), -0.279026, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_xpf4w"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8khyu"]
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-disable_ambient_light = true
-albedo_texture = ExtResource("3_3lbjk")
-disable_receive_shadows = true
-
-[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("aerialMovement", "pivot_cam", "cam")]
+[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("movAerial", "movDron", "pivot_cam", "cam")]
 script = ExtResource("1_vxe6d")
-aerialMovement = NodePath("Aerea_Movement")
+movAerial = NodePath("Mov_Aerial")
+movDron = NodePath("Mov_Dron")
 pivot_cam = NodePath("pivot_ground")
 cam = NodePath("pivot_ground/cam")
-aerial_curveDecel = SubResource("Curve_gqkmu")
+curveAccel = ExtResource("2_xldol")
+curveDecel = ExtResource("3_goarf")
 
-[node name="Aerea_Movement" type="Node" parent="."]
+[node name="Mov_Aerial" type="Node" parent="."]
 script = ExtResource("2_s21o3")
+
+[node name="Mov_Dron" type="Node" parent="."]
+script = ExtResource("4_iwq67")
 
 [node name="pivot_ground" type="Node3D" parent="."]
 
-[node name="Msh_MarkRot" type="MeshInstance3D" parent="pivot_ground"]
-transform = Transform3D(54.2059, 1.82637e-10, 1.46683e-08, 1.43245e-11, 54.2059, -2.20025e-08, 1.10012e-08, 7.33417e-09, 54.2059, 0, 0, 0)
-mesh = SubResource("PlaneMesh_xpf4w")
-skeleton = NodePath("../cam")
-surface_material_override/0 = SubResource("StandardMaterial3D_8khyu")
-
 [node name="cam" type="Camera3D" parent="pivot_ground"]
-transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 499.782, -500)
+transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 499.782, 0)
 fov = 35.0
-
-[node name="pivot_rot" type="Node3D" parent="pivot_ground"]
-transform = Transform3D(0.663326, 0, 0.748331, 0, 1, 0, -0.748331, 0, 0.663326, 0, 0, 0)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cib67etx4mqj8"]
+[gd_scene load_steps=6 format=3 uid="uid://cib67etx4mqj8"]
 
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="5_okpvp"]
-[ext_resource type="Script" path="res://Systems/Camera/Free Cam/GDs_FreeCam.gd" id="5_t4qbx"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Dron.gd" id="5_t4qbx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,10 +15,6 @@ background_mode = 2
 sky = SubResource("Sky_3xgfe")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="Curve" id="Curve_i6mua"]
-_data = [Vector2(0, 0), 0.0, 3.44273, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [node name="test_compass" type="Node3D"]
 metadata/_edit_vertical_guides_ = [986.0]
@@ -37,14 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 205.165, 0)
 script = ExtResource("5_t4qbx")
 cam = NodePath("Pivot/Camera3D")
 pivot = NodePath("Pivot")
-mov_currentBoost = 20.0
-mov_speed_boost = 50.0
-mov_speed = 100.0
-mov_max_acceleration = 200.0
-rot_speed = 10.0
-rot_hor_speed = 10.0
-return_camera_speed = 5.0
-curveSpeed = SubResource("Curve_i6mua")
 
 [node name="Pivot" type="Node3D" parent="Free_Cam"]
 

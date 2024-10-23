@@ -1,20 +1,9 @@
-extends Node
+class_name GDs_Cam_Mov_Dron extends Node
 
-@export_group("Components")
-@export var cam : Node3D
-@export var pivot : Node3D
+var camMng : GDs_Cam_Manager
 
-@export_group("Camera Controllers")
-@export var speedAccDecel : float = 200
-@export var speed : float = 200
-@export_range(1, 4) var speedTurbo : float = 2
-@export var rotHorSpeed : float = 2.5
-@export var rotVertSpeed : float = 5
-@export_range(0, 90) var rotVertMax : float = 90.0
-@export_range(-90, 0) var rotVertMin : float = -90.0
-@export var rotVertReturn : float = 1
-@export var rotCurveAcc : Curve
-@export var rotCurveDecel : Curve
+var cam : Node3D
+var pivot : Node3D
 
 var mov_deceleration : float
 var mov_velocity : Vector3 = Vector3.ZERO
@@ -31,12 +20,14 @@ var yaw_direction = 1
 
 const RETURN_CAMERA_ADJUST : float = 0.1
 
-func Initialize(_cam : Camera3D, _pivot : Node3D):
-	cam = _cam
-	pivot = _pivot
+func Initialize(_camMng : GDs_Cam_Manager):
+	camMng = _camMng
+	cam = camMng.cam
+	pivot = camMng.pivot_cam
+	mov_deceleration = camMng.dron_speed_accel_decel
 	
-func _ready():
-	mov_deceleration = speedAccDecel
+func SetCamera():
+	cam.position.y = camMng.dron_initialHeight
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -70,13 +61,12 @@ func _movement(_delta:float):
 		inputDir -= pivot.basis.y
 
 	if inputDir.length() > 0:
-		var FinalSpeedTurbo = speedTurbo
-		FinalSpeedTurbo = speedTurbo if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
-		mov_velocity += (-inputDir * speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
+		var FinalSpeedTurbo : float = camMng.aerial_boost
+		FinalSpeedTurbo = camMng.aerial_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
+		mov_velocity += (-inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
 		
-		if mov_velocity.length() > speedAccDecel:
-			
-			mov_velocity = mov_velocity.limit_length(speedAccDecel + (FinalSpeedTurbo * 10))
+		if mov_velocity.length() > camMng.dron_speed_accel_decel:
+			mov_velocity = mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10))
 	else:
 		if mov_velocity.length() > 0:
 			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
@@ -113,11 +103,11 @@ func _rotation(_delta:float):
 		yaw_direction = -Input.get_axis("3DLook_Right", '3DLook_Left')
 		_rotHorPivot(yaw_direction * 10, _delta)
 	elif not (Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		yaw -= ((rotHorSpeed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(rotCurveDecel, 1.2, _delta, true)) * _delta
+		yaw -= ((camMng.dron_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveDecel, 1.2, _delta, true)) * _delta
 		pivot.rotation_degrees.y = yaw
 
 func _rotHorPivot(dir:float, _delta:float):
-	yaw -= dir * (rotHorSpeed * UTILITIES.GetCurvePoint(rotCurveAcc, 1.2, _delta, false)) * _delta
+	yaw -= dir * (camMng.dron_rot_hor_speed * UTILITIES.GetCurvePoint(camMng.curveAccel, 1.2, _delta, false)) * _delta
 	pivot.rotation_degrees.y = yaw
 	
 func _rotVertCam(dir:float, _delta:float):
@@ -126,14 +116,14 @@ func _rotVertCam(dir:float, _delta:float):
 		is_start_to_move = true
 		pitch = last_pitch
 		
-	pitch -= dir * rotVertSpeed  * _delta
+	pitch -= dir * camMng.dron_rot_vert_speed  * _delta
 	last_pitch = pitch
-	pitch = clampf(pitch, rotVertMin, rotVertMax)
+	pitch = clampf(pitch, camMng.dron_vert_min, camMng.dron_vert_max)
 	cam.rotation_degrees.x = pitch
 		
 func _rotVertReturn(_delta:float):
 	if abs(cam.rotation_degrees.x) > .1:
-		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (rotVertReturn / RETURN_CAMERA_ADJUST))
+		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.dron_vert_return / RETURN_CAMERA_ADJUST))
 		return_cam_time_elpased += _delta
 		last_pitch = cam.rotation_degrees.x
 		is_start_to_move = false

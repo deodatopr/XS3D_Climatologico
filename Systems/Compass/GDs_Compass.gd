@@ -69,7 +69,7 @@ func _process(delta: float) -> void:
 	if canRotate:
 		distance = pivotCam.global_position.distance_to(Vector3(PinPos.global_position.x, 0, PinPos.global_position.z))
 		
-		if APPSTATE.camMode == ENUMS.Cam_Mode.Top:
+		if APPSTATE.camMode == ENUMS.Cam_Mode.Dron:
 			_ToggleCompass(false)
 			_CalculateTopDownPoint(distance)
 		else:

@@ -15,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Menu Guia" parent="." instance=ExtResource("1_pql5o")]
 visible = false
@@ -22,6 +23,7 @@ layout_mode = 1
 
 [node name="Vista Aereo" parent="." instance=ExtResource("7_2ckdo")]
 layout_mode = 1
+mouse_filter = 2
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
 layout_mode = 1
@@ -49,3 +51,4 @@ layout_mode = 1
 [node name="Vista Dron" parent="." instance=ExtResource("8_551e6")]
 visible = false
 layout_mode = 1
+mouse_filter = 2

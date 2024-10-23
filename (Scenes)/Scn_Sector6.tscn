@@ -1,10 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=18 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="1_wesxv"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="2_g73ks"]
-[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Curves/Curv_Accl.tres" id="2_ukc4e"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_ycbq6"]
-[ext_resource type="Curve" uid="uid://0ba50dmp0tfd" path="res://Systems/Camera/Curves/Curv_Dcel.tres" id="3_45i4v"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="3_a8ov3"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="3_mr5e7"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="3_vao1q"]
@@ -77,8 +75,6 @@ shader_parameter/lensDistortion = 1.7
 
 [node name="Camera_manager" parent="[ SYSTEMS ]" instance=ExtResource("2_g73ks")]
 aerial_height = 500.0
-aerial_curveAccel = ExtResource("2_ukc4e")
-aerial_curveDecel = ExtResource("3_45i4v")
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -122,6 +118,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PPE - Lens" type="CanvasLayer" parent="."]
 layer = 2
@@ -133,12 +130,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 5
 
 [node name="RENDER TOOL" parent="UI" instance=ExtResource("1_wesxv")]
-visible = false
 
 [node name="Pfb_UI" parent="UI" instance=ExtResource("9_amj4v")]
 
@@ -152,3 +149,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
