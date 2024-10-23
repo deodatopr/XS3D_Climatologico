@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cb8i1vwv4ij62"
-path="res://.godot/imported/Msh_NavMesh_Sector_6.glb-d9a28f62b1255cd7dd6ba95ba50a0e31.scn"
+path="res://.godot/imported/Msh_Sect6_NavMesh.glb-cda13015b067f833fedae39184bfeb84.scn"
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Msh_NavMesh_Sector_6.glb"
-dest_files=["res://.godot/imported/Msh_NavMesh_Sector_6.glb-d9a28f62b1255cd7dd6ba95ba50a0e31.scn"]
+source_file="res://Cont_Models/Sector6/Msh_Sect6_NavMesh.glb"
+dest_files=["res://.godot/imported/Msh_Sect6_NavMesh.glb-cda13015b067f833fedae39184bfeb84.scn"]
 
 [params]
 

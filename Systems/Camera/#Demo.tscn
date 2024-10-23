@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3ek6rns3smgh"]
 
-[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="1_jjox3"]
+[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect6_Terrain.glb" id="1_jjox3"]
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="3_uuqqr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yt4jf"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cib67etx4mqj8"]
 
-[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sector_06.glb" id="5_okpvp"]
+[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect6_Terrain.glb" id="5_okpvp"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Dron.gd" id="5_t4qbx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35h7c"]
