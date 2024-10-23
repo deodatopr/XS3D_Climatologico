@@ -41,7 +41,7 @@ func _ready():
 	Initialize(currentCamMode)
 	
 func _input(event):
-	if Input.is_action_pressed('3DMove_ChangeCamMode'):
+	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
 		if not debug_skipCurtainToChangeMode:
 			SIGNALS.OnCameraRequestChangeMode.emit()
 			
