@@ -88,8 +88,8 @@ func _rotation(_delta:float):
 				yaw_direction = 1
 			else:
 				yaw_direction = -1
-			_rotHorPivot(MouseMotion.relative.x, _delta)
-			_rotVertCam(MouseMotion.relative.y, _delta)
+			_rotHorPivot(MouseMotion.relative.x * .5, _delta)
+			_rotVertCam(MouseMotion.relative.y * .5, _delta)
 
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -102,12 +102,12 @@ func _rotation(_delta:float):
 	if Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left"):
 		yaw_direction = -Input.get_axis("3DLook_Right", '3DLook_Left')
 		_rotHorPivot(yaw_direction * 10, _delta)
-	elif not (Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+	elif not (Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		yaw -= ((camMng.dron_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveDecel, 1.2, _delta, true)) * _delta
 		pivot.rotation_degrees.y = yaw
 
 func _rotHorPivot(dir:float, _delta:float):
-	yaw -= dir * (camMng.dron_rot_hor_speed * UTILITIES.GetCurvePoint(camMng.curveAccel, 1.2, _delta, false)) * _delta
+	yaw -= dir * (camMng.dron_rot_hor_speed * UTILITIES.GetCurvePoint(camMng.curveAccel, 1.2, _delta, false))
 	pivot.rotation_degrees.y = yaw
 	
 func _rotVertCam(dir:float, _delta:float):
