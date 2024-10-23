@@ -35,11 +35,11 @@ _subresources={
 "materials": {
 "Mat_Buildings": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Mat_Shared/Mat_Buildings.tres"
+"use_external/path": "res://Cont_Shared/Materials/Mat_Buildings.tres"
 },
 "Mat_Roads": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Mat_Shared/Mat_Roads.tres"
+"use_external/path": "res://Cont_Shared/Materials/Mat_Roads.tres"
 },
 "Mat_Sector6_1": {
 "use_external/enabled": true,
@@ -79,7 +79,7 @@ _subresources={
 },
 "Mat_Water": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Mat_Shared/Mat_Water.tres"
+"use_external/path": "res://Cont_Shared/Materials/Mat_Water.tres"
 }
 }
 }
