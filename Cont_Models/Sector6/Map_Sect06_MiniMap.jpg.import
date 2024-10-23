@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7o7n4w6d5ike"
-path="res://.godot/imported/Map_Sec6_MiniMap.jpg-0adb5fdb0b320e99e8a9f7f9425e3260.ctex"
+path="res://.godot/imported/Map_Sect06_MiniMap.jpg-41847e7ab3da1c2d1e0ae8ffdd3e7c35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Map_Sec6_MiniMap.jpg"
-dest_files=["res://.godot/imported/Map_Sec6_MiniMap.jpg-0adb5fdb0b320e99e8a9f7f9425e3260.ctex"]
+source_file="res://Cont_Models/Sector6/Map_Sect06_MiniMap.jpg"
+dest_files=["res://.godot/imported/Map_Sect06_MiniMap.jpg-41847e7ab3da1c2d1e0ae8ffdd3e7c35.ctex"]
 
 [params]
 

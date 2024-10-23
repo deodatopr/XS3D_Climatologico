@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/Minimap/GDs_Minimap.gd" id="1_3l741"]
 [ext_resource type="Texture2D" uid="uid://bkf83i3oek7l6" path="res://Systems/Minimap/Map_Mask.png" id="2_rxnpi"]
-[ext_resource type="Texture2D" uid="uid://b7o7n4w6d5ike" path="res://Cont_Models/Sector6/Map_Sec6_MiniMap.jpg" id="3_33bn2"]
+[ext_resource type="Texture2D" uid="uid://b7o7n4w6d5ike" path="res://Cont_Models/Sector6/Map_Sect06_MiniMap.jpg" id="3_33bn2"]
 [ext_resource type="Texture2D" uid="uid://h5kpi6rvi0w7" path="res://Systems/Minimap/map_cam_ref.png" id="4_8wku4"]
 
 [node name="UI_Minimap" type="Control"]

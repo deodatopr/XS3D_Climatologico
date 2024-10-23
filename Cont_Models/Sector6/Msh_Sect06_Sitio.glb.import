@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bqa2ciul3qjye"
-path="res://.godot/imported/Msh_Sect6_Sitio.glb-00e30d73ef5ab7e779b7198a246c976a.scn"
+path="res://.godot/imported/Msh_Sect06_Sitio.glb-a52159d57e7ebeb3a4598765b9d67a4c.scn"
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Msh_Sect6_Sitio.glb"
-dest_files=["res://.godot/imported/Msh_Sect6_Sitio.glb-00e30d73ef5ab7e779b7198a246c976a.scn"]
+source_file="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb"
+dest_files=["res://.godot/imported/Msh_Sect06_Sitio.glb-a52159d57e7ebeb3a4598765b9d67a4c.scn"]
 
 [params]
 
