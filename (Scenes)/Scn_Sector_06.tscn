@@ -1,30 +1,28 @@
-[gd_scene load_steps=20 format=3 uid="uid://bpcy80vu32nh0"]
+[gd_scene load_steps=20 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
+[ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="2_jtdc3"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect06_Terrain.glb" id="3_htqi2"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="4_u55j2"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="5_ipad4"]
-[ext_resource type="PackedScene" uid="uid://cypsj58fjq2il" path="res://Cont_Models/Sector6/Mesh_Sect06_NavMesh_Four_Section.tscn" id="5_tuwm2"]
+[ext_resource type="PackedScene" path="res://Cont_Models/Sector6/Mesh_Sect06_NavMesh_Four_Section.tscn" id="5_tuwm2"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://bqa2ciul3qjye" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jbtbj"]
-load_path = "res://.godot/imported/Sky_2.hdr-a5fdddc36789585fe8afa6da37a2360e.bptc.ctex"
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
-panorama = SubResource("CompressedTexture2D_jbtbj")
+panorama = ExtResource("2_jtdc3")
 
 [sub_resource type="Sky" id="Sky_al770"]
 sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
 
 [sub_resource type="Environment" id="Environment_nudmr"]
 background_mode = 2
-background_energy_multiplier = 2.0
 sky = SubResource("Sky_al770")
-tonemap_mode = 3
+sky_rotation = Vector3(0, -1.5708, 0)
+tonemap_mode = 2
 ssil_radius = 15.51
 ssil_intensity = 0.0
 sdfgi_use_occlusion = true
@@ -33,13 +31,14 @@ glow_blend_mode = 0
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.424189, 0.509992, 0.644825, 1)
-fog_density = 1.0
-fog_aerial_perspective = 1.0
+fog_density = 0.7
+fog_aerial_perspective = 0.8
 fog_depth_curve = 6.0
 fog_depth_begin = 0.0
-fog_depth_end = 2500.0
+fog_depth_end = 1200.0
 adjustment_enabled = true
-adjustment_contrast = 0.9
+adjustment_brightness = 0.9
+adjustment_contrast = 1.2
 adjustment_saturation = 1.2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
