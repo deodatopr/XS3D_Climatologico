@@ -107,9 +107,9 @@ func _rotation(_delta:float):
 		pivot.rotation_degrees.y = yaw
 
 func _rotHorPivot(dir:float, _delta:float):
-	yaw -= dir * (camMng.dron_rot_hor_speed * UTILITIES.GetCurvePoint(camMng.curveAccel, 1.2, _delta, false))
+	yaw -= dir * (camMng.dron_rot_hor_speed * _delta * UTILITIES.GetCurvePoint(camMng.curveAccel, 1.2, _delta, false))
 	pivot.rotation_degrees.y = yaw
-	
+
 func _rotVertCam(dir:float, _delta:float):
 	if not is_start_to_move:
 		return_cam_time_elpased = 0
