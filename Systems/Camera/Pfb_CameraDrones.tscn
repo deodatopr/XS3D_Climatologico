@@ -6,7 +6,7 @@
 [ext_resource type="Curve" uid="uid://0ba50dmp0tfd" path="res://Systems/Camera/Curves/Curv_Dcel.tres" id="3_goarf"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Dron.gd" id="4_iwq67"]
 
-[node name="Camera_manager" type="Node3D" node_paths=PackedStringArray("movAerial", "movDron", "pivot_cam", "cam")]
+[node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movAerial", "movDron", "pivot_cam", "cam")]
 script = ExtResource("1_vxe6d")
 movAerial = NodePath("Mov_Aerial")
 movDron = NodePath("Mov_Dron")

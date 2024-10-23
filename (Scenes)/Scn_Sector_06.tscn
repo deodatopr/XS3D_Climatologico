@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_Camera_manager.tscn" id="1_sjpgl"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect06_Terrain.glb" id="3_htqi2"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="4_u55j2"]
@@ -73,7 +73,7 @@ shader_parameter/lensDistortion = 1.7
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="Camera_manager" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
+[node name="Camera Drones" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
 aerial_height = 500.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
@@ -109,9 +109,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1.10112, 0, 0, 1649.4)
 [node name="Msh_Sector_09" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
 transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1470.77, 0, 1649.4)
 
-[node name="PPE - Sharpening" type="CanvasLayer" parent="."]
+[node name="Msh_Sect06_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
-[node name="ColorRect" type="ColorRect" parent="PPE - Sharpening"]
+[node name="[ POST PROCESS ]" type="Node" parent="."]
+
+[node name="PPE - Sharpening" type="CanvasLayer" parent="[ POST PROCESS ]"]
+
+[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS ]/PPE - Sharpening"]
 material = SubResource("ShaderMaterial_krxms")
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,10 +124,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PPE - Lens" type="CanvasLayer" parent="."]
+[node name="PPE - Lens" type="CanvasLayer" parent="[ POST PROCESS ]"]
 layer = 2
 
-[node name="ColorRect" type="ColorRect" parent="PPE - Lens"]
+[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS ]/PPE - Lens"]
 material = SubResource("ShaderMaterial_xjg68")
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,17 +136,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="[ POST PROCESS ]"]
 layer = 5
 
-[node name="RENDER TOOL" parent="UI" instance=ExtResource("6_7j046")]
+[node name="RENDER TOOL" parent="[ POST PROCESS ]/UI" instance=ExtResource("6_7j046")]
 
-[node name="Pfb_UI" parent="UI" instance=ExtResource("7_hy666")]
+[node name="Pfb_UI" parent="[ POST PROCESS ]/UI" instance=ExtResource("7_hy666")]
 
-[node name="PPE - FishEye" type="CanvasLayer" parent="."]
+[node name="PPE - FishEye" type="CanvasLayer" parent="[ POST PROCESS ]"]
 layer = 4
 
-[node name="ColorRect" type="ColorRect" parent="PPE - FishEye"]
+[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS ]/PPE - FishEye"]
 material = SubResource("ShaderMaterial_4w3e5")
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,5 +154,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Msh_Sect06_Sitio" parent="." instance=ExtResource("9_s7pct")]
