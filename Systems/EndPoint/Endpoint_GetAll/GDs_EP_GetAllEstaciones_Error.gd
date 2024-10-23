@@ -1,6 +1,6 @@
 class_name GDs_EP_GetAllEstaciones_Error extends Node
 
-@export var customResource_GetAllEstaciones: GDs_CR_LocalEstaciones
+@export var CR_LocalEstaciones: GDs_CR_LocalEstaciones
 
 @export_category("GetAllEstaciones")
 @export var timer : Timer
@@ -47,9 +47,9 @@ func GetEstaciones_Empty()-> Array[GDs_Data_EP_Estacion]:
 	var custom_array: Array[GDs_Data_EP_Estacion] = []
 
 	#Obtener y setear cada propiedad de la clase ENDPOINT_SITIO_EXT para agregarlo al array
-	for i in range(customResource_GetAllEstaciones.LocalEstaciones.size()):
+	for i in range(CR_LocalEstaciones.LocalEstaciones.size()):
 		var emptyEstacion = {
-		"id": customResource_GetAllEstaciones.LocalEstaciones[i].id,
+		"id": CR_LocalEstaciones.LocalEstaciones[i].id,
 		"fecha": "--/--/-- T --:--:--",
 		"nivel": 0.0,
 		"prtcion_pluvial": 0.0,

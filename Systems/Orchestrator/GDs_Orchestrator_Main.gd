@@ -4,7 +4,6 @@ class_name GDs_Orchestrator_Main extends Node
 @export var curtain : GDs_Curtain
 @export var scenes_manager : GDs_Scenes_Manager
 @export var serviceData_manager : GDs_DataService_Manager
-@export var lvlPerfiles : GDs_Perf_Manager
 
 func _ready():
 	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
@@ -20,7 +19,3 @@ func _ready():
 	
 	#ESCENAS
 	scenes_manager.Initialize()
-	
-	#PERFILES
-	lvlPerfiles.Initialize(serviceData_manager)
-	serviceData_manager.OnDataRefresh.connect(lvlPerfiles.OnDataRefresh)

@@ -1,6 +1,6 @@
 class_name GDs_EP_GetAllEstaciones extends Node
 
-@export var customResource_GetAllEstaciones : GDs_CR_LocalEstaciones
+@export var CR_LocalEstaciones : GDs_CR_LocalEstaciones
 @onready var http_request : HTTPRequest = $HTTPRequest
 
 signal OnRequest_Success
