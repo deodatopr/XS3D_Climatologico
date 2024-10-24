@@ -83,7 +83,6 @@ func UpdateCamState():
 		var maxSpeed : float = dron_UI_maxSpeed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else dron_UI_maxSpeed
 		CAM.speed = ceili(lerpf(0,maxSpeed, movDron.speed01))
 		
-	print(CAM.speed)
 func ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.Aerial:
 		movAerial.process_mode = Node.PROCESS_MODE_ALWAYS
