@@ -30,9 +30,9 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	mov_deceleration = camMng.dron_speed_accel_decel
 	
 func SetCamera():
-	#cam.fov = camMng.dron_fov
 	pivot.global_position.y = camMng.dron_initialHeight
 	cam.global_position = pivot.global_position
+	cam.fov = camMng.dron_fov
 	
 func UpdateCamConfig():
 	cam.fov = camMng.dron_fov
