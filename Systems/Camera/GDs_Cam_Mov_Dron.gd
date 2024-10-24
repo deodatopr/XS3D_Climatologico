@@ -2,7 +2,7 @@ class_name GDs_Cam_Mov_Dron extends Node
 
 var camMng : GDs_Cam_Manager
 
-var cam : Node3D
+var cam : Camera3D
 var pivot : Node3D
 
 var mov_deceleration : float
@@ -17,6 +17,8 @@ var last_pivot_rotation : Vector3
 var return_cam_time_elpased : float = 0
 var last_pitch : float = 0
 var yaw_direction = 1
+var BoostTimeElapsed = 0
+var CursorMovement : Vector2
 var speed01 : float
 
 const RETURN_CAMERA_ADJUST : float = 0.1
@@ -28,9 +30,12 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	mov_deceleration = camMng.dron_speed_accel_decel
 	
 func SetCamera():
+	#cam.fov = camMng.dron_fov
 	pivot.global_position.y = camMng.dron_initialHeight
-	pivot.global_position = cam.global_position
 	cam.global_position = pivot.global_position
+	
+func UpdateCamConfig():
+	cam.fov = camMng.dron_fov
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -70,12 +75,15 @@ func _movement(_delta:float):
 		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
 		
 		if mov_velocity.length() > camMng.dron_speed_accel_decel:
-			mov_velocity = mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10))
+			mov_velocity = lerp(mov_velocity.limit_length(camMng.dron_speed_accel_decel), mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10)), clampf(BoostTimeElapsed, 0, 1))
+			if FinalSpeedTurbo != 0 and BoostTimeElapsed <= 1:
+				BoostTimeElapsed += _delta
 	else:
 		if mov_velocity.length() > 0:
 			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
 			if mov_velocity.length() < 0.1:
 				mov_velocity = Vector3.ZERO
+				BoostTimeElapsed = 0
 	
 	speed01 = inverse_lerp(0,camMng.dron_speed + (FinalSpeedTurbo * 10),mov_velocity.length())
 	var targetPosition : Vector3 = pivot.global_position
@@ -92,22 +100,29 @@ func _movement(_delta:float):
 func _rotation(_delta:float):
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 		if MouseMotion != null:
 			if MouseMotion.relative.x > 0:
 				yaw_direction = 1
 			else:
 				yaw_direction = -1
-			_rotHorPivot(MouseMotion.relative.x * .5, _delta)
-			_rotVertCam(MouseMotion.relative.y * .5, _delta)
+			#CursorMovement += MouseMotion.relative * 3
+			#CursorMovement = clamp(CursorMovement, -(DisplayServer.screen_get_size()*1.0)/2, (DisplayServer.screen_get_size()*1.0)/2)
+			#print(CursorMovement)
+			#_rotHorPivot(CursorMovement.x/(DisplayServer.screen_get_size().x/2) * 10, _delta)
+			#_rotVertCam(CursorMovement.y/(DisplayServer.screen_get_size().y/2) * 10, _delta)
+			_rotHorPivot(MouseMotion.relative.x, _delta)
+			_rotVertCam(MouseMotion.relative.y, _delta)
 
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		CursorMovement = Vector2.ZERO
+		pass
 		
 	if Input.is_action_pressed("3DLook_Up") or Input.is_action_pressed("3DLook_Down"):
 		_rotVertCam(-Input.get_axis("3DLook_Down", '3DLook_Up') * 10, _delta)
-	else:
+	elif not (Input.is_action_pressed("3DLook_Up") or Input.is_action_pressed("3DLook_Down")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		_rotVertReturn(_delta)
 		
 	if Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left"):
@@ -133,6 +148,7 @@ func _rotVertCam(dir:float, _delta:float):
 	cam.rotation_degrees.x = pitch
 		
 func _rotVertReturn(_delta:float):
+	print("return")
 	if abs(cam.rotation_degrees.x) > .1:
 		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.dron_vert_return / RETURN_CAMERA_ADJUST))
 		return_cam_time_elpased += _delta

@@ -8,12 +8,12 @@
 
 [node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movAerial", "movDron", "pivot_cam", "cam")]
 script = ExtResource("1_vxe6d")
-curveAccel = ExtResource("2_xldol")
-curveDecel = ExtResource("3_goarf")
 movAerial = NodePath("Mov_Aerial")
 movDron = NodePath("Mov_Dron")
 pivot_cam = NodePath("pivot_ground")
 cam = NodePath("pivot_ground/cam")
+curveAccel = ExtResource("2_xldol")
+curveDecel = ExtResource("3_goarf")
 
 [node name="Mov_Aerial" type="Node" parent="."]
 script = ExtResource("2_s21o3")

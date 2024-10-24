@@ -1,7 +1,7 @@
 class_name GDs_LocalCurtain
 extends Control
 
-@export var speedFade:=1.0
+@export var speedFade:=0.1
 @export var colorTarget := Color.BLACK
 @export var colorTransparent := Color.BLACK
 

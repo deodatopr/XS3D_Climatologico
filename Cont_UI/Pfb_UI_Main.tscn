@@ -60,6 +60,8 @@ layout_mode = 1
 [node name="--------" type="Node" parent="."]
 
 [node name="Cortinilla Local" type="NinePatchRect" parent="."]
+process_mode = 4
+visible = false
 self_modulate = Color(0, 0, 0, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -70,3 +72,4 @@ grow_vertical = 2
 texture = ExtResource("8_omcqt")
 region_rect = Rect2(476, 8, 23, 25)
 script = ExtResource("9_a1hye")
+colorTransparent = Color(0, 0, 0, 0)

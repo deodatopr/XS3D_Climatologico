@@ -19,27 +19,29 @@ func ChangeDrone(_modoToChange : int):
 			vistaDron.show()
 			vistaAereo.hide()
 		1:
-			vistaAereo.show()
+			GlitchTransition()
 			vistaDron.hide()
+			vistaAereo.show()
 
 func GlitchTransition():
 	UTILITIES.TurnOnObject(glitch)
 	tween = create_tween()
-	tween.tween_method(ChangeGlitchIntensity,0.01,1,0.5)
+	tween.tween_method(ChangeGlitchIntensity,0.5,1,0.1)
 	await tween.finished
 	
+	UTILITIES.TurnOnObject(cortinilla)
 	cortinilla.ShowCurtain()
 	await cortinilla.OnCurtainCovered
-	SIGNALS.OnCameraCanChangeMode
+	SIGNALS.OnCameraCanChangeMode.emit()
 	cortinilla.HideCurtain()
-	print_debug("asd")
 	await cortinilla.OnCurtainFinished
 	
 	tween = create_tween()
-	tween.tween_method(ChangeGlitchIntensity,1.0,0.01,0.5)
+	tween.tween_method(ChangeGlitchIntensity,1.0,0.5,0.1)
 	await tween.finished
 	
 	UTILITIES.TurnOffObject(glitch)
+	UTILITIES.TurnOffObject(cortinilla)
 
 func ChangeGlitchIntensity(intensity:float):
 	glitch.material.set_shader_parameter("intensity", intensity)
