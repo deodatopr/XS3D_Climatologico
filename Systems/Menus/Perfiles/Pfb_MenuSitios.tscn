@@ -13,11 +13,11 @@ shader_parameter/blur = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_re0sb"]
 atlas = ExtResource("8_crh64")
-region = Rect2(371, 4, 79, 80)
+region = Rect2(370, 4, 79, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rifoi"]
 atlas = ExtResource("8_crh64")
-region = Rect2(8, 264, 54, 54)
+region = Rect2(7, 264, 54, 54)
 
 [node name="Menu Sitios" type="Control" node_paths=PackedStringArray("sitios")]
 layout_mode = 3
@@ -30,6 +30,7 @@ offset_bottom = -117.0
 grow_vertical = 0
 script = ExtResource("1_rsnj0")
 sitios = [NodePath("NinePatchRect/VBoxContainer/Estacion"), NodePath("NinePatchRect/VBoxContainer/Estacion2"), NodePath("NinePatchRect/VBoxContainer/Estacion3"), NodePath("NinePatchRect/VBoxContainer/Estacion4"), NodePath("NinePatchRect/VBoxContainer/Estacion5"), NodePath("NinePatchRect/VBoxContainer/Estacion6"), NodePath("NinePatchRect/VBoxContainer/Estacion7"), NodePath("NinePatchRect/VBoxContainer/Estacion8")]
+metadata/_edit_horizontal_guides_ = [954.0]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_0qgbh")
@@ -84,14 +85,17 @@ layout_mode = 2
 
 [node name="Controles" type="Control" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 209.5
-offset_top = 717.0
-offset_right = 386.5
-offset_bottom = 810.0
-grow_horizontal = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -96.0
+offset_right = 190.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Pad" type="TextureRect" parent="NinePatchRect/Controles"]
 layout_mode = 1

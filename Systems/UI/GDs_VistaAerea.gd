@@ -25,7 +25,7 @@ func _process(_delta):
 	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
 	lblRotacion.text = UTILITIES.FormatRotacionXY(CAM.rotation)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#TODO agregar posicion de camara a las lineas horizontales 
 	topLines.position.x = initialTopLinesPosX +(CAM.rotation.y * 3) 
 	bottomLines.position.x = initialBottomLinesPosX +(CAM.rotation.y * 3) 

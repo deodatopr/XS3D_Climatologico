@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvrx7m3ppga3d"]
+[gd_scene load_steps=8 format=3 uid="uid://dvrx7m3ppga3d"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_b0h8j"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pvpg3"]
@@ -18,8 +18,26 @@ region = Rect2(8, 322, 44, 44)
 atlas = ExtResource("2_pvpg3")
 region = Rect2(7, 263, 55, 55)
 
-[node name="PopUp Ver Sitio" type="NinePatchRect" node_paths=PackedStringArray("btnAceptar")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub68o"]
+atlas = ExtResource("2_pvpg3")
+region = Rect2(5, 197, 59, 59)
+
+[node name="PopUP" type="Control" node_paths=PackedStringArray("btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dbed1")
+btnAceptar = NodePath("PopUp Ver Sitio/Control/Botones/Aceptar/Btn Aceptar")
+btnAceptarHighlight = NodePath("PopUp Ver Sitio/Control/Botones/Aceptar/Highlight Aceptar")
+btnCancelar = NodePath("PopUp Ver Sitio/Control/Botones/Cancelar/Btn Cancelar")
+btnCancelarHighlight = NodePath("PopUp Ver Sitio/Control/Botones/Cancelar/Highlight Cancelar")
+
+[node name="PopUp Ver Sitio" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_flypi")
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -37,10 +55,8 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
-script = ExtResource("3_dbed1")
-btnAceptar = NodePath("")
 
-[node name="Background Interior - Mask" type="NinePatchRect" parent="."]
+[node name="Background Interior - Mask" type="NinePatchRect" parent="PopUp Ver Sitio"]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -59,7 +75,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="Background Interior - Mask"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="PopUp Ver Sitio/Background Interior - Mask"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -76,7 +92,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Esquinas" type="Control" parent="."]
+[node name="Esquinas" type="Control" parent="PopUp Ver Sitio"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,7 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Esquina" type="TextureRect" parent="Esquinas"]
+[node name="Esquina" type="TextureRect" parent="PopUp Ver Sitio/Esquinas"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -93,7 +109,7 @@ offset_bottom = 50.0
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_bfla7")
 
-[node name="Esquina2" type="TextureRect" parent="Esquinas"]
+[node name="Esquina2" type="TextureRect" parent="PopUp Ver Sitio/Esquinas"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -107,7 +123,7 @@ rotation = -1.5708
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_bfla7")
 
-[node name="Esquina3" type="TextureRect" parent="Esquinas"]
+[node name="Esquina3" type="TextureRect" parent="PopUp Ver Sitio/Esquinas"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -121,7 +137,7 @@ rotation = 1.5708
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_bfla7")
 
-[node name="Esquina4" type="TextureRect" parent="Esquinas"]
+[node name="Esquina4" type="TextureRect" parent="PopUp Ver Sitio/Esquinas"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -138,7 +154,7 @@ rotation = 3.14159
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_bfla7")
 
-[node name="Control" type="VBoxContainer" parent="."]
+[node name="Control" type="VBoxContainer" parent="PopUp Ver Sitio"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,11 +166,11 @@ offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Titulo" type="Control" parent="Control"]
+[node name="Titulo" type="Control" parent="PopUp Ver Sitio/Control"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/Titulo"]
+[node name="Label" type="Label" parent="PopUp Ver Sitio/Control/Titulo"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,7 +183,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/Titulo"]
+[node name="NinePatchRect" type="NinePatchRect" parent="PopUp Ver Sitio/Control/Titulo"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -183,11 +199,11 @@ grow_vertical = 0
 texture = ExtResource("2_pvpg3")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Nombre Sitio" type="Control" parent="Control"]
+[node name="Nombre Sitio" type="Control" parent="PopUp Ver Sitio/Control"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Frame Nombre" type="NinePatchRect" parent="Control/Nombre Sitio"]
+[node name="Frame Nombre" type="NinePatchRect" parent="PopUp Ver Sitio/Control/Nombre Sitio"]
 self_modulate = Color(0.113725, 0.411765, 1, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -208,7 +224,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Patch" type="NinePatchRect" parent="Control/Nombre Sitio/Frame Nombre"]
+[node name="Patch" type="NinePatchRect" parent="PopUp Ver Sitio/Control/Nombre Sitio/Frame Nombre"]
 self_modulate = Color(0.113725, 0.411765, 1, 1)
 layout_mode = 1
 anchors_preset = 9
@@ -221,7 +237,7 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_bottom = 5
 
-[node name="Lbl ID" type="Label" parent="Control/Nombre Sitio/Frame Nombre/Patch"]
+[node name="Lbl ID" type="Label" parent="PopUp Ver Sitio/Control/Nombre Sitio/Frame Nombre/Patch"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -233,7 +249,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Nombre" type="Label" parent="Control/Nombre Sitio/Frame Nombre"]
+[node name="Nombre" type="Label" parent="PopUp Ver Sitio/Control/Nombre Sitio/Frame Nombre"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -248,15 +264,15 @@ text = "CAMPAMENTO LOS BERROS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Botones" type="HBoxContainer" parent="Control"]
+[node name="Botones" type="HBoxContainer" parent="PopUp Ver Sitio/Control"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Aceptar" type="Control" parent="Control/Botones"]
+[node name="Aceptar" type="Control" parent="PopUp Ver Sitio/Control/Botones"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Control/Botones/Aceptar"]
+[node name="TextureRect" type="TextureRect" parent="PopUp Ver Sitio/Control/Botones/Aceptar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -271,7 +287,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_oduyb")
 
-[node name="Label" type="Label" parent="Control/Botones/Aceptar/TextureRect"]
+[node name="Label" type="Label" parent="PopUp Ver Sitio/Control/Botones/Aceptar/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -283,7 +299,23 @@ text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Control/Botones/Aceptar"]
+[node name="Highlight Aceptar" type="TextureRect" parent="PopUp Ver Sitio/Control/Botones/Aceptar"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -27.0
+offset_right = -9.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ub68o")
+
+[node name="Label" type="Label" parent="PopUp Ver Sitio/Control/Botones/Aceptar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -300,11 +332,20 @@ theme_override_font_sizes/font_size = 21
 text = "aceptar"
 uppercase = true
 
-[node name="Cancelar" type="Control" parent="Control/Botones"]
+[node name="Btn Aceptar" type="Button" parent="PopUp Ver Sitio/Control/Botones/Aceptar"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cancelar" type="Control" parent="PopUp Ver Sitio/Control/Botones"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Control/Botones/Cancelar"]
+[node name="TextureRect" type="TextureRect" parent="PopUp Ver Sitio/Control/Botones/Cancelar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -319,7 +360,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_oduyb")
 
-[node name="Label" type="Label" parent="Control/Botones/Cancelar/TextureRect"]
+[node name="Label" type="Label" parent="PopUp Ver Sitio/Control/Botones/Cancelar/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -331,7 +372,23 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Control/Botones/Cancelar"]
+[node name="Highlight Cancelar" type="TextureRect" parent="PopUp Ver Sitio/Control/Botones/Cancelar"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = -29.5
+offset_right = -46.5
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ub68o")
+
+[node name="Label" type="Label" parent="PopUp Ver Sitio/Control/Botones/Cancelar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -347,3 +404,12 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 21
 text = "cancelar"
 uppercase = true
+
+[node name="Btn Cancelar" type="Button" parent="PopUp Ver Sitio/Control/Botones/Cancelar"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
