@@ -34,7 +34,7 @@ class_name GDs_Cam_Manager extends Node
 @export_range(-90, 0) var dron_vert_min : float = -90
 @export var dron_vert_return : float = 1
 @export_range(15, 90) var minDistGround : float = 55
-@export_range(30,100) var dron_fov :float
+@export_range(30,100) var dron_fov :float = 30
 
 var camMode : int
 
@@ -48,7 +48,7 @@ func _ready():
 	camMode = ENUMS.Cam_Mode.Dron
 	Initialize(camMode)
 	
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
 		camMode = ENUMS.Cam_Mode.Dron if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else ENUMS.Cam_Mode.Aerial
 		SIGNALS.OnCameraRequestChangeMode.emit(camMode)

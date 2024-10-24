@@ -20,7 +20,7 @@ func _ready():
 	initialLeftLinesPosY = LeftLines.position.y
 	initialRightLinesPosY = RightLines.position.y
 
-func _process(delta):
+func _process(_delta):
 	lblAltura.text = UTILITIES.FormatAltura(CAM.height)
 	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
 	lblRotacion.text = UTILITIES.FormatRotacionXY(CAM.rotation)

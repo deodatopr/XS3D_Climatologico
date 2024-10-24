@@ -148,7 +148,6 @@ func _rotVertCam(dir:float, _delta:float):
 	cam.rotation_degrees.x = pitch
 		
 func _rotVertReturn(_delta:float):
-	print("return")
 	if abs(cam.rotation_degrees.x) > .1:
 		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.dron_vert_return / RETURN_CAMERA_ADJUST))
 		return_cam_time_elpased += _delta
