@@ -37,6 +37,12 @@ class_name GDs_Cam_Manager extends Node
 
 var camMode : int
 
+var aerial_UI_maxSpeed : int = 200
+var aerial_UI_maxSpeed_boost : int = 250
+
+var dron_UI_maxSpeed : int = 70
+var dron_UI_maxSpeed_boost : int = 100
+
 func _ready():
 	camMode = ENUMS.Cam_Mode.Dron
 	Initialize(camMode)
@@ -68,7 +74,15 @@ func UpdateCamState():
 	CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(cam.global_rotation_degrees.y))
 	CAM.height = ceili(cam.global_position.y)
 	CAM.fov = ceili(cam.fov)
+	CAM.position = cam.global_position
 	
+	if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial:
+		var maxSpeed : float = aerial_UI_maxSpeed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else aerial_UI_maxSpeed
+		CAM.speed = lerpf(0,maxSpeed, movAerial.speed01)
+	else:
+		var maxSpeed : float = dron_UI_maxSpeed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else dron_UI_maxSpeed
+		CAM.speed = lerpf(0,maxSpeed, movDron.speed01)
+		
 func ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.Aerial:
 		movAerial.process_mode = Node.PROCESS_MODE_ALWAYS

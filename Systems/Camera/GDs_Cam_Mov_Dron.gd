@@ -17,6 +17,7 @@ var last_pivot_rotation : Vector3
 var return_cam_time_elpased : float = 0
 var last_pitch : float = 0
 var yaw_direction = 1
+var speed01 : float
 
 const RETURN_CAMERA_ADJUST : float = 0.1
 
@@ -62,9 +63,10 @@ func _movement(_delta:float):
 	if Input.is_action_pressed("3DMove_Down"):
 		inputDir -= pivot.basis.y
 
+	var FinalSpeedTurbo : float = camMng.dron_boost
+	FinalSpeedTurbo = camMng.dron_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
+	
 	if inputDir.length() > 0:
-		var FinalSpeedTurbo : float = camMng.aerial_boost
-		FinalSpeedTurbo = camMng.aerial_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
 		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
 		
 		if mov_velocity.length() > camMng.dron_speed_accel_decel:
@@ -75,6 +77,7 @@ func _movement(_delta:float):
 			if mov_velocity.length() < 0.1:
 				mov_velocity = Vector3.ZERO
 	
+	speed01 = inverse_lerp(0,camMng.dron_speed + (FinalSpeedTurbo * 10),mov_velocity.length())
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
 	
