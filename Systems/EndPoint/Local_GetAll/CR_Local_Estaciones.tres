@@ -13,7 +13,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "19° 23´ 02.9\""
 longitud = "100° 04´ 41.5\""
-color = Color(0.14188, 0.0177224, 1, 1)
+color = Color(0, 0.698039, 0.662745, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_7jyd0"]
@@ -26,7 +26,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "19° 21´ 01.8\""
 longitud = "100° 09´ 10.1\""
-color = Color(1, 0, 0, 1)
+color = Color(1, 0.380392, 0.0196078, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_pg03a"]
@@ -39,7 +39,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "19° 10´ 43.6\""
 longitud = "100° 13´ 30.1\""
-color = Color(0, 0, 0, 1)
+color = Color(0.113725, 0.411765, 1, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_ml0vq"]
@@ -52,7 +52,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "18° 31´ 35.3\""
 longitud = "99° 04' 21.4\""
-color = Color(0, 0, 0, 1)
+color = Color(0.698039, 0, 0.686275, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_473h7"]
@@ -65,7 +65,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = " 19° 27' 40\""
 longitud = " 100° 03' 14\""
-color = Color(0, 0, 0, 1)
+color = Color(0.996078, 0.662745, 0.00392157, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_rvfsp"]
@@ -78,7 +78,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "19° 23' 32.5\""
 longitud = "100° 25' 21.9\""
-color = Color(0, 0, 0, 1)
+color = Color(0, 0.698039, 0.388235, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_y7443"]
@@ -91,7 +91,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "19° 32' 24.1\""
 longitud = "100° 29' 11.4\""
-color = Color(0, 0, 0, 1)
+color = Color(0.980392, 0.00392157, 0.411765, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_hp7b6"]
@@ -104,7 +104,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "19° 50' 55\""
 longitud = "99° 12' 45\""
-color = Color(0, 0, 0, 1)
+color = Color(1, 0, 0, 1)
 disponible = false
 
 [resource]

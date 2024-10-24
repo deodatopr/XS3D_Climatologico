@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_LocalCurtain.gd" id="9_a1hye"]
 
-[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("cortinilla", "vistaDron", "vistaAereo")]
+[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("cortinilla", "menuPerfiles", "vistaDron", "vistaAereo")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vcggy")
 cortinilla = NodePath("Cortinilla Local")
+menuPerfiles = NodePath("Menu Sitios")
 vistaDron = NodePath("Vista Dron")
 vistaAereo = NodePath("Vista Aereo")
 

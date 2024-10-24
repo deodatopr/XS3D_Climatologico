@@ -1,16 +1,24 @@
 extends Control
 
+@export_group("Refs externas")
+@export var dataService:GDs_DataService_Manager
+@export_subgroup("PPE")
+@export var glitch:Control
+@export_group("Refs internas")
 @export var cortinilla:GDs_LocalCurtain
-@export_group("Vista Drones")
+@export var menuPerfiles:GDs_MenuPerfiles
+@export_subgroup("Vista Drones")
 @export var vistaDron:Control
 @export var vistaAereo:Control
-@export_group("PPE")
-@export var glitch:Control
 
 var tween:Tween
 
 func _ready():
 	SIGNALS.OnCameraRequestChangeMode.connect(ChangeDrone)
+	dataService.OnDataRefresh.connect(DataRefresh)
+
+func DataRefresh():
+	menuPerfiles.DataRefresh(dataService.estaciones)
 
 func ChangeDrone(_modoToChange : int):
 	match  _modoToChange:

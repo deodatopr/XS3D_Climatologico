@@ -1,3 +1,4 @@
+class_name  GDs_MenuPerfiles
 extends Control
 
 @export_group("Refs Externas")
@@ -18,6 +19,12 @@ func _input(event):
 		if event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
 			GetCurrentFocus()
 
+func DataRefresh(_estaciones : Array[GDs_Data_Estacion]):
+	var idx=0
+	for sitio in sitios:
+		sitio.DataRefresh(_estaciones[idx])
+		idx += 1
+
 func OnShowHide():
 	if visible:
 		sitios[lastOneFocused].button.grab_focus()
@@ -33,6 +40,7 @@ func InitializeSitios():
 		sitio.button.focus_neighbor_right = barraMenu.BtnMapa.get_path()
 		#Conectar senales
 		sitio.OnSitioPressed.connect(OnAnySitioPressed)
+		popUp.OnCancelarVerSitio.connect(sitio.OnPopUpCancelar)
 
 func GetCurrentFocus():
 	var idx = 0

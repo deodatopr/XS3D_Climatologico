@@ -6,6 +6,11 @@ extends Control
 @export var animScaleNode:Control
 @export var scaleScale:Vector2
 @export var blurBG:Control
+@export_group("Data Refresh")
+@export var frame:Control
+@export var frameNombre:Control
+@export var patch:Control
+
 
 signal OnSitioPressed 
 var tween:Tween
@@ -23,11 +28,18 @@ func _ready():
 	button.focus_exited.connect(ScaleDown)
 	button.mouse_exited.connect(ScaleDown)
 
+func DataRefresh(_estacion: GDs_Data_Estacion):
+	frame.self_modulate = _estacion.color
+	frameNombre.self_modulate = _estacion.color
+	patch.self_modulate = _estacion.color
+
+
 func OnBtnPressed():
 	OnSitioPressed.emit()
 	pressed = true
 
 func ScaleUp():
+	button.grab_focus()
 	tween = create_tween()
 	tween.tween_property(animScaleNode,"scale",scaleScale,0.2)
 	tween.parallel().tween_property(blurBG,"self_modulate",whiteBlur,0.2)
@@ -39,4 +51,6 @@ func ScaleDown():
 		tween = create_tween()
 		tween.tween_property(animScaleNode,"scale",Vector2.ONE,0.2)
 		tween.parallel().tween_property(blurBG,"self_modulate",transparent,0.2)
-	
+
+func OnPopUpCancelar():
+	pressed = false

@@ -67,7 +67,7 @@ region = Rect2(160, 163, 36, 34)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvcfw"]
 
-[node name="Estacion" type="Control" node_paths=PackedStringArray("button", "animScaleNode", "blurBG")]
+[node name="Estacion" type="Control" node_paths=PackedStringArray("button", "animScaleNode", "blurBG", "frame", "frameNombre", "patch")]
 custom_minimum_size = Vector2(400, 91)
 layout_mode = 3
 anchors_preset = 0
@@ -78,6 +78,9 @@ button = NodePath("AnimScale/Button")
 animScaleNode = NodePath("AnimScale")
 scaleScale = Vector2(1.1, 1.1)
 blurBG = NodePath("AnimScale/Blurred BG")
+frame = NodePath("AnimScale/Frame")
+frameNombre = NodePath("AnimScale/VBoxContainer/Nombre/Frame Nombre")
+patch = NodePath("AnimScale/VBoxContainer/Nombre/Frame Nombre/Patch")
 
 [node name="AnimScale" type="Control" parent="."]
 layout_mode = 1
