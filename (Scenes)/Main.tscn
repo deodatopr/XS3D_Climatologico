@@ -12,6 +12,8 @@
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
+[node name="Find - Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]
+
 [node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("splash", "curtain", "scenes_manager", "dataService_manager")]
 script = ExtResource("3_7k0af")
 splash = NodePath("../../[ UI ]/Splash")
