@@ -62,8 +62,10 @@ func _input(event):
 func _process(_delta : float):
 	UpdateCamState()
 	if valuesInRuntime:
-		movAerial.UpdateCamConfig()
-		movDron.UpdateCamConfig()
+		if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial:
+			movAerial.UpdateCamConfig()
+		else:
+			movDron.UpdateCamConfig()
 
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
