@@ -6,9 +6,6 @@
 
 #	[ Pani ]
 #
-# Agregar a camState:
-# 	- Inyectar coordenadas x y y
-# 	- speed
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 

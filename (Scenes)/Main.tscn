@@ -30,8 +30,25 @@ font_color = Color(1, 0, 0, 1)
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]"]
+[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("splash", "curtain", "scenes_manager", "dataService_manager")]
 script = ExtResource("3_7k0af")
+splash = NodePath("../../[ UI ]/Splash")
+curtain = NodePath("../Curtain")
+scenes_manager = NodePath("../MngScenes")
+dataService_manager = NodePath("../DataService")
+crLocalEstaciones = ExtResource("4_rl3y7")
+
+[node name="Curtain" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("curtain", "imgCurtain", "lblCargando", "inputBlocker")]
+script = ExtResource("1_22qja")
+curtain = NodePath("../../[ UI ]/Curtain")
+imgCurtain = NodePath("../../[ UI ]/Curtain/VBoxContainer/img - Curtain")
+lblCargando = NodePath("../../[ UI ]/Curtain/VBoxContainer/img - Curtain/lbl - Cargando")
+inputBlocker = NodePath("../../[ UI ]/Curtain/InputBlocker")
+
+[node name="MngScenes" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("curtain", "sceneParentRoot")]
+script = ExtResource("2_t3lcg")
+curtain = NodePath("../Curtain")
+sceneParentRoot = NodePath("../../[ SCENES ]")
 
 [node name="DataService" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("endpoint", "endpoint_Debug", "endpoint_Error", "timerTicking")]
 script = ExtResource("2_12caw")
@@ -238,25 +255,14 @@ text = "[ RE-INTENTAR ]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MngScenes" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("dataService", "curtain", "sceneParentRoot")]
-script = ExtResource("2_t3lcg")
-dataService = NodePath("../DataService")
-curtain = NodePath("../Curtain")
-sceneParentRoot = NodePath("../../[ SCENES ]")
+[node name="[ SCENES ]" type="Node" parent="."]
 
-[node name="Curtain" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("curtain", "imgCurtain", "lblCargando", "inputBlocker")]
-script = ExtResource("1_22qja")
-curtain = NodePath("../../[ UI ]/Curtain")
-imgCurtain = NodePath("../../[ UI ]/Curtain/VBoxContainer/img - Curtain")
-lblCargando = NodePath("../../[ UI ]/Curtain/VBoxContainer/img - Curtain/lbl - Cargando")
-inputBlocker = NodePath("../../[ UI ]/Curtain/InputBlocker")
-
-[node name="[ UI ]" type="Node" parent="."]
+[node name="[ UI ]" type="CanvasLayer" parent="."]
+layer = 20
 
 [node name="Curtain" parent="[ UI ]" instance=ExtResource("1_2h8cb")]
+visible = true
 
 [node name="Splash" parent="[ UI ]" instance=ExtResource("5_qomdb")]
-
-[node name="[ SCENES ]" type="Node" parent="."]
 
 [editable path="[ UI ]/Curtain"]

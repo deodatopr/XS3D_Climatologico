@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bu08kjkfn1ilc" path="res://Cont_UI/Splash/Splash_CDMX.png" id="3_l1wto"]
 [ext_resource type="Texture2D" uid="uid://kx576vlm5ckp" path="res://Cont_UI/Splash/Splash_Empresas.png" id="4_jp8cy"]
 
-[node name="Lvl_Splash" type="Control" node_paths=PackedStringArray("splashes")]
+[node name="Lvl_Splash" type="Control" node_paths=PackedStringArray("splashes", "bgk", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_gr75u")
 splashes = [NodePath("Splashes/Splash_1"), NodePath("Splashes/Splash_2")]
+bgk = NodePath("Atls_Bgk")
+timer = NodePath("Timer - Splash Img Visible")
 
 [node name="Atls_Bgk" type="NinePatchRect" parent="."]
 visible = false
@@ -26,7 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_r8ng5")
-region_rect = Rect2(443, 28, 40, 40)
+region_rect = Rect2(473.772, 5.66361, 28.6768, 28.3871)
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
