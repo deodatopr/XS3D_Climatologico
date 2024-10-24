@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cocko4ft5524e"]
+[gd_scene load_steps=20 format=3 uid="uid://cocko4ft5524e"]
 
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_mrxy0"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_VistaAerea.gd" id="1_y2q8n"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_kdw48"]
 [ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="3_fmv7q"]
 
@@ -8,7 +9,7 @@
 shader = ExtResource("2_kdw48")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.5
-shader_parameter/blur = 1
+shader_parameter/blur = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2cfi"]
 atlas = ExtResource("1_mrxy0")
@@ -61,13 +62,21 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o5vl7"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[node name="Vista Aereo" type="Control"]
+[node name="Vista Aereo" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "topLines", "bottomLines", "LeftLines", "RightLines")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_y2q8n")
+lblAltura = NodePath("Frame/NinePatchRect/HBoxContainer/Altura/Lbl Altura")
+lblVelocidad = NodePath("Frame/NinePatchRect/HBoxContainer/Velocidad/Lbl Velocidad")
+lblRotacion = NodePath("Frame/NinePatchRect/HBoxContainer/Rotacion/Lbl Rotacion")
+topLines = NodePath("Frame/Indicators/Top Indicator/Mask/Top Lines")
+bottomLines = NodePath("Frame/Indicators/Bottom Indicator/Mask/Bottom Lines")
+LeftLines = NodePath("Frame/Indicators/Left Indicator/Mask/Left Lines")
+RightLines = NodePath("Frame/Indicators/Right Indicator/Mask/Right Lines")
 
 [node name="Frame" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -164,6 +173,7 @@ theme_override_font_sizes/font_size = 20
 text = "(0°, -30°)"
 
 [node name="Fov" type="HBoxContainer" parent="Frame/NinePatchRect/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
@@ -430,7 +440,6 @@ offset_right = -334.0
 offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
 [node name="Left Indicator" type="Control" parent="Frame/Indicators"]
 layout_mode = 1
@@ -461,18 +470,20 @@ texture = ExtResource("1_mrxy0")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Left Indicator/Line4"]
+self_modulate = Color(0.254477, 0.837328, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -37.0
 offset_top = -40.0
-offset_right = 20.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
+scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
 texture = SubResource("AtlasTexture_nvidw")
 
@@ -522,7 +533,7 @@ grow_vertical = 2
 texture = SubResource("CompressedTexture2D_rasto")
 region_rect = Rect2(475, 7, 25, 26)
 
-[node name="Lines" type="NinePatchRect" parent="Frame/Indicators/Left Indicator/Mask"]
+[node name="Left Lines" type="NinePatchRect" parent="Frame/Indicators/Left Indicator/Mask"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -554,6 +565,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Line4" type="NinePatchRect" parent="Frame/Indicators/Right Indicator"]
+modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -570,20 +582,55 @@ texture = ExtResource("1_mrxy0")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Right Indicator/Line4"]
+self_modulate = Color(0.254477, 0.837328, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = 1.0
 offset_top = -40.0
-offset_right = 20.0
+offset_right = 41.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
 texture = SubResource("AtlasTexture_nvidw")
+
+[node name="Line5" type="NinePatchRect" parent="Frame/Indicators/Right Indicator/Line4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -273.5
+offset_right = 150.0
+offset_bottom = -271.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.53073
+texture = ExtResource("1_mrxy0")
+region_rect = Rect2(477, 10, 23, 22)
+
+[node name="Line6" type="NinePatchRect" parent="Frame/Indicators/Right Indicator/Line4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 275.0
+offset_right = 151.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.75246
+texture = ExtResource("1_mrxy0")
+region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Mask" type="NinePatchRect" parent="Frame/Indicators/Right Indicator"]
 clip_children = 1
@@ -602,7 +649,7 @@ grow_vertical = 2
 texture = SubResource("CompressedTexture2D_rasto")
 region_rect = Rect2(475, 7, 25, 26)
 
-[node name="Lines" type="NinePatchRect" parent="Frame/Indicators/Right Indicator/Mask"]
+[node name="Right Lines" type="NinePatchRect" parent="Frame/Indicators/Right Indicator/Mask"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -620,40 +667,6 @@ region_rect = Rect2(995, 136, 26, 108)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Line5" type="NinePatchRect" parent="Frame/Indicators/Right Indicator"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 21.5
-offset_top = -273.5
-offset_right = 171.5
-offset_bottom = -271.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -2.53073
-texture = ExtResource("1_mrxy0")
-region_rect = Rect2(477, 10, 23, 22)
-
-[node name="Line6" type="NinePatchRect" parent="Frame/Indicators/Right Indicator"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 22.5
-offset_top = 275.0
-offset_right = 172.5
-offset_bottom = 277.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -3.75246
-texture = ExtResource("1_mrxy0")
-region_rect = Rect2(477, 10, 23, 22)
-
 [node name="Top Indicator" type="Control" parent="Frame/Indicators"]
 layout_mode = 1
 anchors_preset = 5
@@ -665,6 +678,7 @@ offset_bottom = 53.0
 grow_horizontal = 2
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Top Indicator"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -693,14 +707,14 @@ grow_horizontal = 2
 texture = SubResource("CompressedTexture2D_rasto")
 region_rect = Rect2(475, 7, 25, 26)
 
-[node name="Lines" type="NinePatchRect" parent="Frame/Indicators/Top Indicator/Mask"]
+[node name="Top Lines" type="NinePatchRect" parent="Frame/Indicators/Top Indicator/Mask"]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -918.5
-offset_right = 918.5
+offset_left = -1133.0
+offset_right = 1137.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_mrxy0")
@@ -722,6 +736,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Bottom Indicator"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -752,14 +767,14 @@ grow_vertical = 0
 texture = SubResource("CompressedTexture2D_epocd")
 region_rect = Rect2(475, 7, 25, 26)
 
-[node name="Lines" type="NinePatchRect" parent="Frame/Indicators/Bottom Indicator/Mask"]
+[node name="Bottom Lines" type="NinePatchRect" parent="Frame/Indicators/Bottom Indicator/Mask"]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -918.5
-offset_right = 918.5
+offset_left = -1678.0
+offset_right = 1679.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_o5vl7")

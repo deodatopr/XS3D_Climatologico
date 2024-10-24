@@ -65,4 +65,13 @@ func FormatDirViento(dir:float)->String:
 func FormatBateriaV(volt:float)->String:
 	volt = roundf(volt)
 	return str(volt) + "V"
+
+func FormatAltura(altura:int)->String:
+	return str(altura) + "m"
+	
+func FormatVelocidad(vel:int)->String:
+	return str(vel) + " km/hr"
+	
+func FormatRotacionXY(rot:Vector2)->String:
+	return "("+ str(rot.x) + "°," + str(rot.y) +"°)"
 #endregion
