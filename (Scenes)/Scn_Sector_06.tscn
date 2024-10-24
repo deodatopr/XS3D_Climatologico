@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
+[ext_resource type="PackedScene" uid="uid://c76bbkdsmwu2h" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="2_jtdc3"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
-[ext_resource type="PackedScene" uid="uid://bqa2ciul3qjye" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
+[ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="12_ppaes"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
@@ -46,8 +46,10 @@ adjustment_saturation = 1.2
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
 dof_blur_far_distance = 300.0
 dof_blur_far_transition = 600.0
-dof_blur_near_distance = 250.0
-dof_blur_near_transition = 240.0
+dof_blur_near_enabled = true
+dof_blur_near_distance = 900.0
+dof_blur_near_transition = 600.0
+dof_blur_amount = 0.02
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
@@ -67,7 +69,7 @@ shader_parameter/vignetteSize = 0.268
 shader_parameter/vignetteFeather = 0.777
 shader_parameter/vignetteColor = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w3e5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_issi1"]
 shader = ExtResource("8_pnisj")
 shader_parameter/lensDistortion = 1.7
 
@@ -89,8 +91,12 @@ shader_parameter/intensity = 0.3
 
 [node name="Camera Drones" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
 debug_skipCurtainToChangeMode = false
+valuesInRuntime = true
 aerial_height = 500.0
 aerial_zoom_out = 100.0
+dron_rot_hor_speed = 7.0
+dron_vert_return = 0.5
+minDistGround = 90.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -159,14 +165,16 @@ layer = 5
 
 [node name="RENDER TOOL" parent="[ POST PROCESS ]/UI" instance=ExtResource("6_7j046")]
 
-[node name="Pfb_UI" parent="[ POST PROCESS ]/UI" node_paths=PackedStringArray("glitch") instance=ExtResource("7_hy666")]
+[node name="Pfb_UI" parent="[ POST PROCESS ]/UI" node_paths=PackedStringArray("dataService", "glitch") instance=ExtResource("7_hy666")]
+dataService = NodePath("../../../[ SYSTEMS ]/DataService")
 glitch = NodePath("../../PPE - Glitch/ColorRect")
 
 [node name="PPE - FishEye" type="CanvasLayer" parent="[ POST PROCESS ]"]
 layer = 4
+visible = false
 
-[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS ]/PPE - FishEye"]
-material = SubResource("ShaderMaterial_4w3e5")
+[node name="DroneSky" type="ColorRect" parent="[ POST PROCESS ]/PPE - FishEye"]
+material = SubResource("ShaderMaterial_issi1")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
