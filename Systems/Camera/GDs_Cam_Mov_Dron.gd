@@ -2,7 +2,7 @@ class_name GDs_Cam_Mov_Dron extends Node
 
 var camMng : GDs_Cam_Manager
 
-var cam : Node3D
+var cam : Camera3D
 var pivot : Node3D
 
 var mov_deceleration : float
@@ -28,9 +28,13 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	mov_deceleration = camMng.dron_speed_accel_decel
 	
 func SetCamera():
+	cam.fov = camMng.dron_fov
 	pivot.global_position.y = camMng.dron_initialHeight
 	pivot.global_position = cam.global_position
 	cam.global_position = pivot.global_position
+	
+func UpdateCamConfig():
+	cam.fov = camMng.dron_fov
 	
 func _input(event):
 	if event is InputEventMouseMotion:

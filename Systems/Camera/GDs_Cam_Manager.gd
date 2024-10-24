@@ -34,6 +34,7 @@ class_name GDs_Cam_Manager extends Node
 @export_range(-90, 0) var dron_vert_min : float = -90
 @export var dron_vert_return : float = 1
 @export_range(15, 90) var minDistGround : float = 55
+@export_range(30,100) var dron_fov
 
 var camMode : int
 
@@ -62,6 +63,7 @@ func _process(_delta : float):
 	UpdateCamState()
 	if valuesInRuntime:
 		movAerial.UpdateCamConfig()
+		movDron.UpdateCamConfig()
 
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
