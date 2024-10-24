@@ -23,13 +23,6 @@ func _get_point_on_map(target_point : Vector3, Enviroment3D : Node3D, min_dist_f
 	var map = Enviroment3D.get_world_3d().navigation_map
 	if(NavigationServer3D.map_get_iteration_id(map)):
 		var closest_point := NavigationServer3D.map_get_closest_point(map, target_point)
-		var delta := closest_point - target_point
-		var is_on_map = delta.is_zero_approx()
-		if not is_on_map and min_dist_from_edge > 0:
-			# Wasn't on the map, so push in from edge. If you have thin sections on
-			# your navmesh, this could push it back off the navmesh!
-			delta = delta.normalized()
-			closest_point += delta * min_dist_from_edge
 		return closest_point
 	return target_point	
 	
