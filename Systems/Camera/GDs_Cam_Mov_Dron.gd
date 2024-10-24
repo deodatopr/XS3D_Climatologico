@@ -17,7 +17,7 @@ var last_pivot_rotation : Vector3
 var return_cam_time_elpased : float = 0
 var last_pitch : float = 0
 var yaw_direction = 1
-var BoostTimeElapsed = -1.5
+var BoostTimeElapsed = 0
 var CursorMovement : Vector2
 var speed01 : float
 
@@ -74,10 +74,12 @@ func _movement(_delta:float):
 	if inputDir.length() > 0:
 		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
 		if mov_velocity.length() > camMng.dron_speed_accel_decel:
-			mov_velocity = lerp(mov_velocity.limit_length(camMng.dron_speed_accel_decel), mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10)), 0)#clampf(BoostTimeElapsed, -1.5, .1))
-			if FinalSpeedTurbo != 0 and BoostTimeElapsed <= .1:
+			mov_velocity = lerp(mov_velocity.limit_length(camMng.dron_speed_accel_decel), mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10)), clampf(BoostTimeElapsed, 0, 1))
+			if FinalSpeedTurbo != 0:
+				print(BoostTimeElapsed)
 				BoostTimeElapsed += _delta
-			if FinalSpeedTurbo == 0 and BoostTimeElapsed > -1.5:
+			if FinalSpeedTurbo == 0:
+				print(BoostTimeElapsed)
 				BoostTimeElapsed -= _delta
 		
 	else:
@@ -85,7 +87,7 @@ func _movement(_delta:float):
 			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
 			if mov_velocity.length() < 0.1:
 				mov_velocity = Vector3.ZERO
-				BoostTimeElapsed = -1.5
+				BoostTimeElapsed = 0
 	
 	speed01 = inverse_lerp(0,camMng.dron_speed + (FinalSpeedTurbo * 10),mov_velocity.length())
 	var targetPosition : Vector3 = pivot.global_position
@@ -133,7 +135,11 @@ func _rotation(_delta:float):
 		pivot.rotation_degrees.y = yaw
 
 func _rotHorPivot(dir:float, _delta:float):
-	yaw -= dir * (camMng.dron_rot_hor_speed * UTILITIES.GetCurvePoint(camMng.curveAccel, 1.2, _delta, false)) * _delta
+	#yaw -= dir * (camMng.dron_rot_hor_speed * UTILITIES.GetCurvePoint(camMng.curveAccel, 1.2, _delta, false)) * _delta
+	#pivot.rotation_degrees.y = yaw
+	yaw -= dir * camMng.dron_rot_hor_speed  * _delta
+	#last_pitch = pitch
+	#pitch = clampf(pitch, -camMng.dron_vert, camMng.dron_vert)
 	pivot.rotation_degrees.y = yaw
 
 func _rotVertCam(dir:float, _delta:float):
@@ -144,7 +150,7 @@ func _rotVertCam(dir:float, _delta:float):
 		
 	pitch -= dir * camMng.dron_rot_vert_speed  * _delta
 	last_pitch = pitch
-	pitch = clampf(pitch, camMng.dron_vert_min, camMng.dron_vert_max)
+	pitch = clampf(pitch, -camMng.dron_vert, camMng.dron_vert)
 	cam.rotation_degrees.x = pitch
 		
 func _rotVertReturn(_delta:float):
