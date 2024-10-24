@@ -44,7 +44,9 @@ var dron_UI_maxSpeed : int = 70
 var dron_UI_maxSpeed_boost : int = 100
 
 func _ready():
-	camMode = ENUMS.Cam_Mode.Dron
+	var rndMode : RandomNumberGenerator = RandomNumberGenerator.new()
+	var rndNumber : int = rndMode.randi_range(0,100)
+	camMode = ENUMS.Cam_Mode.Dron if rndNumber % 2 == 0 else ENUMS.Cam_Mode.Aerial
 	Initialize(camMode)
 	
 func _input(_event):
@@ -58,7 +60,6 @@ func _input(_event):
 		APPSTATE.camMode = camMode
 		ChangeToMode(APPSTATE.camMode)
 	
-func _process(_delta : float):
 	UpdateCamState()
 	if valuesInRuntime:
 		if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial:
