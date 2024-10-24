@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bqa2ciul3qjye"
+uid="uid://1abu1lpmqhos"
 path="res://.godot/imported/Msh_Sect06_Sitio.glb-a52159d57e7ebeb3a4598765b9d67a4c.scn"
 
 [deps]
@@ -33,53 +33,37 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Mat_Buildings": {
+"Mat_Sitio_Asfalto": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Buildings.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Asfalto.tres"
 },
-"Mat_Roads": {
+"Mat_Sitio_Concreto": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Roads.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Concreto.tres"
 },
-"Mat_Sector6_1": {
+"Mat_Sitio_Herreria": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_1.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Herreria.tres"
 },
-"Mat_Sector6_2": {
+"Mat_Sitio_Ladrillos": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_2.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Ladrillos.tres"
 },
-"Mat_Sector6_3": {
+"Mat_Sitio_Paredes": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_3.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Paredes.tres"
 },
-"Mat_Sector6_4": {
+"Mat_Sitio_Piedra": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_4.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Piedra.tres"
 },
-"Mat_Sector6_5": {
+"Mat_Sitio_Tinacos": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_5.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Tinacos.tres"
 },
-"Mat_Sector6_6": {
+"Mat_Sitio_Vidrios": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_6.tres"
-},
-"Mat_Sector6_7": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_7.tres"
-},
-"Mat_Sector6_8": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_8.tres"
-},
-"Mat_Sector6_9": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_9.tres"
-},
-"Mat_Water": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Water.tres"
+"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Vidrios.tres"
 }
 }
 }

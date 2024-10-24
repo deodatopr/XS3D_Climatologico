@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://jjcviw2yh24f"]
+
+[ext_resource type="Texture2D" uid="uid://clf7ttkafg3r3" path="res://Cont_Models/Sector6/Assets/Sitio_Concreto.jpg" id="1_nlkct"]
+
+[resource]
+albedo_texture = ExtResource("1_nlkct")
