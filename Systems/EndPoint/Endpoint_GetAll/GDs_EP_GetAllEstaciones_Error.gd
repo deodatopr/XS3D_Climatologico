@@ -1,6 +1,5 @@
 class_name GDs_EP_GetAllEstaciones_Error extends Node
 
-@export var CR_LocalEstaciones: GDs_CR_LocalEstaciones
 
 @export_category("GetAllEstaciones")
 @export var timer : Timer
@@ -17,15 +16,17 @@ class_name GDs_EP_GetAllEstaciones_Error extends Node
 
 signal OnFinishError
 
+var CR_LocalEstaciones: GDs_CR_LocalEstaciones
 var timeToRetry : float = 10
 var originalTimeRetry : float
 var panelErrorIsOpened : bool
 
-func Initialize(_timeToRetry : float):
+func Initialize(_CR_LocalEstaciones: GDs_CR_LocalEstaciones, _timeToRetry : float):
 	timer.timeout.connect(_OnTimeOut)
 	btnReconectar.pressed.connect(_OnBtnReintentarPressed)
 	
 	originalTimeRetry = _timeToRetry
+	CR_LocalEstaciones = _CR_LocalEstaciones
 	labelErrorType.text =  str("Sin conexión reintentando en: ")
 	
 func Open():

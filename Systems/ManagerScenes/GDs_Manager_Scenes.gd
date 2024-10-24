@@ -8,6 +8,10 @@ signal OnSectorUnloaded
 
 var instanceSector : Node3D
 var lastIdSectorVisited : int = -1
+var dataService : GDs_DataService_Manager
+
+func Initialize(_dataService : GDs_DataService_Manager):
+	dataService = _dataService
 
 func GoToSector(_lvlSector : PackedScene):
 	#Mostrar cortina

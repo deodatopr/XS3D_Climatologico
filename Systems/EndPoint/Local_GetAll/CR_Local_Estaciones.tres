@@ -1,9 +1,7 @@
-[gd_resource type="Resource" script_class="GDs_CR_LocalEstaciones" load_steps=13 format=3 uid="uid://3nj42mys6ryu"]
+[gd_resource type="Resource" script_class="GDs_CR_LocalEstaciones" load_steps=11 format=3 uid="uid://3nj42mys6ryu"]
 
 [ext_resource type="Script" path="res://Systems/EndPoint/Local_GetAll/GDs_Data_Local_Estacion.gd" id="1_cntib"]
-[ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector_06.tscn" id="2_74yxj"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Local_GetAll/GDs_CR_LocalEstaciones.gd" id="2_rj72i"]
-[ext_resource type="PackedScene" path="res://(Scenes)/Scn_Sector_04.tscn" id="3_hkhut"]
 
 [sub_resource type="Resource" id="Resource_h4iet"]
 script = ExtResource("1_cntib")
@@ -16,8 +14,7 @@ tlrncia_prep_pluv = 15
 latitud = "19° 23´ 02.9\""
 longitud = "100° 04´ 41.5\""
 color = Color(0.14188, 0.0177224, 1, 1)
-LvlEstacion = ExtResource("2_74yxj")
-disponible = true
+disponible = false
 
 [sub_resource type="Resource" id="Resource_7jyd0"]
 script = ExtResource("1_cntib")
@@ -30,8 +27,7 @@ tlrncia_prep_pluv = 15
 latitud = "19° 21´ 01.8\""
 longitud = "100° 09´ 10.1\""
 color = Color(1, 0, 0, 1)
-LvlEstacion = ExtResource("3_hkhut")
-disponible = true
+disponible = false
 
 [sub_resource type="Resource" id="Resource_pg03a"]
 script = ExtResource("1_cntib")

@@ -21,6 +21,7 @@
 	
 # Random  noise clouds shadows
 
+#Dron de camára poner en inspector FOV
 #Abrir por primera vez guia de input y opcion para ya no mostrar con boton menos 
 #Parpadear opcion de menu guia
 #Tutorial guiado cuando aparece home (primero como que se presiona home y luego se prenda guia)

@@ -1,6 +1,9 @@
 class_name GDs_EP_GetAllEstaciones_Debug extends Node
 
-@export var CR_LocalEstaciones: GDs_CR_LocalEstaciones
+var CR_LocalEstaciones: GDs_CR_LocalEstaciones
+
+func Initialize(_CR_LocalEstaciones: GDs_CR_LocalEstaciones):
+	CR_LocalEstaciones =_CR_LocalEstaciones
 
 func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 	var estaciones : Array[GDs_Data_EP_Estacion]

@@ -1,11 +1,11 @@
 class_name GDs_EP_GetAllEstaciones extends Node
 
-@export var CR_LocalEstaciones : GDs_CR_LocalEstaciones
 @onready var http_request : HTTPRequest = $HTTPRequest
 
 signal OnRequest_Success
 signal OnRequest_Failed
 
+var CR_LocalEstaciones : GDs_CR_LocalEstaciones
 var getAllEstaciones_Debug : GDs_EP_GetAllEstaciones_Debug
 var getAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
 var arrayEstaciones : Array[GDs_Data_EP_Estacion] = []
@@ -13,11 +13,12 @@ var estacionesFromServer = {"Estaciones" : arrayEstaciones}
 var URL : String
 var isBusy : bool
 
-func Initialize(_url : String, _timeout : float, _estacionesDebug : GDs_EP_GetAllEstaciones_Debug, _estacionesError : GDs_EP_GetAllEstaciones_Error):
+func Initialize(_url : String, _timeout : float, _CR_LocalEstaciones : GDs_CR_LocalEstaciones, _estacionesDebug : GDs_EP_GetAllEstaciones_Debug, _estacionesError : GDs_EP_GetAllEstaciones_Error):
 	URL = _url
 	http_request.timeout = _timeout
 	http_request.request_completed.connect(_OnRequestCompleted_GetAllEstaciones)
 	
+	CR_LocalEstaciones = _CR_LocalEstaciones
 	getAllEstaciones_Debug = _estacionesDebug
 	getAllEstaciones_Error = _estacionesError
 	

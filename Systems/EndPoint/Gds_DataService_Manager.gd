@@ -1,5 +1,7 @@
 class_name GDs_DataService_Manager extends Node
 
+@export var skip_orquestrator_main : bool = true
+
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
 @export var endpoint : GDs_EP_GetAllEstaciones
@@ -24,16 +26,24 @@ var estaciones_Estruc_Michoacan : GDs_Data_Estaciones_Estructura
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
 signal OnDataRefresh
+	
+func _ready():
+	if skip_orquestrator_main:
+		APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
+		Initialize()
+		MakeRequest_GetAllEstaciones()
 
 func Initialize():
 	#Connect with endpoint GetAllEstacion
 	endpoint.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
 	endpoint.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
-	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,endpoint_Debug,endpoint_Error)
+	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Debug,endpoint_Error)
 	
 	#Connect with endpoint error
-	endpoint_Error.Initialize(timeToReconnect_Error)
+	endpoint_Error.Initialize(crLocalEstaciones,timeToReconnect_Error)
 	endpoint_Error.OnFinishError.connect(MakeRequest_GetAllEstaciones)
+	
+	endpoint_Debug.Initialize(crLocalEstaciones)
 	
 	#Connect timer to refresh endpoint
 	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)

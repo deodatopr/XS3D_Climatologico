@@ -19,5 +19,6 @@ func _ready():
 	await dataService_manager.OnDataRefresh
 	
 	#ESCENAS
+	scenes_manager.Initialize(dataService_manager)
 	scenes_manager.GoToSector(crLocalEstaciones.GetEstacion(1).LvlEstacion)
 	
