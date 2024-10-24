@@ -28,6 +28,7 @@ var rotHor_isRotating : bool
 var rotHor_velocity : Vector3
 
 # Misc
+var speed01 : float
 var curvIsRunning : bool
 var canMoveCam : bool
 var signalUpdateWasEmitted : bool
@@ -94,7 +95,7 @@ func _Movement(_delta: float):
 	var curvePoint : float = UTILITIES.GetCurvePoint(camMng.curveAccel, .5, _delta)
 	target_speed *= curvePoint
 	mov_velocity = lerp(mov_velocity, inputDir * target_speed, mov_smooth_speed * _delta)
-		
+
 	if inputDir == Vector3.ZERO and mov_velocity.length() > 0:
 		var pointCurve : float = UTILITIES.GetCurvePoint(camMng.curveDecel, 1, _delta)
 		var weight : float = pointCurve * (.1 * _delta)
@@ -103,6 +104,7 @@ func _Movement(_delta: float):
 			mov_velocity = Vector3.ZERO
 	
 	#Apply
+	speed01 = inverse_lerp(0,target_speed,mov_velocity.length())
 	pivot_cam.global_position += mov_velocity * _delta
 
 func _Rotation(_delta : float):
