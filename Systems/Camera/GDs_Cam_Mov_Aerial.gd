@@ -47,7 +47,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	UpdateCamConfig()
 	
 func SetCamera():
-	cam.position.y = camMng.aerial_height
+	cam.global_position.y = camMng.aerial_height
 	cam.fov = camMng.aerial_zoom_out
 	cam.rotation.x = deg_to_rad(-80)
 	currentFov = cam.fov
