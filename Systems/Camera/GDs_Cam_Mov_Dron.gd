@@ -19,6 +19,9 @@ var last_pitch : float = 0
 var yaw_direction = 1
 var BoostTimeElapsed = 0
 var CursorMovement : Vector2
+var isInGround : bool = false
+var isInTop : bool = false
+var canPressDown : bool = true
 var speed01 : float = 0
 
 const RETURN_CAMERA_ADJUST : float = 0.1
@@ -63,23 +66,23 @@ func _movement(_delta:float):
 		inputDir += pivot.basis.x
 		
 	if Input.is_action_pressed("3DMove_Up"):
-		inputDir += pivot.basis.y
+		if !isInTop:
+			inputDir += pivot.basis.y
+			isInGround = false
 
 	if Input.is_action_pressed("3DMove_Down"):
-		inputDir -= pivot.basis.y
+		if canPressDown:
+			inputDir -= pivot.basis.y
+			isInTop = false
 
 	var FinalSpeedTurbo : float = camMng.dron_boost
 	FinalSpeedTurbo = camMng.dron_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
-
+	#print(inputDir)
 	if inputDir.length() > 0:
-		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
+		mov_velocity += (inputDir * camMng.dron_speed) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
 		if mov_velocity.length() > camMng.dron_speed_accel_decel:
-			mov_velocity = lerp(mov_velocity.limit_length(camMng.dron_speed_accel_decel), mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10)), clampf(BoostTimeElapsed, 0, 1))
-			if FinalSpeedTurbo != 0:
-				BoostTimeElapsed += _delta
-			if FinalSpeedTurbo == 0:
-				BoostTimeElapsed -= _delta
-		
+			mov_velocity = mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10))
+	
 	else:
 		if mov_velocity.length() > 0:
 			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
@@ -91,17 +94,22 @@ func _movement(_delta:float):
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
 	
-	if targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0)) < camMng.dron_minDistGround:
+	var distanceToGround = targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0))
+	isInGround = distanceToGround < camMng.dron_minDistGround
+	var pointInNavMesh := UTILITIES._get_point_on_map(cam.global_position, cam,0).y
+	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.dron_minDistGround - 4
+	
+	if isInGround:
 		if targetPosition.y - UTILITIES._get_point_on_map(targetPosition, cam,0).y > .1:
 			if inputDir != Vector3.UP:
-				targetPosition.y = lerpf(targetPosition.y, UTILITIES._get_point_on_map(cam.global_position, cam,0).y + (Vector3.UP * (camMng.dron_minDistGround - 5)).y, .5)
+				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.dron_minDistGround - 5)).y, .5)
 		else:
-			if inputDir == Vector3.DOWN:
-				targetPosition = Vector3.ZERO
-			targetPosition.y = UTILITIES._get_point_on_map(cam.global_rotation_degrees, cam,0).y + (Vector3.UP * 50).y
+			targetPosition.y = pointInNavMesh + (Vector3.UP * 50).y
 
-	if targetPosition.y <= camMng.dron_maxFlyingDist:
-		pivot.global_position = targetPosition
+	isInTop = targetPosition.y >= camMng.dron_maxFlyingDist
+	
+	pivot.global_position = targetPosition
+
 
 func _rotation(_delta:float):
 	
