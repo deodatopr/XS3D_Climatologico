@@ -22,6 +22,7 @@ func _ready():
 
 func _process(_delta):
 	lblAltura.text = UTILITIES.FormatAltura(CAM.height)
+	@warning_ignore('narrowing_conversion')
 	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
 	lblRotacion.text = UTILITIES.FormatRotacionXY(CAM.rotation)
 
