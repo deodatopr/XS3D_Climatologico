@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://djyvw3ftsu25d"]
+[gd_scene load_steps=15 format=3 uid="uid://djyvw3ftsu25d"]
 
+[ext_resource type="Script" path="res://Systems/UI/GDs_VistaAerea.gd" id="1_1cie3"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_qw0d6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lauy"]
@@ -46,7 +47,11 @@ region = Rect2(847, 147, 24, 20)
 atlas = ExtResource("1_qw0d6")
 region = Rect2(883, 138, 22, 28)
 
-[node name="Vista Dron" type="Control"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bvju"]
+atlas = ExtResource("1_qw0d6")
+region = Rect2(914, 147, 20, 21)
+
+[node name="Vista Dron" type="Control" node_paths=PackedStringArray("lblVelocidad", "lblRotacion", "lblFov")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,6 +60,10 @@ offset_top = 26.0
 offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1cie3")
+lblVelocidad = NodePath("Exteriores y Datos/Datos/Velocidad/Lbl Velocidad")
+lblRotacion = NodePath("Exteriores y Datos/Datos/Rotacion/Lbl Rotacion")
+lblFov = NodePath("Exteriores y Datos/Datos/Fov/Lbl fov")
 
 [node name="Dron Icon" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -608,3 +617,20 @@ texture = SubResource("AtlasTexture_g4ggt")
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "(0°, -30°)"
+
+[node name="Fov" type="HBoxContainer" parent="Exteriores y Datos/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Exteriores y Datos/Datos/Fov"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_6bvju")
+
+[node name="Lbl fov" type="Label" parent="Exteriores y Datos/Datos/Fov"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "90°
+"
