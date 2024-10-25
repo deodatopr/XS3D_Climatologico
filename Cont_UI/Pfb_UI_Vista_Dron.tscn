@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djyvw3ftsu25d"]
+[gd_scene load_steps=19 format=3 uid="uid://djyvw3ftsu25d"]
 
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaAerea.gd" id="1_1cie3"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_qw0d6"]
@@ -22,6 +22,18 @@ region = Rect2(763, 661, 126, 297)
 [sub_resource type="AtlasTexture" id="AtlasTexture_74sa0"]
 atlas = ExtResource("1_qw0d6")
 region = Rect2(763, 661, 126, 297)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x3wo1"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fb0dj"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uiqtg"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lgtbn"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bb1no"]
 atlas = ExtResource("1_qw0d6")
@@ -321,6 +333,38 @@ scale = Vector2(-1, -1)
 pivot_offset = Vector2(63, 150)
 texture = SubResource("AtlasTexture_74sa0")
 
+[node name="Mask Lines" type="NinePatchRect" parent="Indicadores Interiores/Derecha"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = -274.5
+offset_right = 66.0
+offset_bottom = 274.5
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_x3wo1")
+region_rect = Rect2(475, 7, 25, 26)
+
+[node name="Right Lines" type="NinePatchRect" parent="Indicadores Interiores/Derecha/Mask Lines"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -486.5
+offset_right = 12.0
+offset_bottom = 486.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_fb0dj")
+region_rect = Rect2(995, 136, 26, 108)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="Izquierda" type="Control" parent="Indicadores Interiores"]
 layout_mode = 1
 anchors_preset = 4
@@ -413,6 +457,38 @@ grow_vertical = 0
 scale = Vector2(-1, -1)
 pivot_offset = Vector2(63, 150)
 texture = SubResource("AtlasTexture_74sa0")
+
+[node name="Mask Lines" type="NinePatchRect" parent="Indicadores Interiores/Izquierda"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = -274.5
+offset_right = 66.0
+offset_bottom = 274.5
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_uiqtg")
+region_rect = Rect2(475, 7, 25, 26)
+
+[node name="Right Lines" type="NinePatchRect" parent="Indicadores Interiores/Izquierda/Mask Lines"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -486.5
+offset_right = 12.0
+offset_bottom = 486.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lgtbn")
+region_rect = Rect2(994, 136, 30, 108)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Exteriores y Datos" type="Control" parent="."]
 layout_mode = 1

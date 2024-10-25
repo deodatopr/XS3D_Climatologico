@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect06_Terrain.glb" id="3_htqi2"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Sharpening.gdshader" id="4_u55j2"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="5_ipad4"]
-[ext_resource type="PackedScene" path="res://Cont_Models/Sector6/Mesh_Sect06_NavMesh_Four_Section.tscn" id="5_tuwm2"]
+[ext_resource type="PackedScene" uid="uid://cypsj58fjq2il" path="res://Cont_Models/Sector6/Mesh_Sect06_NavMesh_Four_Section.tscn" id="5_tuwm2"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
@@ -98,7 +98,6 @@ aerial_camRot_speed = 1.0
 aerial_zoom_out = 100.0
 dron_rot_hor_speed = 7.0
 dron_vert_return = 0.5
-minDistGround = 90.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -137,6 +136,9 @@ transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1
 
 [node name="NavMesh" parent="[ CONTENT ]" instance=ExtResource("5_tuwm2")]
 
+[node name="Pin_Mark" type="Node3D" parent="[ CONTENT ]"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8882, 44.6366, -51.6092)
+
 [node name="[ POST PROCESS ]" type="Node" parent="."]
 
 [node name="PPE - Sharpening" type="CanvasLayer" parent="[ POST PROCESS ]"]
@@ -167,9 +169,12 @@ layer = 5
 
 [node name="RENDER TOOL" parent="[ POST PROCESS ]/UI" instance=ExtResource("6_7j046")]
 
-[node name="Pfb_UI" parent="[ POST PROCESS ]/UI" node_paths=PackedStringArray("dataService", "glitch") instance=ExtResource("7_hy666")]
+[node name="Pfb_UI" parent="[ POST PROCESS ]/UI" node_paths=PackedStringArray("dataService", "glitch", "cam_manager", "worldMark", "map") instance=ExtResource("7_hy666")]
 dataService = NodePath("../../../[ SYSTEMS ]/DataService")
 glitch = NodePath("../../PPE - Glitch/ColorRect")
+cam_manager = NodePath("../../../[ SYSTEMS ]/Camera Drones")
+worldMark = NodePath("../../../[ CONTENT ]/Pin_Mark")
+map = NodePath("../../../[ CONTENT ]/Msh_Sector_06")
 
 [node name="PPE - FishEye" type="CanvasLayer" parent="[ POST PROCESS ]"]
 layer = 4

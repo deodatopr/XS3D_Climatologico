@@ -1,3 +1,4 @@
+class_name GDs_Minimap
 extends Node
 
 @export var cam_Manager : GDs_Cam_Manager
@@ -13,30 +14,34 @@ var cam_start_position : Vector2
 var scene_bound : AABB
 
 @onready var map_texture: TextureRect = $Minimap_Parent/Circle_Mask/Map_Texture
-@onready var mark: ColorRect = $Minimap_Parent/Circle_Mask/Map_Texture/Mark
+@onready var mark: TextureRect = $Minimap_Parent/Circle_Mask/Map_Texture/Mark
 @onready var minimap_parent : Control = $Minimap_Parent
 @onready var circle_mask = $Minimap_Parent/Circle_Mask
 @onready var cam_pivot = $Minimap_Parent/Circle_Mask/Cam_Pivot
 
 @onready var local_estaciones : GDs_CR_LocalEstaciones = preload("uid://3nj42mys6ryu")
 
-func _ready() -> void:
+var isInitialized:=false
+
+func Initialize() -> void:
 	pivot_cam = cam_Manager.pivot_cam
 	cam = cam_Manager.cam
 	mark_Start_Position = mark.position
 	cam_start_position = cam_pivot.position
 	
-	mark.color = local_estaciones.LocalEstaciones[estacion_color].color
+	mark.self_modulate = local_estaciones.LocalEstaciones[estacion_color].color
 	
 	scene_bound = get_scene_bounds(map)
+	isInitialized = true
 	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
-	var cam_in_world = (pivot_cam.global_position + (scene_bound.size/2))/scene_bound.size
-	var cam_world2D = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
-	cam_pivot.position = (cam_world2D * map_texture.size) - (map_texture.size/2) + cam_start_position
-	
-	cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y + 180
+	if isInitialized:
+		var cam_in_world = (pivot_cam.global_position + (scene_bound.size/2))/scene_bound.size
+		var cam_world2D = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
+		cam_pivot.position = (cam_world2D * map_texture.size) - (map_texture.size/2) + cam_start_position
+		
+		cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y + 180
 	
 func get_scene_bounds(root : Node) -> AABB:
 	var total_aabb = AABB()

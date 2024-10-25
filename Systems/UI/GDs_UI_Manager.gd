@@ -4,18 +4,27 @@ extends Control
 @export var dataService:GDs_DataService_Manager
 @export_subgroup("PPE")
 @export var glitch:Control
+@export_subgroup("Refs Minimap")
+@export var cam_manager:GDs_Cam_Manager
+@export var worldMark:Node3D
+@export var map:Node3D
 @export_group("Refs internas")
 @export var cortinilla:GDs_LocalCurtain
 @export var menuPerfiles:GDs_MenuPerfiles
 @export_subgroup("Vista Drones")
-@export var vistaDron:Control
 @export var vistaAereo:Control
+@export var vistaDron:GDs_VistaDron
 
 var tween:Tween
 
 func _ready():
 	SIGNALS.OnCameraRequestChangeMode.connect(ChangeDrone)
 	dataService.OnDataRefresh.connect(DataRefresh)
+	
+	vistaDron.cam_manager = cam_manager
+	vistaDron.worldMark = worldMark
+	vistaDron.map = map
+	vistaDron.Initialize()
 	
 	await get_tree().create_timer(.5).timeout
 	ChangeDrone(APPSTATE.camMode)
@@ -27,12 +36,12 @@ func ChangeDrone(_modoToChange : int):
 	match  _modoToChange:
 		ENUMS.Cam_Mode.Aerial:
 			GlitchTransition()
-			vistaDron.show()
-			vistaAereo.hide()
+			vistaAereo.show()
+			vistaDron.hide()
 		ENUMS.Cam_Mode.Dron:
 			GlitchTransition()
-			vistaDron.hide()
-			vistaAereo.show()
+			vistaAereo.hide()
+			vistaDron.show()
 
 func GlitchTransition():
 	UTILITIES.TurnOnObject(glitch)

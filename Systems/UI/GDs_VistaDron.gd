@@ -1,4 +1,5 @@
-extends Node
+class_name GDs_VistaDron
+extends Control
 
 @export_group("Datos")
 @export var lblAltura:Label
@@ -9,16 +10,29 @@ extends Node
 @export var bottomLines:Control
 @export var LeftLines:Control
 @export var RightLines:Control
+
+@export_group("Refs Minimap")
+@export var minimap:GDs_Minimap
+@export var cam_manager:GDs_Cam_Manager
+@export var worldMark:Node3D
+@export var map:Node3D
+
+
 var speed:=1.0
 var initialTopLinesPosX: float
 var initialBottomLinesPosX: float
 var initialLeftLinesPosY: float
 var initialRightLinesPosY: float
-func _ready():
+func Initialize():
 	initialTopLinesPosX = topLines.position.x
 	initialBottomLinesPosX = bottomLines.position.x
 	initialLeftLinesPosY = LeftLines.position.y
 	initialRightLinesPosY = RightLines.position.y
+	
+	minimap.cam_Manager = cam_manager
+	minimap.mark_target = worldMark
+	minimap.map = map
+	minimap.Initialize()
 
 func _process(_delta):
 	lblAltura.text = UTILITIES.FormatAltura(CAM.height)

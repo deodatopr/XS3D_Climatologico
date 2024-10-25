@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://cocko4ft5524e"]
+[gd_scene load_steps=21 format=3 uid="uid://cocko4ft5524e"]
 
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_mrxy0"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="1_y2q8n"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_kdw48"]
 [ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="3_fmv7q"]
+[ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="5_dfgeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ck1g"]
 shader = ExtResource("2_kdw48")
@@ -62,7 +63,7 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o5vl7"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[node name="Vista Aereo" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "topLines", "bottomLines", "LeftLines", "RightLines")]
+[node name="Vista Aereo" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "topLines", "bottomLines", "LeftLines", "RightLines", "minimap")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,6 +78,7 @@ topLines = NodePath("Frame/Indicators/Top Indicator/Mask/Top Lines")
 bottomLines = NodePath("Frame/Indicators/Bottom Indicator/Mask/Bottom Lines")
 LeftLines = NodePath("Frame/Indicators/Left Indicator/Mask/Left Lines")
 RightLines = NodePath("Frame/Indicators/Right Indicator/Mask/Right Lines")
+minimap = NodePath("Frame/UI_Minimap")
 
 [node name="Frame" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -781,3 +783,6 @@ texture = SubResource("CompressedTexture2D_o5vl7")
 region_rect = Rect2(809, 212, 108, 25)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[node name="UI_Minimap" parent="Frame" instance=ExtResource("5_dfgeb")]
+layout_mode = 1

@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3k2kgkp18wn1"]
+[gd_scene load_steps=8 format=3 uid="uid://b3k2kgkp18wn1"]
 
 [ext_resource type="Script" path="res://Systems/Minimap/GDs_Minimap.gd" id="1_3l741"]
-[ext_resource type="Texture2D" uid="uid://bkf83i3oek7l6" path="res://Systems/Minimap/Map_Mask.png" id="2_rxnpi"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_i627t"]
 [ext_resource type="Texture2D" uid="uid://b7o7n4w6d5ike" path="res://Cont_Models/Sector6/Map_Sect06_MiniMap.jpg" id="3_33bn2"]
-[ext_resource type="Texture2D" uid="uid://h5kpi6rvi0w7" path="res://Systems/Minimap/map_cam_ref.png" id="4_8wku4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2do84"]
+atlas = ExtResource("2_i627t")
+region = Rect2(468, 763, 42, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njdjs"]
+atlas = ExtResource("2_i627t")
+region = Rect2(189, 31, 110, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtuoi"]
+atlas = ExtResource("2_i627t")
+region = Rect2(477, 694, 24, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sko7y"]
+atlas = ExtResource("2_i627t")
+region = Rect2(2, 3, 160, 160)
 
 [node name="UI_Minimap" type="Control"]
 layout_mode = 3
@@ -17,62 +32,78 @@ map_Movement_Speed = 0.2
 
 [node name="Minimap_Parent" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(1920, 1080)
-
-[node name="Circle_Mask" type="TextureRect" parent="Minimap_Parent"]
-clip_children = 2
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -512.0
-offset_top = -512.0
+offset_left = -325.0
+offset_top = -325.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("2_rxnpi")
+pivot_offset = Vector2(1920, 1080)
+
+[node name="Circle_Mask" type="TextureRect" parent="Minimap_Parent"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_2do84")
 
 [node name="Map_Texture" type="TextureRect" parent="Minimap_Parent/Circle_Mask"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_left = 0.507837
+anchor_top = 0.45768
+anchor_right = 0.507837
+anchor_bottom = 0.45768
 offset_left = -256.0
 offset_top = -256.0
 offset_right = 256.0
 offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 3.14159
 pivot_offset = Vector2(255, 255)
 texture = ExtResource("3_33bn2")
 metadata/_edit_use_anchors_ = true
 
-[node name="Mark" type="ColorRect" parent="Minimap_Parent/Circle_Mask/Map_Texture"]
-visible = false
+[node name="Mark" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Map_Texture"]
+self_modulate = Color(0.359701, 0.993052, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -138.62
-offset_right = 20.0
-offset_bottom = -98.62
+offset_left = -55.0
+offset_top = -56.0
+offset_right = 55.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(20, 20)
-color = Color(0.189303, 0, 1, 1)
-metadata/_edit_use_anchors_ = true
+pivot_offset = Vector2(55, 56)
+texture = SubResource("AtlasTexture_njdjs")
+
+[node name="Grid" type="NinePatchRect" parent="Minimap_Parent/Circle_Mask/Map_Texture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i627t")
+region_rect = Rect2(64, 305, 62, 62)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Cam_Pivot" type="Control" parent="Minimap_Parent/Circle_Mask"]
 layout_mode = 1
@@ -87,7 +118,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(20, 20)
+pivot_offset = Vector2(20, 40)
 
 [node name="Cam_Ref" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Cam_Pivot"]
 layout_mode = 1
@@ -96,13 +127,64 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = -24.0
+offset_top = -29.0
+offset_right = 24.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.08, 0.08)
 pivot_offset = Vector2(256.465, 266.185)
-texture = ExtResource("4_8wku4")
-metadata/_edit_use_anchors_ = true
+texture = SubResource("AtlasTexture_mtuoi")
+
+[node name="Frame" type="Control" parent="Minimap_Parent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Minimap_Parent/Frame"]
+layout_mode = 1
+offset_right = 160.0
+offset_bottom = 160.0
+texture = SubResource("AtlasTexture_sko7y")
+
+[node name="TextureRect2" type="TextureRect" parent="Minimap_Parent/Frame"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_bottom = 160.0
+grow_horizontal = 0
+rotation = 1.5708
+pivot_offset = Vector2(80, 80)
+texture = SubResource("AtlasTexture_sko7y")
+
+[node name="TextureRect3" type="TextureRect" parent="Minimap_Parent/Frame"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -160.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(80, 80)
+texture = SubResource("AtlasTexture_sko7y")
+
+[node name="TextureRect4" type="TextureRect" parent="Minimap_Parent/Frame"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = 160.0
+grow_vertical = 0
+rotation = -1.5708
+pivot_offset = Vector2(80, 80)
+texture = SubResource("AtlasTexture_sko7y")
