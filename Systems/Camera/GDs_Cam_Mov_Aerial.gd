@@ -33,7 +33,7 @@ var rotHor_velocity : Vector3
 var MouseMotion : InputEvent
 
 # Misc
-var speed01 : float
+var speed01 : float = 0
 var curvIsRunning : bool
 var canMoveCam : bool
 var signalUpdateWasEmitted : bool
@@ -131,10 +131,10 @@ func _Movement(_delta: float):
 			mov_velocity = Vector3.ZERO
 	
 	#Apply movement
+	#Save speed01 to send it to UI
+	speed01 = inverse_lerp(0,mov_limitSpeed,mov_velocity.length())
+	
 	if mov_velocity.length() > 0:
-		#Save speed01 to send it to UI
-		speed01 = inverse_lerp(0,mov_limitSpeed,mov_velocity.length())
-		
 		#Apply
 		mov_lastVelocity = mov_velocity
 		mov_velocity = lerp(mov_lastVelocity, mov_velocity, 20)

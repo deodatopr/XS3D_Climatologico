@@ -16,17 +16,20 @@ var tween:Tween
 func _ready():
 	SIGNALS.OnCameraRequestChangeMode.connect(ChangeDrone)
 	dataService.OnDataRefresh.connect(DataRefresh)
+	
+	await get_tree().create_timer(.5).timeout
+	ChangeDrone(APPSTATE.camMode)
 
 func DataRefresh():
 	menuPerfiles.DataRefresh(dataService.estaciones)
 
 func ChangeDrone(_modoToChange : int):
 	match  _modoToChange:
-		0:
+		ENUMS.Cam_Mode.Aerial:
 			GlitchTransition()
 			vistaDron.show()
 			vistaAereo.hide()
-		1:
+		ENUMS.Cam_Mode.Dron:
 			GlitchTransition()
 			vistaDron.hide()
 			vistaAereo.show()

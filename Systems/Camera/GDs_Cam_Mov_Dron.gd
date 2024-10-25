@@ -19,7 +19,7 @@ var last_pitch : float = 0
 var yaw_direction = 1
 var BoostTimeElapsed = 0
 var CursorMovement : Vector2
-var speed01 : float
+var speed01 : float = 0
 
 const RETURN_CAMERA_ADJUST : float = 0.1
 

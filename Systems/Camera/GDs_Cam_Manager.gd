@@ -54,8 +54,7 @@ func _input(_event):
 		camMode = ENUMS.Cam_Mode.Dron if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else ENUMS.Cam_Mode.Aerial
 		SIGNALS.OnCameraRequestChangeMode.emit(camMode)
 		
-		if not debug_skipCurtainToChangeMode:
-			await SIGNALS.OnCameraCanChangeMode
+		await SIGNALS.OnCameraCanChangeMode
 		
 		APPSTATE.camMode = camMode
 		ChangeToMode(APPSTATE.camMode)
