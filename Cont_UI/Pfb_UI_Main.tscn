@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://Systems/Barra Menus/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
 [ext_resource type="PackedScene" uid="uid://cqmfo0633oxfm" path="res://Systems/Menus/Perfiles/Pfb_MenuSitios.tscn" id="3_g57u8"]
 [ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
-[ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Aerea.tscn" id="7_2ckdo"]
-[ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Dron.tscn" id="8_551e6"]
+[ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Dron.tscn" id="7_2ckdo"]
+[ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Aerea.tscn" id="8_551e6"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_LocalCurtain.gd" id="9_a1hye"]
 

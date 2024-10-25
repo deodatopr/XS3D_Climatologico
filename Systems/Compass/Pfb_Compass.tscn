@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://drokt740jfxrh"]
+[gd_scene load_steps=9 format=3 uid="uid://drokt740jfxrh"]
 
 [ext_resource type="Script" path="res://Systems/Compass/GDs_Compass.gd" id="1_y44kk"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_vvfav"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_wk4d2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgy0b"]
+shader = ExtResource("2_vvfav")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a6t5"]
+atlas = ExtResource("3_wk4d2")
+region = Rect2(473, 40, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ajw"]
+atlas = ExtResource("3_wk4d2")
+region = Rect2(468, 763, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41bm3"]
+atlas = ExtResource("3_wk4d2")
+region = Rect2(478, 739, 23, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xia4l"]
+shader = ExtResource("2_vvfav")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 2
 
 [node name="UI_Compass" type="Control"]
 layout_mode = 3
@@ -23,7 +49,8 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="CompassMask" type="Control" parent="CompassParent"]
+[node name="CompassMask" type="TextureRect" parent="CompassParent"]
+material = SubResource("ShaderMaterial_tgy0b")
 clip_contents = true
 layout_mode = 1
 anchors_preset = 8
@@ -31,29 +58,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -235.0
+offset_left = -300.0
 offset_top = -20.0
-offset_right = 235.0
+offset_right = 300.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(239, 0)
+pivot_offset = Vector2(300, 0)
+texture = SubResource("AtlasTexture_0a6t5")
 
-[node name="PinSite" type="ColorRect" parent="CompassParent/CompassMask"]
+[node name="PinSite" type="TextureRect" parent="CompassParent/CompassMask"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -10.0
-offset_top = 11.095
-offset_right = 10.0
-offset_bottom = 31.095
+offset_left = -6.0
+offset_top = 20.0
+offset_right = 6.0
+offset_bottom = 32.0
 grow_horizontal = 2
-pivot_offset = Vector2(10, 0)
-color = Color(0, 0.173156, 1, 1)
+pivot_offset = Vector2(6, 0)
+texture = SubResource("AtlasTexture_o3ajw")
+expand_mode = 1
 
-[node name="Compass" type="TextureRect" parent="CompassParent/CompassMask"]
+[node name="Compass" type="NinePatchRect" parent="CompassParent/CompassMask"]
 clip_children = 2
 texture_filter = 2
 texture_repeat = 2
@@ -61,25 +90,45 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -696.667
-offset_right = 696.667
-offset_bottom = 40.0
+offset_left = -697.0
+offset_top = 16.0
+offset_right = 696.0
+offset_bottom = 33.0
 grow_horizontal = 2
 pivot_offset = Vector2(696.667, 0)
-expand_mode = 3
-stretch_mode = 5
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(477, 674, 25, 12)
+axis_stretch_horizontal = 1
+
+[node name="Bottom Frame" type="NinePatchRect" parent="CompassParent/CompassMask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(498, 309, 9, 9)
+patch_margin_left = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="Arrow" type="TextureRect" parent="CompassParent"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -15.375
-offset_top = 44.335
-offset_right = 15.375
-offset_bottom = 73.835
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 4.0
 grow_horizontal = 2
-pivot_offset = Vector2(15.375, 0)
+grow_vertical = 0
+pivot_offset = Vector2(5, 0)
+texture = SubResource("AtlasTexture_41bm3")
 expand_mode = 1
 
 [node name="CenterRef" type="Panel" parent="CompassParent"]
@@ -95,17 +144,21 @@ offset_right = 942.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DistanceBackground" type="Panel" parent="CompassParent"]
+[node name="DistanceBackground" type="ColorRect" parent="CompassParent"]
+material = SubResource("ShaderMaterial_xia4l")
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -30.0
-offset_top = 72.865
-offset_right = 30.0
-offset_bottom = 112.865
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = 4.0
+offset_right = 33.0
+offset_bottom = 34.0
 grow_horizontal = 2
-pivot_offset = Vector2(20, 20)
+grow_vertical = 0
+pivot_offset = Vector2(33, 15)
 
 [node name="DistanceText" type="Label" parent="CompassParent/DistanceBackground"]
 layout_mode = 1
@@ -125,7 +178,37 @@ text = "355"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LeftFrane" type="NinePatchRect" parent="CompassParent/DistanceBackground"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 8.0
+grow_vertical = 2
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(498, 476, 10, 31)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="RightFrane" type="NinePatchRect" parent="CompassParent/DistanceBackground"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(4, 15)
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(498, 476, 10, 31)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_bottom = 3
+
 [node name="CompassTopDown" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

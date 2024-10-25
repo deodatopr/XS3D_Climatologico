@@ -1,7 +1,8 @@
+class_name GDs_Compass
 extends Node
 
 var pivotCam : Node3D
-@export var camManager : GDs_Cam_Manager
+var camManager : GDs_Cam_Manager
 @export var PinPos : Node3D
 @export var minDistance : float
 @export var maxDistance : float
@@ -17,8 +18,8 @@ var screenSize : Vector2
 var maxMark_TopDown_PosX : float
 var maxMark_TopDown_PosY : float
 
-@onready var pin_sitio: ColorRect = $CompassParent/CompassMask/PinSite
-@onready var compass: TextureRect = $CompassParent/CompassMask/Compass
+@onready var pin_sitio: TextureRect = $CompassParent/CompassMask/PinSite
+@onready var compass: NinePatchRect = $CompassParent/CompassMask/Compass
 @onready var compass_parent: Control = $CompassParent
 @onready var top_down_mark: ColorRect = $CompassTopDown/TopDownMark
 @onready var compass_top_down: Control = $CompassTopDown
@@ -31,6 +32,7 @@ var maxMark_TopDown_PosY : float
 var canRotate : bool
 
 func Initialize(_camManager : GDs_Cam_Manager)-> void:
+	camManager = _camManager
 	pivotCam = _camManager.pivot_cam
 	compassInitialXPosition = compass.position.x
 	pinSiteInitialXPosition = pin_sitio.position.x
@@ -44,11 +46,9 @@ func Initialize(_camManager : GDs_Cam_Manager)-> void:
 	
 	canRotate = true
 	
-	pin_sitio.color = local_estaciones.LocalEstaciones[estacion_index].color
+	pin_sitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
 	top_down_mark.color = local_estaciones.LocalEstaciones[estacion_index].color
 
-func _ready() -> void:
-	Initialize(camManager)
 	
 func _OnCanRotate(can : bool)-> void:
 	canRotate = can
@@ -70,10 +70,10 @@ func _process(delta: float) -> void:
 		distance = pivotCam.global_position.distance_to(Vector3(PinPos.global_position.x, 0, PinPos.global_position.z))
 		
 		if APPSTATE.camMode == ENUMS.Cam_Mode.Dron:
-			_ToggleCompass(false)
+			_ToggleCompass(true)
 			_CalculateTopDownPoint(distance)
 		else:
-			_ToggleCompass(true)
+			_ToggleCompass(false)
 			_CalculateCompassPoints(distance)
 	
 func _CalculateCompassPoints(_distance : float) -> void:

@@ -45,7 +45,7 @@ func FormatEvaporacion(evaporacion:float)->String:
 
 func FormatIntensidadViento(viento:float)->String:
 	viento = roundf(viento)
-	return str(viento) + "km/hr"
+	return str(viento) + "km/h"
 
 func FormatTemperatura(temp:float)->String:
 	temp = roundf(temp)
@@ -63,13 +63,13 @@ func FormatAltura(altura:int)->String:
 	return str(altura) + "m"
 	
 func FormatVelocidad(vel:int)->String:
-	return str(vel) + " km/hr"
+	return str(vel) + " km/h"
 	
 func FormatRotacionXY(rot:Vector2)->String:
 	return "("+ str(rot.x) + "°," + str(rot.y) +"°)"
 	
 func FormatRotacionY(rot:float)->String:
-	return "("+ str(rot) + "°)"
+	return str(rot) + "°"
 
 func FormatFov(fov:float)->String:
 	return str(fov) + "°"

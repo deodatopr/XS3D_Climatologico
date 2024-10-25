@@ -1,0 +1,74 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://c2k6gr6pbtiuf"]
+
+[ext_resource type="Texture2D" uid="uid://bndsvqnnunvyt" path="res://Cont_Shared/Materials/Map_Grid.png" id="1_8yixc"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_mtk43"]
+source = 5
+texture = ExtResource("1_8yixc")
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_a35vb"]
+parameter_name = "Albedo"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_5w4fb"]
+function = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_b32th"]
+parameter_name = "Tile"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_twh3e"]
+parameter_name = "Depth"
+default_value_enabled = true
+default_value = 1.0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform float Tile = 1;
+uniform sampler2D Albedo;
+uniform float Depth = 1;
+
+
+
+void fragment() {
+// FloatParameter:5
+	float n_out5p0 = Tile;
+
+
+// UVFunc:4
+	vec2 n_in4p2 = vec2(0.00000, 0.00000);
+	vec2 n_out4p0 = (UV - n_in4p2) * vec2(n_out5p0) + n_in4p2;
+
+
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Albedo, n_out4p0);
+
+
+// FloatParameter:6
+	float n_out6p0 = Depth;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out2p0.x;
+	EMISSION = vec3(n_out2p0.xyz);
+	DEPTH = n_out6p0;
+
+
+}
+"
+flags/unshaded = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_mtk43")
+nodes/fragment/2/position = Vector2(-200, 80)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_a35vb")
+nodes/fragment/3/position = Vector2(-520, 60)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_5w4fb")
+nodes/fragment/4/position = Vector2(-460, -80)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_b32th")
+nodes/fragment/5/position = Vector2(-780, -40)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_twh3e")
+nodes/fragment/6/position = Vector2(80, 720)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 0, 5, 2, 0, 0, 0, 2, 0, 0, 1, 4, 0, 2, 0, 5, 0, 4, 1, 6, 0, 0, 23)

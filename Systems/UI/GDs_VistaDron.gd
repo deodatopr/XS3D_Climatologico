@@ -13,9 +13,10 @@ extends Control
 
 @export_group("Refs Minimap")
 @export var minimap:GDs_Minimap
-@export var cam_manager:GDs_Cam_Manager
-@export var worldMark:Node3D
-@export var map:Node3D
+@export var compass:GDs_Compass
+var cam_manager:GDs_Cam_Manager
+var worldMark:Node3D
+var map:Node3D
 
 
 var speed:=1.0
@@ -33,6 +34,9 @@ func Initialize():
 	minimap.mark_target = worldMark
 	minimap.map = map
 	minimap.Initialize()
+	
+	compass.PinPos = worldMark
+	compass.Initialize(cam_manager)
 
 func _process(_delta):
 	lblAltura.text = UTILITIES.FormatAltura(CAM.height)
