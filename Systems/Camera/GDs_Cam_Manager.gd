@@ -84,11 +84,13 @@ func UpdateCamState():
 	var cam : Camera3D = aerial_cam if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else dron_cam 
 	var pivot : Node3D = aerial_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else dron_pivot 
 	var dir = sign(cam.global_rotation_degrees.y)
-	var fixRotY = abs(ceili(cam.global_rotation_degrees.y - 180)) if abs(ceili(cam.global_rotation_degrees.y - 180)) != 360 else 0
-	if dir > 0:
+	print(abs(ceili(cam.global_rotation_degrees.y - 180)))
+	var fixRotY = abs(ceili(cam.global_rotation_degrees.y - 180)) 
+	if abs(ceili(cam.global_rotation_degrees.y - 180)) == 360:
+		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x), 0)
+	elif dir > 0:
 		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(fixRotY))
 	elif dir < 0:
-		print(fixRotY)
 		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
 	
 
