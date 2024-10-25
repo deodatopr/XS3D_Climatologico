@@ -29,8 +29,6 @@ func _ready() -> void:
 	mark.color = local_estaciones.LocalEstaciones[estacion_color].color
 	
 	scene_bound = get_scene_bounds(map)
-	print(scene_bound.size)
-	print(scene_bound.size.normalized())
 	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:

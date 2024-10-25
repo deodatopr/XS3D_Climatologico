@@ -32,7 +32,8 @@ class_name GDs_Cam_Manager extends Node
 @export var dron_rot_vert_speed : float = 5
 @export_range(0, 90) var dron_vert : float = 45
 @export var dron_vert_return : float = 1
-@export_range(15, 90) var minDistGround : float = 55
+@export_range(15, 90) var dron_minDistGround : float = 55
+@export var dron_maxFlyingDist : float = 700
 @export_range(30,100) var dron_fov :float = 50
 
 var camMode : int
