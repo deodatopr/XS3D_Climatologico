@@ -24,13 +24,15 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -932.0
-offset_right = 415.0
-offset_bottom = -117.0
+offset_left = 20.32
+offset_top = -1042.95
+offset_right = 435.32
+offset_bottom = -227.95
 grow_vertical = 0
+scale = Vector2(1.1, 1.1)
 script = ExtResource("1_rsnj0")
 sitios = [NodePath("NinePatchRect/VBoxContainer/Estacion"), NodePath("NinePatchRect/VBoxContainer/Estacion2"), NodePath("NinePatchRect/VBoxContainer/Estacion3"), NodePath("NinePatchRect/VBoxContainer/Estacion4"), NodePath("NinePatchRect/VBoxContainer/Estacion5"), NodePath("NinePatchRect/VBoxContainer/Estacion6"), NodePath("NinePatchRect/VBoxContainer/Estacion7"), NodePath("NinePatchRect/VBoxContainer/Estacion8")]
-metadata/_edit_horizontal_guides_ = [954.0]
+metadata/_edit_horizontal_guides_ = [1908.0]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_0qgbh")
