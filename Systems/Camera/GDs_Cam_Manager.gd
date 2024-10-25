@@ -49,6 +49,13 @@ func _ready():
 	camMode = ENUMS.Cam_Mode.Dron if rndNumber % 2 == 0 else ENUMS.Cam_Mode.Aerial
 	Initialize(camMode)
 	
+func Initialize(_modeToIntializeCam : int):
+	APPSTATE.camMode = _modeToIntializeCam
+	movAerial.Initialize(self)
+	movDron.Initialize(self)
+	
+	ChangeToMode(_modeToIntializeCam)
+	
 func _input(_event):
 	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
 		camMode = ENUMS.Cam_Mode.Dron if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else ENUMS.Cam_Mode.Aerial
@@ -58,20 +65,14 @@ func _input(_event):
 		
 		APPSTATE.camMode = camMode
 		ChangeToMode(APPSTATE.camMode)
-	
+
+func _process(_delta):
 	UpdateCamState()
 	if valuesInRuntime:
 		if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial:
 			movAerial.UpdateCamConfig()
 		else:
 			movDron.UpdateCamConfig()
-
-func Initialize(_modeToIntializeCam : int):
-	APPSTATE.camMode = _modeToIntializeCam
-	movAerial.Initialize(self)
-	movDron.Initialize(self)
-	
-	ChangeToMode(_modeToIntializeCam)
 	
 func UpdateCamState():
 	CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(cam.global_rotation_degrees.y))

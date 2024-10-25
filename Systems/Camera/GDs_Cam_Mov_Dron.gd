@@ -76,10 +76,10 @@ func _movement(_delta:float):
 		if mov_velocity.length() > camMng.dron_speed_accel_decel:
 			mov_velocity = lerp(mov_velocity.limit_length(camMng.dron_speed_accel_decel), mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10)), clampf(BoostTimeElapsed, 0, 1))
 			if FinalSpeedTurbo != 0:
-				print(BoostTimeElapsed)
+				#print(BoostTimeElapsed)
 				BoostTimeElapsed += _delta
 			if FinalSpeedTurbo == 0:
-				print(BoostTimeElapsed)
+				#print(BoostTimeElapsed)
 				BoostTimeElapsed -= _delta
 		
 	else:
