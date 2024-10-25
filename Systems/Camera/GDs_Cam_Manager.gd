@@ -15,7 +15,7 @@ class_name GDs_Cam_Manager extends Node
 @export_subgroup("Movements")
 @export var aerial_height : float = 600
 @export var aerial_move: float = 2
-@export_range(1,5) var aerial_boost: float = 3
+@export_range(1,2) var aerial_boost: float = 1.5
 
 @export_subgroup("Camera")
 @export var aerial_camRot_speed : float = .07
@@ -25,8 +25,8 @@ class_name GDs_Cam_Manager extends Node
 
 @export_group("DRON CAMERA")
 @export var dron_initialHeight : float = 300
-@export var dron_speed_accel_decel : float = 20
-@export var dron_speed : float = 20
+@export var dron_speed_accel_decel : float = 200
+@export var dron_speed : float = 200
 @export_range(1,5) var dron_boost : float = 2
 @export var dron_rot_hor_speed : float = 2.5
 @export var dron_rot_vert_speed : float = 5
