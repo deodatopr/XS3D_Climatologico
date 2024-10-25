@@ -6,23 +6,31 @@
 [ext_resource type="Curve" uid="uid://0ba50dmp0tfd" path="res://Systems/Camera/Curves/Curv_Dcel.tres" id="3_goarf"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Dron.gd" id="4_iwq67"]
 
-[node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movAerial", "movDron", "pivot_cam", "cam")]
+[node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movAerial", "movDron", "aerial_pivot", "aerial_cam", "dron_pivot", "dron_cam")]
 script = ExtResource("1_vxe6d")
 movAerial = NodePath("Mov_Aerial")
 movDron = NodePath("Mov_Dron")
-pivot_cam = NodePath("pivot_ground")
-cam = NodePath("pivot_ground/cam")
 curveAccel = ExtResource("2_xldol")
 curveDecel = ExtResource("3_goarf")
+aerial_pivot = NodePath("Mov_Aerial/aerial_pivot")
+aerial_cam = NodePath("Mov_Aerial/aerial_pivot/aerial_cam")
+dron_pivot = NodePath("Mov_Dron/dron_pivot")
+dron_cam = NodePath("Mov_Dron/dron_pivot/dron_cam")
 
 [node name="Mov_Aerial" type="Node" parent="."]
 script = ExtResource("2_s21o3")
 
+[node name="aerial_pivot" type="Node3D" parent="Mov_Aerial"]
+
+[node name="aerial_cam" type="Camera3D" parent="Mov_Aerial/aerial_pivot"]
+transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
+fov = 35.0
+
 [node name="Mov_Dron" type="Node" parent="."]
 script = ExtResource("4_iwq67")
 
-[node name="pivot_ground" type="Node3D" parent="."]
+[node name="dron_pivot" type="Node3D" parent="Mov_Dron"]
 
-[node name="cam" type="Camera3D" parent="pivot_ground"]
-transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
+[node name="dron_cam" type="Camera3D" parent="Mov_Dron/dron_pivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0

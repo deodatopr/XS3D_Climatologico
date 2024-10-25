@@ -25,8 +25,9 @@ var isInitialized:=false
 
 func Initialize() -> void:
 	#FIXME el movimiento del dron con la posicion del marcador del minimapa esta invertido
-	pivot_cam = cam_Manager.pivot_cam
-	cam = cam_Manager.cam
+	pivot_cam = cam_Manager.dron_pivot
+	cam = cam_Manager.dron_cam
+	
 	mark_Start_Position = mark.position
 	cam_start_position = cam_pivot.position
 	
@@ -42,7 +43,7 @@ func _process(delta: float) -> void:
 		var cam_world2D = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
 		cam_pivot.position = (cam_world2D * map_texture.size) - (map_texture.size/2) + cam_start_position
 		
-		cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y + 180
+		cam_pivot.rotation_degrees = pivot_cam.rotation_degrees.y
 	
 func get_scene_bounds(root : Node) -> AABB:
 	var total_aabb = AABB()

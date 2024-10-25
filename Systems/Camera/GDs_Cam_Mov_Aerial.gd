@@ -49,8 +49,8 @@ const ROTHOR_THRESHOLD : float = 0.8
 
 func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
-	cam = camMng.cam
-	pivot_cam = camMng.pivot_cam
+	cam = camMng.aerial_cam
+	pivot_cam = camMng.aerial_pivot
 	
 	UpdateCamConfig()
 
@@ -61,6 +61,7 @@ func _input(event):
 		MouseMotion = null
 	
 func SetCamera():
+	cam.current = true
 	cam.global_position.y = camMng.aerial_height
 	cam.fov = camMng.aerial_zoom_out
 	cam.rotation.x = deg_to_rad(-80)

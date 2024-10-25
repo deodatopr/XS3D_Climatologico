@@ -3,11 +3,14 @@ class_name GDs_Cam_Manager extends Node
 @export_group("SCENE REFERENCES")
 @export var movAerial : GDs_Cam_Mov_Aerial
 @export var movDron : GDs_Cam_Mov_Dron
-@export var pivot_cam : Node3D
-@export var cam : Camera3D
 @export var curveAccel : Curve
 @export var curveDecel : Curve
-@export var debug_skipCurtainToChangeMode : bool = true
+
+@export_group("INTERNAL REFERENCES")
+@export var aerial_pivot : Node3D
+@export var aerial_cam : Camera3D
+@export var dron_pivot : Node3D
+@export var dron_cam : Camera3D
 
 @export_group("AERIAL CAMERA")
 @export var valuesInRuntime : bool
@@ -44,6 +47,8 @@ var aerial_UI_maxSpeed_boost : int = 250
 var dron_UI_maxSpeed : int = 70
 var dron_UI_maxSpeed_boost : int = 100
 
+var last_rotation : float
+
 func _ready():
 	var rndMode : RandomNumberGenerator = RandomNumberGenerator.new()
 	var rndNumber : int = rndMode.randi_range(0,100)
@@ -76,10 +81,22 @@ func _process(_delta):
 			movDron.UpdateCamConfig()
 	
 func UpdateCamState():
-	CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(cam.global_rotation_degrees.y))
+	var cam : Camera3D = aerial_cam if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else dron_cam 
+	var pivot : Node3D = aerial_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else dron_pivot 
+	var dir = sign(cam.global_rotation_degrees.y)
+	var fixRotY = abs(ceili(cam.global_rotation_degrees.y - 180)) if abs(ceili(cam.global_rotation_degrees.y - 180)) != 360 else 0
+	if dir > 0:
+		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(fixRotY))
+	elif dir < 0:
+		print(fixRotY)
+		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
+	
+
 	CAM.height = ceili(cam.global_position.y)
 	CAM.fov = ceili(cam.fov)
 	CAM.position = cam.global_position
+	
+	last_rotation = cam.global_rotation_degrees.y
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial:
 		var maxSpeed : float = aerial_UI_maxSpeed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else aerial_UI_maxSpeed
@@ -91,11 +108,17 @@ func UpdateCamState():
 func ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.Aerial:
 		movAerial.process_mode = Node.PROCESS_MODE_ALWAYS
+		UTILITIES.TurnOnObject(aerial_pivot)
+		
 		movDron.process_mode = Node.PROCESS_MODE_DISABLED
+		UTILITIES.TurnOffObject(dron_pivot)
 		
 		movAerial.SetCamera()
 	else:
 		movAerial.process_mode = Node.PROCESS_MODE_DISABLED
+		UTILITIES.TurnOffObject(aerial_pivot)
+		
 		movDron.process_mode = Node.PROCESS_MODE_ALWAYS
+		UTILITIES.TurnOnObject(dron_pivot)
 		
 		movDron.SetCamera()

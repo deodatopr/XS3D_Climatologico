@@ -28,13 +28,15 @@ const RETURN_CAMERA_ADJUST : float = 0.1
 
 func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
-	cam = camMng.cam
-	pivot = camMng.pivot_cam
+	cam = camMng.dron_cam
+	pivot = camMng.dron_pivot
 	mov_deceleration = camMng.dron_speed_accel_decel
 	
 func SetCamera():
+	cam.current = true
 	pivot.global_position.y = camMng.dron_initialHeight
 	cam.position = Vector3.ZERO
+	cam.rotation_degrees = Vector3(0, 180, 0)
 	cam.fov = camMng.dron_fov
 	
 func UpdateCamConfig():
@@ -76,21 +78,21 @@ func _movement(_delta:float):
 			isInTop = false
 
 	var FinalSpeedTurbo : float = camMng.dron_boost
-	FinalSpeedTurbo = camMng.dron_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 0.0
+	FinalSpeedTurbo = camMng.dron_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 1
 	
 	if inputDir.length() > 0:
-		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo * 10)
-		if mov_velocity.length() > camMng.dron_speed_accel_decel:
-			mov_velocity = mov_velocity.limit_length(camMng.dron_speed_accel_decel + (FinalSpeedTurbo * 10))
+		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
+		if mov_velocity.length() > camMng.dron_speed_accel_decel:	
+			mov_velocity = mov_velocity.limit_length(camMng.dron_speed_accel_decel * FinalSpeedTurbo)
 	
 	else:
 		if mov_velocity.length() > 0:
 			mov_velocity -= mov_velocity.normalized() * mov_deceleration * _delta
 			if mov_velocity.length() < 0.1:
-				mov_velocity = Vector3.ZERO
+				mov_velocity = Vector3.ZERO	
 				BoostTimeElapsed = 0
 	
-	speed01 = inverse_lerp(0,camMng.dron_speed + (FinalSpeedTurbo * 10),mov_velocity.length())
+	speed01 = inverse_lerp(0,camMng.dron_speed + (FinalSpeedTurbo),mov_velocity.length())
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
 	
