@@ -14,6 +14,7 @@
 # Implementar navMesh con sistema de camaras
 
 # ----------------------- Tareas:
+#Apagar/prender fish eye
 # Track de punto 2d, al acercarte salgan unos puntos que indiquen donde está la estación
 # Mapa 2D grande
 	# mapa grande  con flechas moverte entre sitios
@@ -46,5 +47,6 @@
 # - carreteras sin transp
 
 #Cam abajo
+# - Fish eye apagar
 # - Cierta altura de acuerdo a navMesh prender DOF
 # - carreteras con transp

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c76bbkdsmwu2h"]
+[gd_scene load_steps=6 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Aerial.gd" id="2_s21o3"]

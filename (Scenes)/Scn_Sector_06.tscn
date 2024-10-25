@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://c76bbkdsmwu2h" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
+[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="2_jtdc3"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
@@ -91,8 +91,10 @@ shader_parameter/intensity = 0.3
 
 [node name="Camera Drones" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
 debug_skipCurtainToChangeMode = false
-valuesInRuntime = true
 aerial_height = 500.0
+aerial_move = 0.5
+aerial_boost = 2.0
+aerial_camRot_speed = 1.0
 aerial_zoom_out = 100.0
 dron_rot_hor_speed = 7.0
 dron_vert_return = 0.5
