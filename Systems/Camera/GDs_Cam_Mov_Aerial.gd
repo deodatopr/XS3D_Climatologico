@@ -117,7 +117,7 @@ func _Movement(_delta: float):
 		mov_currentSpeed = mov_speed * (mov_speed_boost if Input.is_action_pressed('3DMove_SpeedBoost') else 1.0)
 		mov_velocity += inputDir * mov_currentSpeed * curvPoint * _delta
 		@warning_ignore('incompatible_ternary')
-		mov_limitSpeed = mov_speed + (mov_speed_boost if Input.is_action_pressed('3DMove_SpeedBoost') else 0)
+		mov_limitSpeed = mov_speed * (mov_speed_boost if Input.is_action_pressed('3DMove_SpeedBoost') else 1)
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif not mov_isPressingMove and mov_velocity.length() > 0:
 		#Calculate curve dec
