@@ -24,5 +24,5 @@ script = ExtResource("4_iwq67")
 [node name="pivot_ground" type="Node3D" parent="."]
 
 [node name="cam" type="Camera3D" parent="pivot_ground"]
-transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 499.782, 0)
+transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
 fov = 35.0

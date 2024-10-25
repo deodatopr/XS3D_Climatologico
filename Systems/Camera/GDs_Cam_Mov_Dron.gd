@@ -34,7 +34,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	
 func SetCamera():
 	pivot.global_position.y = camMng.dron_initialHeight
-	cam.global_position = pivot.global_position
+	cam.position = Vector3.ZERO
 	cam.fov = camMng.dron_fov
 	
 func UpdateCamConfig():
