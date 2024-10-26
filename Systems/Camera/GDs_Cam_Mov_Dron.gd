@@ -96,6 +96,7 @@ func _movement(_delta:float):
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
 	
+	#	
 	var distanceToGround = targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0))
 	isInGround = distanceToGround < camMng.dron_minDistGround
 	var pointInNavMesh := UTILITIES._get_point_on_map(cam.global_position, cam,0).y

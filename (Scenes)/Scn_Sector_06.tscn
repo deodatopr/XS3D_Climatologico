@@ -35,7 +35,7 @@ fog_mode = 1
 fog_light_color = Color(0.424189, 0.509992, 0.644825, 1)
 fog_density = 0.7
 fog_aerial_perspective = 1.0
-fog_depth_curve = 2.0
+fog_depth_curve = 3.0
 fog_depth_begin = 0.0
 fog_depth_end = 1000.0
 adjustment_enabled = true
@@ -43,12 +43,11 @@ adjustment_brightness = 0.9
 adjustment_contrast = 1.2
 adjustment_saturation = 1.2
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ugeqd"]
 dof_blur_far_distance = 500.0
-dof_blur_far_transition = 100.0
+dof_blur_far_transition = 50.0
 dof_blur_near_distance = 900.0
 dof_blur_near_transition = 800.0
-dof_blur_amount = 0.07
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
@@ -64,13 +63,13 @@ shader_parameter/chromaticBluePx = 2.0
 shader_parameter/chromaticIntensity = 1.0
 shader_parameter/_ = 0
 shader_parameter/vignetteOpacity = 1.0
-shader_parameter/vignetteSize = 0.268
-shader_parameter/vignetteFeather = 0.777
+shader_parameter/vignetteSize = 0.7
+shader_parameter/vignetteFeather = 0.3
 shader_parameter/vignetteColor = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_issi1"]
 shader = ExtResource("8_pnisj")
-shader_parameter/lensDistortion = 1.7
+shader_parameter/lensDistortion = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8a1ui"]
 shader = ExtResource("12_ppaes")
@@ -89,7 +88,6 @@ shader_parameter/intensity = 0.3
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
 [node name="Camera Drones" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
-valuesInRuntime = true
 aerial_height = 500.0
 aerial_move = 0.5
 aerial_boost = 2.0
@@ -106,10 +104,10 @@ dron_fov = 35.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="[ CONTENT ]"]
 environment = SubResource("Environment_nudmr")
-camera_attributes = SubResource("CameraAttributesPractical_jryic")
+camera_attributes = SubResource("CameraAttributesPractical_ugeqd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.75471, -0.616494, 0.224385, 0, 0.34202, 0.939693, -0.656059, 0.709195, -0.258126, 0, 0, 0)
+transform = Transform3D(-0.166769, 0.926533, -0.337231, 0, 0.34202, 0.939693, 0.985996, 0.156711, -0.0570383, 0, 0, 0)
 light_color = Color(1, 0.948457, 0.877053, 1)
 light_energy = 2.0
 light_angular_distance = 1.0
