@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=23 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="2_jtdc3"]
@@ -13,7 +13,6 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="12_ppaes"]
-[ext_resource type="PackedScene" uid="uid://b0mg0topaiisv" path="res://Cont_Models/Sector6/Msh_Sect06_Grid.glb" id="14_7jo57"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
 panorama = ExtResource("2_jtdc3")
@@ -35,22 +34,21 @@ fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.424189, 0.509992, 0.644825, 1)
 fog_density = 0.7
-fog_aerial_perspective = 0.8
-fog_depth_curve = 6.0
+fog_aerial_perspective = 1.0
+fog_depth_curve = 2.0
 fog_depth_begin = 0.0
-fog_depth_end = 1200.0
+fog_depth_end = 1000.0
 adjustment_enabled = true
 adjustment_brightness = 0.9
 adjustment_contrast = 1.2
 adjustment_saturation = 1.2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jryic"]
-dof_blur_far_distance = 300.0
-dof_blur_far_transition = 600.0
-dof_blur_near_enabled = true
+dof_blur_far_distance = 500.0
+dof_blur_far_transition = 100.0
 dof_blur_near_distance = 900.0
-dof_blur_near_transition = 600.0
-dof_blur_amount = 0.02
+dof_blur_near_transition = 800.0
+dof_blur_amount = 0.07
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
@@ -91,14 +89,18 @@ shader_parameter/intensity = 0.3
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
 [node name="Camera Drones" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
-debug_skipCurtainToChangeMode = false
+valuesInRuntime = true
 aerial_height = 500.0
 aerial_move = 0.5
 aerial_boost = 2.0
 aerial_camRot_speed = 1.0
 aerial_zoom_out = 100.0
+dron_initialHeight = 80.0
+dron_speed_accel_decel = 100.0
 dron_rot_hor_speed = 7.0
 dron_vert_return = 0.5
+dron_maxFlyingDist = 250.0
+dron_fov = 35.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -107,8 +109,8 @@ environment = SubResource("Environment_nudmr")
 camera_attributes = SubResource("CameraAttributesPractical_jryic")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-light_color = Color(1, 0.896991, 0.754292, 1)
+transform = Transform3D(-0.75471, -0.616494, 0.224385, 0, 0.34202, 0.939693, -0.656059, 0.709195, -0.258126, 0, 0, 0)
+light_color = Color(1, 0.948457, 0.877053, 1)
 light_energy = 2.0
 light_angular_distance = 1.0
 shadow_enabled = true
@@ -204,9 +206,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Msh_Sect06_Grid" parent="." instance=ExtResource("14_7jo57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.6855, 0)
-visible = false
 
 [editable path="[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"]
