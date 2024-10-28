@@ -1,4 +1,4 @@
-class_name GDs_VistaDron
+class_name GDs_VistaFree
 extends Control
 
 @export_group("Datos")
@@ -10,8 +10,7 @@ extends Control
 @export var LeftLines:Control
 @export var RightLines:Control
 
-@export_group("Refs Minimap")
-@export var minimap:GDs_Minimap
+@export_group("Refs Compass")
 @export var compass:GDs_Compass
 var cam_manager:GDs_Cam_Manager
 var worldMark:Node3D
@@ -30,10 +29,6 @@ func Initialize():
 	initialLeftLinesPosY = LeftLines.position.y
 	initialRightLinesPosY = RightLines.position.y
 	
-	minimap.cam_Manager = cam_manager
-	minimap.mark_target = worldMark
-	minimap.map = map
-	minimap.Initialize()
 	
 	compass.PinPos = worldMark
 	compass.Initialize(cam_manager)

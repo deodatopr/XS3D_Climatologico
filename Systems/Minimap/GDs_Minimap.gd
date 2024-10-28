@@ -51,12 +51,3 @@ func get_scene_bounds(root : Node) -> AABB:
 		if node is MeshInstance3D:
 			total_aabb = total_aabb.merge(node.get_aabb())
 	return total_aabb	
-	
-func _input(event):
-	if event.is_action_pressed("Open_Minimap"):
-		#print(minimap_parent.scale)
-		var minimap_Animation : Tween = get_tree().create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN_OUT)
-		if minimap_parent.scale.floor() > Vector2(0, 0):
-			minimap_Animation.tween_property(minimap_parent, "scale", Vector2(0, 0), 1)
-		else:
-			minimap_Animation.tween_property(minimap_parent, "scale", Vector2(1, 1), 1)

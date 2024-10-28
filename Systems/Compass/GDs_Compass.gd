@@ -8,6 +8,16 @@ var camManager : GDs_Cam_Manager
 @export var maxDistance : float
 @export var estacion_index : int = 0
 
+@export var compass: NinePatchRect
+@export var pin_sitio: TextureRect
+@export var compass_parent: Control
+@export var top_down_mark: ColorRect 
+@export var compass_top_down: Control 
+@export var distance_text: Label
+@export var compass_mask:Control
+@export var distance_top_down:Control
+@export var local_estaciones : GDs_CR_LocalEstaciones
+
 var compassInitialXPosition := 0.0
 var pinSiteInitialXPosition := 0.0
 
@@ -18,16 +28,6 @@ var screenSize : Vector2
 var maxMark_TopDown_PosX : float
 var maxMark_TopDown_PosY : float
 
-@onready var pin_sitio: TextureRect = $CompassParent/CompassMask/PinSite
-@onready var compass: NinePatchRect = $CompassParent/CompassMask/Compass
-@onready var compass_parent: Control = $CompassParent
-@onready var top_down_mark: ColorRect = $CompassTopDown/TopDownMark
-@onready var compass_top_down: Control = $CompassTopDown
-@onready var distance_text: Label = $CompassParent/DistanceBackground/DistanceText
-@onready var compass_mask = $CompassParent/CompassMask
-@onready var distance_top_down = $CompassTopDown/TopDownMark/DistanceTopDown
-
-@onready var local_estaciones : GDs_CR_LocalEstaciones = preload("uid://3nj42mys6ryu")
 
 var canRotate : bool
 

@@ -1,30 +1,29 @@
-[gd_scene load_steps=26 format=3 uid="uid://cocko4ft5524e"]
+[gd_scene load_steps=25 format=3 uid="uid://cocko4ft5524e"]
 
-[ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="1_0i5pp"]
-[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_qw0d6"]
-[ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="3_yyalv"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="4_xkqv6"]
-[ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="5_1n4su"]
-[ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="6_ilist"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="1_e7v8d"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_satoa"]
+[ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="3_ltkqs"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="4_bhin8"]
+[ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="5_s86r1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qyw2"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(806, 9, 160, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ea0ij"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(524, 8, 272, 272)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4vfc"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(521, 297, 241, 241)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fjrq"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(523, 547, 212, 212)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvidw"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(478, 739, 23, 20)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rasto"]
@@ -43,29 +42,29 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ck1g"]
-shader = ExtResource("4_xkqv6")
+shader = ExtResource("4_bhin8")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.5
 shader_parameter/blur = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2cfi"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(809, 145, 26, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap8jv"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(847, 147, 24, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mi26"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(883, 138, 22, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htee1"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(914, 147, 20, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idr0y"]
-atlas = ExtResource("1_qw0d6")
+atlas = ExtResource("2_satoa")
 region = Rect2(468, 763, 42, 42)
 
 [sub_resource type="Animation" id="Animation_ndk1b"]
@@ -105,21 +104,20 @@ _data = {
 "RESET": SubResource("Animation_nk6gn")
 }
 
-[node name="Vista Dron" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "centerLine", "LeftLines", "RightLines", "minimap", "compass")]
+[node name="Vista Fly" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "centerLine", "LeftLines", "RightLines", "compass")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0i5pp")
+script = ExtResource("1_e7v8d")
 lblAltura = NodePath("Frame/Indicators/Datos/HBoxContainer/Altura/Lbl Altura")
 lblVelocidad = NodePath("Frame/Indicators/Datos/HBoxContainer/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Frame/Indicators/Datos/HBoxContainer/Rotacion/Lbl Rotacion")
 centerLine = NodePath("Frame/Indicators/Bottom Indicator/Mask/Center Lines")
 LeftLines = NodePath("Frame/Indicators/Left Indicator/Mask/Left Lines")
 RightLines = NodePath("Frame/Indicators/Right Indicator/Mask/Right Lines")
-minimap = NodePath("Frame/UI_Minimap")
 compass = NodePath("Frame/UI_Compass")
 metadata/_edit_horizontal_guides_ = [125.0]
 metadata/_edit_vertical_guides_ = [1647.0]
@@ -129,13 +127,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
+offset_left = 22.0
 offset_top = 25.0
-offset_right = -10.0
+offset_right = -22.0
 offset_bottom = -133.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(476, 219, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -198,7 +196,7 @@ offset_right = 405.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 patch_margin_right = 5
 
@@ -216,7 +214,7 @@ offset_right = 1.0
 offset_bottom = 112.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Ring" type="Control" parent="Frame/Center Crosshair"]
@@ -316,7 +314,7 @@ offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(241, 241)
-script = ExtResource("3_yyalv")
+script = ExtResource("3_ltkqs")
 speed = 0.1
 
 [node name="TextureRect" type="TextureRect" parent="Frame/Center Crosshair/Ring2"]
@@ -363,7 +361,7 @@ offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(212, 212)
-script = ExtResource("3_yyalv")
+script = ExtResource("3_ltkqs")
 speed = -0.05
 
 [node name="TextureRect" type="TextureRect" parent="Frame/Center Crosshair/Ring3"]
@@ -433,7 +431,7 @@ offset_right = -23.5
 offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Left Indicator/Line4"]
@@ -468,7 +466,7 @@ offset_bottom = -273.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.610865
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Line6" type="NinePatchRect" parent="Frame/Indicators/Left Indicator/Line4"]
@@ -484,7 +482,7 @@ offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.610865
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Mask" type="NinePatchRect" parent="Frame/Indicators/Left Indicator"]
@@ -545,7 +543,7 @@ offset_right = 22.5
 offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Right Indicator/Line4"]
@@ -579,7 +577,7 @@ offset_bottom = -271.5
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -2.53073
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Line6" type="NinePatchRect" parent="Frame/Indicators/Right Indicator/Line4"]
@@ -596,7 +594,7 @@ offset_bottom = 277.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -3.75246
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
 
 [node name="Mask" type="NinePatchRect" parent="Frame/Indicators/Right Indicator"]
@@ -685,7 +683,7 @@ offset_left = -1133.0
 offset_right = 1137.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(809, 177, 108, 25)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
@@ -783,7 +781,7 @@ offset_top = -47.0
 offset_right = 265.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_qw0d6")
+texture = ExtResource("2_satoa")
 region_rect = Rect2(473, 40, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -866,11 +864,7 @@ theme_override_font_sizes/font_size = 20
 text = "90°
 "
 
-[node name="UI_Minimap" parent="Frame" instance=ExtResource("5_1n4su")]
-visible = false
-layout_mode = 1
-
-[node name="UI_Compass" parent="Frame" instance=ExtResource("6_ilist")]
+[node name="UI_Compass" parent="Frame" instance=ExtResource("5_s86r1")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

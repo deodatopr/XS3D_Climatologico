@@ -19,7 +19,7 @@ func GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: f
 	currentCurvValue = clampf(currentCurvValue,0,1)
 	return _curveToEvaluate.sample(currentCurvValue) 
 	
-func _get_point_on_map(target_point : Vector3, Enviroment3D : Node3D, min_dist_from_edge: float) -> Vector3:
+func _get_point_on_map(target_point : Vector3, Enviroment3D : Node3D, _min_dist_from_edge: float) -> Vector3:
 	var map = Enviroment3D.get_world_3d().navigation_map
 	if(NavigationServer3D.map_get_iteration_id(map)):
 		var closest_point := NavigationServer3D.map_get_closest_point(map, target_point)
