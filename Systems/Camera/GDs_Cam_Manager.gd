@@ -38,6 +38,21 @@ class_name GDs_Cam_Manager extends Node
 
 @onready var mat_roads : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
 
+@export_group("DRON CAMERA")
+@export var dron_initialHeight : float = 300
+@export var dron_speed_accel_decel : float = 200
+@export var dron_speed : float = 200
+@export_range(1,5) var dron_boost : float = 2
+@export var dron_rot_hor_speed : float = 2.5
+@export var dron_rot_vert_speed : float = 5
+@export_range(0, 90) var dron_vert : float = 45
+@export var dron_vert_return : float = 1
+@export_range(15, 90) var dron_minDistGround : float = 55
+@export var dron_maxFlyingDist : float = 700
+@export_range(30,100) var dron_fov :float = 50
+@export var Terrains: Array [Node3D]
+
+
 var camMode : int
 var sky_UI_maxSpeed : int = 250
 var fly_UI_maxSpeed : int = 100

@@ -26,6 +26,13 @@ func _get_point_on_map(target_point : Vector3, Enviroment3D : Node3D, _min_dist_
 		return closest_point
 	return target_point	
 	
+func get_scene_bounds(root : Node) -> AABB:
+	var total_aabb = AABB()
+	for node in root.get_children():
+		if node is MeshInstance3D:
+			total_aabb = total_aabb.merge(node.get_aabb())
+	return total_aabb	
+	
 #region Formato strings
 func FormatNivel(nivel:float)->String:
 	nivel = roundf(nivel)

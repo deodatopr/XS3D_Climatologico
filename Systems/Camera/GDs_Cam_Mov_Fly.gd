@@ -24,6 +24,7 @@ var isInTop : bool = false
 var canPressDown : bool = true
 var speed01 : float = 0
 var lastSpeed01 : float = 0
+var NavMeshBounds : AABB
 
 const RETURN_CAMERA_ADJUST : float = 0.1
 
@@ -32,6 +33,11 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	cam = camMng.fly_cam
 	pivot = camMng.fly_pivot
 	mov_deceleration = camMng.fly_speed_accel_decel
+
+	for terrain in camMng.Terrains:
+		NavMeshBounds = NavMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
+	
+	print(NavMeshBounds)
 	
 func SetCamera():
 	cam.current = true
@@ -39,6 +45,7 @@ func SetCamera():
 	cam.position = Vector3.ZERO
 	cam.rotation_degrees = Vector3(0, 180, 0)
 	cam.fov = camMng.fly_fov
+	
 	
 func UpdateCamConfig():
 	cam.fov = camMng.fly_fov
@@ -52,7 +59,36 @@ func _input(event):
 func _physics_process(delta:float):
 	_movement(delta)
 	_rotation(delta)
+	var cam_in_world = (pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
+	var vam2d = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
+	print(vam2d)
+	
+func obtenr_bouns_navrmsh(navmesh):
+	var total_aabb = AABB()
+	
+	for node in navmesh.get_children():
+		if node is not MeshInstance3D:
+			for meshnode in node.get_children(): 
+				if meshnode is NavigationRegion3D:
+					print("is nav region")
+					var vertices = meshnode.navmesh.get_vertices()  # Obtener todos los vértices del NavMesh
+					
+					if vertices.is_empty():
+						return null 
+				
+					var min_pos = vertices[0]
+					var max_pos = vertices[0]
+					
+					for vertex in vertices:
+						min_pos = Vector3(min(vertex.x, min_pos.x), min(vertex.y, min_pos.y), min(vertex.z, min_pos.z))
+						max_pos = Vector3(max(vertex.x, max_pos.x), max(vertex.y, max_pos.y), max(vertex.z, max_pos.z))
 
+					# Crear el AABB con los límites obtenidos
+					var size = max_pos - min_pos
+					total_aabb = total_aabb.merge(AABB(min_pos, size))
+		
+	return total_aabb
+	
 func _movement(_delta:float):
 	var inputDir = Vector3.ZERO
 
