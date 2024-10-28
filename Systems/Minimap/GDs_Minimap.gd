@@ -23,7 +23,8 @@ var scene_bound : AABB
 var isInitialized:=false
 
 func _ready():
-	Initialize()
+	pass
+	#Initialize()
 
 func Initialize() -> void:
 	#FIXME el movimiento del dron con la posicion del marcador del minimapa esta invertido
