@@ -11,7 +11,7 @@ shader_parameter/blur = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
 atlas = ExtResource("2_x6xqf")
-region = Rect2(8, 322, 44, 44)
+region = Rect2(7, 322, 44, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ej2gg"]
 atlas = ExtResource("2_x6xqf")
@@ -93,10 +93,10 @@ grow_vertical = 2
 
 [node name="Corner" type="TextureRect" parent="Blur"]
 layout_mode = 1
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 24.0
-offset_bottom = 25.0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_g0htj")
 
@@ -105,9 +105,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
 offset_top = -44.0
-offset_right = 46.0
+offset_right = 44.0
 grow_vertical = 0
 rotation = -1.5708
 scale = Vector2(2, 2)
@@ -119,8 +118,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -46.0
-offset_right = -2.0
+offset_left = -44.0
 offset_bottom = 44.0
 grow_horizontal = 0
 rotation = 1.5708
@@ -135,9 +133,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -46.0
+offset_left = -44.0
 offset_top = -44.0
-offset_right = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159

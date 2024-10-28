@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://cocko4ft5524e"]
+[gd_scene load_steps=26 format=3 uid="uid://cocko4ft5524e"]
 
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="1_e7v8d"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_satoa"]
 [ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="3_ltkqs"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="4_bhin8"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_LineIndicators.gd" id="4_ghnv4"]
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="5_s86r1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qyw2"]
@@ -104,7 +105,7 @@ _data = {
 "RESET": SubResource("Animation_nk6gn")
 }
 
-[node name="Vista Fly" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "centerLine", "LeftLines", "RightLines", "compass")]
+[node name="Vista Fly" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "compass")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,9 +116,6 @@ script = ExtResource("1_e7v8d")
 lblAltura = NodePath("Frame/Indicators/Datos/HBoxContainer/Altura/Lbl Altura")
 lblVelocidad = NodePath("Frame/Indicators/Datos/HBoxContainer/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Frame/Indicators/Datos/HBoxContainer/Rotacion/Lbl Rotacion")
-centerLine = NodePath("Frame/Indicators/Bottom Indicator/Mask/Center Lines")
-LeftLines = NodePath("Frame/Indicators/Left Indicator/Mask/Left Lines")
-RightLines = NodePath("Frame/Indicators/Right Indicator/Mask/Right Lines")
 compass = NodePath("Frame/UI_Compass")
 metadata/_edit_horizontal_guides_ = [125.0]
 metadata/_edit_vertical_guides_ = [1647.0]
@@ -512,9 +510,13 @@ offset_bottom = 489.55
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_05ydq")
-region_rect = Rect2(968, 136, 24, 108)
+region_rect = Rect2(996, 137, 22, 107)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("4_ghnv4")
+vertical = true
+useCamRotation = true
+width = 108
 
 [node name="Right Indicator" type="Control" parent="Frame/Indicators"]
 layout_mode = 1
@@ -631,6 +633,10 @@ texture = SubResource("CompressedTexture2D_e6v1t")
 region_rect = Rect2(995, 136, 26, 108)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("4_ghnv4")
+vertical = true
+useCamRotation = true
+width = 108
 
 [node name="Top Indicator" type="Control" parent="Frame/Indicators"]
 visible = false
@@ -744,9 +750,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
-offset_top = -28.0
+offset_top = -32.0
 offset_right = -89.0
-offset_bottom = -3.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("CompressedTexture2D_epocd")
@@ -759,13 +765,18 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -1678.0
+offset_top = -1.0
 offset_right = 1679.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_o5vl7")
 region_rect = Rect2(809, 212, 108, 25)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("4_ghnv4")
+useCamRotation = true
+width = 108
 
 [node name="Datos" type="NinePatchRect" parent="Frame/Indicators"]
 modulate = Color(1, 1, 1, 0.784314)

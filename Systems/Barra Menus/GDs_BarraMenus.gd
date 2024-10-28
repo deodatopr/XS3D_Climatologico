@@ -2,6 +2,8 @@ class_name GDs_BarraMenus
 extends Node
 @export_group("Refs Externas")
 @export var menuSitios: Control
+@export var menuMapa: Control
+@export var menuConfig: Control
 @export var menuGuia: Control
 @export_group("Botones")
 @export var BtnSitios:Button   #0
@@ -61,29 +63,30 @@ func GetCurrentFocus():
 		lastOneOnFocus = 3
 
 func OnBtnSitiosFocus():
-	menuSitios.show()
+	UTILITIES.TurnOnObject(menuSitios)
 	BtnSitios.button_pressed = true
 
 
 func OnBtnMapaFocus():
-	menuSitios.hide()
+	UTILITIES.TurnOffObject(menuSitios)
+
 	BtnSitios.button_pressed = false
 	
-	pass
+	UTILITIES.TurnOnObject(menuMapa)
 
 func OnBtnMapaFocusExited():
-	pass
+	UTILITIES.TurnOffObject(menuMapa)
 
 func OnBtnConfigFocus():
-	pass
+	UTILITIES.TurnOnObject(menuConfig)
 
 func OnBtnConfigFocusExited():
-	pass
+	UTILITIES.TurnOffObject(menuConfig)
 
 func OnBtnGuiaFocus():
-	menuGuia.show()
-	menuSitios.hide()
+	UTILITIES.TurnOnObject(menuGuia)
+	UTILITIES.TurnOffObject(menuSitios)
 	BtnSitios.button_pressed = false
 
 func OnBtnGuiaFocusExited():
-	menuGuia.hide()
+	UTILITIES.TurnOffObject(menuGuia)

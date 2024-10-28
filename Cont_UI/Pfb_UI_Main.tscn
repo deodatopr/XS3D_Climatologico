@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://y1iugd6uyl42"]
+[gd_scene load_steps=19 format=3 uid="uid://y1iugd6uyl42"]
 
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
@@ -19,7 +19,7 @@ shader_parameter/blur = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
 atlas = ExtResource("8_omcqt")
-region = Rect2(8, 322, 44, 44)
+region = Rect2(7, 322, 44, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjw3v"]
 atlas = ExtResource("8_omcqt")
@@ -29,12 +29,15 @@ region = Rect2(468, 763, 42, 42)
 atlas = ExtResource("8_omcqt")
 region = Rect2(72, 205, 48, 48)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r3lu1"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mvc8w"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ej2gg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yn06"]
 atlas = ExtResource("8_omcqt")
-region = Rect2(473, 429, 31, 25)
+region = Rect2(477, 358, 21, 26)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r3lu1"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ie3aj"]
 atlas = ExtResource("8_omcqt")
@@ -50,6 +53,16 @@ grow_vertical = 2
 script = ExtResource("1_vcggy")
 cortinilla = NodePath("Cortinilla Local")
 menuPerfiles = NodePath("Menu Sitios")
+
+[node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuConfig", "menuGuia") instance=ExtResource("2_j5wup")]
+layout_mode = 1
+menuSitios = NodePath("../Menu Sitios")
+menuMapa = NodePath("../Menu Mapa")
+menuConfig = NodePath("../Menu Config")
+menuGuia = NodePath("../Menu Guia")
+
+[node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
+layout_mode = 1
 
 [node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp") instance=ExtResource("3_g57u8")]
 visible = false
@@ -88,10 +101,10 @@ grow_vertical = 2
 
 [node name="Corner" type="TextureRect" parent="Menu Mapa/Blur"]
 layout_mode = 1
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 24.0
-offset_bottom = 25.0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_g0htj")
 
@@ -100,9 +113,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
 offset_top = -44.0
-offset_right = 46.0
+offset_right = 44.0
 grow_vertical = 0
 rotation = -1.5708
 scale = Vector2(2, 2)
@@ -114,8 +126,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -46.0
-offset_right = -2.0
+offset_left = -44.0
 offset_bottom = 44.0
 grow_horizontal = 0
 rotation = 1.5708
@@ -130,9 +141,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -46.0
+offset_left = -44.0
 offset_top = -44.0
-offset_right = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
@@ -168,7 +178,6 @@ texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
 [node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/01"]
-visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -437,7 +446,7 @@ offset_left = 12.0
 offset_top = 12.0
 offset_right = 112.0
 offset_bottom = 112.0
-texture = SubResource("CompressedTexture2D_r3lu1")
+texture = SubResource("CompressedTexture2D_mvc8w")
 region_rect = Rect2(474, 40, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -459,9 +468,10 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.6, 2.6)
 pivot_offset = Vector2(10, 13)
-texture = SubResource("AtlasTexture_ej2gg")
+texture = SubResource("AtlasTexture_1yn06")
 
 [node name="Menu Config" type="ColorRect" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.6)
 layout_mode = 1
 anchors_preset = 15
@@ -569,14 +579,6 @@ grow_vertical = 2
 scale = Vector2(2.6, 2.6)
 pivot_offset = Vector2(13, 13)
 texture = SubResource("AtlasTexture_ie3aj")
-
-[node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
-layout_mode = 1
-
-[node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuGuia") instance=ExtResource("2_j5wup")]
-layout_mode = 1
-menuSitios = NodePath("../Menu Sitios")
-menuGuia = NodePath("../Menu Guia")
 
 [node name="PopUp Ver Sitio" parent="." instance=ExtResource("5_wvomf")]
 visible = false
