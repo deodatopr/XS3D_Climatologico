@@ -81,7 +81,7 @@ func _physics_process(delta):
 	_Rotation(delta)
 	
 	var Position = camMng._PositionOnMap(pivot_cam)
-	print(Position)
+	#print(Position)
 	
 	if (mov_isMoving or rotHor_isRotating) and not signalUpdateWasEmitted:
 		SIGNALS.OnCameraUpdate.emit(true)

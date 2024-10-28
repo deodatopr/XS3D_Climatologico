@@ -1,11 +1,10 @@
 class_name GDs_Minimap
 extends Node
 
-@export var cam_Manager : GDs_Cam_Manager
-@export var map_Movement_Speed : float = 1
-@export var mark_target : Node3D
-@export var estacion_color : int = 0
-@export var map : Node3D
+@export var VistaSky : GDs_Vista_Drone
+var cam_Manager : GDs_Cam_Manager
+var estacion_color : int = 0
+var map : Node3D
 var pivot_cam : Node3D
 var cam : Node3D
 var movement_Vector : Vector2
@@ -23,17 +22,21 @@ var scene_bound : AABB
 
 var isInitialized:=false
 
+func _ready():
+	Initialize()
+
 func Initialize() -> void:
 	#FIXME el movimiento del dron con la posicion del marcador del minimapa esta invertido
-	pivot_cam = cam_Manager.fly_pivot
-	cam = cam_Manager.fly_cam
+	cam_Manager = VistaSky.cam_manager
+	pivot_cam = cam_Manager.sky_pivot
+	cam = cam_Manager.sky_cam
 	
 	mark_Start_Position = mark.position
 	cam_start_position = cam_pivot.position
 	
 	mark.self_modulate = local_estaciones.LocalEstaciones[estacion_color].color
 	
-	scene_bound = get_scene_bounds(map)
+	scene_bound = UTILITIES.get_scene_bounds(cam_Manager.Terrains[0])
 	isInitialized = true
 	
 @warning_ignore('unused_parameter')
@@ -42,12 +45,7 @@ func _process(delta: float) -> void:
 		var cam_in_world = (pivot_cam.global_position + (scene_bound.size/2))/scene_bound.size
 		var cam_world2D = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
 		cam_pivot.position = (cam_world2D * map_texture.size) - (map_texture.size/2) + cam_start_position
+		print(pivot_cam.rotation_degrees.y)
 		
 		cam_pivot.rotation_degrees = pivot_cam.rotation_degrees.y
 	
-func get_scene_bounds(root : Node) -> AABB:
-	var total_aabb = AABB()
-	for node in root.get_children():
-		if node is MeshInstance3D:
-			total_aabb = total_aabb.merge(node.get_aabb())
-	return total_aabb	

@@ -56,7 +56,7 @@ func _physics_process(delta:float):
 	_rotation(delta)
 	
 	var Position = camMng._PositionOnMap(pivot)
-	print(Position)
+	#print(Position)
 	
 func obtenr_bouns_navrmsh(navmesh):
 	var total_aabb = AABB()

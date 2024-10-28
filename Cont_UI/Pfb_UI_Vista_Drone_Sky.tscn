@@ -776,8 +776,9 @@ scale = Vector2(-1, 1)
 pivot_offset = Vector2(183, 17)
 texture = SubResource("AtlasTexture_nv5k5")
 
-[node name="UI_Minimap" parent="." instance=ExtResource("3_2spof")]
+[node name="UI_Minimap" parent="." node_paths=PackedStringArray("VistaSky") instance=ExtResource("3_2spof")]
 layout_mode = 1
+VistaSky = NodePath("..")
 
 [node name="Point" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.584314)
