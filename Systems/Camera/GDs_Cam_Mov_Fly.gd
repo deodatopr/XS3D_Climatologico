@@ -1,4 +1,4 @@
-class_name GDs_Cam_Mov_Dron extends Node
+class_name GDs_Cam_Mov_Fly extends Node
 
 var camMng : GDs_Cam_Manager
 
@@ -29,19 +29,19 @@ const RETURN_CAMERA_ADJUST : float = 0.1
 
 func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
-	cam = camMng.dron_cam
-	pivot = camMng.dron_pivot
-	mov_deceleration = camMng.dron_speed_accel_decel
+	cam = camMng.fly_cam
+	pivot = camMng.fly_pivot
+	mov_deceleration = camMng.fly_speed_accel_decel
 	
 func SetCamera():
 	cam.current = true
-	pivot.global_position.y = camMng.dron_initialHeight
+	pivot.global_position.y = camMng.fly_initialHeight
 	cam.position = Vector3.ZERO
 	cam.rotation_degrees = Vector3(0, 180, 0)
-	cam.fov = camMng.dron_fov
+	cam.fov = camMng.fly_fov
 	
 func UpdateCamConfig():
-	cam.fov = camMng.dron_fov
+	cam.fov = camMng.fly_fov
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -78,13 +78,13 @@ func _movement(_delta:float):
 			inputDir -= pivot.basis.y
 			isInTop = false
 
-	var FinalSpeedTurbo : float = camMng.dron_boost
-	FinalSpeedTurbo = camMng.dron_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 1
+	var FinalSpeedTurbo : float = camMng.fly_boost
+	FinalSpeedTurbo = camMng.fly_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 1
 	
 	if inputDir.length() > 0:
-		mov_velocity += (inputDir * camMng.dron_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
-		if mov_velocity.length() > camMng.dron_speed_accel_decel:	
-			mov_velocity = mov_velocity.limit_length(camMng.dron_speed_accel_decel * FinalSpeedTurbo)
+		mov_velocity += (inputDir * camMng.fly_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
+		if mov_velocity.length() > camMng.fly_speed_accel_decel:	
+			mov_velocity = mov_velocity.limit_length(camMng.fly_speed_accel_decel * FinalSpeedTurbo)
 	
 	else:
 		if mov_velocity.length() > 0:
@@ -93,7 +93,7 @@ func _movement(_delta:float):
 				mov_velocity = Vector3.ZERO	
 				BoostTimeElapsed = 0
 	
-	var fixSpeed : float =  inverse_lerp(0,camMng.dron_speed * camMng.dron_boost,mov_velocity.length())
+	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed * camMng.fly_boost,mov_velocity.length())
 	var slowSpeed : float = lerpf(lastSpeed01,fixSpeed, .2)
 	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
 	lastSpeed01 = speed01
@@ -102,18 +102,18 @@ func _movement(_delta:float):
 	targetPosition += mov_velocity * _delta
 	
 	var distanceToGround = targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0))
-	isInGround = distanceToGround < camMng.dron_minDistGround
+	isInGround = distanceToGround < camMng.fly_minDistGround
 	var pointInNavMesh := UTILITIES._get_point_on_map(cam.global_position, cam,0).y
-	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.dron_minDistGround - 4
+	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.fly_minDistGround - 4
 	
 	if isInGround:
 		if targetPosition.y - UTILITIES._get_point_on_map(targetPosition, cam,0).y > .1:
 			if inputDir != Vector3.UP:
-				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.dron_minDistGround - 5)).y, .5)
+				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.fly_minDistGround - 5)).y, .5)
 		else:
 			targetPosition.y = pointInNavMesh + (Vector3.UP * 50).y
 
-	isInTop = targetPosition.y >= camMng.dron_maxFlyingDist
+	isInTop = targetPosition.y >= camMng.fly_maxFlyingDist
 	
 	pivot.global_position = targetPosition
 
@@ -148,11 +148,11 @@ func _rotation(_delta:float):
 		yaw_direction = -Input.get_axis("3DLook_Right", '3DLook_Left')
 		_rotHorPivot(yaw_direction * 10, _delta)
 	elif not (Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		yaw -= ((camMng.dron_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveDecel, 1.2, _delta, true)) * _delta
+		yaw -= ((camMng.fly_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveMovement, 1.2, _delta, true)) * _delta
 		pivot.rotation_degrees.y = yaw
 
 func _rotHorPivot(dir:float, _delta:float):
-	yaw -= dir * camMng.dron_rot_hor_speed  * _delta
+	yaw -= dir * camMng.fly_rot_hor_speed  * _delta
 	pivot.rotation_degrees.y = yaw
 
 func _rotVertCam(dir:float, _delta:float):
@@ -161,14 +161,14 @@ func _rotVertCam(dir:float, _delta:float):
 		is_start_to_move = true
 		pitch = last_pitch
 		
-	pitch -= dir * camMng.dron_rot_vert_speed  * _delta
+	pitch -= dir * camMng.fly_rot_vert_speed  * _delta
 	last_pitch = pitch
-	pitch = clampf(pitch, -camMng.dron_vert, camMng.dron_vert)
+	pitch = clampf(pitch, -camMng.fly_vert, camMng.fly_vert)
 	cam.rotation_degrees.x = pitch
 		
 func _rotVertReturn(_delta:float):
 	if abs(cam.rotation_degrees.x) > .1:
-		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.dron_vert_return / RETURN_CAMERA_ADJUST))
+		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.fly_vert_return / RETURN_CAMERA_ADJUST))
 		return_cam_time_elpased += _delta
 		last_pitch = cam.rotation_degrees.x
 		is_start_to_move = false

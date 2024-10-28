@@ -22,6 +22,6 @@ enum Estado
 
 enum Cam_Mode
 {
-	Aerial,
-	Dron
+	sky,
+	fly
 }

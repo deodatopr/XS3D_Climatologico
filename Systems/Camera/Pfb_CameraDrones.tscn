@@ -1,36 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://jkw1uarjdt8w"]
+[gd_scene load_steps=5 format=3 uid="uid://jkw1uarjdt8w"]
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
-[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Aerial.gd" id="2_s21o3"]
-[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Curves/Curv_Accl.tres" id="2_xldol"]
-[ext_resource type="Curve" uid="uid://0ba50dmp0tfd" path="res://Systems/Camera/Curves/Curv_Dcel.tres" id="3_goarf"]
-[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Dron.gd" id="4_iwq67"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Sky.gd" id="2_s21o3"]
+[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Curve_Movement.tres" id="3_goarf"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Fly.gd" id="4_iwq67"]
 
-[node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movAerial", "movDron", "aerial_pivot", "aerial_cam", "dron_pivot", "dron_cam")]
+[node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("1_vxe6d")
-movAerial = NodePath("Mov_Aerial")
-movDron = NodePath("Mov_Dron")
-curveAccel = ExtResource("2_xldol")
-curveDecel = ExtResource("3_goarf")
-aerial_pivot = NodePath("Mov_Aerial/aerial_pivot")
-aerial_cam = NodePath("Mov_Aerial/aerial_pivot/aerial_cam")
-dron_pivot = NodePath("Mov_Dron/dron_pivot")
-dron_cam = NodePath("Mov_Dron/dron_pivot/dron_cam")
+curveMovement = ExtResource("3_goarf")
+movSky = NodePath("Mov_Sky")
+sky_pivot = NodePath("Mov_Sky/sky_pivot")
+sky_cam = NodePath("Mov_Sky/sky_pivot/sky_cam")
+movFly = NodePath("Mov_Fly")
+fly_pivot = NodePath("Mov_Fly/fly_pivot")
+fly_cam = NodePath("Mov_Fly/fly_pivot/fly_cam")
 
-[node name="Mov_Aerial" type="Node" parent="."]
+[node name="Mov_Sky" type="Node" parent="."]
 script = ExtResource("2_s21o3")
 
-[node name="aerial_pivot" type="Node3D" parent="Mov_Aerial"]
+[node name="sky_pivot" type="Node3D" parent="Mov_Sky"]
 
-[node name="aerial_cam" type="Camera3D" parent="Mov_Aerial/aerial_pivot"]
+[node name="sky_cam" type="Camera3D" parent="Mov_Sky/sky_pivot"]
 transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
 fov = 35.0
 
-[node name="Mov_Dron" type="Node" parent="."]
+[node name="Mov_Fly" type="Node" parent="."]
 script = ExtResource("4_iwq67")
 
-[node name="dron_pivot" type="Node3D" parent="Mov_Dron"]
+[node name="fly_pivot" type="Node3D" parent="Mov_Fly"]
 
-[node name="dron_cam" type="Camera3D" parent="Mov_Dron/dron_pivot"]
+[node name="fly_cam" type="Camera3D" parent="Mov_Fly/fly_pivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0

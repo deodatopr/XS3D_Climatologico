@@ -25,8 +25,8 @@ var isInitialized:=false
 
 func Initialize() -> void:
 	#FIXME el movimiento del dron con la posicion del marcador del minimapa esta invertido
-	pivot_cam = cam_Manager.dron_pivot
-	cam = cam_Manager.dron_cam
+	pivot_cam = cam_Manager.fly_pivot
+	cam = cam_Manager.fly_cam
 	
 	mark_Start_Position = mark.position
 	cam_start_position = cam_pivot.position

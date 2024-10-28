@@ -8,9 +8,28 @@
 #
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
-# Agregar en cam ref a world env para valor de fog con su valor
-# Apagar/prender fish eye
-# Matar curva de desaceleración ya es la misma
+
+# Agarrar diferentes worldEnv
+
+#Dron_Sky
+#Dron_Fly
+
+# Cam sky:
+# - Prender fish eye
+# - DOF color rect apagar
+# - carreteras sin transp
+
+#Cam abajo
+# - Fish eye apagar
+# - Cierta altura de acuerdo a navMesh prender DOF
+# - carreteras con transp
+
+# - Variable para ver abajo a cuantos grados ves
+# - Reducir variables
+# - Umbral rotaciones XY
+# - NavMesh que si sube por altura despues baje, si estabas en el suelo
+# dron abajo DOF near
+	# Limite abajo faltando 5 o 10 lo active
 
 #	[ Carlos ]
 
@@ -20,10 +39,6 @@
 # Brujulas
 
 # ----------------------- Tareas:
-# dron sky apagar DOF near
-# dron abajo DOF near
-	# Limite abajo faltando 5 o 10 lo active
-
 # Track de punto 2d, al acercarte salgan unos puntos que indiquen donde está la estación
 # Mapa 2D grande
 	# mapa grande  con flechas moverte entre sitios
@@ -42,27 +57,10 @@
 #===========================================
 
 # Ver el sistema de audio del godot
-# 	- Sonidos Dron 
+# 	- Sonidos fly 
 
 #	Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 #	Cambio modo
 # 		- Cortina
 # 		- Glich
 #	Tomar screenshots
-
-#Cam arriba
-# - Fish eye
-# - DOF color rect apagar
-# - carreteras sin transp
-# - 
-
-#Cam abajo
-# - Variable para ver abajo a cuantos grados ves
-# - Reducir variables
-# - Umbral rotaciones XY
-# - NavMesh que si sube por altura despues baje, si estabas en el suelo
-
-
-# - Fish eye apagar
-# - Cierta altura de acuerdo a navMesh prender DOF
-# - carreteras con transp

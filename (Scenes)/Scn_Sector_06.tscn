@@ -90,17 +90,6 @@ shader_parameter/intensity = 0.3
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
 [node name="Camera Drones" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
-aerial_height = 500.0
-aerial_move = 0.5
-aerial_boost = 2.0
-aerial_camRot_speed = 1.0
-aerial_zoom_out = 100.0
-dron_initialHeight = 80.0
-dron_speed_accel_decel = 100.0
-dron_rot_hor_speed = 7.0
-dron_vert_return = 0.5
-dron_maxFlyingDist = 250.0
-dron_fov = 35.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 

@@ -33,11 +33,11 @@ func DataRefresh():
 
 func ChangeDrone(_modoToChange : int):
 	match  _modoToChange:
-		ENUMS.Cam_Mode.Aerial:
+		ENUMS.Cam_Mode.sky:
 			GlitchTransition()
 			vistaSky.show()
 			vistaFree.hide()
-		ENUMS.Cam_Mode.Dron:
+		ENUMS.Cam_Mode.fly:
 			GlitchTransition()
 			vistaSky.hide()
 			vistaFree.show()

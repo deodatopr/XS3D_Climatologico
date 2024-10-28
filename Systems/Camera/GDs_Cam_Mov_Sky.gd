@@ -1,4 +1,4 @@
-class_name GDs_Cam_Mov_Aerial extends Node
+class_name GDs_Cam_Mov_Sky extends Node
 
 var camMng : GDs_Cam_Manager
 var cam : Camera3D
@@ -38,9 +38,6 @@ var curvIsRunning : bool
 var canMoveCam : bool
 var signalUpdateWasEmitted : bool
 var tweenMovCamera : Tween
-var tweenMshVfxRotCam : Tween
-var curvAccl : Curve
-var curvDecl : Curve
 var curv01 : float
 var curvEvaluateSpeed : float = .5
 var curvPoint : float
@@ -49,8 +46,8 @@ const ROTHOR_THRESHOLD : float = 0.8
 
 func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
-	cam = camMng.aerial_cam
-	pivot_cam = camMng.aerial_pivot
+	cam = camMng.sky_cam
+	pivot_cam = camMng.sky_pivot
 	speed01 = 0
 	
 	UpdateCamConfig()
@@ -63,23 +60,20 @@ func _input(event):
 	
 func SetCamera():
 	cam.current = true
-	cam.global_position.y = camMng.aerial_height
-	cam.fov = camMng.aerial_zoom_out
+	cam.global_position.y = camMng.sky_height
+	cam.fov = camMng.sky_zoom_out
 	cam.rotation.x = deg_to_rad(-80)
 	currentFov = cam.fov
 	curv01 = 0
 
 func UpdateCamConfig():
-	cam.global_position.y = camMng.aerial_height
-	cam.fov = camMng.aerial_zoom_out
+	cam.global_position.y = camMng.sky_height
+	cam.fov = camMng.sky_zoom_out
 	
 	#Movement
-	mov_speed = camMng.aerial_move
-	mov_max_acceleration = camMng.aerial_move
-	mov_speed_boost = camMng.aerial_boost
-	
-	curvAccl = camMng.curveAccel
-	curvDecl = camMng.curveDecel
+	mov_speed = camMng.sky_move
+	mov_max_acceleration = camMng.sky_move
+	mov_speed_boost = camMng.sky_boost
 	
 func _physics_process(delta):
 	_Movement(delta)
@@ -113,7 +107,7 @@ func _Movement(_delta: float):
 			#Calculate curve acc
 			curv01 += curvEvaluateSpeed * _delta
 			curv01 = clampf(curv01,0,1)
-			curvPoint = curvAccl.sample(curv01)
+			curvPoint = camMng.curveMovement.sample(curv01)
 		
 		#Calculate velocity to move
 		mov_velocity += inputDir * curvPoint * _delta
@@ -124,7 +118,7 @@ func _Movement(_delta: float):
 		#Calculate curve dec
 		curv01 -= curvEvaluateSpeed * _delta
 		curv01 = clampf(curv01,0,1)
-		curvPoint = curvDecl.sample(curv01)
+		curvPoint = camMng.curveMovement.sample(curv01)
 		
 		#Calculate deceleration
 		var targetLength : Vector3 = mov_velocity * curvPoint
@@ -169,17 +163,17 @@ func _Rotation(_delta:float):
 		_rotHorPivot(axisRightHor, 5, _delta)
 	
 func _rotHorPivot(_dir:float, _factorSpeed : float, _delta:float):
-	rotHor_yaw -= _dir * camMng.aerial_camRot_speed * _factorSpeed  * _delta
+	rotHor_yaw -= _dir * camMng.sky_camRot_speed * _factorSpeed  * _delta
 	pivot_cam.rotation_degrees.y = rotHor_yaw
 
 func _Fov(_delta : float):
 	if Input.is_action_pressed("3DMove_Fov_+"):
 		currentFov += 50 * _delta
-		currentFov = clampf(currentFov, camMng.aerial_zoom_in, camMng.aerial_zoom_out)
+		currentFov = clampf(currentFov, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = currentFov
 	if Input.is_action_pressed("3DMove_Fov_-"):
 		currentFov -= 50 * _delta
-		currentFov = clampf(currentFov, camMng.aerial_zoom_in, camMng.aerial_zoom_out)
+		currentFov = clampf(currentFov, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = currentFov
 
 func _ResetVelocities():
