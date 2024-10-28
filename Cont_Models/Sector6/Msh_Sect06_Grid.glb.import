@@ -38,8 +38,19 @@ _subresources={
 "use_external/path": "res://Cont_Shared/Materials/Mat_Grid.tres"
 }
 },
+"meshes": {
+"Msh_Sect06_Grid_Plane_029": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+}
+},
 "nodes": {
 "PATH:Msh_Grid": {
+"generate/navmesh": 2,
 "mesh_instance/cast_shadow": 0
 }
 }
