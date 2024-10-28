@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Systems/UI/GDs_UI_Manager.gd" id="1_vcggy"]
 [ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://Systems/Barra Menus/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
 [ext_resource type="PackedScene" uid="uid://cqmfo0633oxfm" path="res://Systems/Menus/Perfiles/Pfb_MenuSitios.tscn" id="3_g57u8"]
-[ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="4_wyced"]
+[ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Dron.tscn" id="4_gs8ov"]
 [ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Aerea.tscn" id="7_2ckdo"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
@@ -29,13 +29,11 @@ visible = false
 layout_mode = 1
 
 [node name="Vista Aereo" parent="." instance=ExtResource("7_2ckdo")]
-layout_mode = 1
-
-[node name="Vista Dron" parent="." node_paths=PackedStringArray("lblAltura") instance=ExtResource("7_2ckdo")]
 visible = false
 layout_mode = 1
-script = ExtResource("4_wyced")
-lblAltura = NodePath("Datos/Datos/Altura/Lbl Altura")
+
+[node name="Vista Dron" parent="." instance=ExtResource("4_gs8ov")]
+layout_mode = 1
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
 layout_mode = 1
@@ -71,5 +69,3 @@ texture = ExtResource("8_omcqt")
 region_rect = Rect2(476, 8, 23, 25)
 script = ExtResource("9_a1hye")
 colorTransparent = Color(0, 0, 0, 0)
-
-[editable path="Vista Dron"]

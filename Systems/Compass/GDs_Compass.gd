@@ -33,7 +33,7 @@ var canRotate : bool
 
 func Initialize(_camManager : GDs_Cam_Manager)-> void:
 	camManager = _camManager
-	pivotCam = _camManager.pivot_cam
+	pivotCam = _camManager.dron_pivot
 	compassInitialXPosition = compass.position.x
 	pinSiteInitialXPosition = pin_sitio.position.x
 	SIGNALS.OnCameraUpdate.connect(_OnCanRotate)
@@ -42,7 +42,7 @@ func Initialize(_camManager : GDs_Cam_Manager)-> void:
 	maxMark_TopDown_PosX = screenSize.x - top_down_mark.size.x
 	maxMark_TopDown_PosY = screenSize.y - top_down_mark.size.y - distance_top_down.size.y
 	
-	Camera = camManager.cam
+	Camera = camManager.dron_cam
 	
 	canRotate = true
 	

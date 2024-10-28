@@ -8,22 +8,22 @@ void fragment() {
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
 	vec4 fragCoord = FRAGCOORD;
 
-	
-	vec2 p = fragCoord.xy / iResolution.x;				//normalized coords 
+
+	vec2 p = fragCoord.xy / iResolution.x;				//normalized coords
 	float prop = iResolution.x / iResolution.y;			//screen proroptio
 	vec2 m = vec2(0.5, 0.5 / prop);						//center coords
 	vec2 d = p - m; 									//vector from center to current fragment
 	float r = sqrt(dot(d, d)); 							// distance of pixel from center
 	float power = lensDistortion+0.05;
 	float bind; 										//radius of 1:1 effect
-	
+
 	//stick to borders
-	if (power > 0.0) 
+	if (power > 0.0)
 		bind = sqrt(dot(m, m));
 	else {
-		if (prop < 1.0) 
-    		bind = m.x; 
-    	else 
+		if (prop < 1.0)
+    		bind = m.x;
+    	else
         	bind = m.y;
 	}
 
@@ -40,6 +40,6 @@ void fragment() {
     uv.y *= prop;
 
 	vec3 col = texture(SCREEN_TEXTURE, uv).rgb;
-    
+
 	COLOR = vec4(col, 1.0);
 }
