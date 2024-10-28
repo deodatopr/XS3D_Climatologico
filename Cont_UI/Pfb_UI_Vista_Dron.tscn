@@ -105,7 +105,7 @@ _data = {
 "RESET": SubResource("Animation_nk6gn")
 }
 
-[node name="Vista Dron" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "topLines", "bottomLines", "LeftLines", "RightLines", "minimap", "compass")]
+[node name="Vista Dron" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "centerLine", "LeftLines", "RightLines", "minimap", "compass")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,8 +116,7 @@ script = ExtResource("1_0i5pp")
 lblAltura = NodePath("Frame/Indicators/Datos/HBoxContainer/Altura/Lbl Altura")
 lblVelocidad = NodePath("Frame/Indicators/Datos/HBoxContainer/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Frame/Indicators/Datos/HBoxContainer/Rotacion/Lbl Rotacion")
-topLines = NodePath("Frame/Indicators/Top Indicator/Mask/Top Lines")
-bottomLines = NodePath("Frame/Indicators/Bottom Indicator/Mask/Bottom Lines")
+centerLine = NodePath("Frame/Indicators/Bottom Indicator/Mask/Center Lines")
 LeftLines = NodePath("Frame/Indicators/Left Indicator/Mask/Left Lines")
 RightLines = NodePath("Frame/Indicators/Right Indicator/Mask/Right Lines")
 minimap = NodePath("Frame/UI_Minimap")
@@ -755,7 +754,7 @@ grow_vertical = 0
 texture = SubResource("CompressedTexture2D_epocd")
 region_rect = Rect2(475, 7, 25, 26)
 
-[node name="Bottom Lines" type="NinePatchRect" parent="Frame/Indicators/Bottom Indicator/Mask"]
+[node name="Center Lines" type="NinePatchRect" parent="Frame/Indicators/Bottom Indicator/Mask"]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
