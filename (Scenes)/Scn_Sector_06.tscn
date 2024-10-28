@@ -89,7 +89,9 @@ shader_parameter/intensity = 0.3
 
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
-[node name="Camera Drones" parent="[ SYSTEMS ]" instance=ExtResource("1_sjpgl")]
+[node name="Camera Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("Terrains") instance=ExtResource("1_sjpgl")]
+Terrains = [NodePath("../../[ CONTENT ]/Msh_Sector_06"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_09")]
+sky_camRot_speed = 10.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -201,7 +203,8 @@ mouse_filter = 2
 [node name="[ UI - SKY]" type="CanvasLayer" parent="[ POST PROCESS - SKY]"]
 layer = 5
 
-[node name="Vista SKY" parent="[ POST PROCESS - SKY]/[ UI - SKY]" instance=ExtResource("14_bqx8o")]
+[node name="Vista SKY" parent="[ POST PROCESS - SKY]/[ UI - SKY]" node_paths=PackedStringArray("cam_manager") instance=ExtResource("14_bqx8o")]
+cam_manager = NodePath("../../../[ SYSTEMS ]/Camera Drones")
 
 [node name="[ POST PROCESS - FLY]" type="Node3D" parent="."]
 

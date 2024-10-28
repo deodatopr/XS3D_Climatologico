@@ -3,7 +3,7 @@ extends Node
 
 @export var VistaSky : GDs_Vista_Drone
 var cam_Manager : GDs_Cam_Manager
-var estacion_color : int = 0
+@export var estacion_color : int = 0
 var map : Node3D
 var pivot_cam : Node3D
 var cam : Node3D
@@ -23,8 +23,7 @@ var scene_bound : AABB
 var isInitialized:=false
 
 func _ready():
-	pass
-	#Initialize()
+	Initialize()
 
 func Initialize() -> void:
 	#FIXME el movimiento del dron con la posicion del marcador del minimapa esta invertido
@@ -44,8 +43,8 @@ func Initialize() -> void:
 func _process(delta: float) -> void:
 	if isInitialized:
 		var cam_in_world = (pivot_cam.global_position + (scene_bound.size/2))/scene_bound.size
-		var cam_world2D = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
+		var cam_world2D = Vector2(cam_in_world.x,cam_in_world.z)
 		cam_pivot.position = (cam_world2D * map_texture.size) - (map_texture.size/2) + cam_start_position
 		
-		cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y
+		cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y - 180
 	

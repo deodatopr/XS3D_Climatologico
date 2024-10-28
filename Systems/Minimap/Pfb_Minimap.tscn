@@ -28,6 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3l741")
+estacion_color = 1
 
 [node name="Minimap_Parent" type="Control" parent="."]
 layout_mode = 1
@@ -72,7 +73,6 @@ offset_right = 256.0
 offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 3.14159
 pivot_offset = Vector2(255, 255)
 texture = ExtResource("3_33bn2")
 metadata/_edit_use_anchors_ = true
