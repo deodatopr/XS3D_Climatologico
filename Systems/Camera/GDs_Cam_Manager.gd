@@ -51,7 +51,7 @@ class_name GDs_Cam_Manager extends Node
 @export var dron_maxFlyingDist : float = 700
 @export_range(30,100) var dron_fov :float = 50
 @export var Terrains: Array [Node3D]
-
+var NavMeshBounds : AABB
 
 var camMode : int
 var sky_UI_maxSpeed : int = 250
@@ -70,6 +70,9 @@ func Initialize(_modeToIntializeCam : int):
 	movSky.Initialize(self)
 	movFly.Initialize(self)
 	
+	for terrain in Terrains:
+		NavMeshBounds = NavMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
+	
 	_ChangeToMode(_modeToIntializeCam)
 	
 func _input(_event):
@@ -81,6 +84,10 @@ func _input(_event):
 		
 		APPSTATE.camMode = camMode
 		_ChangeToMode(APPSTATE.camMode)
+
+func _PositionOnMap(pivot:Node3D) ->Vector2:
+	var cam_in_world = (pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
+	return Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
 
 func _process(_delta):
 	_UpdateCamState()

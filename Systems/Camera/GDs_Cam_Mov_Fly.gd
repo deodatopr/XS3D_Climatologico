@@ -24,7 +24,6 @@ var isInTop : bool = false
 var canPressDown : bool = true
 var speed01 : float = 0
 var lastSpeed01 : float = 0
-var NavMeshBounds : AABB
 
 const RETURN_CAMERA_ADJUST : float = 0.1
 
@@ -34,10 +33,6 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	pivot = camMng.fly_pivot
 	mov_deceleration = camMng.fly_speed_accel_decel
 
-	for terrain in camMng.Terrains:
-		NavMeshBounds = NavMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
-	
-	print(NavMeshBounds)
 	
 func SetCamera():
 	cam.current = true
@@ -59,9 +54,9 @@ func _input(event):
 func _physics_process(delta:float):
 	_movement(delta)
 	_rotation(delta)
-	var cam_in_world = (pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
-	var vam2d = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
-	print(vam2d)
+	
+	var Position = camMng._PositionOnMap(pivot)
+	print(Position)
 	
 func obtenr_bouns_navrmsh(navmesh):
 	var total_aabb = AABB()
