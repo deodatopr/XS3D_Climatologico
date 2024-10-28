@@ -10,6 +10,7 @@ class_name GDs_Cam_Manager extends Node
 @export var movFly : GDs_Cam_Mov_Fly
 @export var fly_pivot : Node3D
 @export var fly_cam : Camera3D
+@export var Terrains: Array [Node3D]
 
 @export_group("CAMERA SKY")
 @export_subgroup("Movements")
@@ -50,7 +51,7 @@ class_name GDs_Cam_Manager extends Node
 @export_range(15, 90) var dron_minDistGround : float = 55
 @export var dron_maxFlyingDist : float = 700
 @export_range(30,100) var dron_fov :float = 50
-@export var Terrains: Array [Node3D]
+
 var NavMeshBounds : AABB
 
 var camMode : int

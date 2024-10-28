@@ -45,7 +45,6 @@ func _process(delta: float) -> void:
 		var cam_in_world = (pivot_cam.global_position + (scene_bound.size/2))/scene_bound.size
 		var cam_world2D = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
 		cam_pivot.position = (cam_world2D * map_texture.size) - (map_texture.size/2) + cam_start_position
-		print(pivot_cam.rotation_degrees.y)
 		
-		cam_pivot.rotation_degrees = pivot_cam.rotation_degrees.y
+		cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y
 	
