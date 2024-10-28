@@ -24,6 +24,8 @@ var initialTopLinesPosX: float
 var initialBottomLinesPosX: float
 var initialLeftLinesPosY: float
 var initialRightLinesPosY: float
+
+
 func Initialize():
 	pass
 	#initialTopLinesPosX = topLines.position.x
@@ -39,11 +41,11 @@ func Initialize():
 	#compass.PinPos = worldMark
 	#compass.Initialize(cam_manager)
 
-#func _process(_delta):
-	#lblAltura.text = UTILITIES.FormatAltura(CAM.height)
-	#@warning_ignore('narrowing_conversion')
-	#lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
-	#lblRotacion.text = UTILITIES.FormatRotacionXY(CAM.rotation)
+func _process(_delta):
+	lblAltura.text = UTILITIES.FormatAltura(CAM.height)
+	@warning_ignore('narrowing_conversion')
+	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
+	lblRotacion.text = UTILITIES.FormatRotacionXY(CAM.rotation)
 
 #func _physics_process(_delta):
 	#TODO agregar posicion de camara a las lineas horizontales 

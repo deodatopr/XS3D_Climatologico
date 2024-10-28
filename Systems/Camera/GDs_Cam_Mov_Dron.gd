@@ -23,6 +23,7 @@ var isInGround : bool = false
 var isInTop : bool = false
 var canPressDown : bool = true
 var speed01 : float = 0
+var lastSpeed01 : float = 0
 
 const RETURN_CAMERA_ADJUST : float = 0.1
 
@@ -92,11 +93,14 @@ func _movement(_delta:float):
 				mov_velocity = Vector3.ZERO	
 				BoostTimeElapsed = 0
 	
-	speed01 = inverse_lerp(0,camMng.dron_speed + (FinalSpeedTurbo),mov_velocity.length())
+	var fixSpeed : float =  inverse_lerp(0,camMng.dron_speed * camMng.dron_boost,mov_velocity.length())
+	var slowSpeed : float = lerpf(lastSpeed01,fixSpeed, .2)
+	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
+	lastSpeed01 = speed01
+	
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
 	
-	#	
 	var distanceToGround = targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0))
 	isInGround = distanceToGround < camMng.dron_minDistGround
 	var pointInNavMesh := UTILITIES._get_point_on_map(cam.global_position, cam,0).y

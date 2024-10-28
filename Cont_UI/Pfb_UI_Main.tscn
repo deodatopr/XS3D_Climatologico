@@ -31,10 +31,11 @@ layout_mode = 1
 [node name="Vista Aereo" parent="." instance=ExtResource("7_2ckdo")]
 layout_mode = 1
 
-[node name="Vista Dron" parent="." instance=ExtResource("7_2ckdo")]
+[node name="Vista Dron" parent="." node_paths=PackedStringArray("lblAltura") instance=ExtResource("7_2ckdo")]
 visible = false
 layout_mode = 1
 script = ExtResource("4_wyced")
+lblAltura = NodePath("Datos/Datos/Altura/Lbl Altura")
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
 layout_mode = 1
@@ -70,3 +71,5 @@ texture = ExtResource("8_omcqt")
 region_rect = Rect2(476, 8, 23, 25)
 script = ExtResource("9_a1hye")
 colorTransparent = Color(0, 0, 0, 0)
+
+[editable path="Vista Dron"]

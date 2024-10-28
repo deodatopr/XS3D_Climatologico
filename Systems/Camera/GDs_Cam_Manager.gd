@@ -41,11 +41,9 @@ class_name GDs_Cam_Manager extends Node
 
 var camMode : int
 
-var aerial_UI_maxSpeed : int = 200
-var aerial_UI_maxSpeed_boost : int = 250
+var aerial_UI_maxSpeed : int = 250
 
-var dron_UI_maxSpeed : int = 70
-var dron_UI_maxSpeed_boost : int = 100
+var dron_UI_maxSpeed : int = 100
 
 var last_rotation : float
 
@@ -84,14 +82,14 @@ func UpdateCamState():
 	var cam : Camera3D = aerial_cam if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else dron_cam 
 	var pivot : Node3D = aerial_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial else dron_pivot 
 	var dir = sign(cam.global_rotation_degrees.y)
-	print(abs(ceili(cam.global_rotation_degrees.y - 180)))
-	var fixRotY = abs(ceili(cam.global_rotation_degrees.y - 180)) 
+	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180)) 
+	
 	if abs(ceili(cam.global_rotation_degrees.y - 180)) == 360:
-		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x), 0)
+		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x), 0)
 	elif dir > 0:
-		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(fixRotY))
+		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x),ceili(fixRotY))
 	elif dir < 0:
-		CAM.rotation = Vector2(ceili(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
+		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
 	
 
 	CAM.height = ceili(cam.global_position.y)
@@ -101,11 +99,9 @@ func UpdateCamState():
 	last_rotation = cam.global_rotation_degrees.y
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.Aerial:
-		var maxSpeed : float = aerial_UI_maxSpeed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else aerial_UI_maxSpeed
-		CAM.speed = ceili(lerpf(0,maxSpeed, movAerial.speed01))
+		CAM.speed = floori(lerpf(0,aerial_UI_maxSpeed, movAerial.speed01))
 	else:
-		var maxSpeed : float = dron_UI_maxSpeed_boost if Input.is_action_pressed("3DMove_SpeedBoost") else dron_UI_maxSpeed
-		CAM.speed = ceili(lerpf(0,maxSpeed, movDron.speed01))
+		CAM.speed = floori(lerpf(0,dron_UI_maxSpeed, movDron.speed01))
 		
 func ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.Aerial:

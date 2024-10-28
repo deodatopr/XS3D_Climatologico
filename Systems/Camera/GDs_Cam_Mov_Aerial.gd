@@ -20,8 +20,8 @@ var mov_max_acceleration : float
 var mov_velocity : Vector3
 var mov_isMoving : bool
 var mov_isPressingMove : bool
-var mov_currentSpeed : float
 var mov_lastVelocity : Vector3
+var mov_lastSpeed01:float = 0
 var mov_limitSpeed : float
 
 #Rotation
@@ -51,6 +51,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
 	cam = camMng.aerial_cam
 	pivot_cam = camMng.aerial_pivot
+	speed01 = 0
 	
 	UpdateCamConfig()
 
@@ -115,8 +116,7 @@ func _Movement(_delta: float):
 			curvPoint = curvAccl.sample(curv01)
 		
 		#Calculate velocity to move
-		mov_currentSpeed = mov_speed * (mov_speed_boost if Input.is_action_pressed('3DMove_SpeedBoost') else 1.0)
-		mov_velocity += inputDir * mov_currentSpeed * curvPoint * _delta
+		mov_velocity += inputDir * curvPoint * _delta
 		@warning_ignore('incompatible_ternary')
 		mov_limitSpeed = mov_speed * (mov_speed_boost if Input.is_action_pressed('3DMove_SpeedBoost') else 1)
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
@@ -134,8 +134,12 @@ func _Movement(_delta: float):
 	
 	#Apply movement
 	#Save speed01 to send it to UI
-	speed01 = inverse_lerp(0,mov_limitSpeed,mov_velocity.length())
+	var fixSpeed : float =  inverse_lerp(0,mov_speed * mov_speed_boost,mov_velocity.length())
+	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, .2)
+	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
+	mov_lastSpeed01 = speed01
 	
+	#speed01 = inverse_lerp(0,mov_limitSpeed * mov_speed_boost,mov_velocity.length())
 	if mov_velocity.length() > 0:
 		#Apply
 		mov_lastVelocity = mov_velocity
