@@ -42,8 +42,12 @@ class_name GDs_Cam_Manager extends Node
 @export_range(30,100) var fly_fov :float = 35
 
 @onready var mat_roads : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
-@onready var env_sky : Environment = preload("uid://buu228l4r1lse")
-@onready var env_fly : Environment = preload("uid://d0njvq6rqh23r")
+
+@onready var preset_env_sky : Environment = preload("uid://buu228l4r1lse")
+@onready var preset_env_fly : Environment = preload("uid://d0njvq6rqh23r")
+
+@onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
+@onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
 var NavMeshBounds : AABB
 var camMode : int
@@ -53,7 +57,6 @@ var sky_UI_maxSpeed : int = 250
 var fly_UI_maxSpeed : int = 100
 
 var positionInMap01 : Vector2 = Vector2.ZERO
-var camAttPractical : CameraAttributesPractical
 
 func _ready():
 	#TEST: Incio en modo random
@@ -70,7 +73,6 @@ func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
 	movSky.Initialize(self)
 	movFly.Initialize(self)
-	camAttPractical =  worldEnv.camera_attributes
 	
 	for terrain in Terrains:
 		NavMeshBounds = NavMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
@@ -147,11 +149,10 @@ func _ChangeToMode(_mode : int):
 		
 func _ChangeToMode_Sky():
 		# World env
-		worldEnv.environment = env_sky
+		worldEnv.environment = preset_env_sky
 		
 		#DOF
-		#camAttPractical.dof_blur_near_enabled = false
-		#camAttPractical.dof_blur_far_enabled = false
+		worldEnv.camera_attributes = preset_cam_sky
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():
@@ -175,11 +176,10 @@ func _ChangeToMode_Sky():
 		
 func _ChangeToMode_Fly():
 		# World env
-		worldEnv.environment = env_fly
+		worldEnv.environment = preset_env_fly
 		
 		#DOF
-		#camAttPractical.dof_blur_near_enabled = true
-		#camAttPractical.dof_blur_far_enabled = true
+		worldEnv.camera_attributes = preset_cam_fly
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():
