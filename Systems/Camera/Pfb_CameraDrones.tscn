@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="1_vxe6d"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Sky.gd" id="2_s21o3"]
-[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Curve_Movement.tres" id="3_goarf"]
+[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Presets/Preset_Curve_Movement.tres" id="3_goarf"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Fly.gd" id="4_iwq67"]
 
 [node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]

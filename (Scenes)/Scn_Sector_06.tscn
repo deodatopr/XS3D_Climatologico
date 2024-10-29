@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=26 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
-[ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="2_jtdc3"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Sect06_Terrain.glb" id="3_htqi2"]
@@ -10,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cypsj58fjq2il" path="res://Cont_Models/Sector6/Scn_Sect06_NavMesh.tscn" id="5_tuwm2"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
+[ext_resource type="Material" uid="uid://bybsj0rkirn0u" path="res://Cont_Shared/Materials/Mat_Roads_Sky.tres" id="8_3dvp1"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
+[ext_resource type="Environment" uid="uid://buu228l4r1lse" path="res://Systems/Camera/Presets/Preset_Env_Sky.tres" id="10_q2q7x"]
+[ext_resource type="CameraAttributesPractical" uid="uid://ddf3muiyuuvj6" path="res://Systems/Camera/Presets/Preset_Cam_Sky.tres" id="11_rnj30"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="12_ppaes"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
@@ -20,41 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Flying.mp3" id="18_og2vw"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
-panorama = ExtResource("2_jtdc3")
-
-[sub_resource type="Sky" id="Sky_al770"]
-sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
-
-[sub_resource type="Environment" id="Environment_nudmr"]
-background_mode = 2
-sky = SubResource("Sky_al770")
-sky_rotation = Vector3(0, -1.5708, 0)
-tonemap_mode = 2
-ssil_radius = 15.51
-ssil_intensity = 0.0
-sdfgi_use_occlusion = true
-glow_normalized = true
-glow_blend_mode = 0
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.424189, 0.509992, 0.644825, 1)
-fog_density = 0.7
-fog_aerial_perspective = 1.0
-fog_depth_curve = 3.0
-fog_depth_begin = 0.0
-fog_depth_end = 1000.0
-adjustment_enabled = true
-adjustment_brightness = 0.9
-adjustment_contrast = 1.2
-adjustment_saturation = 1.2
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ugeqd"]
-dof_blur_far_distance = 500.0
-dof_blur_far_transition = 50.0
-dof_blur_near_distance = 900.0
-dof_blur_near_transition = 800.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krxms"]
 shader = ExtResource("4_u55j2")
@@ -69,12 +36,12 @@ shader_parameter/chromaticIntensity = 1.0
 shader_parameter/_ = 0
 shader_parameter/vignetteOpacity = 1.0
 shader_parameter/vignetteSize = 0.7
-shader_parameter/vignetteFeather = 0.5
+shader_parameter/vignetteFeather = 0.4
 shader_parameter/vignetteColor = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_issi1"]
 shader = ExtResource("8_pnisj")
-shader_parameter/lensDistortion = 1.2
+shader_parameter/lensDistortion = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8a1ui"]
 shader = ExtResource("12_ppaes")
@@ -90,14 +57,33 @@ shader_parameter/intensity = 0.3
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
+[node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
-[node name="Camera Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("worldEnv", "ui_ppe_sky", "ui_ppe_fly", "Terrains") instance=ExtResource("1_sjpgl")]
+[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("worldEnv", "ui_ppe_sky", "ui_ppe_fly", "Terrains") instance=ExtResource("1_sjpgl")]
 worldEnv = NodePath("../../[ PPE + UI ]/WorldEnvironment")
 ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
 ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Sector_06"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_09")]
-sky_height = 400.0
+
+[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndDrone")]
+script = ExtResource("16_r0mi2")
+sndDrone = NodePath("Fly")
+sndDroneVolume = 5.0
+sndDronePitch = 1.0
+
+[node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+stream = ExtResource("17_p1b51")
+volume_db = -5.0
+parameters/looping = true
+
+[node name="Wind2" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+stream = ExtResource("17_p1b51")
+volume_db = -5.0
+parameters/looping = true
+
+[node name="Fly" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+stream = ExtResource("18_og2vw")
+parameters/looping = true
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -119,6 +105,9 @@ mesh = SubResource("QuadMesh_2ocno")
 
 [node name="Msh_Sector_06" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
 
+[node name="Msh_Roads" parent="[ CONTENT ]/Msh_Sector_06" index="1"]
+material_override = ExtResource("8_3dvp1")
+
 [node name="Msh_Sector_07" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1470.77, 0, 0)
 
@@ -135,27 +124,11 @@ transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1
 [node name="Pin_Mark" type="Node3D" parent="[ CONTENT ]"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8882, 44.6366, -51.6092)
 
-[node name="[ AUDIO ]" type="Node" parent="."]
-
-[node name="Drone Sky" type="Node" parent="[ AUDIO ]" node_paths=PackedStringArray("sndDrone")]
-script = ExtResource("16_r0mi2")
-sndDrone = NodePath("Fly")
-
-[node name="Wind" type="AudioStreamPlayer" parent="[ AUDIO ]/Drone Sky"]
-stream = ExtResource("17_p1b51")
-volume_db = -15.0
-autoplay = true
-parameters/looping = true
-
-[node name="Fly" type="AudioStreamPlayer" parent="[ AUDIO ]/Drone Sky"]
-stream = ExtResource("18_og2vw")
-volume_db = -80.0
-
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="[ PPE + UI ]"]
-environment = SubResource("Environment_nudmr")
-camera_attributes = SubResource("CameraAttributesPractical_ugeqd")
+environment = ExtResource("10_q2q7x")
+camera_attributes = ExtResource("11_rnj30")
 
 [node name="[ PPE- SKY]" type="Node" parent="[ PPE + UI ]"]
 
@@ -221,19 +194,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PPE - FishEye" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE - FLY]"]
-layer = 3
-visible = false
-
-[node name="DroneSky" type="ColorRect" parent="[ PPE + UI ]/[ PPE - FLY]/PPE - FishEye"]
-material = SubResource("ShaderMaterial_issi1")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="[ UI  + GLITCH ]" type="Node" parent="[ PPE + UI ]"]
 
 [node name="Interfaz" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  + GLITCH ]"]
@@ -245,14 +205,14 @@ visible = false
 [node name="FLY" parent="[ PPE + UI ]/[ UI  + GLITCH ]/Interfaz" instance=ExtResource("15_bomeh")]
 
 [node name="SKY" parent="[ PPE + UI ]/[ UI  + GLITCH ]/Interfaz" node_paths=PackedStringArray("cam_manager") instance=ExtResource("14_bqx8o")]
-cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera Drones")
+cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 
 [node name="Menu" parent="[ PPE + UI ]/[ UI  + GLITCH ]/Interfaz" node_paths=PackedStringArray("dataService", "vistaSky", "vistaFree", "glitch", "cam_manager", "worldMark", "map") instance=ExtResource("7_hy666")]
-dataService = NodePath("../../../../[ SYSTEMS ]/DataService")
+dataService = NodePath("../../../../[ SYSTEMS ]/Data - Service")
 vistaSky = NodePath("../SKY")
 vistaFree = NodePath("../FLY")
 glitch = NodePath("../../PPE - Glitch/ColorRect")
-cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera Drones")
+cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 worldMark = NodePath("../../../../[ CONTENT ]/Pin_Mark")
 map = NodePath("../../../../[ CONTENT ]/Msh_Sector_06")
 
@@ -270,4 +230,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[editable path="[ CONTENT ]/Msh_Sector_06"]
 [editable path="[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"]
