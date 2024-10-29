@@ -122,7 +122,7 @@ func _ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.sky:
 		_ChangeToMode_Sky()
 	else:
-		_ChangeToMode_Free()
+		_ChangeToMode_Fly()
 		
 func _ChangeToMode_Sky():
 		# World env
@@ -136,7 +136,7 @@ func _ChangeToMode_Sky():
 		movSky.process_mode = Node.PROCESS_MODE_ALWAYS
 		UTILITIES.TurnOnObject(sky_pivot)
 		
-		#Turn off free cam
+		#Turn off fly cam
 		movFly.process_mode = Node.PROCESS_MODE_DISABLED
 		UTILITIES.TurnOffObject(fly_pivot)
 		
@@ -146,7 +146,7 @@ func _ChangeToMode_Sky():
 		#Roads
 		mat_roads.albedo_color.a = 1
 		
-func _ChangeToMode_Free():
+func _ChangeToMode_Fly():
 		# World env
 		worldEnv.environment = env_fly
 		
@@ -158,7 +158,7 @@ func _ChangeToMode_Free():
 		movSky.process_mode = Node.PROCESS_MODE_DISABLED
 		UTILITIES.TurnOffObject(sky_pivot)
 		
-		#Turn on free cam
+		#Turn on fly cam
 		movFly.process_mode = Node.PROCESS_MODE_ALWAYS
 		UTILITIES.TurnOnObject(fly_pivot)
 		
