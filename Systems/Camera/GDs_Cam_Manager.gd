@@ -71,7 +71,7 @@ func Initialize(_modeToIntializeCam : int):
 	
 	_ChangeToMode(_modeToIntializeCam)
 	
-func CheckMapBoundings(_pivot:Node3D):
+func CheckMapBoundings(_pivot:Node3D) -> bool:
 	var cam_in_world = (_pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
 	
 	positionInMap01 = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
@@ -83,6 +83,9 @@ func CheckMapBoundings(_pivot:Node3D):
 		CAM.boundings01 = inverse_lerp(limitToStartGlich01,1,boundingValue)
 		if CAM.boundings01 < .02:
 			CAM.boundings01 = 0
+	
+	var insideBoundings := boundingX < 1 and boundingY < 1
+	return insideBoundings
 	
 func _input(_event):
 	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
