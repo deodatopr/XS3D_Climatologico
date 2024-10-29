@@ -1,6 +1,8 @@
 extends Node
 
 @export var sndDrone: AudioStreamPlayer
+@export var sndDroneVolume: float = -5.0
+@export var sndDronePitch: float = 2.0
 
 var tween:Tween
 
@@ -19,8 +21,8 @@ func _process(delta):
 func FadeIn(_audio:AudioStreamPlayer):
 	_audio.play()
 	tween = create_tween()
-	tween.tween_property(_audio,"volume_db",-15,0.5)
-	tween.parallel().tween_property(_audio,"pitch_scale",2,1.5)
+	tween.tween_property(_audio,"volume_db",sndDroneVolume,0.5)
+	tween.parallel().tween_property(_audio,"pitch_scale",sndDronePitch,1.5)
 
 func FadeOut(_audio:AudioStreamPlayer):
 	tween = create_tween()
