@@ -23,6 +23,7 @@ var mov_isPressingMove : bool
 var mov_lastVelocity : Vector3
 var mov_lastSpeed01:float = 0
 var mov_limitSpeed : float
+var mov_isInsideBoundings : bool
 
 #Rotation
 var rotHor_yaw : float = 0.0
@@ -82,7 +83,7 @@ func _physics_process(delta):
 	_Rotation(delta)
 	
 	#Check boundings map01
-	camMng.CheckMapBoundings(pivot_cam)
+	mov_isInsideBoundings = camMng.CheckMapBoundings(pivot_cam)
 	
 	if (mov_isMoving or rotHor_isRotating) and not signalUpdateWasEmitted:
 		SIGNALS.OnCameraUpdate.emit(true)
@@ -129,17 +130,18 @@ func _Movement(_delta: float):
 		mov_velocity = lerp(mov_velocity, targetLength,curvPoint)
 		if mov_velocity.length() < .001:
 			mov_velocity = Vector3.ZERO
+			
+	#Velocity decrease by boundings
+	mov_velocity = mov_velocity * (1 - CAM.boundings01)
 	
-	#Apply movement
 	#Save speed01 to send it to UI
 	var fixSpeed : float =  inverse_lerp(0,mov_speed * mov_speed_boost,mov_velocity.length())
 	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, .2)
 	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
 	mov_lastSpeed01 = speed01
 	
-	#speed01 = inverse_lerp(0,mov_limitSpeed * mov_speed_boost,mov_velocity.length())
+	#Apply movement
 	if mov_velocity.length() > 0:
-		#Apply
 		mov_lastVelocity = mov_velocity
 		mov_velocity = lerp(mov_lastVelocity, mov_velocity, 20)
 		pivot_cam.global_position += mov_velocity
