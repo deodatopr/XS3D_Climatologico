@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=27 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
 [ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
 [ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Flying.mp3" id="18_og2vw"]
+[ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
@@ -74,11 +75,7 @@ sndDronePitch = 1.0
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
 volume_db = -5.0
-parameters/looping = true
-
-[node name="Wind2" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
-stream = ExtResource("17_p1b51")
-volume_db = -5.0
+autoplay = true
 parameters/looping = true
 
 [node name="Fly" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
@@ -87,7 +84,13 @@ parameters/looping = true
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="[ CONTENT ]"]
+[node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ CONTENT ]"]
+stream = ExtResource("21_atymd")
+volume_db = 10.0
+autoplay = true
+parameters/looping = true
+
+[node name="Light - Sun" type="DirectionalLight3D" parent="[ CONTENT ]"]
 transform = Transform3D(-0.166769, 0.926533, -0.337231, 0, 0.34202, 0.939693, 0.985996, 0.156711, -0.0570383, 0, 0, 0)
 light_color = Color(1, 0.948457, 0.877053, 1)
 light_energy = 2.0
