@@ -5,9 +5,13 @@ class_name GDs_Cam_Manager extends Node
 @export_group("SCENE REFERENCES")
 @export var worldEnv : WorldEnvironment
 @export var msh_roads : MeshInstance3D
+@export var ppe_fishEye_DroneSky : ColorRect
+
 @export var ui_ppe_sky : Node
 @export var ui_ppe_fly : Node
-@export var ppe_fishEye_DroneSky : ColorRect
+
+@export var ligtht_sun_sky : Node3D
+@export var ligtht_sun_fly : Node3D
 
 @export_group("INTERNAL REFERENCES")
 @export var movSky : GDs_Cam_Mov_Sky
@@ -90,6 +94,8 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	var cam_in_world = (_pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
 	
 	positionInMap01 = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
+	CAM.positionXZ_01 = positionInMap01
+	
 	var boundingX : float = abs(positionInMap01.x)
 	var boundingY : float = abs(positionInMap01.y)
 	
@@ -161,6 +167,10 @@ func _ChangeToMode_Sky():
 		#DOF
 		worldEnv.camera_attributes = preset_cam_sky
 		
+		#Light
+		UTILITIES.TurnOnObject(ligtht_sun_sky)
+		UTILITIES.TurnOffObject(ligtht_sun_fly)
+		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():
 			UTILITIES.TurnOffObject(child)
@@ -188,6 +198,10 @@ func _ChangeToMode_Fly():
 		
 		#DOF
 		worldEnv.camera_attributes = preset_cam_fly
+		
+		#Light
+		UTILITIES.TurnOffObject(ligtht_sun_sky)
+		UTILITIES.TurnOnObject(ligtht_sun_fly)
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():

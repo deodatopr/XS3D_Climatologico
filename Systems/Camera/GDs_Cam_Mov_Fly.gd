@@ -109,6 +109,7 @@ func _movement(_delta:float):
 			isInTop = false
 
 	var FinalSpeedTurbo : float = camMng.fly_boost
+	@warning_ignore('incompatible_ternary')
 	FinalSpeedTurbo = camMng.fly_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 1
 	
 	if inputDir.length() > 0:
@@ -125,6 +126,7 @@ func _movement(_delta:float):
 	
 	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed * camMng.fly_boost,mov_velocity.length())
 	var slowSpeed : float = lerpf(lastSpeed01,fixSpeed, .2)
+	@warning_ignore('incompatible_ternary')
 	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
 	lastSpeed01 = speed01
 	
@@ -149,7 +151,6 @@ func _movement(_delta:float):
 
 
 func _rotation(_delta:float):
-	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if MouseMotion != null:
 			if MouseMotion.relative.x > 0:
@@ -181,7 +182,8 @@ func _rotation(_delta:float):
 		yaw -= ((camMng.fly_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveMovement, 1.2, _delta, true)) * _delta
 		pivot.rotation_degrees.y = yaw
 		
-	CAM.isRotating = (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and MouseMotion.relative.x != 0)
+	if MouseMotion.relative:
+		CAM.isRotating = (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and MouseMotion.relative.x != 0)
 		
 
 func _rotHorPivot(dir:float, _delta:float):

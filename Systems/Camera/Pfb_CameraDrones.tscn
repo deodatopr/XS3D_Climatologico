@@ -7,7 +7,6 @@
 
 [node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("1_vxe6d")
-valuesInRuntime = null
 movSky = NodePath("Mov_Sky")
 sky_pivot = NodePath("Mov_Sky/sky_pivot")
 sky_cam = NodePath("Mov_Sky/sky_pivot/sky_cam")
@@ -15,24 +14,6 @@ movFly = NodePath("Mov_Fly")
 fly_pivot = NodePath("Mov_Fly/fly_pivot")
 fly_cam = NodePath("Mov_Fly/fly_pivot/fly_cam")
 curveMovement = ExtResource("3_goarf")
-limitToStartGlich01 = null
-sky_height = null
-sky_move = null
-sky_boost = null
-sky_rot_speed = null
-sky_zoom_in = null
-sky_zoom_out = null
-fly_initialHeight = null
-fly_speed_accel_decel = null
-fly_speed = null
-fly_boost = null
-fly_rot_hor_speed = null
-fly_rot_vert_speed = null
-fly_vert = null
-fly_vert_return = null
-fly_minDistGround = null
-fly_maxFlyingDist = null
-fly_fov = null
 
 [node name="Mov_Sky" type="Node" parent="."]
 script = ExtResource("2_s21o3")

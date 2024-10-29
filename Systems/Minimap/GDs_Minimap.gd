@@ -2,8 +2,8 @@ class_name GDs_Minimap
 extends Node
 
 @export var VistaSky : GDs_Vista_Drone
-var cam_Manager : GDs_Cam_Manager
 @export var estacion_color : int = 0
+var cam_Manager : GDs_Cam_Manager
 var map : Node3D
 var pivot_cam : Node3D
 var cam : Node3D
@@ -41,9 +41,12 @@ func Initialize() -> void:
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	if isInitialized:
-		var cam_in_world = (pivot_cam.global_position + (scene_bound.size/2))/scene_bound.size
-		var cam_world2D = Vector2(cam_in_world.x,cam_in_world.z)
-		cam_pivot.position = (cam_world2D * map_texture.size) - (map_texture.size/2) + cam_start_position
+		var currX01 : float = inverse_lerp(-1,1,CAM.positionXZ_01.x)
+		var posX : float = lerpf(0,minimap_parent.size.x, currX01)
 		
-		cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y - 180
+		var currY01 : float = inverse_lerp(-1,1,CAM.positionXZ_01.y)
+		var posY : float = lerpf(0,minimap_parent.size.y, currY01)
+
+		cam_pivot.position = Vector2(posX,posY)
+		cam_pivot.rotation_degrees = -cam.global_rotation_degrees.y + 180
 	

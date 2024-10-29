@@ -9,4 +9,5 @@ signal OnCameraRequestChangeMode(_modoToChange : int)
 @warning_ignore('unused_signal')
 signal OnCameraCanChangeMode()
 
+@warning_ignore('unused_signal')
 signal OnCameraChangedMode(_modoToChange : int)

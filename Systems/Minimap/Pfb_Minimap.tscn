@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/Minimap/GDs_Minimap.gd" id="1_3l741"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_i627t"]
-[ext_resource type="Texture2D" uid="uid://b7o7n4w6d5ike" path="res://Cont_Models/Sector6/Map_Sect06_MiniMap.jpg" id="3_33bn2"]
+[ext_resource type="Texture2D" uid="uid://c7e7o0hswrmpv" path="res://Cont_Models/Sector6/Map_Test_Minimap.png" id="3_jt1is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2do84"]
 atlas = ExtResource("2_i627t")
@@ -62,20 +62,20 @@ texture = SubResource("AtlasTexture_2do84")
 [node name="Map_Texture" type="TextureRect" parent="Minimap_Parent/Circle_Mask"]
 modulate = Color(1, 1, 1, 0.788235)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.507837
-anchor_top = 0.45768
-anchor_right = 0.507837
-anchor_bottom = 0.45768
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.5
+offset_top = -176.5
+offset_right = 156.5
+offset_bottom = 168.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(255, 255)
-texture = ExtResource("3_33bn2")
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("3_jt1is")
+expand_mode = 1
 
 [node name="Mark" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Map_Texture"]
 self_modulate = Color(0.359701, 0.993052, 1, 1)
@@ -85,10 +85,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.425
-offset_top = -70.525
-offset_right = 53.575
-offset_bottom = 41.475
+offset_left = 26.5
+offset_top = 41.5
+offset_right = 136.5
+offset_bottom = 153.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(55, 56)
@@ -107,33 +107,33 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Cam_Pivot" type="Control" parent="Minimap_Parent/Circle_Mask"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -17.305
+offset_top = -37.182
+offset_right = 22.695
+offset_bottom = 2.81799
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 40)
 
 [node name="Cam_Ref" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Cam_Pivot"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -24.0
-offset_top = -29.0
+offset_top = -58.0
 offset_right = 24.0
-offset_bottom = 29.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 pivot_offset = Vector2(256.465, 266.185)
 texture = SubResource("AtlasTexture_mtuoi")
 
@@ -144,6 +144,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="N" type="Label" parent="Minimap_Parent/Frame"]
 layout_mode = 1
