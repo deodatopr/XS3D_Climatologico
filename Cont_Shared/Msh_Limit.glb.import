@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c6b65o88hx6cy"
-path="res://.godot/imported/Msh_Sect06_Limit.glb-40c9be890b189e0171013ab6e5ab0446.scn"
+path="res://.godot/imported/Msh_Limit.glb-a84896b54e9c4680283831aae4c5d20a.scn"
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Msh_Sect06_Limit.glb"
-dest_files=["res://.godot/imported/Msh_Sect06_Limit.glb-40c9be890b189e0171013ab6e5ab0446.scn"]
+source_file="res://Cont_Shared/Msh_Limit.glb"
+dest_files=["res://.godot/imported/Msh_Limit.glb-a84896b54e9c4680283831aae4c5d20a.scn"]
 
 [params]
 
@@ -36,6 +36,11 @@ _subresources={
 "Mat_Limit": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Shared/Materials/Mat_Limit.tres"
+}
+},
+"nodes": {
+"PATH:Msh_Limit": {
+"mesh_instance/cast_shadow": 0
 }
 }
 }
