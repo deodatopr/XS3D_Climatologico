@@ -887,6 +887,7 @@ grow_vertical = 1
 
 [node name="Point" type="TextureRect" parent="Frame"]
 modulate = Color(1, 1, 1, 0.588235)
+self_modulate = Color(0.466702, 1, 0, 1)
 layout_mode = 0
 offset_left = 1606.0
 offset_top = 109.0

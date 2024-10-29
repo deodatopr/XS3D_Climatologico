@@ -12,7 +12,7 @@ shader_parameter/blur = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7cb5l"]
 atlas = ExtResource("1_bu15u")
-region = Rect2(378, 114, 65, 65)
+region = Rect2(377, 114, 65, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_443rp"]
 atlas = ExtResource("1_bu15u")
@@ -20,7 +20,7 @@ region = Rect2(469, 763, 42, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kmdm"]
 atlas = ExtResource("1_bu15u")
-region = Rect2(473, 301, 16, 18)
+region = Rect2(472, 301, 16, 18)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxxn3"]
 bg_color = Color(0.529412, 0.0588235, 1, 1)
@@ -38,19 +38,19 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7yjq"]
 atlas = ExtResource("1_bu15u")
-region = Rect2(477, 326, 24, 24)
+region = Rect2(476, 326, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0y3ll"]
 atlas = ExtResource("1_bu15u")
-region = Rect2(478, 358, 21, 26)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_11ur8"]
-atlas = ExtResource("1_bu15u")
-region = Rect2(476, 392, 26, 26)
+region = Rect2(477, 358, 21, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ai44o"]
 atlas = ExtResource("1_bu15u")
 region = Rect2(473, 429, 31, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ur8"]
+atlas = ExtResource("1_bu15u")
+region = Rect2(476, 392, 26, 26)
 
 [node name="Barra menus" type="Control" node_paths=PackedStringArray("BtnSitios", "BtnMapa", "BtnConfig", "BtnGuia")]
 layout_mode = 3
@@ -64,8 +64,8 @@ mouse_filter = 2
 script = ExtResource("1_ie0yi")
 BtnSitios = NodePath("HBoxContainer/Sitios/Icon/Button - Sitios")
 BtnMapa = NodePath("HBoxContainer/Mapa/Icon/Button - Mapa")
-BtnConfig = NodePath("HBoxContainer/Configuracion/Icon/Button - Config")
-BtnGuia = NodePath("HBoxContainer/Guia/Icon/Button - Guia")
+BtnConfig = NodePath("HBoxContainer/Audio/Icon/Button - Config")
+BtnGuia = NodePath("HBoxContainer/Graficadora/Icon/Button - Guia")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_ik81r")
@@ -153,10 +153,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 10
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
 visibility_layer = 0
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 
 [node name="Sitios" type="VBoxContainer" parent="HBoxContainer"]
@@ -181,7 +182,7 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-focus_neighbor_left = NodePath("../../../Guia/Icon/Button - Guia")
+focus_neighbor_left = NodePath("../../../Graficadora/Icon/Button - Guia")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
@@ -205,9 +206,10 @@ texture = SubResource("AtlasTexture_x7yjq")
 [node name="Label" type="Label" parent="HBoxContainer/Sitios"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "SITIOS"
+text = "LISTA"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Mapa" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -258,81 +260,35 @@ uppercase = true
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer"]
 visibility_layer = 0
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 
-[node name="Configuracion" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Graficadora" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Icon" type="Control" parent="HBoxContainer/Configuracion"]
+[node name="Icon" type="Control" parent="HBoxContainer/Graficadora"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button - Config" type="Button" parent="HBoxContainer/Configuracion/Icon"]
+[node name="Button - Guia" type="Button" parent="HBoxContainer/Graficadora/Icon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -19.0
+offset_left = -19.5
 offset_top = -38.0
-offset_right = 19.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
-
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Configuracion/Icon/Button - Config"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -13.0
-offset_right = 13.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_11ur8")
-
-[node name="Label" type="Label" parent="HBoxContainer/Configuracion"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "CONFIG"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Guia" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Icon" type="Control" parent="HBoxContainer/Guia"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button - Guia" type="Button" parent="HBoxContainer/Guia/Icon"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -19.0
-offset_top = -38.0
-offset_right = 19.0
+offset_right = 18.5
 grow_horizontal = 2
 grow_vertical = 0
 focus_neighbor_right = NodePath("../../../Sitios/Icon/Button - Sitios")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Guia/Icon/Button - Guia"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Graficadora/Icon/Button - Guia"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -347,14 +303,60 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_ai44o")
 
-[node name="Label" type="Label" parent="HBoxContainer/Guia"]
+[node name="Label" type="Label" parent="HBoxContainer/Graficadora"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "GUIA"
+text = "DATOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audio" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="Control" parent="HBoxContainer/Audio"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button - Config" type="Button" parent="HBoxContainer/Audio/Icon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.5
+offset_top = -38.0
+offset_right = 18.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Audio/Icon/Button - Config"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_11ur8")
+
+[node name="Label" type="Label" parent="HBoxContainer/Audio"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "AUDIO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer"]
 visibility_layer = 0
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2

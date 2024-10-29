@@ -3,8 +3,13 @@ extends Node
 @export var sndDrone: AudioStreamPlayer
 @export var sndDroneVolume: float = -5.0
 @export var sndDronePitch: float = 2.0
+@export var sndWind: AudioStreamPlayer
+
 
 var tween:Tween
+
+func _ready():
+	SIGNALS.OnCameraChangedMode.connect(OnChangeDrone)
 
 
 func _process(delta):
@@ -13,10 +18,12 @@ func _process(delta):
 		#if CAM.speed != 0:
 			if not sndDrone.playing:
 				FadeIn(sndDrone)
-				
+			sndWind.pitch_scale = 1.5
+			
 		else:
 			if sndDrone.playing:
 				FadeOut(sndDrone)
+			sndWind.pitch_scale = 1
 
 func FadeIn(_audio:AudioStreamPlayer):
 	_audio.play()
@@ -31,4 +38,9 @@ func FadeOut(_audio:AudioStreamPlayer):
 	await tween.finished
 	_audio.stop()
 
-#TODO al cambiar de drone apagar el audio de fly
+func OnChangeDrone(_mode:int):
+	if _mode == ENUMS.Cam_Mode.sky:
+		sndWind.play()	
+	if _mode == ENUMS.Cam_Mode.fly:
+		sndWind.stop()
+		
