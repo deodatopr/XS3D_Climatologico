@@ -72,7 +72,7 @@ Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndDrone")]
 script = ExtResource("16_r0mi2")
 sndDrone = NodePath("Moving")
-sndDroneVolume = 5.0
+sndDroneVolume = 2.0
 sndDronePitch = 1.0
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
