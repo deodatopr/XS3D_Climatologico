@@ -6,3 +6,4 @@ var height : int
 var fov : float
 var speed : float
 var boundings01 : float
+var isRotating : bool

@@ -180,6 +180,9 @@ func _rotation(_delta:float):
 	elif not (Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		yaw -= ((camMng.fly_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveMovement, 1.2, _delta, true)) * _delta
 		pivot.rotation_degrees.y = yaw
+		
+	CAM.isRotating = (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and MouseMotion.relative.x != 0)
+		
 
 func _rotHorPivot(dir:float, _delta:float):
 	yaw -= dir * camMng.fly_rot_hor_speed  * _delta

@@ -171,6 +171,7 @@ func _Rotation(_delta:float):
 	axisRightHor = Input.get_axis('3DMove_RotHor_-','3DMove_RotHor_+')
 	if axisRightHor != 0:
 		_RotHorPivot(axisRightHor, 5, _delta)
+	CAM.isRotating = (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and MouseMotion.relative.x != 0) or axisRightHor != 0
 	
 func _RotHorPivot(_dir:float, _factorSpeed : float, _delta:float):
 	rotHor_yaw -= _dir * camMng.sky_rot_speed * _factorSpeed  * _delta
