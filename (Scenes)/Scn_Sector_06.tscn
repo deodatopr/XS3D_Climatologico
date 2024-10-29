@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=29 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
@@ -16,6 +16,7 @@
 [ext_resource type="Environment" uid="uid://buu228l4r1lse" path="res://Systems/Camera/Presets/Preset_Env_Sky.tres" id="10_q2q7x"]
 [ext_resource type="CameraAttributesPractical" uid="uid://ddf3muiyuuvj6" path="res://Systems/Camera/Presets/Preset_Cam_Sky.tres" id="11_rnj30"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="12_ppaes"]
+[ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/Sector6/Msh_Sect06_Limit.glb" id="13_enybh"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
@@ -156,6 +157,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1.10112, 0, 0, 1649.4)
 transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1470.77, 0, 1649.4)
 
 [node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
+
+[node name="Msh_Sect06_Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
+transform = Transform3D(1.92997, 0, 0, 0, 1, 0, 0, 0, 2.10325, 825.074, 514.704, 893.289)
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
