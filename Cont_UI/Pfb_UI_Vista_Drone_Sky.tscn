@@ -1,14 +1,32 @@
-[gd_scene load_steps=34 format=3 uid="uid://djyvw3ftsu25d"]
+[gd_scene load_steps=35 format=3 uid="uid://djyvw3ftsu25d"]
 
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaAerea.gd" id="1_wv2a8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pmpn4"]
 [ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="3_2spof"]
 [ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="4_fj5m0"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_LineIndicators.gd" id="4_fvtcm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="5_3vo8s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lauy"]
 atlas = ExtResource("2_pmpn4")
 region = Rect2(809, 74, 158, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04pha"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(524, 8, 272, 272)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy32t"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(523, 547, 212, 212)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uuycj"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7sdp1"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aohxh"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5631b"]
 atlas = ExtResource("2_pmpn4")
@@ -98,24 +116,6 @@ _data = {
 "Blinking ": SubResource("Animation_ndk1b"),
 "RESET": SubResource("Animation_nk6gn")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aacd3"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(478, 739, 23, 20)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uuycj"]
-load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7sdp1"]
-load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_04pha"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(524, 8, 272, 272)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fy32t"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(523, 547, 212, 212)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gssc0"]
 shader = ExtResource("5_3vo8s")
@@ -227,6 +227,316 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_pmpn4")
 region_rect = Rect2(475, 9, 25, 24)
+
+[node name="Ring" type="Control" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.5
+offset_top = -275.5
+offset_right = 269.5
+offset_bottom = 264.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.895, 0.895)
+pivot_offset = Vector2(270, 270)
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair/Ring"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -270.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(272, 272)
+texture = SubResource("AtlasTexture_04pha")
+
+[node name="TextureRect2" type="TextureRect" parent="Crosshair/Ring"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -540.0
+offset_right = -268.0
+offset_bottom = -268.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 1.5708
+pivot_offset = Vector2(272, 272)
+texture = SubResource("AtlasTexture_04pha")
+
+[node name="TextureRect3" type="TextureRect" parent="Crosshair/Ring"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -540.0
+offset_right = -268.0
+offset_bottom = -268.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(272, 272)
+texture = SubResource("AtlasTexture_04pha")
+
+[node name="TextureRect4" type="TextureRect" parent="Crosshair/Ring"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -540.0
+offset_right = -268.0
+offset_bottom = -268.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -1.5708
+pivot_offset = Vector2(272, 272)
+texture = SubResource("AtlasTexture_04pha")
+
+[node name="Ring2" type="Control" parent="Crosshair"]
+modulate = Color(1, 1, 1, 0.509804)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -215.5
+offset_right = 213.5
+offset_bottom = 208.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.223402
+scale = Vector2(1.19, 1.19)
+pivot_offset = Vector2(212, 212)
+script = ExtResource("4_fj5m0")
+speed = -0.025
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair/Ring2"]
+layout_mode = 1
+offset_right = 212.0
+offset_bottom = 212.0
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="TextureRect2" type="TextureRect" parent="Crosshair/Ring2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_bottom = 212.0
+grow_horizontal = 0
+rotation = 1.5708
+pivot_offset = Vector2(106, 106)
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="TextureRect3" type="TextureRect" parent="Crosshair/Ring2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -212.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(106, 106)
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="TextureRect4" type="TextureRect" parent="Crosshair/Ring2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -212.0
+offset_right = 212.0
+grow_vertical = 0
+rotation = -1.5708
+pivot_offset = Vector2(106, 106)
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="Ring3" type="Control" parent="Crosshair"]
+modulate = Color(1, 1, 1, 0.509804)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -215.5
+offset_right = 213.5
+offset_bottom = 208.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.13, 1.13)
+pivot_offset = Vector2(212, 212)
+script = ExtResource("4_fj5m0")
+speed = 0.05
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair/Ring3"]
+layout_mode = 1
+offset_right = 212.0
+offset_bottom = 212.0
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="TextureRect2" type="TextureRect" parent="Crosshair/Ring3"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_bottom = 212.0
+grow_horizontal = 0
+rotation = 1.5708
+pivot_offset = Vector2(106, 106)
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="TextureRect3" type="TextureRect" parent="Crosshair/Ring3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -212.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(106, 106)
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="TextureRect4" type="TextureRect" parent="Crosshair/Ring3"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -212.0
+offset_right = 212.0
+grow_vertical = 0
+rotation = -1.5708
+pivot_offset = Vector2(106, 106)
+texture = SubResource("AtlasTexture_fy32t")
+
+[node name="Hor Lines" type="Control" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -356.0
+offset_top = -130.0
+offset_right = 355.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Mask" type="NinePatchRect" parent="Crosshair/Hor Lines"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -34.0
+offset_right = -89.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("CompressedTexture2D_uuycj")
+region_rect = Rect2(475, 7, 25, 26)
+
+[node name="Center Lines" type="NinePatchRect" parent="Crosshair/Hor Lines/Mask"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1678.0
+offset_right = 1679.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_7sdp1")
+region_rect = Rect2(809, 212, 108, 25)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("4_fvtcm")
+useXaxis = false
+width = 108
+
+[node name="Ver Lines" type="Control" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -199.0
+offset_right = 17.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Mask" type="NinePatchRect" parent="Crosshair/Ver Lines"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -201.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("CompressedTexture2D_uuycj")
+region_rect = Rect2(475, 7, 25, 26)
+
+[node name="Center Lines" type="NinePatchRect" parent="Crosshair/Ver Lines/Mask"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -171.0
+offset_right = 12.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_aohxh")
+region_rect = Rect2(996, 133, 23, 108)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("4_fvtcm")
+vertical = true
+useXaxis = false
+width = 108
 
 [node name="Indicadores Interiores" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
@@ -433,9 +743,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 42.0
+offset_left = 27.0
 offset_top = -274.5
-offset_right = 66.0
+offset_right = 51.0
 offset_bottom = 274.5
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_x3wo1")
@@ -458,6 +768,11 @@ texture = SubResource("CompressedTexture2D_fb0dj")
 region_rect = Rect2(995, 136, 26, 108)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("4_fvtcm")
+vertical = true
+useXaxis = false
+useCamRotation = true
+width = 108
 
 [node name="Izquierda" type="Control" parent="Indicadores Interiores"]
 layout_mode = 1
@@ -603,9 +918,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 42.0
+offset_left = 28.0
 offset_top = -274.5
-offset_right = 66.0
+offset_right = 52.0
 offset_bottom = 274.5
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_uiqtg")
@@ -618,9 +933,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
+offset_left = -13.0
 offset_top = -486.5
-offset_right = 12.0
+offset_right = 11.0
 offset_bottom = 486.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -628,6 +943,11 @@ texture = SubResource("CompressedTexture2D_lgtbn")
 region_rect = Rect2(994, 136, 30, 108)
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("4_fvtcm")
+vertical = true
+useXaxis = false
+useCamRotation = true
+width = 108
 
 [node name="Exteriores y Datos" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
@@ -795,297 +1115,6 @@ libraries = {
 "": SubResource("AnimationLibrary_2fi5h")
 }
 autoplay = "Blinking "
-
-[node name="Bottom Indicator" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -356.0
-offset_top = -498.0
-offset_right = 355.0
-offset_bottom = -445.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Triangle" type="TextureRect" parent="Bottom Indicator"]
-self_modulate = Color(0.25, 0.8375, 1, 0.490196)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -19.0
-offset_top = -39.0
-offset_right = 21.0
-offset_bottom = 1.0
-grow_horizontal = 2
-rotation = 3.14159
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(20, 40)
-texture = SubResource("AtlasTexture_aacd3")
-
-[node name="Triangle2" type="TextureRect" parent="Bottom Indicator"]
-self_modulate = Color(0.25, 0.8375, 1, 0.490196)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -19.5
-offset_top = -26.0
-offset_right = 20.5
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(20, 40)
-texture = SubResource("AtlasTexture_aacd3")
-
-[node name="Mask" type="NinePatchRect" parent="Bottom Indicator"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 96.0
-offset_top = -28.0
-offset_right = -89.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = SubResource("CompressedTexture2D_uuycj")
-region_rect = Rect2(475, 7, 25, 26)
-
-[node name="Bottom Lines" type="NinePatchRect" parent="Bottom Indicator/Mask"]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1678.0
-offset_right = 1679.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CompressedTexture2D_7sdp1")
-region_rect = Rect2(809, 212, 108, 25)
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="Ring" type="Control" parent="Bottom Indicator"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -270.0
-offset_right = 270.0
-offset_bottom = 270.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.895, 0.895)
-pivot_offset = Vector2(270, 270)
-
-[node name="TextureRect" type="TextureRect" parent="Bottom Indicator/Ring"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -270.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(272, 272)
-texture = SubResource("AtlasTexture_04pha")
-
-[node name="TextureRect2" type="TextureRect" parent="Bottom Indicator/Ring"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -540.0
-offset_top = -540.0
-offset_right = -268.0
-offset_bottom = -268.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 1.5708
-pivot_offset = Vector2(272, 272)
-texture = SubResource("AtlasTexture_04pha")
-
-[node name="TextureRect3" type="TextureRect" parent="Bottom Indicator/Ring"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -540.0
-offset_top = -540.0
-offset_right = -268.0
-offset_bottom = -268.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 3.14159
-pivot_offset = Vector2(272, 272)
-texture = SubResource("AtlasTexture_04pha")
-
-[node name="TextureRect4" type="TextureRect" parent="Bottom Indicator/Ring"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -540.0
-offset_top = -540.0
-offset_right = -268.0
-offset_bottom = -268.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = -1.5708
-pivot_offset = Vector2(272, 272)
-texture = SubResource("AtlasTexture_04pha")
-
-[node name="Ring2" type="Control" parent="Bottom Indicator"]
-modulate = Color(1, 1, 1, 0.509804)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -210.0
-offset_top = -210.0
-offset_right = 214.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.223402
-scale = Vector2(1.19, 1.19)
-pivot_offset = Vector2(212, 212)
-script = ExtResource("4_fj5m0")
-speed = -0.025
-
-[node name="TextureRect" type="TextureRect" parent="Bottom Indicator/Ring2"]
-layout_mode = 1
-offset_right = 212.0
-offset_bottom = 212.0
-texture = SubResource("AtlasTexture_fy32t")
-
-[node name="TextureRect2" type="TextureRect" parent="Bottom Indicator/Ring2"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -212.0
-offset_bottom = 212.0
-grow_horizontal = 0
-rotation = 1.5708
-pivot_offset = Vector2(106, 106)
-texture = SubResource("AtlasTexture_fy32t")
-
-[node name="TextureRect3" type="TextureRect" parent="Bottom Indicator/Ring2"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -212.0
-offset_top = -212.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 3.14159
-pivot_offset = Vector2(106, 106)
-texture = SubResource("AtlasTexture_fy32t")
-
-[node name="TextureRect4" type="TextureRect" parent="Bottom Indicator/Ring2"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -212.0
-offset_right = 212.0
-grow_vertical = 0
-rotation = -1.5708
-pivot_offset = Vector2(106, 106)
-texture = SubResource("AtlasTexture_fy32t")
-
-[node name="Ring3" type="Control" parent="Bottom Indicator"]
-modulate = Color(1, 1, 1, 0.509804)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -210.0
-offset_top = -210.0
-offset_right = 214.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.13, 1.13)
-pivot_offset = Vector2(212, 212)
-script = ExtResource("4_fj5m0")
-speed = 0.05
-
-[node name="TextureRect" type="TextureRect" parent="Bottom Indicator/Ring3"]
-layout_mode = 1
-offset_right = 212.0
-offset_bottom = 212.0
-texture = SubResource("AtlasTexture_fy32t")
-
-[node name="TextureRect2" type="TextureRect" parent="Bottom Indicator/Ring3"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -212.0
-offset_bottom = 212.0
-grow_horizontal = 0
-rotation = 1.5708
-pivot_offset = Vector2(106, 106)
-texture = SubResource("AtlasTexture_fy32t")
-
-[node name="TextureRect3" type="TextureRect" parent="Bottom Indicator/Ring3"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -212.0
-offset_top = -212.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 3.14159
-pivot_offset = Vector2(106, 106)
-texture = SubResource("AtlasTexture_fy32t")
-
-[node name="TextureRect4" type="TextureRect" parent="Bottom Indicator/Ring3"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -212.0
-offset_right = 212.0
-grow_vertical = 0
-rotation = -1.5708
-pivot_offset = Vector2(106, 106)
-texture = SubResource("AtlasTexture_fy32t")
 
 [node name="Datos" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
