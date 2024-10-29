@@ -8,7 +8,6 @@ class_name GDs_Cam_Manager extends Node
 @export var ui_ppe_fly : Node
 
 @export_group("INTERNAL REFERENCES")
-@export var curveMovement : Curve
 @export var movSky : GDs_Cam_Mov_Sky
 @export var sky_pivot : Node3D
 @export var sky_cam : Camera3D
@@ -17,21 +16,19 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_cam : Camera3D
 @export var Terrains: Array [Node3D]
 
-@export_range(.75,1) var glichStart01 : float = .8
+@export_group("CAMERAS")
+@export var curveMovement : Curve
+@export_range(.75,1) var limitToStartGlich01 : float = .8
 
-@export_group("CAMERA SKY")
-@export_subgroup("Movements")
+@export_subgroup("SKY")
 @export var sky_height : float = 500
 @export var sky_move: float = .5
 @export_range(1,2) var sky_boost: float = 2
-
-@export_subgroup("Camera")
-@export var sky_camRot_speed : float = 1
-
+@export var sky_rot_speed : float = 1
 @export_range(30,130) var sky_zoom_in : float = 30
 @export var sky_zoom_out : float = 100
 
-@export_group("CAMERA FLY")
+@export_subgroup("FLY")
 @export var fly_initialHeight : float = 80
 @export var fly_speed_accel_decel : float = 100
 @export var fly_speed : float = 200
@@ -81,9 +78,9 @@ func CheckMapBoundings(_pivot:Node3D):
 	var boundingX : float = abs(positionInMap01.x)
 	var boundingY : float = abs(positionInMap01.y)
 	
-	if boundingX >= glichStart01  || boundingY >= glichStart01:
+	if boundingX >= limitToStartGlich01  || boundingY >= limitToStartGlich01:
 		var boundingValue := boundingX if boundingX >= boundingY else boundingY
-		CAM.boundings01 = inverse_lerp(glichStart01,1,boundingValue)
+		CAM.boundings01 = inverse_lerp(limitToStartGlich01,1,boundingValue)
 		if CAM.boundings01 < .02:
 			CAM.boundings01 = 0
 	

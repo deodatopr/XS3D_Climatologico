@@ -167,7 +167,7 @@ func _Rotation(_delta:float):
 		_rotHorPivot(axisRightHor, 5, _delta)
 	
 func _rotHorPivot(_dir:float, _factorSpeed : float, _delta:float):
-	rotHor_yaw -= _dir * camMng.sky_camRot_speed * _factorSpeed  * _delta
+	rotHor_yaw -= _dir * camMng.sky_rot_speed * _factorSpeed  * _delta
 	pivot_cam.rotation_degrees.y = rotHor_yaw
 
 func _Fov(_delta : float):

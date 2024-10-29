@@ -7,13 +7,13 @@
 
 [node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("1_vxe6d")
-curveMovement = ExtResource("3_goarf")
 movSky = NodePath("Mov_Sky")
 sky_pivot = NodePath("Mov_Sky/sky_pivot")
 sky_cam = NodePath("Mov_Sky/sky_pivot/sky_cam")
 movFly = NodePath("Mov_Fly")
 fly_pivot = NodePath("Mov_Fly/fly_pivot")
 fly_cam = NodePath("Mov_Fly/fly_pivot/fly_cam")
+curveMovement = ExtResource("3_goarf")
 
 [node name="Mov_Sky" type="Node" parent="."]
 script = ExtResource("2_s21o3")
