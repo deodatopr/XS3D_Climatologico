@@ -4,30 +4,28 @@
 #	Pendientes Progra
 #===========================================
 
+# Gatillos izq - turbo
+# Gatillos der - zoom
+# Boton arriba - cambiar
+# Boton izq - 
+
+# Boton
+
 #	[ Pani ]
 #
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 
-# Cam sky:
-# - DOF color rect apagar
-
-#Cam abajo
+#Cam fly
 # - Cierta altura de acuerdo a navMesh prender DOF
-
 # - Variable para ver abajo a cuantos grados ves
 # - Reducir variables
 # - Umbral rotaciones XY
 # - NavMesh que si sube por altura despues baje, si estabas en el suelo
-# dron abajo DOF near
+# - Dron abajo DOF near
 	# Limite abajo faltando 5 o 10 lo active
 
 #	[ Carlos ]
-
-# Implementar navMesh con sistema de camaras
-# Minimapa
-# Minimapa animado al cambiarte a dron
-# Brujulas
 
 # ----------------------- Tareas:
 # Track de punto 2d, al acercarte salgan unos puntos que indiquen donde está la estación
@@ -42,14 +40,10 @@
 # Tutorial guiado cuando aparece home (primero como que se presiona home y luego se prenda guia)
 # Endpoint graficadora
 # Delta mov dron eliminar uno de los dos
-# Glich inicial no deberia salir
 
 #===========================================
 #	Pendientes extra
 #===========================================
-
-# Ver el sistema de audio del godot
-# 	- Sonidos fly 
 
 #	Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 #	Cambio modo

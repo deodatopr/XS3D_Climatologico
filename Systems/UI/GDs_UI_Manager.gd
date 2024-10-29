@@ -14,9 +14,15 @@ extends Control
 @export_group("Refs internas")
 @export var cortinilla:GDs_LocalCurtain
 @export var menuPerfiles:GDs_MenuPerfiles
+
+var isFirstRun : bool = true
 var tween:Tween
 
 func _ready():
+	#TODO: Quitar esto del ready y usar el Initialize en orquestador
+	Initialize()
+
+func Initialize():
 	SIGNALS.OnCameraRequestChangeMode.connect(ChangeDrone)
 	dataService.OnDataRefresh.connect(DataRefresh)
 	
@@ -24,21 +30,22 @@ func _ready():
 	vistaFree.worldMark = worldMark
 	vistaFree.map = map
 	vistaFree.Initialize()
-	
-	await get_tree().create_timer(.5).timeout
 	ChangeDrone(APPSTATE.camMode)
 
 func DataRefresh():
 	menuPerfiles.DataRefresh(dataService.estaciones)
 
 func ChangeDrone(_modoToChange : int):
+	if not isFirstRun:
+		GlitchTransition()
+	else:
+		isFirstRun = false
+	
 	match  _modoToChange:
 		ENUMS.Cam_Mode.sky:
-			GlitchTransition()
 			vistaSky.show()
 			vistaFree.hide()
 		ENUMS.Cam_Mode.fly:
-			GlitchTransition()
 			vistaSky.hide()
 			vistaFree.show()
 
