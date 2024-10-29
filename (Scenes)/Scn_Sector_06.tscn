@@ -79,24 +79,29 @@ sndDronePitch = 1.0
 stream = ExtResource("17_p1b51")
 volume_db = -5.0
 autoplay = true
+bus = &"Sfx"
 parameters/looping = true
 
 [node name="Moving" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("18_og2vw")
+bus = &"Sfx"
 parameters/looping = true
 
 [node name="Camera" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
 volume_db = 10.0
 pitch_scale = 0.7
+bus = &"Sfx"
 
 [node name="Audio - Glitch Cam" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
 stream = ExtResource("7_vgv4y")
 pitch_scale = 1.5
+bus = &"Sfx"
 
 [node name="Audio - Glitch OnLimit" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
 stream = ExtResource("8_pmlqn")
 volume_db = -5.0
+bus = &"Sfx"
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -104,6 +109,7 @@ volume_db = -5.0
 stream = ExtResource("21_atymd")
 volume_db = 10.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Light - Sun" type="DirectionalLight3D" parent="[ CONTENT ]"]
