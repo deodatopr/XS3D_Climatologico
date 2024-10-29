@@ -5,9 +5,9 @@ shader_type canvas_item;
 uniform lowp sampler2D screen_texture : hint_screen_texture, filter_nearest;
 
 //Chromatic
-uniform lowp float chromaticRedPx = 3.0;
-uniform lowp float chromaticBluePx =3.0;
-uniform lowp float chromaticIntensity : hint_range(0.0, 1.0) = 1.0;
+uniform lowp float chromaticRedPx = 2.0;
+uniform lowp float chromaticBluePx = 2.0;
+uniform lowp float chromaticIntensity : hint_range(-1.0, 1.0) = 0.0;
 
 uniform int _ : hint_range(0, 0) = 0; // Spacer
 
