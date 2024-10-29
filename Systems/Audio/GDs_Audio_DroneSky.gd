@@ -7,18 +7,26 @@ var tween:Tween
 
 func _process(delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		if CAM.speed != 0:
+		if Input.is_action_pressed("3DMove_Forward") or Input.is_action_pressed("3DMove_Backward") or Input.is_action_pressed("3DMove_Left") or Input.is_action_pressed("3DMove_Right"):
+		#if CAM.speed != 0:
 			if not sndDrone.playing:
-				sndDrone.play()
-				tween = create_tween()
-				tween.tween_property(sndDrone,"volume_db",-15,0.3)
-				tween.parallel().tween_property(sndDrone,"pitch_scale",2,0.3)
+				FadeIn(sndDrone)
 				
 		else:
 			if sndDrone.playing:
-				sndDrone.stop()
-				tween = create_tween()
-				tween.tween_property(sndDrone,"volume_db",-80,0.3)
-				tween.parallel().tween_property(sndDrone,"pitch_scale",1,0.3)
+				FadeOut(sndDrone)
+
+func FadeIn(_audio:AudioStreamPlayer):
+	_audio.play()
+	tween = create_tween()
+	tween.tween_property(_audio,"volume_db",-15,0.5)
+	tween.parallel().tween_property(_audio,"pitch_scale",2,1.5)
+
+func FadeOut(_audio:AudioStreamPlayer):
+	tween = create_tween()
+	tween.tween_property(_audio,"volume_db",-40,1)
+	tween.parallel().tween_property(_audio,"pitch_scale",1,1)
+	await tween.finished
+	_audio.stop()
 
 #TODO al cambiar de drone apagar el audio de fly
