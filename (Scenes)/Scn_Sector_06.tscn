@@ -89,9 +89,11 @@ shader_parameter/intensity = 0.3
 
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
-[node name="Camera Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("Terrains") instance=ExtResource("1_sjpgl")]
+[node name="Camera Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("worldEnv", "ui_ppe_sky", "ui_ppe_fly", "Terrains") instance=ExtResource("1_sjpgl")]
+worldEnv = NodePath("../../[ CONTENT ]/WorldEnvironment")
+ui_ppe_sky = NodePath("../../[ UI + PPE- SKY]")
+ui_ppe_fly = NodePath("../../[ UI + PPE - FLY]")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Sector_06"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_09")]
-sky_camRot_speed = 10.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -141,18 +143,18 @@ visible = false
 
 [node name="Pfb_UI" parent="[ UI ]" node_paths=PackedStringArray("dataService", "vistaSky", "vistaFree", "glitch", "cam_manager", "worldMark", "map") instance=ExtResource("7_hy666")]
 dataService = NodePath("../../[ SYSTEMS ]/DataService")
-vistaSky = NodePath("../../[ POST PROCESS - SKY]/[ UI - SKY]/Vista SKY")
-vistaFree = NodePath("../../[ POST PROCESS - FLY]/[ UI - FREE]/Vista Fly")
-glitch = NodePath("../../[ POST PROCESS - SKY]/PPE - Glitch/ColorRect")
+vistaSky = NodePath("../../[ UI + PPE- SKY]/[ UI - SKY]/Vista SKY")
+vistaFree = NodePath("../../[ UI + PPE - FLY]/[ UI - FREE]/Vista Fly")
+glitch = NodePath("../../[ UI + PPE- SKY]/PPE - Glitch/ColorRect")
 cam_manager = NodePath("../../[ SYSTEMS ]/Camera Drones")
 worldMark = NodePath("../../[ CONTENT ]/Pin_Mark")
 map = NodePath("../../[ CONTENT ]/Msh_Sector_06")
 
-[node name="[ POST PROCESS - SKY]" type="Node3D" parent="."]
+[node name="[ UI + PPE- SKY]" type="Node3D" parent="."]
 
-[node name="PPE - Sharpening" type="CanvasLayer" parent="[ POST PROCESS - SKY]"]
+[node name="PPE - Sharpening" type="CanvasLayer" parent="[ UI + PPE- SKY]"]
 
-[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS - SKY]/PPE - Sharpening"]
+[node name="ColorRect" type="ColorRect" parent="[ UI + PPE- SKY]/PPE - Sharpening"]
 material = SubResource("ShaderMaterial_krxms")
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +163,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DroneSky" type="ColorRect" parent="[ POST PROCESS - SKY]/PPE - Sharpening"]
+[node name="DroneSky" type="ColorRect" parent="[ UI + PPE- SKY]/PPE - Sharpening"]
 material = SubResource("ShaderMaterial_issi1")
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,10 +172,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PPE - Lens" type="CanvasLayer" parent="[ POST PROCESS - SKY]"]
+[node name="PPE - Lens" type="CanvasLayer" parent="[ UI + PPE- SKY]"]
 layer = 2
 
-[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS - SKY]/PPE - Lens"]
+[node name="ColorRect" type="ColorRect" parent="[ UI + PPE- SKY]/PPE - Lens"]
 material = SubResource("ShaderMaterial_xjg68")
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,14 +184,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PPE - FishEye" type="CanvasLayer" parent="[ POST PROCESS - SKY]"]
+[node name="PPE - FishEye" type="CanvasLayer" parent="[ UI + PPE- SKY]"]
 layer = 3
 visible = false
 
-[node name="PPE - Glitch" type="CanvasLayer" parent="[ POST PROCESS - SKY]"]
+[node name="PPE - Glitch" type="CanvasLayer" parent="[ UI + PPE- SKY]"]
 layer = 4
 
-[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS - SKY]/PPE - Glitch"]
+[node name="ColorRect" type="ColorRect" parent="[ UI + PPE- SKY]/PPE - Glitch"]
 process_mode = 4
 visible = false
 material = SubResource("ShaderMaterial_8a1ui")
@@ -200,17 +202,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="[ UI - SKY]" type="CanvasLayer" parent="[ POST PROCESS - SKY]"]
+[node name="[ UI - SKY]" type="CanvasLayer" parent="[ UI + PPE- SKY]"]
 layer = 5
 
-[node name="Vista SKY" parent="[ POST PROCESS - SKY]/[ UI - SKY]" node_paths=PackedStringArray("cam_manager") instance=ExtResource("14_bqx8o")]
+[node name="Vista SKY" parent="[ UI + PPE- SKY]/[ UI - SKY]" node_paths=PackedStringArray("cam_manager") instance=ExtResource("14_bqx8o")]
 cam_manager = NodePath("../../../[ SYSTEMS ]/Camera Drones")
 
-[node name="[ POST PROCESS - FLY]" type="Node3D" parent="."]
+[node name="[ UI + PPE - FLY]" type="Node3D" parent="."]
 
-[node name="PPE - Sharpening" type="CanvasLayer" parent="[ POST PROCESS - FLY]"]
+[node name="PPE - Sharpening" type="CanvasLayer" parent="[ UI + PPE - FLY]"]
 
-[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS - FLY]/PPE - Sharpening"]
+[node name="ColorRect" type="ColorRect" parent="[ UI + PPE - FLY]/PPE - Sharpening"]
 material = SubResource("ShaderMaterial_krxms")
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,7 +221,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DroneSky" type="ColorRect" parent="[ POST PROCESS - FLY]/PPE - Sharpening"]
+[node name="DroneSky" type="ColorRect" parent="[ UI + PPE - FLY]/PPE - Sharpening"]
 material = SubResource("ShaderMaterial_issi1")
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,10 +230,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PPE - Lens" type="CanvasLayer" parent="[ POST PROCESS - FLY]"]
+[node name="PPE - Lens" type="CanvasLayer" parent="[ UI + PPE - FLY]"]
 layer = 2
 
-[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS - FLY]/PPE - Lens"]
+[node name="ColorRect" type="ColorRect" parent="[ UI + PPE - FLY]/PPE - Lens"]
 material = SubResource("ShaderMaterial_xjg68")
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,14 +242,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PPE - FishEye" type="CanvasLayer" parent="[ POST PROCESS - FLY]"]
+[node name="PPE - FishEye" type="CanvasLayer" parent="[ UI + PPE - FLY]"]
 layer = 3
 visible = false
 
-[node name="PPE - Glitch" type="CanvasLayer" parent="[ POST PROCESS - FLY]"]
+[node name="PPE - Glitch" type="CanvasLayer" parent="[ UI + PPE - FLY]"]
 layer = 4
 
-[node name="ColorRect" type="ColorRect" parent="[ POST PROCESS - FLY]/PPE - Glitch"]
+[node name="ColorRect" type="ColorRect" parent="[ UI + PPE - FLY]/PPE - Glitch"]
 process_mode = 4
 visible = false
 material = SubResource("ShaderMaterial_8a1ui")
@@ -258,9 +260,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="[ UI - FREE]" type="CanvasLayer" parent="[ POST PROCESS - FLY]"]
+[node name="[ UI - FREE]" type="CanvasLayer" parent="[ UI + PPE - FLY]"]
 layer = 5
 
-[node name="Vista Fly" parent="[ POST PROCESS - FLY]/[ UI - FREE]" instance=ExtResource("15_bomeh")]
+[node name="Vista Fly" parent="[ UI + PPE - FLY]/[ UI - FREE]" instance=ExtResource("15_bomeh")]
 
 [editable path="[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"]

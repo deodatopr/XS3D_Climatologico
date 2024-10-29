@@ -51,6 +51,7 @@
 # Tutorial guiado cuando aparece home (primero como que se presiona home y luego se prenda guia)
 # Endpoint graficadora
 # Delta mov dron eliminar uno de los dos
+# Glich inicial no deberia salir
 
 #===========================================
 #	Pendientes extra

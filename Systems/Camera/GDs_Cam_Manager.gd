@@ -2,6 +2,11 @@ class_name GDs_Cam_Manager extends Node
 
 @export var valuesInRuntime : bool
 
+@export_group("SCENE REFERENCES")
+@export var worldEnv : WorldEnvironment
+@export var ui_ppe_sky : Node3D
+@export var ui_ppe_fly : Node3D
+
 @export_group("INTERNAL REFERENCES")
 @export var curveMovement : Curve
 @export var movSky : GDs_Cam_Mov_Sky
@@ -38,26 +43,15 @@ class_name GDs_Cam_Manager extends Node
 @export_range(30,100) var fly_fov :float = 35
 
 @onready var mat_roads : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
-
-@export_group("DRON CAMERA")
-@export var dron_initialHeight : float = 300
-@export var dron_speed_accel_decel : float = 200
-@export var dron_speed : float = 200
-@export_range(1,5) var dron_boost : float = 2
-@export var dron_rot_hor_speed : float = 2.5
-@export var dron_rot_vert_speed : float = 5
-@export_range(0, 90) var dron_vert : float = 45
-@export var dron_vert_return : float = 1
-@export_range(15, 90) var dron_minDistGround : float = 55
-@export var dron_maxFlyingDist : float = 700
-@export_range(30,100) var dron_fov :float = 50
+@onready var env_sky : Environment = preload("uid://buu228l4r1lse")
+@onready var env_fly : Environment = preload("uid://d0njvq6rqh23r")
 
 var NavMeshBounds : AABB
-
 var camMode : int
+var last_rotation : float
+
 var sky_UI_maxSpeed : int = 250
 var fly_UI_maxSpeed : int = 100
-var last_rotation : float
 
 func _ready():
 	var rndMode : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -131,6 +125,13 @@ func _ChangeToMode(_mode : int):
 		_ChangeToMode_Free()
 		
 func _ChangeToMode_Sky():
+		# World env
+		worldEnv.environment = env_sky
+	
+		# UI + PPE
+		UTILITIES.TurnOnObject(ui_ppe_sky)
+		UTILITIES.TurnOffObject(ui_ppe_fly)
+	
 		#Turn on sky cam
 		movSky.process_mode = Node.PROCESS_MODE_ALWAYS
 		UTILITIES.TurnOnObject(sky_pivot)
@@ -146,6 +147,13 @@ func _ChangeToMode_Sky():
 		mat_roads.albedo_color.a = 1
 		
 func _ChangeToMode_Free():
+		# World env
+		worldEnv.environment = env_fly
+		
+		# UI + PPE
+		UTILITIES.TurnOffObject(ui_ppe_sky)
+		UTILITIES.TurnOnObject(ui_ppe_fly)
+	
 		#Turn off sky cam
 		movSky.process_mode = Node.PROCESS_MODE_DISABLED
 		UTILITIES.TurnOffObject(sky_pivot)
