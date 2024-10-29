@@ -11,7 +11,9 @@ var axisRightVert : float
 var axisRightHor : float
 
 #FOV
-var currentFov : float
+var fov_current : float
+var fov_01 : float
+var fov_lensDistIntensity : float
 
 #Movement
 var mov_speed : float
@@ -65,8 +67,10 @@ func SetCamera():
 	cam.fov = camMng.sky_zoom_out
 	cam.rotation.x = deg_to_rad(-80)
 	mov_velocity = Vector3.ZERO
-	currentFov = cam.fov
 	curv01 = 0
+	
+	fov_current = cam.fov
+	_SetLensDistorsion(fov_current)
 
 func UpdateCamConfig():
 	cam.global_position.y = camMng.sky_height
@@ -156,9 +160,9 @@ func _Rotation(_delta:float):
 			rotHor_cursorMovement += MouseMotion.relative * 2
 			rotHor_cursorMovement.y = clampf(rotHor_cursorMovement.y, -(DisplayServer.screen_get_size()*1.0).y/2, (DisplayServer.screen_get_size()*1.0).y/2)
 			rotHor_cursorMovement.x = clampf(rotHor_cursorMovement.x, -(DisplayServer.screen_get_size()*1.0).x/2, (DisplayServer.screen_get_size()*1.0).x/2)
-			_rotHorPivot((rotHor_cursorMovement.x*2)/DisplayServer.screen_get_size().x * 10,1 ,_delta)
+			_RotHorPivot((rotHor_cursorMovement.x*2)/DisplayServer.screen_get_size().x * 10,1 ,_delta)
 		else:
-			_rotHorPivot((rotHor_cursorMovement.x*2)/DisplayServer.screen_get_size().x * 10,1, _delta)
+			_RotHorPivot((rotHor_cursorMovement.x*2)/DisplayServer.screen_get_size().x * 10,1, _delta)
 
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -166,21 +170,25 @@ func _Rotation(_delta:float):
 		
 	axisRightHor = Input.get_axis('3DMove_RotHor_-','3DMove_RotHor_+')
 	if axisRightHor != 0:
-		_rotHorPivot(axisRightHor, 5, _delta)
+		_RotHorPivot(axisRightHor, 5, _delta)
 	
-func _rotHorPivot(_dir:float, _factorSpeed : float, _delta:float):
+func _RotHorPivot(_dir:float, _factorSpeed : float, _delta:float):
 	rotHor_yaw -= _dir * camMng.sky_rot_speed * _factorSpeed  * _delta
 	pivot_cam.rotation_degrees.y = rotHor_yaw
 
 func _Fov(_delta : float):
 	if Input.is_action_pressed("3DMove_Fov_+"):
-		currentFov += 50 * _delta
-		currentFov = clampf(currentFov, camMng.sky_zoom_in, camMng.sky_zoom_out)
-		cam.fov = currentFov
+		fov_current += 50 * _delta
+		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
+		cam.fov = fov_current
+		_SetLensDistorsion(fov_current)
 	if Input.is_action_pressed("3DMove_Fov_-"):
-		currentFov -= 50 * _delta
-		currentFov = clampf(currentFov, camMng.sky_zoom_in, camMng.sky_zoom_out)
-		cam.fov = currentFov
+		fov_current -= 50 * _delta
+		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
+		cam.fov = fov_current
+		_SetLensDistorsion(fov_current)
 
-func _ResetVelocities():
-	mov_velocity = Vector3.ZERO
+func _SetLensDistorsion(_currentFov : float):
+	fov_01 = inverse_lerp(camMng.sky_zoom_in,camMng.sky_zoom_out,_currentFov)
+	fov_lensDistIntensity = lerpf(1.5,1,fov_01)
+	camMng.matFishEye.set_shader_parameter("lensDistortion",fov_lensDistIntensity)

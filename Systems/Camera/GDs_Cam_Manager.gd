@@ -4,8 +4,10 @@ class_name GDs_Cam_Manager extends Node
 
 @export_group("SCENE REFERENCES")
 @export var worldEnv : WorldEnvironment
+@export var msh_roads : MeshInstance3D
 @export var ui_ppe_sky : Node
 @export var ui_ppe_fly : Node
+@export var ppe_fishEye_DroneSky : ColorRect
 
 @export_group("INTERNAL REFERENCES")
 @export var movSky : GDs_Cam_Mov_Sky
@@ -41,7 +43,8 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_maxFlyingDist : float = 250
 @export_range(30,100) var fly_fov :float = 35
 
-@onready var mat_roads : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
+@onready var mat_roads_sky : BaseMaterial3D = preload("uid://bybsj0rkirn0u")
+@onready var mat_roads_fly : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
 
 @onready var preset_env_sky : Environment = preload("uid://buu228l4r1lse")
 @onready var preset_env_fly : Environment = preload("uid://d0njvq6rqh23r")
@@ -57,6 +60,7 @@ var sky_UI_maxSpeed : int = 250
 var fly_UI_maxSpeed : int = 100
 
 var positionInMap01 : Vector2 = Vector2.ZERO
+var matFishEye :  ShaderMaterial
 
 func _ready():
 	#TEST: Incio en modo random
@@ -71,11 +75,14 @@ func _ready():
 	
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
-	movSky.Initialize(self)
-	movFly.Initialize(self)
+	
+	matFishEye = ppe_fishEye_DroneSky.material
 	
 	for terrain in Terrains:
 		NavMeshBounds = NavMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
+	
+	movSky.Initialize(self)
+	movFly.Initialize(self)
 	
 	_ChangeToMode(_modeToIntializeCam)
 	
@@ -159,6 +166,9 @@ func _ChangeToMode_Sky():
 			UTILITIES.TurnOffObject(child)
 		for child in ui_ppe_sky.get_children():
 			UTILITIES.TurnOnObject(child)
+			
+		#Roads
+		msh_roads.material_override = mat_roads_sky
 	
 		#Turn on sky cam
 		movSky.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -171,8 +181,6 @@ func _ChangeToMode_Sky():
 		#Apply initial values
 		movSky.SetCamera()
 		
-		#Roads
-		mat_roads.albedo_color.a = 1
 		
 func _ChangeToMode_Fly():
 		# World env
@@ -186,6 +194,9 @@ func _ChangeToMode_Fly():
 			UTILITIES.TurnOnObject(child)
 		for child in ui_ppe_sky.get_children():
 			UTILITIES.TurnOffObject(child)
+			
+		#Roads
+		msh_roads.material_override = mat_roads_fly
 	
 		#Turn off sky cam
 		movSky.process_mode = Node.PROCESS_MODE_DISABLED
@@ -197,6 +208,3 @@ func _ChangeToMode_Fly():
 		
 		#Apply initial values
 		movFly.SetCamera()
-		
-		#Roads
-		mat_roads.albedo_color.a = .3
