@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=30 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="AudioStream" uid="uid://cvrup4u3rlg0e" path="res://Cont_Sounds/Drones/DroneSky_Camera.mp3" id="6_ehp13"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
+[ext_resource type="AudioStream" uid="uid://bqsev6fh4jlx7" path="res://Cont_Sounds/Drones/Drone_Glitch.mp3" id="7_vgv4y"]
 [ext_resource type="Material" uid="uid://bybsj0rkirn0u" path="res://Cont_Shared/Materials/Mat_Roads_Sky.tres" id="8_3dvp1"]
+[ext_resource type="AudioStream" uid="uid://vxohyn7703vt" path="res://Cont_Sounds/Drones/Drone_Glitch Onlimit.mp3" id="8_pmlqn"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
 [ext_resource type="Environment" uid="uid://buu228l4r1lse" path="res://Systems/Camera/Presets/Preset_Env_Sky.tres" id="10_q2q7x"]
@@ -87,6 +89,14 @@ parameters/looping = true
 stream = ExtResource("6_ehp13")
 volume_db = 10.0
 pitch_scale = 0.7
+
+[node name="Audio - Glitch Cam" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
+stream = ExtResource("7_vgv4y")
+pitch_scale = 1.5
+
+[node name="Audio - Glitch OnLimit" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
+stream = ExtResource("8_pmlqn")
+volume_db = -5.0
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
