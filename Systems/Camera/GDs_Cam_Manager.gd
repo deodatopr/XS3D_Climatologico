@@ -17,6 +17,8 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_cam : Camera3D
 @export var Terrains: Array [Node3D]
 
+@export_range(.75,1) var glichStart01 : float = .8
+
 @export_group("CAMERA SKY")
 @export_subgroup("Movements")
 @export var sky_height : float = 500
@@ -53,6 +55,8 @@ var last_rotation : float
 var sky_UI_maxSpeed : int = 250
 var fly_UI_maxSpeed : int = 100
 
+var positionInMap01 : Vector2 = Vector2.ZERO
+
 func _ready():
 	var rndMode : RandomNumberGenerator = RandomNumberGenerator.new()
 	var rndNumber : int = rndMode.randi_range(0,100)
@@ -70,6 +74,19 @@ func Initialize(_modeToIntializeCam : int):
 	
 	_ChangeToMode(_modeToIntializeCam)
 	
+func CheckMapBoundings(_pivot:Node3D):
+	var cam_in_world = (_pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
+	
+	positionInMap01 = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
+	var boundingX : float = abs(positionInMap01.x)
+	var boundingY : float = abs(positionInMap01.y)
+	
+	if boundingX >= glichStart01  || boundingY >= glichStart01:
+		var boundingValue := boundingX if boundingX >= boundingY else boundingY
+		CAM.boundings01 = inverse_lerp(glichStart01,1,boundingValue)
+		if CAM.boundings01 < .02:
+			CAM.boundings01 = 0
+	
 func _input(_event):
 	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
 		camMode = ENUMS.Cam_Mode.fly if APPSTATE.camMode == ENUMS.Cam_Mode.sky else ENUMS.Cam_Mode.sky
@@ -79,10 +96,6 @@ func _input(_event):
 		
 		APPSTATE.camMode = camMode
 		_ChangeToMode(APPSTATE.camMode)
-
-func _PositionOnMap(pivot:Node3D) ->Vector2:
-	var cam_in_world = (pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
-	return Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
 
 func _process(_delta):
 	_UpdateCamState()
@@ -95,7 +108,7 @@ func _process(_delta):
 	
 func _UpdateCamState():
 	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam 
-	var pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
+	var _pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
 	var dir = sign(cam.global_rotation_degrees.y)
 	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180)) 
 	

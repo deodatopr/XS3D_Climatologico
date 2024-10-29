@@ -9,20 +9,11 @@
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 
-# Agarrar diferentes worldEnv
-
-#Dron_Sky
-#Dron_Fly
-
 # Cam sky:
-# - Prender fish eye
 # - DOF color rect apagar
-# - carreteras sin transp
 
 #Cam abajo
-# - Fish eye apagar
 # - Cierta altura de acuerdo a navMesh prender DOF
-# - carreteras con transp
 
 # - Variable para ver abajo a cuantos grados ves
 # - Reducir variables

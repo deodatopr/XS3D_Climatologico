@@ -55,8 +55,8 @@ func _physics_process(delta:float):
 	_movement(delta)
 	_rotation(delta)
 	
-	var Position = camMng._PositionOnMap(pivot)
-	#print(Position)
+	#Check boundings map01
+	camMng.CheckMapBoundings(pivot)
 	
 func obtenr_bouns_navrmsh(navmesh):
 	var total_aabb = AABB()
@@ -65,7 +65,6 @@ func obtenr_bouns_navrmsh(navmesh):
 		if node is not MeshInstance3D:
 			for meshnode in node.get_children(): 
 				if meshnode is NavigationRegion3D:
-					print("is nav region")
 					var vertices = meshnode.navmesh.get_vertices()  # Obtener todos los vértices del NavMesh
 					
 					if vertices.is_empty():

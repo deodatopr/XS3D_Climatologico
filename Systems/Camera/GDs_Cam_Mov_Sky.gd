@@ -63,6 +63,7 @@ func SetCamera():
 	cam.global_position.y = camMng.sky_height
 	cam.fov = camMng.sky_zoom_out
 	cam.rotation.x = deg_to_rad(-80)
+	mov_velocity = Vector3.ZERO
 	currentFov = cam.fov
 	curv01 = 0
 
@@ -80,8 +81,8 @@ func _physics_process(delta):
 	_Fov(delta)
 	_Rotation(delta)
 	
-	var Position = camMng._PositionOnMap(pivot_cam)
-	#print(Position)
+	#Check boundings map01
+	camMng.CheckMapBoundings(pivot_cam)
 	
 	if (mov_isMoving or rotHor_isRotating) and not signalUpdateWasEmitted:
 		SIGNALS.OnCameraUpdate.emit(true)
