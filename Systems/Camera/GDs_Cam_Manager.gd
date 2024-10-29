@@ -53,6 +53,7 @@ var sky_UI_maxSpeed : int = 250
 var fly_UI_maxSpeed : int = 100
 
 var positionInMap01 : Vector2 = Vector2.ZERO
+var camAttPractical : CameraAttributesPractical
 
 func _ready():
 	#TEST: Incio en modo random
@@ -69,6 +70,7 @@ func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
 	movSky.Initialize(self)
 	movFly.Initialize(self)
+	camAttPractical =  worldEnv.camera_attributes
 	
 	for terrain in Terrains:
 		NavMeshBounds = NavMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
@@ -141,10 +143,16 @@ func _ChangeToMode(_mode : int):
 	else:
 		_ChangeToMode_Fly()
 		
+	SIGNALS.OnCameraChangedMode.emit(_mode)
+		
 func _ChangeToMode_Sky():
 		# World env
 		worldEnv.environment = env_sky
-	
+		
+		#DOF
+		#camAttPractical.dof_blur_near_enabled = false
+		#camAttPractical.dof_blur_far_enabled = false
+		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():
 			UTILITIES.TurnOffObject(child)
@@ -168,6 +176,10 @@ func _ChangeToMode_Sky():
 func _ChangeToMode_Fly():
 		# World env
 		worldEnv.environment = env_fly
+		
+		#DOF
+		#camAttPractical.dof_blur_near_enabled = true
+		#camAttPractical.dof_blur_far_enabled = true
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():
