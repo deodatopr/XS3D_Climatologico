@@ -55,9 +55,13 @@ var fly_UI_maxSpeed : int = 100
 var positionInMap01 : Vector2 = Vector2.ZERO
 
 func _ready():
-	var rndMode : RandomNumberGenerator = RandomNumberGenerator.new()
-	var rndNumber : int = rndMode.randi_range(0,100)
-	camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
+	#TEST: Incio en modo random
+	#var rndMode : RandomNumberGenerator = RandomNumberGenerator.new()
+	#var rndNumber : int = rndMode.randi_range(0,100)
+	#camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
+	
+	#TEST: Siempre inicia en sky
+	camMode = ENUMS.Cam_Mode.sky
 	
 	Initialize(camMode)
 	
