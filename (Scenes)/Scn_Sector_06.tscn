@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=26 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cypsj58fjq2il" path="res://Cont_Models/Sector6/Scn_Sect06_NavMesh.tscn" id="5_tuwm2"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
+[ext_resource type="Material" uid="uid://bybsj0rkirn0u" path="res://Cont_Shared/Materials/Mat_Roads_Sky.tres" id="8_3dvp1"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
 [ext_resource type="Environment" uid="uid://buu228l4r1lse" path="res://Systems/Camera/Presets/Preset_Env_Sky.tres" id="10_q2q7x"]
@@ -68,9 +69,16 @@ Terrains = [NodePath("../../[ CONTENT ]/Msh_Sector_06"), NodePath("../../[ CONTE
 script = ExtResource("16_r0mi2")
 sndDrone = NodePath("Fly")
 sndDroneVolume = 5.0
+sndDronePitch = 1.0
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
+volume_db = -5.0
+parameters/looping = true
+
+[node name="Wind2" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+stream = ExtResource("17_p1b51")
+volume_db = -5.0
 parameters/looping = true
 
 [node name="Fly" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
@@ -96,6 +104,9 @@ material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
 
 [node name="Msh_Sector_06" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
+
+[node name="Msh_Roads" parent="[ CONTENT ]/Msh_Sector_06" index="1"]
+material_override = ExtResource("8_3dvp1")
 
 [node name="Msh_Sector_07" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1470.77, 0, 0)
@@ -219,4 +230,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[editable path="[ CONTENT ]/Msh_Sector_06"]
 [editable path="[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"]
