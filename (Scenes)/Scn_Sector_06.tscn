@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=28 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="5_ipad4"]
 [ext_resource type="PackedScene" uid="uid://cypsj58fjq2il" path="res://Cont_Models/Sector6/Scn_Sect06_NavMesh.tscn" id="5_tuwm2"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
+[ext_resource type="AudioStream" uid="uid://cvrup4u3rlg0e" path="res://Cont_Sounds/Drones/DroneSky_Camera.mp3" id="6_ehp13"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Material" uid="uid://bybsj0rkirn0u" path="res://Cont_Shared/Materials/Mat_Roads_Sky.tres" id="8_3dvp1"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
@@ -19,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
 [ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
-[ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Flying.mp3" id="18_og2vw"]
+[ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Moving.mp3" id="18_og2vw"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
@@ -64,11 +65,11 @@ shader_parameter/intensity = 0.3
 worldEnv = NodePath("../../[ PPE + UI ]/WorldEnvironment")
 ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
 ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
-Terrains = [NodePath("../../[ CONTENT ]/Msh_Sector_06"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Sector_06/Msh_Sector_09")]
+Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndDrone")]
 script = ExtResource("16_r0mi2")
-sndDrone = NodePath("Fly")
+sndDrone = NodePath("Moving")
 sndDroneVolume = 5.0
 sndDronePitch = 1.0
 
@@ -78,9 +79,14 @@ volume_db = -5.0
 autoplay = true
 parameters/looping = true
 
-[node name="Fly" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+[node name="Moving" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("18_og2vw")
 parameters/looping = true
+
+[node name="Camera" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+stream = ExtResource("6_ehp13")
+volume_db = 10.0
+pitch_scale = 0.7
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -101,31 +107,33 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
+[node name="Pin - Presa" type="Node3D" parent="[ CONTENT ]"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8882, 49.4281, -51.6092)
+
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
 material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
 
-[node name="Msh_Sector_06" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
-
-[node name="Msh_Roads" parent="[ CONTENT ]/Msh_Sector_06" index="1"]
-material_override = ExtResource("8_3dvp1")
-
-[node name="Msh_Sector_07" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1470.77, 0, 0)
-
-[node name="Msh_Sector_08" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1.10112, 0, 0, 1649.4)
-
-[node name="Msh_Sector_09" parent="[ CONTENT ]/Msh_Sector_06" instance=ExtResource("3_htqi2")]
-transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1470.77, 0, 1649.4)
-
-[node name="Msh_Sect06_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
-
 [node name="NavMesh" parent="[ CONTENT ]" instance=ExtResource("5_tuwm2")]
 
-[node name="Pin_Mark" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8882, 44.6366, -51.6092)
+[node name="================" type="Node" parent="[ CONTENT ]"]
+
+[node name="Msh_Terreno" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
+
+[node name="Msh_Roads" parent="[ CONTENT ]/Msh_Terreno" index="1"]
+material_override = ExtResource("8_3dvp1")
+
+[node name="Msh_Sector_07" parent="[ CONTENT ]/Msh_Terreno" instance=ExtResource("3_htqi2")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1470.77, 0, 0)
+
+[node name="Msh_Sector_08" parent="[ CONTENT ]/Msh_Terreno" instance=ExtResource("3_htqi2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1.10112, 0, 0, 1649.4)
+
+[node name="Msh_Sector_09" parent="[ CONTENT ]/Msh_Terreno" instance=ExtResource("3_htqi2")]
+transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1470.77, 0, 1649.4)
+
+[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
@@ -216,8 +224,8 @@ vistaSky = NodePath("../SKY")
 vistaFree = NodePath("../FLY")
 glitch = NodePath("../../PPE - Glitch/ColorRect")
 cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
-worldMark = NodePath("../../../../[ CONTENT ]/Pin_Mark")
-map = NodePath("../../../../[ CONTENT ]/Msh_Sector_06")
+worldMark = NodePath("../../../../[ CONTENT ]/Pin - Presa")
+map = NodePath("../../../../[ CONTENT ]/Msh_Terreno")
 
 [node name="PPE - Glitch" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  + GLITCH ]"]
 layer = 5
@@ -233,5 +241,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[editable path="[ CONTENT ]/Msh_Sector_06"]
-[editable path="[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"]
+[editable path="[ CONTENT ]/Msh_Terreno"]
+[editable path="[ CONTENT ]/Msh_Terreno/Msh_Sector_07"]
