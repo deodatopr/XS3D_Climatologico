@@ -88,11 +88,12 @@ fly_minDistGround = 55.0
 fly_maxFlyingDist = 250.0
 fly_fov = 35.0
 
-[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndDrone")]
+[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndDrone", "sndWind")]
 script = ExtResource("16_r0mi2")
 sndDrone = NodePath("Moving")
 sndDroneVolume = 5.0
 sndDronePitch = 1.0
+sndWind = NodePath("Wind")
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
