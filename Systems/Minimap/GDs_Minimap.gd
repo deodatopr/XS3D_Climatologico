@@ -26,7 +26,6 @@ func _ready():
 	Initialize()
 
 func Initialize() -> void:
-	#FIXME el movimiento del dron con la posicion del marcador del minimapa esta invertido
 	cam_Manager = VistaSky.cam_manager
 	pivot_cam = cam_Manager.sky_pivot
 	cam = cam_Manager.sky_cam

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=28 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="2_jtdc3"]
@@ -15,6 +15,9 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="12_ppaes"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
+[ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
+[ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
+[ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Flying.mp3" id="18_og2vw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
 panorama = ExtResource("2_jtdc3")
@@ -264,5 +267,21 @@ mouse_filter = 2
 layer = 5
 
 [node name="Vista Fly" parent="[ UI + PPE - FLY]/[ UI - FREE]" instance=ExtResource("15_bomeh")]
+
+[node name="[ AUDIO ]" type="Node" parent="."]
+
+[node name="Drone Sky" type="Node" parent="[ AUDIO ]" node_paths=PackedStringArray("sndDrone")]
+script = ExtResource("16_r0mi2")
+sndDrone = NodePath("Fly")
+
+[node name="Wind" type="AudioStreamPlayer" parent="[ AUDIO ]/Drone Sky"]
+stream = ExtResource("17_p1b51")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
+
+[node name="Fly" type="AudioStreamPlayer" parent="[ AUDIO ]/Drone Sky"]
+stream = ExtResource("18_og2vw")
+volume_db = -10.0
 
 [editable path="[ CONTENT ]/Msh_Sector_06/Msh_Sector_07"]
