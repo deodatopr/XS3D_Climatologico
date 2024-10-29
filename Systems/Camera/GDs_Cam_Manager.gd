@@ -4,8 +4,8 @@ class_name GDs_Cam_Manager extends Node
 
 @export_group("SCENE REFERENCES")
 @export var worldEnv : WorldEnvironment
-@export var ui_ppe_sky : Node3D
-@export var ui_ppe_fly : Node3D
+@export var ui_ppe_sky : Node
+@export var ui_ppe_fly : Node
 
 @export_group("INTERNAL REFERENCES")
 @export var curveMovement : Curve
@@ -129,8 +129,10 @@ func _ChangeToMode_Sky():
 		worldEnv.environment = env_sky
 	
 		# UI + PPE
-		UTILITIES.TurnOnObject(ui_ppe_sky)
-		UTILITIES.TurnOffObject(ui_ppe_fly)
+		for child in ui_ppe_fly.get_children():
+			UTILITIES.TurnOffObject(child)
+		for child in ui_ppe_sky.get_children():
+			UTILITIES.TurnOnObject(child)
 	
 		#Turn on sky cam
 		movSky.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -151,8 +153,10 @@ func _ChangeToMode_Fly():
 		worldEnv.environment = env_fly
 		
 		# UI + PPE
-		UTILITIES.TurnOffObject(ui_ppe_sky)
-		UTILITIES.TurnOnObject(ui_ppe_fly)
+		for child in ui_ppe_fly.get_children():
+			UTILITIES.TurnOnObject(child)
+		for child in ui_ppe_sky.get_children():
+			UTILITIES.TurnOffObject(child)
 	
 		#Turn off sky cam
 		movSky.process_mode = Node.PROCESS_MODE_DISABLED
