@@ -8,6 +8,10 @@ var pivot : Node3D
 var mov_deceleration : float = 100
 var mov_velocity : Vector3 = Vector3.ZERO
 
+var rot_lastRoX : float
+var rot_lastRoY : float
+var rot_rotation : Vector2
+
 var yaw : float = 0.0
 var pitch : float = 0.0
 var MouseMotion : InputEvent
@@ -32,14 +36,12 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	cam = camMng.fly_cam
 	pivot = camMng.fly_pivot
 
-	
 func SetCamera():
 	cam.current = true
 	pivot.global_position.y = camMng.fly_height
 	cam.position = Vector3.ZERO
 	cam.rotation_degrees = Vector3(0, 180, 0)
 	cam.fov = camMng.fly_fov
-	
 	
 func UpdateCamConfig():
 	cam.fov = camMng.fly_fov
@@ -56,31 +58,6 @@ func _physics_process(delta:float):
 	
 	#Check boundings map01
 	camMng.CheckMapBoundings(pivot)
-	
-func obtenr_bouns_navrmsh(navmesh):
-	var total_aabb = AABB()
-	
-	for node in navmesh.get_children():
-		if node is not MeshInstance3D:
-			for meshnode in node.get_children(): 
-				if meshnode is NavigationRegion3D:
-					var vertices = meshnode.navmesh.get_vertices()  # Obtener todos los vértices del NavMesh
-					
-					if vertices.is_empty():
-						return null 
-				
-					var min_pos = vertices[0]
-					var max_pos = vertices[0]
-					
-					for vertex in vertices:
-						min_pos = Vector3(min(vertex.x, min_pos.x), min(vertex.y, min_pos.y), min(vertex.z, min_pos.z))
-						max_pos = Vector3(max(vertex.x, max_pos.x), max(vertex.y, max_pos.y), max(vertex.z, max_pos.z))
-
-					# Crear el AABB con los límites obtenidos
-					var size = max_pos - min_pos
-					total_aabb = total_aabb.merge(AABB(min_pos, size))
-		
-	return total_aabb
 	
 func _movement(_delta:float):
 	var inputDir = Vector3.ZERO
@@ -150,22 +127,19 @@ func _movement(_delta:float):
 
 
 func _rotation(_delta:float):
+	rot_rotation = Input.get_vector("3DLook_Left",'3DLook_Right','3DLook_Down','3DLook_Up')
+	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if MouseMotion != null:
-			if MouseMotion.relative.x > 0:
-				yaw_direction = 1
-			else:
-				yaw_direction = -1
-			CursorMovement += MouseMotion.relative * 2
-			CursorMovement.y = clampf(CursorMovement.y, -(DisplayServer.screen_get_size()*1.0).y/2, (DisplayServer.screen_get_size()*1.0).y/2)
-			CursorMovement.x = clampf(CursorMovement.x, -(DisplayServer.screen_get_size()*1.0).x/2, (DisplayServer.screen_get_size()*1.0).x/2)
-			_rotHorPivot((CursorMovement.x*2)/DisplayServer.screen_get_size().x * 10, _delta)
-			_rotVertCam((CursorMovement.y*2)/DisplayServer.screen_get_size().y * 10, _delta)
-		else:
-			_rotHorPivot((CursorMovement.x*2)/DisplayServer.screen_get_size().x * 10, _delta)
-			_rotVertCam((CursorMovement.y*2)/DisplayServer.screen_get_size().y * 10, _delta)
+			rot_rotation.x = signf(MouseMotion.relative.x)
+			rot_rotation.y = signf(MouseMotion.relative.y)
 
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
+			CursorMovement += MouseMotion.relative * 2
+			CursorMovement.y = clampf(CursorMovement.y, -DisplayServer.screen_get_size().y/2,DisplayServer.screen_get_size().y/2)
+			CursorMovement.x = clampf(CursorMovement.x, -DisplayServer.screen_get_size().x/2,DisplayServer.screen_get_size().x/2)
+			_rotHorPivot((CursorMovement.x*2)/DisplayServer.screen_get_size().x * 10, _delta)
+			_rotVertCam((CursorMovement.y*2)/DisplayServer.screen_get_size().y * 10, _delta)
+	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		CursorMovement = Vector2.ZERO
 		
@@ -180,10 +154,11 @@ func _rotation(_delta:float):
 	elif not (Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		yaw -= ((camMng.fly_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveMovement, 1.2, _delta, true)) * _delta
 		pivot.rotation_degrees.y = yaw
-		
-	if MouseMotion:
-		CAM.isRotating = (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and MouseMotion.relative.x != 0)
-		
+	
+	CAM.isRotating = !is_equal_approx(pivot.rotation_degrees.x,rot_lastRoX) or !is_equal_approx(pivot.rotation_degrees.y,rot_lastRoY)
+	
+	rot_lastRoX = pivot.rotation_degrees.x
+	rot_lastRoY = pivot.rotation_degrees.y
 
 func _rotHorPivot(dir:float, _delta:float):
 	yaw -= dir * camMng.fly_rot_hor_speed  * _delta

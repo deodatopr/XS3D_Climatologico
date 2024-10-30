@@ -42,8 +42,9 @@ class_name GDs_Cam_Manager extends Node
 @export_range(1,5) var fly_boost : float = 2
 @export var fly_rot_hor_speed : float = 7
 @export var fly_rot_vert_speed : float = 5
-@export_range(0, 90) var fly_rot_vert_clamp : float = 45
+@export var fly_rot_vert_angleToReturn : float = 30
 @export var fly_rot_vert_speedToReturn : float = .5
+@export_range(0, 90) var fly_rot_vert_clamp : float = 45
 @export_range(30,100) var fly_fov :float = 35
 
 @onready var mat_roads_sky : BaseMaterial3D = preload("uid://bybsj0rkirn0u")
@@ -108,7 +109,7 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	return insideBoundings
 	
 func _input(_event):
-	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
+	if Input.is_action_just_pressed('3D_ChangeCamMode'):
 		camMode = ENUMS.Cam_Mode.fly if APPSTATE.camMode == ENUMS.Cam_Mode.sky else ENUMS.Cam_Mode.sky
 		SIGNALS.OnCameraRequestChangeMode.emit(camMode)
 		
@@ -128,7 +129,7 @@ func _process(_delta):
 	
 func _UpdateCamState():
 	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam 
-	var _pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
+	var pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
 	var dir = sign(cam.global_rotation_degrees.y)
 	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180)) 
 	
@@ -139,7 +140,6 @@ func _UpdateCamState():
 	elif dir < 0:
 		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
 	
-
 	CAM.height = ceili(cam.global_position.y)
 	CAM.fov = ceili(cam.fov)
 	CAM.position = cam.global_position

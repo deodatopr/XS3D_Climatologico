@@ -16,13 +16,14 @@
 # Cambio entre sitios
 
 #Cam fly
-# - Cierta altura de acuerdo a navMesh prender DOF
 # - Variable para ver abajo a cuantos grados ves
-# - Reducir variables
 # - Umbral rotaciones XY
+
 # - NavMesh que si sube por altura despues baje, si estabas en el suelo
+
 # - Dron abajo DOF near
 	# Limite abajo faltando 5 o 10 lo active
+# - Cierta altura de acuerdo a navMesh prender DOF
 
 #	[ Carlos ]
 

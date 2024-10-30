@@ -169,7 +169,7 @@ func _Rotation(_delta:float):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		rotHor_cursorMovement = Vector2.ZERO
 		
-	axisRightHor = Input.get_axis('3DMove_RotHor_-','3DMove_RotHor_+')
+	axisRightHor = Input.get_axis('3DLook_Left','3DLook_Right')
 	if axisRightHor != 0:
 		_RotHorPivot(axisRightHor, 5, _delta)
 	
@@ -181,12 +181,12 @@ func _RotHorPivot(_dir:float, _factorSpeed : float, _delta:float):
 	pivot_cam.rotation_degrees.y = rotHor_yaw
 
 func _Fov(_delta : float):
-	if Input.is_action_pressed("3DMove_Fov_+"):
+	if Input.is_action_pressed("3DLook_Fov_+"):
 		fov_current += 50 * _delta
 		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = fov_current
 		_SetLensDistorsion(fov_current)
-	if Input.is_action_pressed("3DMove_Fov_-"):
+	if Input.is_action_pressed("3DLook_Fov_-"):
 		fov_current -= 50 * _delta
 		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = fov_current
