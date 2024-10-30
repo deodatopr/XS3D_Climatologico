@@ -46,7 +46,6 @@ grow_vertical = 0
 pivot_offset = Vector2(1920, 1080)
 
 [node name="Circle_Mask" type="TextureRect" parent="Minimap_Parent"]
-clip_children = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,26 +109,26 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -154.0
-offset_top = -154.0
+offset_top = -157.0
 offset_right = -114.0
-offset_bottom = -114.0
+offset_bottom = -117.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 
 [node name="Cam_Ref" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Cam_Pivot"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -24.0
-offset_top = -68.065
+offset_top = -47.615
 offset_right = 24.0
-offset_bottom = -10.065
+offset_bottom = 10.385
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 pivot_offset = Vector2(256.465, 266.185)
 texture = SubResource("AtlasTexture_mtuoi")
 
