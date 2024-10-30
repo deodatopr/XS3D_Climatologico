@@ -246,7 +246,6 @@ metadata/_edit_lock_ = true
 
 [node name="Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
 transform = Transform3D(29.9588, 0, 0, 0, 10.441, 0, 0, 0, 33.2561, 735.918, 0, 848.062)
-visible = false
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
