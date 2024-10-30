@@ -15,7 +15,7 @@ func _ready():
 	sndCameraVol = sndCamera.volume_db
 
 
-func _process(delta):
+func _process(_delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		if Input.is_action_pressed("3DMove_Forward") or Input.is_action_pressed("3DMove_Backward") or Input.is_action_pressed("3DMove_Left") or Input.is_action_pressed("3DMove_Right"):
 		#if CAM.speed != 0:
@@ -29,13 +29,13 @@ func _process(delta):
 			sndWind.pitch_scale = 1
 	
 #region CameraFOV
-		if Input.is_action_pressed("3DMove_Down") and Input.is_action_pressed("3DMove_Up"):
+		if Input.is_action_pressed("3DMove_Height_-") and Input.is_action_pressed("3DMove_Height_+"):
 			if sndCamera.playing:
 				CameraFadeOut()
-		elif Input.is_action_pressed("3DMove_Down") and CAM.fov > 30:
+		elif Input.is_action_pressed("3DMove_Height_-") and CAM.fov > 30:
 			if not sndCamera.playing:
 				CameraFadeIn()
-		elif Input.is_action_pressed("3DMove_Up") and CAM.fov < 100:
+		elif Input.is_action_pressed("3DMove_Height_+") and CAM.fov < 100:
 			if not sndCamera.playing:
 				CameraFadeIn()
 		else:

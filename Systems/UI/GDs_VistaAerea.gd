@@ -10,7 +10,8 @@ extends Control
 @export var cam_manager : GDs_Cam_Manager
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	@warning_ignore('narrowing_conversion')
 	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
 	lblRotacion.text = UTILITIES.FormatRotacionY(CAM.rotation.y)
 	lblFov.text = UTILITIES.FormatFov(CAM.fov)
