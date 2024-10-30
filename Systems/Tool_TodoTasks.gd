@@ -15,6 +15,8 @@
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 
+#Splash virtual wave y xsoft (borrar le otro)
+
 #Cam fly
 # - Variable para ver abajo a cuantos grados ves
 # - Umbral rotaciones XY

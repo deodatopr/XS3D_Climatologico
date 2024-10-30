@@ -50,7 +50,7 @@ shader_parameter/sharpening = 3.0
 shader = ExtResource("5_ipad4")
 shader_parameter/chromaticRedPx = 2.0
 shader_parameter/chromaticBluePx = 2.0
-shader_parameter/chromaticIntensity = 1.0
+shader_parameter/chromaticIntensity = 0.2
 shader_parameter/_ = 0
 shader_parameter/vignetteOpacity = 1.0
 shader_parameter/vignetteSize = 0.7
@@ -76,8 +76,6 @@ ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
 ligtht_sun_sky = NodePath("../../[ CONTENT ]/Light - Sun_Sky")
 ligtht_sun_fly = NodePath("../../[ CONTENT ]/Light - Sun_Fly")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
-fly_rot_hor_speed = 0.75
-fly_rot_vert_speed = 0.75
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndWind", "sndCameraFOV", "sndCameraRot")]
 script = ExtResource("16_r0mi2")

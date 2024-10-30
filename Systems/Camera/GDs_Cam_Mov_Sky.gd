@@ -77,9 +77,9 @@ func UpdateCamConfig():
 	cam.fov = camMng.sky_zoom_out
 	
 	#Movement
-	mov_speed = camMng.sky_move
-	mov_max_acceleration = camMng.sky_move
-	mov_speed_boost = camMng.sky_boost
+	mov_speed = camMng.sky_speed
+	mov_max_acceleration = camMng.sky_speed
+	mov_speed_boost = camMng.sky_turbo
 	
 func _physics_process(delta):
 	_Movement(delta)

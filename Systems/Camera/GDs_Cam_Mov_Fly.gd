@@ -38,7 +38,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 
 func SetCamera():
 	cam.current = true
-	pivot.global_position.y = camMng.fly_height
+	pivot.global_position.y = camMng.fly_height_start
 	cam.position = Vector3.ZERO
 	cam.rotation_degrees = Vector3(0, 180, 0)
 	cam.fov = camMng.fly_fov
@@ -84,12 +84,12 @@ func _movement(_delta:float):
 			inputDir -= pivot.basis.y
 			isInTop = false
 
-	var FinalSpeedTurbo : float = camMng.fly_boost
+	var FinalSpeedTurbo : float = camMng.fly_turbo
 	@warning_ignore('incompatible_ternary')
-	FinalSpeedTurbo = camMng.fly_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 1
+	FinalSpeedTurbo = camMng.fly_turbo if Input.is_action_pressed("3DMove_SpeedBoost") else 1
 	
 	if inputDir.length() > 0:
-		mov_velocity += (inputDir * camMng.fly_move * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
+		mov_velocity += (inputDir * camMng.fly_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
 		if mov_velocity.length() > mov_deceleration:	
 			mov_velocity = mov_velocity.limit_length(mov_deceleration * FinalSpeedTurbo)
 	
@@ -100,7 +100,7 @@ func _movement(_delta:float):
 				mov_velocity = Vector3.ZERO	
 				BoostTimeElapsed = 0
 	
-	var fixSpeed : float =  inverse_lerp(0,camMng.fly_move * camMng.fly_boost,mov_velocity.length())
+	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed * camMng.fly_turbo,mov_velocity.length())
 	var slowSpeed : float = lerpf(lastSpeed01,fixSpeed, .2)
 	@warning_ignore('incompatible_ternary')
 	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
@@ -110,14 +110,14 @@ func _movement(_delta:float):
 	targetPosition += mov_velocity * _delta
 	
 	var distanceToGround = targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0))
-	isInGround = distanceToGround < camMng.fly_height_min_offset
+	isInGround = distanceToGround < camMng.fly_height_min
 	var pointInNavMesh := UTILITIES._get_point_on_map(cam.global_position, cam,0).y
-	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.fly_height_min_offset - 4
+	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.fly_height_min - 4
 	
 	if isInGround:
 		if targetPosition.y - UTILITIES._get_point_on_map(targetPosition, cam,0).y > .1:
 			if inputDir != Vector3.UP:
-				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.fly_height_min_offset - 5)).y, .5)
+				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.fly_height_min - 5)).y, .5)
 		else:
 			targetPosition.y = pointInNavMesh + (Vector3.UP * 50).y
 
@@ -133,38 +133,27 @@ func _rotation(_delta:float):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if MouseMotion != null:
 			var fixedMouseMotion : Vector2 = MouseMotion.relative
-			fixedMouseMotion.y = fixedMouseMotion.y
+			fixedMouseMotion.y = -fixedMouseMotion.y
 			dir = fixedMouseMotion.normalized()
 
 	_rotHorPivot(dir.x,_delta)
 	_rotVertCam(-dir.y,_delta)
 	
 	CAM.isRotating = !is_equal_approx(pivot.rotation_degrees.x,rot_lastRoX) or !is_equal_approx(pivot.rotation_degrees.y,rot_lastRoY)
-	#print(CAM.isRotating)
+
 	rot_lastRoX = pivot.rotation.x
 	rot_lastRoY = pivot.rotation.y
 
 func _rotHorPivot(_dir:float, _delta:float):
-	yaw -= _dir * camMng.fly_rot_hor_speed  * _delta
+	yaw -= _dir * camMng.fly_rot_speed  * _delta
 	var startAngle : float = rot_lastRoY
 	var targetAngle : float = deg_to_rad(yaw)
 	var smoothTarget : float = lerp_angle(rot_lastRoY,yaw,5 * _delta)
 	pivot.rotation.y = smoothTarget
 
 func _rotVertCam(_dir:float, _delta:float):
-	pitch -= -_dir * camMng.fly_rot_vert_speed  * _delta
+	pitch -= -_dir * camMng.fly_rot_speed  * _delta
 	var startAngle : float = rot_lastRoX
 	var targetAngle : float = deg_to_rad(pitch)
 	var smoothTarget : float = lerp_angle(rot_lastRoX,pitch,5 * _delta)
 	pivot.rotation.x = smoothTarget
-		
-#func _rotVertReturn(_delta:float):
-	#if abs(cam.rotation_degrees.x) > .1:
-		#cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.fly_rot_vert_speedToReturn / RETURN_CAMERA_ADJUST))
-		#return_cam_time_elpased += _delta
-		#last_pitch = cam.rotation_degrees.x
-		#is_start_to_move = false
-	#else:
-		#cam.rotation_degrees.x = 0
-		#pitch = 0
-		#last_pitch = 0
