@@ -36,7 +36,7 @@ func InitializeSitios():
 	
 	for sitio in sitios:
 		#Conectar vecinos
-		sitio.button.focus_neighbor_left = barraMenu.BtnGuia.get_path()
+		sitio.button.focus_neighbor_left = barraMenu.BtnConfig.get_path()
 		sitio.button.focus_neighbor_right = barraMenu.BtnMapa.get_path()
 		#Conectar senales
 		sitio.OnSitioPressed.connect(OnAnySitioPressed)

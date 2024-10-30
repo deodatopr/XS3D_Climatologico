@@ -76,14 +76,6 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 atlas = ExtResource("2_pmpn4")
 region = Rect2(766, 248, 124, 284)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jktiy"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(953, 303, 35, 644)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nv5k5"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(523, 978, 366, 34)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_50t22"]
 atlas = ExtResource("2_pmpn4")
 region = Rect2(468, 763, 42, 42)
@@ -124,6 +116,14 @@ _data = {
 "Blinking ": SubResource("Animation_ndk1b"),
 "RESET": SubResource("Animation_nk6gn")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jktiy"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(953, 303, 35, 644)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv5k5"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(523, 978, 366, 34)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gssc0"]
 shader = ExtResource("5_3vo8s")
@@ -1167,6 +1167,23 @@ scale = Vector2(-1, 1)
 pivot_offset = Vector2(79, 142)
 texture = SubResource("AtlasTexture_bb1no")
 
+[node name="Point" type="TextureRect" parent="Exteriores y Datos/Esquinas/Esquina2"]
+modulate = Color(1, 1, 1, 0.584314)
+self_modulate = Color(0.466702, 1, 0, 1)
+layout_mode = 1
+offset_left = 90.0
+offset_top = 20.0
+offset_right = 111.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_50t22")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Exteriores y Datos/Esquinas/Esquina2/Point"]
+libraries = {
+"": SubResource("AnimationLibrary_2fi5h")
+}
+autoplay = "Blinking "
+
 [node name="Esquina3" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
 visible = false
 layout_mode = 1
@@ -1276,23 +1293,6 @@ texture = SubResource("AtlasTexture_nv5k5")
 [node name="UI_Minimap" parent="." node_paths=PackedStringArray("VistaSky") instance=ExtResource("3_2spof")]
 layout_mode = 1
 VistaSky = NodePath("..")
-
-[node name="Point" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.584314)
-self_modulate = Color(0.466702, 1, 0, 1)
-layout_mode = 0
-offset_left = 1679.0
-offset_top = 141.0
-offset_right = 1700.0
-offset_bottom = 162.0
-texture = SubResource("AtlasTexture_50t22")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Point"]
-libraries = {
-"": SubResource("AnimationLibrary_2fi5h")
-}
-autoplay = "Blinking "
 
 [node name="Datos" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0.784314)

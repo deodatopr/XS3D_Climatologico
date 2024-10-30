@@ -182,7 +182,6 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
-focus_neighbor_left = NodePath("../../../Graficadora/Icon/Button - Guia")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
@@ -284,7 +283,6 @@ offset_top = -38.0
 offset_right = 18.5
 grow_horizontal = 2
 grow_vertical = 0
-focus_neighbor_right = NodePath("../../../Sitios/Icon/Button - Sitios")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 
@@ -331,6 +329,7 @@ offset_top = -38.0
 offset_right = 18.5
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_right = NodePath("../../../Sitios/Icon/Button - Sitios")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 

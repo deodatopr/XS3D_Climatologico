@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://hu5k41b7gh1x"]
+[gd_scene load_steps=19 format=3 uid="uid://hu5k41b7gh1x"]
 
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_n0q2v"]
@@ -32,8 +32,8 @@ atlas = ExtResource("1_bm6wi")
 region = Rect2(473, 560, 34, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmxh6"]
-atlas = ExtResource("1_bm6wi")
-region = Rect2(469, 592, 41, 23)
+atlas = ExtResource("2_om8fc")
+region = Rect2(0, 202, 40, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhaul"]
 atlas = ExtResource("1_bm6wi")
@@ -54,6 +54,10 @@ region = Rect2(0, 79, 40, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yh3a"]
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 120, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5sml"]
+atlas = ExtResource("2_om8fc")
+region = Rect2(0, 240, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qv2d"]
 atlas = ExtResource("2_om8fc")
@@ -147,16 +151,21 @@ theme_override_font_sizes/font_size = 24
 text = "CAMPAMENTO LOS BERROS"
 vertical_alignment = 2
 
-[node name="ID - Estado" type="Control" parent="HBoxContainer/Nombre"]
+[node name="ID - Estado" type="HBoxContainer" parent="HBoxContainer/Nombre"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Nombre/ID - Estado"]
+visibility_layer = 0
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
 
 [node name="ID Frame" type="NinePatchRect" parent="HBoxContainer/Nombre/ID - Estado"]
 self_modulate = Color(0, 0.698039, 0.662745, 1)
-layout_mode = 1
-offset_left = 24.0
-offset_right = 65.0
-offset_bottom = 31.0
+custom_minimum_size = Vector2(41, 31)
+layout_mode = 2
+size_flags_vertical = 0
 texture = ExtResource("1_bm6wi")
 region_rect = Rect2(470, 146, 41, 31)
 
@@ -179,16 +188,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Label" type="Label" parent="HBoxContainer/Nombre/ID - Estado"]
-layout_mode = 1
-offset_left = 74.0
-offset_right = 91.0
-offset_bottom = 28.0
+[node name="Lbl Estado" type="Label" parent="HBoxContainer/Nombre/ID - Estado"]
+layout_mode = 2
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "EDOMEX"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Lbl Fecha" type="Label" parent="HBoxContainer/Nombre/ID - Estado"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Ult. Act. 30/10/2024 19:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Division Line" type="TextureRect" parent="HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.705882)
@@ -378,7 +392,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 11
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="Lbl Valor Nivel" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
@@ -392,6 +406,7 @@ vertical_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_kmxh6")
+script = ExtResource("3_qdbvn")
 
 [node name="Lbl Valor Nivel2" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
 layout_mode = 2
@@ -473,7 +488,10 @@ texture = SubResource("AtlasTexture_3jcsu")
 [node name="Datos" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = -15
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Datos"]
+visibility_layer = 0
+layout_mode = 2
 
 [node name="Precipitacion" type="Control" parent="HBoxContainer/Datos"]
 layout_mode = 2
@@ -485,8 +503,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
-offset_right = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
@@ -534,8 +550,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
-offset_right = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
@@ -584,8 +598,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
-offset_right = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
@@ -634,8 +646,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
-offset_right = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
@@ -673,6 +683,53 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="Presion Atm" type="Control" parent="HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Presion Atm"]
+self_modulate = Color(1, 0, 0.415686, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Datos/Presion Atm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Temp" type="Label" parent="HBoxContainer/Datos/Presion Atm/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "24°C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Presion Atm/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_w5sml")
+script = ExtResource("3_qdbvn")
+
+[node name="Lbl" type="Label" parent="HBoxContainer/Datos/Presion Atm/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Presion atm"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="Viento" type="Control" parent="HBoxContainer/Datos"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -683,8 +740,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 13.0
-offset_right = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
@@ -721,6 +776,10 @@ text = "Viento"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Datos"]
+visibility_layer = 0
+layout_mode = 2
 
 [node name="Left Line" type="TextureRect" parent="."]
 self_modulate = Color(0.529412, 0.0588235, 1, 1)

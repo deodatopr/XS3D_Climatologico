@@ -4,7 +4,7 @@ extends Node
 @export var menuSitios: Control
 @export var menuMapa: Control
 @export var menuConfig: Control
-@export var menuGuia: Control
+@export var menuDatos: Control
 @export_group("Botones")
 @export var BtnSitios:Button   #0
 @export var BtnMapa:Button     #1
@@ -15,8 +15,8 @@ var lastOneOnFocus:=0
 var isFocusingMenu:= false
 func _ready():
 	BtnSitios.focus_entered.connect(OnBtnSitiosFocus)
-	BtnGuia.focus_entered.connect(OnBtnGuiaFocus)
-	BtnGuia.focus_exited.connect(OnBtnGuiaFocusExited)
+	BtnGuia.focus_entered.connect(OnBtnDatosFocus)
+	BtnGuia.focus_exited.connect(OnBtnDatosFocusExited)
 	BtnMapa.focus_entered.connect(OnBtnMapaFocus)
 	BtnMapa.focus_exited.connect(OnBtnMapaFocusExited)
 	BtnConfig.focus_entered.connect(OnBtnConfigFocus)
@@ -67,9 +67,9 @@ func OnBtnSitiosFocus():
 	BtnSitios.button_pressed = true
 
 
+
 func OnBtnMapaFocus():
 	UTILITIES.TurnOffObject(menuSitios)
-
 	BtnSitios.button_pressed = false
 	
 	UTILITIES.TurnOnObject(menuMapa)
@@ -77,16 +77,19 @@ func OnBtnMapaFocus():
 func OnBtnMapaFocusExited():
 	UTILITIES.TurnOffObject(menuMapa)
 
+
+
+func OnBtnDatosFocus():
+	UTILITIES.TurnOnObject(menuDatos)
+
+func OnBtnDatosFocusExited():
+	UTILITIES.TurnOffObject(menuDatos)
+
+
 func OnBtnConfigFocus():
 	UTILITIES.TurnOnObject(menuConfig)
-
-func OnBtnConfigFocusExited():
-	UTILITIES.TurnOffObject(menuConfig)
-
-func OnBtnGuiaFocus():
-	UTILITIES.TurnOnObject(menuGuia)
 	UTILITIES.TurnOffObject(menuSitios)
 	BtnSitios.button_pressed = false
 
-func OnBtnGuiaFocusExited():
-	UTILITIES.TurnOffObject(menuGuia)
+func OnBtnConfigFocusExited():
+	UTILITIES.TurnOffObject(menuConfig)
