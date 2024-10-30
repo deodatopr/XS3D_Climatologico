@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c6b65o88hx6cy"
-path="res://.godot/imported/Msh_Limit.glb-a84896b54e9c4680283831aae4c5d20a.scn"
+path="res://.godot/imported/Msh_Limit.glb-8ca3ff698bb7e88ddbc9e956ccd684d1.scn"
 
 [deps]
 
-source_file="res://Cont_Shared/Msh_Limit.glb"
-dest_files=["res://.godot/imported/Msh_Limit.glb-a84896b54e9c4680283831aae4c5d20a.scn"]
+source_file="res://Cont_Shared/Meshes/Msh_Limit.glb"
+dest_files=["res://.godot/imported/Msh_Limit.glb-8ca3ff698bb7e88ddbc9e956ccd684d1.scn"]
 
 [params]
 

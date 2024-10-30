@@ -16,7 +16,7 @@
 [ext_resource type="Environment" uid="uid://buu228l4r1lse" path="res://Systems/Camera/Presets/Preset_Env_Sky.tres" id="10_q2q7x"]
 [ext_resource type="CameraAttributesPractical" uid="uid://ddf3muiyuuvj6" path="res://Systems/Camera/Presets/Preset_Cam_Sky.tres" id="11_rnj30"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="12_ppaes"]
-[ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Shared/Msh_Limit.glb" id="13_enybh"]
+[ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Shared/Meshes/Msh_Limit.glb" id="13_enybh"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
@@ -136,7 +136,6 @@ metadata/_edit_lock_ = true
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
-visible = false
 material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
 metadata/_edit_lock_ = true
@@ -145,7 +144,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(29.9588, 0, 0, 0, 10.441, 0, 0, 0, 33.2561, 735.918, 0, 848.062)
+transform = Transform3D(29.8816, 0, 0, 0, 9.76607, 0, 0, 0, 33.1246, 735.918, 0, 848.062)
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 

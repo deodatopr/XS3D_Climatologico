@@ -1,12 +1,17 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://nan3iase8pij"]
 
-[ext_resource type="Shader" uid="uid://ustl0eslk36m" path="res://Vfx_Shaders/Sha_Limit.tres" id="1_xm1o5"]
+[ext_resource type="Shader" uid="uid://ustl0eslk36m" path="res://Vfx_Shaders/Limit/Sha_Limit.tres" id="1_ihl8u"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_xm1o5")
-shader_parameter/ColorParameter = Color(0.472668, 0.997835, 0.925894, 1)
-shader_parameter/Speed = 0.015
-shader_parameter/Lines = 20.0
-shader_parameter/Ramp = 3.0
-shader_parameter/Opacity = 1.0
+shader = ExtResource("1_ihl8u")
+shader_parameter/Border_Anim = true
+shader_parameter/ColorShield = Color(0.372549, 0.572549, 0.788235, 1)
+shader_parameter/ColorBorderAnim = Color(0.988235, 0.05098, 0.286275, 1)
+shader_parameter/LinePulseSpeed = 0.3
+shader_parameter/Line_Amount = 20.0
+shader_parameter/LineMoveSpeed = 0.15
+shader_parameter/LineHardness = 5.0
+shader_parameter/LinePulseMin = 0.6
+shader_parameter/ShieldOpacity = 0.5
+shader_parameter/ShieldBorder = 50.0
