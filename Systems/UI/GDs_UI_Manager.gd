@@ -11,6 +11,8 @@ extends Control
 @export var map:Node3D
 @export_group("Refs internas")
 @export var menuPerfiles:GDs_MenuPerfiles
+@export var barraMenus:GDs_BarraMenus
+@export var menuInfo:Control
 
 var isFirstRun : bool = true
 var tween:Tween
@@ -19,6 +21,13 @@ func _ready():
 	#TODO: Quitar esto del ready y usar el Initialize en orquestador
 	Initialize()
 
+func _input(event):
+	if event.is_action_pressed("UIShowInfo"):
+		menuInfo.visible = !menuInfo.visible
+		if menuInfo.visible:
+			barraMenus.isFocusingMenu = false
+			barraMenus.StopFocusOnMenus()
+	
 func Initialize():
 	dataService.OnDataRefresh.connect(DataRefresh)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfgpbu7le1hia"]
+[gd_scene load_steps=22 format=3 uid="uid://bfgpbu7le1hia"]
 
 [ext_resource type="Script" path="res://Systems/Menus/Perfiles/GDs_Perf_Sitio.gd" id="1_8nspj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_gkrbn"]
@@ -59,9 +59,13 @@ region = Rect2(0, 80, 40, 40)
 atlas = ExtResource("2_5qgwa")
 region = Rect2(0, 121, 40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydtfr"]
+atlas = ExtResource("2_5qgwa")
+region = Rect2(0, 240, 40, 40)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0eo7"]
 atlas = ExtResource("2_5qgwa")
-region = Rect2(160, 163, 36, 34)
+region = Rect2(160, 163, 40, 40)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pafno"]
 
@@ -691,7 +695,7 @@ vertical_alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="AnimScale/VBoxContainer/Datos/Datos"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 2
 alignment = 1
 
 [node name="Temperatura" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2"]
@@ -738,6 +742,53 @@ expand_mode = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "24°C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Presion Atmosferica" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ope0u")
+
+[node name="TextureRect" type="NinePatchRect" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica"]
+self_modulate = Color(0.690196, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -9.0
+offset_right = 2.0
+offset_bottom = 9.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hcvnr")
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica/HBoxContainer"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_ydtfr")
+expand_mode = 1
+
+[node name="Lbl Nvl Prev" type="Label" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "1026 hPa"
 horizontal_alignment = 1
 vertical_alignment = 1
 

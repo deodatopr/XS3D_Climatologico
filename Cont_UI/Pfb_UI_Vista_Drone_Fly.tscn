@@ -36,34 +36,6 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e6v1t"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_epocd"]
-load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o5vl7"]
-load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ck1g"]
-shader = ExtResource("4_bhin8")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.5
-shader_parameter/blur = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2cfi"]
-atlas = ExtResource("2_satoa")
-region = Rect2(809, 145, 26, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ap8jv"]
-atlas = ExtResource("2_satoa")
-region = Rect2(847, 147, 24, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6mi26"]
-atlas = ExtResource("2_satoa")
-region = Rect2(883, 138, 22, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htee1"]
-atlas = ExtResource("2_satoa")
-region = Rect2(914, 147, 20, 21)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_idr0y"]
 atlas = ExtResource("2_satoa")
 region = Rect2(468, 763, 42, 42)
@@ -105,6 +77,34 @@ _data = {
 "RESET": SubResource("Animation_nk6gn")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_epocd"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o5vl7"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ck1g"]
+shader = ExtResource("4_bhin8")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2cfi"]
+atlas = ExtResource("2_satoa")
+region = Rect2(809, 145, 26, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap8jv"]
+atlas = ExtResource("2_satoa")
+region = Rect2(847, 147, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mi26"]
+atlas = ExtResource("2_satoa")
+region = Rect2(883, 138, 22, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htee1"]
+atlas = ExtResource("2_satoa")
+region = Rect2(914, 147, 20, 21)
+
 [node name="Vista Fly" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "compass")]
 layout_mode = 3
 anchors_preset = 15
@@ -118,7 +118,7 @@ lblVelocidad = NodePath("Frame/Indicators/Datos/HBoxContainer/Velocidad/Lbl Velo
 lblRotacion = NodePath("Frame/Indicators/Datos/HBoxContainer/Rotacion/Lbl Rotacion")
 compass = NodePath("Frame/UI_Compass")
 metadata/_edit_horizontal_guides_ = [125.0]
-metadata/_edit_vertical_guides_ = [1647.0]
+metadata/_edit_vertical_guides_ = [1635.0]
 
 [node name="Frame" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -128,11 +128,11 @@ anchor_bottom = 1.0
 offset_left = 22.0
 offset_top = 25.0
 offset_right = -22.0
-offset_bottom = -133.0
+offset_bottom = -125.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_satoa")
-region_rect = Rect2(476, 219, 30, 30)
+region_rect = Rect2(475, 219, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
@@ -638,6 +638,27 @@ vertical = true
 useCamRotation = true
 width = 108
 
+[node name="Point" type="TextureRect" parent="Frame/Indicators/Right Indicator"]
+modulate = Color(1, 1, 1, 0.588235)
+self_modulate = Color(0.466702, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -109.0
+offset_top = 22.0
+offset_right = -88.0
+offset_bottom = 43.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_idr0y")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame/Indicators/Right Indicator/Point"]
+libraries = {
+"": SubResource("AnimationLibrary_2fi5h")
+}
+autoplay = "Blinking "
+
 [node name="Top Indicator" type="Control" parent="Frame/Indicators"]
 visible = false
 layout_mode = 1
@@ -884,20 +905,3 @@ anchor_bottom = 0.0
 offset_top = 14.0
 offset_bottom = 14.0
 grow_vertical = 1
-
-[node name="Point" type="TextureRect" parent="Frame"]
-modulate = Color(1, 1, 1, 0.588235)
-self_modulate = Color(0.466702, 1, 0, 1)
-layout_mode = 0
-offset_left = 1606.0
-offset_top = 109.0
-offset_right = 1627.0
-offset_bottom = 130.0
-texture = SubResource("AtlasTexture_idr0y")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame/Point"]
-libraries = {
-"": SubResource("AnimationLibrary_2fi5h")
-}
-autoplay = "Blinking "
