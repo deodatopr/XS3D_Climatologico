@@ -133,20 +133,21 @@ func _rotation(_delta:float):
 		if MouseMotion != null:
 			rot_rotation.x = signf(MouseMotion.relative.x)
 			rot_rotation.y = signf(MouseMotion.relative.y)
-
+			#print(MouseMotion.relative.nor)
 			CursorMovement += MouseMotion.relative * 2
 			CursorMovement.y = clampf(CursorMovement.y, -DisplayServer.screen_get_size().y/2,DisplayServer.screen_get_size().y/2)
 			CursorMovement.x = clampf(CursorMovement.x, -DisplayServer.screen_get_size().x/2,DisplayServer.screen_get_size().x/2)
+			
 			_rotHorPivot((CursorMovement.x*2)/DisplayServer.screen_get_size().x * 10, _delta)
 			_rotVertCam((CursorMovement.y*2)/DisplayServer.screen_get_size().y * 10, _delta)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		CursorMovement = Vector2.ZERO
 		
-	if Input.is_action_pressed("3DLook_Up") or Input.is_action_pressed("3DLook_Down"):
-		_rotVertCam(-Input.get_axis("3DLook_Down", '3DLook_Up') * 10, _delta)
-	elif not (Input.is_action_pressed("3DLook_Up") or Input.is_action_pressed("3DLook_Down")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		_rotVertReturn(_delta)
+	#if rot_rotation.y == 0:
+		#_rotVertReturn(_delta)
+		#_rotVertCam(rot_rotation.y * 10, _delta)
+	#else:
 		
 	if Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left"):
 		yaw_direction = -Input.get_axis("3DLook_Right", '3DLook_Left')
