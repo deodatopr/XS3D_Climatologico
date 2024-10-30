@@ -5,7 +5,7 @@ var camMng : GDs_Cam_Manager
 var cam : Camera3D
 var pivot : Node3D
 
-var mov_deceleration : float
+var mov_deceleration : float = 100
 var mov_velocity : Vector3 = Vector3.ZERO
 
 var yaw : float = 0.0
@@ -31,12 +31,11 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
 	cam = camMng.fly_cam
 	pivot = camMng.fly_pivot
-	mov_deceleration = camMng.fly_speed_accel_decel
 
 	
 func SetCamera():
 	cam.current = true
-	pivot.global_position.y = camMng.fly_initialHeight
+	pivot.global_position.y = camMng.fly_height
 	cam.position = Vector3.ZERO
 	cam.rotation_degrees = Vector3(0, 180, 0)
 	cam.fov = camMng.fly_fov
@@ -113,9 +112,9 @@ func _movement(_delta:float):
 	FinalSpeedTurbo = camMng.fly_boost if Input.is_action_pressed("3DMove_SpeedBoost") else 1
 	
 	if inputDir.length() > 0:
-		mov_velocity += (inputDir * camMng.fly_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
-		if mov_velocity.length() > camMng.fly_speed_accel_decel:	
-			mov_velocity = mov_velocity.limit_length(camMng.fly_speed_accel_decel * FinalSpeedTurbo)
+		mov_velocity += (inputDir * camMng.fly_move * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
+		if mov_velocity.length() > mov_deceleration:	
+			mov_velocity = mov_velocity.limit_length(mov_deceleration * FinalSpeedTurbo)
 	
 	else:
 		if mov_velocity.length() > 0:
@@ -124,7 +123,7 @@ func _movement(_delta:float):
 				mov_velocity = Vector3.ZERO	
 				BoostTimeElapsed = 0
 	
-	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed * camMng.fly_boost,mov_velocity.length())
+	var fixSpeed : float =  inverse_lerp(0,camMng.fly_move * camMng.fly_boost,mov_velocity.length())
 	var slowSpeed : float = lerpf(lastSpeed01,fixSpeed, .2)
 	@warning_ignore('incompatible_ternary')
 	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
@@ -134,18 +133,18 @@ func _movement(_delta:float):
 	targetPosition += mov_velocity * _delta
 	
 	var distanceToGround = targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0))
-	isInGround = distanceToGround < camMng.fly_minDistGround
+	isInGround = distanceToGround < camMng.fly_height_min_offset
 	var pointInNavMesh := UTILITIES._get_point_on_map(cam.global_position, cam,0).y
-	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.fly_minDistGround - 4
+	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.fly_height_min_offset - 4
 	
 	if isInGround:
 		if targetPosition.y - UTILITIES._get_point_on_map(targetPosition, cam,0).y > .1:
 			if inputDir != Vector3.UP:
-				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.fly_minDistGround - 5)).y, .5)
+				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.fly_height_min_offset - 5)).y, .5)
 		else:
 			targetPosition.y = pointInNavMesh + (Vector3.UP * 50).y
 
-	isInTop = targetPosition.y >= camMng.fly_maxFlyingDist
+	isInTop = targetPosition.y >= camMng.fly_height_max
 	
 	pivot.global_position = targetPosition
 
@@ -198,12 +197,12 @@ func _rotVertCam(dir:float, _delta:float):
 		
 	pitch -= dir * camMng.fly_rot_vert_speed  * _delta
 	last_pitch = pitch
-	pitch = clampf(pitch, -camMng.fly_vert, camMng.fly_vert)
+	pitch = clampf(pitch, -camMng.fly_rot_vert_clamp, camMng.fly_rot_vert_clamp)
 	cam.rotation_degrees.x = pitch
 		
 func _rotVertReturn(_delta:float):
 	if abs(cam.rotation_degrees.x) > .1:
-		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.fly_vert_return / RETURN_CAMERA_ADJUST))
+		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.fly_rot_vert_speedToReturn / RETURN_CAMERA_ADJUST))
 		return_cam_time_elpased += _delta
 		last_pitch = cam.rotation_degrees.x
 		is_start_to_move = false

@@ -35,16 +35,15 @@ class_name GDs_Cam_Manager extends Node
 @export var sky_zoom_out : float = 100
 
 @export_subgroup("FLY")
-@export var fly_initialHeight : float = 80
-@export var fly_speed_accel_decel : float = 100
-@export var fly_speed : float = 200
+@export var fly_height : float = 80
+@export var fly_height_min_offset : float = 55
+@export var fly_height_max : float = 250
+@export var fly_move : float = 200
 @export_range(1,5) var fly_boost : float = 2
 @export var fly_rot_hor_speed : float = 7
 @export var fly_rot_vert_speed : float = 5
-@export_range(0, 90) var fly_vert : float = 45
-@export var fly_vert_return : float = .5
-@export_range(15, 90) var fly_minDistGround : float = 55
-@export var fly_maxFlyingDist : float = 250
+@export_range(0, 90) var fly_rot_vert_clamp : float = 45
+@export var fly_rot_vert_speedToReturn : float = .5
 @export_range(30,100) var fly_fov :float = 35
 
 @onready var mat_roads_sky : BaseMaterial3D = preload("uid://bybsj0rkirn0u")
