@@ -98,12 +98,12 @@ func _movement(_delta:float):
 	if Input.is_action_pressed("3DMove_Left"):
 		inputDir += pivot.basis.x
 		
-	if Input.is_action_pressed("3DMove_Up"):
+	if Input.is_action_pressed("3DMove_Height_+"):
 		if !isInTop:
 			inputDir += pivot.basis.y
 			isInGround = false
 
-	if Input.is_action_pressed("3DMove_Down"):
+	if Input.is_action_pressed("3DMove_Height_-"):
 		if canPressDown:
 			inputDir -= pivot.basis.y
 			isInTop = false
@@ -182,7 +182,7 @@ func _rotation(_delta:float):
 		yaw -= ((camMng.fly_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveMovement, 1.2, _delta, true)) * _delta
 		pivot.rotation_degrees.y = yaw
 		
-	if MouseMotion.relative:
+	if MouseMotion:
 		CAM.isRotating = (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and MouseMotion.relative.x != 0)
 		
 
