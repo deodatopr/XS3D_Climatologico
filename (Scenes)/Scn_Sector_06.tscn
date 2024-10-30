@@ -76,6 +76,7 @@ ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
 ligtht_sun_sky = NodePath("../../[ CONTENT ]/Light - Sun_Sky")
 ligtht_sun_fly = NodePath("../../[ CONTENT ]/Light - Sun_Fly")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
+fly_height_min = 50.0
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndWind", "sndCameraFOV", "sndCameraRot")]
 script = ExtResource("16_r0mi2")
@@ -222,6 +223,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, -27.0369, 72.9466, -43.7071)
 light_color = Color(1, 0.948457, 0.877053, 1)
 light_energy = 2.0
+light_angular_distance = 0.5
 shadow_enabled = true
 shadow_opacity = 0.9
 directional_shadow_mode = 0

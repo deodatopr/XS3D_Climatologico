@@ -8,8 +8,8 @@ var pivot : Node3D
 var mov_deceleration : float = 100
 var mov_velocity : Vector3 = Vector3.ZERO
 
-var rot_lastRoX : float
-var rot_lastRoY : float
+var rot_lastRotX : float
+var rot_lastRotY : float
 var rot_rotation : Vector2
 
 var yaw : float = 0.0
@@ -139,21 +139,19 @@ func _rotation(_delta:float):
 	_rotHorPivot(dir.x,_delta)
 	_rotVertCam(-dir.y,_delta)
 	
-	CAM.isRotating = !is_equal_approx(pivot.rotation_degrees.x,rot_lastRoX) or !is_equal_approx(pivot.rotation_degrees.y,rot_lastRoY)
+	CAM.isRotating = !is_equal_approx(pivot.rotation_degrees.x,rot_lastRotX) or !is_equal_approx(pivot.rotation_degrees.y,rot_lastRotY)
 
-	rot_lastRoX = pivot.rotation.x
-	rot_lastRoY = pivot.rotation.y
+	rot_lastRotX = pivot.rotation.x
+	rot_lastRotY = pivot.rotation.y
 
 func _rotHorPivot(_dir:float, _delta:float):
 	yaw -= _dir * camMng.fly_rot_speed  * _delta
-	var startAngle : float = rot_lastRoY
 	var targetAngle : float = deg_to_rad(yaw)
-	var smoothTarget : float = lerp_angle(rot_lastRoY,yaw,5 * _delta)
+	var smoothTarget : float = lerp_angle(rot_lastRotY,yaw,5 * _delta)
 	pivot.rotation.y = smoothTarget
 
 func _rotVertCam(_dir:float, _delta:float):
 	pitch -= -_dir * camMng.fly_rot_speed  * _delta
-	var startAngle : float = rot_lastRoX
 	var targetAngle : float = deg_to_rad(pitch)
-	var smoothTarget : float = lerp_angle(rot_lastRoX,pitch,5 * _delta)
+	var smoothTarget : float = lerp_angle(rot_lastRotX,pitch,5 * _delta)
 	pivot.rotation.x = smoothTarget
