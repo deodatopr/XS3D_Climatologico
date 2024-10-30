@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://y1iugd6uyl42"]
+[gd_scene load_steps=18 format=3 uid="uid://y1iugd6uyl42"]
 
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
 [ext_resource type="Texture2D" uid="uid://2kva7lmdb47u" path="res://Cont_UI/Map_Mapa_Edomex.png" id="6_m8twr"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
-[ext_resource type="Script" path="res://Systems/Curtain/GDs_LocalCurtain.gd" id="9_a1hye"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]
 shader = ExtResource("4_dj00u")
@@ -43,7 +42,7 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 atlas = ExtResource("8_omcqt")
 region = Rect2(475, 392, 26, 26)
 
-[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("cortinilla", "menuPerfiles")]
+[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("menuPerfiles")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,7 +50,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vcggy")
-cortinilla = NodePath("Cortinilla Local")
 menuPerfiles = NodePath("Menu Sitios")
 
 [node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuConfig", "menuGuia") instance=ExtResource("2_j5wup")]
@@ -583,20 +581,3 @@ texture = SubResource("AtlasTexture_ie3aj")
 [node name="PopUp Ver Sitio" parent="." instance=ExtResource("5_wvomf")]
 visible = false
 layout_mode = 1
-
-[node name="--------" type="Node" parent="."]
-
-[node name="Cortinilla Local" type="NinePatchRect" parent="."]
-process_mode = 4
-visible = false
-self_modulate = Color(0, 0, 0, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_omcqt")
-region_rect = Rect2(476, 8, 23, 25)
-script = ExtResource("9_a1hye")
-colorTransparent = Color(0, 0, 0, 0)

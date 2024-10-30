@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://djyvw3ftsu25d"]
+[gd_scene load_steps=37 format=3 uid="uid://djyvw3ftsu25d"]
 
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaAerea.gd" id="1_wv2a8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pmpn4"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="4_fj5m0"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_LineIndicators.gd" id="4_fvtcm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="5_3vo8s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c6h5"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(7, 264, 54, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lauy"]
 atlas = ExtResource("2_pmpn4")
@@ -24,6 +28,10 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7sdp1"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuevo"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(478, 739, 23, 20)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aohxh"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
@@ -139,7 +147,7 @@ region = Rect2(883, 138, 22, 28)
 atlas = ExtResource("2_pmpn4")
 region = Rect2(914, 147, 20, 21)
 
-[node name="Vista Sky" type="Control" node_paths=PackedStringArray("lblVelocidad", "lblRotacion", "lblFov")]
+[node name="Vista Sky" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "lblFov")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,10 +156,110 @@ offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wv2a8")
+lblAltura = NodePath("Datos/Datos/Altura/Lbl Altura")
 lblVelocidad = NodePath("Datos/Datos/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Datos/Datos/Rotacion/Lbl Rotacion")
 lblFov = NodePath("Datos/Datos/Fov/Lbl fov")
-metadata/_edit_horizontal_guides_ = [125.0]
+metadata/_edit_horizontal_guides_ = [125.0, 21.0]
+
+[node name="Info" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 148.0
+offset_bottom = 110.0
+
+[node name="Lbl INfo" type="Label" parent="Info"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.5
+offset_right = 29.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Info:"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox" type="HBoxContainer" parent="Info"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(114, 27)
+theme_override_constants/separation = 20
+
+[node name="HSeparator" type="HSeparator" parent="Info/Hbox"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="W" type="NinePatchRect" parent="Info/Hbox"]
+custom_minimum_size = Vector2(54.04, 0)
+layout_mode = 2
+texture = ExtResource("2_pmpn4")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Info/Hbox/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "F1"
+
+[node name="_" type="Label" parent="Info/Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="Info/Hbox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2c6h5")
+
+[node name="Label" type="Label" parent="Info/Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Info/Hbox"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Dron Icon" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
@@ -160,9 +268,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -203.0
-offset_top = 60.0
+offset_top = 21.0
 offset_right = -45.0
-offset_bottom = 119.0
+offset_bottom = 80.0
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_0lauy")
 
@@ -488,6 +596,41 @@ script = ExtResource("4_fvtcm")
 useXaxis = false
 width = 108
 
+[node name="Triangle" type="TextureRect" parent="Crosshair/Hor Lines"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -34.5
+offset_right = -2.0
+offset_bottom = 5.5
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 40)
+texture = SubResource("AtlasTexture_nuevo")
+
+[node name="Triangle2" type="TextureRect" parent="Crosshair/Hor Lines"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -34.5
+offset_right = 45.0
+offset_bottom = 5.5
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 40)
+texture = SubResource("AtlasTexture_nuevo")
+
 [node name="Ver Lines" type="Control" parent="Crosshair"]
 layout_mode = 1
 anchors_preset = 7
@@ -501,6 +644,40 @@ offset_right = 17.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Triangle" type="TextureRect" parent="Crosshair/Ver Lines"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_top = -56.0
+offset_right = 20.5
+offset_bottom = -16.0
+grow_horizontal = 2
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 40)
+texture = SubResource("AtlasTexture_nuevo")
+
+[node name="Triangle2" type="TextureRect" parent="Crosshair/Ver Lines"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 40)
+texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Mask" type="NinePatchRect" parent="Crosshair/Ver Lines"]
 clip_children = 1
@@ -1102,6 +1279,7 @@ VistaSky = NodePath("..")
 
 [node name="Point" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.584314)
+self_modulate = Color(0.466702, 1, 0, 1)
 layout_mode = 0
 offset_left = 1679.0
 offset_top = 141.0
