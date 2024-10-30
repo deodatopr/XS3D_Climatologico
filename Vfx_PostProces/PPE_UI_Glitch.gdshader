@@ -35,7 +35,7 @@ void fragment( )
 			( trunc( SCREEN_UV.y * (random_rows) ) / random_rows )
 		+	TIME
 		) - 0.5
-	) * ((intensity * 0.1)+ 0.01) * enable_shift;
+	) * ((intensity * 0.1)+ 0.001) * enable_shift;
 
 	//Final Render
 	vec4 pixel_color = textureLod( screen_texture, fixed_uv, 0.0 );

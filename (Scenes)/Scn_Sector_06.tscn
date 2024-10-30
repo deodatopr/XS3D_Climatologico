@@ -36,7 +36,7 @@ shader_parameter/random_rate = 0.2
 shader_parameter/rows_min = 5.0
 shader_parameter/rows_max = 20.0
 shader_parameter/rows_speed = 70.0
-shader_parameter/chromatic = 0.5
+shader_parameter/chromatic = 0.2
 shader_parameter/intensity = 0.3
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
@@ -80,7 +80,7 @@ Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndWind", "sndCameraFOV", "sndCameraRot")]
 script = ExtResource("16_r0mi2")
 sndMoving = NodePath("Moving")
-sndMovingVolume = -20.0
+sndMovingVolume = -10.0
 sndMovingPitch = 0.5
 sndWind = NodePath("Wind")
 sndCameraFOV = NodePath("CameraFOV")
@@ -105,16 +105,19 @@ pitch_scale = 0.7
 stream = ExtResource("6_ehp13")
 pitch_scale = 0.5
 
-[node name="Glitch" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly", "glitch", "cortinilla")]
+[node name="Glitch" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndGlitch", "sndGlitchLimit", "vistaSky", "vistaFly", "glitch", "cortinilla", "mensaje")]
 script = ExtResource("7_h7lv4")
+sndGlitch = NodePath("Glitch")
+sndGlitchLimit = NodePath("GlitchLimit")
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 glitch = NodePath("PPE - Glitch/ColorRect")
 cortinilla = NodePath("Cortinilla Local")
+mensaje = NodePath("Msg Perdiendo Senal")
 
 [node name="Glitch" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Glitch"]
 stream = ExtResource("8_h5qt0")
-pitch_scale = 0.5
+volume_db = -15.0
 
 [node name="GlitchLimit" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Glitch"]
 stream = ExtResource("9_cpq7v")
@@ -147,6 +150,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Msg Perdiendo Senal" type="CanvasLayer" parent="[ SYSTEMS ]/Glitch"]
+layer = 5
+visible = false
+
+[node name="Perdiendo senal" type="Control" parent="[ SYSTEMS ]/Glitch/Msg Perdiendo Senal"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="[ SYSTEMS ]/Glitch/Msg Perdiendo Senal/Perdiendo senal"]
+self_modulate = Color(0, 0, 0, 0.384314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -77.0
+offset_right = 170.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_j2622")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="[ SYSTEMS ]/Glitch/Msg Perdiendo Senal/Perdiendo senal/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Perdiendo SEÑAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -301,6 +351,10 @@ cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 metadata/_edit_horizontal_guides_ = [125.0]
 
 [node name="Menu" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("dataService", "vistaSky", "vistaFree", "cam_manager", "worldMark", "map") instance=ExtResource("7_hy666")]
+offset_left = 41.0
+offset_top = 25.0
+offset_right = 41.0
+offset_bottom = 25.0
 dataService = NodePath("../../../../[ SYSTEMS ]/Data - Service")
 vistaSky = NodePath("../SKY")
 vistaFree = NodePath("../FLY")
