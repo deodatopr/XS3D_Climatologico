@@ -4,7 +4,8 @@ extends Node
 @export var sndMovingVolume: float = -5.0
 @export var sndMovingPitch: float = 2.0
 @export var sndWind: AudioStreamPlayer
-@export var sndCamera: AudioStreamPlayer
+@export var sndCameraFOV: AudioStreamPlayer
+@export var sndCameraRot: AudioStreamPlayer
 
 
 var tween:Tween
@@ -12,7 +13,7 @@ var sndCameraVol:float
 
 func _ready():
 	SIGNALS.OnCameraChangedMode.connect(OnChangeDrone)
-	sndCameraVol = sndCamera.volume_db
+	sndCameraVol = sndCameraFOV.volume_db
 
 
 func _process(_delta):
@@ -30,18 +31,22 @@ func _process(_delta):
 	
 #region CameraFOV
 		if Input.is_action_pressed("3DMove_Height_-") and Input.is_action_pressed("3DMove_Height_+"):
-			if sndCamera.playing:
+			if sndCameraFOV.playing:
 				CameraFadeOut()
-		elif Input.is_action_pressed("3DMove_Height_-") and CAM.fov > 30:
-			if not sndCamera.playing:
+		elif Input.is_action_pressed("3DMove_Height_+") and CAM.fov > 30:
+			if not sndCameraFOV.playing:
 				CameraFadeIn()
-		elif Input.is_action_pressed("3DMove_Height_+") and CAM.fov < 100:
-			if not sndCamera.playing:
+		elif Input.is_action_pressed("3DMove_Height_-") and CAM.fov < 100:
+			if not sndCameraFOV.playing:
 				CameraFadeIn()
 		else:
-			if sndCamera.playing:
+			if sndCameraFOV.playing:
 				CameraFadeOut()
 #endregion
+		if CAM.isRotating:
+			sndCameraRot.play()
+		else:
+			sndCameraRot.stop()
 
  
 func FadeIn(_audio:AudioStreamPlayer,targetVol:float, targetPitch:float):
@@ -58,17 +63,17 @@ func FadeOut(_audio:AudioStreamPlayer,targetVol:float, targetPitch:float):
 	_audio.stop()
 
 func CameraFadeIn():
-	sndCamera.play()
+	sndCameraFOV.play()
 	tween = create_tween()
-	tween.tween_property(sndCamera,"volume_db",10,0.1)
-	tween.parallel().tween_property(sndCamera,"pitch_scale",0.7,0.1)
+	tween.tween_property(sndCameraFOV,"volume_db",10,0.1)
+	tween.parallel().tween_property(sndCameraFOV,"pitch_scale",0.7,0.1)
 
 func CameraFadeOut():
 	tween = create_tween()
-	tween.tween_property(sndCamera,"volume_db",-10,0.1)
-	tween.parallel().tween_property(sndCamera,"pitch_scale",0.5,0.1)
+	tween.tween_property(sndCameraFOV,"volume_db",-10,0.1)
+	tween.parallel().tween_property(sndCameraFOV,"pitch_scale",0.5,0.1)
 	await tween.finished
-	sndCamera.stop()
+	sndCameraFOV.stop()
 	pass
 
 

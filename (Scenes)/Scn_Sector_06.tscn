@@ -72,11 +72,14 @@ ligtht_sun_sky = NodePath("../../[ CONTENT ]/Light - Sun_Sky")
 ligtht_sun_fly = NodePath("../../[ CONTENT ]/Light - Sun_Fly")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
 
-[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndWind", "sndCamera")]
+[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndWind", "sndCameraFOV", "sndCameraRot")]
 script = ExtResource("16_r0mi2")
 sndMoving = NodePath("Moving")
+sndMovingVolume = -20.0
+sndMovingPitch = 0.5
 sndWind = NodePath("Wind")
-sndCamera = NodePath("Camera")
+sndCameraFOV = NodePath("CameraFOV")
+sndCameraRot = NodePath("CameraRot")
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
@@ -88,10 +91,14 @@ parameters/looping = true
 stream = ExtResource("18_og2vw")
 parameters/looping = true
 
-[node name="Camera" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+[node name="CameraFOV" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
 volume_db = 10.0
 pitch_scale = 0.7
+
+[node name="CameraRot" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
+stream = ExtResource("6_ehp13")
+pitch_scale = 0.5
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
