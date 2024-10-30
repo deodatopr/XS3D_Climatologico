@@ -59,6 +59,10 @@ func FormatTemperatura(temp:float)->String:
 	temp = roundf(temp)
 	return str(temp) + "°C"
 
+func FormatPresion(temp:float)->String:
+	temp = roundf(temp)
+	return str(temp) + "hPa"
+
 func FormatDirViento(dir:float)->String:
 	dir = roundf(dir)
 	return str(dir) + "°"
@@ -81,4 +85,10 @@ func FormatRotacionY(rot:float)->String:
 
 func FormatFov(fov:float)->String:
 	return str(fov) + "°"
+
+func FormatEstado(estado:int)->String:
+	if estado == 0:
+		return "EDOMEX"
+	else:
+		return "MICH"
 #endregion

@@ -9,7 +9,8 @@ panorama = ExtResource("1_4nwpj")
 sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
 
 [resource]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.409981, 0.569038, 0.708186, 1)
 sky = SubResource("Sky_al770")
 sky_rotation = Vector3(0, -1.5708, 0)
 tonemap_mode = 3
@@ -22,10 +23,10 @@ fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.532418, 0.635973, 0.798701, 1)
 fog_density = 0.3
-fog_aerial_perspective = 0.5
-fog_sky_affect = 0.5
+fog_sky_affect = 0.3
+fog_depth_curve = 1.15
 fog_depth_begin = 0.0
-fog_depth_end = 900.0
+fog_depth_end = 1000.0
 adjustment_enabled = true
 adjustment_brightness = 0.9
 adjustment_contrast = 1.3

@@ -34,5 +34,5 @@ void fragment() {
 	ALBEDO = basecolor.rgb;
 	if (Wireframe) { ALPHA = mix(0.6,0.1, Mask); }
 	else { ALPHA = 0.1; }
-	
+
 }

@@ -12,18 +12,22 @@
 # Boton
 
 #	[ Pani ]
-#
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 
+#Splash virtual wave y xsoft (borrar le otro)
+
 #Cam fly
-# - Cierta altura de acuerdo a navMesh prender DOF
 # - Variable para ver abajo a cuantos grados ves
-# - Reducir variables
 # - Umbral rotaciones XY
+
 # - NavMesh que si sube por altura despues baje, si estabas en el suelo
+
 # - Dron abajo DOF near
 	# Limite abajo faltando 5 o 10 lo active
+# - Cierta altura de acuerdo a navMesh prender DOF
+# - Trigger cercano a sitio aumentar DOF
+# a CIERTA DIST APAGAR/PRENDER AO
 
 #	[ Carlos ]
 

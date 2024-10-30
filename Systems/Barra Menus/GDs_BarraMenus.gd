@@ -4,26 +4,28 @@ extends Node
 @export var menuSitios: Control
 @export var menuMapa: Control
 @export var menuConfig: Control
-@export var menuGuia: Control
+@export var menuDatos: Control
 @export_group("Botones")
 @export var BtnSitios:Button   #0
 @export var BtnMapa:Button     #1
 @export var BtnConfig:Button   #2
 @export var BtnGuia:Button     #3
+@export_group("Audio")
+@export var sndUi1:AudioStreamPlayer
 
 var lastOneOnFocus:=0
 var isFocusingMenu:= false
 func _ready():
 	BtnSitios.focus_entered.connect(OnBtnSitiosFocus)
-	BtnGuia.focus_entered.connect(OnBtnGuiaFocus)
-	BtnGuia.focus_exited.connect(OnBtnGuiaFocusExited)
+	BtnGuia.focus_entered.connect(OnBtnDatosFocus)
+	BtnGuia.focus_exited.connect(OnBtnDatosFocusExited)
 	BtnMapa.focus_entered.connect(OnBtnMapaFocus)
 	BtnMapa.focus_exited.connect(OnBtnMapaFocusExited)
 	BtnConfig.focus_entered.connect(OnBtnConfigFocus)
 	BtnConfig.focus_exited.connect(OnBtnConfigFocusExited)
 
 func _input(event):
-	if event.is_action_pressed("UIFocusMenus"):
+	if event.is_action_pressed("UI_FocusMenus"):
 		isFocusingMenu = !isFocusingMenu
 		if isFocusingMenu:
 			FocusLastMenu()
@@ -63,13 +65,15 @@ func GetCurrentFocus():
 		lastOneOnFocus = 3
 
 func OnBtnSitiosFocus():
+	sndUi1.play()
 	UTILITIES.TurnOnObject(menuSitios)
 	BtnSitios.button_pressed = true
 
 
-func OnBtnMapaFocus():
-	UTILITIES.TurnOffObject(menuSitios)
 
+func OnBtnMapaFocus():
+	sndUi1.play()
+	UTILITIES.TurnOffObject(menuSitios)
 	BtnSitios.button_pressed = false
 	
 	UTILITIES.TurnOnObject(menuMapa)
@@ -77,16 +81,21 @@ func OnBtnMapaFocus():
 func OnBtnMapaFocusExited():
 	UTILITIES.TurnOffObject(menuMapa)
 
+
+
+func OnBtnDatosFocus():
+	sndUi1.play()
+	UTILITIES.TurnOnObject(menuDatos)
+
+func OnBtnDatosFocusExited():
+	UTILITIES.TurnOffObject(menuDatos)
+
+
 func OnBtnConfigFocus():
+	sndUi1.play()
 	UTILITIES.TurnOnObject(menuConfig)
-
-func OnBtnConfigFocusExited():
-	UTILITIES.TurnOffObject(menuConfig)
-
-func OnBtnGuiaFocus():
-	UTILITIES.TurnOnObject(menuGuia)
 	UTILITIES.TurnOffObject(menuSitios)
 	BtnSitios.button_pressed = false
 
-func OnBtnGuiaFocusExited():
-	UTILITIES.TurnOffObject(menuGuia)
+func OnBtnConfigFocusExited():
+	UTILITIES.TurnOffObject(menuConfig)

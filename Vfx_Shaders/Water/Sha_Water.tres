@@ -164,7 +164,7 @@ default_input_values = [0, Vector3(0, 0, 0)]
 port_type = 4
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_mdqty"]
-constant = 0.15
+constant = 0.5
 
 [resource]
 code = "shader_type spatial;
@@ -218,7 +218,7 @@ void fragment() {
 
 
 // FloatConstant:96
-	float n_out96p0 = 0.150000;
+	float n_out96p0 = 0.500000;
 
 
 // Input:7
@@ -373,6 +373,7 @@ void fragment() {
 	var_World_Projection = vec3(0.0);
 }
 "
+graph_offset = Vector2(-65.3333, -9.33333)
 varyings/World_Projection = "1,4"
 nodes/fragment/0/position = Vector2(720, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_vum2f")

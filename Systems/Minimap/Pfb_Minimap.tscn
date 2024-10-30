@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/Minimap/GDs_Minimap.gd" id="1_3l741"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_i627t"]
-[ext_resource type="Texture2D" uid="uid://b7o7n4w6d5ike" path="res://Cont_Models/Sector6/Map_Sect06_MiniMap.jpg" id="3_33bn2"]
+[ext_resource type="Texture2D" uid="uid://c7e7o0hswrmpv" path="res://Cont_Models/Sector6/Map_Test_Minimap.png" id="3_jt1is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2do84"]
 atlas = ExtResource("2_i627t")
@@ -20,7 +20,7 @@ region = Rect2(477, 694, 24, 29)
 atlas = ExtResource("2_i627t")
 region = Rect2(2, 3, 160, 160)
 
-[node name="UI_Minimap" type="Control"]
+[node name="UI_Minimap" type="Control" node_paths=PackedStringArray("minimap_parent", "circle_mask", "map_texture", "mark", "cam_pivot")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +28,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3l741")
-estacion_color = 1
+minimap_parent = NodePath("Minimap_Parent")
+circle_mask = NodePath("Minimap_Parent/Circle_Mask")
+map_texture = NodePath("Minimap_Parent/Circle_Mask/Map_Texture")
+mark = NodePath("Minimap_Parent/Circle_Mask/Map_Texture/Mark")
+cam_pivot = NodePath("Minimap_Parent/Circle_Mask/Cam_Pivot")
 
 [node name="Minimap_Parent" type="Control" parent="."]
 layout_mode = 1
@@ -51,10 +55,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
+offset_left = 6.0
 offset_top = 6.0
-offset_right = -4.0
-offset_bottom = 3.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_2do84")
@@ -62,20 +65,16 @@ texture = SubResource("AtlasTexture_2do84")
 [node name="Map_Texture" type="TextureRect" parent="Minimap_Parent/Circle_Mask"]
 modulate = Color(1, 1, 1, 0.788235)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.507837
-anchor_top = 0.45768
-anchor_right = 0.507837
-anchor_bottom = 0.45768
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(255, 255)
-texture = ExtResource("3_33bn2")
-metadata/_edit_use_anchors_ = true
+pivot_offset = Vector2(256, 0)
+texture = ExtResource("3_jt1is")
+expand_mode = 1
+flip_h = true
+flip_v = true
 
 [node name="Mark" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Map_Texture"]
 self_modulate = Color(0.359701, 0.993052, 1, 1)
@@ -85,10 +84,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.425
-offset_top = -70.525
-offset_right = 53.575
-offset_bottom = 41.475
+offset_left = 27.0
+offset_top = 32.075
+offset_right = 137.0
+offset_bottom = 144.075
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(55, 56)
@@ -107,6 +106,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Cam_Pivot" type="Control" parent="Minimap_Parent/Circle_Mask"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,14 +114,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -20.0
+offset_top = -21.0
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(20, 40)
+pivot_offset = Vector2(20, 20)
 
-[node name="Cam_Ref" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Cam_Pivot"]
+[node name="Cam_Icon" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Cam_Pivot"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,9 +129,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -24.0
-offset_top = -29.0
+offset_top = -47.615
 offset_right = 24.0
-offset_bottom = 29.0
+offset_bottom = 10.385
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256.465, 266.185)
@@ -144,6 +144,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="N" type="Label" parent="Minimap_Parent/Frame"]
 layout_mode = 1

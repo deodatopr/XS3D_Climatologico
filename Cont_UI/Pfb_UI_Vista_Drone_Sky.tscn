@@ -7,13 +7,13 @@
 [ext_resource type="Script" path="res://Systems/UI/GDs_LineIndicators.gd" id="4_fvtcm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="5_3vo8s"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c6h5"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(7, 264, 54, 54)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lauy"]
 atlas = ExtResource("2_pmpn4")
 region = Rect2(809, 74, 158, 59)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_syhe3"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(7, 264, 54, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04pha"]
 atlas = ExtResource("2_pmpn4")
@@ -29,7 +29,7 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7sdp1"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4xbg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuevo"]
 atlas = ExtResource("2_pmpn4")
 region = Rect2(478, 739, 23, 20)
 
@@ -76,14 +76,6 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 atlas = ExtResource("2_pmpn4")
 region = Rect2(766, 248, 124, 284)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jktiy"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(953, 303, 35, 644)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nv5k5"]
-atlas = ExtResource("2_pmpn4")
-region = Rect2(523, 978, 366, 34)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_50t22"]
 atlas = ExtResource("2_pmpn4")
 region = Rect2(468, 763, 42, 42)
@@ -125,6 +117,14 @@ _data = {
 "RESET": SubResource("Animation_nk6gn")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jktiy"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(953, 303, 35, 644)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv5k5"]
+atlas = ExtResource("2_pmpn4")
+region = Rect2(523, 978, 366, 34)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gssc0"]
 shader = ExtResource("5_3vo8s")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -147,7 +147,7 @@ region = Rect2(883, 138, 22, 28)
 atlas = ExtResource("2_pmpn4")
 region = Rect2(914, 147, 20, 21)
 
-[node name="Vista Sky" type="Control" node_paths=PackedStringArray("lblVelocidad", "lblRotacion", "lblFov")]
+[node name="Vista Sky" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "lblFov")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,26 +156,125 @@ offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wv2a8")
+lblAltura = NodePath("Datos/Datos/Altura/Lbl Altura")
 lblVelocidad = NodePath("Datos/Datos/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Datos/Datos/Rotacion/Lbl Rotacion")
 lblFov = NodePath("Datos/Datos/Fov/Lbl fov")
-metadata/_edit_horizontal_guides_ = [125.0, 16.0, 79.0]
+metadata/_edit_horizontal_guides_ = [125.0, 21.0]
+
+[node name="Info" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 148.0
+offset_bottom = 110.0
+
+[node name="Lbl INfo" type="Label" parent="Info"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.5
+offset_right = 29.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Info:"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox" type="HBoxContainer" parent="Info"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(114, 27)
+theme_override_constants/separation = 20
+
+[node name="HSeparator" type="HSeparator" parent="Info/Hbox"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="W" type="NinePatchRect" parent="Info/Hbox"]
+custom_minimum_size = Vector2(54.04, 0)
+layout_mode = 2
+texture = ExtResource("2_pmpn4")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Info/Hbox/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "F1"
+
+[node name="_" type="Label" parent="Info/Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="Info/Hbox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2c6h5")
+
+[node name="Label" type="Label" parent="Info/Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Info/Hbox"]
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Dron Icon" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -183.0
-offset_top = 19.0
-offset_right = -25.0
-offset_bottom = 78.0
+offset_left = -203.0
+offset_top = 21.0
+offset_right = -45.0
+offset_bottom = 80.0
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_0lauy")
 
 [node name="Label" type="Label" parent="Dron Icon"]
-self_modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -188,143 +287,7 @@ offset_right = 40.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "DRONE SKY"
-
-[node name="Info" type="NinePatchRect" parent="Dron Icon"]
-self_modulate = Color(0.1, 0.1, 0.1, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1803.0
-offset_top = -75.0
-offset_right = -1606.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("2_pmpn4")
-region_rect = Rect2(473, 40, 30, 30)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Info" type="Label" parent="Dron Icon/Info"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -67.0
-offset_right = 67.0
-offset_bottom = 69.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "Info:"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Dron Icon/Info"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -55.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="HSeparator2" type="HSeparator" parent="Dron Icon/Info/HBoxContainer"]
-visibility_layer = 0
-custom_minimum_size = Vector2(1.515, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="NinePatchRect" parent="Dron Icon/Info/HBoxContainer"]
-visible = false
-self_modulate = Color(0, 0, 0, 0.705882)
-layout_mode = 2
-texture = ExtResource("2_pmpn4")
-region_rect = Rect2(474, 40, 30, 30)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Label" type="Label" parent="Dron Icon/Info/HBoxContainer/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 22
-text = "Paneo"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="F1" type="NinePatchRect" parent="Dron Icon/Info/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("2_pmpn4")
-region_rect = Rect2(473, 258, 34, 34)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="Label" type="Label" parent="Dron Icon/Info/HBoxContainer/F1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -19.5
-offset_top = -26.1
-offset_right = 19.5
-offset_bottom = 22.9
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "F1"
-
-[node name="_" type="Label" parent="Dron Icon/Info/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.490196)
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "/"
-horizontal_alignment = 1
-
-[node name="Y" type="TextureRect" parent="Dron Icon/Info/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_syhe3")
-
-[node name="Label" type="Label" parent="Dron Icon/Info/HBoxContainer/Y"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "Y"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator3" type="HSeparator" parent="Dron Icon/Info/HBoxContainer"]
-visibility_layer = 0
-custom_minimum_size = Vector2(5, 0)
-layout_mode = 2
-size_flags_horizontal = 3
+text = "DRON SKY"
 
 [node name="Crosshair" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
@@ -634,39 +597,39 @@ useXaxis = false
 width = 108
 
 [node name="Triangle" type="TextureRect" parent="Crosshair/Hor Lines"]
-self_modulate = Color(1, 0.25, 0.324464, 0.705882)
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -46.0
+offset_left = -42.0
 offset_top = -34.5
-offset_right = -6.0
+offset_right = -2.0
 offset_bottom = 5.5
 grow_vertical = 2
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
-texture = SubResource("AtlasTexture_w4xbg")
+texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Triangle2" type="TextureRect" parent="Crosshair/Hor Lines"]
-self_modulate = Color(1, 0.25, 0.324464, 0.705882)
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 8.0
+offset_left = 5.0
 offset_top = -34.5
-offset_right = 48.0
+offset_right = 45.0
 offset_bottom = 5.5
 grow_horizontal = 0
 grow_vertical = 2
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
-texture = SubResource("AtlasTexture_w4xbg")
+texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Ver Lines" type="Control" parent="Crosshair"]
 layout_mode = 1
@@ -681,6 +644,40 @@ offset_right = 17.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Triangle" type="TextureRect" parent="Crosshair/Ver Lines"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_top = -56.0
+offset_right = 20.5
+offset_bottom = -16.0
+grow_horizontal = 2
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 40)
+texture = SubResource("AtlasTexture_nuevo")
+
+[node name="Triangle2" type="TextureRect" parent="Crosshair/Ver Lines"]
+self_modulate = Color(0.25, 0.8375, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 40)
+texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Mask" type="NinePatchRect" parent="Crosshair/Ver Lines"]
 clip_children = 1
@@ -717,40 +714,6 @@ script = ExtResource("4_fvtcm")
 vertical = true
 useXaxis = false
 width = 108
-
-[node name="Triangle" type="TextureRect" parent="Crosshair/Ver Lines"]
-self_modulate = Color(1, 0.25, 0.324464, 0.705882)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -19.0
-offset_top = -57.325
-offset_right = 21.0
-offset_bottom = -17.325
-grow_horizontal = 2
-rotation = 3.14159
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(20, 40)
-texture = SubResource("AtlasTexture_w4xbg")
-
-[node name="Triangle2" type="TextureRect" parent="Crosshair/Ver Lines"]
-self_modulate = Color(1, 0.25, 0.324464, 0.705882)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -20.36
-offset_right = 20.0
-offset_bottom = 19.64
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(20, 40)
-texture = SubResource("AtlasTexture_w4xbg")
 
 [node name="Indicadores Interiores" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
@@ -1204,6 +1167,23 @@ scale = Vector2(-1, 1)
 pivot_offset = Vector2(79, 142)
 texture = SubResource("AtlasTexture_bb1no")
 
+[node name="Point" type="TextureRect" parent="Exteriores y Datos/Esquinas/Esquina2"]
+modulate = Color(1, 1, 1, 0.584314)
+self_modulate = Color(0.466702, 1, 0, 1)
+layout_mode = 1
+offset_left = 90.0
+offset_top = 20.0
+offset_right = 111.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_50t22")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Exteriores y Datos/Esquinas/Esquina2/Point"]
+libraries = {
+"": SubResource("AnimationLibrary_2fi5h")
+}
+autoplay = "Blinking "
+
 [node name="Esquina3" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
 visible = false
 layout_mode = 1
@@ -1313,23 +1293,6 @@ texture = SubResource("AtlasTexture_nv5k5")
 [node name="UI_Minimap" parent="." node_paths=PackedStringArray("VistaSky") instance=ExtResource("3_2spof")]
 layout_mode = 1
 VistaSky = NodePath("..")
-
-[node name="Point" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.584314)
-self_modulate = Color(0.466702, 1, 0, 1)
-layout_mode = 0
-offset_left = 1679.0
-offset_top = 141.0
-offset_right = 1700.0
-offset_bottom = 162.0
-texture = SubResource("AtlasTexture_50t22")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Point"]
-libraries = {
-"": SubResource("AnimationLibrary_2fi5h")
-}
-autoplay = "Blinking "
 
 [node name="Datos" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0.784314)

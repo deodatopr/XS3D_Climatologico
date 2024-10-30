@@ -5,9 +5,13 @@ class_name GDs_Cam_Manager extends Node
 @export_group("SCENE REFERENCES")
 @export var worldEnv : WorldEnvironment
 @export var msh_roads : MeshInstance3D
+@export var ppe_fishEye_DroneSky : ColorRect
+
 @export var ui_ppe_sky : Node
 @export var ui_ppe_fly : Node
-@export var ppe_fishEye_DroneSky : ColorRect
+
+@export var ligtht_sun_sky : Node3D
+@export var ligtht_sun_fly : Node3D
 
 @export_group("INTERNAL REFERENCES")
 @export var movSky : GDs_Cam_Mov_Sky
@@ -24,24 +28,20 @@ class_name GDs_Cam_Manager extends Node
 
 @export_subgroup("SKY")
 @export var sky_height : float = 500
-@export var sky_move: float = .5
-@export_range(1,2) var sky_boost: float = 2
+@export var sky_speed: float = .5
+@export_range(1,2) var sky_turbo: float = 2
 @export var sky_rot_speed : float = 1
 @export_range(30,130) var sky_zoom_in : float = 30
 @export var sky_zoom_out : float = 100
 
 @export_subgroup("FLY")
-@export var fly_initialHeight : float = 80
-@export var fly_speed_accel_decel : float = 100
-@export var fly_speed : float = 200
-@export_range(1,5) var fly_boost : float = 2
-@export var fly_rot_hor_speed : float = 7
-@export var fly_rot_vert_speed : float = 5
-@export_range(0, 90) var fly_vert : float = 45
-@export var fly_vert_return : float = .5
-@export_range(15, 90) var fly_minDistGround : float = 55
-@export var fly_maxFlyingDist : float = 250
 @export_range(30,100) var fly_fov :float = 35
+@export var fly_height_start : float = 80
+@export var fly_height_max : float = 250
+@export var fly_height_min : float = 55
+@export var fly_speed : float = 200
+@export_range(1,5) var fly_turbo : float = 2
+@export var fly_rot_speed : float = .75
 
 @onready var mat_roads_sky : BaseMaterial3D = preload("uid://bybsj0rkirn0u")
 @onready var mat_roads_fly : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
@@ -68,8 +68,8 @@ func _ready():
 	#var rndNumber : int = rndMode.randi_range(0,100)
 	#camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
 	
-	#TEST: Siempre inicia en sky
-	camMode = ENUMS.Cam_Mode.sky
+	#TEST: Siempre inicia en sky o fly
+	camMode = ENUMS.Cam_Mode.fly
 	
 	Initialize(camMode)
 	
@@ -90,6 +90,8 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	var cam_in_world = (_pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
 	
 	positionInMap01 = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
+	CAM.positionXZ_01 = positionInMap01
+	
 	var boundingX : float = abs(positionInMap01.x)
 	var boundingY : float = abs(positionInMap01.y)
 	
@@ -103,7 +105,7 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	return insideBoundings
 	
 func _input(_event):
-	if Input.is_action_just_pressed('3DMove_ChangeCamMode'):
+	if Input.is_action_just_pressed('3D_ChangeCamMode'):
 		camMode = ENUMS.Cam_Mode.fly if APPSTATE.camMode == ENUMS.Cam_Mode.sky else ENUMS.Cam_Mode.sky
 		SIGNALS.OnCameraRequestChangeMode.emit(camMode)
 		
@@ -123,7 +125,7 @@ func _process(_delta):
 	
 func _UpdateCamState():
 	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam 
-	var _pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
+	var pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
 	var dir = sign(cam.global_rotation_degrees.y)
 	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180)) 
 	
@@ -134,7 +136,6 @@ func _UpdateCamState():
 	elif dir < 0:
 		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
 	
-
 	CAM.height = ceili(cam.global_position.y)
 	CAM.fov = ceili(cam.fov)
 	CAM.position = cam.global_position
@@ -160,6 +161,10 @@ func _ChangeToMode_Sky():
 		
 		#DOF
 		worldEnv.camera_attributes = preset_cam_sky
+		
+		#Light
+		UTILITIES.TurnOnObject(ligtht_sun_sky)
+		UTILITIES.TurnOffObject(ligtht_sun_fly)
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():
@@ -188,6 +193,10 @@ func _ChangeToMode_Fly():
 		
 		#DOF
 		worldEnv.camera_attributes = preset_cam_fly
+		
+		#Light
+		UTILITIES.TurnOffObject(ligtht_sun_sky)
+		UTILITIES.TurnOnObject(ligtht_sun_fly)
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():

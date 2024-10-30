@@ -6,3 +6,5 @@ var height : int
 var fov : float
 var speed : float
 var boundings01 : float
+var positionXZ_01 : Vector2 
+var isRotating : bool

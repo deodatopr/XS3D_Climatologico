@@ -1,24 +1,27 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://d0njvq6rqh23r"]
 
-[ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://Cont_Shared/Skyes/Sky_2.hdr" id="1_g0amh"]
+[ext_resource type="Texture2D" uid="uid://0b2c6bogsi2r" path="res://Cont_Shared/Skyes/Sky_1.hdr" id="1_i008v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
-panorama = ExtResource("1_g0amh")
+panorama = ExtResource("1_i008v")
 
 [sub_resource type="Sky" id="Sky_al770"]
 sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_al770")
 sky_rotation = Vector3(0, -1.5708, 0)
 tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 10.0
+ssao_intensity = 11.0
 ssil_radius = 15.51
 ssil_intensity = 0.0
 sdfgi_use_occlusion = true
 glow_normalized = true
 glow_blend_mode = 0
-fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.424189, 0.509992, 0.644825, 1)
 fog_density = 0.7

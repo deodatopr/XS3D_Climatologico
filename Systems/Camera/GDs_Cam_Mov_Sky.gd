@@ -77,9 +77,9 @@ func UpdateCamConfig():
 	cam.fov = camMng.sky_zoom_out
 	
 	#Movement
-	mov_speed = camMng.sky_move
-	mov_max_acceleration = camMng.sky_move
-	mov_speed_boost = camMng.sky_boost
+	mov_speed = camMng.sky_speed
+	mov_max_acceleration = camMng.sky_speed
+	mov_speed_boost = camMng.sky_turbo
 	
 func _physics_process(delta):
 	_Movement(delta)
@@ -141,6 +141,7 @@ func _Movement(_delta: float):
 	#Save speed01 to send it to UI
 	var fixSpeed : float =  inverse_lerp(0,mov_speed * mov_speed_boost,mov_velocity.length())
 	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, .2)
+	@warning_ignore('incompatible_ternary')
 	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
 	mov_lastSpeed01 = speed01
 	
@@ -168,21 +169,24 @@ func _Rotation(_delta:float):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		rotHor_cursorMovement = Vector2.ZERO
 		
-	axisRightHor = Input.get_axis('3DMove_RotHor_-','3DMove_RotHor_+')
+	axisRightHor = Input.get_axis('3DLook_Left','3DLook_Right')
 	if axisRightHor != 0:
 		_RotHorPivot(axisRightHor, 5, _delta)
+	
+	if MouseMotion:
+		CAM.isRotating = (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and MouseMotion.relative.x != 0) or axisRightHor != 0
 	
 func _RotHorPivot(_dir:float, _factorSpeed : float, _delta:float):
 	rotHor_yaw -= _dir * camMng.sky_rot_speed * _factorSpeed  * _delta
 	pivot_cam.rotation_degrees.y = rotHor_yaw
 
 func _Fov(_delta : float):
-	if Input.is_action_pressed("3DMove_Fov_+"):
+	if Input.is_action_pressed("3DLook_Fov_+"):
 		fov_current += 50 * _delta
 		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = fov_current
 		_SetLensDistorsion(fov_current)
-	if Input.is_action_pressed("3DMove_Fov_-"):
+	if Input.is_action_pressed("3DLook_Fov_-"):
 		fov_current -= 50 * _delta
 		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = fov_current
