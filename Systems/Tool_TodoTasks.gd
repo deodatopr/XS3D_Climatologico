@@ -24,6 +24,8 @@
 # - Dron abajo DOF near
 	# Limite abajo faltando 5 o 10 lo active
 # - Cierta altura de acuerdo a navMesh prender DOF
+# - Trigger cercano a sitio aumentar DOF
+# a CIERTA DIST APAGAR/PRENDER AO
 
 #	[ Carlos ]
 

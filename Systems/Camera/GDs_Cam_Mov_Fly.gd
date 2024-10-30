@@ -128,61 +128,43 @@ func _movement(_delta:float):
 
 func _rotation(_delta:float):
 	rot_rotation = Input.get_vector("3DLook_Left",'3DLook_Right','3DLook_Down','3DLook_Up')
+	var dir : Vector2 = rot_rotation
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if MouseMotion != null:
-			rot_rotation.x = signf(MouseMotion.relative.x)
-			rot_rotation.y = signf(MouseMotion.relative.y)
-			#print(MouseMotion.relative.nor)
-			CursorMovement += MouseMotion.relative * 2
-			CursorMovement.y = clampf(CursorMovement.y, -DisplayServer.screen_get_size().y/2,DisplayServer.screen_get_size().y/2)
-			CursorMovement.x = clampf(CursorMovement.x, -DisplayServer.screen_get_size().x/2,DisplayServer.screen_get_size().x/2)
-			
-			_rotHorPivot((CursorMovement.x*2)/DisplayServer.screen_get_size().x * 10, _delta)
-			_rotVertCam((CursorMovement.y*2)/DisplayServer.screen_get_size().y * 10, _delta)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		CursorMovement = Vector2.ZERO
-		
-	#if rot_rotation.y == 0:
-		#_rotVertReturn(_delta)
-		#_rotVertCam(rot_rotation.y * 10, _delta)
-	#else:
-		
-	if Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left"):
-		yaw_direction = -Input.get_axis("3DLook_Right", '3DLook_Left')
-		_rotHorPivot(yaw_direction * 10, _delta)
-	elif not (Input.is_action_pressed("3DLook_Right") or Input.is_action_pressed("3DLook_Left")) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		yaw -= ((camMng.fly_rot_hor_speed * (yaw_direction * 10)) * UTILITIES.GetCurvePoint(camMng.curveMovement, 1.2, _delta, true)) * _delta
-		pivot.rotation_degrees.y = yaw
+			var fixedMouseMotion : Vector2 = MouseMotion.relative
+			fixedMouseMotion.y = fixedMouseMotion.y
+			dir = fixedMouseMotion.normalized()
+
+	_rotHorPivot(dir.x,_delta)
+	_rotVertCam(-dir.y,_delta)
 	
 	CAM.isRotating = !is_equal_approx(pivot.rotation_degrees.x,rot_lastRoX) or !is_equal_approx(pivot.rotation_degrees.y,rot_lastRoY)
-	
-	rot_lastRoX = pivot.rotation_degrees.x
-	rot_lastRoY = pivot.rotation_degrees.y
+	#print(CAM.isRotating)
+	rot_lastRoX = pivot.rotation.x
+	rot_lastRoY = pivot.rotation.y
 
-func _rotHorPivot(dir:float, _delta:float):
-	yaw -= dir * camMng.fly_rot_hor_speed  * _delta
-	pivot.rotation_degrees.y = yaw
+func _rotHorPivot(_dir:float, _delta:float):
+	yaw -= _dir * camMng.fly_rot_hor_speed  * _delta
+	var startAngle : float = rot_lastRoY
+	var targetAngle : float = deg_to_rad(yaw)
+	var smoothTarget : float = lerp_angle(rot_lastRoY,yaw,5 * _delta)
+	pivot.rotation.y = smoothTarget
 
-func _rotVertCam(dir:float, _delta:float):
-	if not is_start_to_move:
-		return_cam_time_elpased = 0
-		is_start_to_move = true
-		pitch = last_pitch
+func _rotVertCam(_dir:float, _delta:float):
+	pitch -= -_dir * camMng.fly_rot_vert_speed  * _delta
+	var startAngle : float = rot_lastRoX
+	var targetAngle : float = deg_to_rad(pitch)
+	var smoothTarget : float = lerp_angle(rot_lastRoX,pitch,5 * _delta)
+	pivot.rotation.x = smoothTarget
 		
-	pitch -= dir * camMng.fly_rot_vert_speed  * _delta
-	last_pitch = pitch
-	pitch = clampf(pitch, -camMng.fly_rot_vert_clamp, camMng.fly_rot_vert_clamp)
-	cam.rotation_degrees.x = pitch
-		
-func _rotVertReturn(_delta:float):
-	if abs(cam.rotation_degrees.x) > .1:
-		cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.fly_rot_vert_speedToReturn / RETURN_CAMERA_ADJUST))
-		return_cam_time_elpased += _delta
-		last_pitch = cam.rotation_degrees.x
-		is_start_to_move = false
-	else:
-		cam.rotation_degrees.x = 0
-		pitch = 0
-		last_pitch = 0
+#func _rotVertReturn(_delta:float):
+	#if abs(cam.rotation_degrees.x) > .1:
+		#cam.rotation_degrees.x = lerpf(cam.rotation_degrees.x, 0, return_cam_time_elpased / (camMng.fly_rot_vert_speedToReturn / RETURN_CAMERA_ADJUST))
+		#return_cam_time_elpased += _delta
+		#last_pitch = cam.rotation_degrees.x
+		#is_start_to_move = false
+	#else:
+		#cam.rotation_degrees.x = 0
+		#pitch = 0
+		#last_pitch = 0
