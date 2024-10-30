@@ -23,7 +23,7 @@ func _ready():
 	BtnConfig.focus_exited.connect(OnBtnConfigFocusExited)
 
 func _input(event):
-	if event.is_action_pressed("UIFocusMenus"):
+	if event.is_action_pressed("UI_FocusMenus"):
 		isFocusingMenu = !isFocusingMenu
 		if isFocusingMenu:
 			FocusLastMenu()
