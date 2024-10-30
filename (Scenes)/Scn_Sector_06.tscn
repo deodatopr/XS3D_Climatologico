@@ -351,10 +351,6 @@ cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 metadata/_edit_horizontal_guides_ = [125.0]
 
 [node name="Menu" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("dataService", "vistaSky", "vistaFree", "cam_manager", "worldMark", "map") instance=ExtResource("7_hy666")]
-offset_left = 41.0
-offset_top = 25.0
-offset_right = 41.0
-offset_bottom = 25.0
 dataService = NodePath("../../../../[ SYSTEMS ]/Data - Service")
 vistaSky = NodePath("../SKY")
 vistaFree = NodePath("../FLY")

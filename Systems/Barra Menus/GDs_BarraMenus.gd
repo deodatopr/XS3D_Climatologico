@@ -10,6 +10,8 @@ extends Node
 @export var BtnMapa:Button     #1
 @export var BtnConfig:Button   #2
 @export var BtnGuia:Button     #3
+@export_group("Audio")
+@export var sndUi1:AudioStreamPlayer
 
 var lastOneOnFocus:=0
 var isFocusingMenu:= false
@@ -63,12 +65,14 @@ func GetCurrentFocus():
 		lastOneOnFocus = 3
 
 func OnBtnSitiosFocus():
+	sndUi1.play()
 	UTILITIES.TurnOnObject(menuSitios)
 	BtnSitios.button_pressed = true
 
 
 
 func OnBtnMapaFocus():
+	sndUi1.play()
 	UTILITIES.TurnOffObject(menuSitios)
 	BtnSitios.button_pressed = false
 	
@@ -80,6 +84,7 @@ func OnBtnMapaFocusExited():
 
 
 func OnBtnDatosFocus():
+	sndUi1.play()
 	UTILITIES.TurnOnObject(menuDatos)
 
 func OnBtnDatosFocusExited():
@@ -87,6 +92,7 @@ func OnBtnDatosFocusExited():
 
 
 func OnBtnConfigFocus():
+	sndUi1.play()
 	UTILITIES.TurnOnObject(menuConfig)
 	UTILITIES.TurnOffObject(menuSitios)
 	BtnSitios.button_pressed = false

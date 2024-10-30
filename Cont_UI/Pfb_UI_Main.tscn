@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://y1iugd6uyl42"]
+[gd_scene load_steps=21 format=3 uid="uid://y1iugd6uyl42"]
 
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
 [ext_resource type="Texture2D" uid="uid://2kva7lmdb47u" path="res://Cont_UI/Map_Mapa_Edomex.png" id="6_m8twr"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
+[ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]
+[ext_resource type="AudioStream" uid="uid://cu0urodbyu2y4" path="res://Cont_Sounds/UI/UI_Button_3.mp3" id="11_t0b7i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]
 shader = ExtResource("4_dj00u")
@@ -58,21 +60,24 @@ menuPerfiles = NodePath("Menu Sitios")
 barraMenus = NodePath("Barra menus")
 menuInfo = NodePath("Menu Info")
 
-[node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuConfig", "menuDatos") instance=ExtResource("2_j5wup")]
+[node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuConfig", "menuDatos", "sndUi1") instance=ExtResource("2_j5wup")]
 layout_mode = 1
 menuSitios = NodePath("../Menu Sitios")
 menuMapa = NodePath("../Menu Mapa")
 menuConfig = NodePath("../Menu Config")
 menuDatos = NodePath("../Menu Datos")
+sndUi1 = NodePath("../[ AUDIO ]/UI")
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
 layout_mode = 1
 
-[node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp") instance=ExtResource("3_g57u8")]
+[node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp", "sndUi1", "sndUiPressed") instance=ExtResource("3_g57u8")]
 visible = false
 layout_mode = 1
 barraMenu = NodePath("../Barra menus")
 popUp = NodePath("../PopUp Ver Sitio")
+sndUi1 = NodePath("../[ AUDIO ]/UI")
+sndUiPressed = NodePath("../[ AUDIO ]/UIPressed")
 
 [node name="Menu Info" parent="." instance=ExtResource("1_pql5o")]
 visible = false
@@ -697,3 +702,11 @@ texture = SubResource("AtlasTexture_ie3aj")
 [node name="PopUp Ver Sitio" parent="." instance=ExtResource("5_wvomf")]
 visible = false
 layout_mode = 1
+
+[node name="[ AUDIO ]" type="Node" parent="."]
+
+[node name="UI" type="AudioStreamPlayer" parent="[ AUDIO ]"]
+stream = ExtResource("10_3jbcp")
+
+[node name="UIPressed" type="AudioStreamPlayer" parent="[ AUDIO ]"]
+stream = ExtResource("11_t0b7i")

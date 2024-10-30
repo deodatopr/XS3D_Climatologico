@@ -6,6 +6,9 @@ extends Control
 @export var popUp:GDs_PopUpVerSitio
 @export_group("Refs Internas")
 @export var sitios: Array[GDs_Perf_Sitio]
+@export_group("Audio")
+@export var sndUi1:AudioStreamPlayer
+@export var sndUiPressed:AudioStreamPlayer
 
 var lastOneFocused:= 0
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +44,7 @@ func InitializeSitios():
 		#Conectar senales
 		sitio.OnSitioPressed.connect(OnAnySitioPressed)
 		popUp.OnCancelarVerSitio.connect(sitio.OnPopUpCancelar)
+		sitio.button.focus_entered.connect(PlayUISound)
 
 func GetCurrentFocus():
 	var idx = 0
@@ -50,6 +54,7 @@ func GetCurrentFocus():
 		idx+=1
 
 func OnAnySitioPressed():
+	sndUiPressed.play()
 	GetCurrentFocus()
 	sitios[lastOneFocused].button.release_focus()
 	popUp.show()
@@ -57,3 +62,6 @@ func OnAnySitioPressed():
 
 func CancelarVerSitio():
 	sitios[lastOneFocused].button.grab_focus()
+
+func PlayUISound():
+	sndUi1.play()

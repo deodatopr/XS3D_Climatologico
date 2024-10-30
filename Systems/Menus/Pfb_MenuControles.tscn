@@ -6,8 +6,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]
 shader = ExtResource("1_xwbp0")
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.5
-shader_parameter/blur = 1
+shader_parameter/brightness = 0.0
+shader_parameter/blur = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
 atlas = ExtResource("2_x6xqf")

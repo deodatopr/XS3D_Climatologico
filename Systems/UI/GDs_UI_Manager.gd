@@ -14,6 +14,7 @@ extends Control
 @export var barraMenus:GDs_BarraMenus
 @export var menuInfo:Control
 
+
 var isFirstRun : bool = true
 var tween:Tween
 
