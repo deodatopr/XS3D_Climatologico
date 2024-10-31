@@ -15,13 +15,6 @@
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 
-#activar bool DangerToClose (shader)
-
-#Solo cambiar material
-#DistanceFade
-#Arriba - 900
-#Abajo - 1500
-
 #Splash virtual wave y xsoft (borrar le otro)
 
 #Cam fly

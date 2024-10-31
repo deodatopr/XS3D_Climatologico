@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://klhd05h31soo"]
+[gd_scene load_steps=4 format=3 uid="uid://klhd05h31soo"]
 
 [ext_resource type="Script" path="res://Systems/Splash/GDs_Splash.gd" id="1_gr75u"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_r8ng5"]
-[ext_resource type="Texture2D" uid="uid://bu08kjkfn1ilc" path="res://Cont_UI/Splash/Splash_CDMX.png" id="3_l1wto"]
 [ext_resource type="Texture2D" uid="uid://kx576vlm5ckp" path="res://Cont_UI/Splash/Splash_Empresas.png" id="4_jp8cy"]
 
 [node name="Lvl_Splash" type="Control" node_paths=PackedStringArray("splashes", "bgk", "timer")]
@@ -14,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_gr75u")
-splashes = [NodePath("Splashes/Splash_1"), NodePath("Splashes/Splash_2")]
+splashes = [NodePath("Splashes/Splash_1")]
 bgk = NodePath("Atls_Bgk")
 timer = NodePath("Timer - Splash Img Visible")
 
@@ -55,19 +54,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_jp8cy")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Splash_2" type="TextureRect" parent="Splashes"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_l1wto")
 expand_mode = 1
 stretch_mode = 5
 
