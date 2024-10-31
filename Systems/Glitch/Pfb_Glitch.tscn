@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://bb0u21qbxmbv1"]
+
+[ext_resource type="Script" path="res://Systems/Glitch/GDs_Glitch.gd" id="1_nuw5m"]
+[ext_resource type="AudioStream" uid="uid://bqsev6fh4jlx7" path="res://Cont_Sounds/Drones/Drone_Glitch.mp3" id="2_rx0j5"]
+[ext_resource type="AudioStream" uid="uid://vxohyn7703vt" path="res://Cont_Sounds/Drones/Drone_Glitch Onlimit.mp3" id="3_7o7yx"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="4_dq2f5"]
+[ext_resource type="Script" path="res://Systems/Curtain/GDs_LocalCurtain.gd" id="5_u01u5"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="6_cwp2c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a1ui"]
+shader = ExtResource("6_cwp2c")
+shader_parameter/random = false
+shader_parameter/random_rate = 0.2
+shader_parameter/rows_min = 5.0
+shader_parameter/rows_max = 20.0
+shader_parameter/rows_speed = 70.0
+shader_parameter/chromatic = 0.2
+shader_parameter/intensity = 0.3
+
+[node name="Glitch" type="Node" node_paths=PackedStringArray("sndGlitch", "sndGlitchLimit", "glitch", "cortinilla", "mensaje")]
+script = ExtResource("1_nuw5m")
+sndGlitch = NodePath("Glitch")
+sndGlitchLimit = NodePath("GlitchLimit")
+glitch = NodePath("PPE - Glitch/ColorRect")
+cortinilla = NodePath("Cortinilla Local")
+mensaje = NodePath("Msg Perdiendo Senal")
+
+[node name="Glitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rx0j5")
+volume_db = -15.0
+
+[node name="GlitchLimit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7o7yx")
+pitch_scale = 0.5
+
+[node name="Cortinilla Local" type="NinePatchRect" parent="."]
+process_mode = 4
+visible = false
+self_modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dq2f5")
+region_rect = Rect2(476, 8, 23, 25)
+script = ExtResource("5_u01u5")
+colorTransparent = Color(0, 0, 0, 0)
+
+[node name="PPE - Glitch" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="PPE - Glitch"]
+process_mode = 4
+visible = false
+material = SubResource("ShaderMaterial_8a1ui")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Msg Perdiendo Senal" type="CanvasLayer" parent="."]
+layer = 5
+visible = false
+
+[node name="Perdiendo senal" type="Control" parent="Msg Perdiendo Senal"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Msg Perdiendo Senal/Perdiendo senal"]
+self_modulate = Color(0, 0, 0, 0.384314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -77.0
+offset_right = 272.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dq2f5")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Msg Perdiendo Senal/Perdiendo senal/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "DEMASIADO CERCA DEL LIMITE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
