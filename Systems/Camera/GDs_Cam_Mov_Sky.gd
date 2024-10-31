@@ -17,7 +17,9 @@ var fov_lensDistIntensity : float
 
 #Movement
 var mov_speed : float
+var mov_speed01 : float = 0
 var mov_speed_boost : float
+var mov_curv01 : float
 var mov_max_acceleration : float
 var mov_velocity : Vector3
 var mov_isMoving : bool
@@ -26,6 +28,7 @@ var mov_lastVelocity : Vector3
 var mov_lastSpeed01:float = 0
 var mov_limitSpeed : float
 var mov_isInsideBoundings : bool
+var mov_lastBounding01 : float
 
 #Rotation
 var rotHor_yaw : float = 0.0
@@ -36,12 +39,7 @@ var rotHor_velocity : Vector3
 var MouseMotion : InputEvent
 
 # Misc
-var speed01 : float = 0
-var curvIsRunning : bool
-var canMoveCam : bool
 var signalUpdateWasEmitted : bool
-var tweenMovCamera : Tween
-var curv01 : float
 var curvEvaluateSpeed : float = .5
 var curvPoint : float
 
@@ -51,7 +49,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
 	cam = camMng.sky_cam
 	pivot_cam = camMng.sky_pivot
-	speed01 = 0
+	mov_speed01 = 0
 	
 	UpdateCamConfig()
 
@@ -67,7 +65,7 @@ func SetCamera():
 	cam.fov = camMng.sky_zoom_out
 	cam.rotation.x = deg_to_rad(-80)
 	mov_velocity = Vector3.ZERO
-	curv01 = 0
+	mov_curv01 = 0
 	
 	fov_current = cam.fov
 	_SetLensDistorsion(fov_current)
@@ -112,11 +110,11 @@ func _Movement(_delta: float):
 	inputDir = inputDir.normalized()
 
 	if mov_isPressingMove:
-		if curv01 < 1:
+		if mov_curv01 < 1:
 			#Calculate curve acc
-			curv01 += curvEvaluateSpeed * _delta
-			curv01 = clampf(curv01,0,1)
-			curvPoint = camMng.curveMovement.sample(curv01)
+			mov_curv01 += curvEvaluateSpeed * _delta
+			mov_curv01 = clampf(mov_curv01,0,1)
+			curvPoint = camMng.curveMovement.sample(mov_curv01)
 		
 		#Calculate velocity to move
 		mov_velocity += inputDir * curvPoint * _delta
@@ -125,9 +123,9 @@ func _Movement(_delta: float):
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif not mov_isPressingMove and mov_velocity.length() > 0:
 		#Calculate curve dec
-		curv01 -= curvEvaluateSpeed * _delta
-		curv01 = clampf(curv01,0,1)
-		curvPoint = camMng.curveMovement.sample(curv01)
+		mov_curv01 -= curvEvaluateSpeed * _delta
+		mov_curv01 = clampf(mov_curv01,0,1)
+		curvPoint = camMng.curveMovement.sample(mov_curv01)
 		
 		#Calculate deceleration
 		var targetLength : Vector3 = mov_velocity * curvPoint
@@ -136,14 +134,22 @@ func _Movement(_delta: float):
 			mov_velocity = Vector3.ZERO
 			
 	#Velocity decrease by boundings
-	mov_velocity = mov_velocity * (1 - CAM.boundings01)
+	var decreaseSpeedByLimits : float = (1 - CAM.boundings01)
+	var isDirTowardLimit : bool = signf(mov_lastBounding01 - decreaseSpeedByLimits) > 0
 	
-	#Save speed01 to send it to UI
+	#No decrease speed if dir is diferent toward limit (to escape easily)
+	if not isDirTowardLimit:
+		decreaseSpeedByLimits = 1
+
+	mov_lastBounding01 = (1 - CAM.boundings01)
+	mov_velocity = mov_velocity * decreaseSpeedByLimits
+	
+	#Save mov_speed01 to send it to UI
 	var fixSpeed : float =  inverse_lerp(0,mov_speed * mov_speed_boost,mov_velocity.length())
 	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, .2)
 	@warning_ignore('incompatible_ternary')
-	speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
-	mov_lastSpeed01 = speed01
+	mov_speed01 = clampf(slowSpeed,0,1 if Input.is_action_pressed('3DMove_SpeedBoost') else .7)
+	mov_lastSpeed01 = mov_speed01
 	
 	#Apply movement
 	if mov_velocity.length() > 0:
