@@ -165,9 +165,9 @@ func _UpdateCamState():
 	last_rotation = cam.global_rotation_degrees.y
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		CAM.speed = floori(lerpf(0,sky_UI_maxSpeed, movSky.speed01))
-	#else:
-		#CAM.speed = floori(lerpf(0,fly_UI_maxSpeed, movFly.mov_speed01))
+		CAM.speed = floori(lerpf(0,sky_UI_maxSpeed, movSky.mov_speed01))
+	else:
+		CAM.speed = floori(lerpf(0,fly_UI_maxSpeed, movFly.mov_speed01))
 		
 func _ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.sky:
