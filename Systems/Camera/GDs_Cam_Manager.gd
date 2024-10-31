@@ -85,7 +85,6 @@ func Initialize(_modeToIntializeCam : int):
 	mat_limit_sky.set_shader_parameter("DangerToClose",false)
 	mat_limit_fly.set_shader_parameter("DangerToClose",false)
 
-	
 	for terrain in Terrains:
 		navMeshBounds = navMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
 	
@@ -145,8 +144,6 @@ func _SetShaLimit(_mat : ShaderMaterial):
 	elif CAM.boundings01 == 0 and dangerToCloseLimit:
 		dangerToCloseLimit = false
 		_mat.set_shader_parameter("DangerToClose",dangerToCloseLimit)
-		
-	print(CAM.boundings01 == 0 and dangerToCloseLimit)
 
 func _UpdateCamState():
 	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam 
