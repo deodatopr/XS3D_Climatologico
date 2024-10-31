@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Mat_Limit": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Limit.tres"
+"use_external/path": "res://Cont_Shared/Materials/Mat_Limit_Sky.tres"
 }
 },
 "nodes": {
