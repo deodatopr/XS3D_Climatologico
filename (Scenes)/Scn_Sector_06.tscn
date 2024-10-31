@@ -79,14 +79,13 @@ ligtht_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
 fly_rot_speed = 1.05
 
-[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndWind", "sndCameraFOV", "sndCameraRot")]
+[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
 script = ExtResource("16_r0mi2")
 sndMoving = NodePath("Moving")
-sndMovingVolume = 7.0
 sndMovingPitch = 1.0
-sndWind = NodePath("Wind")
 sndCameraFOV = NodePath("CameraFOV")
 sndCameraRot = NodePath("CameraRot")
+sndWind = NodePath("Wind")
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
