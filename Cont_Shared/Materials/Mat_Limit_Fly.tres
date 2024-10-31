@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://nan3iase8pij"]
+
+[ext_resource type="Shader" uid="uid://ustl0eslk36m" path="res://Vfx_Shaders/Limit/Sha_Limit.tres" id="1_rhahp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rhahp")
+shader_parameter/DangerToClose = true
+shader_parameter/ColorShield = Color(0.710448, 1, 0.970296, 1)
+shader_parameter/ColorBorderAnim = Color(0.988235, 0.05098, 0.286275, 1)
+shader_parameter/LinePulseSpeed = 0.2
+shader_parameter/Line_Amount = 30.0
+shader_parameter/LineMoveSpeed = 0.3
+shader_parameter/LineHardness = 10.0
+shader_parameter/LinePulseMin = 0.6
+shader_parameter/ShieldOpacity = 0.5
+shader_parameter/ShieldBorder = 50.0
+shader_parameter/Emission = 2.0
+shader_parameter/DistanceFade = 900.0
