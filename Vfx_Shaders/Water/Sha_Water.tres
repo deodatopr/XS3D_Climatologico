@@ -61,7 +61,7 @@ texture = ExtResource("1_22ah5")
 texture_type = 2
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_7d0df"]
-size = Vector2(1002.25, 419)
+size = Vector2(1002.25, 391)
 title = "World Projection"
 attached_nodes = PackedInt32Array(8, 36, 9, 7, 39, 38, 37, 11, 10)
 
@@ -84,7 +84,7 @@ default_value_enabled = true
 default_value = 1.0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_grva6"]
-size = Vector2(1302.25, 890)
+size = Vector2(1302.25, 811)
 title = "Normals"
 attached_nodes = PackedInt32Array(40, 55, 86, 79, 80, 84, 78, 76, 81, 61, 87, 77, 3, 65, 52)
 
@@ -373,7 +373,6 @@ void fragment() {
 	var_World_Projection = vec3(0.0);
 }
 "
-graph_offset = Vector2(-65.3333, -9.33333)
 varyings/World_Projection = "1,4"
 nodes/fragment/0/position = Vector2(720, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_vum2f")

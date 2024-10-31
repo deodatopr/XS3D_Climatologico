@@ -7,20 +7,20 @@ var pivot : Node3D
 
 var mov_deceleration : float = 100
 var mov_velocity : Vector3 = Vector3.ZERO
+var mov_axisMovement : Vector2
+var mov_axisHeight : float
+var mov_lastHeight : float
+var mov_height_velocity : float
+var mov_height_lerp : float
 
 var rot_lastRotX : float
 var rot_lastRotY : float
-var rot_rotation : Vector2
+var rot_axisRotation : Vector2
 
 var yaw : float = 0.0
 var pitch : float = 0.0
 var MouseMotion : InputEvent
 var is_start_to_move : bool = false
-var last_cam_rotation : Vector3
-var last_pivot_rotation : Vector3
-var return_cam_time_elpased : float = 0
-var last_pitch : float = 0
-var yaw_direction = 1
 var BoostTimeElapsed = 0
 var CursorMovement : Vector2
 var isInGround : bool = false
@@ -28,8 +28,6 @@ var isInTop : bool = false
 var canPressDown : bool = true
 var speed01 : float = 0
 var lastSpeed01 : float = 0
-
-const RETURN_CAMERA_ADJUST : float = 0.1
 
 func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
@@ -60,36 +58,61 @@ func _physics_process(delta:float):
 	camMng.CheckMapBoundings(pivot)
 	
 func _movement(_delta:float):
-	var inputDir = Vector3.ZERO
+	_mov_height(_delta)
+	_mov_movement(_delta)
+	
+func _mov_height(_delta : float):
+	#Get input from  mouse/ controller
+	mov_axisHeight = Input.get_axis("3DMove_Height_-","3DMove_Height_+")
+	var heightDir : float = signf(mov_axisHeight)
+	
+	#Set limits
+	var offsetLimits : float = 10
+	var minHeightFromNavMesh : float = UTILITIES._get_point_on_map(pivot.position,cam,0).y
+	var min : float = minHeightFromNavMesh + camMng.fly_height_min
+	var max : float = minHeightFromNavMesh + camMng.fly_height_max
+	var height01 : float = clampf(inverse_lerp(min,max,pivot.global_position.y),0,1)
+	
+	#Calculate new height
+	mov_height_velocity = heightDir * 700 * _delta
+	
+	#Apply new height to an aux vector to evaluate distances
+	var targetHeight : Vector3 = pivot.position
+	targetHeight.y += mov_height_velocity
+	
+	#Check distance to ground
+	var limitToDetectGround : float = .2
+	var limitToDetectTop: float = .8
+	isInGround = height01 <= limitToDetectGround
+	isInTop = height01 >= limitToDetectTop
+	if isInGround and heightDir < 0:
+		mov_height_lerp = 1 - inverse_lerp(limitToDetectGround,0,height01)
+	elif isInTop and heightDir > 0:
+		mov_height_lerp = inverse_lerp(1,limitToDetectTop,height01)
+	else:
+		mov_height_lerp = 1
+	
+	mov_height_velocity *= mov_height_lerp
+	
+	#Apply
+	var finalHeight : float = pivot.position.y
+	finalHeight += mov_height_velocity
+	finalHeight = clampf(finalHeight,min,max)
+	
+	var smoothness :float = 5
+	pivot.position.y = lerpf(pivot.position.y, finalHeight, smoothness *_delta)
+	mov_lastHeight = pivot.position.y
 
-	if Input.is_action_pressed("3DMove_Forward"):
-		inputDir += pivot.basis.z
-
-	if Input.is_action_pressed("3DMove_Backward"):
-		inputDir += -pivot.basis.z
-
-	if Input.is_action_pressed("3DMove_Right"):
-		inputDir += -pivot.basis.x
-
-	if Input.is_action_pressed("3DMove_Left"):
-		inputDir += pivot.basis.x
-		
-	if Input.is_action_pressed("3DMove_Height_+"):
-		if !isInTop:
-			inputDir += pivot.basis.y
-			isInGround = false
-
-	if Input.is_action_pressed("3DMove_Height_-"):
-		if canPressDown:
-			inputDir -= pivot.basis.y
-			isInTop = false
+func _mov_movement(_delta : float):
+	mov_axisMovement = Input.get_vector("3DMove_Right","3DMove_Left","3DMove_Backward","3DMove_Forward")
+	var dir : Vector3 = pivot.basis * Vector3(mov_axisMovement.x,0,mov_axisMovement.y)
 
 	var FinalSpeedTurbo : float = camMng.fly_turbo
 	@warning_ignore('incompatible_ternary')
 	FinalSpeedTurbo = camMng.fly_turbo if Input.is_action_pressed("3DMove_SpeedBoost") else 1
 	
-	if inputDir.length() > 0:
-		mov_velocity += (inputDir * camMng.fly_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
+	if dir.length() > 0:
+		mov_velocity += (dir * camMng.fly_speed * _delta) + mov_velocity.normalized() * (FinalSpeedTurbo)
 		if mov_velocity.length() > mov_deceleration:	
 			mov_velocity = mov_velocity.limit_length(mov_deceleration * FinalSpeedTurbo)
 	
@@ -109,48 +132,36 @@ func _movement(_delta:float):
 	var targetPosition : Vector3 = pivot.global_position
 	targetPosition += mov_velocity * _delta
 	
-	var distanceToGround = targetPosition.distance_to(UTILITIES._get_point_on_map(targetPosition, cam,0))
-	isInGround = distanceToGround < camMng.fly_height_min
-	var pointInNavMesh := UTILITIES._get_point_on_map(cam.global_position, cam,0).y
-	canPressDown = pivot.global_position.y > pointInNavMesh + camMng.fly_height_min - 4
-	
-	if isInGround:
-		if targetPosition.y - UTILITIES._get_point_on_map(targetPosition, cam,0).y > .1:
-			if inputDir != Vector3.UP:
-				targetPosition.y = lerpf(targetPosition.y, pointInNavMesh + (Vector3.UP * (camMng.fly_height_min - 5)).y, .5)
-		else:
-			targetPosition.y = pointInNavMesh + (Vector3.UP * 50).y
-
-	isInTop = targetPosition.y >= camMng.fly_height_max
-	
 	pivot.global_position = targetPosition
 
-
 func _rotation(_delta:float):
-	rot_rotation = Input.get_vector("3DLook_Left",'3DLook_Right','3DLook_Down','3DLook_Up')
-	var dir : Vector2 = rot_rotation
+	#Detect input controller
+	rot_axisRotation = Input.get_vector("3DLook_Left",'3DLook_Right','3DLook_Down','3DLook_Up')
+	var dir : Vector2 = rot_axisRotation
 	
+	#Detect input mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if MouseMotion != null:
 			var fixedMouseMotion : Vector2 = MouseMotion.relative
 			fixedMouseMotion.y = -fixedMouseMotion.y
 			dir = fixedMouseMotion.normalized()
 
-	_rotHorPivot(dir.x,_delta)
-	_rotVertCam(-dir.y,_delta)
+	CAM.isRotating = dir.length() > 0
 	
-	CAM.isRotating = !is_equal_approx(pivot.rotation_degrees.x,rot_lastRotX) or !is_equal_approx(pivot.rotation_degrees.y,rot_lastRotY)
+	#Apply rot
+	_rotation_Hor(dir.x,_delta)
+	_rotation_vert(-dir.y,_delta)
 
 	rot_lastRotX = pivot.rotation.x
 	rot_lastRotY = pivot.rotation.y
 
-func _rotHorPivot(_dir:float, _delta:float):
+func _rotation_Hor(_dir:float, _delta:float):
 	yaw -= _dir * camMng.fly_rot_speed  * _delta
 	var targetAngle : float = deg_to_rad(yaw)
 	var smoothTarget : float = lerp_angle(rot_lastRotY,yaw,5 * _delta)
 	pivot.rotation.y = smoothTarget
 
-func _rotVertCam(_dir:float, _delta:float):
+func _rotation_vert(_dir:float, _delta:float):
 	pitch -= -_dir * camMng.fly_rot_speed  * _delta
 	var targetAngle : float = deg_to_rad(pitch)
 	var smoothTarget : float = lerp_angle(rot_lastRotX,pitch,5 * _delta)
