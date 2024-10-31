@@ -7,28 +7,24 @@
 
 [node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("1_vxe6d")
-movSky = NodePath("Mov_Sky")
-sky_pivot = NodePath("Mov_Sky/sky_pivot")
-sky_cam = NodePath("Mov_Sky/sky_pivot/sky_cam")
-movFly = NodePath("Mov_Fly")
-fly_pivot = NodePath("Mov_Fly/fly_pivot")
-fly_cam = NodePath("Mov_Fly/fly_pivot/fly_cam")
+movSky = NodePath("MovSky")
+sky_pivot = NodePath("MovSky")
+sky_cam = NodePath("MovSky/sky_cam")
+movFly = NodePath("MovFly")
+fly_pivot = NodePath("MovFly")
+fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_goarf")
 
-[node name="Mov_Sky" type="Node" parent="."]
+[node name="MovSky" type="Node3D" parent="."]
 script = ExtResource("2_s21o3")
 
-[node name="sky_pivot" type="Node3D" parent="Mov_Sky"]
-
-[node name="sky_cam" type="Camera3D" parent="Mov_Sky/sky_pivot"]
+[node name="sky_cam" type="Camera3D" parent="MovSky"]
 transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
 fov = 35.0
 
-[node name="Mov_Fly" type="Node" parent="."]
+[node name="MovFly" type="Node3D" parent="."]
 script = ExtResource("4_iwq67")
 
-[node name="fly_pivot" type="Node3D" parent="Mov_Fly"]
-
-[node name="fly_cam" type="Camera3D" parent="Mov_Fly/fly_pivot"]
+[node name="fly_cam" type="Camera3D" parent="MovFly"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0
