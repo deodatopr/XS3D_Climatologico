@@ -5,13 +5,15 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_ihl8u")
-shader_parameter/Border_Anim = true
-shader_parameter/ColorShield = Color(0.372549, 0.572549, 0.788235, 1)
+shader_parameter/DangerToClose = true
+shader_parameter/ColorShield = Color(0.710448, 1, 0.970296, 1)
 shader_parameter/ColorBorderAnim = Color(0.988235, 0.05098, 0.286275, 1)
-shader_parameter/LinePulseSpeed = 0.3
-shader_parameter/Line_Amount = 20.0
-shader_parameter/LineMoveSpeed = 0.15
-shader_parameter/LineHardness = 5.0
+shader_parameter/LinePulseSpeed = 0.2
+shader_parameter/Line_Amount = 30.0
+shader_parameter/LineMoveSpeed = 0.3
+shader_parameter/LineHardness = 10.0
 shader_parameter/LinePulseMin = 0.6
 shader_parameter/ShieldOpacity = 0.5
 shader_parameter/ShieldBorder = 50.0
+shader_parameter/Emission = 2.0
+shader_parameter/DistanceFade = 1500.0

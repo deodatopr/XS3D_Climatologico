@@ -10,13 +10,12 @@ sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 0.5
 sky = SubResource("Sky_al770")
 sky_rotation = Vector3(0, -1.5708, 0)
 tonemap_mode = 2
-ssao_enabled = true
-ssao_radius = 10.0
-ssao_intensity = 11.0
+ssao_radius = 5.0
+ssao_intensity = 5.0
+ssao_sharpness = 1.0
 ssil_radius = 15.51
 ssil_intensity = 0.0
 sdfgi_use_occlusion = true

@@ -68,21 +68,23 @@ shader_parameter/lensDistortion = 1.0
 [node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
 [node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("worldEnv", "msh_roads", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "ligtht_sun_sky", "ligtht_sun_fly", "Terrains") instance=ExtResource("1_sjpgl")]
-worldEnv = NodePath("../../[ PPE + UI ]/WorldEnvironment")
+worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Roads")
 ppe_fishEye_DroneSky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]/PPE - FishEye/DroneSky")
 ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
 ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
-ligtht_sun_sky = NodePath("../../[ CONTENT ]/Light - Sun_Sky")
-ligtht_sun_fly = NodePath("../../[ CONTENT ]/Light - Sun_Fly")
+ligtht_sun_sky = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Sky")
+ligtht_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
 fly_height_min = 50.0
+fly_speed = 100.0
+fly_rot_speed = 1.05
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndWind", "sndCameraFOV", "sndCameraRot")]
 script = ExtResource("16_r0mi2")
 sndMoving = NodePath("Moving")
-sndMovingVolume = -10.0
-sndMovingPitch = 0.5
+sndMovingVolume = 7.0
+sndMovingPitch = 1.0
 sndWind = NodePath("Wind")
 sndCameraFOV = NodePath("CameraFOV")
 sndCameraRot = NodePath("CameraRot")
@@ -95,15 +97,16 @@ parameters/looping = true
 
 [node name="Moving" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("18_og2vw")
+volume_db = 7.0
 parameters/looping = true
 
 [node name="CameraFOV" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
-volume_db = 10.0
 pitch_scale = 0.7
 
 [node name="CameraRot" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
+volume_db = 7.0
 pitch_scale = 0.5
 
 [node name="Glitch" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndGlitch", "sndGlitchLimit", "vistaSky", "vistaFly", "glitch", "cortinilla", "mensaje")]
@@ -207,29 +210,6 @@ volume_db = 10.0
 autoplay = true
 parameters/looping = true
 
-[node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.166769, 0.926533, -0.337231, 0, 0.34202, 0.939693, 0.985996, 0.156711, -0.0570383, 0, 0, 0)
-visible = false
-light_color = Color(1, 0.948457, 0.877053, 1)
-light_angular_distance = 1.0
-shadow_enabled = true
-shadow_opacity = 0.9
-directional_shadow_mode = 0
-directional_shadow_max_distance = 800.0
-sky_mode = 1
-metadata/_edit_lock_ = true
-
-[node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ CONTENT ]"]
-transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, -27.0369, 72.9466, -43.7071)
-light_color = Color(1, 0.948457, 0.877053, 1)
-light_energy = 2.0
-light_angular_distance = 0.5
-shadow_enabled = true
-shadow_opacity = 0.9
-directional_shadow_mode = 0
-directional_shadow_max_distance = 1000.0
-sky_mode = 1
-
 [node name="Pin - Presa" type="Node3D" parent="[ CONTENT ]"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8882, 49.4281, -51.6092)
 metadata/_edit_lock_ = true
@@ -245,7 +225,7 @@ visible = false
 metadata/_edit_lock_ = true
 
 [node name="Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(29.8816, 0, 0, 0, 9.76607, 0, 0, 0, 33.1246, 735.918, 0, 848.062)
+transform = Transform3D(31.4213, 0, 0, 0, 9.76607, 0, 0, 0, 34.5044, 735.918, 0, 848.062)
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
@@ -265,11 +245,35 @@ transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1
 
 [node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
-[node name="[ PPE + UI ]" type="Node" parent="."]
+[node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="[ PPE + UI ]"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
 environment = ExtResource("20_i6few")
 camera_attributes = ExtResource("21_uyocc")
+
+[node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(-0.166769, 0.926533, -0.33723, 0, 0.34202, 0.939693, 0.985996, 0.156712, -0.0570384, 0, 0, 0)
+visible = false
+light_color = Color(1, 0.948457, 0.877053, 1)
+shadow_enabled = true
+shadow_opacity = 0.9
+shadow_blur = 10.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 800.0
+sky_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, -27.0369, 72.9466, -43.7071)
+light_color = Color(1, 0.926401, 0.824441, 1)
+light_energy = 2.0
+light_angular_distance = 0.5
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 1000.0
+sky_mode = 1
+
+[node name="[ PPE + UI ]" type="Node" parent="."]
 
 [node name="[ PPE- SKY]" type="Node" parent="[ PPE + UI ]"]
 
