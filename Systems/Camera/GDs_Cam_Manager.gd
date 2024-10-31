@@ -5,6 +5,7 @@ class_name GDs_Cam_Manager extends Node
 @export_group("SCENE REFERENCES")
 @export var worldEnv : WorldEnvironment
 @export var msh_roads : MeshInstance3D
+@export var msh_limit : MeshInstance3D
 @export var ppe_fishEye_DroneSky : ColorRect
 
 @export var ui_ppe_sky : Node
@@ -43,6 +44,9 @@ class_name GDs_Cam_Manager extends Node
 @export_range(1,5) var fly_turbo : float = 2
 @export var fly_rot_speed : float = .75
 
+@onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
+@onready var mat_limit_fly : ShaderMaterial = preload("uid://nan3iase8pij")
+
 @onready var mat_roads_sky : BaseMaterial3D = preload("uid://bybsj0rkirn0u")
 @onready var mat_roads_fly : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
 
@@ -52,13 +56,14 @@ class_name GDs_Cam_Manager extends Node
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
-var NavMeshBounds : AABB
+var navMeshBounds : AABB
 var camMode : int
 var last_rotation : float
 
 var sky_UI_maxSpeed : int = 250
 var fly_UI_maxSpeed : int = 100
 
+var dangerToCloseLimit : bool
 var positionInMap01 : Vector2 = Vector2.ZERO
 var matFishEye :  ShaderMaterial
 
@@ -77,9 +82,12 @@ func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
 	
 	matFishEye = ppe_fishEye_DroneSky.material
+	mat_limit_sky.set_shader_parameter("DangerToClose",false)
+	mat_limit_fly.set_shader_parameter("DangerToClose",false)
+
 	
 	for terrain in Terrains:
-		NavMeshBounds = NavMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
+		navMeshBounds = navMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
 	
 	movSky.Initialize(self)
 	movFly.Initialize(self)
@@ -87,7 +95,7 @@ func Initialize(_modeToIntializeCam : int):
 	_ChangeToMode(_modeToIntializeCam)
 	
 func CheckMapBoundings(_pivot:Node3D) -> bool:
-	var cam_in_world = (_pivot.global_position + (NavMeshBounds.size/2))/NavMeshBounds.size
+	var cam_in_world = (_pivot.global_position + (navMeshBounds.size/2))/navMeshBounds.size
 	
 	positionInMap01 = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
 	CAM.positionXZ_01 = positionInMap01
@@ -116,13 +124,30 @@ func _input(_event):
 
 func _process(_delta):
 	_UpdateCamState()
+	_CheckProximityToLimits()
 	
 	if valuesInRuntime:
 		if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 			movSky.UpdateCamConfig()
 		else:
 			movFly.UpdateCamConfig()
-	
+
+func _CheckProximityToLimits():
+		if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
+			_SetShaLimit(mat_limit_sky)
+		else:
+			_SetShaLimit(mat_limit_fly)
+
+func _SetShaLimit(_mat : ShaderMaterial):
+	if CAM.boundings01 > 0 and not dangerToCloseLimit:
+		dangerToCloseLimit = true
+		_mat.set_shader_parameter("DangerToClose",dangerToCloseLimit)
+	elif CAM.boundings01 == 0 and dangerToCloseLimit:
+		dangerToCloseLimit = false
+		_mat.set_shader_parameter("DangerToClose",dangerToCloseLimit)
+		
+	print(CAM.boundings01 == 0 and dangerToCloseLimit)
+
 func _UpdateCamState():
 	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam 
 	var pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
@@ -145,7 +170,7 @@ func _UpdateCamState():
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		CAM.speed = floori(lerpf(0,sky_UI_maxSpeed, movSky.speed01))
 	else:
-		CAM.speed = floori(lerpf(0,fly_UI_maxSpeed, movFly.speed01))
+		CAM.speed = floori(lerpf(0,fly_UI_maxSpeed, movFly.mov_speed01))
 		
 func _ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.sky:
@@ -174,6 +199,9 @@ func _ChangeToMode_Sky():
 			
 		#Roads
 		msh_roads.material_override = mat_roads_sky
+		
+		#Msh limit
+		msh_limit.material_override = mat_limit_sky
 	
 		#Turn on sky cam
 		movSky.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -207,6 +235,9 @@ func _ChangeToMode_Fly():
 		#Roads
 		msh_roads.material_override = mat_roads_fly
 	
+		#Msh limit
+		msh_limit.material_override = mat_limit_fly
+		
 		#Turn off sky cam
 		movSky.process_mode = Node.PROCESS_MODE_DISABLED
 		UTILITIES.TurnOffObject(sky_pivot)
