@@ -86,7 +86,7 @@ func _CalculateScreenMark() -> void:
 	screenMark.global_position = postarget2d
 	
 	#Rotation
-	var centerScreen : Vector2 = Vector2(screenSize.x / 2, screenSize.y / 2)
+	var centerScreen : Vector2 = Vector2(screenSize.x * .5, screenSize.y * .5)
 	var angleToFixRot : float = 90
 	var angleRotation : float = rad_to_deg(centerScreen.angle_to_point(postarget2d)) + angleToFixRot
 	pointSitio.rotation_degrees = angleRotation
