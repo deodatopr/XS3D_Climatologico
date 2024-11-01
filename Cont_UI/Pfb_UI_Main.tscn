@@ -579,7 +579,7 @@ offset_right = 15.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.6, 2.6)
+scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(15, 15)
 texture = SubResource("AtlasTexture_5kuu7")
 
