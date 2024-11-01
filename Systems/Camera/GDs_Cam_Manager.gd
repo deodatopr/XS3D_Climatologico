@@ -43,6 +43,8 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_height_min : float = 50
 @export var fly_speed : float = 2
 @export_range(1,5) var fly_turbo : float = 2
+@export_range(.1,2,.1) var fly_acceleration : float = 1.5
+@export_range(.1,2,.1) var fly_deceleration : float = 1
 @export var fly_rot_speed : float = .7
 
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
