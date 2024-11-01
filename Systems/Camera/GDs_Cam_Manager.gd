@@ -74,7 +74,7 @@ func _ready():
 	#camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
 	
 	#TEST: Siempre inicia en sky o fly
-	camMode = ENUMS.Cam_Mode.fly
+	camMode = ENUMS.Cam_Mode.sky
 	
 	Initialize(camMode)
 	
