@@ -52,7 +52,7 @@ region = Rect2(473, 429, 31, 25)
 atlas = ExtResource("1_bu15u")
 region = Rect2(476, 392, 26, 26)
 
-[node name="Barra menus" type="Control" node_paths=PackedStringArray("BtnSitios", "BtnMapa", "BtnConfig", "BtnGuia")]
+[node name="Barra menus" type="Control" node_paths=PackedStringArray("BtnSitios", "BtnMapa", "BtnDatos", "BtnConfig")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -64,8 +64,8 @@ mouse_filter = 2
 script = ExtResource("1_ie0yi")
 BtnSitios = NodePath("HBoxContainer/Sitios/Icon/Button - Sitios")
 BtnMapa = NodePath("HBoxContainer/Mapa/Icon/Button - Mapa")
+BtnDatos = NodePath("HBoxContainer/Graficadora/Icon/Button - Datos")
 BtnConfig = NodePath("HBoxContainer/Audio/Icon/Button - Config")
-BtnGuia = NodePath("HBoxContainer/Graficadora/Icon/Button - Guia")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_ik81r")
@@ -166,10 +166,12 @@ offset_top = -38.0
 offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 toggle_mode = true
+action_mode = 0
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/Sitios/Icon/Button - Sitios"]
 layout_mode = 1
@@ -217,6 +219,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
+toggle_mode = true
+action_mode = 0
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/Mapa/Icon/Button - Mapa"]
 layout_mode = 1
@@ -255,7 +259,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button - Guia" type="Button" parent="HBoxContainer/Graficadora/Icon"]
+[node name="Button - Datos" type="Button" parent="HBoxContainer/Graficadora/Icon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -269,8 +273,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
+toggle_mode = true
+action_mode = 0
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Graficadora/Icon/Button - Guia"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Graficadora/Icon/Button - Datos"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -316,6 +322,8 @@ grow_vertical = 0
 focus_neighbor_right = NodePath("../../../Sitios/Icon/Button - Sitios")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
+toggle_mode = true
+action_mode = 0
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/Audio/Icon/Button - Config"]
 layout_mode = 1

@@ -47,7 +47,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	
 	UpdateCamConfig()
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		mouseMotion = event
 	else:

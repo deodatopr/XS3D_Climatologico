@@ -55,6 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_vcggy")
 menuPerfiles = NodePath("Menu Sitios")
 barraMenus = NodePath("Barra menus")
@@ -698,12 +699,12 @@ layout_mode = 1
 
 [node name="------BARRAS----------" type="Node" parent="."]
 
-[node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuConfig", "menuDatos", "sndUi1") instance=ExtResource("2_j5wup")]
+[node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuDatos", "menuConfig", "sndUi1") instance=ExtResource("2_j5wup")]
 layout_mode = 1
 menuSitios = NodePath("../Menu Sitios")
 menuMapa = NodePath("../Menu Mapa")
-menuConfig = NodePath("../Menu Config")
 menuDatos = NodePath("../Menu Datos")
+menuConfig = NodePath("../Menu Config")
 sndUi1 = NodePath("../[ AUDIO ]/UI")
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]

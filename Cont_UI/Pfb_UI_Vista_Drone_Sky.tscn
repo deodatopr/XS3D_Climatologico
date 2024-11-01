@@ -152,6 +152,7 @@ anchor_bottom = 1.0
 offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_wv2a8")
 lblAltura = NodePath("Datos/Datos/Altura/Lbl Altura")
 lblVelocidad = NodePath("Datos/Datos/Velocidad/Lbl Velocidad")
@@ -207,6 +208,7 @@ offset_right = 361.0
 offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Line" type="NinePatchRect" parent="Crosshair"]
 layout_mode = 1
@@ -255,6 +257,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(270, 270)
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Crosshair/Ring"]
 layout_mode = 1
@@ -270,6 +273,7 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_04pha")
 
 [node name="TextureRect2" type="TextureRect" parent="Crosshair/Ring"]
@@ -287,6 +291,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = 1.5708
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_04pha")
 
 [node name="TextureRect3" type="TextureRect" parent="Crosshair/Ring"]
@@ -304,6 +309,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_04pha")
 
 [node name="TextureRect4" type="TextureRect" parent="Crosshair/Ring"]
@@ -321,6 +327,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = -1.5708
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_04pha")
 
 [node name="Ring2" type="Control" parent="Crosshair"]
@@ -340,6 +347,7 @@ grow_vertical = 2
 rotation = 0.223402
 scale = Vector2(1.19, 1.19)
 pivot_offset = Vector2(212, 212)
+mouse_filter = 2
 script = ExtResource("4_fj5m0")
 speed = -0.025
 
@@ -347,6 +355,7 @@ speed = -0.025
 layout_mode = 1
 offset_right = 212.0
 offset_bottom = 212.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="TextureRect2" type="TextureRect" parent="Crosshair/Ring2"]
@@ -359,6 +368,7 @@ offset_bottom = 212.0
 grow_horizontal = 0
 rotation = 1.5708
 pivot_offset = Vector2(106, 106)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="TextureRect3" type="TextureRect" parent="Crosshair/Ring2"]
@@ -374,6 +384,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
 pivot_offset = Vector2(106, 106)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="TextureRect4" type="TextureRect" parent="Crosshair/Ring2"]
@@ -386,6 +397,7 @@ offset_right = 212.0
 grow_vertical = 0
 rotation = -1.5708
 pivot_offset = Vector2(106, 106)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="Ring3" type="Control" parent="Crosshair"]
@@ -404,6 +416,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.13, 1.13)
 pivot_offset = Vector2(212, 212)
+mouse_filter = 2
 script = ExtResource("4_fj5m0")
 speed = 0.05
 
@@ -411,6 +424,7 @@ speed = 0.05
 layout_mode = 1
 offset_right = 212.0
 offset_bottom = 212.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="TextureRect2" type="TextureRect" parent="Crosshair/Ring3"]
@@ -423,6 +437,7 @@ offset_bottom = 212.0
 grow_horizontal = 0
 rotation = 1.5708
 pivot_offset = Vector2(106, 106)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="TextureRect3" type="TextureRect" parent="Crosshair/Ring3"]
@@ -438,6 +453,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
 pivot_offset = Vector2(106, 106)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="TextureRect4" type="TextureRect" parent="Crosshair/Ring3"]
@@ -450,6 +466,7 @@ offset_right = 212.0
 grow_vertical = 0
 rotation = -1.5708
 pivot_offset = Vector2(106, 106)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_fy32t")
 
 [node name="Hor Lines" type="Control" parent="Crosshair"]
@@ -465,6 +482,7 @@ offset_right = 355.0
 offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Mask" type="NinePatchRect" parent="Crosshair/Hor Lines"]
 clip_children = 1
@@ -514,6 +532,7 @@ grow_vertical = 2
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Triangle2" type="TextureRect" parent="Crosshair/Hor Lines"]
@@ -533,6 +552,7 @@ grow_vertical = 2
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Ver Lines" type="Control" parent="Crosshair"]
@@ -548,6 +568,7 @@ offset_right = 17.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Triangle" type="TextureRect" parent="Crosshair/Ver Lines"]
 self_modulate = Color(0.25, 0.8375, 1, 0.490196)
@@ -563,6 +584,7 @@ grow_horizontal = 2
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Triangle2" type="TextureRect" parent="Crosshair/Ver Lines"]
@@ -581,6 +603,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nuevo")
 
 [node name="Mask" type="NinePatchRect" parent="Crosshair/Ver Lines"]
@@ -633,6 +656,7 @@ offset_right = 723.0
 offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Linea Abajo" type="Control" parent="Indicadores Interiores"]
 layout_mode = 1
@@ -647,6 +671,7 @@ offset_right = 150.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="CurveLine" type="TextureRect" parent="Indicadores Interiores/Linea Abajo"]
 layout_mode = 1
@@ -661,6 +686,7 @@ offset_right = 1.0
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_5631b")
 
 [node name="CurveLine2" type="TextureRect" parent="Indicadores Interiores/Linea Abajo"]
@@ -678,6 +704,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(149, 0)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_5631b")
 
 [node name="Linea Arriba" type="Control" parent="Indicadores Interiores"]
@@ -691,6 +718,7 @@ offset_bottom = 38.0
 grow_horizontal = 2
 rotation = 3.14159
 pivot_offset = Vector2(150, 19)
+mouse_filter = 2
 
 [node name="CurveLine" type="TextureRect" parent="Indicadores Interiores/Linea Arriba"]
 layout_mode = 1
@@ -705,6 +733,7 @@ offset_right = 1.0
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_5631b")
 
 [node name="CurveLine2" type="TextureRect" parent="Indicadores Interiores/Linea Arriba"]
@@ -722,6 +751,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(149, 0)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_5631b")
 
 [node name="Derecha" type="Control" parent="Indicadores Interiores"]
@@ -736,6 +766,7 @@ offset_top = -299.0
 offset_bottom = 299.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control2" type="Control" parent="Indicadores Interiores/Derecha"]
 layout_mode = 1
@@ -749,6 +780,7 @@ offset_top = -114.0
 offset_bottom = 114.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Derecha/Control2"]
 layout_mode = 1
@@ -761,6 +793,7 @@ offset_bottom = 114.0
 grow_horizontal = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(35, 57)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_85ul5")
 
 [node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Derecha/Control2"]
@@ -777,6 +810,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(-1, -1)
 pivot_offset = Vector2(35, 57)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_85ul5")
 
 [node name="Control3" type="Control" parent="Indicadores Interiores/Derecha"]
@@ -788,6 +822,7 @@ offset_top = -295.0
 offset_right = 131.0
 offset_bottom = 295.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Derecha/Control3"]
 layout_mode = 1
@@ -800,6 +835,7 @@ offset_bottom = 297.0
 grow_horizontal = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(63, 198)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_vjcu7")
 
 [node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Derecha/Control3"]
@@ -816,6 +852,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(-1, -1)
 pivot_offset = Vector2(63, 150)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_74sa0")
 
 [node name="Mask Lines" type="NinePatchRect" parent="Indicadores Interiores/Derecha"]
@@ -866,6 +903,7 @@ offset_bottom = 299.0
 grow_vertical = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(151, 299)
+mouse_filter = 2
 
 [node name="Control2" type="Control" parent="Indicadores Interiores/Izquierda"]
 layout_mode = 1
@@ -879,6 +917,7 @@ offset_top = -114.0
 offset_bottom = 114.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control2"]
 layout_mode = 1
@@ -891,6 +930,7 @@ offset_bottom = 114.0
 grow_horizontal = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(35, 57)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_85ul5")
 
 [node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control2"]
@@ -907,6 +947,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(-1, -1)
 pivot_offset = Vector2(35, 57)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_85ul5")
 
 [node name="Control4" type="Control" parent="Indicadores Interiores/Izquierda"]
@@ -925,6 +966,7 @@ grow_vertical = 2
 rotation = -1.5708
 scale = Vector2(1.405, 1.405)
 pivot_offset = Vector2(37, 114)
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control4"]
 layout_mode = 1
@@ -936,6 +978,7 @@ offset_bottom = 114.0
 grow_horizontal = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(35, 57)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_1x84g")
 
 [node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control4"]
@@ -952,6 +995,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(-1, -1)
 pivot_offset = Vector2(35, 57)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_6q77k")
 
 [node name="Control3" type="Control" parent="Indicadores Interiores/Izquierda"]
@@ -963,6 +1007,7 @@ offset_top = -295.0
 offset_right = 131.0
 offset_bottom = 295.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control3"]
 layout_mode = 1
@@ -975,6 +1020,7 @@ offset_bottom = 297.0
 grow_horizontal = 2
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(63, 198)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_vjcu7")
 
 [node name="TextureRect2" type="TextureRect" parent="Indicadores Interiores/Izquierda/Control3"]
@@ -991,6 +1037,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(-1, -1)
 pivot_offset = Vector2(63, 150)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_74sa0")
 
 [node name="Mask Lines" type="NinePatchRect" parent="Indicadores Interiores/Izquierda"]
@@ -1044,6 +1091,7 @@ offset_right = 828.0
 offset_bottom = 412.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Esquinas" type="Control" parent="Exteriores y Datos"]
 layout_mode = 1
@@ -1052,11 +1100,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Esquina" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
 layout_mode = 1
 offset_right = 158.0
 offset_bottom = 284.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_bb1no")
 
 [node name="Esquina2" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
@@ -1069,6 +1119,7 @@ offset_bottom = 284.0
 grow_horizontal = 0
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(79, 142)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_bb1no")
 
 [node name="Point" type="TextureRect" parent="Exteriores y Datos/Esquinas/Esquina2"]
@@ -1079,6 +1130,7 @@ offset_left = 90.0
 offset_top = 20.0
 offset_right = 111.0
 offset_bottom = 41.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_50t22")
 expand_mode = 1
 
@@ -1102,6 +1154,7 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(-1, -1)
 pivot_offset = Vector2(79, 142)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_bb1no")
 
 [node name="Esquina4" type="TextureRect" parent="Exteriores y Datos/Esquinas"]
@@ -1114,6 +1167,7 @@ offset_right = 158.0
 grow_vertical = 0
 scale = Vector2(1, -1)
 pivot_offset = Vector2(79, 142)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_bb1no")
 
 [node name="Inferior" type="Control" parent="Exteriores y Datos"]
@@ -1129,6 +1183,7 @@ offset_right = 643.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Inferior" type="TextureRect" parent="Exteriores y Datos/Inferior"]
 layout_mode = 1
@@ -1145,6 +1200,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5708
 pivot_offset = Vector2(17, 322)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_jktiy")
 
 [node name="Inferior2" type="TextureRect" parent="Exteriores y Datos/Inferior"]
@@ -1163,6 +1219,7 @@ grow_vertical = 2
 rotation = 1.5708
 scale = Vector2(1, -1)
 pivot_offset = Vector2(17, 322)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_jktiy")
 
 [node name="Superior" type="Control" parent="Exteriores y Datos"]
@@ -1175,11 +1232,13 @@ offset_top = -30.0
 offset_right = 610.0
 offset_bottom = 10.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="Superior" type="TextureRect" parent="Exteriores y Datos/Superior"]
 layout_mode = 1
 offset_right = 366.0
 offset_bottom = 34.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nv5k5")
 
 [node name="Superior2" type="TextureRect" parent="Exteriores y Datos/Superior"]
@@ -1192,6 +1251,7 @@ offset_bottom = 34.0
 grow_horizontal = 0
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(183, 17)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nv5k5")
 
 [node name="UI_Minimap" parent="." node_paths=PackedStringArray("VistaSky") instance=ExtResource("3_2spof")]
@@ -1233,16 +1293,19 @@ offset_right = 265.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Altura" type="HBoxContainer" parent="Datos/Datos"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Datos/Datos/Altura"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_1240t")
 
 [node name="Lbl Altura" type="Label" parent="Datos/Datos/Altura"]
@@ -1253,12 +1316,14 @@ text = "3000m"
 [node name="Velocidad" type="HBoxContainer" parent="Datos/Datos"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Datos/Datos/Velocidad"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_woa4e")
 
 [node name="Lbl Velocidad" type="Label" parent="Datos/Datos/Velocidad"]
@@ -1269,12 +1334,14 @@ text = "30 km/h"
 [node name="Rotacion" type="HBoxContainer" parent="Datos/Datos"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Datos/Datos/Rotacion"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_g4ggt")
 
 [node name="Lbl Rotacion" type="Label" parent="Datos/Datos/Rotacion"]
@@ -1285,12 +1352,14 @@ text = "000°"
 [node name="Fov" type="HBoxContainer" parent="Datos/Datos"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Datos/Datos/Fov"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_6bvju")
 
 [node name="Lbl fov" type="Label" parent="Datos/Datos/Fov"]
