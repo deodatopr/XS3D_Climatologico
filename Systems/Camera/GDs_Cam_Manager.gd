@@ -147,7 +147,6 @@ func _SetShaLimit(_mat : ShaderMaterial):
 
 func _UpdateCamState():
 	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam 
-	var pivot : Node3D = sky_pivot if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_pivot 
 	var dir = sign(cam.global_rotation_degrees.y)
 	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180)) 
 	

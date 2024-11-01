@@ -72,7 +72,6 @@ func _CalculateScreenMark(_distance : float) -> void:
 	var dotSign : float = signf(dotToSitio)
 
 	#Calculate the position in screen of top down mark
-	var targetUnprojectPos : Vector3 = posSitio
 	postarget2d = cam.unproject_position(posSitio)
 	
 	#Fix position 2d
