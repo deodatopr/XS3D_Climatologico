@@ -17,6 +17,7 @@ var lastOneOnFocus:=0
 var isFocusingMenu:= false
 func _ready():
 	BtnSitios.focus_entered.connect(OnBtnSitiosFocus)
+	BtnSitios.pressed.connect(OnBtnMapaPressed)
 	BtnGuia.focus_entered.connect(OnBtnDatosFocus)
 	BtnGuia.focus_exited.connect(OnBtnDatosFocusExited)
 	BtnMapa.focus_entered.connect(OnBtnMapaFocus)
@@ -70,6 +71,11 @@ func OnBtnSitiosFocus():
 	BtnSitios.button_pressed = true
 
 
+func OnBtnMapaPressed():
+	if BtnSitios.has_focus():
+		BtnSitios.release_focus()
+	else: 
+		BtnSitios.grab_focus()
 
 func OnBtnMapaFocus():
 	sndUi1.play()

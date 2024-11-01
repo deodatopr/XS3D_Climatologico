@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cocko4ft5524e"]
+[gd_scene load_steps=27 format=3 uid="uid://cocko4ft5524e"]
 
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="1_e7v8d"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_satoa"]
@@ -105,6 +105,10 @@ region = Rect2(883, 138, 22, 28)
 atlas = ExtResource("2_satoa")
 region = Rect2(914, 147, 20, 21)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs64o"]
+atlas = ExtResource("2_satoa")
+region = Rect2(7, 264, 54, 54)
+
 [node name="Vista Fly" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "compass")]
 layout_mode = 3
 anchors_preset = 15
@@ -117,7 +121,7 @@ lblAltura = NodePath("Frame/Indicators/Datos/HBoxContainer/Altura/Lbl Altura")
 lblVelocidad = NodePath("Frame/Indicators/Datos/HBoxContainer/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Frame/Indicators/Datos/HBoxContainer/Rotacion/Lbl Rotacion")
 compass = NodePath("Frame/UI_Compass")
-metadata/_edit_horizontal_guides_ = [125.0]
+metadata/_edit_horizontal_guides_ = [56.0, 56.0]
 metadata/_edit_vertical_guides_ = [1635.0]
 
 [node name="Frame" type="NinePatchRect" parent="."]
@@ -164,7 +168,8 @@ offset_right = 40.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "DRON FREE"
+text = "DRONE FLY"
+horizontal_alignment = 1
 
 [node name="Center Crosshair" type="Control" parent="Frame"]
 layout_mode = 1
@@ -905,3 +910,107 @@ anchor_bottom = 0.0
 offset_top = 14.0
 offset_bottom = 14.0
 grow_vertical = 1
+
+[node name="Info" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 52.0
+offset_top = 48.0
+offset_right = 241.0
+offset_bottom = 102.0
+
+[node name="Lbl INfo" type="Label" parent="Info"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -21.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "[ Info ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox" type="HBoxContainer" parent="Info"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -19.5
+offset_right = 147.0
+offset_bottom = 35.5
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="Info/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="W" type="NinePatchRect" parent="Info/Hbox"]
+custom_minimum_size = Vector2(54.04, 0)
+layout_mode = 2
+texture = ExtResource("2_satoa")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Info/Hbox/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "F1"
+
+[node name="_" type="Label" parent="Info/Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="Info/Hbox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vs64o")
+
+[node name="Label" type="Label" parent="Info/Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Info/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3

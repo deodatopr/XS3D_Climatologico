@@ -17,6 +17,8 @@ extends Node
 @export var sndWind: AudioStreamPlayer
 @export var sndWindVolume: float = -5
 @export var sndWindPitch: float = 1
+@export var sndWindPitchMoving: float = 1
+@export var sndWindPitchTurbo: float = 1
 
 
 var tweenMoving:Tween
@@ -33,17 +35,17 @@ func _process(_delta):
 		if Input.is_action_pressed("3DMove_Forward") or Input.is_action_pressed("3DMove_Backward") or Input.is_action_pressed("3DMove_Left") or Input.is_action_pressed("3DMove_Right"):
 			if Input.is_action_pressed("3DMove_SpeedBoost") and not isBoosting:
 				isBoosting = true
-				MovingFadeIn()
-				sndWind.pitch_scale = 2
+				MovingFadeInTurbo()
+				sndWind.pitch_scale = sndWindPitchTurbo
 			elif not Input.is_action_pressed("3DMove_SpeedBoost") and isBoosting: 
 				isBoosting = false
 				MovingFadeIn()
-				sndWind.pitch_scale = 1.5
+				sndWind.pitch_scale = sndWindPitchMoving
 			else:
 				if not sndMoving.playing:
 					isBoosting = false
 					MovingFadeIn()
-					sndWind.pitch_scale = 1.5
+					sndWind.pitch_scale = sndWindPitchMoving
 		else:
 			if sndMoving.playing:
 				MovingFadeOut()
@@ -83,6 +85,13 @@ func MovingFadeIn():
 	tweenMoving = create_tween()
 	tweenMoving.tween_property(sndMoving,"volume_db",sndMovingVolume,0.2)
 	tweenMoving.parallel().tween_property(sndMoving,"pitch_scale",sndMovingPitch,0.2)
+ 
+func MovingFadeInTurbo():
+	sndMoving.play()
+	if tweenMoving: tweenMoving.kill()
+	tweenMoving = create_tween()
+	tweenMoving.tween_property(sndMoving,"volume_db",sndMovingVolume,0.2)
+	tweenMoving.parallel().tween_property(sndMoving,"pitch_scale",sndMovingTurboPitch,0.2)
 
 func MovingFadeOut():
 	if tweenMoving: tweenMoving.kill()

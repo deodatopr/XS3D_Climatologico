@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3k2kgkp18wn1"]
+[gd_scene load_steps=11 format=3 uid="uid://b3k2kgkp18wn1"]
 
 [ext_resource type="Script" path="res://Systems/Minimap/GDs_Minimap.gd" id="1_3l741"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_i627t"]
 [ext_resource type="Texture2D" uid="uid://c7e7o0hswrmpv" path="res://Cont_Models/Sector6/Map_Test_Minimap.png" id="3_jt1is"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="4_4etqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2do84"]
 atlas = ExtResource("2_i627t")
@@ -19,6 +20,16 @@ region = Rect2(477, 694, 24, 29)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sko7y"]
 atlas = ExtResource("2_i627t")
 region = Rect2(2, 3, 160, 160)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28y4u"]
+shader = ExtResource("4_4etqd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phyva"]
+atlas = ExtResource("2_i627t")
+region = Rect2(478, 739, 23, 20)
 
 [node name="UI_Minimap" type="Control" node_paths=PackedStringArray("minimap_parent", "circle_mask", "map_texture", "mark", "cam_pivot")]
 layout_mode = 3
@@ -266,3 +277,80 @@ grow_vertical = 0
 rotation = -1.5708
 pivot_offset = Vector2(80, 80)
 texture = SubResource("AtlasTexture_sko7y")
+
+[node name="DistanceBackground" type="ColorRect" parent="Minimap_Parent"]
+material = SubResource("ShaderMaterial_28y4u")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = -42.0
+offset_right = 33.0
+offset_bottom = -12.0
+grow_horizontal = 2
+pivot_offset = Vector2(33, 15)
+
+[node name="DistanceText" type="Label" parent="Minimap_Parent/DistanceBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 11)
+text = "355"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftFrane" type="NinePatchRect" parent="Minimap_Parent/DistanceBackground"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 8.0
+grow_vertical = 2
+texture = ExtResource("2_i627t")
+region_rect = Rect2(498, 476, 10, 31)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="RightFrane" type="NinePatchRect" parent="Minimap_Parent/DistanceBackground"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(4, 15)
+texture = ExtResource("2_i627t")
+region_rect = Rect2(498, 476, 10, 31)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_bottom = 3
+
+[node name="Arrow" type="TextureRect" parent="Minimap_Parent/DistanceBackground"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = 5.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 3.14159
+pivot_offset = Vector2(5, 5)
+texture = SubResource("AtlasTexture_phyva")
+expand_mode = 1

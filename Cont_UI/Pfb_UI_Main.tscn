@@ -72,8 +72,9 @@ sndUi1 = NodePath("../[ AUDIO ]/UI")
 layout_mode = 1
 
 [node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp", "sndUi1", "sndUiPressed") instance=ExtResource("3_g57u8")]
-visible = false
 layout_mode = 1
+offset_top = -1021.0
+offset_bottom = -206.0
 barraMenu = NodePath("../Barra menus")
 popUp = NodePath("../PopUp Ver Sitio")
 sndUi1 = NodePath("../[ AUDIO ]/UI")
