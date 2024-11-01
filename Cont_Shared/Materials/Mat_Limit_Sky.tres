@@ -20,4 +20,4 @@ shader_parameter/LinePulseMin = 0.6
 shader_parameter/ShieldOpacity = 0.8
 shader_parameter/ShieldBorder = 50.0
 shader_parameter/Emission = 1.0
-shader_parameter/DistanceFade = 1000.0
+shader_parameter/DistanceFade = 10001.0
