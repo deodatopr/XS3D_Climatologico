@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bfgpbu7le1hia"]
 
-[ext_resource type="Script" path="res://Systems/Menus/Perfiles/GDs_Perf_Sitio.gd" id="1_8nspj"]
+[ext_resource type="Script" path="res://Systems/UI/Menus/Listas/GDs_Perf_Sitio.gd" id="1_8nspj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_gkrbn"]
 [ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_5qgwa"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_7to34"]
@@ -867,5 +867,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/hover = SubResource("StyleBoxEmpty_pafno")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vvcfw")

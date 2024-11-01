@@ -109,6 +109,10 @@ func OnBtnMapaPressed():
 func OnBtnDatosFocus():
 	sndUi1.play()
 	UTILITIES.TurnOnObject(menuDatos)
+	BtnSitios.button_pressed = false
+	UTILITIES.TurnOffObject(menuSitios)
+	
+	
 
 func OnBtnDatosFocusExited():
 	UTILITIES.TurnOffObject(menuDatos)
@@ -130,6 +134,7 @@ func OnBtnConfigFocus():
 
 func OnBtnConfigFocusExited():
 	UTILITIES.TurnOffObject(menuConfig)
+	
 	BtnConfig.button_pressed = false
 	
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=21 format=3 uid="uid://y1iugd6uyl42"]
 
-[ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
-[ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
+[ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/UI/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
+[ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/UI/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_UI_Manager.gd" id="1_vcggy"]
-[ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://Systems/Barra Menus/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
-[ext_resource type="PackedScene" uid="uid://cqmfo0633oxfm" path="res://Systems/Menus/Perfiles/Pfb_MenuSitios.tscn" id="3_g57u8"]
+[ext_resource type="PackedScene" uid="uid://bnxc3stvbv0gf" path="res://Systems/UI/Barra Menus/Pfb_UI_BarraMenus.tscn" id="2_j5wup"]
+[ext_resource type="PackedScene" uid="uid://cqmfo0633oxfm" path="res://Systems/UI/Menus/Listas/Pfb_MenuSitios.tscn" id="3_g57u8"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="4_dj00u"]
-[ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
+[ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/UI/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
 [ext_resource type="Texture2D" uid="uid://2kva7lmdb47u" path="res://Cont_UI/Map_Mapa_Edomex.png" id="6_m8twr"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
 [ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]
@@ -78,7 +78,6 @@ visible = false
 layout_mode = 1
 
 [node name="Menu Mapa" type="ColorRect" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.6)
 layout_mode = 1
 anchors_preset = 15
@@ -443,7 +442,7 @@ texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
 [node name="Top Left Icon" type="NinePatchRect" parent="Menu Mapa/Blur"]
-self_modulate = Color(0.529412, 0.0588235, 1, 1)
+self_modulate = Color(0, 0, 0, 0.666667)
 layout_mode = 1
 offset_left = 12.0
 offset_top = 12.0
@@ -469,7 +468,7 @@ offset_right = 10.5
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.6, 2.6)
+scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(10, 13)
 texture = SubResource("AtlasTexture_1yn06")
 
@@ -693,10 +692,6 @@ scale = Vector2(1.7, 1.7)
 pivot_offset = Vector2(13, 13)
 texture = SubResource("AtlasTexture_ie3aj")
 
-[node name="PopUp Ver Sitio" parent="." instance=ExtResource("5_wvomf")]
-visible = false
-layout_mode = 1
-
 [node name="------BARRAS----------" type="Node" parent="."]
 
 [node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuDatos", "menuConfig", "sndUi1") instance=ExtResource("2_j5wup")]
@@ -708,6 +703,12 @@ menuConfig = NodePath("../Menu Config")
 sndUi1 = NodePath("../[ AUDIO ]/UI")
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
+layout_mode = 1
+
+[node name="------POPUP----------" type="Node" parent="."]
+
+[node name="PopUp Ver Sitio" parent="." instance=ExtResource("5_wvomf")]
+visible = false
 layout_mode = 1
 
 [node name="[ AUDIO ]" type="Node" parent="."]

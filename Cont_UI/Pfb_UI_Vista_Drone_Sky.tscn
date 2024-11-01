@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pmpn4"]
 [ext_resource type="PackedScene" uid="uid://dpv5el5yr67dq" path="res://Systems/UI/Pfb_Info.tscn" id="2_tvd1m"]
 [ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="3_2spof"]
-[ext_resource type="Script" path="res://Systems/Barra Menus/GDs_UI_Rotation.gd" id="4_fj5m0"]
+[ext_resource type="Script" path="res://Systems/UI/Barra Menus/GDs_UI_Rotation.gd" id="4_fj5m0"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_LineIndicators.gd" id="4_fvtcm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="5_3vo8s"]
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvrx7m3ppga3d"]
+[gd_scene load_steps=10 format=3 uid="uid://dvrx7m3ppga3d"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_b0h8j"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pvpg3"]
-[ext_resource type="Script" path="res://Systems/Menus/PopUp_VerSitio/GDs_PopUpVerSitio.gd" id="3_dbed1"]
+[ext_resource type="Script" path="res://Systems/UI/Menus/PopUp_VerSitio/GDs_PopUpVerSitio.gd" id="3_dbed1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flypi"]
 shader = ExtResource("1_b0h8j")
@@ -22,6 +22,27 @@ region = Rect2(7, 263, 55, 55)
 atlas = ExtResource("2_pvpg3")
 region = Rect2(5, 197, 59, 59)
 
+[sub_resource type="Animation" id="Animation_ympw6"]
+resource_name = "PopUp Warning"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/brightness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 1.0, 0.5, 1.0, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_72oqm"]
+_data = {
+"PopUp Warning": SubResource("Animation_ympw6")
+}
+
 [node name="PopUP" type="Control" node_paths=PackedStringArray("btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight")]
 layout_mode = 3
 anchors_preset = 15
@@ -34,6 +55,15 @@ btnAceptar = NodePath("PopUp Ver Sitio/Control/Botones/Aceptar/Btn Aceptar")
 btnAceptarHighlight = NodePath("PopUp Ver Sitio/Control/Botones/Aceptar/Highlight Aceptar")
 btnCancelar = NodePath("PopUp Ver Sitio/Control/Botones/Cancelar/Btn Cancelar")
 btnCancelarHighlight = NodePath("PopUp Ver Sitio/Control/Botones/Cancelar/Highlight Cancelar")
+
+[node name="Btn Warning" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PopUp Ver Sitio" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_flypi")
@@ -340,6 +370,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 
 [node name="Cancelar" type="Control" parent="PopUp Ver Sitio/Control/Botones"]
 layout_mode = 2
@@ -413,3 +444,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PopUp Ver Sitio"]
+libraries = {
+"": SubResource("AnimationLibrary_72oqm")
+}
