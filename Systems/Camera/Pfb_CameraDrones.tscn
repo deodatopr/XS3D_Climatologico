@@ -5,7 +5,7 @@
 [ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Presets/Preset_Curve_Movement.tres" id="3_goarf"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Fly.gd" id="4_iwq67"]
 
-[node name="Camera Drones" type="Node3D" node_paths=PackedStringArray("movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
+[node name="Camera Drones" type="Node" node_paths=PackedStringArray("movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("1_vxe6d")
 movSky = NodePath("MovSky")
 sky_pivot = NodePath("MovSky")
@@ -20,6 +20,7 @@ script = ExtResource("2_s21o3")
 
 [node name="sky_cam" type="Camera3D" parent="MovSky"]
 transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
+current = true
 fov = 35.0
 
 [node name="MovFly" type="Node3D" parent="."]
