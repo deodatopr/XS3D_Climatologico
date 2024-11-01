@@ -156,7 +156,8 @@ func _Rotation(_delta:float):
 		rot_lastMousePos = currentMousePos
 	else:
 		rot_lastValidRotDir = 0
-
+		rot_lastMousePos.x = get_viewport().get_mouse_position().x
+	
 	CAM.isRotating = dir != 0
 	dir = lerp(rot_lastRotDir,dir,5 *_delta)
 	

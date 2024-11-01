@@ -113,6 +113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_e7v8d")
 compass = NodePath("Frame/UI_Compass")
 lblAltura = NodePath("Frame/Indicators/Datos/HBoxContainer/Altura/Lbl Altura")
@@ -150,6 +151,7 @@ offset_top = 23.0
 offset_right = -22.0
 offset_bottom = 83.0
 grow_horizontal = 0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_0qyw2")
 
 [node name="Label" type="Label" parent="Frame/Icono Aerea"]
@@ -181,6 +183,7 @@ offset_right = 405.0
 offset_bottom = 276.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Line" type="NinePatchRect" parent="Frame/Center Crosshair"]
 self_modulate = Color(1, 1, 1, 0.392157)
@@ -231,6 +234,7 @@ offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Frame/Center Crosshair/Ring"]
 layout_mode = 1
@@ -246,6 +250,7 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_ea0ij")
 
 [node name="TextureRect2" type="TextureRect" parent="Frame/Center Crosshair/Ring"]
@@ -263,6 +268,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = 1.5708
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_ea0ij")
 
 [node name="TextureRect3" type="TextureRect" parent="Frame/Center Crosshair/Ring"]
@@ -280,6 +286,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_ea0ij")
 
 [node name="TextureRect4" type="TextureRect" parent="Frame/Center Crosshair/Ring"]
@@ -297,6 +304,7 @@ grow_horizontal = 0
 grow_vertical = 0
 rotation = -1.5708
 pivot_offset = Vector2(272, 272)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_ea0ij")
 
 [node name="Ring2" type="Control" parent="Frame/Center Crosshair"]
@@ -314,6 +322,7 @@ offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(241, 241)
+mouse_filter = 2
 script = ExtResource("3_ltkqs")
 speed = 0.1
 
@@ -321,6 +330,7 @@ speed = 0.1
 layout_mode = 1
 offset_right = 241.0
 offset_bottom = 241.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_y4vfc")
 
 [node name="TextureRect2" type="TextureRect" parent="Frame/Center Crosshair/Ring2"]
@@ -329,6 +339,7 @@ offset_right = 241.0
 offset_bottom = 241.0
 rotation = 1.5708
 pivot_offset = Vector2(241, 241)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_y4vfc")
 
 [node name="TextureRect3" type="TextureRect" parent="Frame/Center Crosshair/Ring2"]
@@ -337,6 +348,7 @@ offset_right = 241.0
 offset_bottom = 241.0
 rotation = 3.14159
 pivot_offset = Vector2(241, 241)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_y4vfc")
 
 [node name="TextureRect4" type="TextureRect" parent="Frame/Center Crosshair/Ring2"]
@@ -345,6 +357,7 @@ offset_right = 241.0
 offset_bottom = 241.0
 rotation = -1.5708
 pivot_offset = Vector2(241, 241)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_y4vfc")
 
 [node name="Ring3" type="Control" parent="Frame/Center Crosshair"]
@@ -361,6 +374,7 @@ offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(212, 212)
+mouse_filter = 2
 script = ExtResource("3_ltkqs")
 speed = -0.05
 
@@ -368,6 +382,7 @@ speed = -0.05
 layout_mode = 1
 offset_right = 212.0
 offset_bottom = 212.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_0fjrq")
 
 [node name="TextureRect2" type="TextureRect" parent="Frame/Center Crosshair/Ring3"]
@@ -376,6 +391,7 @@ offset_right = 212.0
 offset_bottom = 212.0
 rotation = 1.5708
 pivot_offset = Vector2(212, 212)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_0fjrq")
 
 [node name="TextureRect3" type="TextureRect" parent="Frame/Center Crosshair/Ring3"]
@@ -384,6 +400,7 @@ offset_right = 212.0
 offset_bottom = 212.0
 rotation = 3.14159
 pivot_offset = Vector2(212, 212)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_0fjrq")
 
 [node name="TextureRect4" type="TextureRect" parent="Frame/Center Crosshair/Ring3"]
@@ -392,6 +409,7 @@ offset_right = 212.0
 offset_bottom = 212.0
 rotation = -1.5708
 pivot_offset = Vector2(212, 212)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_0fjrq")
 
 [node name="Indicators" type="Control" parent="Frame"]
@@ -405,6 +423,7 @@ offset_right = -186.0
 offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Left Indicator" type="Control" parent="Frame/Indicators"]
 layout_mode = 1
@@ -416,6 +435,7 @@ offset_top = -376.0
 offset_right = 199.0
 offset_bottom = 376.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Line4" type="NinePatchRect" parent="Frame/Indicators/Left Indicator"]
 modulate = Color(1, 1, 1, 0.490196)
@@ -450,6 +470,7 @@ grow_vertical = 2
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nvidw")
 
 [node name="Line5" type="NinePatchRect" parent="Frame/Indicators/Left Indicator/Line4"]
@@ -532,6 +553,7 @@ offset_top = -376.0
 offset_bottom = 376.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Line4" type="NinePatchRect" parent="Frame/Indicators/Right Indicator"]
 modulate = Color(1, 1, 1, 0.490196)
@@ -566,6 +588,7 @@ grow_vertical = 2
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nvidw")
 
 [node name="Line5" type="NinePatchRect" parent="Frame/Indicators/Right Indicator/Line4"]
@@ -652,6 +675,7 @@ offset_top = 22.0
 offset_right = -88.0
 offset_bottom = 43.0
 grow_horizontal = 0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_idr0y")
 expand_mode = 1
 
@@ -671,6 +695,7 @@ offset_left = -355.5
 offset_right = 355.5
 offset_bottom = 53.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Top Indicator"]
 self_modulate = Color(0.25, 0.8375, 1, 0.490196)
@@ -687,6 +712,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nvidw")
 
 [node name="Mask" type="NinePatchRect" parent="Frame/Indicators/Top Indicator"]
@@ -730,6 +756,7 @@ offset_right = 355.0
 offset_bottom = -374.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Triangle" type="TextureRect" parent="Frame/Indicators/Bottom Indicator"]
 self_modulate = Color(0.25, 0.8375, 1, 0.490196)
@@ -745,6 +772,7 @@ grow_horizontal = 2
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nvidw")
 
 [node name="Triangle2" type="TextureRect" parent="Frame/Indicators/Bottom Indicator"]
@@ -763,6 +791,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(20, 40)
+mouse_filter = 2
 texture = SubResource("AtlasTexture_nvidw")
 
 [node name="Mask" type="NinePatchRect" parent="Frame/Indicators/Bottom Indicator"]
@@ -829,18 +858,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 70
 alignment = 1
 
 [node name="Altura" type="HBoxContainer" parent="Frame/Indicators/Datos/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Frame/Indicators/Datos/HBoxContainer/Altura"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_g2cfi")
 
 [node name="Lbl Altura" type="Label" parent="Frame/Indicators/Datos/HBoxContainer/Altura"]
@@ -851,12 +883,14 @@ text = "3000m"
 [node name="Velocidad" type="HBoxContainer" parent="Frame/Indicators/Datos/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Frame/Indicators/Datos/HBoxContainer/Velocidad"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_ap8jv")
 
 [node name="Lbl Velocidad" type="Label" parent="Frame/Indicators/Datos/HBoxContainer/Velocidad"]
@@ -867,12 +901,14 @@ text = "30 km/hr"
 [node name="Rotacion" type="HBoxContainer" parent="Frame/Indicators/Datos/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Frame/Indicators/Datos/HBoxContainer/Rotacion"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_6mi26")
 
 [node name="Lbl Rotacion" type="Label" parent="Frame/Indicators/Datos/HBoxContainer/Rotacion"]
@@ -884,12 +920,14 @@ text = "(0°, -30°)"
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Frame/Indicators/Datos/HBoxContainer/Fov"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AtlasTexture_htee1")
 
 [node name="Lbl fov" type="Label" parent="Frame/Indicators/Datos/HBoxContainer/Fov"]
