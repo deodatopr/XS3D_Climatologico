@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvrquwiuhai3i"
-path.s3tc="res://.godot/imported/Sitio_Piedra.jpg-aaace6d68d2c9bd9ec28f636e2d71648.s3tc.ctex"
+path.s3tc="res://.godot/imported/Sitio_Piedra.jpg-d27b09eb93916cd9f32c4c24a1582afd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Assets/Sitio_Piedra.jpg"
-dest_files=["res://.godot/imported/Sitio_Piedra.jpg-aaace6d68d2c9bd9ec28f636e2d71648.s3tc.ctex"]
+source_file="res://Cont_Models/Sector6/Sitio/Sitio_Piedra.jpg"
+dest_files=["res://.godot/imported/Sitio_Piedra.jpg-d27b09eb93916cd9f32c4c24a1582afd.s3tc.ctex"]
 
 [params]
 
