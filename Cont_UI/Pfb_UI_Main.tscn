@@ -78,6 +78,7 @@ visible = false
 layout_mode = 1
 
 [node name="Menu Mapa" type="ColorRect" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.6)
 layout_mode = 1
 anchors_preset = 15

@@ -214,7 +214,6 @@ uppercase = true
 [node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ CONTENT ]"]
 stream = ExtResource("21_atymd")
 volume_db = 10.0
-autoplay = true
 parameters/looping = true
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
