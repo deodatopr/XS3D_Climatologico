@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="4_bhin8"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_LineIndicators.gd" id="4_ghnv4"]
 [ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="5_s86r1"]
-[ext_resource type="PackedScene" uid="uid://dpv5el5yr67dq" path="res://Systems/UI/Pfb_Info.tscn" id="7_lbwya"]
+[ext_resource type="PackedScene" path="res://Systems/UI/Pfb_Info.tscn" id="7_lbwya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qyw2"]
 atlas = ExtResource("2_satoa")

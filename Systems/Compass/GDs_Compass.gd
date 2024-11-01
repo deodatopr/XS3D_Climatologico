@@ -6,12 +6,14 @@ extends Node
 
 @export_group("Compass North")
 @export var compass_mask:Control
-@export var pin_sitio: TextureRect
-@export var compass: NinePatchRect
+@export var pin_sitio: Control
+@export var compass: Control
+@export var lblDistance : Label
 
 @export_group("Compass Screen")
-@export var screenMark: ColorRect 
-@export var lblScreenDistance: Label
+@export var screenMark: Control 
+@export var pointSitio: Control 
+@export var direction : Control
 
 var pivotCam : Node3D
 var camManager : GDs_Cam_Manager
@@ -44,27 +46,24 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	
 	screenSize = get_viewport().get_visible_rect().size
 	
-	minPos_X = offsetBorder
-	maxPos_X = screenSize.x - screenMark.size.x - offsetBorder
+	minPos_X = offsetBorder + direction.size.x
+	maxPos_X = screenSize.x - screenMark.size.x - direction.size.x - offsetBorder
 	
-	minPos_Y = offsetBorder
-	maxPos_Y = screenSize.y - screenMark.size.y - lblScreenDistance.size.y - offsetBorder - 100
+	var sizeMenuBottom : float = 105
+	minPos_Y = offsetBorder + direction.size.y
+	maxPos_Y = screenSize.y - screenMark.size.y - direction.size.y - offsetBorder - sizeMenuBottom
 	
 	pin_sitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
-	screenMark.color = local_estaciones.LocalEstaciones[estacion_index].color
+	pointSitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
 	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
-	#Calculate distance between pivot and mark
-	distance = pivotCam.global_position.distance_to(Vector3(posSitio.x, 0, posSitio.z))
-	distance = floori(distance)
-	lblScreenDistance.text = str(distance)
 	
-	_CalculateScreenMark(distance)
-	#_CalculateCompassPoints(distance)
+	_CalculateScreenMark()
+	_CalculateCompassPoints()
 
-func _CalculateScreenMark(_distance : float) -> void:
-	#Get distance
+func _CalculateScreenMark() -> void:
+	#Position
 	
 	#Calculate if is in front or back to fix finalPosition
 	var dirToSitio : Vector3 = (posSitio - pivotCam.global_position).normalized()
@@ -85,11 +84,13 @@ func _CalculateScreenMark(_distance : float) -> void:
 	
 	#Apply
 	screenMark.global_position = postarget2d
+	
+	#Rotation
+	#var angleRotation : float = postarget2d.angle_to(Vector2(screenSize.x / 2, screenSize.y / 2))
+	#pointSitio.rotation = -angleRotation
 
-#func _CalculateCompassPoints(_distance : float) -> void:
-	#_distance = floorf(_distance)
-	#distance_text.text = String.num(_distance, 1)
-	#
+func _CalculateCompassPoints() -> void:
+	lblDistance.text = str(CAM.distToSitio)
 	##calculate degrees of pivot cam
 	#var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
 	#var compassPosition = rotationDegrees * (compass.size.x/6)/180
@@ -117,5 +118,5 @@ func _CalculateScreenMark(_distance : float) -> void:
 	#
 	#if cross.y < 0:
 		#offset = -offset
-		#
+		
 	#pin_sitio.position.x = pinSiteInitialXPosition + offset

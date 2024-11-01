@@ -31,7 +31,7 @@ shader_parameter/blur = 2
 atlas = ExtResource("2_i627t")
 region = Rect2(478, 739, 23, 20)
 
-[node name="UI_Minimap" type="Control" node_paths=PackedStringArray("minimap_parent", "circle_mask", "map_texture", "mark", "cam_pivot")]
+[node name="UI_Minimap" type="Control" node_paths=PackedStringArray("minimap_parent", "circle_mask", "map_texture", "mark", "cam_pivot", "lblDistance")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,6 +44,7 @@ circle_mask = NodePath("Minimap_Parent/Circle_Mask")
 map_texture = NodePath("Minimap_Parent/Circle_Mask/Map_Texture")
 mark = NodePath("Minimap_Parent/Circle_Mask/Map_Texture/Mark")
 cam_pivot = NodePath("Minimap_Parent/Circle_Mask/Cam_Pivot")
+lblDistance = NodePath("Minimap_Parent/DistanceBackground/lbl Distance")
 
 [node name="Minimap_Parent" type="Control" parent="."]
 layout_mode = 1
@@ -291,7 +292,7 @@ offset_bottom = -12.0
 grow_horizontal = 2
 pivot_offset = Vector2(33, 15)
 
-[node name="DistanceText" type="Label" parent="Minimap_Parent/DistanceBackground"]
+[node name="lbl Distance" type="Label" parent="Minimap_Parent/DistanceBackground"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

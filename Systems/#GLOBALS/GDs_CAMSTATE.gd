@@ -8,3 +8,4 @@ var speed : float
 var boundings01 : float
 var positionXZ_01 : Vector2 
 var isRotating : bool
+var distToSitio : float

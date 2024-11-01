@@ -29,7 +29,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.5
 shader_parameter/blur = 2
 
-[node name="UI_Compass" type="Control" node_paths=PackedStringArray("compass_mask", "pin_sitio", "compass", "screenMark", "lblScreenDistance")]
+[node name="UI_Compass" type="Control" node_paths=PackedStringArray("compass_mask", "pin_sitio", "compass", "lblDistance", "screenMark", "pointSitio", "direction")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,9 +42,75 @@ local_estaciones = ExtResource("2_j7ffq")
 compass_mask = NodePath("CompassNorth/CompassMask")
 pin_sitio = NodePath("CompassNorth/CompassMask/PinSite")
 compass = NodePath("CompassNorth/CompassMask/Compass")
+lblDistance = NodePath("CompassNorth/DistanceBackground/lblDistance")
 screenMark = NodePath("CompassScreen/ScreenMark")
-lblScreenDistance = NodePath("CompassScreen/ScreenMark/lbl - ScreenDistance")
+pointSitio = NodePath("CompassScreen/ScreenMark/PointSitio")
+direction = NodePath("CompassScreen/ScreenMark/PointSitio/Direction")
 metadata/_edit_horizontal_guides_ = [542.0, 869.0, 221.0, 869.0, 221.0]
+
+[node name="CompassScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScreenMark" type="NinePatchRect" parent="CompassScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(474.537, 182.918, 30.8098, 30.5395)
+
+[node name="PointSitio" type="NinePatchRect" parent="CompassScreen/ScreenMark"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(7.5, 7.5)
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(467.562, 762.718, 42.6118, 42.8512)
+
+[node name="Direction" type="NinePatchRect" parent="CompassScreen/ScreenMark/PointSitio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -45.5
+offset_right = 9.0
+offset_bottom = -27.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(477.357, 738.796, 24.1568, 20.4572)
 
 [node name="CompassNorth" type="Control" parent="."]
 layout_mode = 1
@@ -167,7 +233,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(33, 15)
 
-[node name="DistanceText" type="Label" parent="CompassNorth/DistanceBackground"]
+[node name="lblDistance" type="Label" parent="CompassNorth/DistanceBackground"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -213,51 +279,3 @@ region_rect = Rect2(498, 476, 10, 31)
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_bottom = 3
-
-[node name="CompassScreen" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ScreenMark" type="ColorRect" parent="CompassScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 20)
-color = Color(0.0350456, 0, 1, 1)
-
-[node name="lbl - ScreenDistance" type="Label" parent="CompassScreen/ScreenMark"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 19.265
-offset_right = 20.0
-offset_bottom = 42.265
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 11)
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1

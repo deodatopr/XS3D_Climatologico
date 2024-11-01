@@ -67,7 +67,8 @@ shader_parameter/lensDistortion = 1.0
 
 [node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
-[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("worldEnv", "msh_roads", "msh_limit", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "ligtht_sun_sky", "ligtht_sun_fly", "Terrains") instance=ExtResource("1_sjpgl")]
+[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("pinSitio", "worldEnv", "msh_roads", "msh_limit", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "ligtht_sun_sky", "ligtht_sun_fly", "Terrains") instance=ExtResource("1_sjpgl")]
+pinSitio = NodePath("../../[ CONTENT ]/Pin - Sitio")
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Roads")
 msh_limit = NodePath("../../[ CONTENT ]/Limit/Msh_Limit")

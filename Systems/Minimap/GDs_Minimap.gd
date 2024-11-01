@@ -9,6 +9,7 @@ class_name GDs_Minimap extends Node
 @export var map_texture: TextureRect
 @export var mark: TextureRect
 @export var cam_pivot : Control
+@export var lblDistance : Label
 
 @onready var local_estaciones : GDs_CR_LocalEstaciones = preload("uid://3nj42mys6ryu")
 
@@ -40,3 +41,4 @@ func _process(delta: float) -> void:
 			
 		cam_pivot.position = Vector2(posX,posY)
 		cam_pivot.rotation_degrees = -pivot_cam.rotation_degrees.y
+		lblDistance.text = str(CAM.distToSitio)

@@ -3,6 +3,7 @@ class_name GDs_Cam_Manager extends Node
 @export var valuesInRuntime : bool
 
 @export_group("SCENE REFERENCES")
+@export var pinSitio : Node3D
 @export var worldEnv : WorldEnvironment
 @export var msh_roads : MeshInstance3D
 @export var msh_limit : MeshInstance3D
@@ -66,6 +67,7 @@ var fly_UI_maxSpeed : int = 100
 var dangerToCloseLimit : bool
 var positionInMap01 : Vector2 = Vector2.ZERO
 var matFishEye :  ShaderMaterial
+var auxToCalculateDistance : Vector3
 
 func _ready():
 	#TEST: Incio en modo random
@@ -146,7 +148,7 @@ func _SetShaLimit(_mat : ShaderMaterial):
 		_mat.set_shader_parameter("DangerToClose",dangerToCloseLimit)
 
 func _UpdateCamState():
-	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam 
+	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam
 	var dir = sign(cam.global_rotation_degrees.y)
 	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180)) 
 	
@@ -167,6 +169,10 @@ func _UpdateCamState():
 		CAM.speed = floori(lerpf(0,sky_UI_maxSpeed, movSky.mov_speed01))
 	else:
 		CAM.speed = floori(lerpf(0,fly_UI_maxSpeed, movFly.mov_speed01))
+		
+	auxToCalculateDistance = cam.global_position
+	auxToCalculateDistance.y = pinSitio.global_position.y
+	CAM.distToSitio = floori(auxToCalculateDistance.distance_to(pinSitio.global_position))
 		
 func _ChangeToMode(_mode : int):
 	if _mode == ENUMS.Cam_Mode.sky:
