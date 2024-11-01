@@ -142,7 +142,6 @@ func _Rotation(_delta:float):
 	#Detect input mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if mouseMotion != null:
-			var fixedMouseMotion : Vector2 = mouseMotion.relative
 			dir = signf(mouseMotion.relative.x)
 
 	CAM.isRotating = dir != 0

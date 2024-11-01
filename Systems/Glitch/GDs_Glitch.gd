@@ -23,7 +23,7 @@ func Initialize():
 	SIGNALS.OnCameraRequestChangeMode.connect(ChangeDrone)
 	ChangeDrone(APPSTATE.camMode)
 
-func _process(delta):
+func _process(_delta):
 	if CAM.boundings01 == 0: 
 		if glitch.visible and not isInTransition:
 			UTILITIES.TurnOffObject(glitch)
