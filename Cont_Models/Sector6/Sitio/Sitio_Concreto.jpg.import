@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b143yrr6m8n02"
-path.s3tc="res://.godot/imported/Sitio_Asfalto.jpg-f7afdad3112956e0f27b366926b93265.s3tc.ctex"
+uid="uid://clf7ttkafg3r3"
+path.s3tc="res://.godot/imported/Sitio_Concreto.jpg-e273f99ded9c45c1fdff6afc9229e5a2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Assets/Sitio_Asfalto.jpg"
-dest_files=["res://.godot/imported/Sitio_Asfalto.jpg-f7afdad3112956e0f27b366926b93265.s3tc.ctex"]
+source_file="res://Cont_Models/Sector6/Sitio/Sitio_Concreto.jpg"
+dest_files=["res://.godot/imported/Sitio_Concreto.jpg-e273f99ded9c45c1fdff6afc9229e5a2.s3tc.ctex"]
 
 [params]
 
@@ -20,13 +20,13 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
-compress/channel_pack=1
+compress/normal_map=0
+compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

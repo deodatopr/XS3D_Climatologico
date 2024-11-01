@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ce1bof0y2vbaa"]
 
-[ext_resource type="Texture2D" uid="uid://b143yrr6m8n02" path="res://Cont_Models/Sector6/Assets/Sitio_Asfalto.jpg" id="1_1a76q"]
+[ext_resource type="Texture2D" uid="uid://b143yrr6m8n02" path="res://Cont_Models/Sector6/Sitio/Sitio_Asfalto.jpg" id="1_1a76q"]
 
 [resource]
 vertex_color_use_as_albedo = true

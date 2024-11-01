@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bj1qp4a38qgvi"
-path.s3tc="res://.godot/imported/Sitio_Paredes.jpg-1b764ef7dbf5be81408fc357b4e4d32a.s3tc.ctex"
+path.s3tc="res://.godot/imported/Sitio_Paredes.jpg-f7f5d76318a325b45c60d8d5f26539f7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Assets/Sitio_Paredes.jpg"
-dest_files=["res://.godot/imported/Sitio_Paredes.jpg-1b764ef7dbf5be81408fc357b4e4d32a.s3tc.ctex"]
+source_file="res://Cont_Models/Sector6/Sitio/Sitio_Paredes.jpg"
+dest_files=["res://.godot/imported/Sitio_Paredes.jpg-f7f5d76318a325b45c60d8d5f26539f7.s3tc.ctex"]
 
 [params]
 
