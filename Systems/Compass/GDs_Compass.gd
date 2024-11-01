@@ -86,8 +86,10 @@ func _CalculateScreenMark() -> void:
 	screenMark.global_position = postarget2d
 	
 	#Rotation
-	#var angleRotation : float = postarget2d.angle_to(Vector2(screenSize.x / 2, screenSize.y / 2))
-	#pointSitio.rotation = -angleRotation
+	var centerScreen : Vector2 = Vector2(screenSize.x / 2, screenSize.y / 2)
+	var angleToFixRot : float = 90
+	var angleRotation : float = rad_to_deg(centerScreen.angle_to_point(postarget2d)) + angleToFixRot
+	pointSitio.rotation_degrees = angleRotation
 
 func _CalculateCompassPoints() -> void:
 	lblDistance.text = str(CAM.distToSitio)

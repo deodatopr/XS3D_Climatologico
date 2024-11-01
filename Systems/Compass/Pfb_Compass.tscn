@@ -92,6 +92,7 @@ offset_right = 7.5
 offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -3.09796
 pivot_offset = Vector2(7.5, 7.5)
 texture = ExtResource("3_wk4d2")
 region_rect = Rect2(467.562, 762.718, 42.6118, 42.8512)
