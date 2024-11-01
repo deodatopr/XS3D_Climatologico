@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvrx7m3ppga3d"]
+[gd_scene load_steps=11 format=3 uid="uid://dvrx7m3ppga3d"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_b0h8j"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pvpg3"]
 [ext_resource type="Script" path="res://Systems/UI/Menus/PopUp_VerSitio/GDs_PopUpVerSitio.gd" id="3_dbed1"]
+[ext_resource type="AudioStream" uid="uid://cu0urodbyu2y4" path="res://Cont_Sounds/UI/UI_Button_3.mp3" id="4_crs7v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flypi"]
 shader = ExtResource("1_b0h8j")
@@ -24,7 +25,7 @@ region = Rect2(5, 197, 59, 59)
 
 [sub_resource type="Animation" id="Animation_ympw6"]
 resource_name = "PopUp Warning"
-length = 0.4
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,7 +33,7 @@ tracks/0/path = NodePath(".:material:shader_parameter/brightness")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.5, 1.0, 0.5, 1.0, 0.5]
@@ -43,7 +44,7 @@ _data = {
 "PopUp Warning": SubResource("Animation_ympw6")
 }
 
-[node name="PopUP" type="Control" node_paths=PackedStringArray("btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight")]
+[node name="PopUP" type="Control" node_paths=PackedStringArray("btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight", "btnWarning", "WarningAnim", "WarningSound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,6 +56,9 @@ btnAceptar = NodePath("PopUp Ver Sitio/Control/Botones/Aceptar/Btn Aceptar")
 btnAceptarHighlight = NodePath("PopUp Ver Sitio/Control/Botones/Aceptar/Highlight Aceptar")
 btnCancelar = NodePath("PopUp Ver Sitio/Control/Botones/Cancelar/Btn Cancelar")
 btnCancelarHighlight = NodePath("PopUp Ver Sitio/Control/Botones/Cancelar/Highlight Cancelar")
+btnWarning = NodePath("Btn Warning")
+WarningAnim = NodePath("PopUp Ver Sitio/AnimationPlayer")
+WarningSound = NodePath("PopUp Ver Sitio/Warning")
 
 [node name="Btn Warning" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -450,3 +454,6 @@ mouse_default_cursor_shape = 2
 libraries = {
 "": SubResource("AnimationLibrary_72oqm")
 }
+
+[node name="Warning" type="AudioStreamPlayer" parent="PopUp Ver Sitio"]
+stream = ExtResource("4_crs7v")
