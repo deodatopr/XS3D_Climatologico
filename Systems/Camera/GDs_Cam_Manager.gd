@@ -74,7 +74,7 @@ func _ready():
 	#camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
 	
 	#TEST: Siempre inicia en sky o fly
-	camMode = ENUMS.Cam_Mode.sky
+	camMode = ENUMS.Cam_Mode.fly
 	
 	Initialize(camMode)
 	
@@ -158,7 +158,7 @@ func _UpdateCamState():
 	elif dir < 0:
 		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
 	
-	CAM.height = ceili(pivot.position.y)
+	CAM.height = ceili(cam.global_position.y)
 	CAM.fov = ceili(cam.fov)
 	CAM.position = cam.global_position
 	
