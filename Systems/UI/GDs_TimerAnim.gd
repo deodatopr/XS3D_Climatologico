@@ -6,3 +6,7 @@ extends Node
 func _ready():
 	await get_tree().create_timer(duration).timeout
 	anim.stop()	
+
+func _input(event):
+	if event.is_action_pressed("UIShowInfo"):
+		anim.stop()

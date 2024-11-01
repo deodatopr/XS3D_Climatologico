@@ -662,7 +662,7 @@ pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
 [node name="Top Left Icon" type="NinePatchRect" parent="Menu Config/Blur"]
-self_modulate = Color(1, 1, 1, 0.301961)
+self_modulate = Color(1, 1, 1, 0.278431)
 layout_mode = 1
 offset_left = 12.0
 offset_top = 12.0
@@ -688,7 +688,7 @@ offset_right = 13.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.6, 2.6)
+scale = Vector2(1.7, 1.7)
 pivot_offset = Vector2(13, 13)
 texture = SubResource("AtlasTexture_ie3aj")
 
