@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0mg0topaiisv"
+uid="uid://vx4d4xonrqci"
 path="res://.godot/imported/Msh_Sect06_Grid.glb-4863a06ae09ac04d48e7295ad1049698.scn"
 
 [deps]
@@ -31,29 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Mat_Sector6_Grid": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Grid.tres"
-}
-},
-"meshes": {
-"Msh_Sect06_Grid_Plane_029": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/path": ""
-}
-},
-"nodes": {
-"PATH:Msh_Grid": {
-"generate/navmesh": 2,
-"mesh_instance/cast_shadow": 0
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
