@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpv5el5yr67dq"]
+
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_4si1h"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_TimerAnim.gd" id="2_phbf3"]
+[ext_resource type="Animation" uid="uid://qsl5wgxbnvau" path="res://Systems/UI/Clip_Info_Blinking.res" id="3_4v5ap"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xhiv"]
+atlas = ExtResource("1_4si1h")
+region = Rect2(7, 264, 54, 54)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36itp"]
+_data = {
+"Blinking": ExtResource("3_4v5ap")
+}
+
+[node name="Info" type="NinePatchRect" node_paths=PackedStringArray("anim")]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 39.0
+offset_top = 41.0
+offset_right = 256.0
+offset_bottom = 103.0
+texture = ExtResource("1_4si1h")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("2_phbf3")
+anim = NodePath("AnimationPlayer")
+duration = 60.0
+
+[node name="Lbl INfo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -21.0
+offset_right = -7.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "[ Info ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -20.5
+offset_right = 156.0
+offset_bottom = 34.5
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 10
+
+[node name="W" type="NinePatchRect" parent="Hbox"]
+custom_minimum_size = Vector2(54.04, 0)
+layout_mode = 2
+texture = ExtResource("1_4si1h")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Hbox/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "F1"
+
+[node name="_" type="Label" parent="Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="Hbox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_4xhiv")
+
+[node name="Label" type="Label" parent="Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_36itp")
+}
+autoplay = "Blinking"

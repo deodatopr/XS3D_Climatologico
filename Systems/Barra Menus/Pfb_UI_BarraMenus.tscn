@@ -107,10 +107,10 @@ texture = SubResource("AtlasTexture_7cb5l")
 
 [node name="Home" type="TextureRect" parent="."]
 layout_mode = 1
-offset_left = 5.0
-offset_top = -16.0
-offset_right = 40.0
-offset_bottom = 19.0
+offset_left = 7.0
+offset_top = -18.0
+offset_right = 47.0
+offset_bottom = 22.0
 texture = SubResource("AtlasTexture_443rp")
 expand_mode = 1
 
