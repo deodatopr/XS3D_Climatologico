@@ -28,16 +28,24 @@ func _input(event):
 		barraMenus.isFocusingMenu = false
 		barraMenus.StopFocusOnMenus()
 	if event.is_action_pressed("ui_cancel"):
-		if menuInfo.visible:
-			menuInfo.visible = false
+		CloseInfoMenu()
 	
 func Initialize():
 	dataService.OnDataRefresh.connect(DataRefresh)
+	
+	barraMenus.BtnSitios.focus_entered.connect(CloseInfoMenu)
+	barraMenus.BtnDatos.focus_entered.connect(CloseInfoMenu)
+	barraMenus.BtnConfig.focus_entered.connect(CloseInfoMenu)
+	barraMenus.BtnMapa.focus_entered.connect(CloseInfoMenu)
 	
 	vistaFree.cam_manager = cam_manager
 	vistaFree.worldMark = worldMark
 	vistaFree.map = map
 	vistaFree.Initialize()
+
+func CloseInfoMenu():
+	if menuInfo.visible:
+			menuInfo.visible = false
 
 func DataRefresh():
 	menuPerfiles.DataRefresh(dataService.estaciones)
