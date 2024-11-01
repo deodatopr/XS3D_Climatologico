@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bb0u21qbxmbv1"]
+[gd_scene load_steps=10 format=3 uid="uid://bb0u21qbxmbv1"]
 
 [ext_resource type="Script" path="res://Systems/Glitch/GDs_Glitch.gd" id="1_nuw5m"]
 [ext_resource type="AudioStream" uid="uid://bqsev6fh4jlx7" path="res://Cont_Sounds/Drones/Drone_Glitch.mp3" id="2_rx0j5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="4_dq2f5"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_LocalCurtain.gd" id="5_u01u5"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="6_cwp2c"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="7_xgfeg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8a1ui"]
 shader = ExtResource("6_cwp2c")
@@ -16,6 +17,12 @@ shader_parameter/rows_max = 20.0
 shader_parameter/rows_speed = 70.0
 shader_parameter/chromatic = 0.2
 shader_parameter/intensity = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_natb6"]
+shader = ExtResource("7_xgfeg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.2
+shader_parameter/blur = 3
 
 [node name="Glitch" type="Node" node_paths=PackedStringArray("sndGlitch", "sndGlitchLimit", "glitch", "cortinilla", "mensaje")]
 script = ExtResource("1_nuw5m")
@@ -74,7 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Msg Perdiendo Senal/Perdiendo senal"]
-self_modulate = Color(0, 0, 0, 0.384314)
+material = SubResource("ShaderMaterial_natb6")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

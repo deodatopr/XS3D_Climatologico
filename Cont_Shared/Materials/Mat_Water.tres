@@ -6,11 +6,12 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_yd7vu")
-shader_parameter/ColorWaterSurface = Color(0.217805, 0.219402, 0.051985, 1)
+shader_parameter/ColorWaterSurface = Color(0.219608, 0.219608, 0.05098, 1)
 shader_parameter/ColorWaterDepth = Color(0.152422, 0.165093, 0.063727, 1)
-shader_parameter/WaterDepth = 10.0
-shader_parameter/Roughness = 0.0
-shader_parameter/WaveSize = 1.0
+shader_parameter/WaterDepth = 20.0
+shader_parameter/Roughness = 0.2
+shader_parameter/Specular = 0.2
+shader_parameter/WaveSize = 0.5
 shader_parameter/Speed = 0.1
-shader_parameter/Intensity = 2.0
+shader_parameter/Intensity = 1.5
 shader_parameter/Texture2DParameter = ExtResource("2_40j5m")
