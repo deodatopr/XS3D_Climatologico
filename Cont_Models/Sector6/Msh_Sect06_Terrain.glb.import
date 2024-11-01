@@ -37,45 +37,201 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Shared/Materials/Mat_Buildings.tres"
 },
+"Mat_Limit_Sky": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Shared/Materials/Mat_Limit_Sky.tres"
+},
 "Mat_Roads": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Shared/Materials/Mat_Roads.tres"
 },
+"Mat_Roads_Sky": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Shared/Materials/Mat_Roads_Sky.tres"
+},
 "Mat_Sector6_1": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_1.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_1.tres"
+},
+"Mat_Sector6_10": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_10.tres"
+},
+"Mat_Sector6_11": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_11.tres"
+},
+"Mat_Sector6_12": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_12.tres"
+},
+"Mat_Sector6_13": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_13.tres"
+},
+"Mat_Sector6_14": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_14.tres"
+},
+"Mat_Sector6_15": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_15.tres"
+},
+"Mat_Sector6_16": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_16.tres"
+},
+"Mat_Sector6_17": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_17.tres"
+},
+"Mat_Sector6_18": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_18.tres"
+},
+"Mat_Sector6_19": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_19.tres"
 },
 "Mat_Sector6_2": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_2.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_2.tres"
+},
+"Mat_Sector6_20": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_20.tres"
+},
+"Mat_Sector6_21": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_21.tres"
+},
+"Mat_Sector6_22": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_22.tres"
+},
+"Mat_Sector6_23": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_23.tres"
+},
+"Mat_Sector6_24": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_24.tres"
+},
+"Mat_Sector6_25": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_25.tres"
+},
+"Mat_Sector6_26": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_26.tres"
+},
+"Mat_Sector6_27": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_27.tres"
+},
+"Mat_Sector6_28": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_28.tres"
+},
+"Mat_Sector6_29": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_29.tres"
 },
 "Mat_Sector6_3": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_3.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_3.tres"
+},
+"Mat_Sector6_30": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_30.tres"
+},
+"Mat_Sector6_31": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_31.tres"
+},
+"Mat_Sector6_32": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_32.tres"
+},
+"Mat_Sector6_33": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_33.tres"
+},
+"Mat_Sector6_34": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_34.tres"
+},
+"Mat_Sector6_35": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_35.tres"
+},
+"Mat_Sector6_36": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_36.tres"
+},
+"Mat_Sector6_37": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_37.tres"
+},
+"Mat_Sector6_38": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_38.tres"
+},
+"Mat_Sector6_39": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_39.tres"
 },
 "Mat_Sector6_4": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_4.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_4.tres"
+},
+"Mat_Sector6_40": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_40.tres"
+},
+"Mat_Sector6_41": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_41.tres"
+},
+"Mat_Sector6_42": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_42.tres"
+},
+"Mat_Sector6_43": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_43.tres"
+},
+"Mat_Sector6_44": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_44.tres"
+},
+"Mat_Sector6_45": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_45.tres"
+},
+"Mat_Sector6_46": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_46.tres"
 },
 "Mat_Sector6_5": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_5.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_5.tres"
 },
 "Mat_Sector6_6": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_6.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_6.tres"
 },
 "Mat_Sector6_7": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_7.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_7.tres"
 },
 "Mat_Sector6_8": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_8.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_8.tres"
 },
 "Mat_Sector6_9": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sector6_9.tres"
+"use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_9.tres"
 },
 "Mat_Water": {
 "use_external/enabled": true,

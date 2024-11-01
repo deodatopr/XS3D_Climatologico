@@ -1,9 +1,9 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://3wh608gvfay4"]
 
 [ext_resource type="Shader" uid="uid://dcxkcc0fkwbws" path="res://Vfx_Shaders/Sha_Terrain.tres" id="1_jw125"]
-[ext_resource type="Texture2D" uid="uid://bdchd14r1i0f3" path="res://Cont_Models/Sector6/Terrain/Map_Sec6_33.jpg" id="2_wllch"]
+[ext_resource type="Texture2D" uid="uid://c6d24jqmj78kq" path="res://Cont_Models/Sector6/Terrain/Map_Sec6_34.jpg" id="2_3yx28"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_jw125")
-shader_parameter/Albedo_Map = ExtResource("2_wllch")
+shader_parameter/Albedo_Map = ExtResource("2_3yx28")

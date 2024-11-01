@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=27 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://cvrup4u3rlg0e" path="res://Cont_Sounds/Drones/DroneSky_Camera.mp3" id="6_ehp13"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="7_cjwh8"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
-[ext_resource type="Material" uid="uid://bybsj0rkirn0u" path="res://Cont_Shared/Materials/Mat_Roads_Sky.tres" id="8_3dvp1"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sect06_Sitio.glb" id="9_s7pct"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Shared/Meshes/Msh_Limit.glb" id="13_enybh"]
@@ -63,7 +62,7 @@ ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
 ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
 ligtht_sun_sky = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Sky")
 ligtht_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
-Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
+Terrains = [null, null, null, null]
 fly_fov = 50.0
 fly_height_max = 400.0
 fly_height_min = 80.0
@@ -137,18 +136,6 @@ transform = Transform3D(31.4213, 0, 0, 0, 9.76607, 0, 0, 0, 34.5044, 735.918, 0,
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
 [node name="Msh_Terreno" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
-
-[node name="Msh_Roads" parent="[ CONTENT ]/Msh_Terreno" index="1"]
-material_override = ExtResource("8_3dvp1")
-
-[node name="Msh_Sector_07" parent="[ CONTENT ]/Msh_Terreno" instance=ExtResource("3_htqi2")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 1470.77, 0, 0)
-
-[node name="Msh_Sector_08" parent="[ CONTENT ]/Msh_Terreno" instance=ExtResource("3_htqi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1.10112, 0, 0, 1649.4)
-
-[node name="Msh_Sector_09" parent="[ CONTENT ]/Msh_Terreno" instance=ExtResource("3_htqi2")]
-transform = Transform3D(-1, 0, 0, 0, 1, 9.62631e-08, 0, 8.74228e-08, -1.10112, 1470.77, 0, 1649.4)
 
 [node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
@@ -271,6 +258,3 @@ worldMark = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 map = NodePath("../../../../[ CONTENT ]/Msh_Terreno")
 
 [editable path="[ SYSTEMS ]/Camera - Drones"]
-[editable path="[ CONTENT ]/Limit"]
-[editable path="[ CONTENT ]/Msh_Terreno"]
-[editable path="[ CONTENT ]/Msh_Terreno/Msh_Sector_07"]
