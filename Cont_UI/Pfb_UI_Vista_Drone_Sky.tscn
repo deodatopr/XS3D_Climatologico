@@ -267,7 +267,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Dron Icon" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

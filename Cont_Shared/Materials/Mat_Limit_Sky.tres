@@ -6,7 +6,7 @@
 render_priority = 0
 shader = ExtResource("1_vg3oh")
 shader_parameter/DangerToClose = false
-shader_parameter/ColorShield = Color(0.76067, 1, 0.570149, 1)
+shader_parameter/ColorShield = Color(0.570149, 0.985519, 1, 1)
 shader_parameter/ColorBorderAnim = Color(0.988235, 0.05098, 0.286275, 1)
 shader_parameter/LinePulseSpeed = 0.2
 shader_parameter/Dithering_Opacity = 0.0

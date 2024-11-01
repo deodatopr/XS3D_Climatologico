@@ -24,10 +24,12 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("UIShowInfo"):
-		menuInfo.visible = !menuInfo.visible
+		menuInfo.visible = true
+		barraMenus.isFocusingMenu = false
+		barraMenus.StopFocusOnMenus()
+	if event.is_action_pressed("ui_cancel"):
 		if menuInfo.visible:
-			barraMenus.isFocusingMenu = false
-			barraMenus.StopFocusOnMenus()
+			menuInfo.visible = false
 	
 func Initialize():
 	dataService.OnDataRefresh.connect(DataRefresh)

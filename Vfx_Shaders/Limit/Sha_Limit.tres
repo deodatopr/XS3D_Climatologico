@@ -117,7 +117,7 @@ default_input_values = [0, 0.0, 1, 1.0]
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_4cisi"]
-constant = 2.0
+constant = 1.5
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_ny3vw"]
 default_input_values = [0, Vector3(1, 1, 1), 1, Vector3(0, 1, 0), 2, Vector3(0.5, 0.5, 0.5)]
@@ -263,7 +263,7 @@ void fragment() {
 
 
 // FloatConstant:174
-	float n_out174p0 = 2.000000;
+	float n_out174p0 = 1.500000;
 
 
 // ColorParameter:129
@@ -512,7 +512,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-379.717, -35.1454)
+graph_offset = Vector2(564.321, 360.894)
 flags/unshaded = true
 flags/shadows_disabled = true
 flags/ambient_light_disabled = true

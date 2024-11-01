@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://8ogd5844tnm4"]
+[gd_scene load_steps=18 format=3 uid="uid://8ogd5844tnm4"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_xwbp0"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_x6xqf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h717t"]
 shader = ExtResource("1_xwbp0")
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.0
+shader_parameter/brightness = 0.5
 shader_parameter/blur = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
@@ -35,7 +35,7 @@ region = Rect2(473, 301, 16, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctu50"]
 atlas = ExtResource("2_x6xqf")
-region = Rect2(472, 838, 38, 51)
+region = Rect2(471, 838, 38, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbndl"]
 atlas = ExtResource("2_x6xqf")
@@ -53,6 +53,10 @@ region = Rect2(470, 813, 19, 19)
 atlas = ExtResource("2_x6xqf")
 region = Rect2(479, 616, 22, 21)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1t05"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(7, 264, 54, 54)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifned"]
 atlas = ExtResource("2_x6xqf")
 region = Rect2(8, 264, 54, 54)
@@ -61,8 +65,8 @@ region = Rect2(8, 264, 54, 54)
 atlas = ExtResource("2_x6xqf")
 region = Rect2(5, 197, 60, 60)
 
-[node name="Menu Controles" type="ColorRect"]
-self_modulate = Color(1, 1, 1, 0.6)
+[node name="Menu Controles - BLUR" type="ColorRect"]
+material = SubResource("ShaderMaterial_h717t")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,8 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Blur" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_n3bx0")
+[node name="FrameBG" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,8 +85,9 @@ offset_right = -126.0
 offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.164706)
 
-[node name="Corner" type="TextureRect" parent="Blur"]
+[node name="Corner" type="TextureRect" parent="FrameBG"]
 layout_mode = 1
 offset_left = -22.0
 offset_top = -22.0
@@ -92,7 +96,7 @@ offset_bottom = 22.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_g0htj")
 
-[node name="Corner2" type="TextureRect" parent="Blur"]
+[node name="Corner2" type="TextureRect" parent="FrameBG"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -105,7 +109,7 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
-[node name="Corner3" type="TextureRect" parent="Blur"]
+[node name="Corner3" type="TextureRect" parent="FrameBG"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -118,7 +122,7 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
-[node name="Corner4" type="TextureRect" parent="Blur"]
+[node name="Corner4" type="TextureRect" parent="FrameBG"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -134,7 +138,7 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
-[node name="Control" type="Control" parent="Blur"]
+[node name="Control" type="Control" parent="FrameBG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -146,7 +150,7 @@ offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control Left" type="TextureRect" parent="Blur/Control"]
+[node name="Control Left" type="TextureRect" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -161,7 +165,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_cu4t7")
 
-[node name="Control Right" type="TextureRect" parent="Blur/Control"]
+[node name="Control Right" type="TextureRect" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,7 +181,7 @@ grow_vertical = 2
 scale = Vector2(-1, 1)
 texture = SubResource("AtlasTexture_cu4t7")
 
-[node name="Pad" type="TextureRect" parent="Blur/Control"]
+[node name="Pad" type="TextureRect" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,7 +196,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_lfj12")
 
-[node name="Joystick" type="TextureRect" parent="Blur/Control"]
+[node name="Joystick" type="TextureRect" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -207,7 +211,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_4520s")
 
-[node name="Joystick2" type="TextureRect" parent="Blur/Control"]
+[node name="Joystick2" type="TextureRect" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -222,7 +226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_4520s")
 
-[node name="Botones" type="Control" parent="Blur/Control"]
+[node name="Botones" type="Control" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -236,7 +240,7 @@ offset_bottom = -55.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="X" type="TextureRect" parent="Blur/Control/Botones"]
+[node name="X" type="TextureRect" parent="FrameBG/Control/Botones"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -251,7 +255,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_x4uqc")
 
-[node name="Label" type="Label" parent="Blur/Control/Botones/X"]
+[node name="Label" type="Label" parent="FrameBG/Control/Botones/X"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -269,7 +273,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="A" type="TextureRect" parent="Blur/Control/Botones"]
+[node name="A" type="TextureRect" parent="FrameBG/Control/Botones"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -284,7 +288,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_x4uqc")
 
-[node name="Label" type="Label" parent="Blur/Control/Botones/A"]
+[node name="Label" type="Label" parent="FrameBG/Control/Botones/A"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -302,7 +306,7 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="B" type="TextureRect" parent="Blur/Control/Botones"]
+[node name="B" type="TextureRect" parent="FrameBG/Control/Botones"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -317,7 +321,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_x4uqc")
 
-[node name="Label" type="Label" parent="Blur/Control/Botones/B"]
+[node name="Label" type="Label" parent="FrameBG/Control/Botones/B"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -336,7 +340,7 @@ text = "B
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Y" type="TextureRect" parent="Blur/Control/Botones"]
+[node name="Y" type="TextureRect" parent="FrameBG/Control/Botones"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -351,7 +355,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_x4uqc")
 
-[node name="Label" type="Label" parent="Blur/Control/Botones/Y"]
+[node name="Label" type="Label" parent="FrameBG/Control/Botones/Y"]
 self_modulate = Color(1, 1, 1, 0.196078)
 layout_mode = 1
 anchors_preset = 8
@@ -370,7 +374,7 @@ text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Home" type="TextureRect" parent="Blur/Control"]
+[node name="Home" type="TextureRect" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -385,7 +389,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_x4uqc")
 
-[node name="Label" type="TextureRect" parent="Blur/Control/Home"]
+[node name="Label" type="TextureRect" parent="FrameBG/Control/Home"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -400,7 +404,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_pr55t")
 
-[node name="Labels" type="Control" parent="Blur"]
+[node name="Labels" type="Control" parent="FrameBG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -410,7 +414,7 @@ offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Abrir Cerrar Menu" type="Control" parent="Blur/Labels"]
+[node name="Abrir Cerrar Menu" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -424,7 +428,7 @@ offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Abrir Cerrar Menu"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Abrir Cerrar Menu"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 5
@@ -441,7 +445,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Abrir Cerrar Menu/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Abrir Cerrar Menu/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -455,7 +459,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Abrir Cerrar Menu"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Abrir Cerrar Menu"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 13
@@ -471,7 +475,7 @@ grow_vertical = 2
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Subir Bajar" type="Control" parent="Blur/Labels"]
+[node name="Subir Bajar" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -485,7 +489,7 @@ offset_bottom = -214.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Subir Bajar"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Subir Bajar"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -499,7 +503,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Subir Bajar"]
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Subir Bajar"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -514,7 +518,7 @@ rotation = 2.00713
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Subir Bajar"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Subir Bajar"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 1
@@ -522,7 +526,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -232.0
 offset_top = 1.0
-offset_right = -74.0
+offset_right = -126.0
 offset_bottom = 32.0
 grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
@@ -532,7 +536,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Subir Bajar/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Subir Bajar/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -541,37 +545,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
-text = "subir / bajar"
+text = "Zoom"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="_" type="Label" parent="Blur/Labels/Subir Bajar"]
+[node name="_" type="Label" parent="FrameBG/Labels/Subir Bajar"]
 self_modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -64.0
+offset_left = -118.0
 offset_top = -12.0
-offset_right = -24.0
+offset_right = -78.0
 offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="Mouse" type="TextureRect" parent="Blur/Labels/Subir Bajar"]
+[node name="Mouse" type="TextureRect" parent="FrameBG/Labels/Subir Bajar"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -38.0
+offset_left = -92.0
 offset_top = -12.0
+offset_right = -54.0
 offset_bottom = 39.0
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_ctu50")
 
-[node name="Scroll" type="TextureRect" parent="Blur/Labels/Subir Bajar/Mouse"]
+[node name="Scroll" type="TextureRect" parent="FrameBG/Labels/Subir Bajar/Mouse"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -583,7 +588,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 texture = SubResource("AtlasTexture_bbndl")
 
-[node name="Camaras" type="Control" parent="Blur/Labels"]
+[node name="Camaras" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -597,7 +602,7 @@ offset_bottom = -80.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Camaras"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Camaras"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -611,7 +616,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Camaras"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Camaras"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 1
@@ -629,7 +634,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Camaras/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Camaras/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -645,7 +650,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="_" type="Label" parent="Blur/Labels/Camaras"]
+[node name="_" type="Label" parent="FrameBG/Labels/Camaras"]
 self_modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 1
@@ -659,7 +664,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="Tab" type="NinePatchRect" parent="Blur/Labels/Camaras"]
+[node name="Tab" type="NinePatchRect" parent="FrameBG/Labels/Camaras"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -670,13 +675,13 @@ offset_right = 21.0
 offset_bottom = 38.0
 grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
-region_rect = Rect2(474, 258, 34, 34)
+region_rect = Rect2(473, 258, 34, 34)
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Scroll" type="TextureRect" parent="Blur/Labels/Camaras/Tab"]
+[node name="Scroll" type="TextureRect" parent="FrameBG/Labels/Camaras/Tab"]
 layout_mode = 1
 offset_left = 12.0
 offset_top = 10.0
@@ -684,7 +689,7 @@ offset_right = 41.0
 offset_bottom = 29.0
 texture = SubResource("AtlasTexture_glfil")
 
-[node name="Cancelar" type="Control" parent="Blur/Labels"]
+[node name="Cancelar" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -698,7 +703,7 @@ offset_bottom = -20.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Cancelar"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Cancelar"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -712,7 +717,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Cancelar"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Cancelar"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 1
@@ -720,7 +725,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -235.0
 offset_top = 1.0
-offset_right = -115.0
+offset_right = 10.0
 offset_bottom = 32.0
 grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
@@ -730,23 +735,21 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Cancelar/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Cancelar/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
-text = "cancelar"
+text = "cancelar / cerrar"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Aceptar" type="Control" parent="Blur/Labels"]
+[node name="Aceptar" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -760,7 +763,7 @@ offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Aceptar"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Aceptar"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -774,7 +777,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Aceptar"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Aceptar"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 1
@@ -792,7 +795,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Aceptar/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Aceptar/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -807,7 +810,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Rotacion" type="Control" parent="Blur/Labels"]
+[node name="Rotacion" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -821,7 +824,7 @@ offset_bottom = 265.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Rotacion"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Rotacion"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -835,7 +838,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Rotacion"]
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Rotacion"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -850,7 +853,7 @@ rotation = -2.44346
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Rotacion"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Rotacion"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 1
@@ -868,7 +871,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Rotacion/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Rotacion/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -882,7 +885,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="_" type="Label" parent="Blur/Labels/Rotacion"]
+[node name="_" type="Label" parent="FrameBG/Labels/Rotacion"]
 self_modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 1
@@ -896,7 +899,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="Scroll" type="TextureRect" parent="Blur/Labels/Rotacion"]
+[node name="Scroll" type="TextureRect" parent="FrameBG/Labels/Rotacion"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -908,7 +911,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 texture = SubResource("AtlasTexture_uwpjb")
 
-[node name="Mouse" type="TextureRect" parent="Blur/Labels/Rotacion"]
+[node name="Mouse" type="TextureRect" parent="FrameBG/Labels/Rotacion"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -920,7 +923,7 @@ offset_bottom = 39.0
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_ctu50")
 
-[node name="Navegar UI" type="Control" parent="Blur/Labels"]
+[node name="Navegar UI" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -934,7 +937,7 @@ offset_bottom = 265.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Navegar UI"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Navegar UI"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -948,7 +951,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Navegar UI"]
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Navegar UI"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -963,7 +966,7 @@ rotation = -0.698132
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Navegar UI"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Navegar UI"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 4
@@ -981,7 +984,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Navegar UI/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Navegar UI/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -995,7 +998,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Paneo" type="Control" parent="Blur/Labels"]
+[node name="Paneo" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1009,7 +1012,7 @@ offset_bottom = 120.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Paneo"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Paneo"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -1023,7 +1026,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Paneo"]
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Paneo"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -1038,7 +1041,7 @@ rotation = -0.698132
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Paneo"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Paneo"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 4
@@ -1056,7 +1059,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Paneo/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Paneo/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -1065,12 +1068,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
-text = "Paneo"
+text = "Volar"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="_" type="Label" parent="Blur/Labels/Paneo"]
+[node name="_" type="Label" parent="FrameBG/Labels/Paneo"]
 self_modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 4
@@ -1084,12 +1087,12 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="Keys" type="Control" parent="Blur/Labels/Paneo"]
+[node name="Keys" type="Control" parent="FrameBG/Labels/Paneo"]
 anchors_preset = 0
 offset_right = 120.0
 offset_bottom = 40.0
 
-[node name="w" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+[node name="w" type="NinePatchRect" parent="FrameBG/Labels/Paneo/Keys"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1109,7 +1112,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/w"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Paneo/Keys/w"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1121,7 +1124,7 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="A" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+[node name="A" type="NinePatchRect" parent="FrameBG/Labels/Paneo/Keys"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1141,7 +1144,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/A"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Paneo/Keys/A"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1153,7 +1156,7 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="S" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+[node name="S" type="NinePatchRect" parent="FrameBG/Labels/Paneo/Keys"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1173,7 +1176,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/S"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Paneo/Keys/S"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1185,7 +1188,7 @@ text = "S"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="D" type="NinePatchRect" parent="Blur/Labels/Paneo/Keys"]
+[node name="D" type="NinePatchRect" parent="FrameBG/Labels/Paneo/Keys"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1205,7 +1208,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="Blur/Labels/Paneo/Keys/D"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Paneo/Keys/D"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1217,7 +1220,7 @@ text = "D"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Acelerar" type="Control" parent="Blur/Labels"]
+[node name="Acelerar" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1231,7 +1234,7 @@ offset_bottom = -263.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Line" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Acelerar"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -1245,7 +1248,7 @@ grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Line2" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Acelerar"]
 self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -1260,7 +1263,7 @@ rotation = 0.698132
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(475, 6, 28, 28)
 
-[node name="Label" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Acelerar"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
 anchors_preset = 4
@@ -1278,7 +1281,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Blur/Labels/Acelerar/Label"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Acelerar/Label"]
 self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -1287,12 +1290,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
-text = "Paneo"
+text = "Turbo"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="_" type="Label" parent="Blur/Labels/Acelerar"]
+[node name="_" type="Label" parent="FrameBG/Labels/Acelerar"]
 self_modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 4
@@ -1306,7 +1309,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="W" type="NinePatchRect" parent="Blur/Labels/Acelerar"]
+[node name="W" type="NinePatchRect" parent="FrameBG/Labels/Acelerar"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1323,7 +1326,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="TextureRect" parent="Blur/Labels/Acelerar/W"]
+[node name="Label" type="TextureRect" parent="FrameBG/Labels/Acelerar/W"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1338,7 +1341,127 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_g4jj7")
 
+[node name="Info" type="NinePatchRect" parent="FrameBG"]
+self_modulate = Color(0.1426, 0.492693, 0.62, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.5
+offset_top = -143.0
+offset_right = 148.5
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 39, 30, 31)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Lbl INfo" type="Label" parent="FrameBG/Info"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -21.0
+offset_right = -36.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "[ Cerrar ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox" type="HBoxContainer" parent="FrameBG/Info"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -19.5
+offset_right = 196.0
+offset_bottom = 35.5
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="FrameBG/Info/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="W" type="NinePatchRect" parent="FrameBG/Info/Hbox"]
+custom_minimum_size = Vector2(72.485, 0)
+layout_mode = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Info/Hbox/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "ESC"
+
+[node name="_" type="Label" parent="FrameBG/Info/Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="FrameBG/Info/Hbox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_r1t05")
+
+[node name="Label" type="Label" parent="FrameBG/Info/Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="FrameBG/Info/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
