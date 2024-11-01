@@ -6,13 +6,13 @@
 render_priority = 0
 shader = ExtResource("1_rhahp")
 shader_parameter/DangerToClose = false
-shader_parameter/ColorShield = Color(0.710448, 1, 0.970296, 1)
+shader_parameter/ColorShield = Color(0.709804, 0.85098, 1, 1)
 shader_parameter/ColorBorderAnim = Color(0.988235, 0.05098, 0.286275, 1)
 shader_parameter/LinePulseSpeed = 0.2
 shader_parameter/Dithering_Opacity = 0.5
 shader_parameter/Dithering_X = 1.0
-shader_parameter/Dithering_Y = 1.0
-shader_parameter/Dithering_Scale = 1.0
+shader_parameter/Dithering_Y = 0.35
+shader_parameter/Dithering_Scale = 50.0
 shader_parameter/Line_Amount = 30.0
 shader_parameter/LineMoveSpeed = 0.3
 shader_parameter/LineHardness = 10.0

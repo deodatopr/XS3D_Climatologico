@@ -8,6 +8,12 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Glitch.gdshader" id="6_cwp2c"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="7_xgfeg"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_natb6"]
+shader = ExtResource("7_xgfeg")
+shader_parameter/color = Color(1, 0.254477, 0.254477, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8a1ui"]
 shader = ExtResource("6_cwp2c")
 shader_parameter/random = false
@@ -15,14 +21,8 @@ shader_parameter/random_rate = 0.2
 shader_parameter/rows_min = 5.0
 shader_parameter/rows_max = 20.0
 shader_parameter/rows_speed = 70.0
-shader_parameter/chromatic = 0.2
+shader_parameter/chromatic = 0.1
 shader_parameter/intensity = 0.3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_natb6"]
-shader = ExtResource("7_xgfeg")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.2
-shader_parameter/blur = 3
 
 [node name="Glitch" type="Node" node_paths=PackedStringArray("sndGlitch", "sndGlitchLimit", "glitch", "cortinilla", "mensaje")]
 script = ExtResource("1_nuw5m")
@@ -54,23 +54,8 @@ region_rect = Rect2(476, 8, 23, 25)
 script = ExtResource("5_u01u5")
 colorTransparent = Color(0, 0, 0, 0)
 
-[node name="PPE - Glitch" type="CanvasLayer" parent="."]
-layer = 5
-
-[node name="ColorRect" type="ColorRect" parent="PPE - Glitch"]
-process_mode = 4
-visible = false
-material = SubResource("ShaderMaterial_8a1ui")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="Msg Perdiendo Senal" type="CanvasLayer" parent="."]
 layer = 5
-visible = false
 
 [node name="Perdiendo senal" type="Control" parent="Msg Perdiendo Senal"]
 layout_mode = 3
@@ -88,10 +73,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -77.0
-offset_right = 272.0
-offset_bottom = 1.0
+offset_left = -321.0
+offset_top = -82.0
+offset_right = 329.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_dq2f5")
@@ -106,11 +91,29 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 28.0
+offset_right = -28.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "DEMASIADO CERCA DEL LIMITE"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="PPE - Glitch" type="CanvasLayer" parent="."]
+layer = 6
+
+[node name="ColorRect" type="ColorRect" parent="PPE - Glitch"]
+process_mode = 4
+material = SubResource("ShaderMaterial_8a1ui")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = 10.0
+offset_right = -25.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
