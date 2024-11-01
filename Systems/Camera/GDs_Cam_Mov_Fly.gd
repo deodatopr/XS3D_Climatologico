@@ -30,8 +30,6 @@ var rot_axisRotation : Vector2
 
 var mouseMotion : InputEvent
 var cursorMovement : Vector2
-var curvEvaluateSpeed_acce : float = 1.5
-var curvEvaluateSpeed_dece : float = .5
 var curvPoint : float
 
 func Initialize(_camMng : GDs_Cam_Manager):
@@ -122,7 +120,7 @@ func _mov_movement(_delta : float):
 	if dir.length() > 0:
 		if mov_curv01 < 1:
 			#Calculate curve acc
-			mov_curv01 += curvEvaluateSpeed_acce * _delta
+			mov_curv01 += camMng.fly_acceleration * _delta
 			mov_curv01 = clampf(mov_curv01,0,1)
 			curvPoint = camMng.curveMovement.sample(mov_curv01)
 		
@@ -133,7 +131,7 @@ func _mov_movement(_delta : float):
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif dir.length() == 0 and mov_velocity.length() > 0:
 		#Calculate curve dec
-		mov_curv01 -= curvEvaluateSpeed_dece * _delta
+		mov_curv01 -= camMng.fly_deceleration * _delta
 		mov_curv01 = clampf(mov_curv01,0,1)
 		curvPoint = camMng.curveMovement.sample(mov_curv01)
 		
@@ -201,4 +199,5 @@ func _rotation_vert(_dir:float, _delta:float):
 	rot_vert -= -_dir * camMng.fly_rot_speed  * _delta
 	var targetAngle : float = rot_vert
 	var smoothTarget : float = lerp_angle(rot_lastRotX,targetAngle,15 * _delta)
+	
 	pivot.rotation.x = smoothTarget
