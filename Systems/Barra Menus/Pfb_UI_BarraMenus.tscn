@@ -16,7 +16,7 @@ region = Rect2(377, 114, 65, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_443rp"]
 atlas = ExtResource("1_bu15u")
-region = Rect2(469, 763, 42, 42)
+region = Rect2(7, 264, 54, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kmdm"]
 atlas = ExtResource("1_bu15u")
@@ -106,29 +106,13 @@ grow_horizontal = 2
 texture = SubResource("AtlasTexture_7cb5l")
 
 [node name="Home" type="TextureRect" parent="."]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 offset_left = 5.0
-offset_top = -21.0
-offset_right = 49.0
-offset_bottom = 23.0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 19.0
 texture = SubResource("AtlasTexture_443rp")
-
-[node name="Frame" type="TextureRect" parent="Home"]
-self_modulate = Color(0.254902, 0.254902, 0.254902, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -21.0
-offset_right = 21.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_443rp")
+expand_mode = 1
 
 [node name="Home Icon" type="TextureRect" parent="Home"]
 layout_mode = 1
@@ -138,9 +122,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -9.0
-offset_top = -9.0
+offset_top = -10.0
 offset_right = 9.0
-offset_bottom = 9.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_4kmdm")

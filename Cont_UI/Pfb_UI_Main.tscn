@@ -60,6 +60,8 @@ menuPerfiles = NodePath("Menu Sitios")
 barraMenus = NodePath("Barra menus")
 menuInfo = NodePath("Menu Info")
 
+[node name="------MENUS----------" type="Node" parent="."]
+
 [node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp", "sndUi1", "sndUiPressed") instance=ExtResource("3_g57u8")]
 visible = false
 layout_mode = 1
@@ -693,6 +695,8 @@ texture = SubResource("AtlasTexture_ie3aj")
 [node name="PopUp Ver Sitio" parent="." instance=ExtResource("5_wvomf")]
 visible = false
 layout_mode = 1
+
+[node name="------BARRAS----------" type="Node" parent="."]
 
 [node name="Barra menus" parent="." node_paths=PackedStringArray("menuSitios", "menuMapa", "menuConfig", "menuDatos", "sndUi1") instance=ExtResource("2_j5wup")]
 layout_mode = 1
