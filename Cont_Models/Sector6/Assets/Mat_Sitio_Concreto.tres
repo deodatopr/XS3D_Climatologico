@@ -3,4 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://clf7ttkafg3r3" path="res://Cont_Models/Sector6/Assets/Sitio_Concreto.jpg" id="1_nlkct"]
 
 [resource]
+albedo_color = Color(0.7, 0.7, 0.7, 1)
 albedo_texture = ExtResource("1_nlkct")

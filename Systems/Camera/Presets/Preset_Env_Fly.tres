@@ -21,6 +21,7 @@ ssil_intensity = 0.0
 sdfgi_use_occlusion = true
 glow_normalized = true
 glow_blend_mode = 0
+fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.424189, 0.509992, 0.644825, 1)
 fog_density = 0.7

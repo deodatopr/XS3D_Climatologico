@@ -4,5 +4,5 @@
 
 [resource]
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.862062, 0.862062, 0.862062, 1)
+albedo_color = Color(0.7, 0.7, 0.7, 1)
 albedo_texture = ExtResource("1_1a76q")
