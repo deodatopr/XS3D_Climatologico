@@ -14,6 +14,7 @@ extends Node
 @export var screenMark: Control 
 @export var pointSitio: Control 
 @export var direction : Control
+@export var frameColor : Control
 
 var pivotCam : Node3D
 var camManager : GDs_Cam_Manager
@@ -46,21 +47,22 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	
 	screenSize = get_viewport().get_visible_rect().size
 	
-	minPos_X = offsetBorder + direction.size.x
-	maxPos_X = screenSize.x - screenMark.size.x - direction.size.x - offsetBorder
+	minPos_X = offsetBorder
+	maxPos_X = screenSize.x - screenMark.size.x  - offsetBorder
 	
 	var sizeMenuBottom : float = 105
-	minPos_Y = offsetBorder + direction.size.y
-	maxPos_Y = screenSize.y - screenMark.size.y - direction.size.y - offsetBorder - sizeMenuBottom
+	minPos_Y = offsetBorder
+	maxPos_Y = screenSize.y - screenMark.size.y  - offsetBorder - sizeMenuBottom
 	
-	pin_sitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
-	pointSitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
+	#pin_sitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
+	screenMark.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
+	screenMark.self_modulate.a = .5
 	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	
 	_CalculateScreenMark()
-	_CalculateCompassPoints()
+	_CalculateCompassNorth()
 
 func _CalculateScreenMark() -> void:
 	#Position
@@ -86,37 +88,44 @@ func _CalculateScreenMark() -> void:
 	screenMark.global_position = postarget2d
 	
 	#Rotation
-	#var angleRotation : float = postarget2d.angle_to(Vector2(screenSize.x / 2, screenSize.y / 2))
-	#pointSitio.rotation = -angleRotation
+	
+	var centerScreen : Vector2 = Vector2(screenSize.x * .5, screenSize.y * .5)
+	var angleToFixRot : float = 90
+	var angleRotation : float = rad_to_deg(centerScreen.angle_to_point(postarget2d)) + angleToFixRot
+	pointSitio.rotation_degrees = angleRotation
+	
+	#centerScreen.y +=
+	direction.visible = centerScreen.distance_to(postarget2d) > 400
 
-func _CalculateCompassPoints() -> void:
+func _CalculateCompassNorth() -> void:
 	lblDistance.text = str(CAM.distToSitio)
-	##calculate degrees of pivot cam
-	#var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
-	#var compassPosition = rotationDegrees * (compass.size.x/6)/180
-#
-	##check if look to left or right
-	#var rotationDir := 1
-	#if pivotCam.rotation.y < 0:
-		#rotationDir = -1
-#
-	##update compass direction
-	#compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
-#
-	#var pivotCamNormal := pivotCam.global_basis.z
-	#pivotCamNormal.y = 0;
-	#
-	#var markNormal := (posSitio - pivotCam.global_position).normalized()
-	#markNormal.y = 0
-	#
-	#var dot := pivotCamNormal.dot(markNormal)
-	#var degrees = acos(dot/(pivotCamNormal.length() * markNormal.length()))
-	#degrees = degrees * (180/ PI)
-	#
-	#var cross := pivotCamNormal.cross(markNormal)
-	#var offset = ((-degrees * (compass_mask.size.x/2))/180)
-	#
-	#if cross.y < 0:
-		#offset = -offset
+	
+	#calculate degrees of pivot cam
+	var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
+	var compassPosition = rotationDegrees * (compass.size.x/6)/180
+
+	#check if look to left or right
+	var rotationDir := 1
+	if pivotCam.rotation.y < 0:
+		rotationDir = -1
+
+	#update compass direction
+	compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
+
+	var pivotCamNormal := pivotCam.global_basis.z
+	pivotCamNormal.y = 0;
+	
+	var markNormal := (posSitio - pivotCam.global_position).normalized()
+	markNormal.y = 0
+	
+	var dot := pivotCamNormal.dot(markNormal)
+	var degrees = acos(dot/(pivotCamNormal.length() * markNormal.length()))
+	degrees = degrees * (180/ PI)
+	
+	var cross := pivotCamNormal.cross(markNormal)
+	var offset = ((-degrees * (compass_mask.size.x/2))/180)
+	
+	if cross.y < 0:
+		offset = -offset
 		
-	#pin_sitio.position.x = pinSiteInitialXPosition + offset
+	pin_sitio.position.x = pinSiteInitialXPosition + offset
