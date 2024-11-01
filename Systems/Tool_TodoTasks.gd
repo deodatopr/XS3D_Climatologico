@@ -9,7 +9,10 @@
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 
+
 #Cam fly
+#	Input altura subir/bajar con scroll, cam fly
+#	Forward hacia adelante en local y hacia atras en global
 # - NavMesh que si sube por altura despues baje, si estabas en el suelo
 # - Trigger cercano a sitio aumentar DOF
 # a CIERTA DIST APAGAR/PRENDER AO
