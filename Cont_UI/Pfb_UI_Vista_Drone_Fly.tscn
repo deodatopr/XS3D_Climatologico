@@ -109,7 +109,7 @@ region = Rect2(914, 147, 20, 21)
 atlas = ExtResource("2_satoa")
 region = Rect2(7, 264, 54, 54)
 
-[node name="Vista Fly" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "compass")]
+[node name="Vista Fly" type="Control" node_paths=PackedStringArray("compass", "lblAltura", "lblVelocidad", "lblRotacion")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,10 +117,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e7v8d")
+compass = NodePath("Frame/UI_Compass")
 lblAltura = NodePath("Frame/Indicators/Datos/HBoxContainer/Altura/Lbl Altura")
 lblVelocidad = NodePath("Frame/Indicators/Datos/HBoxContainer/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Frame/Indicators/Datos/HBoxContainer/Rotacion/Lbl Rotacion")
-compass = NodePath("Frame/UI_Compass")
 metadata/_edit_horizontal_guides_ = [56.0, 56.0]
 metadata/_edit_vertical_guides_ = [1635.0]
 

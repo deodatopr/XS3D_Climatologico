@@ -90,30 +90,30 @@ transform = Transform3D(0.798635, 0.104504, 0.592672, 0, 0.984808, -0.173648, -0
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
 script = ExtResource("16_r0mi2")
 sndMoving = NodePath("Moving")
-sndMovingVolume = 0.0
 sndMovingPitch = 1.0
-sndMovingTurboPitch = 1.5
 sndCameraFOV = NodePath("CameraFOV")
 sndCameraRot = NodePath("CameraRot")
 sndWind = NodePath("Wind")
-sndWindVolume = -2.0
-sndWindPitchMoving = 1.5
-sndWindPitchTurbo = 2.0
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
+volume_db = -5.0
 autoplay = true
 parameters/looping = true
 
 [node name="Moving" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("18_og2vw")
+volume_db = 7.0
 parameters/looping = true
 
 [node name="CameraFOV" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
+pitch_scale = 0.7
 
 [node name="CameraRot" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
+volume_db = 7.0
+pitch_scale = 0.5
 
 [node name="Glitch" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndGlitch", "sndGlitchLimit", "vistaSky", "vistaFly", "glitch", "cortinilla", "mensaje")]
 script = ExtResource("7_h7lv4")
@@ -216,9 +216,8 @@ volume_db = 10.0
 autoplay = true
 parameters/looping = true
 
-[node name="Pin - Presa" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8882, 49.4281, -51.6092)
-metadata/_edit_lock_ = true
+[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 43, -74)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
@@ -298,7 +297,6 @@ mouse_filter = 2
 layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="[ PPE + UI ]/[ PPE- SKY]/PPE - Lens"]
-visible = false
 material = SubResource("ShaderMaterial_xjg68")
 anchors_preset = 15
 anchor_right = 1.0
@@ -354,7 +352,8 @@ layer = 5
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("6_7j046")]
 visible = false
 
-[node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("15_bomeh")]
+[node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
+pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 
 [node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("cam_manager") instance=ExtResource("14_bqx8o")]
 cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
@@ -365,7 +364,7 @@ dataService = NodePath("../../../../[ SYSTEMS ]/Data - Service")
 vistaSky = NodePath("../SKY")
 vistaFree = NodePath("../FLY")
 cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
-worldMark = NodePath("../../../../[ CONTENT ]/Pin - Presa")
+worldMark = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 map = NodePath("../../../../[ CONTENT ]/Msh_Terreno")
 
 [editable path="[ SYSTEMS ]/Camera - Drones"]

@@ -29,7 +29,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.5
 shader_parameter/blur = 2
 
-[node name="UI_Compass" type="Control" node_paths=PackedStringArray("compass", "pin_sitio", "compass_parent", "top_down_mark", "compass_top_down", "distance_text", "compass_mask", "distance_top_down")]
+[node name="UI_Compass" type="Control" node_paths=PackedStringArray("compass_mask", "pin_sitio", "compass", "screenMark", "lblScreenDistance")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,18 +38,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_y44kk")
-compass = NodePath("CompassParent/CompassMask/Compass")
-pin_sitio = NodePath("CompassParent/CompassMask/PinSite")
-compass_parent = NodePath("CompassParent")
-top_down_mark = NodePath("CompassTopDown/TopDownMark")
-compass_top_down = NodePath("CompassTopDown")
-distance_text = NodePath("CompassParent/DistanceBackground/DistanceText")
-compass_mask = NodePath("CompassParent/CompassMask")
-distance_top_down = NodePath("CompassTopDown/TopDownMark/DistanceTopDown")
 local_estaciones = ExtResource("2_j7ffq")
+compass_mask = NodePath("CompassNorth/CompassMask")
+pin_sitio = NodePath("CompassNorth/CompassMask/PinSite")
+compass = NodePath("CompassNorth/CompassMask/Compass")
+screenMark = NodePath("CompassScreen/ScreenMark")
+lblScreenDistance = NodePath("CompassScreen/ScreenMark/lbl - ScreenDistance")
 metadata/_edit_horizontal_guides_ = [542.0, 869.0, 221.0, 869.0, 221.0]
 
-[node name="CompassParent" type="Control" parent="."]
+[node name="CompassNorth" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -59,7 +56,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="CompassMask" type="TextureRect" parent="CompassParent"]
+[node name="CompassMask" type="TextureRect" parent="CompassNorth"]
 material = SubResource("ShaderMaterial_tgy0b")
 clip_contents = true
 layout_mode = 1
@@ -77,7 +74,7 @@ grow_vertical = 2
 pivot_offset = Vector2(300, 0)
 texture = SubResource("AtlasTexture_0a6t5")
 
-[node name="PinSite" type="TextureRect" parent="CompassParent/CompassMask"]
+[node name="PinSite" type="TextureRect" parent="CompassNorth/CompassMask"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 5
@@ -92,7 +89,7 @@ pivot_offset = Vector2(6, 0)
 texture = SubResource("AtlasTexture_o3ajw")
 expand_mode = 1
 
-[node name="Compass" type="NinePatchRect" parent="CompassParent/CompassMask"]
+[node name="Compass" type="NinePatchRect" parent="CompassNorth/CompassMask"]
 clip_children = 2
 texture_filter = 2
 texture_repeat = 2
@@ -110,7 +107,7 @@ texture = ExtResource("3_wk4d2")
 region_rect = Rect2(477, 674, 25, 12)
 axis_stretch_horizontal = 1
 
-[node name="Bottom Frame" type="NinePatchRect" parent="CompassParent/CompassMask"]
+[node name="Bottom Frame" type="NinePatchRect" parent="CompassNorth/CompassMask"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,7 +121,7 @@ patch_margin_left = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Arrow" type="TextureRect" parent="CompassParent"]
+[node name="Arrow" type="TextureRect" parent="CompassNorth"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -141,7 +138,7 @@ pivot_offset = Vector2(5, 0)
 texture = SubResource("AtlasTexture_41bm3")
 expand_mode = 1
 
-[node name="CenterRef" type="Panel" parent="CompassParent"]
+[node name="CenterRef" type="Panel" parent="CompassNorth"]
 visible = false
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 1
@@ -154,7 +151,7 @@ offset_right = 942.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DistanceBackground" type="ColorRect" parent="CompassParent"]
+[node name="DistanceBackground" type="ColorRect" parent="CompassNorth"]
 material = SubResource("ShaderMaterial_xia4l")
 layout_mode = 1
 anchors_preset = 7
@@ -170,7 +167,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(33, 15)
 
-[node name="DistanceText" type="Label" parent="CompassParent/DistanceBackground"]
+[node name="DistanceText" type="Label" parent="CompassNorth/DistanceBackground"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -188,7 +185,7 @@ text = "355"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LeftFrane" type="NinePatchRect" parent="CompassParent/DistanceBackground"]
+[node name="LeftFrane" type="NinePatchRect" parent="CompassNorth/DistanceBackground"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -200,7 +197,7 @@ patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_bottom = 3
 
-[node name="RightFrane" type="NinePatchRect" parent="CompassParent/DistanceBackground"]
+[node name="RightFrane" type="NinePatchRect" parent="CompassNorth/DistanceBackground"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -217,8 +214,7 @@ patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_bottom = 3
 
-[node name="CompassTopDown" type="Control" parent="."]
-visible = false
+[node name="CompassScreen" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -232,7 +228,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopDownMark" type="ColorRect" parent="CompassTopDown"]
+[node name="ScreenMark" type="ColorRect" parent="CompassScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -248,7 +244,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 color = Color(0.0350456, 0, 1, 1)
 
-[node name="DistanceTopDown" type="Label" parent="CompassTopDown/TopDownMark"]
+[node name="lbl - ScreenDistance" type="Label" parent="CompassScreen/ScreenMark"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
