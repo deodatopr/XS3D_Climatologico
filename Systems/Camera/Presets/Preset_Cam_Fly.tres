@@ -3,8 +3,9 @@
 [resource]
 auto_exposure_enabled = true
 auto_exposure_speed = 2.0
-dof_blur_far_distance = 1100.0
-dof_blur_far_transition = 50.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 1500.0
+dof_blur_far_transition = 800.0
 dof_blur_near_distance = 350.0
 dof_blur_near_transition = 300.0
 auto_exposure_min_sensitivity = 400.0

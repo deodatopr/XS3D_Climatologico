@@ -66,6 +66,9 @@ ligtht_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terreno"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_07"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_08"), NodePath("../../[ CONTENT ]/Msh_Terreno/Msh_Sector_09")]
 fly_fov = 50.0
 fly_height_max = 400.0
+fly_height_min = 80.0
+fly_acceleration = 0.7
+fly_deceleration = 0.7
 
 [node name="MovSky" parent="[ SYSTEMS ]/Camera - Drones" index="0"]
 transform = Transform3D(0.956305, 0.28793, 0.0507698, 0, 0.173648, -0.984808, -0.292372, 0.941776, 0.166061, -25, 500, -152)
