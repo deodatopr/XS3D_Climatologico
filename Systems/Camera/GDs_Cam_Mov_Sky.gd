@@ -31,7 +31,9 @@ var rot_velocity : Vector3
 var rot_lastRotDir : float
 var rot_lastMouseDir : float
 var rot_lastRot : float
+var rot_lastMousePos : Vector2
 var rot_lastMousePos01 : float
+var rot_lastValidRotDir : float
 var mouseMotion : InputEvent
 
 # Misc
@@ -142,11 +144,18 @@ func _Rotation(_delta:float):
 	
 	#Detect input mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		if mouseMotion != null:
-			var rotDir : float = signf(mouseMotion.relative.x)
-			rotDir = 1 if rotDir >= 0 else -1
-			dir = rotDir
-
+		var currentMousePos : Vector2 = get_viewport().get_mouse_position()
+		var rotDir : float = signf(currentMousePos.x - rot_lastMousePos.x)
+		
+		if rotDir != 0:
+			rot_lastValidRotDir = rotDir
+		else:
+			rotDir = rot_lastValidRotDir
+		
+		dir = rotDir
+		rot_lastMousePos = currentMousePos
+	else:
+		rot_lastValidRotDir = 0
 
 	CAM.isRotating = dir != 0
 	dir = lerp(rot_lastRotDir,dir,5 *_delta)
