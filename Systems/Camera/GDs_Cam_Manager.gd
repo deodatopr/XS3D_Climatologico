@@ -31,7 +31,7 @@ class_name GDs_Cam_Manager extends Node
 @export var sky_height : float = 500
 @export var sky_speed: float = .5
 @export_range(1,2) var sky_turbo: float = 2
-@export var sky_rot_speed : float = 1
+@export var sky_rot_speed : float = .1
 @export_range(30,130) var sky_zoom_in : float = 30
 @export var sky_zoom_out : float = 100
 
@@ -42,7 +42,7 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_height_min : float = 50
 @export var fly_speed : float = 2
 @export_range(1,5) var fly_turbo : float = 2
-@export var fly_rot_speed : float = .75
+@export var fly_rot_speed : float = .7
 
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
 @onready var mat_limit_fly : ShaderMaterial = preload("uid://nan3iase8pij")
@@ -74,7 +74,7 @@ func _ready():
 	#camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
 	
 	#TEST: Siempre inicia en sky o fly
-	camMode = ENUMS.Cam_Mode.fly
+	camMode = ENUMS.Cam_Mode.sky
 	
 	Initialize(camMode)
 	

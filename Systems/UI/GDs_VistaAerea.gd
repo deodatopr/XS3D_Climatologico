@@ -10,12 +10,9 @@ extends Control
 @export_group("External Ref")
 @export var cam_manager : GDs_Cam_Manager
 
-func _ready():
-	lblAltura.text = UTILITIES.FormatAltura(CAM.height)
-	
-
 func _process(_delta: float) -> void:
 	@warning_ignore('narrowing_conversion')
+	lblAltura.text = UTILITIES.FormatAltura(CAM.height)
 	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
 	lblRotacion.text = UTILITIES.FormatRotacionY(CAM.rotation.y)
 	lblFov.text = UTILITIES.FormatFov(CAM.fov)
