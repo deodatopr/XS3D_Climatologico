@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://2fk1ttkfdobb"
-path="res://.godot/imported/Msh_Sect06_NavMesh.glb-d63f320bd35275599b8e568634c07e8c.scn"
+path="res://.godot/imported/Msh_Navigation.glb-4c0ed18bc9f9cf3df75f0180950e8f98.scn"
 
 [deps]
 
-source_file="res://Cont_Models/Sector6/Msh_Sect06_NavMesh.glb"
-dest_files=["res://.godot/imported/Msh_Sect06_NavMesh.glb-d63f320bd35275599b8e568634c07e8c.scn"]
+source_file="res://Cont_Models/Sector6/Msh_Navigation.glb"
+dest_files=["res://.godot/imported/Msh_Navigation.glb-4c0ed18bc9f9cf3df75f0180950e8f98.scn"]
 
 [params]
 
@@ -20,17 +20,24 @@ nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
-meshes/create_shadow_meshes=true
+meshes/create_shadow_meshes=false
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=true
-animation/import=true
+skins/use_named_skins=false
+animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Msh_Navigation": {
+"generate/navmesh": 2,
+"mesh_instance/cast_shadow": 0
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
