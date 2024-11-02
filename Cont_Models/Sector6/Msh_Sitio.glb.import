@@ -19,62 +19,51 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=true
+meshes/generate_lods=false
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=true
-animation/import=true
+skins/use_named_skins=false
+animation/import=false
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
 "Mat_Sitio_Asfalto": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Asfalto.tres"
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Asfalto.tres"
 },
 "Mat_Sitio_Concreto": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Concreto.tres"
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Concreto.tres"
 },
 "Mat_Sitio_Herreria": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Herreria.tres"
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Herreria.tres"
 },
 "Mat_Sitio_Ladrillos": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Ladrillos.tres"
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Ladrillos.tres"
 },
 "Mat_Sitio_Paredes": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Paredes.tres"
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Paredes.tres"
 },
 "Mat_Sitio_Piedra": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Piedra.tres"
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Piedra.tres"
 },
 "Mat_Sitio_Tinacos": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Tinacos.tres"
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Tinacos.tres"
 },
 "Mat_Sitio_Vidrios": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Assets/Mat_Sitio_Vidrios.tres"
-}
-},
-"meshes": {
-"Msh_Sect06_Sitio_Msh_Sitio": {
-"generate/lightmap_uv": 0,
-"generate/lods": 2,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/path": ""
+"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Vidrios.tres"
 }
 }
 }

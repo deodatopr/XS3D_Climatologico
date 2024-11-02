@@ -174,12 +174,12 @@ func _rotation_hor(_dir:float, _delta:float):
 	pivot.rotation.y = smoothTarget
 
 func _Fov(_delta : float):
-	if Input.is_action_pressed("3DLook_Fov_+"):
+	if Input.is_action_pressed("3DLook_Fov_-"):
 		fov_current += 50 * _delta
 		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = fov_current
 		_SetLensDistorsion(fov_current)
-	if Input.is_action_pressed("3DLook_Fov_-"):
+	if Input.is_action_pressed("3DLook_Fov_+"):
 		fov_current -= 50 * _delta
 		fov_current = clampf(fov_current, camMng.sky_zoom_in, camMng.sky_zoom_out)
 		cam.fov = fov_current

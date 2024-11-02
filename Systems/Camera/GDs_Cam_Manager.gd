@@ -59,6 +59,10 @@ class_name GDs_Cam_Manager extends Node
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
+@export_subgroup("LIMITS")
+@export_range(0.0, 1.0) var navmeshEdgeLimit : float = 1.0
+
+
 var navMeshBounds : AABB
 var camMode : int
 var last_rotation : float
@@ -106,9 +110,9 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	var boundingX : float = abs(positionInMap01.x)
 	var boundingY : float = abs(positionInMap01.y)
 	
-	if boundingX >= limitToStartGlich01  || boundingY >= limitToStartGlich01:
+	if boundingX >= navmeshEdgeLimit  || boundingY >= navmeshEdgeLimit:
 		var boundingValue := boundingX if boundingX >= boundingY else boundingY
-		CAM.boundings01 = inverse_lerp(limitToStartGlich01,1,boundingValue)
+		CAM.boundings01 = inverse_lerp(navmeshEdgeLimit,1,boundingValue)
 		if CAM.boundings01 < .02:
 			CAM.boundings01 = 0
 	

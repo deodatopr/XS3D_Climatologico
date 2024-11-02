@@ -23,8 +23,6 @@
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krxms"]
 shader = ExtResource("4_u55j2")
 shader_parameter/pixel = 1.0
@@ -44,6 +42,8 @@ shader_parameter/vignetteColor = Color(0, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_issi1"]
 shader = ExtResource("8_pnisj")
 shader_parameter/lensDistortion = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
 [node name="SECTOR 6" type="Node3D"]
 
@@ -65,9 +65,11 @@ ligtht_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 fly_fov = 50.0
 fly_height_max = 400.0
-fly_height_min = 80.0
+fly_height_min = 150.0
 fly_acceleration = 0.7
 fly_deceleration = 0.7
+fly_rot_speed = 1.0
+navmeshEdgeLimit = 0.95
 
 [node name="MovSky" parent="[ SYSTEMS ]/Camera - Drones" index="0"]
 transform = Transform3D(0.956305, 0.28793, 0.0507698, 0, 0.173648, -0.984808, -0.292372, 0.941776, 0.166061, -25, 500, -152)
@@ -110,32 +112,10 @@ pitch_scale = 0.5
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 
-[node name="[ CONTENT ]" type="Node" parent="."]
-
-[node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ CONTENT ]"]
+[node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
 stream = ExtResource("21_atymd")
 volume_db = 10.0
 parameters/looping = true
-
-[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 43, -74)
-
-[node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
-material_override = ExtResource("2_vmk6t")
-mesh = SubResource("QuadMesh_2ocno")
-metadata/_edit_lock_ = true
-
-[node name="Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
-
-[node name="================" type="Node" parent="[ CONTENT ]"]
-
-[node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
-
-[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
-
-[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
@@ -237,7 +217,6 @@ mouse_filter = 2
 layer = 5
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("6_7j046")]
-visible = false
 
 [node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
 pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
@@ -253,5 +232,27 @@ vistaFree = NodePath("../FLY")
 cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 worldMark = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 map = NodePath("../../../../[ CONTENT ]/Msh_Terrain")
+
+[node name="[ CONTENT ]" type="Node" parent="."]
+
+[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 43, -74)
+
+[node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
+material_override = ExtResource("2_vmk6t")
+mesh = SubResource("QuadMesh_2ocno")
+metadata/_edit_lock_ = true
+
+[node name="Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
+transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
+
+[node name="================" type="Node" parent="[ CONTENT ]"]
+
+[node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
+
+[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
+
+[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
 [editable path="[ SYSTEMS ]/Camera - Drones"]
