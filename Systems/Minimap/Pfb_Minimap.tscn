@@ -81,6 +81,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256, 0)
@@ -123,17 +124,11 @@ metadata/_edit_lock_ = true
 [node name="Cam_Pivot" type="Control" parent="Minimap_Parent/Circle_Mask"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -137.0
-offset_right = 20.0
-offset_bottom = -97.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_left = 134.0
+offset_top = 134.0
+offset_right = 174.0
+offset_bottom = 174.0
 pivot_offset = Vector2(20, 20)
 
 [node name="Cam_Icon" type="TextureRect" parent="Minimap_Parent/Circle_Mask/Cam_Pivot"]

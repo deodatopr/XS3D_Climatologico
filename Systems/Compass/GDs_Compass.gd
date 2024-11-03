@@ -45,15 +45,6 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	compassInitialXPosition = compass.position.x
 	pinSiteInitialXPosition = pin_sitio.position.x
 	
-	screenSize = get_viewport().get_visible_rect().size
-	
-	minPos_X = offsetBorder
-	maxPos_X = screenSize.x - screenMark.size.x  - offsetBorder
-	
-	var sizeMenuBottom : float = 105
-	minPos_Y = offsetBorder
-	maxPos_Y = screenSize.y - screenMark.size.y  - offsetBorder - sizeMenuBottom
-	
 	#pin_sitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
 	screenMark.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
 	screenMark.self_modulate.a = .5
@@ -66,6 +57,17 @@ func _process(delta: float) -> void:
 
 func _CalculateScreenMark() -> void:
 	#Position
+	
+	#Screen size calculate here to avoid errors if it is maximized or minimized in runtime
+	screenSize = get_viewport().get_visible_rect().size
+	
+	minPos_X = offsetBorder
+	maxPos_X = screenSize.x - screenMark.size.x  - offsetBorder
+	
+	var sizeMenuBottom : float = 105
+	minPos_Y = offsetBorder
+	maxPos_Y = screenSize.y - screenMark.size.y  - offsetBorder - sizeMenuBottom
+	
 	
 	#Calculate if is in front or back to fix finalPosition
 	var dirToSitio : Vector3 = (posSitio - pivotCam.global_position).normalized()

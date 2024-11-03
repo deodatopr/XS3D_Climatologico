@@ -66,10 +66,7 @@ Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 fly_fov = 50.0
 fly_height_max = 400.0
 fly_height_min = 150.0
-fly_acceleration = 0.7
-fly_deceleration = 0.7
 fly_rot_speed = 1.0
-navmeshEdgeLimit = 0.95
 
 [node name="MovSky" parent="[ SYSTEMS ]/Camera - Drones" index="0"]
 transform = Transform3D(0.956305, 0.28793, 0.0507698, 0, 0.173648, -0.984808, -0.292372, 0.941776, 0.166061, -25, 500, -152)

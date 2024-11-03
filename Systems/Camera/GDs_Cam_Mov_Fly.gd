@@ -120,7 +120,7 @@ func _mov_movement(_delta : float):
 	if dir.length() > 0:
 		if mov_curv01 < 1:
 			#Calculate curve acc
-			mov_curv01 += camMng.fly_acceleration * _delta
+			mov_curv01 += camMng.fly_acce_dece * _delta
 			mov_curv01 = clampf(mov_curv01,0,1)
 			curvPoint = camMng.curveMovement.sample(mov_curv01)
 		
@@ -131,7 +131,7 @@ func _mov_movement(_delta : float):
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif dir.length() == 0 and mov_velocity.length() > 0:
 		#Calculate curve dec
-		mov_curv01 -= camMng.fly_deceleration * _delta
+		mov_curv01 -= camMng.fly_acce_dece * _delta
 		mov_curv01 = clampf(mov_curv01,0,1)
 		curvPoint = camMng.curveMovement.sample(mov_curv01)
 		
@@ -181,6 +181,7 @@ func _rotation(_delta:float):
 	CAM.isRotating = dir.length() > 0
 	
 	dir = lerp(rot_lastDir,dir,5 *_delta)
+	
 	#Apply rot
 	_rotation_hor(dir.x,_delta)
 	_rotation_vert(-dir.y,_delta)
@@ -196,7 +197,10 @@ func _rotation_hor(_dir:float, _delta:float):
 	pivot.rotation.y = smoothTarget
 
 func _rotation_vert(_dir:float, _delta:float):
-	rot_vert -= -_dir * camMng.fly_rot_speed  * _delta
+	var toEvaluateAngle : float = rot_vert
+	toEvaluateAngle -= -_dir * camMng.fly_rot_speed  * _delta
+	toEvaluateAngle = clampf(toEvaluateAngle,deg_to_rad(-camMng.fly_rot_clamp),deg_to_rad(camMng.fly_rot_clamp) )
+	rot_vert = toEvaluateAngle
 	var targetAngle : float = rot_vert
 	var smoothTarget : float = lerp_angle(rot_lastRotX,targetAngle,15 * _delta)
 	

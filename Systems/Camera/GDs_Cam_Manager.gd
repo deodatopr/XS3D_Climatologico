@@ -26,7 +26,7 @@ class_name GDs_Cam_Manager extends Node
 
 @export_group("CAMERAS")
 @export var curveMovement : Curve
-@export_range(.75,1) var limitToStartGlich01 : float = .8
+@export_range(.7, 1.0) var proximity01ToDetectLimits : float = .9
 
 @export_subgroup("SKY")
 @export var sky_height : float = 500
@@ -43,8 +43,8 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_height_min : float = 50
 @export var fly_speed : float = 2
 @export_range(1,5) var fly_turbo : float = 2
-@export_range(.1,2,.1) var fly_acceleration : float = 1.5
-@export_range(.1,2,.1) var fly_deceleration : float = 1
+@export_range(.1,2,.1) var fly_acce_dece: float = .7
+@export var fly_rot_clamp : float = 40
 @export var fly_rot_speed : float = .7
 
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
@@ -59,8 +59,6 @@ class_name GDs_Cam_Manager extends Node
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
-@export_subgroup("LIMITS")
-@export_range(0.0, 1.0) var navmeshEdgeLimit : float = 1.0
 
 
 var navMeshBounds : AABB
@@ -95,6 +93,7 @@ func Initialize(_modeToIntializeCam : int):
 
 	for terrain in Terrains:
 		navMeshBounds = navMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
+		print(navMeshBounds)
 	
 	movSky.Initialize(self)
 	movFly.Initialize(self)
@@ -102,20 +101,26 @@ func Initialize(_modeToIntializeCam : int):
 	_ChangeToMode(_modeToIntializeCam)
 	
 func CheckMapBoundings(_pivot:Node3D) -> bool:
-	var cam_in_world = (_pivot.global_position + (navMeshBounds.size/2))/navMeshBounds.size
-	
+	#Save position 01 in map
+	var cam_in_world := (_pivot.global_position + (navMeshBounds.size * .5))/navMeshBounds.size
 	positionInMap01 = Vector2(1 - cam_in_world.x, 1 - cam_in_world.z)
 	CAM.positionXZ_01 = positionInMap01
 	
-	var boundingX : float = abs(positionInMap01.x)
-	var boundingY : float = abs(positionInMap01.y)
+	#Change positionInMap01 range from -1 to 1 to handle boundings easily
+	positionInMap01.x = lerpf(-1,1,positionInMap01.x)
+	positionInMap01.y = lerpf(-1,1,positionInMap01.y)
 	
-	if boundingX >= navmeshEdgeLimit  || boundingY >= navmeshEdgeLimit:
+	var boundingX : float = abs(positionInMap01.x)
+	var boundingY : float = abs(positionInMap01.y) + .15
+	
+	#Only inside range limits calculate a value to detect proximity to end limit
+	if boundingX >= proximity01ToDetectLimits  || boundingY >= proximity01ToDetectLimits:
 		var boundingValue := boundingX if boundingX >= boundingY else boundingY
-		CAM.boundings01 = inverse_lerp(navmeshEdgeLimit,1,boundingValue)
+		print(boundingValue)
+		CAM.boundings01 = inverse_lerp(proximity01ToDetectLimits,1,boundingValue)
 		if CAM.boundings01 < .02:
 			CAM.boundings01 = 0
-	
+			
 	var insideBoundings := boundingX < 1 and boundingY < 1
 	return insideBoundings
 	
