@@ -2,7 +2,7 @@ extends Node
 
 @export_group("Moving")
 @export var sndMoving: AudioStreamPlayer
-@export var sndMovingVolume:float = 7.0
+@export var sndMovingVolume:float = 3.0
 @export var sndMovingPitch: float = 2.0
 @export var sndMovingTurboPitch: float = 2.0
 @export_group("Camera FOV")
@@ -16,9 +16,9 @@ extends Node
 @export_group("Wind")
 @export var sndWind: AudioStreamPlayer
 @export var sndWindVolume: float = -5
-@export var sndWindPitch: float = 1
-@export var sndWindPitchMoving: float = 1
-@export var sndWindPitchTurbo: float = 1
+@export var sndWindStaticPitch: float = 0.8
+@export var sndWindMovingPitch: float = 1.2
+@export var sndWindTurboPitch: float = 2
 
 
 var tweenMoving:Tween
@@ -28,6 +28,7 @@ var isBoosting = false
 
 func _ready():
 	SIGNALS.OnCameraChangedMode.connect(OnChangeDrone)
+	sndWind.play()
 
 func _process(_delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
@@ -36,20 +37,24 @@ func _process(_delta):
 			if Input.is_action_pressed("3DMove_SpeedBoost") and not isBoosting:
 				isBoosting = true
 				MovingFadeInTurbo()
-				sndWind.pitch_scale = sndWindPitchTurbo
+				WindFadeIn(sndWindTurboPitch)
 			elif not Input.is_action_pressed("3DMove_SpeedBoost") and isBoosting: 
 				isBoosting = false
 				MovingFadeIn()
-				sndWind.pitch_scale = sndWindPitchMoving
+				WindFadeIn(sndWindMovingPitch)
+				
 			else:
 				if not sndMoving.playing:
 					isBoosting = false
 					MovingFadeIn()
-					sndWind.pitch_scale = sndWindPitchMoving
+					WindFadeIn(sndWindMovingPitch)
+
+					
 		else:
 			if sndMoving.playing:
 				MovingFadeOut()
-				sndWind.pitch_scale = 1
+				WindFadeOut()
+				
 #endregion
 #region CameraFOV
 		if Input.is_action_pressed("3DMove_Height_-") and Input.is_action_pressed("3DMove_Height_+"):
@@ -75,7 +80,7 @@ func _process(_delta):
 			sndCameraRot.stop()
 		
 		sndWind.volume_db = sndWindVolume
-		sndWind.pitch_scale = sndWindPitch
+		sndWind.pitch_scale = sndWindStaticPitch
 #endregion
 
  
@@ -114,8 +119,18 @@ func CameraFadeOut():
 	tweenCamFOV.parallel().tween_property(sndCameraFOV,"pitch_scale",sndCameraFOVPitch - 0.4,0.1)
 	await tweenCamFOV.finished
 	sndCameraFOV.stop()
-	pass
 #endregion
+
+func WindFadeIn(_pitch:float):
+	sndWind.play()
+	tweenCamFOV = create_tween()
+	tweenCamFOV.parallel().tween_property(sndWind,"pitch_scale",_pitch,0.1)
+
+func WindFadeOut():
+	tweenCamFOV = create_tween()
+	tweenCamFOV.parallel().tween_property(sndWind,"pitch_scale",sndWindStaticPitch - 0.4,0.1)
+	await tweenCamFOV.finished
+	sndWind.stop()
 
 
 func OnChangeDrone(_mode:int):
