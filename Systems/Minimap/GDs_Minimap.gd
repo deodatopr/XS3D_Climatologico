@@ -34,8 +34,6 @@ func Initialize() -> void:
 func _process(delta: float) -> void:
 	if isInitialized:
 		var posX : float = lerpf(0,map_texture.size.x, CAM.positionXZ_01.x) - (cam_pivot.size.x * .5)
-		
-		var currY01 : float = inverse_lerp(-1,1,CAM.positionXZ_01.y)
 		var posY : float = lerpf(0,map_texture.size.y, CAM.positionXZ_01.y)  - (cam_pivot.size.y *.5)
 			
 		cam_pivot.position = Vector2(posX,posY)

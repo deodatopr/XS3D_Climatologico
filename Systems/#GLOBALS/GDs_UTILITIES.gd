@@ -1,7 +1,5 @@
 class_name GDs_Utilities extends Node
 
-var currentCurvValue : float
-
 func TurnOffObject(object):
 	object.hide()
 	object.process_mode = Node.PROCESS_MODE_DISABLED
@@ -10,29 +8,13 @@ func TurnOnObject(object):
 	object.show()
 	object.process_mode = Node.PROCESS_MODE_INHERIT
 	
-func GetCurvePoint(_curveToEvaluate : Curve, _speedTransition : float, _delta: float, _reverse : bool = false) -> float:
-	if _reverse:
-		currentCurvValue -= _speedTransition * _delta
-	else:
-		currentCurvValue += _speedTransition * _delta
-	
-	currentCurvValue = clampf(currentCurvValue,0,1)
-	return _curveToEvaluate.sample(currentCurvValue) 
-	
-func _get_point_on_map(target_point : Vector3, Enviroment3D : Node3D, _min_dist_from_edge: float) -> Vector3:
-	var map = Enviroment3D.get_world_3d().navigation_map
-	if(NavigationServer3D.map_get_iteration_id(map)):
-		var closest_point := NavigationServer3D.map_get_closest_point(map, target_point)
-		return closest_point
-	return target_point	
-	
-func get_scene_bounds(root : Node) -> AABB:
+func GetNodeBounds(_root : Node) -> AABB:
 	var total_aabb = AABB()
-	if root != null:
-		for node in root.get_children():
+	if _root != null:
+		for node in _root.get_children():
 			if node is MeshInstance3D:
 				total_aabb = total_aabb.merge(node.get_aabb())
-	return total_aabb	
+	return total_aabb
 	
 #region Formato strings
 func FormatNivel(nivel:float)->String:

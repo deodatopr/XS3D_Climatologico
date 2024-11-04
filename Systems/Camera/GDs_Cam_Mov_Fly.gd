@@ -70,7 +70,7 @@ func _mov_height(_delta : float):
 	var heightDir : float = signf(mov_height_axis)
 	
 	#Set limits
-	var minHeightFromNavMesh : float = UTILITIES._get_point_on_map(pivot.position,cam,0).y
+	var minHeightFromNavMesh : float = camMng.GetPointOnMap(pivot.position,0).y
 	@warning_ignore('shadowed_global_identifier')
 	var min : float = minHeightFromNavMesh + camMng.fly_height_min
 	@warning_ignore('shadowed_global_identifier')
@@ -155,7 +155,6 @@ func _mov_movement(_delta : float):
 	#Save speed01 to send it to UI
 	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed  * camMng.fly_turbo,mov_velocity.length())
 	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, 10 * _delta)
-	@warning_ignore('incompatible_ternary')
 	mov_speed01 = clampf(slowSpeed,0, 1)
 	mov_lastSpeed01 = mov_speed01
 	
