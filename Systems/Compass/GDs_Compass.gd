@@ -116,7 +116,8 @@ func _CalculateCompassNorth() -> void:
 		rotationDir = -1
 
 	#update compass direction
-	compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
+	#compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
+	compass.position.x = compassInitialXPosition + (int(pivotCam.rotation.y * 180) %1128) 
 
 	var pivotCamNormal := pivotCam.global_basis.z
 	pivotCamNormal.y = 0;

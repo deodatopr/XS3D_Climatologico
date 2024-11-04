@@ -59,7 +59,7 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="CompassMask" type="TextureRect" parent="CompassNorth"]
+[node name="CompassMask" type="NinePatchRect" parent="CompassNorth"]
 material = SubResource("ShaderMaterial_tgy0b")
 clip_contents = true
 layout_mode = 1
@@ -76,6 +76,10 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(300, 0)
 texture = SubResource("AtlasTexture_0a6t5")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="PinSite" type="TextureRect" parent="CompassNorth/CompassMask"]
 z_index = 2
@@ -92,24 +96,6 @@ pivot_offset = Vector2(6, 0)
 texture = SubResource("AtlasTexture_o3ajw")
 expand_mode = 1
 
-[node name="Compass" type="NinePatchRect" parent="CompassNorth/CompassMask"]
-clip_children = 2
-texture_filter = 2
-texture_repeat = 2
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -697.0
-offset_top = 16.0
-offset_right = 696.0
-offset_bottom = 33.0
-grow_horizontal = 2
-pivot_offset = Vector2(696.667, 0)
-texture = ExtResource("3_wk4d2")
-region_rect = Rect2(477, 674, 25, 12)
-axis_stretch_horizontal = 1
-
 [node name="Bottom Frame" type="NinePatchRect" parent="CompassNorth/CompassMask"]
 layout_mode = 1
 anchors_preset = 15
@@ -123,6 +109,133 @@ region_rect = Rect2(498, 309, 9, 9)
 patch_margin_left = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+
+[node name="Compass" type="NinePatchRect" parent="CompassNorth/CompassMask"]
+texture_filter = 2
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1623.0
+offset_top = 16.0
+offset_right = 1577.0
+offset_bottom = 33.0
+grow_horizontal = 2
+pivot_offset = Vector2(696.667, 0)
+texture = ExtResource("3_wk4d2")
+region_rect = Rect2(479, 674, 47, 13)
+axis_stretch_horizontal = 1
+
+[node name="N" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 1047.0
+offset_top = -19.0
+offset_right = 1065.0
+offset_bottom = 4.0
+text = "N"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="N2" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 2177.0
+offset_top = -25.0
+offset_right = 2195.0
+offset_bottom = -2.0
+text = "N"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 1330.0
+offset_top = -19.0
+offset_right = 1348.0
+offset_bottom = 4.0
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E2" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 2459.0
+offset_top = -19.0
+offset_right = 2477.0
+offset_bottom = 4.0
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E3" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = -19.0
+offset_right = 221.0
+offset_bottom = 4.0
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="S" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 1612.0
+offset_top = -19.0
+offset_right = 1630.0
+offset_bottom = 4.0
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="S2" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 485.0
+offset_top = -19.0
+offset_right = 503.0
+offset_bottom = 4.0
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="S3" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 2740.0
+offset_top = -19.0
+offset_right = 2758.0
+offset_bottom = 4.0
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="o" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 1895.0
+offset_top = -18.0
+offset_right = 1913.0
+offset_bottom = 5.0
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="o2" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 767.0
+offset_top = -15.0
+offset_right = 785.0
+offset_bottom = 8.0
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="o3" type="Label" parent="CompassNorth/CompassMask/Compass"]
+layout_mode = 0
+offset_left = 3023.0
+offset_top = -21.0
+offset_right = 3041.0
+offset_bottom = 2.0
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Arrow" type="TextureRect" parent="CompassNorth"]
 layout_mode = 1
