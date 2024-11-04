@@ -54,13 +54,12 @@ shader_parameter/lensDistortion = 1.0
 
 [node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
-[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("navMesh", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly") instance=ExtResource("1_sjpgl")]
+[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly") instance=ExtResource("1_sjpgl")]
 valuesInRuntime = true
-navMesh = NodePath("../../[ CONTENT ]/Msh_Navigation/@NavigationRegion3D@17303")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../[ CONTENT ]/Msh_Terrain/Msh_Roads")
-msh_limit = NodePath("../../[ CONTENT ]/Limit/Msh_Limit")
+msh_limit = NodePath("../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../[ CONTENT ]/Pin - Sitio")
 ppe_fishEye_DroneSky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]/PPE - FishEye/DroneSky")
 ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
@@ -244,15 +243,15 @@ material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
 metadata/_edit_lock_ = true
 
-[node name="Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
-
-[node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
-
 [node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(3525.65, 0, 0, 0, -0.000164656, 3556.06, 0, -3766.88, -0.00015544, -16.173, -60, -0.362)
 material_override = ExtResource("23_2ha5g")
 mesh = SubResource("QuadMesh_k5wsg")
+
+[node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
+transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
+
+[node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
@@ -261,4 +260,4 @@ mesh = SubResource("QuadMesh_k5wsg")
 [node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
 [editable path="[ SYSTEMS ]/Camera - Drones"]
-[editable path="[ CONTENT ]/Msh_Navigation"]
+[editable path="[ CONTENT ]/Msh - Navigation"]
