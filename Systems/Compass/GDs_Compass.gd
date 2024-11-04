@@ -23,10 +23,11 @@ var compassInitialXPosition := 0.0
 var pinSiteInitialXPosition := 0.0
 
 var posSitio : Vector3
-var postarget2d : Vector2
+var posTarget2d : Vector2
 var cam : Camera3D
 var distance : float
 var screenSize : Vector2
+var aimCenter : Vector2
 
 var offsetBorder : float = 30
 
@@ -35,6 +36,21 @@ var maxPos_X : float
 
 var minPos_Y : float
 var maxPos_Y : float
+
+func _ready():
+	get_viewport().size_changed.connect(OnScreenChangeSize)
+	
+func OnScreenChangeSize():
+	#Screen size calculate here to avoid errors if it is maximized or minimized in runtime
+	screenSize = get_viewport().get_visible_rect().size	
+	minPos_X = offsetBorder
+	maxPos_X = screenSize.x - screenMark.size.x  - offsetBorder
+	
+	var sizeMenuBottom : float = 105
+	minPos_Y = offsetBorder
+	maxPos_Y = screenSize.y - screenMark.size.y  - offsetBorder - sizeMenuBottom
+	
+	aimCenter = Vector2((minPos_X + maxPos_X) *.5, (minPos_Y + maxPos_Y) * .5)
 
 func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> void:
 	camManager = _camManager
@@ -49,6 +65,8 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	screenMark.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
 	screenMark.self_modulate.a = .5
 	
+	OnScreenChangeSize()
+	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	
@@ -56,48 +74,34 @@ func _process(delta: float) -> void:
 	_CalculateCompassNorth()
 
 func _CalculateScreenMark() -> void:
-	#Position
-	
-	#Screen size calculate here to avoid errors if it is maximized or minimized in runtime
-	screenSize = get_viewport().get_visible_rect().size
-	
-	minPos_X = offsetBorder
-	maxPos_X = screenSize.x - screenMark.size.x  - offsetBorder
-	
-	var sizeMenuBottom : float = 105
-	minPos_Y = offsetBorder
-	maxPos_Y = screenSize.y - screenMark.size.y  - offsetBorder - sizeMenuBottom
-	
+	#Position -----------
 	
 	#Calculate if is in front or back to fix finalPosition
 	var dirToSitio : Vector3 = (posSitio - pivotCam.global_position).normalized()
 	var dotToSitio : float = pivotCam.global_basis.z.normalized().dot(dirToSitio)
 	var dotSign : float = signf(dotToSitio)
 
-	#Calculate the position in screen of top down mark
-	postarget2d = cam.unproject_position(posSitio)
+	#Convert position 3d into 2d
+	posTarget2d = cam.unproject_position(posSitio)
 	
 	#Fix position 2d
-	postarget2d *= signf(dotToSitio)	
+	posTarget2d *= signf(dotToSitio)
 	if dotSign < 0:
-		postarget2d.y = maxPos_Y
+		posTarget2d.y = maxPos_Y
 	
 	#Pos 2d with limits
-	postarget2d.x = clampf(postarget2d.x,minPos_X,maxPos_X)
-	postarget2d.y = clampf(postarget2d.y,minPos_Y,maxPos_Y)
+	posTarget2d.x = clampf(posTarget2d.x,minPos_X,maxPos_X)
+	posTarget2d.y = clampf(posTarget2d.y,minPos_Y,maxPos_Y)
 	
 	#Apply
-	screenMark.global_position = postarget2d
+	screenMark.global_position = posTarget2d
 	
-	#Rotation
-	
-	var centerScreen : Vector2 = Vector2(screenSize.x * .5, screenSize.y * .5)
-	var angleToFixRot : float = 90
-	var angleRotation : float = rad_to_deg(centerScreen.angle_to_point(postarget2d)) + angleToFixRot
+	#Rotation -----------
+	var angleOffsetRot : float = 90
+	var angleRotation : float = rad_to_deg(aimCenter.angle_to_point(posTarget2d)) + angleOffsetRot
 	pointSitio.rotation_degrees = angleRotation
 	
-	#centerScreen.y +=
-	direction.visible = centerScreen.distance_to(postarget2d) > 400
+	direction.visible = aimCenter.distance_to(posTarget2d) > aimCenter.y * .5
 
 func _CalculateCompassNorth() -> void:
 	lblDistance.text = str(CAM.distToSitio)

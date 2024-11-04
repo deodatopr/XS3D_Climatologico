@@ -10,9 +10,9 @@
 
 #Cam fly
 ## Forward hacia adelante en local y hacia atras en global
+# Ajustar bien cuando aparece y desaparece flecha de dirección
 # A cierta distancia activar el AO
 # Arreglar brujula norte
-# Ajustar bien cuando aparece y desaparece flecha de dirección
 
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
