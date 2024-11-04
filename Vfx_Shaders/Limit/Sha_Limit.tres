@@ -165,7 +165,7 @@ operator = 2
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_v4w0f"]
 parameter_name = "Emission"
 hint = 1
-max = 20.0
+min = 0.1
 default_value_enabled = true
 default_value = 1.0
 
@@ -252,7 +252,7 @@ uniform float LinePulseMin : hint_range(0.10000000149012, 1) = 0.60000002384186;
 uniform float ShieldOpacity : hint_range(0, 1) = 0.5;
 uniform float ShieldBorder = 100;
 uniform sampler2D depth_tex_frg_162 : hint_depth_texture;
-uniform float Emission : hint_range(0, 20) = 1;
+uniform float Emission : hint_range(0.10000000149012, 1) = 1;
 uniform float DistanceFade = 1500;
 
 
@@ -512,6 +512,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(2202.67, 462.667)
 flags/unshaded = true
 flags/shadows_disabled = true
 flags/ambient_light_disabled = true

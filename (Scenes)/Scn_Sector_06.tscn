@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=29 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
@@ -22,6 +22,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
+[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krxms"]
 shader = ExtResource("4_u55j2")
@@ -44,6 +45,8 @@ shader = ExtResource("8_pnisj")
 shader_parameter/lensDistortion = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
 [node name="SECTOR 6" type="Node3D"]
 
@@ -122,6 +125,7 @@ camera_attributes = ExtResource("21_uyocc")
 
 [node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(-0.166769, 0.926533, -0.33723, 0, 0.34202, 0.939693, 0.985996, 0.156712, -0.0570384, 0, 0, 0)
+visible = false
 light_color = Color(1, 0.948457, 0.877053, 1)
 shadow_enabled = true
 shadow_blur = 3.0
@@ -131,15 +135,13 @@ sky_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, -27.0369, 72.9466, -43.7071)
-visible = false
+transform = Transform3D(-0.939692, 0.296198, -0.17101, 0, 0.5, 0.866025, 0.34202, 0.813798, -0.469846, -27.0369, 72.9466, -43.7071)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
-shadow_opacity = 0.9
 shadow_blur = 3.0
 directional_shadow_mode = 0
-directional_shadow_max_distance = 1000.0
+directional_shadow_max_distance = 200.0
 sky_mode = 1
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
@@ -237,6 +239,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 43, -74)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
+visible = false
 material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
 metadata/_edit_lock_ = true
@@ -244,9 +247,14 @@ metadata/_edit_lock_ = true
 [node name="Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
 transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
 
-[node name="================" type="Node" parent="[ CONTENT ]"]
-
 [node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
+
+[node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(3525.65, 0, 0, 0, -0.000164656, 3556.06, 0, -3766.88, -0.00015544, -16.173, -60, -0.362)
+material_override = ExtResource("23_2ha5g")
+mesh = SubResource("QuadMesh_k5wsg")
+
+[node name="================" type="Node" parent="[ CONTENT ]"]
 
 [node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
 

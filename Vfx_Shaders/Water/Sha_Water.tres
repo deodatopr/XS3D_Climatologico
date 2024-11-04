@@ -153,7 +153,7 @@ op_type = 3
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ydm2j"]
 parameter_name = "ColorWaterDepth"
 default_value_enabled = true
-default_value = Color(0.152422, 0.165093, 0.063727, 1)
+default_value = Color(0.168627, 0.184314, 0.0705882, 1)
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_sw5xa"]
 parameter_name = "WaterDepth"
@@ -183,7 +183,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 varying vec3 var_World_Projection;
 
 uniform vec4 ColorWaterSurface : source_color = vec4(0.219608, 0.219608, 0.050980, 1.000000);
-uniform vec4 ColorWaterDepth : source_color = vec4(0.152422, 0.165093, 0.063727, 1.000000);
+uniform vec4 ColorWaterDepth : source_color = vec4(0.168627, 0.184314, 0.070588, 1.000000);
 uniform float WaterDepth = 2;
 uniform sampler2D depth_tex_frg_90 : hint_depth_texture;
 uniform float Roughness : hint_range(0.10000000149012, 0.30000001192093) = 0.20000000298023;
@@ -386,7 +386,7 @@ void fragment() {
 	var_World_Projection = vec3(0.0);
 }
 "
-graph_offset = Vector2(-1300.65, 1046.71)
+graph_offset = Vector2(-185.333, -314.667)
 varyings/World_Projection = "1,4"
 nodes/fragment/0/position = Vector2(720, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_vum2f")
@@ -463,4 +463,4 @@ nodes/fragment/96/node = SubResource("VisualShaderNodeFloatParameter_vb13m")
 nodes/fragment/96/position = Vector2(160, 240)
 nodes/fragment/97/node = SubResource("VisualShaderNodeReroute_5v4ln")
 nodes/fragment/97/position = Vector2(660, -110)
-nodes/fragment/connections = PackedInt32Array(6, 0, 0, 3, 7, 0, 8, 0, 9, 0, 8, 1, 10, 0, 11, 0, 10, 2, 11, 1, 8, 0, 10, 0, 11, 0, 36, 0, 38, 0, 36, 1, 39, 0, 38, 1, 37, 0, 38, 0, 40, 0, 3, 0, 52, 0, 61, 0, 76, 0, 3, 2, 76, 0, 61, 2, 77, 0, 52, 0, 78, 0, 40, 0, 79, 0, 78, 1, 79, 0, 80, 0, 65, 0, 81, 0, 80, 0, 77, 1, 86, 0, 52, 1, 81, 0, 86, 1, 87, 0, 40, 1, 65, 0, 87, 1, 84, 0, 40, 2, 84, 0, 52, 2, 72, 0, 0, 10, 3, 0, 55, 0, 61, 0, 55, 1, 36, 0, 78, 0, 36, 0, 88, 0, 88, 0, 77, 0, 94, 0, 90, 0, 55, 0, 95, 0, 95, 0, 0, 9, 2, 0, 92, 0, 96, 0, 0, 4, 93, 0, 92, 1, 90, 0, 92, 2, 92, 0, 97, 0, 97, 0, 0, 0)
+nodes/fragment/connections = PackedInt32Array(6, 0, 0, 3, 7, 0, 8, 0, 9, 0, 8, 1, 10, 0, 11, 0, 10, 2, 11, 1, 8, 0, 10, 0, 11, 0, 36, 0, 38, 0, 36, 1, 39, 0, 38, 1, 37, 0, 38, 0, 40, 0, 3, 0, 52, 0, 61, 0, 76, 0, 3, 2, 76, 0, 61, 2, 77, 0, 52, 0, 78, 0, 40, 0, 79, 0, 78, 1, 79, 0, 80, 0, 65, 0, 81, 0, 80, 0, 77, 1, 86, 0, 52, 1, 81, 0, 86, 1, 87, 0, 40, 1, 65, 0, 87, 1, 84, 0, 40, 2, 84, 0, 52, 2, 72, 0, 0, 10, 3, 0, 55, 0, 61, 0, 55, 1, 36, 0, 78, 0, 36, 0, 88, 0, 88, 0, 77, 0, 94, 0, 90, 0, 55, 0, 95, 0, 95, 0, 0, 9, 2, 0, 92, 0, 96, 0, 0, 4, 93, 0, 92, 1, 92, 0, 97, 0, 97, 0, 0, 0, 90, 0, 92, 2)
