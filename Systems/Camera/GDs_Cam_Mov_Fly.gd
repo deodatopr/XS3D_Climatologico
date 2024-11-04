@@ -111,6 +111,9 @@ func _mov_movement(_delta : float):
 	mov_axisMovement = Input.get_vector("3DMove_Right","3DMove_Left","3DMove_Backward","3DMove_Forward")
 	var dir : Vector3 = (pivot.basis * Vector3(mov_axisMovement.x,0,mov_axisMovement.y).normalized())
 	
+	if mov_axisMovement.y < 0:
+		dir.y = 0
+	
 	@warning_ignore('incompatible_ternary')
 	var isPressingTurbo : bool = Input.is_action_pressed("3DMove_SpeedBoost")
 	

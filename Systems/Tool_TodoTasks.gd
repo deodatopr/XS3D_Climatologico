@@ -6,10 +6,10 @@
 #===========================================
 
 #	[ Pani ]
-# Quitar de globals obtencion de navmesh
+## Quitar de globals obtencion de navmesh
 
 #Cam fly
-# Forward hacia adelante en local y hacia atras en global
+## Forward hacia adelante en local y hacia atras en global
 # A cierta distancia activar el AO
 # Arreglar brujula norte
 # Ajustar bien cuando aparece y desaparece flecha de dirección
