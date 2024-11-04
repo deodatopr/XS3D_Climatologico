@@ -46,4 +46,8 @@ visible = true
 
 [node name="Splash" parent="[ UI ]" instance=ExtResource("5_qomdb")]
 
+[node name="[ CUSTOM RESOURCES ]" type="Node" parent="."]
+
+[node name="CR_Local_Estaciones" type="Node" parent="[ CUSTOM RESOURCES ]"]
+
 [editable path="[ UI ]/Curtain"]

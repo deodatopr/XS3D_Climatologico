@@ -22,7 +22,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
-[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krxms"]
 shader = ExtResource("4_u55j2")
@@ -54,8 +54,9 @@ shader_parameter/lensDistortion = 1.0
 
 [node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
-[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly") instance=ExtResource("1_sjpgl")]
+[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("navMesh", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly") instance=ExtResource("1_sjpgl")]
 valuesInRuntime = true
+navMesh = NodePath("../../[ CONTENT ]/Msh - Navigation/@NavigationRegion3D@17303")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../[ CONTENT ]/Msh_Terrain/Msh_Roads")
@@ -68,7 +69,7 @@ light_sun_sky = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
 fly_fov = 50.0
 fly_height_max = 400.0
-fly_height_min = 150.0
+fly_height_min = 200.0
 fly_rot_speed = 1.0
 
 [node name="MovSky" parent="[ SYSTEMS ]/Camera - Drones" index="0"]

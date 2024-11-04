@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://y1iugd6uyl42"]
+[gd_scene load_steps=34 format=3 uid="uid://y1iugd6uyl42"]
 
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/UI/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/UI/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
@@ -8,17 +8,19 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="4_dj00u"]
 [ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/UI/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
 [ext_resource type="Texture2D" uid="uid://2kva7lmdb47u" path="res://Cont_UI/Map_Mapa_Edomex.png" id="6_m8twr"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_UI_Mapa.gd" id="7_tctv4"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_UI_Datos.gd" id="8_dd30f"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
 [ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]
 [ext_resource type="AudioStream" uid="uid://cu0urodbyu2y4" path="res://Cont_Sounds/UI/UI_Button_3.mp3" id="11_t0b7i"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3bx0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nj8nw"]
 shader = ExtResource("4_dj00u")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.5
-shader_parameter/blur = 1
+shader_parameter/blur = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5wkr"]
 atlas = ExtResource("8_omcqt")
 region = Rect2(7, 322, 44, 44)
 
@@ -37,16 +39,85 @@ load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006
 atlas = ExtResource("8_omcqt")
 region = Rect2(477, 358, 21, 26)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhu7b"]
+shader = ExtResource("4_dj00u")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 3
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r3lu1"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kuu7"]
 atlas = ExtResource("8_omcqt")
-region = Rect2(473, 424, 30, 30)
+region = Rect2(473, 390, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ie3aj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfcj0"]
+bg_color = Color(0.529412, 0.0588235, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f6s7"]
+bg_color = Color(0.529412, 0.0588235, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blm44"]
+bg_color = Color(0.333333, 0.333333, 0.337255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lgdq"]
+shader = ExtResource("4_dj00u")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
 atlas = ExtResource("8_omcqt")
-region = Rect2(475, 392, 26, 26)
+region = Rect2(7, 322, 44, 44)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fj4lx"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye56v"]
+shader = ExtResource("4_dj00u")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.4
+shader_parameter/blur = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8d1t"]
+atlas = ExtResource("8_omcqt")
+region = Rect2(63, 272, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dth0k"]
+atlas = ExtResource("8_omcqt")
+region = Rect2(83, 262, 18, 38)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vmg0"]
+bg_color = Color(0.210351, 0.210351, 0.210351, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_208jf"]
+bg_color = Color(0.529412, 0.0588235, 1, 1)
 
 [node name="Pfb_UI" type="Control" node_paths=PackedStringArray("menuPerfiles", "barraMenus", "menuInfo")]
 layout_mode = 3
@@ -77,9 +148,9 @@ sndUiPressed = NodePath("../[ AUDIO ]/UIPressed")
 visible = false
 layout_mode = 1
 
-[node name="Menu Mapa" type="ColorRect" parent="."]
+[node name="Menu Mapa" type="ColorRect" parent="." node_paths=PackedStringArray("testBtn")]
 visible = false
-self_modulate = Color(1, 1, 1, 0.6)
+material = SubResource("ShaderMaterial_nj8nw")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,10 +158,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("7_tctv4")
+testBtn = NodePath("FrameBG/Mapa/01/Button")
 
-[node name="Blur" type="Control" parent="Menu Mapa"]
-clip_children = 1
-material = SubResource("ShaderMaterial_n3bx0")
+[node name="FrameBG" type="ColorRect" parent="Menu Mapa"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,17 +172,18 @@ offset_right = -126.0
 offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.164706)
 
-[node name="Corner" type="TextureRect" parent="Menu Mapa/Blur"]
+[node name="Corner" type="TextureRect" parent="Menu Mapa/FrameBG"]
 layout_mode = 1
 offset_left = -22.0
 offset_top = -22.0
 offset_right = 22.0
 offset_bottom = 22.0
 scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Corner2" type="TextureRect" parent="Menu Mapa/Blur"]
+[node name="Corner2" type="TextureRect" parent="Menu Mapa/FrameBG"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -122,9 +194,9 @@ grow_vertical = 0
 rotation = -1.5708
 scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Corner3" type="TextureRect" parent="Menu Mapa/Blur"]
+[node name="Corner3" type="TextureRect" parent="Menu Mapa/FrameBG"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -135,9 +207,9 @@ grow_horizontal = 0
 rotation = 1.5708
 scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Corner4" type="TextureRect" parent="Menu Mapa/Blur"]
+[node name="Corner4" type="TextureRect" parent="Menu Mapa/FrameBG"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -151,9 +223,9 @@ grow_vertical = 0
 rotation = 3.14159
 scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Mapa" type="TextureRect" parent="Menu Mapa/Blur"]
+[node name="Mapa" type="TextureRect" parent="Menu Mapa/FrameBG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,7 +235,7 @@ grow_vertical = 2
 texture = ExtResource("6_m8twr")
 expand_mode = 1
 
-[node name="01" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="01" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -180,7 +252,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/01"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/01"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -197,7 +269,20 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="02" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="Button" type="Button" parent="Menu Mapa/FrameBG/Mapa/01"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="02" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -214,7 +299,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/02"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/02"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -232,7 +317,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="03" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="03" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -249,7 +334,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/03"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/03"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -267,7 +352,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="04" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="04" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -284,7 +369,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/04"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/04"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -302,7 +387,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="05" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="05" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -319,7 +404,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/05"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/05"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -337,7 +422,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="06" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="06" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -354,7 +439,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/06"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/06"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -372,7 +457,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="07" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="07" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -389,7 +474,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/07"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/07"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -407,7 +492,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="08" type="TextureRect" parent="Menu Mapa/Blur/Mapa"]
+[node name="08" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -424,7 +509,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_yjw3v")
 expand_mode = 1
 
-[node name="Selected" type="TextureRect" parent="Menu Mapa/Blur/Mapa/08"]
+[node name="Selected" type="TextureRect" parent="Menu Mapa/FrameBG/Mapa/08"]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -442,7 +527,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_11b3c")
 expand_mode = 1
 
-[node name="Top Left Icon" type="NinePatchRect" parent="Menu Mapa/Blur"]
+[node name="Top Left Icon" type="NinePatchRect" parent="Menu Mapa/FrameBG"]
 self_modulate = Color(0, 0, 0, 0.666667)
 layout_mode = 1
 offset_left = 12.0
@@ -456,7 +541,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Icon" type="TextureRect" parent="Menu Mapa/Blur/Top Left Icon"]
+[node name="Icon" type="TextureRect" parent="Menu Mapa/FrameBG/Top Left Icon"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -473,9 +558,8 @@ scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(10, 13)
 texture = SubResource("AtlasTexture_1yn06")
 
-[node name="Menu Datos" type="ColorRect" parent="."]
-visible = false
-self_modulate = Color(1, 1, 1, 0.6)
+[node name="Menu Datos" type="ColorRect" parent="." node_paths=PackedStringArray("testBtn")]
+material = SubResource("ShaderMaterial_uhu7b")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,10 +567,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("8_dd30f")
+testBtn = NodePath("FrameBG/Test BUtton")
 
-[node name="Blur" type="Control" parent="Menu Datos"]
-clip_children = 1
-material = SubResource("ShaderMaterial_n3bx0")
+[node name="FrameBG" type="ColorRect" parent="Menu Datos"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -497,62 +581,60 @@ offset_right = -126.0
 offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.164706)
 
-[node name="Corner" type="TextureRect" parent="Menu Datos/Blur"]
+[node name="Corner" type="TextureRect" parent="Menu Datos/FrameBG"]
 layout_mode = 1
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 24.0
-offset_bottom = 25.0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
 scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Corner2" type="TextureRect" parent="Menu Datos/Blur"]
+[node name="Corner2" type="TextureRect" parent="Menu Datos/FrameBG"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
 offset_top = -44.0
-offset_right = 46.0
+offset_right = 44.0
 grow_vertical = 0
 rotation = -1.5708
 scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Corner3" type="TextureRect" parent="Menu Datos/Blur"]
+[node name="Corner3" type="TextureRect" parent="Menu Datos/FrameBG"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -46.0
-offset_right = -2.0
+offset_left = -44.0
 offset_bottom = 44.0
 grow_horizontal = 0
 rotation = 1.5708
 scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Corner4" type="TextureRect" parent="Menu Datos/Blur"]
+[node name="Corner4" type="TextureRect" parent="Menu Datos/FrameBG"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -46.0
+offset_left = -44.0
 offset_top = -44.0
-offset_right = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
 scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
-texture = SubResource("AtlasTexture_g0htj")
+texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Top Left Icon" type="NinePatchRect" parent="Menu Datos/Blur"]
+[node name="Top Left Icon" type="NinePatchRect" parent="Menu Datos/FrameBG"]
 self_modulate = Color(1, 1, 1, 0.301961)
 layout_mode = 1
 offset_left = 12.0
@@ -566,7 +648,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Icon" type="TextureRect" parent="Menu Datos/Blur/Top Left Icon"]
+[node name="Icon" type="TextureRect" parent="Menu Datos/FrameBG/Top Left Icon"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -583,78 +665,87 @@ scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(15, 15)
 texture = SubResource("AtlasTexture_5kuu7")
 
+[node name="Test BUtton" type="Button" parent="Menu Datos/FrameBG"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -38.0
+offset_right = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_qfcj0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1f6s7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_blm44")
+toggle_mode = true
+action_mode = 0
+
 [node name="Menu Config" type="ColorRect" parent="."]
-visible = false
-self_modulate = Color(1, 1, 1, 0.6)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Blur" type="Control" parent="Menu Config"]
-clip_children = 1
-material = SubResource("ShaderMaterial_n3bx0")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 119.0
-offset_top = 66.0
-offset_right = -126.0
-offset_bottom = -159.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Corner" type="TextureRect" parent="Menu Config/Blur"]
-layout_mode = 1
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 24.0
-offset_bottom = 25.0
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_g0htj")
-
-[node name="Corner2" type="TextureRect" parent="Menu Config/Blur"]
+material = SubResource("ShaderMaterial_6lgdq")
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -44.0
-offset_right = 46.0
+offset_left = 21.0
+offset_top = -381.0
+offset_right = 476.0
+offset_bottom = -125.0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Corner" type="TextureRect" parent="Menu Config"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 49.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Corner2" type="TextureRect" parent="Menu Config"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -6.0
+offset_right = 50.0
+offset_bottom = 38.0
 grow_vertical = 0
 rotation = -1.5708
 scale = Vector2(2, 2)
-pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
-[node name="Corner3" type="TextureRect" parent="Menu Config/Blur"]
+[node name="Corner3" type="TextureRect" parent="Menu Config"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -46.0
-offset_right = -2.0
-offset_bottom = 44.0
+offset_left = -71.0
+offset_top = 27.0
+offset_right = -27.0
+offset_bottom = 71.0
 grow_horizontal = 0
 rotation = 1.5708
 scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
-[node name="Corner4" type="TextureRect" parent="Menu Config/Blur"]
+[node name="Corner4" type="TextureRect" parent="Menu Config"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -46.0
-offset_top = -44.0
-offset_right = -2.0
+offset_left = -71.0
+offset_top = -71.9999
+offset_right = -27.0
+offset_bottom = -27.9999
 grow_horizontal = 0
 grow_vertical = 0
 rotation = 3.14159
@@ -662,36 +753,206 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
-[node name="Top Left Icon" type="NinePatchRect" parent="Menu Config/Blur"]
-self_modulate = Color(1, 1, 1, 0.278431)
+[node name="MarginContainer" type="MarginContainer" parent="Menu Config"]
 layout_mode = 1
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 112.0
-offset_bottom = 112.0
-texture = SubResource("CompressedTexture2D_r3lu1")
-region_rect = Rect2(474, 40, 30, 30)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 33
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu Config/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="HBoxContainer" parent="Menu Config/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HSeparator" type="HSeparator" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Top Left Icon" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+self_modulate = Color(1, 1, 1, 0.301961)
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_fj4lx")
+region_rect = Rect2(473, 40, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Icon" type="TextureRect" parent="Menu Config/Blur/Top Left Icon"]
+[node name="Icon" type="TextureRect" parent="Menu Config/MarginContainer/VBoxContainer/Title/Top Left Icon"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -13.0
-offset_right = 13.0
-offset_bottom = 13.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.7, 1.7)
-pivot_offset = Vector2(13, 13)
-texture = SubResource("AtlasTexture_ie3aj")
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(15, 15)
+texture = SubResource("AtlasTexture_5kuu7")
+
+[node name="HSeparator2" type="HSeparator" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+visibility_layer = 0
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "AUDIO"
+
+[node name="Master Vol" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ye56v")
+custom_minimum_size = Vector2(380, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_omcqt")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -11.5
+offset_right = 145.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Volumen Maestro"
+
+[node name="HSlider" type="HSlider" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -11.0
+offset_right = -10.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_dth0k")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
+value = 40.0
+scrollable = false
+tick_count = 1
+
+[node name="Master Vol2" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ye56v")
+custom_minimum_size = Vector2(380, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_omcqt")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -11.5
+offset_right = 145.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Volumen Maestro"
+
+[node name="HSlider" type="HSlider" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -11.0
+offset_right = -10.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_dth0k")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
+value = 40.0
+scrollable = false
+tick_count = 1
+
+[node name="Master Vol3" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ye56v")
+custom_minimum_size = Vector2(380, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_omcqt")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol3"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -11.5
+offset_right = 145.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Volumen Maestro"
+
+[node name="HSlider" type="HSlider" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol3"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -11.0
+offset_right = -10.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_dth0k")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
+value = 40.0
+scrollable = false
+tick_count = 1
 
 [node name="------BARRAS----------" type="Node" parent="."]
 

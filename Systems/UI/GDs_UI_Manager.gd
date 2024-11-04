@@ -45,7 +45,7 @@ func Initialize():
 
 func CloseInfoMenu():
 	if menuInfo.visible:
-			menuInfo.visible = false
+		menuInfo.visible = false
 
 func DataRefresh():
 	menuPerfiles.DataRefresh(dataService.estaciones)

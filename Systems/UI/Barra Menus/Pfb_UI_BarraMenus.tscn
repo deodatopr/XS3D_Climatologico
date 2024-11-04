@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnxc3stvbv0gf"]
+[gd_scene load_steps=15 format=3 uid="uid://bnxc3stvbv0gf"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_8mdf7"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bu15u"]
@@ -21,6 +21,13 @@ region = Rect2(7, 264, 54, 54)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kmdm"]
 atlas = ExtResource("1_bu15u")
 region = Rect2(472, 301, 16, 18)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ov4cf"]
+bg_color = Color(0.529412, 0.0588235, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxxn3"]
 bg_color = Color(0.529412, 0.0588235, 1, 1)
@@ -167,7 +174,7 @@ offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ov4cf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 toggle_mode = true
@@ -218,7 +225,8 @@ offset_right = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ov4cf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 toggle_mode = true
 action_mode = 0
@@ -274,6 +282,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 toggle_mode = true
 action_mode = 0
@@ -324,6 +333,7 @@ grow_vertical = 0
 focus_neighbor_right = NodePath("../../../Sitios/Icon/Button - Sitios")
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_vxxn3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vxxn3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_njtr6")
 toggle_mode = true
 action_mode = 0

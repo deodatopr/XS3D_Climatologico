@@ -20,16 +20,16 @@ func _ready():
 	BtnSitios.pressed.connect(OnBtnSitioPressed)
 	
 	BtnMapa.focus_entered.connect(OnBtnMapaFocus)
-	BtnMapa.focus_exited.connect(OnBtnMapaFocusExited)
 	BtnMapa.pressed.connect(OnBtnMapaPressed)
 	
 	BtnDatos.focus_entered.connect(OnBtnDatosFocus)
-	BtnDatos.focus_exited.connect(OnBtnDatosFocusExited)
 	BtnDatos.pressed.connect(OnBtnDatosPressed)
 	
 	BtnConfig.focus_entered.connect(OnBtnConfigFocus)
-	BtnConfig.focus_exited.connect(OnBtnConfigFocusExited)
 	BtnConfig.pressed.connect(OnBtnConfigPressed)
+	
+	
+	TurnOffAllMenus()
 
 func _input(event):
 	if event.is_action_pressed("UI_FocusMenus"):
@@ -39,14 +39,15 @@ func _input(event):
 		else:
 			StopFocusOnMenus()
 	if event.is_action_pressed("ui_cancel"):
-		if BtnSitios.button_pressed: 
-			BtnSitios.release_focus()
-			BtnSitios.button_pressed = false
-			UTILITIES.TurnOffObject(menuSitios)
-			
-		if BtnMapa.has_focus(): BtnMapa.release_focus()
-		if BtnDatos.has_focus(): BtnDatos.release_focus()
-		if BtnConfig.has_focus(): BtnConfig.release_focus()
+		pass
+		#if BtnSitios.button_pressed: 
+			#BtnSitios.release_focus()
+			#BtnSitios.button_pressed = false
+			#UTILITIES.TurnOffObject(menuSitios)
+			#
+		#if BtnMapa.has_focus(): BtnMapa.release_focus()
+		#if BtnDatos.has_focus(): BtnDatos.release_focus()
+		#if BtnConfig.has_focus(): BtnConfig.release_focus()
 	
 
 func FocusLastMenu():
@@ -56,28 +57,37 @@ func FocusLastMenu():
 		1:
 			BtnMapa.grab_focus()
 		2:
-			BtnConfig.grab_focus()
-		3:
 			BtnDatos.grab_focus()
+		3:
+			BtnConfig.grab_focus()
 
 func StopFocusOnMenus():
 	GetCurrentFocus()
 	BtnSitios.release_focus()
 	BtnSitios.button_pressed = false
-	menuSitios.hide()
+	UTILITIES.TurnOffObject(menuSitios)
 	
 	BtnMapa.release_focus()
-	BtnConfig.release_focus()
+	BtnMapa.button_pressed = false
+	UTILITIES.TurnOffObject(menuMapa)
+	
 	BtnDatos.release_focus()
+	BtnDatos.button_pressed = false
+	UTILITIES.TurnOffObject(menuDatos)
+	
+	BtnConfig.release_focus()
+	BtnConfig.button_pressed = false
+	UTILITIES.TurnOffObject(menuConfig)
+	
 
 func GetCurrentFocus():
-	if BtnSitios.has_focus():
+	if BtnSitios.button_pressed:
 		lastOneOnFocus = 0
-	if BtnMapa.has_focus():
+	if BtnMapa.button_pressed:
 		lastOneOnFocus = 1
-	if BtnConfig.has_focus():
+	if BtnDatos.button_pressed:
 		lastOneOnFocus = 2
-	if BtnDatos.has_focus():
+	if BtnConfig.button_pressed:
 		lastOneOnFocus = 3
 
 
@@ -91,64 +101,82 @@ func OnBtnSitioPressed():
 		
 func OnBtnSitiosFocus():
 	sndUi1.play()
+	UTILITIES.TurnOffObject(menuMapa)
+	UTILITIES.TurnOffObject(menuDatos)
+	UTILITIES.TurnOffObject(menuConfig)
 	UTILITIES.TurnOnObject(menuSitios)
+	BtnMapa.button_pressed = false
+	BtnDatos.button_pressed = false
+	BtnConfig.button_pressed = false
 	BtnSitios.button_pressed = true
 
 
 
+func OnBtnMapaPressed():
+	if BtnMapa.has_focus():
+		BtnMapa.release_focus()
+		UTILITIES.TurnOffObject(menuMapa)
+	else:
+		BtnMapa.grab_focus()
+
 func OnBtnMapaFocus():
 	sndUi1.play()
 	UTILITIES.TurnOffObject(menuSitios)
-	BtnSitios.button_pressed = false
-	
+	UTILITIES.TurnOffObject(menuDatos)
+	UTILITIES.TurnOffObject(menuConfig)
 	UTILITIES.TurnOnObject(menuMapa)
+	BtnSitios.button_pressed = false
+	BtnDatos.button_pressed = false
+	BtnConfig.button_pressed = false
+	BtnMapa.button_pressed = true
 
-func OnBtnMapaFocusExited():
-	UTILITIES.TurnOffObject(menuMapa)
-	BtnMapa.button_pressed = false
 
-func OnBtnMapaPressed():
-	if BtnMapa.button_pressed:
-		BtnMapa.grab_focus()
+
+
+
+func OnBtnDatosPressed():
+	if BtnDatos.has_focus():
+		BtnDatos.release_focus()
+		UTILITIES.TurnOffObject(menuDatos)
 	else:
-		BtnMapa.release_focus()
-
-
+		BtnDatos.grab_focus()
 
 func OnBtnDatosFocus():
 	sndUi1.play()
+	UTILITIES.TurnOffObject(menuSitios)
+	UTILITIES.TurnOffObject(menuMapa)
+	UTILITIES.TurnOffObject(menuConfig)
 	UTILITIES.TurnOnObject(menuDatos)
 	BtnSitios.button_pressed = false
-	UTILITIES.TurnOffObject(menuSitios)
-	
-	
+	BtnMapa.button_pressed = false
+	BtnConfig.button_pressed = false
+	BtnDatos.button_pressed = true
 
-func OnBtnDatosFocusExited():
-	UTILITIES.TurnOffObject(menuDatos)
-	BtnDatos.button_pressed = false
-	
-func OnBtnDatosPressed():
-	if BtnDatos.button_pressed:
-		BtnDatos.grab_focus()
+
+func OnBtnConfigPressed():
+	if not BtnConfig.has_focus():
+		BtnConfig.release_focus()
+		UTILITIES.TurnOffObject(menuConfig)
 	else:
-		BtnDatos.release_focus()
-
-
+		BtnConfig.grab_focus()
 
 func OnBtnConfigFocus():
 	sndUi1.play()
-	UTILITIES.TurnOnObject(menuConfig)
 	UTILITIES.TurnOffObject(menuSitios)
+	UTILITIES.TurnOffObject(menuMapa)
+	UTILITIES.TurnOffObject(menuDatos)
+	UTILITIES.TurnOnObject(menuConfig)
 	BtnSitios.button_pressed = false
+	BtnMapa.button_pressed = false
+	BtnDatos.button_pressed = false
+	BtnConfig.button_pressed = true
 
-func OnBtnConfigFocusExited():
+
+
+
+
+func TurnOffAllMenus():
+	UTILITIES.TurnOffObject(menuSitios)
+	UTILITIES.TurnOffObject(menuMapa)
+	UTILITIES.TurnOffObject(menuDatos)
 	UTILITIES.TurnOffObject(menuConfig)
-	
-	BtnConfig.button_pressed = false
-	
-
-func OnBtnConfigPressed():
-	if BtnConfig.button_pressed:
-		BtnConfig.grab_focus()
-	else:
-		BtnConfig.release_focus()
