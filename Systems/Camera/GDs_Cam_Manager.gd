@@ -93,7 +93,6 @@ func Initialize(_modeToIntializeCam : int):
 
 	for terrain in Terrains:
 		navMeshBounds = navMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
-		print(navMeshBounds)
 	
 	movSky.Initialize(self)
 	movFly.Initialize(self)
