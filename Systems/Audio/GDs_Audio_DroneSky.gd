@@ -3,7 +3,7 @@ extends Node
 @export_group("Moving")
 @export var sndMoving: AudioStreamPlayer
 @export var sndMovingVolume:float = 3.0
-@export var sndMovingPitch: float = 2.0
+@export var sndMovingPitch: float = 1.0
 @export var sndMovingTurboPitch: float = 2.0
 @export_group("Camera FOV")
 @export var sndCameraFOV: AudioStreamPlayer
@@ -23,12 +23,12 @@ extends Node
 
 var tweenMoving:Tween
 var tweenCamFOV:Tween
+var tweenWind:Tween
 var sndCameraVol:float
 var isBoosting = false
 
 func _ready():
 	SIGNALS.OnCameraChangedMode.connect(OnChangeDrone)
-	sndWind.play()
 
 func _process(_delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
@@ -42,14 +42,11 @@ func _process(_delta):
 				isBoosting = false
 				MovingFadeIn()
 				WindFadeIn(sndWindMovingPitch)
-				
 			else:
 				if not sndMoving.playing:
 					isBoosting = false
 					MovingFadeIn()
 					WindFadeIn(sndWindMovingPitch)
-
-					
 		else:
 			if sndMoving.playing:
 				MovingFadeOut()
@@ -78,10 +75,8 @@ func _process(_delta):
 			sndCameraRot.play()
 		else:
 			sndCameraRot.stop()
-		
-		sndWind.volume_db = sndWindVolume
-		sndWind.pitch_scale = sndWindStaticPitch
 #endregion
+		sndWind.volume_db = sndWindVolume
 
  
 func MovingFadeIn():
@@ -123,14 +118,12 @@ func CameraFadeOut():
 
 func WindFadeIn(_pitch:float):
 	sndWind.play()
-	tweenCamFOV = create_tween()
-	tweenCamFOV.parallel().tween_property(sndWind,"pitch_scale",_pitch,0.1)
+	tweenWind = create_tween()
+	tweenWind.parallel().tween_property(sndWind,"pitch_scale",_pitch,0.1)
 
 func WindFadeOut():
-	tweenCamFOV = create_tween()
-	tweenCamFOV.parallel().tween_property(sndWind,"pitch_scale",sndWindStaticPitch - 0.4,0.1)
-	await tweenCamFOV.finished
-	sndWind.stop()
+	tweenWind = create_tween()
+	tweenWind.parallel().tween_property(sndWind,"pitch_scale",sndWindStaticPitch,0.1)
 
 
 func OnChangeDrone(_mode:int):
