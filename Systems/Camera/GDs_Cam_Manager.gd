@@ -3,17 +3,17 @@ class_name GDs_Cam_Manager extends Node
 @export var valuesInRuntime : bool
 
 @export_group("SCENE REFERENCES")
-@export var pinSitio : Node3D
+@export var navMesh : NavigationRegion3D
+@export var Terrains: Array [Node3D]
 @export var worldEnv : WorldEnvironment
 @export var msh_roads : MeshInstance3D
 @export var msh_limit : MeshInstance3D
+@export var pinSitio : Node3D
 @export var ppe_fishEye_DroneSky : ColorRect
-
 @export var ui_ppe_sky : Node
 @export var ui_ppe_fly : Node
-
-@export var ligtht_sun_sky : Node3D
-@export var ligtht_sun_fly : Node3D
+@export var light_sun_sky : Node3D
+@export var light_sun_fly : Node3D
 
 @export_group("INTERNAL REFERENCES")
 @export var movSky : GDs_Cam_Mov_Sky
@@ -22,11 +22,10 @@ class_name GDs_Cam_Manager extends Node
 @export var movFly : GDs_Cam_Mov_Fly
 @export var fly_pivot : Node3D
 @export var fly_cam : Camera3D
-@export var Terrains: Array [Node3D]
 
 @export_group("CAMERAS")
 @export var curveMovement : Curve
-@export_range(.7, 1.0) var proximity01ToDetectLimits : float = .9
+@export_range(.7, 1.0) var proximityEdgeLimits : float = .9
 
 @export_subgroup("SKY")
 @export var sky_height : float = 500
@@ -43,7 +42,7 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_height_min : float = 50
 @export var fly_speed : float = 2
 @export_range(1,5) var fly_turbo : float = 2
-@export_range(.1,2,.1) var fly_acce_dece: float = .7
+@export_range(.1,2,.1) var fly_acce_dece: float = 1
 @export var fly_rot_clamp : float = 40
 @export var fly_rot_speed : float = .7
 
@@ -59,8 +58,7 @@ class_name GDs_Cam_Manager extends Node
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
-
-
+var navMeshRID : RID #RID = identificador, necesario para usar info del navmesh
 var navMeshBounds : AABB
 var camMode : int
 var last_rotation : float
@@ -92,8 +90,7 @@ func Initialize(_modeToIntializeCam : int):
 	mat_limit_fly.set_shader_parameter("DangerToClose",false)
 
 	for terrain in Terrains:
-		navMeshBounds = navMeshBounds.merge(UTILITIES.get_scene_bounds(terrain))
-		print(navMeshBounds)
+		navMeshBounds = navMeshBounds.merge(UTILITIES.GetNodeBounds(terrain))
 	
 	movSky.Initialize(self)
 	movFly.Initialize(self)
@@ -114,15 +111,22 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	var boundingY : float = abs(positionInMap01.y) + .15
 	
 	#Only inside range limits calculate a value to detect proximity to end limit
-	if boundingX >= proximity01ToDetectLimits  || boundingY >= proximity01ToDetectLimits:
+	if boundingX >= proximityEdgeLimits  || boundingY >= proximityEdgeLimits:
 		var boundingValue := boundingX if boundingX >= boundingY else boundingY
-		print(boundingValue)
-		CAM.boundings01 = inverse_lerp(proximity01ToDetectLimits,1,boundingValue)
+
+		CAM.boundings01 = inverse_lerp(proximityEdgeLimits,1,boundingValue)
 		if CAM.boundings01 < .02:
 			CAM.boundings01 = 0
 			
 	var insideBoundings := boundingX < 1 and boundingY < 1
 	return insideBoundings
+	
+func GetPointOnMap(_targetPoint : Vector3,_min_dist_from_edge: float) -> Vector3:
+	if not navMeshRID.is_valid():
+		navMeshRID = navMesh.get_rid()
+		
+	var closest_point := NavigationServer3D.map_get_closest_point(pinSitio.get_world_3d().navigation_map, _targetPoint)
+	return closest_point
 	
 func _input(_event):
 	if Input.is_action_just_pressed('3D_ChangeCamMode'):
@@ -201,8 +205,8 @@ func _ChangeToMode_Sky():
 		worldEnv.camera_attributes = preset_cam_sky
 		
 		#Light
-		UTILITIES.TurnOnObject(ligtht_sun_sky)
-		UTILITIES.TurnOffObject(ligtht_sun_fly)
+		UTILITIES.TurnOnObject(light_sun_sky)
+		UTILITIES.TurnOffObject(light_sun_fly)
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():
@@ -236,8 +240,8 @@ func _ChangeToMode_Fly():
 		worldEnv.camera_attributes = preset_cam_fly
 		
 		#Light
-		UTILITIES.TurnOffObject(ligtht_sun_sky)
-		UTILITIES.TurnOnObject(ligtht_sun_fly)
+		UTILITIES.TurnOffObject(light_sun_sky)
+		UTILITIES.TurnOnObject(light_sun_fly)
 		
 		# UI + PPE
 		for child in ui_ppe_fly.get_children():

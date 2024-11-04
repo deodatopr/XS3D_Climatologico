@@ -29,7 +29,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.5
 shader_parameter/blur = 2
 
-[node name="UI_Compass" type="Control" node_paths=PackedStringArray("compass_mask", "pin_sitio", "compass", "lblDistance", "screenMark", "pointSitio", "direction")]
+[node name="UI_Compass" type="Control" node_paths=PackedStringArray("compass_mask", "pin_sitio", "compass", "lblDistance", "screenMark", "pointSitio", "direction", "frameColor")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,6 +46,7 @@ lblDistance = NodePath("CompassNorth/DistanceBackground/lblDistance")
 screenMark = NodePath("CompassScreen/ScreenMark")
 pointSitio = NodePath("CompassScreen/ScreenMark/PointSitio")
 direction = NodePath("CompassScreen/ScreenMark/PointSitio/Direction")
+frameColor = NodePath("CompassScreen/ScreenMark/frameColor")
 metadata/_edit_horizontal_guides_ = [542.0, 869.0, 221.0, 869.0, 221.0]
 
 [node name="CompassNorth" type="Control" parent="."]

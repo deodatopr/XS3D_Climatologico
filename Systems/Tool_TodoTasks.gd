@@ -6,19 +6,38 @@
 #===========================================
 
 #	[ Pani ]
-# Armado flujo completo (orquestador, datos,etc)
-# Cambio entre sitios
-# Quitar lo de navMesh de globals
-# Acc Dece = .7 sky
-# Quitar de globals obtencion de navmesh
-
+## Quitar de globals obtencion de navmesh
 
 #Cam fly
-#	Forward hacia adelante en local y hacia atras en global
-# - Trigger cercano a sitio aumentar DOF
-# a CIERTA DIST APAGAR/PRENDER AO
+## Forward hacia adelante en local y hacia atras en global
+# Ajustar bien cuando aparece y desaparece flecha de dirección
+# A cierta distancia activar el AO
+# Arreglar brujula norte
+
+# Armado flujo completo (orquestador, datos,etc)
+# Cambio entre sitios
+
 
 #	[ Carlos ]
+# Graficadora
+	#Endpoint
+		# Revisar endpoint para saber que datos llegan
+		# Crear clase para vaciar los datos
+		# Script para hacer el request con los parametros
+		# Script de debug que inyecte valores random para probar UI en lo que se tiene el endpoint final
+	
+		#Nota:
+			#Solución cuando faltan datos (Ej. Si deben de llegar 12 valores, verificar si no están todos poner en el indice que falten un valor 0)
+			#Solución por si falta hora corroborar la anterior y determinar cual es la siguiente hora que corresponde de la gráfica
+		
+	#UI
+		# Ver componentes line2D y polygon2D para graficar
+		# Armar UI de gráfica (cerrar y abrir)
+			#Pantalla de loading antes de que muestre los datos
+			#Pantalla de error con endpoint
+			#Pantalla de no hay historicos (si llegó respuesta del endpoint pero no llegaron datos)
+		# Script UI para inyectar los datos y manejar las diferentes pantallas antes mencionadas
+
 
 # ----------------------- Tareas:
 # Track de punto 2d, al acercarte salgan unos puntos que indiquen donde está la estación
