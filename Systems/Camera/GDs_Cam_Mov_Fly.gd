@@ -1,6 +1,5 @@
 class_name GDs_Cam_Mov_Fly extends Node3D
 
-@export var testTimer : Timer
 var camMng : GDs_Cam_Manager
 
 var cam : Camera3D
@@ -34,30 +33,18 @@ var mouseMotion : InputEvent
 var cursorMovement : Vector2
 var curvValue : float
 
-var testAutomaticMov : bool = true
-
 func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
 	cam = camMng.fly_cam
 	pivot = camMng.fly_pivot
 	rot_hor = pivot.rotation.y
 	rot_vert = pivot.rotation.x
-	
-	testTimer.timeout.connect(OnTimeOut)
-
-func OnTimeOut():
-	testAutomaticMov = false
-	print(global_position.x)
 
 func SetCamera():
-	testAutomaticMov = true
 	cam.current = true
 	pivot.global_position.y = camMng.fly_height_start
 	cam.fov = camMng.fly_fov
 	mov_height_speed = camMng.fly_height_speed * 100
-	
-	await get_tree().create_timer(.5).timeout
-	testTimer.start(3)
 	
 func UpdateCamConfig():
 	cam.fov = camMng.fly_fov
@@ -125,8 +112,6 @@ func _mov_height(_delta : float):
 
 func _mov_movement(_delta : float):
 	mov_axisMovement = Input.get_vector("3DMove_Right","3DMove_Left","3DMove_Backward","3DMove_Forward")
-	if testAutomaticMov:
-		mov_axisMovement.x = 1
 	var dir : Vector3 = (pivot.basis * Vector3(mov_axisMovement.x,0,mov_axisMovement.y).normalized())
 	dir.y = 0
 	

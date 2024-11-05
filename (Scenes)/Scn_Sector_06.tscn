@@ -24,7 +24,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
-[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -126,17 +126,13 @@ transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e
 current = true
 fov = 100.0
 
-[node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones" node_paths=PackedStringArray("testTimer")]
+[node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
 transform = Transform3D(0.819152, 0.242404, 0.519837, 0, 0.906308, -0.422618, -0.573576, 0.346189, 0.742404, -250, 200, -400)
 script = ExtResource("5_7w42d")
-testTimer = NodePath("../TestTimer")
 
 [node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0
-
-[node name="TestTimer" type="Timer" parent="[ SYSTEMS ]/Camera - Drones"]
-one_shot = true
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
 script = ExtResource("16_r0mi2")

@@ -61,7 +61,7 @@ func SetCamera():
 	pivot.position.y = camMng.sky_height
 	
 	mov_velocity = Vector3.ZERO
-	mov_curv01 = 0	
+	mov_curv01 = 0
 	rot_hor = pivot.rotation.y
 	fov_current = cam.fov
 	
