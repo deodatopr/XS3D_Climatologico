@@ -1,9 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=33 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://jkw1uarjdt8w" path="res://Systems/Camera/Pfb_CameraDrones.tscn" id="1_sjpgl"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="2_xo163"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Terrain.glb" id="3_htqi2"]
+[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Presets/Preset_Curve_Movement.tres" id="3_x5pt0"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Sky.gd" id="4_w0x8b"]
+[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Fly.gd" id="5_7w42d"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="5_ipad4"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
 [ext_resource type="AudioStream" uid="uid://cvrup4u3rlg0e" path="res://Cont_Sounds/Drones/DroneSky_Camera.mp3" id="6_ehp13"]
@@ -21,7 +24,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
-[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -87,7 +90,8 @@ shader_parameter/sharpening = 1.5
 
 [node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
-[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly") instance=ExtResource("1_sjpgl")]
+[node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
+script = ExtResource("2_xo163")
 valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
@@ -100,20 +104,39 @@ ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
 ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
 light_sun_sky = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
+movSky = NodePath("MovSky")
+sky_pivot = NodePath("MovSky")
+sky_cam = NodePath("MovSky/sky_cam")
+movFly = NodePath("MovFly")
+fly_pivot = NodePath("MovFly")
+fly_cam = NodePath("MovFly/fly_cam")
+curveMovement = ExtResource("3_x5pt0")
 sky_speed = 0.25
 fly_height_speed = 2.0
 fly_height_start = 200.0
 fly_speed = 0.5
 fly_rot_speed = 0.7
 
-[node name="MovSky" parent="[ SYSTEMS ]/Camera - Drones" index="0"]
+[node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
 transform = Transform3D(0.956305, 0.28793, 0.0507698, 0, 0.173648, -0.984808, -0.292372, 0.941776, 0.166061, -25, 500, -152)
+script = ExtResource("4_w0x8b")
 
-[node name="sky_cam" parent="[ SYSTEMS ]/Camera - Drones/MovSky" index="0"]
+[node name="sky_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovSky"]
+transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
+current = true
 fov = 100.0
 
-[node name="MovFly" parent="[ SYSTEMS ]/Camera - Drones" index="1"]
+[node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones" node_paths=PackedStringArray("testTimer")]
 transform = Transform3D(0.819152, 0.242404, 0.519837, 0, 0.906308, -0.422618, -0.573576, 0.346189, 0.742404, -250, 200, -400)
+script = ExtResource("5_7w42d")
+testTimer = NodePath("../TestTimer")
+
+[node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+fov = 35.0
+
+[node name="TestTimer" type="Timer" parent="[ SYSTEMS ]/Camera - Drones"]
+one_shot = true
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
 script = ExtResource("16_r0mi2")
@@ -299,5 +322,3 @@ transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -
 [node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
 
 [node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
-
-[editable path="[ SYSTEMS ]/Camera - Drones"]
