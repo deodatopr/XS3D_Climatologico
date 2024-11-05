@@ -44,6 +44,7 @@ func SetCamera():
 	cam.current = true
 	pivot.global_position.y = camMng.fly_height_start
 	cam.fov = camMng.fly_fov
+	mov_height_speed = camMng.fly_height_speed * 100
 	
 func UpdateCamConfig():
 	cam.fov = camMng.fly_fov
@@ -199,7 +200,7 @@ func _rotation_hor(_dir:float, _delta:float):
 func _rotation_vert(_dir:float, _delta:float):
 	var toEvaluateAngle : float = rot_vert
 	toEvaluateAngle -= -_dir * camMng.fly_rot_speed  * _delta
-	toEvaluateAngle = clampf(toEvaluateAngle,deg_to_rad(-camMng.fly_rot_clamp),deg_to_rad(camMng.fly_rot_clamp) )
+	toEvaluateAngle = clampf(toEvaluateAngle,deg_to_rad(-camMng.fly_rot_clamp),deg_to_rad(camMng.fly_rot_clamp))
 	rot_vert = toEvaluateAngle
 	var targetAngle : float = rot_vert
 	var smoothTarget : float = lerp_angle(rot_lastRotX,targetAngle,15 * _delta)
