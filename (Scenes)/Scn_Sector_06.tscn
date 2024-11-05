@@ -88,6 +88,7 @@ shader_parameter/sharpening = 1.5
 [node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
 
 [node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly") instance=ExtResource("1_sjpgl")]
+valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -100,7 +101,10 @@ ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
 light_sun_sky = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
 sky_speed = 0.25
+fly_height_speed = 2.0
+fly_height_start = 200.0
 fly_speed = 0.5
+fly_rot_speed = 0.7
 
 [node name="MovSky" parent="[ SYSTEMS ]/Camera - Drones" index="0"]
 transform = Transform3D(0.956305, 0.28793, 0.0507698, 0, 0.173648, -0.984808, -0.292372, 0.941776, 0.166061, -25, 500, -152)
@@ -109,7 +113,7 @@ transform = Transform3D(0.956305, 0.28793, 0.0507698, 0, 0.173648, -0.984808, -0
 fov = 100.0
 
 [node name="MovFly" parent="[ SYSTEMS ]/Camera - Drones" index="1"]
-transform = Transform3D(0.798635, 0.104504, 0.592672, 0, 0.984808, -0.173648, -0.601815, 0.138682, 0.786502, -188, 80, -231)
+transform = Transform3D(0.819152, 0.242404, 0.519837, 0, 0.906308, -0.422618, -0.573576, 0.346189, 0.742404, -250, 200, -400)
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
 script = ExtResource("16_r0mi2")

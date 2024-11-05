@@ -38,6 +38,8 @@ func Initialize():
 	barraMenus.BtnConfig.focus_entered.connect(CloseInfoMenu)
 	barraMenus.BtnMapa.focus_entered.connect(CloseInfoMenu)
 	
+	
+	
 	vistaFree.cam_manager = cam_manager
 	vistaFree.worldMark = worldMark
 	vistaFree.map = map

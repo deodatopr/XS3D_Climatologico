@@ -154,7 +154,7 @@ func OnBtnDatosFocus():
 
 
 func OnBtnConfigPressed():
-	if not BtnConfig.has_focus():
+	if BtnConfig.has_focus():
 		BtnConfig.release_focus()
 		UTILITIES.TurnOffObject(menuConfig)
 	else:
