@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Systems/UI/GDs_UI_Mapa.gd" id="7_tctv4"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_UI_Datos.gd" id="8_dd30f"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_UI_Config.gd" id="9_a4xac"]
 [ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]
 [ext_resource type="AudioStream" uid="uid://cu0urodbyu2y4" path="res://Cont_Sounds/UI/UI_Button_3.mp3" id="11_t0b7i"]
 
@@ -95,10 +96,6 @@ shader_parameter/blur = 3
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8d1t"]
 atlas = ExtResource("8_omcqt")
 region = Rect2(63, 272, 18, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dth0k"]
-atlas = ExtResource("8_omcqt")
-region = Rect2(83, 262, 18, 38)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vmg0"]
 bg_color = Color(0.210351, 0.210351, 0.210351, 1)
@@ -685,8 +682,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_blm44")
 toggle_mode = true
 action_mode = 0
 
-[node name="Menu Config" type="ColorRect" parent="."]
-visible = false
+[node name="Menu Config" type="ColorRect" parent="." node_paths=PackedStringArray("barraMenus", "masterVol", "effectsVol", "musicVol", "btnMaster", "btnSfx", "btnMusic", "focusMaster", "focusSfx", "focusMusic")]
 material = SubResource("ShaderMaterial_6lgdq")
 layout_mode = 1
 anchors_preset = 2
@@ -697,7 +693,19 @@ offset_top = -381.0
 offset_right = 476.0
 offset_bottom = -125.0
 grow_vertical = 0
+focus_neighbor_bottom = NodePath("MarginContainer/VBoxContainer/Master Vol/Master Button")
 color = Color(0, 0, 0, 1)
+script = ExtResource("9_a4xac")
+barraMenus = NodePath("../Barra menus")
+masterVol = NodePath("MarginContainer/VBoxContainer/Master Vol/HSlider")
+effectsVol = NodePath("MarginContainer/VBoxContainer/Master Vol2/HSlider")
+musicVol = NodePath("MarginContainer/VBoxContainer/Master Vol3/HSlider")
+btnMaster = NodePath("MarginContainer/VBoxContainer/Master Vol/Master Button")
+btnSfx = NodePath("MarginContainer/VBoxContainer/Master Vol2/Master Button")
+btnMusic = NodePath("MarginContainer/VBoxContainer/Master Vol3/Master Button")
+focusMaster = NodePath("MarginContainer/VBoxContainer/Master Vol/OnFocus")
+focusSfx = NodePath("MarginContainer/VBoxContainer/Master Vol2/OnFocus")
+focusMusic = NodePath("MarginContainer/VBoxContainer/Master Vol3/OnFocus")
 
 [node name="Corner" type="TextureRect" parent="Menu Config"]
 layout_mode = 1
@@ -849,20 +857,66 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -165.0
+offset_left = -173.0
 offset_top = -11.0
-offset_right = -10.0
+offset_right = -18.0
 offset_bottom = 11.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
-theme_override_icons/grabber_highlight = SubResource("AtlasTexture_dth0k")
 theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
-value = 40.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 scrollable = false
 tick_count = 1
+
+[node name="Master Button" type="Button" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../Master Vol3/Master Button")
+
+[node name="OnFocus" type="Control" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="-" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol/OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 197.0
+offset_top = -11.5
+offset_right = 203.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "-
+"
+
+[node name="+" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol/OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 365.0
+offset_top = -11.5
+offset_right = 375.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "+"
 
 [node name="Master Vol2" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_ye56v")
@@ -895,20 +949,66 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -165.0
+offset_left = -173.0
 offset_top = -11.0
-offset_right = -10.0
+offset_right = -18.0
 offset_bottom = 11.0
 grow_horizontal = 0
 grow_vertical = 2
+focus_mode = 1
 theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
-theme_override_icons/grabber_highlight = SubResource("AtlasTexture_dth0k")
 theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
-value = 40.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 scrollable = false
 tick_count = 1
+
+[node name="Master Button" type="Button" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OnFocus" type="Control" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="-" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol2/OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 197.0
+offset_top = -11.5
+offset_right = 203.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "-
+"
+
+[node name="+" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol2/OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 365.0
+offset_top = -11.5
+offset_right = 375.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "+"
 
 [node name="Master Vol3" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_ye56v")
@@ -941,20 +1041,67 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -165.0
+offset_left = -173.0
 offset_top = -11.0
-offset_right = -10.0
+offset_right = -18.0
 offset_bottom = 11.0
 grow_horizontal = 0
 grow_vertical = 2
+focus_mode = 1
 theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
-theme_override_icons/grabber_highlight = SubResource("AtlasTexture_dth0k")
 theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
-value = 40.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 scrollable = false
 tick_count = 1
+
+[node name="Master Button" type="Button" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol3"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../../Master Vol/Master Button")
+
+[node name="OnFocus" type="Control" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="-" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol3/OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 197.0
+offset_top = -11.5
+offset_right = 203.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "-
+"
+
+[node name="+" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol3/OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 365.0
+offset_top = -11.5
+offset_right = 375.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "+"
 
 [node name="------BARRAS----------" type="Node" parent="."]
 

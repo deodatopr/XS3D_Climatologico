@@ -35,10 +35,12 @@ mensaje = NodePath("Msg Perdiendo Senal")
 [node name="Glitch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rx0j5")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="GlitchLimit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_7o7yx")
 pitch_scale = 0.5
+bus = &"SFX"
 
 [node name="Cortinilla Local" type="NinePatchRect" parent="."]
 process_mode = 4
