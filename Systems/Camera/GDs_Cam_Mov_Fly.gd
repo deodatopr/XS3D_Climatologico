@@ -7,7 +7,7 @@ var cam : Camera3D
 var pivot : Node3D
 
 var mov_axisMovement : Vector2
-var mov_curv01 : float
+var mov_sampleCurve : float
 var mov_speed01 : float
 var mov_deceleration : float = 100
 var mov_velocity : Vector3
@@ -32,7 +32,7 @@ var rot_axisRotation : Vector2
 
 var mouseMotion : InputEvent
 var cursorMovement : Vector2
-var curvPoint : float
+var curvValue : float
 
 var testAutomaticMov : bool = true
 
@@ -137,50 +137,49 @@ func _mov_movement(_delta : float):
 	
 	if dir.length() > 0:
 		#Acceleration
-		if mov_curv01 < 1:
-			#Calculate curve acc
-			mov_curv01 += camMng.fly_acce_dece * _delta
-			mov_curv01 = clampf(mov_curv01,0,1)
-			curvPoint = camMng.curveMovement.sample(mov_curv01)
-		
+		if mov_sampleCurve < 1:
+			#Curve acceleration
+			mov_sampleCurve += camMng.fly_acce_dece * _delta
+			mov_sampleCurve = clampf(mov_sampleCurve,0,1)
+			curvValue = camMng.curveMovement.sample(mov_sampleCurve)
+			
 		#Calculate velocity to move
-		mov_velocity += dir * camMng.fly_speed * curvPoint * _delta
+		mov_velocity += dir * camMng.fly_speed * curvValue * _delta
 		var mov_limitSpeed : float = camMng.fly_speed * currentTurbo
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif dir.length() == 0 and mov_velocity.length() > 0:
 		#Deceleration		
 		#Calculate curve dec
-		mov_curv01 -= camMng.fly_acce_dece * _delta
-		mov_curv01 = clampf(mov_curv01,0,1)
-		curvPoint = camMng.curveMovement.sample(mov_curv01)
+		mov_sampleCurve -= camMng.fly_acce_dece * _delta
+		mov_sampleCurve = clampf(mov_sampleCurve,0,1)
+		curvValue = camMng.curveMovement.sample(mov_sampleCurve)
 		
 		#Calculate deceleration
-		var targetLength : Vector3 = mov_velocity * curvPoint
-		mov_velocity = lerp(mov_velocity, targetLength,curvPoint)
+		var targetLength : Vector3 = mov_velocity * curvValue
+		mov_velocity = lerp(mov_velocity, targetLength,curvValue)
 		if mov_velocity.length() < .001:
 			mov_velocity = Vector3.ZERO
-			
+	
+	#Limits
 	#Velocity decrease by boundings
 	var decreaseSpeedByLimits : float = (1 - CAM.boundings01)
-	var isDirTowardLimit : bool = signf(mov_lastBounding01 - decreaseSpeedByLimits) > 0
-	
+	var isDirTowardLimit : bool = signf(mov_lastBounding01 - decreaseSpeedByLimits) > 0	
 	#No decrease speed if dir is diferent toward limit (to escape easily)
 	if not isDirTowardLimit:
 		decreaseSpeedByLimits = 1
 
 	mov_lastBounding01 = (1 - CAM.boundings01)
 	mov_velocity = mov_velocity * decreaseSpeedByLimits
-
-	#Save speed01 to send it to UI
-	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed  * camMng.fly_turbo,mov_velocity.length())
-	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, 10 * _delta)
-	mov_speed01 = clampf(slowSpeed,0, 1)
-	mov_lastSpeed01 = mov_speed01
 	
 	#Apply move
 	if mov_velocity.length() > 0:
 		pivot.global_position += mov_velocity
 
+	#Speed to send to UI (km/hr)
+	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed  * camMng.fly_turbo,mov_velocity.length())
+	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, 10 * _delta)
+	mov_speed01 = clampf(slowSpeed,0, 1)
+	mov_lastSpeed01 = mov_speed01
 	
 func _rotation(_delta:float):
 	#Detect input controller
