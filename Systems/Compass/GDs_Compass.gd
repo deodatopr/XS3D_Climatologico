@@ -98,7 +98,7 @@ func _CalculateScreenMark(delta: float) -> void:
 		dirFromAim.y = -dirFromAim.y
 		posTarget2d = aimCenter + (dirFromAim * 1000)
 
-	testDirection.global_position = aimCenter + (aimCenter.direction_to(posTarget2d) * 100)
+	#testDirection.global_position = aimCenter + (aimCenter.direction_to(posTarget2d) * 100)
 	
 	#Pos 2d with limits
 	posTarget2d.x = clampf(posTarget2d.x,minPos_X,maxPos_X)

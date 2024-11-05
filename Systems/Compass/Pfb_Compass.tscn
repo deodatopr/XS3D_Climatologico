@@ -416,6 +416,8 @@ texture = ExtResource("3_wk4d2")
 region_rect = Rect2(477.357, 738.796, 24.1568, 20.4572)
 
 [node name="testDirection" type="NinePatchRect" parent="."]
+process_mode = 4
+visible = false
 self_modulate = Color(0.993205, 0, 1, 1)
 layout_mode = 1
 anchors_preset = 8
