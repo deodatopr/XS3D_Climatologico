@@ -147,29 +147,29 @@ func _mov_movement(_delta : float):
 		mov_velocity += dir * camMng.fly_speed * _delta
 		var mov_limitSpeed : float = camMng.fly_speed * currentTurbo
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
-	elif dir.length() == 0 and mov_velocity.length() > 0:
-		#Deceleration		
-		#Calculate curve dec
-		mov_sampleCurve -= camMng.fly_acce_dece * _delta
-		mov_sampleCurve = clampf(mov_sampleCurve,0,1)
-		curvValue = camMng.curveMovement.sample(mov_sampleCurve)
-		
-		#Calculate deceleration
-		var targetLength : Vector3 = mov_velocity * curvValue
-		mov_velocity = lerp(mov_velocity, targetLength,curvValue)
-		if mov_velocity.length() < .001:
-			mov_velocity = Vector3.ZERO
+	#elif dir.length() == 0 and mov_velocity.length() > 0:
+		##Deceleration		
+		##Calculate curve dec
+		#mov_sampleCurve -= camMng.fly_acce_dece * _delta
+		#mov_sampleCurve = clampf(mov_sampleCurve,0,1)
+		#curvValue = camMng.curveMovement.sample(mov_sampleCurve)
+		#
+		##Calculate deceleration
+		#var targetLength : Vector3 = mov_velocity * curvValue
+		#mov_velocity = lerp(mov_velocity, targetLength,curvValue)
+		#if mov_velocity.length() < .001:
+			#mov_velocity = Vector3.ZERO
 	
-	#Limits
-	#Velocity decrease by boundings
-	var decreaseSpeedByLimits : float = (1 - CAM.boundings01)
-	var isDirTowardLimit : bool = signf(mov_lastBounding01 - decreaseSpeedByLimits) > 0	
-	#No decrease speed if dir is diferent toward limit (to escape easily)
-	if not isDirTowardLimit:
-		decreaseSpeedByLimits = 1
-
-	mov_lastBounding01 = (1 - CAM.boundings01)
-	mov_velocity = mov_velocity * decreaseSpeedByLimits
+	##Limits
+	##Velocity decrease by boundings
+	#var decreaseSpeedByLimits : float = (1 - CAM.boundings01)
+	#var isDirTowardLimit : bool = signf(mov_lastBounding01 - decreaseSpeedByLimits) > 0	
+	##No decrease speed if dir is diferent toward limit (to escape easily)
+	#if not isDirTowardLimit:
+		#decreaseSpeedByLimits = 1
+#
+	#mov_lastBounding01 = (1 - CAM.boundings01)
+	#mov_velocity = mov_velocity * decreaseSpeedByLimits
 	
 	#Apply move
 	if mov_velocity.length() > 0:
