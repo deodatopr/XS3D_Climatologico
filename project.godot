@@ -18,7 +18,7 @@ run/max_fps=60
 
 [audio]
 
-buses/default_bus_layout=""
+buses/default_bus_layout="res://Cont_Sounds/Bus_Layout.tres"
 
 [autoload]
 

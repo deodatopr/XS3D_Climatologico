@@ -21,7 +21,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
-[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -126,21 +126,25 @@ sndWind = NodePath("Wind")
 stream = ExtResource("17_p1b51")
 volume_db = -5.0
 autoplay = true
+bus = &"SFX"
 parameters/looping = true
 
 [node name="Moving" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("18_og2vw")
 volume_db = 7.0
+bus = &"SFX"
 parameters/looping = true
 
 [node name="CameraFOV" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
 pitch_scale = 0.7
+bus = &"SFX"
 
 [node name="CameraRot" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("6_ehp13")
 volume_db = 7.0
 pitch_scale = 0.5
+bus = &"SFX"
 
 [node name="PPE - Glitch" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly") instance=ExtResource("7_cjwh8")]
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
@@ -149,6 +153,8 @@ vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 [node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
 stream = ExtResource("21_atymd")
 volume_db = 10.0
+autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]

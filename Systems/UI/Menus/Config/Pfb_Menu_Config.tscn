@@ -1,0 +1,494 @@
+[gd_scene load_steps=13 format=3 uid="uid://ddo5utgfriiew"]
+
+[ext_resource type="Script" path="res://Systems/UI/Menus/Config/GDs_UI_Config.gd" id="1_ulouc"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_8dovo"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_46evx"]
+[ext_resource type="Script" path="res://Systems/UI/Menus/Config/GDs_UI_MasterVol.gd" id="3_vbhwm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lgdq"]
+shader = ExtResource("2_8dovo")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
+atlas = ExtResource("3_46evx")
+region = Rect2(7, 322, 44, 44)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fj4lx"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kuu7"]
+atlas = ExtResource("3_46evx")
+region = Rect2(473, 390, 30, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye56v"]
+shader = ExtResource("2_8dovo")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.4
+shader_parameter/blur = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8d1t"]
+atlas = ExtResource("3_46evx")
+region = Rect2(63, 272, 18, 18)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vmg0"]
+content_margin_left = 2.0
+content_margin_top = 5.0
+bg_color = Color(0.210351, 0.210351, 0.210351, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_208jf"]
+bg_color = Color(0.529412, 0.0588235, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Menu Confi" type="Control" node_paths=PackedStringArray("masterVol", "sfxVol", "musicVol", "masterBtn", "SFXBtn", "musicBtn", "MasterOnFocus", "SFXOnFocus", "MusicOnFocus")]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -382.0
+offset_right = 476.0
+offset_bottom = -126.0
+grow_vertical = 0
+script = ExtResource("1_ulouc")
+masterVol = NodePath("Menu Config/MarginContainer/VBoxContainer/Master Vol/Master Slider")
+sfxVol = NodePath("Menu Config/MarginContainer/VBoxContainer/SFX Vol/SFX Slider")
+musicVol = NodePath("Menu Config/MarginContainer/VBoxContainer/Music Vol/Music Slider")
+masterBtn = NodePath("Menu Config/MarginContainer/VBoxContainer/Master Vol/Master Button")
+SFXBtn = NodePath("Menu Config/MarginContainer/VBoxContainer/SFX Vol/SFX Button")
+musicBtn = NodePath("Menu Config/MarginContainer/VBoxContainer/Music Vol/Music Button")
+MasterOnFocus = NodePath("Menu Config/MarginContainer/VBoxContainer/Master Vol/Master OnFocus")
+SFXOnFocus = NodePath("Menu Config/MarginContainer/VBoxContainer/SFX Vol/SFX OnFocus")
+MusicOnFocus = NodePath("Menu Config/MarginContainer/VBoxContainer/Music Vol/Music OnFocus")
+
+[node name="Menu Config" type="ColorRect" parent="." node_paths=PackedStringArray("root", "masterVol")]
+process_mode = 3
+material = SubResource("ShaderMaterial_6lgdq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("MarginContainer/VBoxContainer/Master Vol/Master Button")
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_vbhwm")
+root = NodePath("..")
+masterVol = NodePath("MarginContainer/VBoxContainer/Master Vol/Master Slider")
+
+[node name="Corner" type="TextureRect" parent="Menu Config"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 49.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Corner2" type="TextureRect" parent="Menu Config"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -6.0
+offset_right = 50.0
+offset_bottom = 38.0
+grow_vertical = 0
+rotation = -1.5708
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Corner3" type="TextureRect" parent="Menu Config"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_top = 27.0
+offset_right = -27.0
+offset_bottom = 71.0
+grow_horizontal = 0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="Corner4" type="TextureRect" parent="Menu Config"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -71.9999
+offset_right = -27.0
+offset_bottom = -27.9999
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_g0htj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu Config"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 33
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu Config/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="HBoxContainer" parent="Menu Config/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HSeparator" type="HSeparator" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+visibility_layer = 0
+layout_mode = 2
+
+[node name="Top Left Icon" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+self_modulate = Color(1, 1, 1, 0.301961)
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_fj4lx")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="Menu Config/MarginContainer/VBoxContainer/Title/Top Left Icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(15, 15)
+texture = SubResource("AtlasTexture_5kuu7")
+
+[node name="HSeparator2" type="HSeparator" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+visibility_layer = 0
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "AUDIO"
+
+[node name="Master Vol" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ye56v")
+custom_minimum_size = Vector2(380, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_46evx")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -11.5
+offset_right = 145.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Volumen Maestro"
+
+[node name="Master Slider" type="HSlider" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -11.0
+offset_right = -18.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
+max_value = 1.0
+step = 0.05
+value = 1.0
+scrollable = false
+tick_count = 1
+
+[node name="Master Button" type="Button" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../Music Vol/Music Button")
+
+[node name="Master OnFocus" type="Control" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="-" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol/Master OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 197.0
+offset_top = -11.5
+offset_right = 203.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "-
+"
+
+[node name="+" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol/Master OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 365.0
+offset_top = -11.5
+offset_right = 375.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "+"
+
+[node name="SFX Vol" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ye56v")
+custom_minimum_size = Vector2(380, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_46evx")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/SFX Vol"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -11.5
+offset_right = 145.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Volumen Efectos"
+
+[node name="SFX Slider" type="HSlider" parent="Menu Config/MarginContainer/VBoxContainer/SFX Vol"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -11.0
+offset_right = -18.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
+max_value = 1.0
+step = 0.05
+value = 1.0
+scrollable = false
+tick_count = 1
+
+[node name="SFX Button" type="Button" parent="Menu Config/MarginContainer/VBoxContainer/SFX Vol"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SFX OnFocus" type="Control" parent="Menu Config/MarginContainer/VBoxContainer/SFX Vol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="-" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/SFX Vol/SFX OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 197.0
+offset_top = -11.5
+offset_right = 203.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "-
+"
+
+[node name="+" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/SFX Vol/SFX OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 365.0
+offset_top = -11.5
+offset_right = 375.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "+"
+
+[node name="Music Vol" type="NinePatchRect" parent="Menu Config/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ye56v")
+custom_minimum_size = Vector2(380, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_46evx")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Music Vol"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -11.5
+offset_right = 145.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Volumen Musica"
+
+[node name="Music Slider" type="HSlider" parent="Menu Config/MarginContainer/VBoxContainer/Music Vol"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -11.0
+offset_right = -18.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 1
+theme_override_icons/grabber = SubResource("AtlasTexture_x8d1t")
+theme_override_styles/slider = SubResource("StyleBoxFlat_7vmg0")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_208jf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_208jf")
+max_value = 1.0
+step = 0.05
+value = 1.0
+scrollable = false
+tick_count = 1
+
+[node name="Music Button" type="Button" parent="Menu Config/MarginContainer/VBoxContainer/Music Vol"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../../Master Vol/Master Button")
+
+[node name="Music OnFocus" type="Control" parent="Menu Config/MarginContainer/VBoxContainer/Music Vol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="-" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Music Vol/Music OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 197.0
+offset_top = -11.5
+offset_right = 203.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "-
+"
+
+[node name="+" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Music Vol/Music OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 365.0
+offset_top = -11.5
+offset_right = 375.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "+"
