@@ -81,10 +81,11 @@ sndUiPressed = NodePath("../[ AUDIO ]/UIPressed")
 visible = false
 layout_mode = 1
 
-[node name="Menu Mapa" parent="." node_paths=PackedStringArray("barraMenus") instance=ExtResource("4_t41nj")]
+[node name="Menu Mapa" parent="." node_paths=PackedStringArray("barraMenus", "popUp") instance=ExtResource("4_t41nj")]
 visible = false
 layout_mode = 1
 barraMenus = NodePath("../Barra menus")
+popUp = NodePath("../PopUp Ver Sitio")
 
 [node name="Menu Datos" type="ColorRect" parent="." node_paths=PackedStringArray("barraMenus", "testBtn")]
 visible = false
