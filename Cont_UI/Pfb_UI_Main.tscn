@@ -146,7 +146,6 @@ visible = false
 layout_mode = 1
 
 [node name="Menu Mapa" type="ColorRect" parent="." node_paths=PackedStringArray("testBtn")]
-visible = false
 material = SubResource("ShaderMaterial_nj8nw")
 layout_mode = 1
 anchors_preset = 15
@@ -227,6 +226,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 23.0
+offset_right = -27.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_m8twr")
@@ -527,10 +530,10 @@ expand_mode = 1
 [node name="Top Left Icon" type="NinePatchRect" parent="Menu Mapa/FrameBG"]
 self_modulate = Color(0, 0, 0, 0.666667)
 layout_mode = 1
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 112.0
-offset_bottom = 112.0
+offset_left = 34.0
+offset_top = 31.0
+offset_right = 134.0
+offset_bottom = 131.0
 texture = SubResource("CompressedTexture2D_mvc8w")
 region_rect = Rect2(474, 40, 30, 30)
 patch_margin_left = 5
@@ -683,6 +686,7 @@ toggle_mode = true
 action_mode = 0
 
 [node name="Menu Config" type="ColorRect" parent="." node_paths=PackedStringArray("barraMenus", "masterVol", "effectsVol", "musicVol", "btnMaster", "btnSfx", "btnMusic", "focusMaster", "focusSfx", "focusMusic")]
+visible = false
 material = SubResource("ShaderMaterial_6lgdq")
 layout_mode = 1
 anchors_preset = 2
