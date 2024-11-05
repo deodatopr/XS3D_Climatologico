@@ -7,8 +7,8 @@ extends Control
 @export var vistaFree:GDs_VistaFree
 @export_subgroup("Refs Minimap")
 @export var cam_manager:GDs_Cam_Manager
-@export var worldMark:Node3D
-@export var map:Node3D
+@export var pin_Sitio:Node3D
+@export var mshTerrain:Node3D
 @export_group("Refs internas")
 @export var menuPerfiles:GDs_MenuPerfiles
 @export var barraMenus:GDs_BarraMenus
@@ -41,8 +41,8 @@ func Initialize():
 	
 	
 	vistaFree.cam_manager = cam_manager
-	vistaFree.worldMark = worldMark
-	vistaFree.map = map
+	vistaFree.pinSitio = pin_Sitio
+	vistaFree.map = mshTerrain
 	vistaFree.Initialize()
 
 func CloseInfoMenu():

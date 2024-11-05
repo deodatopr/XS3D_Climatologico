@@ -404,6 +404,80 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_pr55t")
 
+[node name="-" type="NinePatchRect" parent="FrameBG/Control/Home"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -136.0
+offset_right = -72.0
+offset_bottom = -108.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Control/Home/-"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -26.5
+offset_right = 7.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="+" type="NinePatchRect" parent="FrameBG/Control/Home"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 9.5
+offset_top = -136.0
+offset_right = 58.5
+offset_bottom = -108.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Control/Home/+"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.5
+offset_top = -22.5
+offset_right = 7.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Labels" type="Control" parent="FrameBG"]
 layout_mode = 1
 anchors_preset = 15
@@ -421,23 +495,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -158.5
-offset_top = -297.5
-offset_right = 159.5
-offset_bottom = 20.5
+offset_left = -159.5
+offset_top = -7.5
+offset_right = 158.5
+offset_bottom = 310.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Abrir Cerrar Menu"]
 self_modulate = Color(0, 0, 0, 0.705882)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -179.0
+offset_top = -45.0
 offset_right = 179.0
-offset_bottom = 31.0
+offset_bottom = -14.0
 grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("2_x6xqf")
 region_rect = Rect2(474, 40, 30, 30)
 patch_margin_left = 5
@@ -451,6 +529,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
@@ -470,6 +550,85 @@ offset_left = -1.0
 offset_top = 41.0
 offset_right = 1.0
 offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Volumen" type="Control" parent="FrameBG/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -298.5
+offset_right = 158.5
+offset_bottom = -75.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Volumen"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.0
+offset_right = 179.0
+offset_bottom = 31.0
+grow_horizontal = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="FrameBG/Labels/Volumen/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "menu del sitio (abrir/cerrar)"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Volumen"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 41.0
+offset_right = 1.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Volumen"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = 179.0
+offset_right = 36.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_x6xqf")
@@ -689,6 +848,22 @@ offset_right = 41.0
 offset_bottom = 29.0
 texture = SubResource("AtlasTexture_glfil")
 
+[node name="Label" type="Label" parent="FrameBG/Labels/Camaras/Tab"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -17.5
+offset_right = -11.0
+offset_bottom = 17.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "TAB"
+
 [node name="Cancelar" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
@@ -725,7 +900,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -235.0
 offset_top = 1.0
-offset_right = 10.0
+offset_right = -111.0
 offset_bottom = 32.0
 grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
@@ -744,10 +919,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
-text = "cancelar / cerrar"
+text = "cerrar"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Esc" type="NinePatchRect" parent="FrameBG/Labels/Cancelar"]
+custom_minimum_size = Vector2(72.485, 46.235)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.485
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Labels/Cancelar/Esc"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "ESC"
+
+[node name="_" type="Label" parent="FrameBG/Labels/Cancelar"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -27.5
+offset_right = -84.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
 
 [node name="Aceptar" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
@@ -756,10 +984,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 283.5
-offset_top = -2.5
-offset_right = 753.5
-offset_bottom = 34.5
+offset_left = 280.5
+offset_top = 9.5
+offset_right = 750.5
+offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -785,7 +1013,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -231.0
 offset_top = 1.0
-offset_right = -119.0
+offset_right = -57.0
 offset_bottom = 32.0
 grow_horizontal = 0
 texture = ExtResource("2_x6xqf")
@@ -804,11 +1032,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 22
-text = "Aceptar
+text = "Seleccionar
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="_" type="Label" parent="FrameBG/Labels/Aceptar"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -43.0
+offset_top = -12.0
+offset_right = -3.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Click" type="TextureRect" parent="FrameBG/Labels/Aceptar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 220.5
+offset_top = -11.0
+offset_right = 239.5
+offset_bottom = 8.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_uwpjb")
+
+[node name="Mouse" type="TextureRect" parent="FrameBG/Labels/Aceptar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -12.0
+offset_right = 21.0
+offset_bottom = 39.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_ctu50")
 
 [node name="Rotacion" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
@@ -899,15 +1165,15 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="Scroll" type="TextureRect" parent="FrameBG/Labels/Rotacion"]
+[node name="Click" type="TextureRect" parent="FrameBG/Labels/Rotacion"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 168.5
-offset_top = -11.0
+offset_top = 4.0
 offset_right = 187.5
-offset_bottom = 8.0
+offset_bottom = 23.0
 grow_horizontal = 2
 texture = SubResource("AtlasTexture_uwpjb")
 
@@ -917,11 +1183,26 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -69.0
-offset_top = -12.0
+offset_top = 3.0
 offset_right = -31.0
-offset_bottom = 39.0
+offset_bottom = 54.0
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_ctu50")
+
+[node name="Scroll" type="TextureRect" parent="FrameBG/Labels/Rotacion"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -40.5
+offset_right = -35.0
+offset_bottom = -21.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_glfil")
 
 [node name="Navegar UI" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
@@ -1341,7 +1622,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_g4jj7")
 
-[node name="Info" type="NinePatchRect" parent="FrameBG"]
+[node name="Cerrar" type="NinePatchRect" parent="FrameBG"]
 self_modulate = Color(0.1426, 0.492693, 0.62, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -1350,9 +1631,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -148.5
-offset_top = -143.0
+offset_top = -112.0
 offset_right = 148.5
-offset_bottom = -67.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_x6xqf")
@@ -1362,7 +1643,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Lbl INfo" type="Label" parent="FrameBG/Info"]
+[node name="Lbl INfo" type="Label" parent="FrameBG/Cerrar"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1381,7 +1662,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Hbox" type="HBoxContainer" parent="FrameBG/Info"]
+[node name="Hbox" type="HBoxContainer" parent="FrameBG/Cerrar"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1394,13 +1675,13 @@ grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 theme_override_constants/separation = 10
 
-[node name="HSeparator" type="HSeparator" parent="FrameBG/Info/Hbox"]
+[node name="HSeparator" type="HSeparator" parent="FrameBG/Cerrar/Hbox"]
 visible = false
 visibility_layer = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="W" type="NinePatchRect" parent="FrameBG/Info/Hbox"]
+[node name="Esc" type="NinePatchRect" parent="FrameBG/Cerrar/Hbox"]
 custom_minimum_size = Vector2(72.485, 0)
 layout_mode = 2
 texture = ExtResource("2_x6xqf")
@@ -1410,7 +1691,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="FrameBG/Info/Hbox/W"]
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Hbox/Esc"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1426,17 +1707,17 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 35
 text = "ESC"
 
-[node name="_" type="Label" parent="FrameBG/Info/Hbox"]
+[node name="_" type="Label" parent="FrameBG/Cerrar/Hbox"]
 self_modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="Y" type="TextureRect" parent="FrameBG/Info/Hbox"]
+[node name="Y" type="TextureRect" parent="FrameBG/Cerrar/Hbox"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_r1t05")
 
-[node name="Label" type="Label" parent="FrameBG/Info/Hbox/Y"]
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Hbox/Y"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1454,7 +1735,7 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="FrameBG/Info/Hbox"]
+[node name="HSeparator2" type="HSeparator" parent="FrameBG/Cerrar/Hbox"]
 visible = false
 visibility_layer = 0
 layout_mode = 2

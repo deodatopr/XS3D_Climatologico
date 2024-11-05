@@ -1,0 +1,202 @@
+[gd_scene load_steps=7 format=3 uid="uid://q0vw6knqav7n"]
+
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_ipmym"]
+[ext_resource type="Script" path="res://Systems/UI/Menus/Mapa/Gds_UI_MapPoint.gd" id="2_y20bw"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="3_kkbya"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywue4"]
+atlas = ExtResource("1_ipmym")
+region = Rect2(468, 763, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11b3c"]
+atlas = ExtResource("1_ipmym")
+region = Rect2(71, 204, 49, 49)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1mpy"]
+shader = ExtResource("3_kkbya")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.3
+shader_parameter/blur = 1
+
+[node name="MapPoint" type="Button" node_paths=PackedStringArray("btn", "lbl", "current", "animSquare", "bg", "bgLabel")]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -81.0
+offset_right = -150.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_y20bw")
+btn = NodePath(".")
+lbl = NodePath("OnFocus/Label")
+current = NodePath("Point/Current")
+animSquare = NodePath("OnFocus/Square")
+bg = NodePath("OnFocus/Square/BG")
+bgLabel = NodePath("OnFocus/BG Blur")
+bgLabelWidth = 215.0
+
+[node name="Point" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ywue4")
+expand_mode = 1
+
+[node name="Current" type="TextureRect" parent="Point"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_11b3c")
+expand_mode = 1
+
+[node name="OnFocus" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -20.0
+offset_right = 35.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BG Blur" type="NinePatchRect" parent="OnFocus"]
+material = SubResource("ShaderMaterial_i1mpy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = -35.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ipmym")
+region_rect = Rect2(483, 10, 10, 12)
+
+[node name="Square" type="Control" parent="OnFocus"]
+modulate = Color(0, 0.556863, 0.760784, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -14.0
+offset_right = -1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(14, 14)
+mouse_filter = 2
+
+[node name="BG BLUR" type="NinePatchRect" parent="OnFocus/Square"]
+material = SubResource("ShaderMaterial_i1mpy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ipmym")
+region_rect = Rect2(483, 10, 10, 12)
+
+[node name="BG" type="NinePatchRect" parent="OnFocus/Square"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ipmym")
+region_rect = Rect2(483, 10, 10, 12)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="OnFocus/Square"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 3.0
+grow_vertical = 2
+texture = ExtResource("1_ipmym")
+region_rect = Rect2(483, 10, 10, 12)
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="OnFocus/Square"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+texture = ExtResource("1_ipmym")
+region_rect = Rect2(483, 10, 10, 12)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="OnFocus/Square"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_ipmym")
+region_rect = Rect2(483, 10, 10, 12)
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="OnFocus/Square"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_ipmym")
+region_rect = Rect2(483, 10, 10, 12)
+
+[node name="Label" type="Label" parent="OnFocus"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_right = 213.0
+offset_bottom = 12.0
+grow_vertical = 2
+text = "1    Campamento los berros"
+vertical_alignment = 1
+clip_text = true
+visible_characters = 0
+visible_ratio = 0.0

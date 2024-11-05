@@ -113,6 +113,7 @@ func OnBtnSitiosFocus():
 
 
 func OnBtnMapaPressed():
+	
 	if BtnMapa.has_focus():
 		BtnMapa.release_focus()
 		UTILITIES.TurnOffObject(menuMapa)

@@ -1,0 +1,543 @@
+[gd_scene load_steps=13 format=3 uid="uid://cu4xkkxeuptxj"]
+
+[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_105pb"]
+[ext_resource type="Script" path="res://Systems/UI/Menus/Mapa/GDs_UI_Mapa.gd" id="2_pfdqh"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_4hsy0"]
+[ext_resource type="Texture2D" uid="uid://2kva7lmdb47u" path="res://Cont_UI/Map_Mapa_Edomex.png" id="4_vdnai"]
+[ext_resource type="PackedScene" uid="uid://q0vw6knqav7n" path="res://Systems/UI/Menus/Mapa/Pfb_MapPoint.tscn" id="5_r2tfe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nj8nw"]
+shader = ExtResource("1_105pb")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5wkr"]
+atlas = ExtResource("3_4hsy0")
+region = Rect2(7, 322, 44, 44)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mvc8w"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yn06"]
+atlas = ExtResource("3_4hsy0")
+region = Rect2(477, 358, 21, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4xve"]
+atlas = ExtResource("3_4hsy0")
+region = Rect2(7, 264, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i8lf"]
+atlas = ExtResource("3_4hsy0")
+region = Rect2(370, 4, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rasxr"]
+atlas = ExtResource("3_4hsy0")
+region = Rect2(7, 264, 54, 54)
+
+[node name="Menu Mapa" type="ColorRect" node_paths=PackedStringArray("mapPoints")]
+material = SubResource("ShaderMaterial_nj8nw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_pfdqh")
+mapPoints = [NodePath("FrameBG/Mapa/MapPoint"), NodePath("FrameBG/Mapa/MapPoint2"), NodePath("FrameBG/Mapa/MapPoint3"), NodePath("FrameBG/Mapa/MapPoint4"), NodePath("FrameBG/Mapa/MapPoint5"), NodePath("FrameBG/Mapa/MapPoint6"), NodePath("FrameBG/Mapa/MapPoint7"), NodePath("FrameBG/Mapa/MapPoint8")]
+
+[node name="FrameBG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 119.0
+offset_top = 66.0
+offset_right = -126.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.164706)
+
+[node name="Corner" type="TextureRect" parent="FrameBG"]
+layout_mode = 1
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_v5wkr")
+
+[node name="Corner2" type="TextureRect" parent="FrameBG"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+offset_right = 44.0
+grow_vertical = 0
+rotation = -1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_v5wkr")
+
+[node name="Corner3" type="TextureRect" parent="FrameBG"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_bottom = 44.0
+grow_horizontal = 0
+rotation = 1.5708
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_v5wkr")
+
+[node name="Corner4" type="TextureRect" parent="FrameBG"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+scale = Vector2(2, 2)
+pivot_offset = Vector2(22, 22)
+texture = SubResource("AtlasTexture_v5wkr")
+
+[node name="Mapa" type="TextureRect" parent="FrameBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 23.0
+offset_right = -27.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vdnai")
+expand_mode = 1
+
+[node name="MapPoint" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = -175.5
+offset_top = -81.5
+offset_right = -159.5
+offset_bottom = -65.5
+focus_neighbor_top = NodePath("../MapPoint5")
+focus_neighbor_bottom = NodePath("../MapPoint6")
+
+[node name="MapPoint2" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = -196.5
+offset_top = -50.5
+offset_right = -180.5
+offset_bottom = -34.5
+focus_neighbor_top = NodePath("../MapPoint6")
+focus_neighbor_bottom = NodePath("../MapPoint4")
+
+[node name="MapPoint3" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = -206.5
+offset_top = 1.5
+offset_right = -190.5
+offset_bottom = 17.5
+focus_neighbor_top = NodePath("../MapPoint4")
+focus_neighbor_bottom = NodePath("../MapPoint8")
+
+[node name="MapPoint4" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = -191.5
+offset_top = -15.5
+offset_right = -175.5
+offset_bottom = 0.5
+focus_neighbor_top = NodePath("../MapPoint2")
+focus_neighbor_bottom = NodePath("../MapPoint3")
+
+[node name="MapPoint5" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = -160.5
+offset_top = -100.5
+offset_right = -144.5
+offset_bottom = -84.5
+focus_neighbor_top = NodePath("../MapPoint7")
+focus_neighbor_bottom = NodePath("../MapPoint")
+
+[node name="MapPoint6" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = -265.5
+offset_top = -65.5
+offset_right = -249.5
+offset_bottom = -49.5
+focus_neighbor_top = NodePath("../MapPoint")
+focus_neighbor_bottom = NodePath("../MapPoint2")
+
+[node name="MapPoint7" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = -296.5
+offset_top = -117.5
+offset_right = -280.5
+offset_bottom = -101.5
+focus_neighbor_top = NodePath("../MapPoint8")
+focus_neighbor_bottom = NodePath("../MapPoint5")
+
+[node name="MapPoint8" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
+layout_mode = 1
+offset_left = 124.5
+offset_top = -233.5
+offset_right = 140.5
+offset_bottom = -217.5
+focus_neighbor_top = NodePath("../MapPoint3")
+focus_neighbor_bottom = NodePath("../MapPoint7")
+
+[node name="Top Left Icon" type="NinePatchRect" parent="FrameBG"]
+self_modulate = Color(0, 0, 0, 0.666667)
+layout_mode = 1
+offset_left = 34.0
+offset_top = 31.0
+offset_right = 134.0
+offset_bottom = 131.0
+texture = SubResource("CompressedTexture2D_mvc8w")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="FrameBG/Top Left Icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -13.0
+offset_right = 10.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(10, 13)
+texture = SubResource("AtlasTexture_1yn06")
+
+[node name="Cerrar" type="NinePatchRect" parent="FrameBG"]
+self_modulate = Color(0.1426, 0.492693, 0.62, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.5
+offset_top = -155.0
+offset_right = 148.5
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_4hsy0")
+region_rect = Rect2(473, 39, 30, 31)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Lbl INfo" type="Label" parent="FrameBG/Cerrar"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -21.0
+offset_right = -36.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "[ Cerrar ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox" type="HBoxContainer" parent="FrameBG/Cerrar"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -19.5
+offset_right = 196.0
+offset_bottom = 35.5
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="FrameBG/Cerrar/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="W" type="NinePatchRect" parent="FrameBG/Cerrar/Hbox"]
+custom_minimum_size = Vector2(72.485, 0)
+layout_mode = 2
+texture = ExtResource("3_4hsy0")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Hbox/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "ESC"
+
+[node name="_" type="Label" parent="FrameBG/Cerrar/Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="FrameBG/Cerrar/Hbox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_s4xve")
+
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="FrameBG/Cerrar/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controles" type="Control" parent="FrameBG/Cerrar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -46.4999
+offset_right = 203.0
+offset_bottom = 46.4999
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="FrameBG/Cerrar/Controles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pad" type="TextureRect" parent="FrameBG/Cerrar/Controles"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_right = 79.0
+offset_bottom = 40.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_2i8lf")
+
+[node name="Botones" type="Control" parent="FrameBG/Cerrar/Controles"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -46.5
+offset_bottom = 46.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="X" type="TextureRect" parent="FrameBG/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -36.0
+offset_right = 14.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rasxr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Controles/Botones/X"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+
+[node name="A" type="TextureRect" parent="FrameBG/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -14.0
+offset_right = 36.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rasxr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Controles/Botones/A"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+
+[node name="Y" type="TextureRect" parent="FrameBG/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -14.0
+offset_right = -8.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rasxr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Controles/Botones/Y"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Y
+"
+
+[node name="B" type="TextureRect" parent="FrameBG/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 8.0
+offset_right = 14.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rasxr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="FrameBG/Cerrar/Controles/Botones/B"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "B"
+
+[node name="Label" type="Label" parent="FrameBG/Cerrar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 198.0
+offset_top = -11.5
+offset_right = 287.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Cerrar"
+
+[node name="Label2" type="Label" parent="FrameBG/Cerrar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = 14.0
+offset_right = 269.0
+offset_bottom = 37.0
+grow_vertical = 2
+text = "Seleccionar"
