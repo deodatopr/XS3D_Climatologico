@@ -1,6 +1,7 @@
 class_name GDs_Compass
 extends Node
 
+@export var testDirection : Control
 @export var estacion_index : int = 0
 @export var local_estaciones : GDs_CR_LocalEstaciones
 
@@ -28,6 +29,7 @@ var cam : Camera3D
 var distance : float
 var screenSize : Vector2
 var aimCenter : Vector2
+var lastPosition : Vector2
 
 var offsetBorder : float = 30
 
@@ -70,24 +72,33 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	
-	_CalculateScreenMark()
+	_CalculateScreenMark(delta)
 	_CalculateCompassNorth()
 
-func _CalculateScreenMark() -> void:
+func _CalculateScreenMark(delta: float) -> void:
 	#Position -----------
-	
-	#Calculate if is in front or back to fix finalPosition
+
+	#Calculate if is in front or back to fix finalPosition	
 	var dirToSitio : Vector3 = (posSitio - pivotCam.global_position).normalized()
 	var dotToSitio : float = pivotCam.global_basis.z.normalized().dot(dirToSitio)
 	var dotSign : float = signf(dotToSitio)
-
-	#Convert position 3d into 2d
-	posTarget2d = cam.unproject_position(posSitio)
 	
-	#Fix position 2d
-	posTarget2d *= signf(dotToSitio)
-	if dotSign < 0:
-		posTarget2d.y = maxPos_Y
+	#posTarget2d = cam.unproject_position(posSitio)
+	#posTarget2d *= dotSign
+	#if dotToSitio < 0:
+		#posTarget2d.y = maxPos_Y
+		
+	#Convert position 3d into 2d
+	if dotToSitio >= 0:
+		posTarget2d = cam.unproject_position(posSitio)
+	else:
+		posTarget2d = cam.unproject_position(posSitio)
+		var dirFromAim : Vector2 = aimCenter.direction_to(posTarget2d)
+		dirFromAim.x = -dirFromAim.x
+		dirFromAim.y = -dirFromAim.y
+		posTarget2d = aimCenter + (dirFromAim * 1000)
+
+	testDirection.global_position = aimCenter + (aimCenter.direction_to(posTarget2d) * 100)
 	
 	#Pos 2d with limits
 	posTarget2d.x = clampf(posTarget2d.x,minPos_X,maxPos_X)

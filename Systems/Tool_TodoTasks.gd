@@ -10,12 +10,13 @@
 
 #Cam fly
 ## Forward hacia adelante en local y hacia atras en global
-# Ajustar bien cuando aparece y desaparece flecha de dirección
+## Ajustar bien cuando aparece y desaparece flecha de dirección
 # A cierta distancia activar el AO
 # Arreglar brujula norte
 
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
+# Entregar rotcion de cam fly sin ajuste de 0 a 180 en ambas direcciones
 
 
 #	[ Carlos ]

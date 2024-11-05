@@ -14,6 +14,7 @@ var mov_lastVelocity : Vector3
 var mov_lastBounding01 : float
 var mov_lastSpeed01 : float
 
+var mov_height_speed : float
 var mov_height_axis : float
 var mov_height_last : float
 var mov_height_velocity : float
@@ -46,6 +47,7 @@ func SetCamera():
 	
 func UpdateCamConfig():
 	cam.fov = camMng.fly_fov
+	mov_height_speed = camMng.fly_height_speed * 100
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -53,7 +55,7 @@ func _input(event):
 	else:
 		mouseMotion = null
 
-func _physics_process(delta:float):
+func _physics_process(delta:float):		
 	_movement(delta)
 	_rotation(delta)
 	
@@ -70,7 +72,7 @@ func _mov_height(_delta : float):
 	var heightDir : float = signf(mov_height_axis)
 	
 	#Set limits
-	var minHeightFromNavMesh : float = camMng.GetPointOnMap(pivot.position,0).y
+	var minHeightFromNavMesh : float = camMng.GetPointOnMap(pivot.position).y
 	@warning_ignore('shadowed_global_identifier')
 	var min : float = minHeightFromNavMesh + camMng.fly_height_min
 	@warning_ignore('shadowed_global_identifier')
@@ -78,7 +80,7 @@ func _mov_height(_delta : float):
 	var height01 : float = clampf(inverse_lerp(min,max,pivot.global_position.y),0,1)
 	
 	#Calculate new height
-	mov_height_velocity = heightDir * 700 * _delta
+	mov_height_velocity = heightDir * mov_height_speed * _delta
 	
 	#Apply new height to an aux vector to evaluate distances
 	var targetHeight : Vector3 = pivot.position
@@ -110,16 +112,15 @@ func _mov_height(_delta : float):
 func _mov_movement(_delta : float):
 	mov_axisMovement = Input.get_vector("3DMove_Right","3DMove_Left","3DMove_Backward","3DMove_Forward")
 	var dir : Vector3 = (pivot.basis * Vector3(mov_axisMovement.x,0,mov_axisMovement.y).normalized())
-	
 	dir.y = 0
 	
-	@warning_ignore('incompatible_ternary')
 	var isPressingTurbo : bool = Input.is_action_pressed("3DMove_SpeedBoost")
 	
 	@warning_ignore('incompatible_ternary')
 	var currentTurbo : float = camMng.fly_turbo if isPressingTurbo else 1
 	
 	if dir.length() > 0:
+		#Acceleration
 		if mov_curv01 < 1:
 			#Calculate curve acc
 			mov_curv01 += camMng.fly_acce_dece * _delta
@@ -128,10 +129,10 @@ func _mov_movement(_delta : float):
 		
 		#Calculate velocity to move
 		mov_velocity += dir * camMng.fly_speed * curvPoint * _delta
-		@warning_ignore('incompatible_ternary')
 		var mov_limitSpeed : float = camMng.fly_speed * currentTurbo
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif dir.length() == 0 and mov_velocity.length() > 0:
+		#Deceleration		
 		#Calculate curve dec
 		mov_curv01 -= camMng.fly_acce_dece * _delta
 		mov_curv01 = clampf(mov_curv01,0,1)
@@ -162,8 +163,6 @@ func _mov_movement(_delta : float):
 	
 	#Apply move
 	if mov_velocity.length() > 0:
-		mov_lastVelocity = mov_velocity
-		mov_velocity = mov_velocity
 		pivot.global_position += mov_velocity
 
 	

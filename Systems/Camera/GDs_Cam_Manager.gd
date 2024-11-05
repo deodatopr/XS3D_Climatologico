@@ -3,7 +3,7 @@ class_name GDs_Cam_Manager extends Node
 @export var valuesInRuntime : bool
 
 @export_group("SCENE REFERENCES")
-@export var navMesh : NavigationRegion3D
+@export var mshNavigation : Node3D
 @export var Terrains: Array [Node3D]
 @export var worldEnv : WorldEnvironment
 @export var msh_roads : MeshInstance3D
@@ -37,6 +37,7 @@ class_name GDs_Cam_Manager extends Node
 
 @export_subgroup("FLY")
 @export_range(30,100) var fly_fov :float = 50
+@export var fly_height_speed : float = 7
 @export var fly_height_start : float = 80
 @export var fly_height_max : float = 400
 @export var fly_height_min : float = 200
@@ -58,6 +59,9 @@ class_name GDs_Cam_Manager extends Node
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
+var wasInitialized : bool 
+var navMesh : NavigationRegion3D
+var navigationMesh : NavigationMesh
 var navMeshRID : RID #RID = identificador, necesario para usar info del navmesh
 var navMeshBounds : AABB
 var camMode : int
@@ -78,7 +82,7 @@ func _ready():
 	#camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
 	
 	#TEST: Siempre inicia en sky o fly
-	camMode = ENUMS.Cam_Mode.sky
+	camMode = ENUMS.Cam_Mode.fly
 	
 	Initialize(camMode)
 	
@@ -88,7 +92,11 @@ func Initialize(_modeToIntializeCam : int):
 	matFishEye = ppe_fishEye_DroneSky.material
 	mat_limit_sky.set_shader_parameter("DangerToClose",false)
 	mat_limit_fly.set_shader_parameter("DangerToClose",false)
-
+	navMesh = mshNavigation.get_child(0) as NavigationRegion3D
+	
+	if not navMeshRID.is_valid():
+		navMeshRID = navMesh.get_navigation_map()
+	
 	for terrain in Terrains:
 		navMeshBounds = navMeshBounds.merge(UTILITIES.GetNodeBounds(terrain))
 	
@@ -96,6 +104,9 @@ func Initialize(_modeToIntializeCam : int):
 	movFly.Initialize(self)
 	
 	_ChangeToMode(_modeToIntializeCam)
+	
+	wasInitialized = true
+
 	
 func CheckMapBoundings(_pivot:Node3D) -> bool:
 	#Save position 01 in map
@@ -121,12 +132,12 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	var insideBoundings := boundingX < 1 and boundingY < 1
 	return insideBoundings
 	
-func GetPointOnMap(_targetPoint : Vector3,_min_dist_from_edge: float) -> Vector3:
-	if not navMeshRID.is_valid():
-		navMeshRID = navMesh.get_rid()
+func GetPointOnMap(_targetPoint : Vector3) -> Vector3:
+	if NavigationServer3D.map_get_iteration_id(navMeshRID) > 0:
+		var closest_point := NavigationServer3D.map_get_closest_point(navMeshRID, _targetPoint)
+		return closest_point
 		
-	var closest_point := NavigationServer3D.map_get_closest_point(pinSitio.get_world_3d().navigation_map, _targetPoint)
-	return closest_point
+	return Vector3.ZERO
 	
 func _input(_event):
 	if Input.is_action_just_pressed('3D_ChangeCamMode'):
@@ -139,6 +150,9 @@ func _input(_event):
 		_ChangeToMode(APPSTATE.camMode)
 
 func _process(_delta):
+	if not wasInitialized:
+		return
+	
 	_UpdateCamState()
 	_CheckProximityToLimits()
 	
