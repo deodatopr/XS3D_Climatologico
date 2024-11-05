@@ -24,7 +24,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
-[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -285,13 +285,13 @@ pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 metadata/_edit_horizontal_guides_ = [125.0]
 
-[node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("dataService", "vistaSky", "vistaFree", "cam_manager", "worldMark", "map") instance=ExtResource("7_hy666")]
+[node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("dataService", "vistaSky", "vistaFree", "cam_manager", "pin_Sitio", "mshTerrain") instance=ExtResource("7_hy666")]
 dataService = NodePath("../../../../[ SYSTEMS ]/Data - Service")
 vistaSky = NodePath("../SKY")
 vistaFree = NodePath("../FLY")
 cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
-worldMark = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
-map = NodePath("../../../../[ CONTENT ]/Msh_Terrain")
+pin_Sitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
+mshTerrain = NodePath("../../../../[ CONTENT ]/Msh_Terrain")
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("6_7j046")]
 

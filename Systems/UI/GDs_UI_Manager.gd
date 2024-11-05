@@ -29,6 +29,7 @@ func _input(event):
 		barraMenus.StopFocusOnMenus()
 	if event.is_action_pressed("ui_cancel"):
 		CloseInfoMenu()
+		barraMenus.StopFocusOnMenus()
 	
 func Initialize():
 	dataService.OnDataRefresh.connect(DataRefresh)
