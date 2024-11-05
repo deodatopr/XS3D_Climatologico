@@ -108,9 +108,11 @@ func _CalculateCompassNorth() -> void:
 	
 	#calculate degrees of pivot cam
 	var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
+	@warning_ignore('unused_variable')
 	var compassPosition = rotationDegrees * (compass.size.x/6)/180
 
 	#check if look to left or right
+	@warning_ignore('unused_variable')
 	var rotationDir := 1
 	if pivotCam.rotation.y < 0:
 		rotationDir = -1
