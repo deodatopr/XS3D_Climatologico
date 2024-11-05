@@ -18,6 +18,9 @@
 # Cambio entre sitios
 # Entregar rotcion de cam fly sin ajuste de 0 a 180 en ambas direcciones
 
+# Agarre el minimo height
+# Turbo (height / rotación)
+
 
 #	[ Carlos ]
 # Graficadora
