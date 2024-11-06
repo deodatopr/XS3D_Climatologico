@@ -34,6 +34,7 @@ func InitializeSitios():
 		#Conectar senales
 		sitio.OnSitioPressed.connect(OnAnySitioPressed)
 		popUp.OnCancelarVerSitio.connect(sitio.OnPopUpCancelar)
+		#AUDIOS
 		sitio.button.focus_entered.connect(PlayUISound)
 
 func DataRefresh(_estaciones : Array[GDs_Data_Estacion]):
@@ -55,10 +56,15 @@ func GetCurrentFocus():
 		idx+=1
 
 func OnAnySitioPressed(_estacion:GDs_Data_Estacion):
-	sndUiPressed.play()
+	#AUDIO
+	if not APPSTATE.popUpOpened:
+		sndUiPressed.play()
+	
 	GetCurrentFocus()
 	sitios[lastOneFocused].button.release_focus()
 	popUp.OpenPopUp(_estacion)
+	
+	
 	
 
 func CancelarVerSitio():

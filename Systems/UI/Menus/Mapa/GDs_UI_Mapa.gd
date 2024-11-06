@@ -5,6 +5,10 @@ extends Control
 @export var popUp:GDs_PopUpVerSitio
 @export var mapPoints:Array[GDs_MapPoint]
 
+@export_group("Audios")
+@export var clickSnd:AudioStreamPlayer
+@export var focusSnd:AudioStreamPlayer
+
 var currentSitio:=0#IDX del array
 var sitioIdPressed:=-1
 
@@ -14,9 +18,15 @@ func Initialize(_estaciones:Array[GDs_Data_Estacion], current:int):
 	visibility_changed.connect(OnVisibility)
 	var idx = 0
 	for point in mapPoints:
+		#CONECTAR SENALES
+		point.OnSitioPressed.connect(OnAnySitioPressed)
+		point.focus_entered.connect(PlayFocusSound)
+		
+		#ASIGNAR NEIGHBOR
 		point.focus_neighbor_left = barraMenus.BtnSitios.get_path()
 		point.focus_neighbor_right = barraMenus.BtnDatos.get_path()
-		point.OnSitioPressed.connect(OnAnySitioPressed)
+		
+		
 		if idx == currentSitio:
 			point.Initialize(_estaciones[idx],true)
 		else:
@@ -30,9 +40,16 @@ func OnVisibility():
 		mapPoints[currentSitio].grab_focus()
 
 func OnAnySitioPressed(_estacion:GDs_Data_Estacion):
+	#AUDIO
+	if not APPSTATE.popUpOpened:
+		clickSnd.play()
+	
 	sitioIdPressed = _estacion.id
 	popUp.OpenPopUp(_estacion)
 
 func GrabLastFocus():
 	if visible:
 		mapPoints[sitioIdPressed-1].grab_focus()
+	
+func PlayFocusSound():
+	focusSnd.play()

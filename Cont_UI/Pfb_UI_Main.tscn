@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
 [ext_resource type="PackedScene" uid="uid://ddo5utgfriiew" path="res://Systems/UI/Menus/Config/Pfb_Menu_Config.tscn" id="9_cajyl"]
 [ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]
-[ext_resource type="AudioStream" uid="uid://cu0urodbyu2y4" path="res://Cont_Sounds/UI/UI_Button_3.mp3" id="11_t0b7i"]
+[ext_resource type="AudioStream" uid="uid://ceixgjxmpnakr" path="res://Cont_Sounds/UI/UI_Button_Click.mp3" id="12_6c0h6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uhu7b"]
 shader = ExtResource("4_dj00u")
@@ -77,18 +77,20 @@ offset_top = -1021.0
 offset_bottom = -206.0
 barraMenu = NodePath("../Barra menus")
 popUp = NodePath("../PopUP")
-sndUi1 = NodePath("../[ AUDIO ]/UI")
-sndUiPressed = NodePath("../[ AUDIO ]/UIPressed")
+sndUi1 = NodePath("../[ AUDIO ]/UI Focus")
+sndUiPressed = NodePath("../[ AUDIO ]/UI Pressed")
 
 [node name="Menu Info" parent="." instance=ExtResource("1_pql5o")]
 visible = false
 layout_mode = 1
 
-[node name="Menu Mapa" parent="." node_paths=PackedStringArray("barraMenus", "popUp") instance=ExtResource("4_t41nj")]
+[node name="Menu Mapa" parent="." node_paths=PackedStringArray("barraMenus", "popUp", "clickSnd", "focusSnd") instance=ExtResource("4_t41nj")]
 visible = false
 layout_mode = 1
 barraMenus = NodePath("../Barra menus")
 popUp = NodePath("../PopUP")
+clickSnd = NodePath("../[ AUDIO ]/UI Pressed")
+focusSnd = NodePath("../[ AUDIO ]/UI Focus")
 
 [node name="Menu Datos" type="ColorRect" parent="." node_paths=PackedStringArray("barraMenus", "testBtn")]
 visible = false
@@ -231,7 +233,7 @@ menuSitios = NodePath("../Menu Sitios")
 menuMapa = NodePath("../Menu Mapa")
 menuDatos = NodePath("../Menu Datos")
 menuConfig = NodePath("../Menu Config")
-sndUi1 = NodePath("../[ AUDIO ]/UI")
+sndUi1 = NodePath("../[ AUDIO ]/UI Focus")
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
 layout_mode = 1
@@ -240,11 +242,15 @@ layout_mode = 1
 
 [node name="[ AUDIO ]" type="Node" parent="."]
 
-[node name="UI" type="AudioStreamPlayer" parent="[ AUDIO ]"]
+[node name="UI Focus" type="AudioStreamPlayer" parent="[ AUDIO ]"]
 stream = ExtResource("10_3jbcp")
+bus = &"SFX"
 
-[node name="UIPressed" type="AudioStreamPlayer" parent="[ AUDIO ]"]
-stream = ExtResource("11_t0b7i")
+[node name="UI Pressed" type="AudioStreamPlayer" parent="[ AUDIO ]"]
+stream = ExtResource("12_6c0h6")
+volume_db = -10.0
+pitch_scale = 0.7
+bus = &"SFX"
 
 [node name="PopUP" parent="." instance=ExtResource("5_wvomf")]
 visible = false

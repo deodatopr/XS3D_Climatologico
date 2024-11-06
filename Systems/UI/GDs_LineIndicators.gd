@@ -4,6 +4,7 @@ extends Control
 @export var useXaxis:=true
 ##If false it will use the cam position instead
 @export var useCamRotation:=false
+@export var useCamHeight:=false
 @export var width:=0
 
 var initialPosX:float
@@ -27,7 +28,11 @@ func _physics_process(_delta):
 		posY += 0.2
 	if Input.is_action_pressed('3DMove_Backward'):
 		posY -= 0.2
-	
+	if Input.is_action_pressed('3DMove_Height_+') and useCamHeight:
+		posY += 0.5
+	if Input.is_action_pressed('3DMove_Height_-') and useCamHeight:
+		posY -= 0.5
+
 	if vertical:
 		if useCamRotation:
 			if useXaxis:
