@@ -40,14 +40,6 @@ func _input(event):
 			StopFocusOnMenus()
 	if event.is_action_pressed("ui_cancel"):
 		pass
-		#if BtnSitios.button_pressed: 
-			#BtnSitios.release_focus()
-			#BtnSitios.button_pressed = false
-			#UTILITIES.TurnOffObject(menuSitios)
-			#
-		#if BtnMapa.has_focus(): BtnMapa.release_focus()
-		#if BtnDatos.has_focus(): BtnDatos.release_focus()
-		#if BtnConfig.has_focus(): BtnConfig.release_focus()
 	
 
 func FocusLastMenu():
@@ -62,6 +54,7 @@ func FocusLastMenu():
 			BtnConfig.grab_focus()
 
 func StopFocusOnMenus():
+	isFocusingMenu = false
 	GetCurrentFocus()
 	BtnSitios.release_focus()
 	BtnSitios.button_pressed = false

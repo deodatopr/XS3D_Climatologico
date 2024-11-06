@@ -12,7 +12,10 @@ extends Control
 @export_group("Refs internas")
 @export var menuPerfiles:GDs_MenuPerfiles
 @export var barraMenus:GDs_BarraMenus
+@export var barraInfo:GDs_BarraInfo
+@export var menuMapa:GDs_MenuMapa
 @export var menuInfo:Control
+@export var popUp:Control
 
 
 var isFirstRun : bool = true
@@ -29,7 +32,8 @@ func _input(event):
 		barraMenus.StopFocusOnMenus()
 	if event.is_action_pressed("ui_cancel"):
 		CloseInfoMenu()
-		barraMenus.StopFocusOnMenus()
+		if not APPSTATE.popUpOpened:
+			barraMenus.StopFocusOnMenus()
 	
 func Initialize():
 	dataService.OnDataRefresh.connect(DataRefresh)
@@ -39,12 +43,15 @@ func Initialize():
 	barraMenus.BtnConfig.focus_entered.connect(CloseInfoMenu)
 	barraMenus.BtnMapa.focus_entered.connect(CloseInfoMenu)
 	
-	
-	
 	vistaFree.cam_manager = cam_manager
 	vistaFree.pinSitio = pin_Sitio
 	vistaFree.map = mshTerrain
 	vistaFree.Initialize()
+	
+	barraInfo.OnDataRefresh(dataService.estaciones[5]) #TODO conectar con orchestrator
+	menuMapa.Initialize(dataService.estaciones,5)
+	
+	popUp.hide()
 
 func CloseInfoMenu():
 	if menuInfo.visible:

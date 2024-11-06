@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://hu5k41b7gh1x"]
+[gd_scene load_steps=20 format=3 uid="uid://hu5k41b7gh1x"]
 
+[ext_resource type="Script" path="res://Systems/UI/Barra Info/GDs_BarraInfo.gd" id="1_22tl1"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_n0q2v"]
 [ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_om8fc"]
@@ -63,7 +64,7 @@ region = Rect2(0, 240, 40, 40)
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 160, 40, 40)
 
-[node name="Barra Info" type="Control"]
+[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "senal", "UTR", "nivel", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "humedad", "evaporacion", "temp", "presion", "viento")]
 custom_minimum_size = Vector2(1580, 105)
 layout_mode = 3
 anchors_preset = 12
@@ -75,6 +76,29 @@ offset_top = -104.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_22tl1")
+id = NodePath("HBoxContainer/Nombre/ID - Estado/ID Frame/Lbl ID")
+idframe = NodePath("HBoxContainer/Nombre/ID - Estado/ID Frame")
+nombre = NodePath("HBoxContainer/Nombre/Nombre/Lbl Nombre")
+estado = NodePath("HBoxContainer/Nombre/ID - Estado/Lbl Estado")
+senal = NodePath("HBoxContainer/Senales/Senales/HBox - Senal/VBoxContainer/Dot/Senal")
+UTR = NodePath("HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer/Dot/UTR")
+OnColor = Color(0.0705882, 0.698039, 0.0509804, 1)
+OffColor = Color(0.698039, 0.0901961, 0.0509804, 1)
+nivel = NodePath("HBoxContainer/Nivel/Valor Nivel/VBox/Lbl Valor Nivel")
+nivelBg = NodePath("HBoxContainer/Nivel/Valor Nivel/Nivel BG")
+nivelNorm = NodePath("HBoxContainer/Nivel/Niveles/Norm/Lbl Nvl Norm")
+nivelPrev = NodePath("HBoxContainer/Nivel/Niveles/Prev/Lbl Nvl Prev")
+nivelCrit = NodePath("HBoxContainer/Nivel/Niveles/Crit/Lbl Nvl Crit")
+ColorNorm = Color(0.137255, 0.745098, 0.972549, 1)
+ColorPrev = Color(0.972549, 0.67451, 0.0117647, 1)
+ColorCrit = Color(0.972549, 0.137255, 0.137255, 1)
+precipitacion = NodePath("HBoxContainer/Datos/Precipitacion/VBox/Lbl Valor Precipitacion")
+humedad = NodePath("HBoxContainer/Datos/Humedad/VBox/Lbl Valor Humedad")
+evaporacion = NodePath("HBoxContainer/Datos/Evaporacion/VBox/Lbl Valor Evaporacion")
+temp = NodePath("HBoxContainer/Datos/Temperatura/VBox/Lbl Valor Temp")
+presion = NodePath("HBoxContainer/Datos/Presion Atm/VBox/Lbl Valor Presion")
+viento = NodePath("HBoxContainer/Datos/Viento/VBox/Lbl Valor Viento")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_2g4pr")
@@ -137,7 +161,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/Nombre/Nombre"]
+[node name="Lbl Nombre" type="Label" parent="HBoxContainer/Nombre/Nombre"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -169,7 +193,7 @@ size_flags_vertical = 0
 texture = ExtResource("1_bm6wi")
 region_rect = Rect2(470, 146, 41, 31)
 
-[node name="Label" type="Label" parent="HBoxContainer/Nombre/ID - Estado/ID Frame"]
+[node name="Lbl ID" type="Label" parent="HBoxContainer/Nombre/ID - Estado/ID Frame"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -243,7 +267,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_2m7jt")
 
-[node name="Label" type="Label" parent="HBoxContainer/Senales/Bateria"]
+[node name="Lbl Bateria" type="Label" parent="HBoxContainer/Senales/Bateria"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -286,7 +310,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - Senal/VBoxContainer/Dot"]
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - Senal/VBoxContainer/Dot"]
 self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -331,7 +355,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer/Dot"]
+[node name="UTR" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer/Dot"]
 self_modulate = Color(0.698039, 0.0913459, 0.0509804, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -373,7 +397,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Nivel/Valor Nivel"]
+[node name="Nivel BG" type="NinePatchRect" parent="HBoxContainer/Nivel/Valor Nivel"]
 self_modulate = Color(0.141176, 0.768627, 1, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -410,7 +434,7 @@ size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_kmxh6")
 script = ExtResource("3_qdbvn")
 
-[node name="Lbl Valor Nivel2" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
+[node name="Nivel" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "NIVEL"
@@ -712,7 +736,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Lbl Valor Temp" type="Label" parent="HBoxContainer/Datos/Presion Atm/VBox"]
+[node name="Lbl Valor Presion" type="Label" parent="HBoxContainer/Datos/Presion Atm/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "24°C"

@@ -52,7 +52,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("menuPerfiles", "barraMenus", "menuInfo")]
+[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("menuPerfiles", "barraMenus", "barraInfo", "menuMapa", "menuInfo", "popUp")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +63,10 @@ mouse_filter = 2
 script = ExtResource("1_vcggy")
 menuPerfiles = NodePath("Menu Sitios")
 barraMenus = NodePath("Barra menus")
+barraInfo = NodePath("Barra Info")
+menuMapa = NodePath("Menu Mapa")
 menuInfo = NodePath("Menu Info")
+popUp = NodePath("PopUP")
 
 [node name="------MENUS----------" type="Node" parent="."]
 
@@ -73,7 +76,7 @@ layout_mode = 1
 offset_top = -1021.0
 offset_bottom = -206.0
 barraMenu = NodePath("../Barra menus")
-popUp = NodePath("../PopUp Ver Sitio")
+popUp = NodePath("../PopUP")
 sndUi1 = NodePath("../[ AUDIO ]/UI")
 sndUiPressed = NodePath("../[ AUDIO ]/UIPressed")
 
@@ -85,7 +88,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 barraMenus = NodePath("../Barra menus")
-popUp = NodePath("../PopUp Ver Sitio")
+popUp = NodePath("../PopUP")
 
 [node name="Menu Datos" type="ColorRect" parent="." node_paths=PackedStringArray("barraMenus", "testBtn")]
 visible = false
@@ -235,10 +238,6 @@ layout_mode = 1
 
 [node name="------POPUP----------" type="Node" parent="."]
 
-[node name="PopUp Ver Sitio" parent="." instance=ExtResource("5_wvomf")]
-visible = false
-layout_mode = 1
-
 [node name="[ AUDIO ]" type="Node" parent="."]
 
 [node name="UI" type="AudioStreamPlayer" parent="[ AUDIO ]"]
@@ -246,3 +245,7 @@ stream = ExtResource("10_3jbcp")
 
 [node name="UIPressed" type="AudioStreamPlayer" parent="[ AUDIO ]"]
 stream = ExtResource("11_t0b7i")
+
+[node name="PopUP" parent="." instance=ExtResource("5_wvomf")]
+visible = false
+layout_mode = 1

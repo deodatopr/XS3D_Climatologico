@@ -22,16 +22,6 @@ func _input(event):
 		if event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
 			GetCurrentFocus()
 
-func DataRefresh(_estaciones : Array[GDs_Data_Estacion]):
-	var idx=0
-	for sitio in sitios:
-		sitio.DataRefresh(_estaciones[idx])
-		idx += 1
-
-func OnShowHide():
-	if visible:
-		sitios[lastOneFocused].button.grab_focus()
-
 func InitializeSitios():
 	#Conectar vecinos superior e inferior
 	sitios[0].button.focus_neighbor_top = sitios[7].button.get_path()
@@ -46,6 +36,17 @@ func InitializeSitios():
 		popUp.OnCancelarVerSitio.connect(sitio.OnPopUpCancelar)
 		sitio.button.focus_entered.connect(PlayUISound)
 
+func DataRefresh(_estaciones : Array[GDs_Data_Estacion]):
+	var idx=0
+	for sitio in sitios:
+		sitio.DataRefresh(_estaciones[idx])
+		idx += 1
+
+func OnShowHide():
+	if visible:
+		sitios[lastOneFocused].button.grab_focus()
+
+
 func GetCurrentFocus():
 	var idx = 0
 	for sitio in sitios:
@@ -53,11 +54,11 @@ func GetCurrentFocus():
 			lastOneFocused = idx
 		idx+=1
 
-func OnAnySitioPressed():
+func OnAnySitioPressed(_estacion:GDs_Data_Estacion):
 	sndUiPressed.play()
 	GetCurrentFocus()
 	sitios[lastOneFocused].button.release_focus()
-	popUp.show()
+	popUp.OpenPopUp(_estacion)
 	
 
 func CancelarVerSitio():

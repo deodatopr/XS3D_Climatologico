@@ -141,6 +141,7 @@ offset_right = -180.5
 offset_bottom = -34.5
 focus_neighbor_top = NodePath("../MapPoint6")
 focus_neighbor_bottom = NodePath("../MapPoint4")
+bgLabelWidth = 147.0
 
 [node name="MapPoint3" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
 layout_mode = 1
@@ -150,6 +151,7 @@ offset_right = -190.5
 offset_bottom = 17.5
 focus_neighbor_top = NodePath("../MapPoint4")
 focus_neighbor_bottom = NodePath("../MapPoint8")
+bgLabelWidth = 152.0
 
 [node name="MapPoint4" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
 layout_mode = 1
@@ -159,6 +161,7 @@ offset_right = -175.5
 offset_bottom = 0.5
 focus_neighbor_top = NodePath("../MapPoint2")
 focus_neighbor_bottom = NodePath("../MapPoint3")
+bgLabelWidth = 190.0
 
 [node name="MapPoint5" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
 layout_mode = 1
@@ -168,6 +171,7 @@ offset_right = -144.5
 offset_bottom = -84.5
 focus_neighbor_top = NodePath("../MapPoint7")
 focus_neighbor_bottom = NodePath("../MapPoint")
+bgLabelWidth = 175.0
 
 [node name="MapPoint6" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
 layout_mode = 1
@@ -177,6 +181,7 @@ offset_right = -249.5
 offset_bottom = -49.5
 focus_neighbor_top = NodePath("../MapPoint")
 focus_neighbor_bottom = NodePath("../MapPoint2")
+bgLabelWidth = 155.0
 
 [node name="MapPoint7" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
 layout_mode = 1
@@ -186,6 +191,7 @@ offset_right = -280.5
 offset_bottom = -101.5
 focus_neighbor_top = NodePath("../MapPoint8")
 focus_neighbor_bottom = NodePath("../MapPoint5")
+bgLabelWidth = 136.0
 
 [node name="MapPoint8" parent="FrameBG/Mapa" instance=ExtResource("5_r2tfe")]
 layout_mode = 1
@@ -195,6 +201,7 @@ offset_right = 140.5
 offset_bottom = -217.5
 focus_neighbor_top = NodePath("../MapPoint3")
 focus_neighbor_bottom = NodePath("../MapPoint7")
+bgLabelWidth = 125.0
 
 [node name="Top Left Icon" type="NinePatchRect" parent="FrameBG"]
 self_modulate = Color(0, 0, 0, 0.666667)

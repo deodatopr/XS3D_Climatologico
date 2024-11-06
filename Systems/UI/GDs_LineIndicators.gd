@@ -42,7 +42,5 @@ func _physics_process(_delta):
 			position.x = initialPosX + (int(CAM.rotation.y*3) % width)
 		#POSICION HORIZONTAL
 		else:
-			#FIXME cambiar por inputs en lugar dee position
-			
 			position.x = initialPosX + (int(posX) % width)
 	

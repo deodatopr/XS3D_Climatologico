@@ -73,6 +73,7 @@ BtnSitios = NodePath("HBoxContainer/Sitios/Icon/Button - Sitios")
 BtnMapa = NodePath("HBoxContainer/Mapa/Icon/Button - Mapa")
 BtnDatos = NodePath("HBoxContainer/Graficadora/Icon/Button - Datos")
 BtnConfig = NodePath("HBoxContainer/Audio/Icon/Button - Config")
+metadata/_edit_horizontal_guides_ = [1025.0]
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_ik81r")
@@ -303,11 +304,13 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_ai44o")
 
 [node name="Label" type="Label" parent="HBoxContainer/Graficadora"]
+custom_minimum_size = Vector2(0, 17.985)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "DATOS"
+theme_override_font_sizes/font_size = 11
+text = "grafica"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
+uppercase = true
 
 [node name="Audio" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2

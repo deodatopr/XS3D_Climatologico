@@ -1,19 +1,13 @@
-class_name GDs_Perf_Sitio
+class_name GDs_BarraInfo
 extends Control
 
-@export var button:Button
-@export_group("Focus Animation")
-@export var animScaleNode:Control
-@export var scaleScale:Vector2
-@export var blurBG:Control
 @export_group("Data Refresh")
 @export_subgroup("Color, ID & Nombre")
-@export var frame:Control
-@export var frameNombre:Control
-@export var patch:Control
 @export var id:Label
+@export var idframe:Control
 @export var nombre:Label
 @export var estado:Label
+@export var fecha:Label
 @export_subgroup("Senales")
 @export var senal:Control
 @export var UTR:Control
@@ -36,32 +30,14 @@ extends Control
 @export var presion:Label
 @export var viento:Label
 
-var estacion:GDs_Data_Estacion
 
-signal OnSitioPressed(GDs_Data_Estacion) 
-var tween:Tween
-
-var whiteBlur := Color.WHITE
-var transparent: Color 
-var pressed:= false
-
-func _ready():
-	transparent = whiteBlur
-	transparent.a = 0
-	button.pressed.connect(OnBtnPressed)
-	button.focus_entered.connect(ScaleUp)
-	button.mouse_entered.connect(ScaleUp)
-	button.focus_exited.connect(ScaleDown)
-	button.mouse_exited.connect(ScaleDown)
-
-func DataRefresh(_estacion: GDs_Data_Estacion):
-	estacion = _estacion
-	frame.self_modulate = _estacion.color
-	frameNombre.self_modulate = _estacion.color
-	patch.self_modulate = _estacion.color
+func OnDataRefresh(_estacion:GDs_Data_Estacion):
 	id.text = str(_estacion.id)
+	idframe.self_modulate = _estacion.color
 	nombre.text = _estacion.nombre
 	estado.text = UTILITIES.FormatEstado(_estacion.estado)
+	
+	#TODO: fecha de actualizacion
 	
 	#Senales
 	if _estacion.enlace:
@@ -89,24 +65,5 @@ func DataRefresh(_estacion: GDs_Data_Estacion):
 	temp.text = UTILITIES.FormatTemperatura(_estacion.temperatura)
 	presion.text = UTILITIES.FormatPresion(_estacion.temperatura)#TODO cambiar por presion
 	viento.text = UTILITIES.FormatIntensidadViento(_estacion.intsdad_viento)#TODO sistema para que regrese N S E O
-
-func OnBtnPressed():
-	OnSitioPressed.emit(estacion)
-	pressed = true
-
-func ScaleUp():
-	button.grab_focus()
-	tween = create_tween()
-	tween.tween_property(animScaleNode,"scale",scaleScale,0.2)
-	tween.parallel().tween_property(blurBG,"self_modulate",whiteBlur,0.2)
-
-func ScaleDown():
-	#timer para que primero le de tiempo de cambiar el booleano de pressed
-	await get_tree().create_timer(0.1).timeout
-	if not pressed:
-		tween = create_tween()
-		tween.tween_property(animScaleNode,"scale",Vector2.ONE,0.2)
-		tween.parallel().tween_property(blurBG,"self_modulate",transparent,0.2)
-
-func OnPopUpCancelar():
-	pressed = false
+	
+	pass
