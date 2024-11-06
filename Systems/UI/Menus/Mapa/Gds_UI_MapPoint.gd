@@ -14,11 +14,18 @@ var currenttween:Tween
 var squareScale:Vector2
 var color:Color
 
+var estacion:GDs_Data_Estacion
+
+signal OnSitioPressed(_estacion:GDs_Data_Estacion)
+
 # Called when the node enters the scene tree for the first time.
 func Initialize(_estacion:GDs_Data_Estacion, playCurrentAnim:bool):
+	estacion = _estacion
+	
 	btn.mouse_entered.connect(btn.grab_focus)
 	btn.focus_entered.connect(OnFocus)
 	btn.focus_exited.connect(OnFocusExited)
+	btn.pressed.connect(OnPressed)
 	
 	bgLabel.size = Vector2(0,bgLabel.size.y)
 	animSquare.rotation_degrees = 0
@@ -36,6 +43,8 @@ func Initialize(_estacion:GDs_Data_Estacion, playCurrentAnim:bool):
 	if playCurrentAnim:
 		PlayCurrentSitioAnimation()
 
+func OnPressed():
+	OnSitioPressed.emit(estacion)
 
 func OnFocus():
 	tween = create_tween()

@@ -12,6 +12,7 @@ extends Control
 @export var btnAceptarHighlight:Control
 @export var btnCancelar:Button
 @export var btnCancelarHighlight:Control
+@export var animPlayer:AnimationPlayer
 
 signal OnCancelarVerSitio
 var estacion:GDs_Data_Estacion
@@ -46,9 +47,11 @@ func OpenPopUp(_estacion:GDs_Data_Estacion):
 func OnVisibleChanged():
 	if visible:
 		APPSTATE.popUpOpened = true
+		animPlayer.play("PopUp Warning")
 		
 	else:
 		APPSTATE.popUpOpened = false
+		animPlayer.stop()
 
 func OnAceptar():
 	pass

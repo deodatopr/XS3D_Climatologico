@@ -109,4 +109,5 @@ func ScaleDown():
 		tween.parallel().tween_property(blurBG,"self_modulate",transparent,0.2)
 
 func OnPopUpCancelar():
-	pressed = false
+	if visible:
+		pressed = false
