@@ -45,6 +45,8 @@
 
 # ----------------------- Tareas:
 # Track de punto 2d, al acercarte salgan unos puntos que indiquen donde está la estación
+# Cambiar de uno a otro el sky
+
 # Mapa 2D grande
 	# mapa grande  con flechas moverte entre sitios
 	# Si presionas un punto en el mapa te lleve ahí
