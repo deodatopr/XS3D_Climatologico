@@ -31,6 +31,7 @@ func _ready():
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
 	natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
 
+
 func _process(_delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.fly:
 #region Drone
@@ -78,6 +79,7 @@ func _process(_delta):
 			sndWind.volume_db = volumedb
 		else:
 			sndWind.volume_db = -10
+		
 #endregion
 	else:
 		sndFlying.stop()

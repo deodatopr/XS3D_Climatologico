@@ -17,10 +17,11 @@
 # Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 # Entregar rotcion de cam fly sin ajuste de 0 a 180 en ambas direcciones
-
-# Agarre el minimo height
 # Turbo (height / rotación)
 
+# Checar valores random que tengan sentido
+# Cuando llueve, viento random
+# minMax, minMin, medMax, medMin, maxMax, maxMin
 
 #	[ Carlos ]
 # Graficadora

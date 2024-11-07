@@ -1,7 +1,7 @@
 class_name GDs_Minimap extends Node
 
 @export_group("SCENE REFERENCES")
-@export var VistaSky : GDs_Vista_Drone
+@export var VistaSky : GDs_Vista_Sky
 
 @export_group("INTERNAL REFERENCES")
 @export var minimap_parent : Control
@@ -11,23 +11,17 @@ class_name GDs_Minimap extends Node
 @export var cam_pivot : Control
 @export var lblDistance : Label
 
-@onready var local_estaciones : GDs_CR_LocalEstaciones = preload("uid://3nj42mys6ryu")
-
 var cam_Manager : GDs_Cam_Manager
 var map : Node3D
 var pivot_cam : Node3D
 var isInitialized:=false
 
-#TODO: Conectar para que reciba el color de la estacion a la que se entró
-var estacion_color : int = 1
 
-func _ready():
-	Initialize()
-
-func Initialize() -> void:
+func Initialize(_cam_Manager : GDs_Cam_Manager) -> void:
 	cam_Manager = VistaSky.cam_manager
 	pivot_cam = cam_Manager.sky_pivot
-	mark.self_modulate = local_estaciones.LocalEstaciones[estacion_color].color
+	#TODO: Inyectar color dependiendo el sitio actual
+	#mark.self_modulate = local_estaciones.LocalEstaciones[estacion_color].color
 	isInitialized = true
 	
 @warning_ignore('unused_parameter')

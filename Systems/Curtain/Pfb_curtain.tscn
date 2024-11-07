@@ -41,7 +41,6 @@ _data = {
 }
 
 [node name="CURTAIN" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,21 +48,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="img - Curtain" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="img - Curtain" type="NinePatchRect" parent="VBoxContainer"]
-self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(720, 1480)
-layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 texture = ExtResource("1_2lhx5")
@@ -73,7 +67,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="lbl - Cargando" type="Label" parent="VBoxContainer/img - Curtain"]
+[node name="lbl - Cargando" type="Label" parent="img - Curtain"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,18 +85,17 @@ text = "Cargando..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/img - Curtain/lbl - Cargando"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="img - Curtain/lbl - Cargando"]
 libraries = {
 "": SubResource("AnimationLibrary_dr3dk")
 }
 autoplay = "anim_lblCargando"
 speed_scale = 2.0
 
-[node name="placeholder menu" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-
 [node name="InputBlocker" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,15 +1,11 @@
-extends Control
+class_name GDs_UI_Manager extends Control
 
-@export_group("Refs externas")
-@export var dataService:GDs_DataService_Manager
-@export_subgroup("Vista Drones")
+@export_group("EXTERNAL REFERENCES")
 @export var vistaSky:Control
-@export var vistaFree:GDs_VistaFree
-@export_subgroup("Refs Minimap")
-@export var cam_manager:GDs_Cam_Manager
 @export var pin_Sitio:Node3D
 @export var mshTerrain:Node3D
-@export_group("Refs internas")
+
+@export_group("INTERNAL REFERENCES")
 @export var menuPerfiles:GDs_MenuPerfiles
 @export var barraMenus:GDs_BarraMenus
 @export var barraInfo:GDs_BarraInfo
@@ -17,13 +13,12 @@ extends Control
 @export var menuInfo:Control
 @export var popUp:Control
 
+var dataService : GDs_DataService_Manager
+var vistaFly : GDs_VistaFly
+var cam_manager:GDs_Cam_Manager
 
 var isFirstRun : bool = true
 var tween:Tween
-
-func _ready():
-	#TODO: Quitar esto del ready y usar el Initialize en orquestador
-	Initialize()
 
 func _input(event):
 	if event.is_action_pressed("UIShowInfo"):
@@ -35,7 +30,11 @@ func _input(event):
 		if not APPSTATE.popUpOpened:
 			barraMenus.StopFocusOnMenus()
 	
-func Initialize():
+func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly, _cam_manager:GDs_Cam_Manager):
+	dataService = _dataService
+	vistaFly = _vistaFree
+	cam_manager = _cam_manager
+	
 	dataService.OnDataRefresh.connect(DataRefresh)
 	
 	barraMenus.BtnSitios.focus_entered.connect(CloseInfoMenu)
@@ -43,10 +42,7 @@ func Initialize():
 	barraMenus.BtnConfig.focus_entered.connect(CloseInfoMenu)
 	barraMenus.BtnMapa.focus_entered.connect(CloseInfoMenu)
 	
-	vistaFree.cam_manager = cam_manager
-	vistaFree.pinSitio = pin_Sitio
-	vistaFree.map = mshTerrain
-	vistaFree.Initialize()
+	vistaFly.Initialize(cam_manager)
 	
 	barraInfo.OnDataRefresh(dataService.estaciones[5]) #TODO conectar con orchestrator
 	menuMapa.Initialize(dataService.estaciones,5)

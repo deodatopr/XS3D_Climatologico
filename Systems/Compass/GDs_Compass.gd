@@ -1,9 +1,6 @@
 class_name GDs_Compass
 extends Node
 
-@export var estacion_index : int = 0
-@export var local_estaciones : GDs_CR_LocalEstaciones
-
 @export_group("Compass North")
 @export var compass_mask:Control
 @export var pin_sitio: Control
@@ -38,13 +35,28 @@ var minPos_Y : float
 var maxPos_Y : float
 
 var rectLimits : Rect2
-
-func _ready():
-	get_viewport().size_changed.connect(OnScreenChangeSize)
+	
+func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> void:
+	camManager = _camManager
+	pivotCam = _camManager.fly_pivot
+	cam = camManager.fly_cam
+	posSitio = _posWorldSitio3d
+	
+	compassInitialXPosition = compass.position.x
+	pinSiteInitialXPosition = pin_sitio.position.x
+	
+	#TODO: Inyectar color dependiendo el sitio actual
+	#screenMark.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
+	screenMark.self_modulate.a = .5
+	
+	OnScreenChangeSize()
+	
+	if not get_viewport().size_changed.is_connected(OnScreenChangeSize):
+		get_viewport().size_changed.connect(OnScreenChangeSize)
 	
 func OnScreenChangeSize():
 	#Screen size calculate here to avoid errors if it is maximized or minimized in runtime
-	screenSize = get_viewport().get_visible_rect().size	
+	screenSize = get_viewport().get_visible_rect().size
 	minPos_X = offsetBorder
 	maxPos_X = screenSize.x - screenMark.size.x  - offsetBorder
 	
@@ -55,19 +67,6 @@ func OnScreenChangeSize():
 	aimCenter = Vector2((minPos_X + maxPos_X) *.5, (minPos_Y + maxPos_Y) * .5)
 	rectLimits = Rect2(Vector2(minPos_X,minPos_Y), Vector2(maxPos_X - minPos_X, maxPos_Y- minPos_Y))
 
-func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> void:
-	camManager = _camManager
-	pivotCam = _camManager.fly_pivot
-	cam = camManager.fly_cam
-	posSitio = _posWorldSitio3d
-	
-	compassInitialXPosition = compass.position.x
-	pinSiteInitialXPosition = pin_sitio.position.x
-	
-	screenMark.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
-	screenMark.self_modulate.a = .5
-	
-	OnScreenChangeSize()
 	
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:

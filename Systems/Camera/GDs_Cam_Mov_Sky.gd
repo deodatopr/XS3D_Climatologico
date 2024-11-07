@@ -57,7 +57,7 @@ func _unhandled_input(event):
 	
 func SetCamera():
 	cam.current = true
-	cam.fov = camMng.sky_zoom_out	
+	cam.fov = camMng.sky_zoom_out
 	pivot.position.y = camMng.sky_height
 	
 	mov_velocity = Vector3.ZERO
@@ -67,7 +67,7 @@ func SetCamera():
 	
 	_SetLensDistorsion(fov_current)
 
-func UpdateCamConfig():
+func UpdateCamConfig():	
 	cam.global_position.y = camMng.sky_height
 	cam.fov = camMng.sky_zoom_out
 	
@@ -188,4 +188,6 @@ func _Fov(_delta : float):
 func _SetLensDistorsion(_currentFov : float):
 	fov_01 = inverse_lerp(camMng.sky_zoom_in,camMng.sky_zoom_out,_currentFov)
 	fov_lensDistIntensity = lerpf(1.5,1,fov_01)
-	camMng.matFishEye.set_shader_parameter("lensDistortion",fov_lensDistIntensity)
+	
+	if camMng.matFishEye:
+		camMng.matFishEye.set_shader_parameter("lensDistortion",fov_lensDistIntensity)

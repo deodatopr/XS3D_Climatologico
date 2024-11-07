@@ -74,17 +74,6 @@ var positionInMap01 : Vector2 = Vector2.ZERO
 var matFishEye :  ShaderMaterial
 var auxToCalculateDistance : Vector3
 var lastCamFlyHeight : float
-
-func _ready():
-	#TEST: Incio en modo random
-	#var rndMode : RandomNumberGenerator = RandomNumberGenerator.new()
-	#var rndNumber : int = rndMode.randi_range(0,100)
-	#camMode = ENUMS.Cam_Mode.fly if rndNumber % 2 == 0 else ENUMS.Cam_Mode.sky
-	
-	#TEST: Siempre inicia en sky o fly
-	camMode = ENUMS.Cam_Mode.sky
-	
-	Initialize(camMode)
 	
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam

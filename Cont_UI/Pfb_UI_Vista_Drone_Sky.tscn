@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://djyvw3ftsu25d"]
 
-[ext_resource type="Script" path="res://Systems/UI/GDs_VistaAerea.gd" id="1_wv2a8"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_VistaSky.gd" id="1_wv2a8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pmpn4"]
 [ext_resource type="PackedScene" uid="uid://dpv5el5yr67dq" path="res://Systems/UI/Pfb_Info.tscn" id="2_tvd1m"]
 [ext_resource type="PackedScene" uid="uid://b3k2kgkp18wn1" path="res://Systems/Minimap/Pfb_Minimap.tscn" id="3_2spof"]
@@ -144,7 +144,7 @@ region = Rect2(883, 138, 22, 28)
 atlas = ExtResource("2_pmpn4")
 region = Rect2(914, 147, 20, 21)
 
-[node name="Vista Sky" type="Control" node_paths=PackedStringArray("lblAltura", "lblVelocidad", "lblRotacion", "lblFov")]
+[node name="Vista Sky" type="Control" node_paths=PackedStringArray("minimap", "lblAltura", "lblVelocidad", "lblRotacion", "lblFov")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,6 +154,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_wv2a8")
+minimap = NodePath("UI_Minimap")
 lblAltura = NodePath("Datos/Datos/Altura/Lbl Altura")
 lblVelocidad = NodePath("Datos/Datos/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Datos/Datos/Rotacion/Lbl Rotacion")
