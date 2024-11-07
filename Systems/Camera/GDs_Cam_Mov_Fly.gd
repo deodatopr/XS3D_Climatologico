@@ -42,7 +42,7 @@ func Initialize(_camMng : GDs_Cam_Manager):
 
 func SetCamera():
 	cam.current = true
-	pivot.global_position.y = camMng.fly_height_start
+	pivot.global_position.y = camMng.fly_height_min
 	cam.fov = camMng.fly_fov
 	mov_height_speed = camMng.fly_height_speed * 100
 	

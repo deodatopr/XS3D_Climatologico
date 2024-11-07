@@ -38,7 +38,6 @@ class_name GDs_Cam_Manager extends Node
 @export_subgroup("FLY")
 @export_range(30,100) var fly_fov :float = 50
 @export var fly_height_speed : float = 7
-@export var fly_height_start : float = 80
 @export var fly_height_max : float = 400
 @export var fly_height_min : float = 200
 @export var fly_speed : float = .3
