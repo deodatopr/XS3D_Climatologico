@@ -29,6 +29,5 @@ var nivelCrit : float
 var tlrncia_prep_pluv : float
 var latitud:String 
 var longitud:String 
-var LvlEstacion:PackedScene
 var disponible:bool
 var color:Color

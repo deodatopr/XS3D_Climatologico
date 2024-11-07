@@ -12,7 +12,7 @@ config_version=5
 
 config/name="XS3D_Climatologico"
 config/tags=PackedStringArray("xsoft3d")
-run/main_scene="res://(Scenes)/Scn_Sector_06.tscn"
+run/main_scene="res://(Scenes)/Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
 

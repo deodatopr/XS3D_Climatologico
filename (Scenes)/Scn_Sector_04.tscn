@@ -1,6 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj24gdwn2bk1y"]
-
-[ext_resource type="Script" path="res://Systems/Sitio/GDs_Orquestrator_Sector_.gd" id="1_3y5q6"]
+[gd_scene format=3 uid="uid://dj24gdwn2bk1y"]
 
 [node name="ScnSector4" type="Node3D"]
-script = ExtResource("1_3y5q6")

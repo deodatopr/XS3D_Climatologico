@@ -28,8 +28,8 @@ var natureMidPoint:=0
 func _ready():
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
 	natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
-	print_debug(natureMinHeight)
-	print_debug(natureMidPoint)
+	#print_debug(natureMinHeight)
+	#print_debug(natureMidPoint)
 
 func _process(_delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.fly:
@@ -61,7 +61,7 @@ func _process(_delta):
 #endregion
 #region Environment
 		if CAM.height > natureMinHeight and CAM.height < natureMidPoint:
-			print_debug(inverse_lerp(natureMinHeight,natureMidPoint,CAM.height))
+			#print_debug(inverse_lerp(natureMinHeight,natureMidPoint,CAM.height))
 			sndWind.volume_db = linear_to_db(inverse_lerp(natureMinHeight,natureMidPoint,CAM.height))
 		
 		

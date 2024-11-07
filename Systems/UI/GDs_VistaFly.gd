@@ -1,5 +1,4 @@
-class_name GDs_VistaFree
-extends Control
+class_name GDs_VistaFly extends Control
 
 @export_group("SCENE REFERENCES")
 @export var pinSitio : Node3D
@@ -11,19 +10,11 @@ extends Control
 @export var lblVelocidad:Label
 @export var lblRotacion:Label
 
-
 var cam_manager:GDs_Cam_Manager
-var worldMark:Node3D
-var map:Node3D
-
-var speed:=1.0
-var initialTopLinesPosX: float
-var initialBottomLinesPosX: float
-var initialLeftLinesPosY: float
-var initialRightLinesPosY: float
 var fixedRot : Vector2
 
-func Initialize():
+func Initialize(_cam_manager:GDs_Cam_Manager):
+	cam_manager = _cam_manager
 	compass.Initialize(cam_manager, pinSitio.position)
 
 func _process(_delta):

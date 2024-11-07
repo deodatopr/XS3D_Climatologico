@@ -1,19 +1,22 @@
 class_name GDs_Scenes_Manager extends Node
 
-@export var curtain : GDs_Curtain
 @export var sceneParentRoot: Node
+@export var sitios : Dictionary = {}
 
 signal OnSectorLoaded
 signal OnSectorUnloaded
 
-var instanceSector : Node3D
-var lastIdSectorVisited : int = -1
 var dataService : GDs_DataService_Manager
+var curtain : GDs_Curtain
+var instanceSector : GDs_Sector
+var lastIdSectorVisited : int = -1
 
-func Initialize(_dataService : GDs_DataService_Manager):
+func Initialize(_dataService : GDs_DataService_Manager, _curtain : GDs_Curtain):
 	dataService = _dataService
+	curtain = _curtain
 
-func GoToSector(_lvlSector : PackedScene):
+func GoToSector(_id : int):
+	var _lvlSector : PackedScene = sitios[_id] as PackedScene
 	#Mostrar cortina
 	curtain.Show()
 	await  curtain.OnCurtainCovered
@@ -32,14 +35,16 @@ func GoToSector(_lvlSector : PackedScene):
 	curtain.Hide()
 
 func _ProcessToLoadSector(_lvlSector : PackedScene):
-	instanceSector = _lvlSector.instantiate()
+	instanceSector = _lvlSector.instantiate() as GDs_Sector
 	instanceSector.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	sceneParentRoot.add_child(instanceSector)
 	sceneParentRoot.move_child(instanceSector,0)
 	
 	if not instanceSector.is_node_ready():
 		await instanceSector.ready
 	
+	instanceSector.Initialize(dataService)
 	OnSectorLoaded.emit()
 
 func _ProcessToUnloadSector():

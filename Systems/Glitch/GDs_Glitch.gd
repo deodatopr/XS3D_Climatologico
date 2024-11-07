@@ -1,23 +1,19 @@
-extends Node
+class_name GDs_Glitch extends Node
+
 @export_group("Sonidos")
 @export var sndGlitch:AudioStreamPlayer
 @export var sndGlitchLimit:AudioStreamPlayer
 @export_group("Vista Drones")
 @export var vistaSky:Control
-@export var vistaFly:GDs_VistaFree
+@export var vistaFly:GDs_VistaFly
 @export_group("")
 @export var glitch:Control
 @export var cortinilla:GDs_LocalCurtain
 @export var mensaje:CanvasLayer
 
-
 var isFirstRun : bool = true
 var tween:Tween
 var isInTransition := false
-
-func _ready():
-	#TODO: Quitar esto del ready y usar el Initialize en orquestador
-	Initialize()
 
 func Initialize():
 	SIGNALS.OnCameraRequestChangeMode.connect(ChangeDrone)

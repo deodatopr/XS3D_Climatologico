@@ -53,7 +53,7 @@ tlrncia_prep_pluv = 15
 latitud = "18° 31´ 35.3\""
 longitud = "99° 04' 21.4\""
 color = Color(0.698039, 0, 0.686275, 1)
-disponible = false
+disponible = true
 
 [sub_resource type="Resource" id="Resource_473h7"]
 script = ExtResource("1_cntib")
@@ -79,7 +79,7 @@ tlrncia_prep_pluv = 15
 latitud = "19° 23' 32.5\""
 longitud = "100° 25' 21.9\""
 color = Color(0, 0.698039, 0.388235, 1)
-disponible = false
+disponible = true
 
 [sub_resource type="Resource" id="Resource_y7443"]
 script = ExtResource("1_cntib")
