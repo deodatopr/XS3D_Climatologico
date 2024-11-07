@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=41 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
@@ -23,6 +23,8 @@
 [ext_resource type="AudioStream" uid="uid://cbjp7ejpsjtnr" path="res://Cont_Sounds/Environment/Wind2.mp3" id="14_1tnag"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
+[ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://Cont_Sounds/Environment/Downtown_People.mp3" id="15_oeod0"]
+[ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://Cont_Sounds/Environment/Downtown_Cars.mp3" id="16_a3tvj"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
 [ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
 [ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Moving.mp3" id="18_og2vw"]
@@ -150,6 +152,7 @@ sndMoving = NodePath("Moving")
 sndCameraFOV = NodePath("CameraFOV")
 sndCameraRot = NodePath("CameraRot")
 sndWind = NodePath("Wind")
+sndWindVolume = 5.0
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
@@ -182,12 +185,14 @@ flyingStaticVolume = -20.0
 flyingMovingVolume = 5.0
 flyingMovingPitch = 1.0
 flyingBoostVolume = 5.0
-flyingBoostPitch = 1.1
+flyingBoostPitch = 1.15
 sndWind = NodePath("Audio - Wind")
-windMaxHeight = 300.0
+windMinHeight = 300.0
+windMaxHeight = 450.0
 sndNature = NodePath("Audio - Nature")
-natureMinHeight = 100.0
-natureMaxHeight = 500.0
+natureMaxVolume = 15.0
+natureMinHeight = 150.0
+natureMaxHeight = 380.0
 
 [node name="Flying" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
 stream = ExtResource("10_2yvy7")
@@ -197,22 +202,75 @@ parameters/looping = true
 
 [node name="Audio - Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
 stream = ExtResource("14_1tnag")
-volume_db = 40.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Nature" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
 stream = ExtResource("12_6b1iq")
-volume_db = 25.0
 autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 100, -400)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
 stream = ExtResource("13_de45w")
-volume_db = 10.0
-unit_size = 2.0
+volume_db = 15.0
+unit_size = 50.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.948, 36.709, -1116.42)
+stream = ExtResource("13_de45w")
+volume_db = 15.0
+unit_size = 50.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.157, 36.709, -1866.21)
+stream = ExtResource("13_de45w")
+volume_db = 15.0
+unit_size = 50.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Town" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -526.541, 202.467, 286.044)
+stream = ExtResource("15_oeod0")
+volume_db = 80.0
+unit_size = 100.0
+autoplay = true
+bus = &"SFX"
+
+[node name="Audio - Town2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.24, 153.759, -303.367)
+stream = ExtResource("16_a3tvj")
+volume_db = 15.0
+unit_size = 30.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Town4" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244.899, 203.941, 713.412)
+stream = ExtResource("16_a3tvj")
+volume_db = 15.0
+unit_size = 30.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Town3" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1101.99, 202.467, -1475.1)
+stream = ExtResource("15_oeod0")
+volume_db = 15.0
+unit_size = 30.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 

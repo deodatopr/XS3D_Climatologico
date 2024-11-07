@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cocko4ft5524e"]
+[gd_scene load_steps=29 format=3 uid="uid://cocko4ft5524e"]
 
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="1_e7v8d"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_satoa"]
@@ -11,6 +11,9 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qyw2"]
 atlas = ExtResource("2_satoa")
 region = Rect2(806, 9, 160, 60)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e63np"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ea0ij"]
 atlas = ExtResource("2_satoa")
@@ -187,6 +190,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Line" type="NinePatchRect" parent="Frame/Center Crosshair"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 1
 anchors_preset = 8
@@ -194,9 +198,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -405.0
+offset_left = -10.0
 offset_top = -1.0
-offset_right = 405.0
+offset_right = 10.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -205,6 +209,7 @@ region_rect = Rect2(477, 10, 23, 22)
 patch_margin_right = 5
 
 [node name="Line2" type="NinePatchRect" parent="Frame/Center Crosshair"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 1
 anchors_preset = 8
@@ -213,13 +218,30 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -1.0
-offset_top = -112.5
+offset_top = -11.0
 offset_right = 1.0
-offset_bottom = 112.5
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_satoa")
 region_rect = Rect2(477, 10, 23, 22)
+
+[node name="Line3" type="NinePatchRect" parent="Frame/Center Crosshair"]
+self_modulate = Color(1, 1, 1, 0.8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_e63np")
+region_rect = Rect2(468, 763, 42, 42)
 
 [node name="Ring" type="Control" parent="Frame/Center Crosshair"]
 layout_mode = 1
@@ -766,9 +788,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -19.5
-offset_top = -144.0
+offset_top = -197.0
 offset_right = 20.5
-offset_bottom = -104.0
+offset_bottom = -157.0
 grow_horizontal = 2
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
@@ -785,9 +807,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -19.5
-offset_top = 69.0
+offset_top = 124.0
 offset_right = 20.5
-offset_bottom = 109.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
@@ -803,10 +825,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 254.5
-offset_top = -64.0
-offset_right = 294.5
-offset_bottom = -24.0
+offset_left = 166.5
+offset_top = -62.0
+offset_right = 206.5
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 rotation = -1.5708
@@ -823,10 +845,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -289.5
-offset_top = -64.0
-offset_right = -249.5
-offset_bottom = -24.0
+offset_left = -205.5
+offset_top = -62.0
+offset_right = -165.5
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 rotation = 1.5708
@@ -842,9 +864,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
+offset_left = 193.0
 offset_top = -32.0
-offset_right = -89.0
+offset_right = -190.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -857,10 +879,10 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -1678.0
-offset_top = -5.0
-offset_right = 1679.0
-offset_bottom = -5.0
+offset_left = -1676.0
+offset_top = -4.0
+offset_right = 1681.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_o5vl7")
@@ -880,9 +902,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -10.5
-offset_top = -109.5
+offset_top = -161.5
 offset_right = 10.5
-offset_bottom = 115.5
+offset_bottom = 170.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_epocd")
@@ -895,9 +917,9 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -11.5
-offset_top = -268.0
+offset_top = -215.0
 offset_right = 12.5
-offset_bottom = 258.0
+offset_bottom = 311.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CompressedTexture2D_kxk5d")

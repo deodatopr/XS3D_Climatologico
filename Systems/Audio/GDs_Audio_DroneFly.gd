@@ -12,10 +12,12 @@ extends Node
 @export_group("Environment")
 @export_subgroup("Wind")
 @export var sndWind: AudioStreamPlayer
+@export var windMaxVolume:float = 24
 @export var windMinHeight:float
 @export var windMaxHeight:float
 @export_subgroup("Nature")
 @export var sndNature: AudioStreamPlayer
+@export var natureMaxVolume: float = 24
 @export var natureMinHeight:float
 @export var natureMaxHeight:float
 
@@ -28,8 +30,6 @@ var natureMidPoint:=0
 func _ready():
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
 	natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
-	print_debug(natureMinHeight)
-	print_debug(natureMidPoint)
 
 func _process(_delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.fly:
@@ -61,11 +61,28 @@ func _process(_delta):
 #endregion
 #region Environment
 		if CAM.height > natureMinHeight and CAM.height < natureMidPoint:
-			print_debug(inverse_lerp(natureMinHeight,natureMidPoint,CAM.height))
-			sndWind.volume_db = linear_to_db(inverse_lerp(natureMinHeight,natureMidPoint,CAM.height))
-		
-		
+			if not sndNature.playing: sndNature.play()
+			var volume01 = inverse_lerp(natureMinHeight,natureMidPoint,CAM.height)
+			var volumedb = lerp(-10.0,natureMaxVolume,volume01)
+			sndNature.volume_db = volumedb
+		if CAM.height >= natureMidPoint and CAM.height < natureMaxHeight:
+			if not sndNature.playing: sndNature.play()
+			var volume01 = inverse_lerp(natureMidPoint,natureMaxHeight,CAM.height)
+			var volumedb = lerp(natureMaxVolume,-10.0,volume01)
+			sndNature.volume_db = volumedb
+		if CAM.height > windMinHeight:
+			if not sndWind.playing: sndWind.play()
+			var volume01 = inverse_lerp(windMinHeight,windMaxHeight,CAM.height)
+			var volumedb = lerp(-10.0,windMaxVolume,volume01)
+			if volumedb >= 24: volumedb =24
+			sndWind.volume_db = volumedb
+		else:
+			sndWind.volume_db = -10
 #endregion
+	else:
+		sndFlying.stop()
+		sndNature.stop()
+		sndWind.stop()
 
 func MovingFade(_snd:AudioStreamPlayer,_vol:float,_pitch:float,_stop:=false):
 	_snd.play()
