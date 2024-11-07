@@ -22,7 +22,7 @@ region = Rect2(471, 462, 24, 59)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlsw6"]
 atlas = ExtResource("1_bm6wi")
-region = Rect2(470, 525, 40, 27)
+region = Rect2(475, 523, 30, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bi5is"]
 atlas = ExtResource("1_bm6wi")
@@ -30,7 +30,7 @@ region = Rect2(469, 763, 42, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw5sd"]
 atlas = ExtResource("1_bm6wi")
-region = Rect2(473, 560, 34, 27)
+region = Rect2(473, 559, 31, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmxh6"]
 atlas = ExtResource("2_om8fc")
@@ -48,6 +48,10 @@ region = Rect2(0, 0, 40, 40)
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 39, 40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5sml"]
+atlas = ExtResource("2_om8fc")
+region = Rect2(0, 240, 40, 40)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgxgu"]
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 79, 40, 40)
@@ -55,10 +59,6 @@ region = Rect2(0, 79, 40, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yh3a"]
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 120, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w5sml"]
-atlas = ExtResource("2_om8fc")
-region = Rect2(0, 240, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qv2d"]
 atlas = ExtResource("2_om8fc")
@@ -252,7 +252,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Senales/Bateria"]
+[node name="Bateria Relleno" type="NinePatchRect" parent="HBoxContainer/Senales/Bateria"]
+self_modulate = Color(0.0707, 0.7, 0.049, 0.470588)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -21.0
+offset_right = 9.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(480, 11, 10, 15)
+
+[node name="Bateria Borde" type="TextureRect" parent="HBoxContainer/Senales/Bateria"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -292,12 +309,16 @@ theme_override_constants/separation = 0
 [node name="HBox - Senal" type="HBoxContainer" parent="HBoxContainer/Senales/Senales"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = -5
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Senales/Senales/HBox - Senal"]
+visibility_layer = 0
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - Senal"]
-custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 6
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_qlsw6")
 
@@ -338,7 +359,7 @@ horizontal_alignment = 1
 [node name="HBox - UTR" type="HBoxContainer" parent="HBoxContainer/Senales/Senales"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = 5
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - UTR"]
 layout_mode = 2
@@ -615,101 +636,6 @@ vertical_alignment = 1
 clip_text = true
 uppercase = true
 
-[node name="Evaporacion" type="Control" parent="HBoxContainer/Datos"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Evaporacion"]
-self_modulate = Color(1, 0, 0.415686, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_bm6wi")
-region_rect = Rect2(486, 916, 12, 90)
-
-[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Datos/Evaporacion"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="Lbl Valor Evaporacion" type="Label" parent="HBoxContainer/Datos/Evaporacion/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "80mm"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Evaporacion/VBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_tgxgu")
-script = ExtResource("3_qdbvn")
-
-[node name="Lbl" type="Label" parent="HBoxContainer/Datos/Evaporacion/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Evaporacion
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="Temperatura" type="Control" parent="HBoxContainer/Datos"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Temperatura"]
-self_modulate = Color(1, 0, 0.415686, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_bm6wi")
-region_rect = Rect2(486, 916, 12, 90)
-
-[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Datos/Temperatura"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="Lbl Valor Temp" type="Label" parent="HBoxContainer/Datos/Temperatura/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "24°C"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Temperatura/VBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_7yh3a")
-script = ExtResource("3_qdbvn")
-
-[node name="Lbl" type="Label" parent="HBoxContainer/Datos/Temperatura/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Temperatura"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
 [node name="Presion Atm" type="Control" parent="HBoxContainer/Datos"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -757,12 +683,107 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="Evaporacion" type="Control" parent="HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Evaporacion"]
+self_modulate = Color(0.683208, 0, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Datos/Evaporacion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Evaporacion" type="Label" parent="HBoxContainer/Datos/Evaporacion/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "80mm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Evaporacion/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_tgxgu")
+script = ExtResource("3_qdbvn")
+
+[node name="Lbl" type="Label" parent="HBoxContainer/Datos/Evaporacion/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Evaporacion
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Temperatura" type="Control" parent="HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Temperatura"]
+self_modulate = Color(0.683208, 0, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Datos/Temperatura"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Temp" type="Label" parent="HBoxContainer/Datos/Temperatura/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "24°C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Temperatura/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_7yh3a")
+script = ExtResource("3_qdbvn")
+
+[node name="Lbl" type="Label" parent="HBoxContainer/Datos/Temperatura/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Temperatura"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="Viento" type="Control" parent="HBoxContainer/Datos"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Viento"]
-self_modulate = Color(1, 0, 0.415686, 1)
+self_modulate = Color(0.926925, 0, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

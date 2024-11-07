@@ -1,7 +1,6 @@
 class_name GDs_Compass
 extends Node
 
-@export var testDirection : Control
 @export var estacion_index : int = 0
 @export var local_estaciones : GDs_CR_LocalEstaciones
 
@@ -29,7 +28,6 @@ var cam : Camera3D
 var distance : float
 var screenSize : Vector2
 var aimCenter : Vector2
-var lastPosition : Vector2
 
 var offsetBorder : float = 30
 
@@ -38,6 +36,8 @@ var maxPos_X : float
 
 var minPos_Y : float
 var maxPos_Y : float
+
+var rectLimits : Rect2
 
 func _ready():
 	get_viewport().size_changed.connect(OnScreenChangeSize)
@@ -53,6 +53,7 @@ func OnScreenChangeSize():
 	maxPos_Y = screenSize.y - screenMark.size.y  - offsetBorder - sizeMenuBottom
 	
 	aimCenter = Vector2((minPos_X + maxPos_X) *.5, (minPos_Y + maxPos_Y) * .5)
+	rectLimits = Rect2(Vector2(minPos_X,minPos_Y), Vector2(maxPos_X - minPos_X, maxPos_Y- minPos_Y))
 
 func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> void:
 	camManager = _camManager
@@ -63,7 +64,6 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	compassInitialXPosition = compass.position.x
 	pinSiteInitialXPosition = pin_sitio.position.x
 	
-	#pin_sitio.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
 	screenMark.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
 	screenMark.self_modulate.a = .5
 	
@@ -72,37 +72,24 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 @warning_ignore('unused_parameter')
 func _process(delta: float) -> void:
 	
-	_CalculateScreenMark(delta)
+	_CalculateScreenMark()
 	_CalculateCompassNorth()
 
-func _CalculateScreenMark(delta: float) -> void:
+func _CalculateScreenMark() -> void:
 	#Position -----------
 
 	#Calculate if is in front or back to fix finalPosition	
 	var dirToSitio : Vector3 = (posSitio - pivotCam.global_position).normalized()
 	var dotToSitio : float = pivotCam.global_basis.z.normalized().dot(dirToSitio)
 	var dotSign : float = signf(dotToSitio)
-	
-	#posTarget2d = cam.unproject_position(posSitio)
-	#posTarget2d *= dotSign
-	#if dotToSitio < 0:
-		#posTarget2d.y = maxPos_Y
 		
 	#Convert position 3d into 2d
-	if dotToSitio >= 0:
-		posTarget2d = cam.unproject_position(posSitio)
-	else:
-		posTarget2d = cam.unproject_position(posSitio)
-		var dirFromAim : Vector2 = aimCenter.direction_to(posTarget2d)
-		dirFromAim.x = -dirFromAim.x
-		dirFromAim.y = -dirFromAim.y
-		posTarget2d = aimCenter + (dirFromAim * 1000)
+	posTarget2d = cam.unproject_position(posSitio)
+	posTarget2d *= dotSign
 
-	#testDirection.global_position = aimCenter + (aimCenter.direction_to(posTarget2d) * 100)
-	
-	#Pos 2d with limits
-	posTarget2d.x = clampf(posTarget2d.x,minPos_X,maxPos_X)
-	posTarget2d.y = clampf(posTarget2d.y,minPos_Y,maxPos_Y)
+	#Fix pos when point is out of limit border
+	if not rectLimits.has_point(posTarget2d):
+		posTarget2d = GetValidPointOnLimits(rectLimits,aimCenter,aimCenter.direction_to(posTarget2d))
 	
 	#Apply
 	screenMark.global_position = posTarget2d
@@ -113,6 +100,21 @@ func _CalculateScreenMark(delta: float) -> void:
 	pointSitio.rotation_degrees = angleRotation
 	
 	direction.visible = aimCenter.distance_to(posTarget2d) > aimCenter.y * .5
+
+
+func GetValidPointOnLimits(_rect: Rect2, _center: Vector2, _dir: Vector2) -> Vector2:
+	var evaluated_point: Vector2 = _center
+	var dir_normalized: Vector2 = _dir.normalized()
+
+	# Calcular distancias hasta los bordes del rectángulo desde el centro
+	var dist_x: float = abs((_rect.end.x - _center.x) / dir_normalized.x) if dir_normalized.x != 0 else INF
+	var dist_y: float = abs((_rect.end.y - _center.y) / dir_normalized.y) if dir_normalized.y != 0 else INF
+
+	# Tomar la menor distancia, ya que esta es la primera intersección con los límites
+	var dist_to_border: float = min(dist_x, dist_y)
+	evaluated_point += dir_normalized * dist_to_border
+
+	return evaluated_point
 
 func _CalculateCompassNorth() -> void:
 	lblDistance.text = str(CAM.distToSitio)

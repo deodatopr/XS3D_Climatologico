@@ -27,9 +27,9 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("UIShowInfo"):
-		menuInfo.visible = true
-		barraMenus.isFocusingMenu = false
-		barraMenus.StopFocusOnMenus()
+		if not APPSTATE.popUpOpened:
+			menuInfo.visible = true
+			barraMenus.StopFocusOnMenus()
 	if event.is_action_pressed("ui_cancel"):
 		CloseInfoMenu()
 		if not APPSTATE.popUpOpened:

@@ -21,6 +21,7 @@ var initialTopLinesPosX: float
 var initialBottomLinesPosX: float
 var initialLeftLinesPosY: float
 var initialRightLinesPosY: float
+var fixedRot : Vector2
 
 func Initialize():
 	compass.Initialize(cam_manager, pinSitio.position)
@@ -29,4 +30,6 @@ func _process(_delta):
 	lblAltura.text = UTILITIES.FormatAltura(CAM.height)
 	@warning_ignore('narrowing_conversion')
 	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
-	lblRotacion.text = UTILITIES.FormatRotacionXY(CAM.rotation)
+	fixedRot = CAM.rotation
+	fixedRot.x += 20
+	lblRotacion.text = UTILITIES.FormatRotacionXY(fixedRot)

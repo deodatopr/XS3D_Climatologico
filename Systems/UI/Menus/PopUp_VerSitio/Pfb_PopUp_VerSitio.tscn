@@ -54,7 +54,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_osjvv"]
@@ -78,7 +78,7 @@ _data = {
 "RESET": SubResource("Animation_osjvv")
 }
 
-[node name="PopUP" type="Control" node_paths=PackedStringArray("id", "nombre", "frame", "framePatch", "btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight")]
+[node name="PopUP" type="Control" node_paths=PackedStringArray("id", "nombre", "frame", "framePatch", "btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight", "animPlayer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +94,7 @@ btnAceptar = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Aceptar/Btn Acepta
 btnAceptarHighlight = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Aceptar/Highlight Aceptar")
 btnCancelar = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Cancelar/Btn Cancelar")
 btnCancelarHighlight = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Cancelar/Highlight Cancelar")
+animPlayer = NodePath("PopUp Ver Sitio - BLUR/AnimationPlayer")
 
 [node name="PopUp Ver Sitio - BLUR" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.411765)
@@ -480,7 +481,6 @@ mouse_default_cursor_shape = 2
 libraries = {
 "": SubResource("AnimationLibrary_72oqm")
 }
-autoplay = "PopUp Warning"
 
 [node name="Warning" type="AudioStreamPlayer" parent="PopUp Ver Sitio - BLUR"]
 stream = ExtResource("4_crs7v")
