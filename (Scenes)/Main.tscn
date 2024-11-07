@@ -14,8 +14,6 @@
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="Find - Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]
-
 [node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("splash", "curtain", "scenes_manager", "dataService_manager")]
 script = ExtResource("3_7k0af")
 splash = NodePath("../../[ UI ]/Splash")
@@ -39,6 +37,8 @@ sitios = {
 6: ExtResource("6_rdc0k")
 }
 
+[node name="Find -CR_Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]
+
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("5_8ipwn")]
 skip_orquestrator_main = false
 
@@ -50,9 +50,5 @@ layer = 20
 [node name="Curtain" parent="[ UI ]" instance=ExtResource("1_2h8cb")]
 
 [node name="Splash" parent="[ UI ]" instance=ExtResource("5_qomdb")]
-
-[node name="[ CUSTOM RESOURCES ]" type="Node" parent="."]
-
-[node name="CR_Local_Estaciones" type="Node" parent="[ CUSTOM RESOURCES ]"]
 
 [editable path="[ UI ]/Curtain"]
