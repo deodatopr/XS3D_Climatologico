@@ -396,11 +396,8 @@ pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 metadata/_edit_horizontal_guides_ = [125.0]
 
-[node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("dataService", "vistaSky", "vistaFree", "cam_manager", "pin_Sitio", "mshTerrain") instance=ExtResource("7_hy666")]
-dataService = NodePath("../../../../[ SYSTEMS ]/Data - Service")
+[node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("vistaSky", "pin_Sitio", "mshTerrain") instance=ExtResource("7_hy666")]
 vistaSky = NodePath("../SKY")
-vistaFree = NodePath("../FLY")
-cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
 pin_Sitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 mshTerrain = NodePath("../../../../[ CONTENT ]/Msh_Terrain")
 
