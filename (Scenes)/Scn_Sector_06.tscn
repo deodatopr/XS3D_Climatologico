@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=42 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
 [ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+[ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="24_yw0ss"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rg1hk"]
 size = Vector3(3541.41, 342.292, 3679.88)
@@ -390,6 +391,7 @@ mouse_filter = 2
 layer = 5
 
 [node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
+script = ExtResource("24_yw0ss")
 pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 
 [node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("cam_manager") instance=ExtResource("14_bqx8o")]
