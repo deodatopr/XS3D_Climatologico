@@ -17,6 +17,7 @@ func Initialize(_dataService : GDs_DataService_Manager, _curtain : GDs_Curtain):
 
 func GoToSector(_id : int):
 	var _lvlSector : PackedScene = sitios[_id] as PackedScene
+	
 	#Mostrar cortina
 	curtain.Show()
 	await  curtain.OnCurtainCovered

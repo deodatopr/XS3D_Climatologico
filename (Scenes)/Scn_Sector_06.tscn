@@ -1,6 +1,7 @@
 [gd_scene load_steps=42 format=3 uid="uid://18lddgnvbqsx"]
 
-[ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
+[ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
+[ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="2_xo163"]
 [ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Terrain.glb" id="3_htqi2"]
@@ -31,8 +32,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
-[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
-[ext_resource type="Script" path="res://Systems/UI/GDs_VistaDron.gd" id="24_yw0ss"]
+[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rg1hk"]
 size = Vector3(3541.41, 342.292, 3679.88)
@@ -95,11 +95,19 @@ shader_parameter/sharpening = 1.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
-[node name="SECTOR 6" type="Node3D"]
+[node name="SECTOR 6" type="Node3D" node_paths=PackedStringArray("orquestrator")]
+script = ExtResource("1_vpunx")
+orquestrator = NodePath("[ SYSTEMS ]/Orquestrator")
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="Data - Service" parent="[ SYSTEMS ]" instance=ExtResource("2_o1ydr")]
+[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("cameraDrones", "ppeGlitch", "fly", "sky", "menu")]
+script = ExtResource("2_q2lqn")
+cameraDrones = NodePath("../Camera - Drones")
+ppeGlitch = NodePath("../PPE - Glitch")
+fly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
+sky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
+menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
@@ -391,11 +399,9 @@ mouse_filter = 2
 layer = 5
 
 [node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
-script = ExtResource("24_yw0ss")
 pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 
-[node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("cam_manager") instance=ExtResource("14_bqx8o")]
-cam_manager = NodePath("../../../../[ SYSTEMS ]/Camera - Drones")
+[node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("14_bqx8o")]
 metadata/_edit_horizontal_guides_ = [125.0]
 
 [node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("vistaSky", "pin_Sitio", "mshTerrain") instance=ExtResource("7_hy666")]
