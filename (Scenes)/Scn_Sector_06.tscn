@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=39 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="2_o1ydr"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="2_vmk6t"]
@@ -14,8 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
+[ext_resource type="AudioStream" uid="uid://b7iu0hknp6otd" path="res://Cont_Sounds/Drones/DroneFly_Moving.mp3" id="10_2yvy7"]
+[ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneFly.gd" id="10_uf8le"]
 [ext_resource type="PackedScene" uid="uid://2fk1ttkfdobb" path="res://Cont_Models/Sector6/Msh_Navigation.glb" id="11_bbryg"]
+[ext_resource type="AudioStream" uid="uid://dygv4u1k6q2kl" path="res://Cont_Sounds/Environment/Nature.mp3" id="12_6b1iq"]
+[ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="13_de45w"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Shared/Meshes/Msh_Limit.glb" id="13_enybh"]
+[ext_resource type="AudioStream" uid="uid://cbjp7ejpsjtnr" path="res://Cont_Sounds/Environment/Wind2.mp3" id="14_1tnag"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
@@ -25,6 +30,9 @@
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
 [ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rg1hk"]
+size = Vector3(3541.41, 342.292, 3679.88)
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -92,7 +100,6 @@ shader_parameter/sharpening = 1.5
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
-valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -113,7 +120,7 @@ fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_x5pt0")
 sky_speed = 0.25
 fly_height_speed = 2.0
-fly_height_start = 200.0
+fly_height_max = 450.0
 fly_speed = 0.5
 fly_rot_speed = 0.7
 
@@ -133,6 +140,9 @@ script = ExtResource("5_7w42d")
 [node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
+current = true
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
 script = ExtResource("16_r0mi2")
@@ -165,9 +175,52 @@ volume_db = 7.0
 pitch_scale = 0.5
 bus = &"SFX"
 
-[node name="PPE - Glitch" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly") instance=ExtResource("7_cjwh8")]
-vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
-vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
+[node name="Audio - DroneFly" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndFlying", "sndWind", "sndNature")]
+script = ExtResource("10_uf8le")
+sndFlying = NodePath("Flying")
+flyingStaticVolume = -20.0
+flyingMovingVolume = 5.0
+flyingMovingPitch = 1.0
+flyingBoostVolume = 5.0
+flyingBoostPitch = 1.1
+sndWind = NodePath("Audio - Wind")
+windMaxHeight = 300.0
+sndNature = NodePath("Audio - Nature")
+natureMinHeight = 100.0
+natureMaxHeight = 500.0
+
+[node name="Flying" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
+stream = ExtResource("10_2yvy7")
+volume_db = -25.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
+stream = ExtResource("14_1tnag")
+volume_db = 40.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Nature" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
+stream = ExtResource("12_6b1iq")
+volume_db = 25.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 100, -400)
+stream = ExtResource("13_de45w")
+volume_db = 10.0
+unit_size = 2.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Area3D - Nature" type="Area3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="[ SYSTEMS ]/Audio - DroneFly/Area3D - Nature"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5462, 166.146, -51.2013)
+shape = SubResource("BoxShape3D_rg1hk")
 
 [node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
 stream = ExtResource("21_atymd")
@@ -175,6 +228,10 @@ volume_db = 10.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="PPE - Glitch" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly") instance=ExtResource("7_cjwh8")]
+vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
+vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 

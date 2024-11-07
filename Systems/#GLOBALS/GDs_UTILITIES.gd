@@ -60,7 +60,7 @@ func FormatVelocidad(vel:int)->String:
 	return str(vel) + " km/h"
 	
 func FormatRotacionXY(rot:Vector2)->String:
-	return "("+ str(rot.x) + "°," + str(rot.y) +"°)"
+	return "("+ str(rot.x) + "° , " + str(rot.y) +"°)"
 	
 func FormatRotacionY(rot:float)->String:
 	return str(rot) + "°"

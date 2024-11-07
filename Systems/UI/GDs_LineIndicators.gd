@@ -15,6 +15,7 @@ var posY:float
 func _ready():
 	initialPosX = position.x
 	initialPosY = position.y
+	posY = CAM.height
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,9 +30,9 @@ func _physics_process(_delta):
 	if Input.is_action_pressed('3DMove_Backward'):
 		posY -= 0.2
 	if Input.is_action_pressed('3DMove_Height_+') and useCamHeight:
-		posY += 0.5
+		posY = CAM.height
 	if Input.is_action_pressed('3DMove_Height_-') and useCamHeight:
-		posY -= 0.5
+		posY = CAM.height
 
 	if vertical:
 		if useCamRotation:

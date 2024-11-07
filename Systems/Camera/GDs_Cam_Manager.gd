@@ -58,7 +58,7 @@ class_name GDs_Cam_Manager extends Node
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
-var wasInitialized : bool 
+var wasInitialized : bool
 var navMesh : NavigationRegion3D
 var navigationMesh : NavigationMesh
 var navMeshRID : RID #RID = identificador, necesario para usar info del navmesh
@@ -73,6 +73,7 @@ var dangerToCloseLimit : bool
 var positionInMap01 : Vector2 = Vector2.ZERO
 var matFishEye :  ShaderMaterial
 var auxToCalculateDistance : Vector3
+var lastCamFlyHeight : float
 
 func _ready():
 	#TEST: Incio en modo random
@@ -162,10 +163,10 @@ func _process(_delta):
 			movFly.UpdateCamConfig()
 
 func _CheckProximityToLimits():
-		if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-			_SetShaLimit(mat_limit_sky)
-		else:
-			_SetShaLimit(mat_limit_fly)
+	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
+		_SetShaLimit(mat_limit_sky)
+	else:
+		_SetShaLimit(mat_limit_fly)
 
 func _SetShaLimit(_mat : ShaderMaterial):
 	if CAM.boundings01 > 0 and not dangerToCloseLimit:
@@ -178,7 +179,7 @@ func _SetShaLimit(_mat : ShaderMaterial):
 func _UpdateCamState():
 	var cam : Camera3D = sky_cam if APPSTATE.camMode == ENUMS.Cam_Mode.sky else fly_cam
 	var dir = sign(cam.global_rotation_degrees.y)
-	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180)) 
+	var fixRotY = abs(floori(cam.global_rotation_degrees.y - 180))
 	
 	if abs(ceili(cam.global_rotation_degrees.y - 180)) == 360:
 		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x), 0)
@@ -187,7 +188,10 @@ func _UpdateCamState():
 	elif dir < 0:
 		CAM.rotation = Vector2(floori(cam.global_rotation_degrees.x),ceili(abs(fixRotY - 360)))
 	
+	CAM.isHeightChanging = absf(cam.global_position.y - lastCamFlyHeight) > .1
 	CAM.height = ceili(cam.global_position.y)
+	lastCamFlyHeight = cam.global_position.y
+	
 	CAM.fov = ceili(cam.fov)
 	CAM.position = cam.global_position
 	
@@ -212,69 +216,69 @@ func _ChangeToMode(_mode : int):
 		
 func _ChangeToMode_Sky():
 		# World env
-		worldEnv.environment = preset_env_sky
+	worldEnv.environment = preset_env_sky
 		
 		#DOF
-		worldEnv.camera_attributes = preset_cam_sky
+	worldEnv.camera_attributes = preset_cam_sky
 		
 		#Light
-		UTILITIES.TurnOnObject(light_sun_sky)
-		UTILITIES.TurnOffObject(light_sun_fly)
+	UTILITIES.TurnOnObject(light_sun_sky)
+	UTILITIES.TurnOffObject(light_sun_fly)
 		
 		# UI + PPE
-		for child in ui_ppe_fly.get_children():
-			UTILITIES.TurnOffObject(child)
-		for child in ui_ppe_sky.get_children():
-			UTILITIES.TurnOnObject(child)
+	for child in ui_ppe_fly.get_children():
+		UTILITIES.TurnOffObject(child)
+	for child in ui_ppe_sky.get_children():
+		UTILITIES.TurnOnObject(child)
 			
 		#Roads
-		msh_roads.material_override = mat_roads_sky
+	msh_roads.material_override = mat_roads_sky
 		
 		#Msh limit
-		msh_limit.material_override = mat_limit_sky
+	msh_limit.material_override = mat_limit_sky
 	
 		#Turn on sky cam
-		movSky.process_mode = Node.PROCESS_MODE_ALWAYS
-		UTILITIES.TurnOnObject(sky_pivot)
+	movSky.process_mode = Node.PROCESS_MODE_ALWAYS
+	UTILITIES.TurnOnObject(sky_pivot)
 		
 		#Turn off fly cam
-		movFly.process_mode = Node.PROCESS_MODE_DISABLED
-		UTILITIES.TurnOffObject(fly_pivot)
+	movFly.process_mode = Node.PROCESS_MODE_DISABLED
+	UTILITIES.TurnOffObject(fly_pivot)
 		
 		#Apply initial values
-		movSky.SetCamera()
+	movSky.SetCamera()
 		
 		
 func _ChangeToMode_Fly():
 		# World env
-		worldEnv.environment = preset_env_fly
+	worldEnv.environment = preset_env_fly
 		
 		#DOF
-		worldEnv.camera_attributes = preset_cam_fly
+	worldEnv.camera_attributes = preset_cam_fly
 		
 		#Light
-		UTILITIES.TurnOffObject(light_sun_sky)
-		UTILITIES.TurnOnObject(light_sun_fly)
+	UTILITIES.TurnOffObject(light_sun_sky)
+	UTILITIES.TurnOnObject(light_sun_fly)
 		
 		# UI + PPE
-		for child in ui_ppe_fly.get_children():
-			UTILITIES.TurnOnObject(child)
-		for child in ui_ppe_sky.get_children():
-			UTILITIES.TurnOffObject(child)
+	for child in ui_ppe_fly.get_children():
+		UTILITIES.TurnOnObject(child)
+	for child in ui_ppe_sky.get_children():
+		UTILITIES.TurnOffObject(child)
 			
 		#Roads
-		msh_roads.material_override = mat_roads_fly
+	msh_roads.material_override = mat_roads_fly
 	
 		#Msh limit
-		msh_limit.material_override = mat_limit_fly
+	msh_limit.material_override = mat_limit_fly
 		
 		#Turn off sky cam
-		movSky.process_mode = Node.PROCESS_MODE_DISABLED
-		UTILITIES.TurnOffObject(sky_pivot)
+	movSky.process_mode = Node.PROCESS_MODE_DISABLED
+	UTILITIES.TurnOffObject(sky_pivot)
 		
 		#Turn on fly cam
-		movFly.process_mode = Node.PROCESS_MODE_ALWAYS
-		UTILITIES.TurnOnObject(fly_pivot)
+	movFly.process_mode = Node.PROCESS_MODE_ALWAYS
+	UTILITIES.TurnOnObject(fly_pivot)
 		
 		#Apply initial values
-		movFly.SetCamera()
+	movFly.SetCamera()

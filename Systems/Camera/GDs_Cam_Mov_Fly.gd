@@ -29,6 +29,7 @@ var rot_lastRotY : float
 var rot_lastDir : Vector2
 var rot_axisRotation : Vector2
 
+var currentTurbo : float
 var mouseMotion : InputEvent
 var cursorMovement : Vector2
 var curvValue : float
@@ -56,7 +57,10 @@ func _input(event):
 	else:
 		mouseMotion = null
 
-func _physics_process(delta:float):		
+func _physics_process(delta:float):
+	@warning_ignore('incompatible_ternary')
+	currentTurbo = camMng.fly_turbo if Input.is_action_pressed("3DMove_SpeedBoost") else 1
+	
 	_movement(delta)
 	_rotation(delta)
 	
@@ -81,7 +85,7 @@ func _mov_height(_delta : float):
 	var height01 : float = clampf(inverse_lerp(min,max,pivot.global_position.y),0,1)
 	
 	#Calculate new height
-	mov_height_velocity = heightDir * mov_height_speed * _delta
+	mov_height_velocity = heightDir * mov_height_speed * currentTurbo * _delta
 	
 	#Apply new height to an aux vector to evaluate distances
 	var targetHeight : Vector3 = pivot.position
@@ -114,11 +118,6 @@ func _mov_movement(_delta : float):
 	mov_axisMovement = Input.get_vector("3DMove_Right","3DMove_Left","3DMove_Backward","3DMove_Forward")
 	var dir : Vector3 = (pivot.basis * Vector3(mov_axisMovement.x,0,mov_axisMovement.y).normalized())
 	dir.y = 0
-	
-	var isPressingTurbo : bool = Input.is_action_pressed("3DMove_SpeedBoost")
-	
-	@warning_ignore('incompatible_ternary')
-	var currentTurbo : float = camMng.fly_turbo if isPressingTurbo else 1
 	
 	if dir.length() > 0:
 		#Acceleration
@@ -191,14 +190,14 @@ func _rotation(_delta:float):
 	rot_lastDir = dir
 
 func _rotation_hor(_dir:float, _delta:float):
-	rot_hor -= _dir * camMng.fly_rot_speed  * _delta
+	rot_hor -= _dir * camMng.fly_rot_speed * _delta
 	var targetAngle : float = rot_hor
 	var smoothTarget : float = lerp_angle(rot_lastRotY,targetAngle,15 * _delta)
 	pivot.rotation.y = smoothTarget
 
 func _rotation_vert(_dir:float, _delta:float):
 	var toEvaluateAngle : float = rot_vert
-	toEvaluateAngle -= -_dir * camMng.fly_rot_speed  * _delta
+	toEvaluateAngle -= -_dir * camMng.fly_rot_speed * _delta 
 	toEvaluateAngle = clampf(toEvaluateAngle,deg_to_rad(-camMng.fly_rot_clamp),deg_to_rad(camMng.fly_rot_clamp))
 	rot_vert = toEvaluateAngle
 	var targetAngle : float = rot_vert
