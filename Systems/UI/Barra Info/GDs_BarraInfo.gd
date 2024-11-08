@@ -52,8 +52,8 @@ func OnDataRefresh():
 	
 	#nivel
 	nivel.text = UTILITIES.FormatNivel(sitio.nivel)
-	nivelPrev.text = UTILITIES.FormatNivel(sitio.nivelPrev)
-	nivelCrit.text = UTILITIES.FormatNivel(sitio.nivelCrit)
+	nivelPrev.text = UTILITIES.FormatNiveles(sitio.nivelPrev)
+	nivelCrit.text = UTILITIES.FormatNiveles(sitio.nivelCrit)
 	
 	nivelBg.self_modulate = ColorNorm
 	if sitio.nivel > sitio.nivelPrev: nivelBg.self_modulate = ColorPrev

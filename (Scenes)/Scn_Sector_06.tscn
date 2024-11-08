@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=49 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
@@ -24,17 +24,42 @@
 [ext_resource type="AudioStream" uid="uid://cbjp7ejpsjtnr" path="res://Cont_Sounds/Environment/Wind2.mp3" id="14_1tnag"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
-[ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://Cont_Sounds/Environment/Downtown_People.mp3" id="15_oeod0"]
-[ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://Cont_Sounds/Environment/Downtown_Cars.mp3" id="16_a3tvj"]
+[ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://Cont_Sounds/_Unused/Downtown_People.mp3" id="15_oeod0"]
+[ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://Cont_Sounds/_Unused/Downtown_Cars.mp3" id="16_a3tvj"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
 [ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
 [ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Moving.mp3" id="18_og2vw"]
+[ext_resource type="Script" path="res://Systems/Alarmas/GDs_Alarmas.gd" id="18_xkk4p"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="20_i6few"]
+[ext_resource type="AudioStream" uid="uid://dskt5rigi4ul8" path="res://Cont_Sounds/Sitio/Sitio_Alarma.mp3" id="21_5kmad"]
 [ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
-[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
+[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_WaveDeform.gdshader" id="30_uby03"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_Heat.gdshader" id="31_hk50b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqpe"]
+shader = ExtResource("30_uby03")
+shader_parameter/distort = 0.05
+shader_parameter/chromatic = 0.025
+shader_parameter/smoothness = 0.15
+shader_parameter/stop = 1
+shader_parameter/speed = 0.4
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tgoyg"]
+fractal_octaves = 10
+fractal_lacunarity = 7.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xmvdm"]
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_tgoyg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqmtv"]
+shader = ExtResource("31_hk50b")
+shader_parameter/intensity = 0.25
+shader_parameter/speed = 0.5
+shader_parameter/noiseMap = SubResource("NoiseTexture2D_xmvdm")
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
@@ -93,26 +118,6 @@ shader_parameter/lensDistortion = 1.0
 shader = SubResource("Shader_mn58d")
 shader_parameter/pixel = 1.0
 shader_parameter/sharpening = 1.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqpe"]
-shader = ExtResource("30_uby03")
-shader_parameter/distort = 0.05
-shader_parameter/chromatic = 0.025
-shader_parameter/smoothness = 0.15
-shader_parameter/stop = 1
-shader_parameter/speed = 0.4
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tgoyg"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xmvdm"]
-seamless = true
-noise = SubResource("FastNoiseLite_tgoyg")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqmtv"]
-shader = ExtResource("31_hk50b")
-shader_parameter/intensity = 0.25
-shader_parameter/speed = 0.5
-shader_parameter/noiseMap = SubResource("NoiseTexture2D_xmvdm")
 
 [node name="SECTOR 6" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_vpunx")
@@ -307,6 +312,39 @@ parameters/looping = true
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 
+[node name="PPE - Alarmas" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("ppePresa", "ppeTemp", "sndAlarm")]
+script = ExtResource("18_xkk4p")
+ppePresa = NodePath("Alarmas Presa/Presa")
+ppeTemp = NodePath("Alarmas Temp/Temp")
+sndAlarm = NodePath("Alarma")
+
+[node name="Alarmas Presa" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
+layer = 6
+
+[node name="Presa" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Presa"]
+material = SubResource("ShaderMaterial_bdqpe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Alarmas Temp" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
+layer = 7
+
+[node name="Temp" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Temp"]
+material = SubResource("ShaderMaterial_uqmtv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Alarma" type="AudioStreamPlayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
+stream = ExtResource("21_5kmad")
+bus = &"SFX"
+parameters/looping = true
+
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
@@ -429,28 +467,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="[ UI  ]" type="Node" parent="[ PPE + UI ]"]
-
-[node name="Alarmas Presa" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 6
-
-[node name="Presa" type="ColorRect" parent="[ PPE + UI ]/[ UI  ]/Alarmas Presa"]
-material = SubResource("ShaderMaterial_bdqpe")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Alarmas Temp" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 7
-
-[node name="Temp" type="ColorRect" parent="[ PPE + UI ]/[ UI  ]/Alarmas Temp"]
-material = SubResource("ShaderMaterial_uqmtv")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Interfaz" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
 layer = 10
