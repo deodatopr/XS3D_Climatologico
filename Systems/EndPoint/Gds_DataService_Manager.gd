@@ -171,9 +171,6 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.enPrev =  estacionEP.nivel >=  estacionToUpdate.nivelPrev and estacionEP.nivel <  estacionToUpdate.nivelCrit 
 		estacionToUpdate.enCrit =  estacionEP.nivel >=  estacionToUpdate.nivelCrit
 		
-		if estacionToUpdate.id == 6:
-			print("Nvl: ",estacionEP.nivel, " | Prev: ", estacionToUpdate.nivelPrev, " | Crit: ", estacionToUpdate.nivelCrit, " | EnPrev: ", estacionToUpdate.enPrev, " | EnCrit: ",estacionToUpdate.enCrit)
-		
 		if estacionEP.id == APPSTATE.currntIdSitio:
 			APPSTATE.currntSitio = estacionToUpdate
 		
