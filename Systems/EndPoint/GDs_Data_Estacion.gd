@@ -24,6 +24,7 @@ var rebasa_tlrncia_prep_pluv : bool
 #LOCAL
 var nombre:String
 var estado := ENUMS.Estado.Mexico
+var nivelNormal : float
 var nivelPrev : float
 var nivelCrit : float
 var tlrncia_prep_pluv : float
@@ -31,3 +32,7 @@ var latitud:String
 var longitud:String 
 var disponible:bool
 var color:Color
+
+#EXTRAS
+var enPrev : bool
+var enCrit : bool

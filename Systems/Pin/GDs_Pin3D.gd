@@ -7,8 +7,7 @@ extends Node
 @export var estacion_index : int = 0:	
 	set(value):
 		estacion_index = value
-		#TODO: Inyectar color dependiendo el sitio actual
-		#mesh_Pin.get_mesh().get_material().albedo_color = local_estaciones.LocalEstaciones[value].color
+		mesh_Pin.get_mesh().get_material().albedo_color = APPSTATE.currntSitio.color
 
 @export var siteName : String = "Site":
 	set(value):

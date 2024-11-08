@@ -44,9 +44,7 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	
 	compassInitialXPosition = compass.position.x
 	pinSiteInitialXPosition = pin_sitio.position.x
-	
-	#TODO: Inyectar color dependiendo el sitio actual
-	#screenMark.self_modulate = local_estaciones.LocalEstaciones[estacion_index].color
+	screenMark.self_modulate = APPSTATE.currntSitio.color
 	screenMark.self_modulate.a = .5
 	
 	OnScreenChangeSize()

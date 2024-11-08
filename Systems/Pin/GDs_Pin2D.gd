@@ -12,8 +12,7 @@ extends Node
 @export var estacion_index : int = 0:
 	set(value):
 		estacion_index = value
-		#TODO: Inyectar color dependiendo el sitio actual
-		#sprite_pin.modulate = local_estaciones.LocalEstaciones[value].color
+		sprite_pin.modulate =  APPSTATE.currntSitio.color
 		
 @export var textOffset : Vector2:
 	set(value):

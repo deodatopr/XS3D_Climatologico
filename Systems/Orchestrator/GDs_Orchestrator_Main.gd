@@ -20,7 +20,6 @@ func _ready():
 	#ESCENAS
 	scenes_manager.Initialize(dataService_manager,curtain)
 	
-	
 	var rndIdSitio : int = scenes_manager.GetRndIdSite()
 	#HACK: Iniciar siempre en el sitio 6
 	rndIdSitio = 6

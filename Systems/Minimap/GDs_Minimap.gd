@@ -17,8 +17,8 @@ var wasInitialized : bool
 func Initialize(_cam_Manager : GDs_Cam_Manager) -> void:
 	cam_Manager = _cam_Manager
 	pivot_cam = cam_Manager.sky_pivot
-	#TODO: Inyectar color dependiendo el sitio actual
-	#mark.self_modulate = local_estaciones.LocalEstaciones[estacion_color].color
+	
+	mark.self_modulate = APPSTATE.currntSitio.color
 	wasInitialized = true
 	
 @warning_ignore('unused_parameter')

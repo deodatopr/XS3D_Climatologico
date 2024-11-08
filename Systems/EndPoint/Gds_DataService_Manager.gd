@@ -135,10 +135,15 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		instanceEstacionCombinada.estado = estacionLocal.estado
 		instanceEstacionCombinada.latitud = estacionLocal.latitud
 		instanceEstacionCombinada.longitud = estacionLocal.longitud
+		instanceEstacionCombinada.nivelNormal = estacionLocal.nivelNormal
 		instanceEstacionCombinada.nivelPrev = estacionLocal.nivelPrev
 		instanceEstacionCombinada.nivelCrit = estacionLocal.nivelCrit
 		instanceEstacionCombinada.disponible = estacionLocal.disponible
 		instanceEstacionCombinada.color = estacionLocal.color
+		
+		#Extras
+		instanceEstacionCombinada.enPrev =  estacionEP.nivel >=  estacionLocal.nivelPrev and estacionEP.nivel <  estacionLocal.nivelCrit 
+		instanceEstacionCombinada.enCrit =  estacionEP.nivel >=  estacionLocal.nivelCrit
 		
 		#Add to Final array
 		estaciones.append(instanceEstacionCombinada)
@@ -162,6 +167,12 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
 		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
 		estacionToUpdate.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
+	
+		estacionToUpdate.enPrev =  estacionEP.nivel >=  estacionToUpdate.nivelPrev and estacionEP.nivel <  estacionToUpdate.nivelCrit 
+		estacionToUpdate.enCrit =  estacionEP.nivel >=  estacionToUpdate.nivelCrit
+		
+		if estacionToUpdate.id == 6:
+			print("Nvl: ",estacionEP.nivel, " | Prev: ", estacionToUpdate.nivelPrev, " | Crit: ", estacionToUpdate.nivelCrit, " | EnPrev: ", estacionToUpdate.enPrev, " | EnCrit: ",estacionToUpdate.enCrit)
 		
 		if estacionEP.id == APPSTATE.currntIdSitio:
 			APPSTATE.currntSitio = estacionToUpdate
