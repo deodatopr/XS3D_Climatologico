@@ -8,6 +8,11 @@ class_name GDs_Orchestrator_Main extends Node
 
 func _ready():
 	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
+
+	var sitioToStart : int = scenes_manager.GetRndIdSite()
+	#HACK: Iniciar siempre en el sitio 6
+	sitioToStart = 6
+	APPSTATE.currntIdSitio = sitioToStart
 	
 	#SPLASH
 	splash.Show()
@@ -20,10 +25,7 @@ func _ready():
 	#ESCENAS
 	scenes_manager.Initialize(dataService_manager,curtain)
 	
-	var rndIdSitio : int = scenes_manager.GetRndIdSite()
-	#HACK: Iniciar siempre en el sitio 6
-	rndIdSitio = 6
-	scenes_manager.GoToSector(rndIdSitio)
+	scenes_manager.GoToSector(sitioToStart)
 	
 	await scenes_manager.OnSectorLoaded
 	await SIGNALS.OnSitioInitialized
