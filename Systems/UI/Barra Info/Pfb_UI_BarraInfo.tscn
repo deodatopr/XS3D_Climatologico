@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://hu5k41b7gh1x"]
+[gd_scene load_steps=21 format=3 uid="uid://hu5k41b7gh1x"]
 
 [ext_resource type="Script" path="res://Systems/UI/Barra Info/GDs_BarraInfo.gd" id="1_22tl1"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
@@ -16,21 +16,25 @@ shader_parameter/blur = 2
 atlas = ExtResource("1_bm6wi")
 region = Rect2(481, 15, 1, 11)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi3q0"]
+atlas = ExtResource("1_bm6wi")
+region = Rect2(468, 456, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi5is"]
+atlas = ExtResource("1_bm6wi")
+region = Rect2(468, 763, 42, 42)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2m7jt"]
 atlas = ExtResource("1_bm6wi")
-region = Rect2(471, 462, 24, 59)
+region = Rect2(473, 483, 17, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlsw6"]
 atlas = ExtResource("1_bm6wi")
 region = Rect2(475, 523, 30, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bi5is"]
-atlas = ExtResource("1_bm6wi")
-region = Rect2(469, 763, 42, 42)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw5sd"]
 atlas = ExtResource("1_bm6wi")
-region = Rect2(473, 559, 31, 28)
+region = Rect2(472, 560, 34, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmxh6"]
 atlas = ExtResource("2_om8fc")
@@ -240,19 +244,80 @@ texture = SubResource("AtlasTexture_3jcsu")
 [node name="Senales" type="HBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(185, 0)
 layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer/Senales"]
 visibility_layer = 0
 custom_minimum_size = Vector2(11.685, 0)
 layout_mode = 2
 
-[node name="Bateria" type="Control" parent="HBoxContainer/Senales"]
+[node name="Bateria" type="VBoxContainer" parent="HBoxContainer/Senales"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 0
 
-[node name="Bateria Relleno" type="NinePatchRect" parent="HBoxContainer/Senales/Bateria"]
+[node name="AC" type="HBoxContainer" parent="HBoxContainer/Senales/Bateria"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Senales/Bateria/AC"]
+visible = false
+visibility_layer = 0
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="Bateria Borde" type="TextureRect" parent="HBoxContainer/Senales/Bateria/AC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hi3q0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Senales/Bateria/AC"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Dot" type="Control" parent="HBoxContainer/Senales/Bateria/AC/HBoxContainer"]
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Senales/Bateria/AC/HBoxContainer/Dot"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.5
+offset_top = -11.0
+offset_right = 5.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
+
+[node name="SEÑAL" type="Label" parent="HBoxContainer/Senales/Bateria/AC/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "AC"
+horizontal_alignment = 1
+
+[node name="Icono Bateria" type="Control" parent="HBoxContainer/Senales/Bateria"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+
+[node name="Bateria Relleno" type="NinePatchRect" parent="HBoxContainer/Senales/Bateria/Icono Bateria"]
 self_modulate = Color(0.0707, 0.7, 0.049, 0.470588)
 layout_mode = 1
 anchors_preset = 8
@@ -260,49 +325,165 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.5
-offset_top = -21.0
-offset_right = 9.5
-offset_bottom = 22.0
+offset_left = -7.5
+offset_top = -11.0
+offset_right = 7.5
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
 region_rect = Rect2(480, 11, 10, 15)
 
-[node name="Bateria Borde" type="TextureRect" parent="HBoxContainer/Senales/Bateria"]
+[node name="Bateria Borde" type="TextureRect" parent="HBoxContainer/Senales/Bateria/Icono Bateria"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -36.5
-offset_right = 12.0
-offset_bottom = 22.5
+offset_left = -8.5
+offset_top = -19.0
+offset_right = 8.5
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_2m7jt")
 
 [node name="Lbl Bateria" type="Label" parent="HBoxContainer/Senales/Bateria"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "25.0V"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bateria2" type="VBoxContainer" parent="HBoxContainer/Senales"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="AC" type="Control" parent="HBoxContainer/Senales/Bateria2"]
+custom_minimum_size = Vector2(0, 27.385)
+layout_mode = 2
+
+[node name="AC Icono" type="TextureRect" parent="HBoxContainer/Senales/Bateria2/AC"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 29.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hi3q0")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="HBoxContainer/Senales/Bateria2/AC"]
+layout_mode = 2
+offset_left = 39.0
+offset_top = 4.0
+offset_right = 55.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Dot" type="Control" parent="HBoxContainer/Senales/Bateria2/AC/HBoxContainer"]
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Senales/Bateria2/AC/HBoxContainer/Dot"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.5
+offset_top = -11.0
+offset_right = 5.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
+
+[node name="SEÑAL" type="Label" parent="HBoxContainer/Senales/Bateria2/AC/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "AC"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Senales/Bateria2"]
+layout_mode = 2
+
+[node name="Icono Bateria" type="Control" parent="HBoxContainer/Senales/Bateria2/HBoxContainer2"]
+custom_minimum_size = Vector2(17, 38)
+layout_mode = 2
+
+[node name="Bateria Relleno" type="NinePatchRect" parent="HBoxContainer/Senales/Bateria2/HBoxContainer2/Icono Bateria"]
+self_modulate = Color(0.0707, 0.7, 0.049, 0.470588)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 20.5
-offset_right = 20.0
-offset_bottom = 43.5
+offset_left = -7.5
+offset_top = -12.0
+offset_right = 7.5
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 15
-text = "25.0V"
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(480, 11, 10, 15)
 
-[node name="Senales" type="VBoxContainer" parent="HBoxContainer/Senales"]
+[node name="Bateria Borde" type="TextureRect" parent="HBoxContainer/Senales/Bateria2/HBoxContainer2/Icono Bateria"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -20.0
+offset_right = 8.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_2m7jt")
+
+[node name="Text" type="Control" parent="HBoxContainer/Senales/Bateria2/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Lbl Bateria" type="Label" parent="HBoxContainer/Senales/Bateria2/HBoxContainer2/Text"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -18.0
+offset_right = 27.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 15
+text = "25.0V"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Senales" type="VBoxContainer" parent="HBoxContainer/Senales"]
+custom_minimum_size = Vector2(112.985, 0)
+layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
@@ -445,7 +626,7 @@ alignment = 1
 [node name="Lbl Valor Nivel" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
-text = "12.0m"
+text = "NVL: 12.0m"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -455,10 +636,37 @@ size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_kmxh6")
 script = ExtResource("3_qdbvn")
 
-[node name="Nivel" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "NIVEL"
+alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Nivel/Valor Nivel/VBox/HBoxContainer"]
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Nivel/Valor Nivel/VBox/HBoxContainer/Control"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
+
+[node name="Sensor" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "SENSOR"
 horizontal_alignment = 1
 vertical_alignment = 1
 

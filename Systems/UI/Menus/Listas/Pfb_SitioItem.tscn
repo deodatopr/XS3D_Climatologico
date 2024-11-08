@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bfgpbu7le1hia"]
+[gd_scene load_steps=24 format=3 uid="uid://bfgpbu7le1hia"]
 
 [ext_resource type="Script" path="res://Systems/UI/Menus/Listas/GDs_Perf_Sitio.gd" id="1_8nspj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_gkrbn"]
@@ -13,7 +13,7 @@ shader_parameter/blur = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htr5a"]
 atlas = ExtResource("1_gkrbn")
-region = Rect2(469, 525, 40, 27)
+region = Rect2(475, 523, 30, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jc0yf"]
 atlas = ExtResource("1_gkrbn")
@@ -25,7 +25,11 @@ region = Rect2(473, 560, 34, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vi0o"]
 atlas = ExtResource("1_gkrbn")
-region = Rect2(470, 462, 24, 59)
+region = Rect2(473, 483, 17, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it1pt"]
+atlas = ExtResource("1_gkrbn")
+region = Rect2(468, 456, 28, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wge0h"]
 atlas = ExtResource("1_gkrbn")
@@ -35,9 +39,13 @@ region = Rect2(483, 82, 10, 10)
 atlas = ExtResource("1_gkrbn")
 region = Rect2(469, 592, 41, 23)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0ix1"]
+atlas = ExtResource("1_gkrbn")
+region = Rect2(468, 763, 42, 42)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ope0u"]
 atlas = ExtResource("1_gkrbn")
-region = Rect2(98, 170, 62, 12)
+region = Rect2(98, 170, 55, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcvnr"]
 atlas = ExtResource("1_gkrbn")
@@ -106,6 +114,8 @@ evaporacion = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer/Evapor
 temp = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura/HBoxContainer/Lbl Temp")
 presion = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica/HBoxContainer/Lbl Presion")
 viento = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Viento/HBoxContainer/Lbl Viento")
+metadata/_edit_horizontal_guides_ = [84.0, 39.0]
+metadata/_edit_vertical_guides_ = [68.0]
 
 [node name="AnimScale" type="Control" parent="."]
 layout_mode = 1
@@ -237,7 +247,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="Senales" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos"]
-custom_minimum_size = Vector2(117, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="Senales" type="VBoxContainer" parent="AnimScale/VBoxContainer/Datos/Senales"]
@@ -252,7 +262,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal"]
-custom_minimum_size = Vector2(26, 18)
+custom_minimum_size = Vector2(24, 23.2)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
@@ -271,27 +281,18 @@ size_flags_vertical = 3
 [node name="Senal" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal/VBoxContainer/Dot"]
 self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -4.0
+offset_right = 16.0
+offset_bottom = 4.0
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 texture = SubResource("AtlasTexture_jc0yf")
 expand_mode = 1
-
-[node name="SEÑAL" type="Label" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 10
-text = "SEÑAL"
-horizontal_alignment = 1
 
 [node name="HBox - UTR" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos/Senales/Senales"]
 layout_mode = 2
@@ -318,27 +319,18 @@ size_flags_vertical = 3
 [node name="UTR" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - UTR/VBoxContainer/Dot"]
 self_modulate = Color(0.698039, 0.0913459, 0.0509804, 1)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -4.0
+offset_right = 16.0
+offset_bottom = 4.0
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 texture = SubResource("AtlasTexture_jc0yf")
 expand_mode = 1
-
-[node name="SEÑAL" type="Label" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - UTR/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 10
-text = "UTR"
-horizontal_alignment = 1
 
 [node name="Bateria" type="Control" parent="AnimScale/VBoxContainer/Datos/Senales"]
 layout_mode = 2
@@ -346,38 +338,83 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="TextureRect" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria"]
+[node name="Bateria Relleno" type="NinePatchRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria"]
+self_modulate = Color(0.0707, 0.7, 0.049, 0.470588)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.5
-offset_top = -27.0
-offset_right = 8.5
-offset_bottom = 13.0
+offset_left = -29.0
+offset_top = 5.0
+offset_right = -20.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_gkrbn")
+region_rect = Rect2(480, 11, 10, 15)
+
+[node name="Bateria" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria Relleno"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -25.0
+offset_right = 10.0
+offset_bottom = 1.0
+grow_vertical = 0
 texture = SubResource("AtlasTexture_3vi0o")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria"]
+[node name="Label" type="Label" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria Relleno"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 12.5
-offset_right = 20.0
-offset_bottom = 26.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 10
-text = "25.0V"
+text = "24.5V"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AC Icono" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria"]
+layout_mode = 1
+offset_left = -11.0
+offset_top = 4.0
+offset_right = 11.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_it1pt")
+expand_mode = 1
+
+[node name="Senal" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/AC Icono"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -3.0
+offset_right = 17.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_jc0yf")
+expand_mode = 1
 
 [node name="Separator" type="TextureRect" parent="AnimScale/VBoxContainer/Datos"]
 custom_minimum_size = Vector2(1, 35)
@@ -387,7 +424,7 @@ texture = SubResource("AtlasTexture_wge0h")
 expand_mode = 1
 
 [node name="Nivel" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos"]
-custom_minimum_size = Vector2(126, 0)
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 alignment = 1
 
@@ -403,9 +440,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
+offset_left = -27.5
 offset_top = -27.0
-offset_right = 25.0
+offset_right = 28.5
 offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -434,7 +471,7 @@ alignment = 1
 [node name="Lbl Valor Nivel" type="Label" parent="AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "12.0m"
+text = "NVL: 12.0m"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -445,10 +482,38 @@ size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_4al6k")
 expand_mode = 1
 
-[node name="Lbl Valor Nivel2" type="Label" parent="AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Control" type="Control" parent="AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox/HBoxContainer"]
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+
+[node name="Senal" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox/HBoxContainer/Control"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -4.0
+offset_right = 3.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_c0ix1")
+expand_mode = 1
+
+[node name="Sensor" type="Label" parent="AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "NIVEL"
+text = "SENSOR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -555,15 +620,21 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_wge0h")
 expand_mode = 1
 
+[node name="HSeparator" type="HSeparator" parent="AnimScale/VBoxContainer/Datos"]
+visibility_layer = 0
+layout_mode = 2
+
 [node name="Datos" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos"]
-custom_minimum_size = Vector2(155, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
+alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="AnimScale/VBoxContainer/Datos/Datos"]
 visibility_layer = 0
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AnimScale/VBoxContainer/Datos/Datos"]
 layout_mode = 2
@@ -714,8 +785,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="AnimScale/VBoxContainer/Datos/Datos"]
+custom_minimum_size = Vector2(82, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 2
 alignment = 1
 
@@ -808,7 +879,7 @@ expand_mode = 1
 
 [node name="Lbl Presion" type="Label" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "1026 hPa"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -855,7 +926,7 @@ expand_mode = 1
 
 [node name="Lbl Viento" type="Label" parent="AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Viento/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 9
 text = "NE 70km/hr"
 horizontal_alignment = 1
 vertical_alignment = 1
