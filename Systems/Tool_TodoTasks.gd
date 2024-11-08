@@ -14,14 +14,31 @@
 # A cierta distancia activar el AO
 # Arreglar brujula norte
 
-# Armado flujo completo (orquestador, datos,etc)
+## Armado flujo completo (orquestador, datos,etc)
 # Cambio entre sitios
 # Entregar rotcion de cam fly sin ajuste de 0 a 180 en ambas direcciones
-# Turbo (height / rotación)
+# Minimap arreglar
+## Turbo (height / rotación)
 
-# Checar valores random que tengan sentido
-# Cuando llueve, viento random
-# minMax, minMin, medMax, medMin, maxMax, maxMin
+
+# Maquina estados de datos:
+	# Agregar bateria cfe booleano
+	# Agregar sensor nivel booleano
+	# Checar valores random que tengan sentido
+	# Cuando llueve, viento random
+	# minMax, minMin, medMax, medMin, maxMax, maxMin
+	# Altura de presas dependiendo como se ven en la realidad de 0-80
+	# AC falla CFE arriba de bateria
+	# Dos señales: UTR -> enlace
+	# Sensor con marca si estaactualizado o no 
+	# Los valores de nivel quemado
+	
+	#Llover si o no:
+		# Precipitacion/ presion/ humedad
+		# Cada condicion con su max y con min
+		# Evaporación y temperatura igual
+		# Viento
+		# Nivel 
 
 #	[ Carlos ]
 # Graficadora
