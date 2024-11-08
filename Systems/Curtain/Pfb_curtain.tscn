@@ -1,6 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddn72texoudi0"]
+[gd_scene load_steps=8 format=3 uid="uid://ddn72texoudi0"]
 
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_2lhx5"]
+
+[sub_resource type="Animation" id="Animation_mmao6"]
+resource_name = "anim_loading_square"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.785398, 2.35619, 3.14159, 3.92699, 4.71239, 5.49779]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lobvr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.785398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulhh6"]
+_data = {
+"RESET": SubResource("Animation_lobvr"),
+"anim_loading_square": SubResource("Animation_mmao6")
+}
 
 [sub_resource type="Animation" id="Animation_82js8"]
 length = 0.001
@@ -67,25 +129,123 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="lbl - Cargando" type="Label" parent="img - Curtain"]
+[node name="Container" type="Control" parent="img - Curtain"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -146.0
-offset_top = -54.5
-offset_right = 146.0
-offset_bottom = 54.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -165.0
+offset_right = 139.0
+offset_bottom = -37.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 46
+grow_vertical = 0
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="img - Curtain/Container"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 79.0
+grow_horizontal = 2
+
+[node name="Square_1" type="NinePatchRect" parent="img - Curtain/Container/Control"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_2lhx5")
+region_rect = Rect2(473, 5, 30, 30)
+
+[node name="Square_2" type="NinePatchRect" parent="img - Curtain/Container/Control"]
+self_modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = ExtResource("1_2lhx5")
+region_rect = Rect2(473, 5, 30, 30)
+
+[node name="Square_3" type="NinePatchRect" parent="img - Curtain/Container/Control"]
+self_modulate = Color(1, 1, 1, 0.25098)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture = ExtResource("1_2lhx5")
+region_rect = Rect2(473, 5, 30, 30)
+
+[node name="Square_4" type="NinePatchRect" parent="img - Curtain/Container/Control"]
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_2lhx5")
+region_rect = Rect2(473, 5, 30, 30)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="img - Curtain/Container"]
+
+[node name="Ico - Square" type="NinePatchRect" parent="img - Curtain/Container"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.5
+offset_top = -33.0
+offset_right = 44.5
+offset_bottom = 57.0
+grow_horizontal = 2
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(45, 45)
+texture = ExtResource("1_2lhx5")
+region_rect = Rect2(63, 304, 64, 64)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="img - Curtain/Container/Ico - Square"]
+libraries = {
+"": SubResource("AnimationLibrary_ulhh6")
+}
+autoplay = "anim_loading_square"
+
+[node name="lbl - Cargando" type="Label" parent="img - Curtain/Container"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -51.0
+offset_right = 122.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 31
 text = "Cargando..."
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="img - Curtain/lbl - Cargando"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="img - Curtain/Container/lbl - Cargando"]
 libraries = {
 "": SubResource("AnimationLibrary_dr3dk")
 }
@@ -99,3 +259,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true

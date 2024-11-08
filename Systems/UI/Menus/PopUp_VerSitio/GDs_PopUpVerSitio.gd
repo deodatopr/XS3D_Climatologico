@@ -16,6 +16,7 @@ extends Control
 
 signal OnCancelarVerSitio
 var estacion:GDs_Data_Estacion
+var currentSitioId : int = -1
 
 func _ready():
 	btnAceptar.mouse_entered.connect(OnAceptarFocus)
@@ -39,7 +40,8 @@ func _input(event):
 func OpenPopUp(_estacion:GDs_Data_Estacion):
 	show()
 	estacion = _estacion
-	id.text = str(_estacion.id)
+	currentSitioId = _estacion.id
+	id.text = str(currentSitioId)
 	nombre.text = _estacion.nombre
 	frame.self_modulate = _estacion.color
 	framePatch.self_modulate = _estacion.color
@@ -54,7 +56,7 @@ func OnVisibleChanged():
 		animPlayer.stop()
 
 func OnAceptar():
-	pass
+	SIGNALS.OnGoToSitio.emit(currentSitioId)
 
 func OnAceptarFocus():
 	btnAceptarHighlight.show()

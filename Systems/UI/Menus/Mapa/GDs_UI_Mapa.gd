@@ -40,6 +40,9 @@ func OnVisibility():
 		mapPoints[currentSitio].grab_focus()
 
 func OnAnySitioPressed(_estacion:GDs_Data_Estacion):
+	if not _estacion.disponible:
+		return
+	
 	#AUDIO
 	if not APPSTATE.popUpOpened:
 		clickSnd.play()

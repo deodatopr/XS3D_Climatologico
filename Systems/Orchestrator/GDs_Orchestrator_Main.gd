@@ -16,9 +16,16 @@ func _ready():
 	#ENDPOINT
 	dataService_manager.Initialize()
 	dataService_manager.MakeRequest_GetAllEstaciones()
-	await dataService_manager.OnDataRefresh
 	
 	#ESCENAS
 	scenes_manager.Initialize(dataService_manager,curtain)
-	scenes_manager.GoToSector(6)
+	
+	
+	var rndIdSitio : int = scenes_manager.GetRndIdSite()
+	#HACK: Iniciar siempre en el sitio 6
+	rndIdSitio = 6
+	scenes_manager.GoToSector(rndIdSitio)
+	
+	#Send data to refresh inmediatly
+	dataService_manager.OnDataRefresh.emit()
 	

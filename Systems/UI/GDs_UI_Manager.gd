@@ -1,9 +1,7 @@
 class_name GDs_UI_Manager extends Control
 
-@export_group("EXTERNAL REFERENCES")
+@export_group("SCENE REFERENCES")
 @export var vistaSky:Control
-@export var pin_Sitio:Node3D
-@export var mshTerrain:Node3D
 
 @export_group("INTERNAL REFERENCES")
 @export var menuPerfiles:GDs_MenuPerfiles

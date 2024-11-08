@@ -34,7 +34,6 @@ crLocalEstaciones = ExtResource("2_y5d4k")
 
 [node name="Endpoint" type="Node" parent="EP_GetAllEstaciones"]
 script = ExtResource("3_l4ktb")
-CR_LocalEstaciones = ExtResource("2_y5d4k")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="EP_GetAllEstaciones/Endpoint"]
 
@@ -42,11 +41,9 @@ CR_LocalEstaciones = ExtResource("2_y5d4k")
 
 [node name="Endpoint_Debug" type="Node" parent="EP_GetAllEstaciones"]
 script = ExtResource("4_eklc0")
-CR_LocalEstaciones = ExtResource("2_y5d4k")
 
 [node name="Endpoint_Error" type="Node" parent="EP_GetAllEstaciones" node_paths=PackedStringArray("timer", "panelBgk", "panelError", "labelErrorType", "labelTimeToRetryValue", "btnReconectar")]
 script = ExtResource("5_fxad4")
-CR_LocalEstaciones = ExtResource("2_y5d4k")
 timer = NodePath("Timer - Retry")
 panelBgk = NodePath("../../UI - Error/Panel - Bgk")
 panelError = NodePath("../../UI - Error/Panel - Error_")

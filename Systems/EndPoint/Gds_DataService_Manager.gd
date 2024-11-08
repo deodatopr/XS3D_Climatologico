@@ -100,9 +100,9 @@ func _GetDataFromEP_GetAllEstaciones():
 	if isFirstTimeRequestGetAllEstaciones:
 		_FetchEndpointWithLocalData(estacionesFromEP)
 		isFirstTimeRequestGetAllEstaciones = false
-	else:
-		_UpdateFromEP(estacionesFromEP)
 		
+	_UpdateFromEP(estacionesFromEP)
+	
 	#Fill structs by estado
 	_FillStructure(estaciones_Estruc_Todas)
 	_FillStructure(estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)

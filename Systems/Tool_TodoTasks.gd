@@ -15,11 +15,17 @@
 # Arreglar brujula norte
 
 ## Armado flujo completo (orquestador, datos,etc)
-# Cambio entre sitios
-# Entregar rotcion de cam fly sin ajuste de 0 a 180 en ambas direcciones
-# Minimap arreglar
+## Minimap arreglar
 ## Turbo (height / rotación)
 
+# Cambio entre sitios
+# Entregar rotcion de cam fly sin ajuste de 0 a 180 en ambas direcciones
+# Cambiar todo lo que diga Estaciones -> Sitios (Para estandarizar)
+# contenido y sin datos: si entre 
+#"Estableciendo conexión con servidor"
+# "Obteniendo datos con el servidor
+# Reintentar con boton
+# Valores es 0 poner rayitas
 
 # Maquina estados de datos:
 	# Agregar bateria cfe booleano
@@ -32,6 +38,7 @@
 	# Dos señales: UTR -> enlace
 	# Sensor con marca si estaactualizado o no 
 	# Los valores de nivel quemado
+	# Si no hay ac y no bateria no hay señales utr / telefono
 	
 	#Llover si o no:
 		# Precipitacion/ presion/ humedad

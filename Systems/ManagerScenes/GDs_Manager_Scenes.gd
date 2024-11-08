@@ -11,9 +11,16 @@ var curtain : GDs_Curtain
 var instanceSector : GDs_Sector
 var lastIdSectorVisited : int = -1
 
+func _ready():
+	SIGNALS.OnGoToSitio.connect(GoToSector)
+
 func Initialize(_dataService : GDs_DataService_Manager, _curtain : GDs_Curtain):
 	dataService = _dataService
 	curtain = _curtain
+	
+func GetRndIdSite() -> int:
+	var rndId : int = randi_range(0,sitios.size() -1)
+	return sitios.keys()[rndId]
 
 func GoToSector(_id : int):
 	var _lvlSector : PackedScene = sitios[_id] as PackedScene
