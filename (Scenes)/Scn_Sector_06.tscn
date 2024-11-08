@@ -317,7 +317,6 @@ script = ExtResource("18_xkk4p")
 ppePresa = NodePath("Alarmas Presa/Presa")
 ppeTemp = NodePath("Alarmas Temp/Temp")
 sndAlarm = NodePath("Alarma")
-dbgEnable = true
 
 [node name="Alarmas Presa" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
 layer = 6

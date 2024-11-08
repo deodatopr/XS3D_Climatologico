@@ -15,14 +15,14 @@ func _ready():
 func _process(delta):
 	if dbgEnable:
 		match estadoPresa:
-			1:
+			0:
 				SetPresaToNorm()
 			1:
 				SetPresaToPrev()
 			2:
 				SetPresaToCrit()
 		match estadoTemp:
-			1:
+			0:
 				SetTempToNorm()
 			1:
 				SetTempToPrev()

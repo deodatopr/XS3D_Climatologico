@@ -21,6 +21,10 @@ func FormatNivel(nivel:float)->String:
 	nivel = roundf(nivel)
 	return "Nvl: " + str(nivel) + "m"
 
+func FormatNiveles(nivel:float)->String:
+	nivel = roundf(nivel)
+	return str(nivel) + "m"
+
 func FormatPptn_pluvial(pptn:float)->String:
 	pptn = roundf(pptn)
 	return str(pptn) + "mm"

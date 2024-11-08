@@ -75,8 +75,8 @@ func DataRefresh(_estacion: GDs_Data_Estacion):
 	
 	#nivel
 	nivel.text = UTILITIES.FormatNivel(_estacion.nivel)
-	nivelPrev.text = UTILITIES.FormatNivel(_estacion.nivelPrev)
-	nivelCrit.text = UTILITIES.FormatNivel(_estacion.nivelCrit)
+	nivelPrev.text = UTILITIES.FormatNiveles(_estacion.nivelPrev)
+	nivelCrit.text = UTILITIES.FormatNiveles(_estacion.nivelCrit)
 	
 	nivelBg.self_modulate = ColorNorm
 	if _estacion.nivel > _estacion.nivelPrev: nivelBg.self_modulate = ColorPrev
