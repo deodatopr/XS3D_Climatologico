@@ -31,13 +31,11 @@ func _process(delta):
 
 func OnRefresh():
 	if dbgEnable: return
-	match APPSTATE.currntSitio.nivel:
-		1:
-			SetPresaToNorm()
-		1:
-			SetPresaToPrev()
-		2:
-			SetPresaToCrit()
+	SetPresaToNorm()
+	if APPSTATE.currntSitio.enPrev:
+		SetPresaToPrev()
+	if APPSTATE.currntSitio.enCrit:
+		SetPresaToCrit()
 	
 	SetTempToNorm()
 	if APPSTATE.currntSitio.temperatura > 24:
