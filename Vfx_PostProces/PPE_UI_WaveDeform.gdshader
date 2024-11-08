@@ -9,6 +9,8 @@ uniform float smoothness: hint_range(0.05, 0.2, 0.01) = 0.15;
 
 uniform int stop : hint_range(0, 1) = 1;
 uniform float speed: hint_range(0.0, 2.0, 0.001) = 0.4;
+uniform bool isCritico = false;
+uniform vec4 colorCritico: source_color = vec4(0.3,0.0,0.0,0.03);
 
 void fragment() {
 	
@@ -35,5 +37,10 @@ void fragment() {
 	vec4 red = texture(SCREEN_TEXTURE, final_st + abber_vec);
 	vec4 blue = texture(SCREEN_TEXTURE, final_st - abber_vec);
 	vec4 ori = texture(SCREEN_TEXTURE, final_st);
-	COLOR = vec4(red.r, ori.g, blue.b, 1.0);
+	if (isCritico){
+		COLOR = mix(vec4(red.r, ori.g, blue.b, 1.0) , colorCritico,mask);
+	}
+	else{
+		COLOR = vec4(red.r, ori.g, blue.b, 1.0);
+	}
 }
