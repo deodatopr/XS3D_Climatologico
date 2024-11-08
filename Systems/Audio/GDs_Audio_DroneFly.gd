@@ -25,8 +25,8 @@ var isBoosting:=false
 var tween:Tween
 var prevCamHeight:=0
 
-var windMidPoint:=0
-var natureMidPoint:=0
+var windMidPoint : float = 0.0
+var natureMidPoint : float = 0.0
 func _ready():
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
 	natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
