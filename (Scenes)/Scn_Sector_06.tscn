@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=41 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
@@ -34,8 +34,9 @@
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="23_2ha5g"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rg1hk"]
-size = Vector3(3541.41, 342.292, 3679.88)
+[sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -90,10 +91,6 @@ shader_parameter/lensDistortion = 1.0
 shader = SubResource("Shader_mn58d")
 shader_parameter/pixel = 1.0
 shader_parameter/sharpening = 1.5
-
-[sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
 [node name="SECTOR 6" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_vpunx")
@@ -154,6 +151,13 @@ fov = 35.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
 current = true
+
+[node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
+stream = ExtResource("21_atymd")
+volume_db = 10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
 script = ExtResource("16_r0mi2")
@@ -226,7 +230,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
 stream = ExtResource("13_de45w")
 volume_db = 15.0
 unit_size = 50.0
-autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
@@ -235,7 +238,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.948, 36.709, -1116.42)
 stream = ExtResource("13_de45w")
 volume_db = 15.0
 unit_size = 50.0
-autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
@@ -244,7 +246,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.157, 36.709, -1866.21)
 stream = ExtResource("13_de45w")
 volume_db = 15.0
 unit_size = 50.0
-autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
@@ -253,15 +254,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -526.541, 202.467, 286.044)
 stream = ExtResource("15_oeod0")
 volume_db = 80.0
 unit_size = 100.0
-autoplay = true
 bus = &"SFX"
+parameters/looping = true
 
 [node name="Audio - Town2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.24, 153.759, -303.367)
 stream = ExtResource("16_a3tvj")
 volume_db = 15.0
 unit_size = 30.0
-autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
@@ -270,7 +270,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244.899, 203.941, 713.412)
 stream = ExtResource("16_a3tvj")
 volume_db = 15.0
 unit_size = 30.0
-autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
@@ -279,21 +278,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1101.99, 202.467, -1475.1)
 stream = ExtResource("15_oeod0")
 volume_db = 15.0
 unit_size = 30.0
-autoplay = true
 bus = &"SFX"
-parameters/looping = true
-
-[node name="Area3D - Nature" type="Area3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="[ SYSTEMS ]/Audio - DroneFly/Area3D - Nature"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5462, 166.146, -51.2013)
-shape = SubResource("BoxShape3D_rg1hk")
-
-[node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
-stream = ExtResource("21_atymd")
-volume_db = 10.0
-autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="PPE - Glitch" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly") instance=ExtResource("7_cjwh8")]
@@ -326,6 +311,34 @@ shadow_blur = 3.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 200.0
 sky_mode = 1
+
+[node name="[ CONTENT ]" type="Node" parent="."]
+
+[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 43, -74)
+
+[node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
+visible = false
+material_override = ExtResource("2_vmk6t")
+mesh = SubResource("QuadMesh_2ocno")
+metadata/_edit_lock_ = true
+
+[node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(3525.65, 0, 0, 0, -0.000164656, 3556.06, 0, -3766.88, -0.00015544, -16.173, -60, -0.362)
+material_override = ExtResource("23_2ha5g")
+mesh = SubResource("QuadMesh_k5wsg")
+
+[node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
+transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
+
+[node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
+
+[node name="================" type="Node" parent="[ CONTENT ]"]
+
+[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
+
+[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
@@ -411,31 +424,3 @@ mshTerrain = NodePath("../../../../[ CONTENT ]/Msh_Terrain")
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("6_7j046")]
 visible = false
-
-[node name="[ CONTENT ]" type="Node" parent="."]
-
-[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 43, -74)
-
-[node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
-visible = false
-material_override = ExtResource("2_vmk6t")
-mesh = SubResource("QuadMesh_2ocno")
-metadata/_edit_lock_ = true
-
-[node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(3525.65, 0, 0, 0, -0.000164656, 3556.06, 0, -3766.88, -0.00015544, -16.173, -60, -0.362)
-material_override = ExtResource("23_2ha5g")
-mesh = SubResource("QuadMesh_k5wsg")
-
-[node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
-
-[node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
-
-[node name="================" type="Node" parent="[ CONTENT ]"]
-
-[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
-
-[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
