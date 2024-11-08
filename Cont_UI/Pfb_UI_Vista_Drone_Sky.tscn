@@ -172,10 +172,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -186.0
-offset_top = 51.0
-offset_right = -28.0
-offset_bottom = 110.0
+offset_left = -207.0
+offset_top = 43.0
+offset_right = -6.0
+offset_bottom = 118.0
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_0lauy")
 

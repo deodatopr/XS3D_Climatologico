@@ -19,7 +19,7 @@ func GetNodeBounds(_root : Node) -> AABB:
 #region Formato strings
 func FormatNivel(nivel:float)->String:
 	nivel = roundf(nivel)
-	return str(nivel) + "m"
+	return "Nvl: " + str(nivel) + "m"
 
 func FormatPptn_pluvial(pptn:float)->String:
 	pptn = roundf(pptn)
