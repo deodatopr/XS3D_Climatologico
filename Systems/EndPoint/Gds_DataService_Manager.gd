@@ -149,7 +149,7 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	#Update data only for properties from EP
 	
 	for estacionEP in arrayEndPoint:
-		var estacionToUpdate = GetEstacionById(estacionEP.id)
+		var estacionToUpdate : GDs_Data_Estacion = GetEstacionById(estacionEP.id)
 		estacionToUpdate.fecha = estacionEP.fecha
 		estacionToUpdate.nivel = estacionEP.nivel
 		estacionToUpdate.pptn_pluvial = estacionEP.pptn_pluvial
@@ -164,6 +164,9 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
 		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
 		estacionToUpdate.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
+		
+		if estacionEP.id == APPSTATE.currntIdSitio:
+			APPSTATE.currntSitio = estacionToUpdate
 		
 func _FillStructure(_estaciones_Estruc : GDs_Data_Estaciones_Estructura, _estado : int = -1):
 	_estaciones_Estruc.estaciones.clear()

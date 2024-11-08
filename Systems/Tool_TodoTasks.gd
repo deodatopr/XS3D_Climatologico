@@ -22,7 +22,7 @@
 # Entregar rotcion de cam fly sin ajuste de 0 a 180 en ambas direcciones
 # Cambiar todo lo que diga Estaciones -> Sitios (Para estandarizar)
 # contenido y sin datos: si entre 
-#"Estableciendo conexión con servidor"
+# "Estableciendo conexión con servidor"
 # "Obteniendo datos con el servidor
 # Reintentar con boton
 # Valores es 0 poner rayitas
@@ -77,7 +77,6 @@
 	# Si presionas un punto en el mapa te lleve ahí
 
 # Random  noise clouds shadows
-
 # Parpadear opcion de menu guia
 # Tutorial guiado cuando aparece home (primero como que se presiona home y luego se prenda guia)
 # Endpoint graficadora

@@ -42,7 +42,6 @@ func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly
 	
 	vistaFly.Initialize(cam_manager)
 	
-	barraInfo.OnDataRefresh(dataService.estaciones[5]) #TODO conectar con orchestrator
 	menuMapa.Initialize(dataService.estaciones,5)
 	
 	popUp.hide()
@@ -52,4 +51,5 @@ func CloseInfoMenu():
 		menuInfo.visible = false
 
 func DataRefresh():
+	barraInfo.OnDataRefresh(dataService.estaciones[5]) #TODO conectar con orchestrator
 	menuPerfiles.DataRefresh(dataService.estaciones)

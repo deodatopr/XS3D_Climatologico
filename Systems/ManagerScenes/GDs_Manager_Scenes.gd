@@ -23,6 +23,7 @@ func GetRndIdSite() -> int:
 	return sitios.keys()[rndId]
 
 func GoToSector(_id : int):
+	APPSTATE.currntIdSitio = _id
 	var _lvlSector : PackedScene = sitios[_id] as PackedScene
 	
 	#Mostrar cortina

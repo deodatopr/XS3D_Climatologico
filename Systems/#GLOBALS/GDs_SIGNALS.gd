@@ -5,6 +5,8 @@ extends Node
 @warning_ignore('unused_signal')
 signal OnGoToSitio(_idSitio : int)
 
+signal OnSitioInitialized
+
 #CAMERA
 @warning_ignore('unused_signal')
 signal OnCameraUpdate(_isUpdating : bool)

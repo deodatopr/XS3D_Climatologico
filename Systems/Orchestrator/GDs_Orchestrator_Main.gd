@@ -26,6 +26,9 @@ func _ready():
 	rndIdSitio = 6
 	scenes_manager.GoToSector(rndIdSitio)
 	
+	await scenes_manager.OnSectorLoaded
+	await SIGNALS.OnSitioInitialized
+	
 	#Send data to refresh inmediatly
 	dataService_manager.OnDataRefresh.emit()
 	

@@ -11,18 +11,19 @@ extends Control
 @export var sndUiPressed:AudioStreamPlayer
 
 var lastOneFocused:= 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visibility_changed.connect(OnShowHide)
 	popUp.OnCancelarVerSitio.connect(CancelarVerSitio)
-	InitializeSitios()
+	Initialize()
 
 func _input(event):
 	if visible:
 		if event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
 			GetCurrentFocus()
 
-func InitializeSitios():
+func Initialize():
 	#Conectar vecinos superior e inferior
 	sitios[0].button.focus_neighbor_top = sitios[7].button.get_path()
 	sitios[7].button.focus_neighbor_bottom = sitios[0].button.get_path()
@@ -47,7 +48,6 @@ func OnShowHide():
 	if visible:
 		sitios[lastOneFocused].button.grab_focus()
 
-
 func GetCurrentFocus():
 	var idx = 0
 	for sitio in sitios:
@@ -63,9 +63,6 @@ func OnAnySitioPressed(_estacion:GDs_Data_Estacion):
 	GetCurrentFocus()
 	sitios[lastOneFocused].button.release_focus()
 	popUp.OpenPopUp(_estacion)
-	
-	
-	
 
 func CancelarVerSitio():
 	sitios[lastOneFocused].button.grab_focus()
