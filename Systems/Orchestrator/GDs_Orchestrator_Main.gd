@@ -30,5 +30,5 @@ func _ready():
 	await SIGNALS.OnSitioInitialized
 	
 	#Send data to refresh inmediatly
-	dataService_manager.OnDataRefresh.emit()
+	SIGNALS.OnRefresh.emit()
 	

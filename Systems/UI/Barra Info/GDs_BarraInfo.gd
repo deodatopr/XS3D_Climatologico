@@ -31,39 +31,40 @@ extends Control
 @export var viento:Label
 
 
-func OnDataRefresh(_estacion:GDs_Data_Estacion):
-	id.text = str(_estacion.id)
-	idframe.self_modulate = _estacion.color
-	nombre.text = _estacion.nombre
-	estado.text = UTILITIES.FormatEstado(_estacion.estado)
+
+func OnDataRefresh():
+	var sitio : GDs_Data_Estacion = APPSTATE.currntSitio
 	
-	#TODO: fecha de actualizacion
+	id.text = str(sitio.id)
+	idframe.self_modulate = sitio.color
+	nombre.text = sitio.nombre
+	estado.text = UTILITIES.FormatEstado(sitio.estado)
 	
 	#Senales
-	if _estacion.enlace:
+	if sitio.enlace:
 		senal.self_modulate = OnColor
 	else:
 		senal.self_modulate = OffColor
-	if _estacion.disp_utr:
+	if sitio.disp_utr:
 		UTR.self_modulate = OnColor
 	else:
 		UTR.self_modulate = OffColor
 	
 	#nivel
-	nivel.text = UTILITIES.FormatNivel(_estacion.nivel)
-	nivelPrev.text = UTILITIES.FormatNivel(_estacion.nivelPrev)
-	nivelCrit.text = UTILITIES.FormatNivel(_estacion.nivelCrit)
+	nivel.text = UTILITIES.FormatNivel(sitio.nivel)
+	nivelPrev.text = UTILITIES.FormatNivel(sitio.nivelPrev)
+	nivelCrit.text = UTILITIES.FormatNivel(sitio.nivelCrit)
 	
 	nivelBg.self_modulate = ColorNorm
-	if _estacion.nivel > _estacion.nivelPrev: nivelBg.self_modulate = ColorPrev
-	if _estacion.nivel > _estacion.nivelCrit: nivelBg.self_modulate = ColorCrit
+	if sitio.nivel > sitio.nivelPrev: nivelBg.self_modulate = ColorPrev
+	if sitio.nivel > sitio.nivelCrit: nivelBg.self_modulate = ColorCrit
 	
 	#Datos
-	precipitacion.text = UTILITIES.FormatPptn_pluvial(_estacion.pptn_pluvial)
-	humedad.text = UTILITIES.FormatHumedad(_estacion.humedad)
-	evaporacion.text = UTILITIES.FormatEvaporacion(_estacion.evaporacion)
-	temp.text = UTILITIES.FormatTemperatura(_estacion.temperatura)
-	presion.text = UTILITIES.FormatPresion(_estacion.temperatura)#TODO cambiar por presion
-	viento.text = UTILITIES.FormatIntensidadViento(_estacion.intsdad_viento)#TODO sistema para que regrese N S E O
+	precipitacion.text = UTILITIES.FormatPptn_pluvial(sitio.pptn_pluvial)
+	humedad.text = UTILITIES.FormatHumedad(sitio.humedad)
+	evaporacion.text = UTILITIES.FormatEvaporacion(sitio.evaporacion)
+	temp.text = UTILITIES.FormatTemperatura(sitio.temperatura)
+	presion.text = UTILITIES.FormatPresion(sitio.temperatura)#TODO cambiar por presion
+	viento.text = UTILITIES.FormatIntensidadViento(sitio.intsdad_viento)#TODO sistema para que regrese N S E O
 	
 	pass

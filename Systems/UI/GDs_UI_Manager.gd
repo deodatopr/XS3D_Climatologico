@@ -33,7 +33,7 @@ func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly
 	vistaFly = _vistaFree
 	cam_manager = _cam_manager
 	
-	dataService.OnDataRefresh.connect(DataRefresh)
+	SIGNALS.OnRefresh.connect(DataRefresh)
 	
 	barraMenus.BtnSitios.focus_entered.connect(CloseInfoMenu)
 	barraMenus.BtnDatos.focus_entered.connect(CloseInfoMenu)
@@ -51,5 +51,5 @@ func CloseInfoMenu():
 		menuInfo.visible = false
 
 func DataRefresh():
-	barraInfo.OnDataRefresh(dataService.estaciones[5]) #TODO conectar con orchestrator
+	barraInfo.OnDataRefresh()
 	menuPerfiles.DataRefresh(dataService.estaciones)

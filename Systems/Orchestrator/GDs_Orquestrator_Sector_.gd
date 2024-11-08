@@ -18,5 +18,4 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	sky.Initialize(cameraDrones)
 	menu.Initialize(dataService,fly,cameraDrones)
 	
-	await get_tree().create_timer(.2).timeout
 	SIGNALS.OnSitioInitialized.emit()

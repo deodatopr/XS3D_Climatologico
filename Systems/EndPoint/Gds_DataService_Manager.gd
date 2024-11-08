@@ -25,8 +25,6 @@ var estaciones_Estruc_Michoacan : GDs_Data_Estaciones_Estructura
 
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
-signal OnDataRefresh
-	
 func _ready():
 	if skip_orquestrator_main:
 		APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
@@ -108,7 +106,7 @@ func _GetDataFromEP_GetAllEstaciones():
 	_FillStructure(estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
 	_FillStructure(estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
 	
-	OnDataRefresh.emit()
+	SIGNALS.OnRefresh.emit()
 
 func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 	for estacionEP in arrayEndPoint:
