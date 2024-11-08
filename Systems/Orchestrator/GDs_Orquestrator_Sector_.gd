@@ -15,4 +15,5 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	cameraDrones.Initialize(initCamMode)
 	ppeGlitch.Initialize()
 	fly.Initialize(cameraDrones)
+	sky.Initialize(cameraDrones)
 	menu.Initialize(dataService,fly,cameraDrones)
