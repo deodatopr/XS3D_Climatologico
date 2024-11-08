@@ -4,7 +4,6 @@ var camMng : GDs_Cam_Manager
 var cam : Camera3D
 var pivot : Node3D
 
-
 #FOV
 var fov_current : float
 var fov_01 : float
@@ -67,7 +66,7 @@ func SetCamera():
 	
 	_SetLensDistorsion(fov_current)
 
-func UpdateCamConfig():	
+func UpdateCamConfig():
 	cam.global_position.y = camMng.sky_height
 	cam.fov = camMng.sky_zoom_out
 	

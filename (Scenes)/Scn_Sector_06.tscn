@@ -133,7 +133,7 @@ fly_speed = 0.5
 fly_rot_speed = 0.7
 
 [node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(0.956305, 0.28793, 0.0507698, 0, 0.173648, -0.984808, -0.292372, 0.941776, 0.166061, -25, 500, -152)
+transform = Transform3D(-0.982936, -0.181157, -0.0319427, 0, 0.173648, -0.984808, 0.183952, -0.968002, -0.170685, 97.5425, 500, 148.762)
 script = ExtResource("4_w0x8b")
 
 [node name="sky_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovSky"]
@@ -142,7 +142,7 @@ current = true
 fov = 100.0
 
 [node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(0.819152, 0.242404, 0.519837, 0, 0.906308, -0.422618, -0.573576, 0.346189, 0.742404, -250, 200, -400)
+transform = Transform3D(-0.932507, -0.15263, -0.327316, 1.70939e-08, 0.906308, -0.422618, 0.361152, -0.394095, -0.845138, 149.544, 200, 368.141)
 script = ExtResource("5_7w42d")
 
 [node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
@@ -315,7 +315,7 @@ sky_mode = 1
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 43, -74)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.809, 56.2584, 41.4734)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
