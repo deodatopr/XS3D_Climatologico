@@ -47,6 +47,8 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	screenMark.self_modulate = APPSTATE.currntSitio.color
 	screenMark.self_modulate.a = .5
 	
+	pin_sitio.self_modulate =  APPSTATE.currntSitio.color
+	
 	OnScreenChangeSize()
 	
 	if not get_viewport().size_changed.is_connected(OnScreenChangeSize):

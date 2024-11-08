@@ -32,6 +32,8 @@ func _ready():
 		MakeRequest_GetAllEstaciones()
 
 func Initialize():
+	SIGNALS.OnGoToSitio.connect(UpdateCurrentSitio)
+	
 	#Connect with endpoint GetAllEstacion
 	endpoint.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
 	endpoint.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
@@ -60,6 +62,11 @@ func GetEstacionById(_id : int) -> GDs_Data_Estacion:
 			return estacion
 			
 	return null
+	
+func UpdateCurrentSitio(_id : int):
+	for sitio in estaciones:
+		if sitio.id == _id:
+			APPSTATE.currntSitio = sitio
 
 #region [ EVENTS ]
 func _OnSuccessEP_GetAllEstaciones():
@@ -171,9 +178,8 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.enPrev =  estacionEP.nivel >=  estacionToUpdate.nivelPrev and estacionEP.nivel <  estacionToUpdate.nivelCrit 
 		estacionToUpdate.enCrit =  estacionEP.nivel >=  estacionToUpdate.nivelCrit
 		
-		if estacionEP.id == APPSTATE.currntIdSitio:
-			APPSTATE.currntSitio = estacionToUpdate
-		
+		UpdateCurrentSitio(APPSTATE.currntIdSitio)
+
 func _FillStructure(_estaciones_Estruc : GDs_Data_Estaciones_Estructura, _estado : int = -1):
 	_estaciones_Estruc.estaciones.clear()
 	
