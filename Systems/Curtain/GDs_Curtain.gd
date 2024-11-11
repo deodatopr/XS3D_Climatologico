@@ -4,6 +4,7 @@ class_name GDs_Curtain extends Node
 @export var imgCurtain : Control
 @export var lblCargando : Control
 @export var inputBlocker : Control
+@export var container : Control
 
 signal OnCurtainCovered
 signal OnCurtainFinished
@@ -26,7 +27,7 @@ func _ready() -> void:
 func Show():
 	inputBlocker.show()
 	curtain.show()
-	lblCargando.show()
+	container.show()
 	
 	curtain.process_mode = Node.PROCESS_MODE_INHERIT
 	tween = create_tween()
@@ -40,7 +41,7 @@ func Show():
 	OnCurtainCovered.emit()
 
 func Hide():
-	lblCargando.hide()
+	container.hide()
 	tween = create_tween()
 	
 	#Fade out
