@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://iyaha1bni22n"]
-
-[ext_resource type="Texture2D" uid="uid://bvrquwiuhai3i" path="res://Cont_Models/Sector6/Sitio/Sitio_Piedra.jpg" id="1_4nfd3"]
-
-[resource]
-albedo_texture = ExtResource("1_4nfd3")
-uv1_scale = Vector3(0.6, 0.6, 0.6)

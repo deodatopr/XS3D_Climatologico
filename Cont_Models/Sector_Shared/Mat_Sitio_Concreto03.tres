@@ -1,6 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bdtv082j8lefc"]
-
-[ext_resource type="Texture2D" uid="uid://c3dy6vg3wcf46" path="res://Cont_Models/Sector_Shared/Map_Sitio_Concreto_03.jpg" id="1_5keb2"]
-
-[resource]
-albedo_texture = ExtResource("1_5keb2")
