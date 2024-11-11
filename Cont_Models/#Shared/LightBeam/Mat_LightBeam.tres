@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://car683aybh2ye"]
 
-[ext_resource type="Texture2D" uid="uid://dwbq7fjdo5u5u" path="res://Cont_Shared/LightBeam/LightBeam.png" id="1_4xs0j"]
+[ext_resource type="Texture2D" uid="uid://dwbq7fjdo5u5u" path="res://Cont_Models/#Shared/LightBeam/LightBeam.png" id="1_4xs0j"]
 
 [resource]
 transparency = 1

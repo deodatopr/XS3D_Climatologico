@@ -37,7 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://ddy04w0b45rcn" path="res://Cont_Sounds/Sitio/Sitio_Alarma.mp3" id="23_qgr12"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_WaveDeform.gdshader" id="30_uby03"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_Heat.gdshader" id="31_hk50b"]
-[ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Shared/LightBeam/Mat_LightBeam.tres" id="38_mbo4u"]
+[ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam.tres" id="38_mbo4u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqpe"]
 shader = ExtResource("30_uby03")

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwbq7fjdo5u5u"
-path.s3tc="res://.godot/imported/LightBeam.png-d8fa280f4eb3a3159331b5fedadf7cb4.s3tc.ctex"
+path.s3tc="res://.godot/imported/LightBeam.png-c67f096cd990b5c56cffd465c2266fa1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Shared/LightBeam/LightBeam.png"
-dest_files=["res://.godot/imported/LightBeam.png-d8fa280f4eb3a3159331b5fedadf7cb4.s3tc.ctex"]
+source_file="res://Cont_Models/#Shared/LightBeam/LightBeam.png"
+dest_files=["res://.godot/imported/LightBeam.png-c67f096cd990b5c56cffd465c2266fa1.s3tc.ctex"]
 
 [params]
 

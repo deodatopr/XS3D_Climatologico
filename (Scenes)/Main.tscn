@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://Systems/EndPoint/Local_GetAll/CR_Local_Estaciones.tres" id="4_rl3y7"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="5_8ipwn"]
 [ext_resource type="PackedScene" uid="uid://klhd05h31soo" path="res://Systems/Splash/Pfb_Splash.tscn" id="5_qomdb"]
-[ext_resource type="PackedScene" uid="uid://dj24gdwn2bk1y" path="res://(Scenes)/Scn_Sector_04.tscn" id="6_5288l"]
-[ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector_06.tscn" id="6_rdc0k"]
+[ext_resource type="PackedScene" uid="uid://dj24gdwn2bk1y" path="res://(Scenes)/Scn_Sector4.tscn" id="6_5288l"]
+[ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector6.tscn" id="6_rdc0k"]
 
 [node name="Main" type="Node"]
 
