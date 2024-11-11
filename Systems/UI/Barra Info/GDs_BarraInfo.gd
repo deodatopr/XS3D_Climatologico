@@ -22,6 +22,7 @@ extends Control
 @export var ColorNorm:Color
 @export var ColorPrev:Color
 @export var ColorCrit:Color
+@export var animColor:Color
 @export_subgroup("Datos")
 @export var precipitacion:Label
 @export var humedad:Label
@@ -30,7 +31,7 @@ extends Control
 @export var presion:Label
 @export var viento:Label
 
-
+var tween:Tween
 
 func OnDataRefresh():
 	var sitio : GDs_Data_Estacion = APPSTATE.currntSitio
@@ -56,8 +57,13 @@ func OnDataRefresh():
 	nivelCrit.text = UTILITIES.FormatNiveles(sitio.nivelCrit)
 	
 	nivelBg.self_modulate = ColorNorm
-	if sitio.nivel > sitio.nivelPrev: nivelBg.self_modulate = ColorPrev
-	if sitio.nivel > sitio.nivelCrit: nivelBg.self_modulate = ColorCrit
+	StopAnimation()
+	if sitio.nivel > sitio.nivelPrev: 
+		nivelBg.self_modulate = ColorPrev
+		PlayAnimation(ColorPrev,0.4)
+	if sitio.nivel > sitio.nivelCrit: 
+		nivelBg.self_modulate = ColorCrit
+		PlayAnimation(ColorCrit,0.3)
 	
 	#Datos
 	precipitacion.text = UTILITIES.FormatPptn_pluvial(sitio.pptn_pluvial)
@@ -66,5 +72,12 @@ func OnDataRefresh():
 	temp.text = UTILITIES.FormatTemperatura(sitio.temperatura)
 	presion.text = UTILITIES.FormatPresion(sitio.temperatura)#TODO cambiar por presion
 	viento.text = UTILITIES.FormatIntensidadViento(sitio.intsdad_viento)#TODO sistema para que regrese N S E O
+
+func PlayAnimation(_color:Color,_speed:float):
+	tween = create_tween().set_loops(0)
+	tween.tween_property(nivelBg,"self_modulate",animColor,_speed)
+	tween.tween_property(nivelBg,"self_modulate",_color,_speed)
 	
-	pass
+func StopAnimation():
+	if tween:
+		if tween.is_running(): tween.kill()

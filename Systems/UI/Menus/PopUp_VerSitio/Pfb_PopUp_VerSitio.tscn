@@ -329,80 +329,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Aceptar" type="Control" parent="PopUp Ver Sitio - BLUR/Control/Botones"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -27.0
-offset_right = -9.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_oduyb")
-
-[node name="Label" type="Label" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 31
-text = "B"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Highlight Aceptar" type="TextureRect" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -27.0
-offset_right = -9.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_ub68o")
-
-[node name="Label" type="Label" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1.5
-offset_top = -15.0
-offset_right = 92.5
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 21
-text = "aceptar"
-uppercase = true
-
-[node name="Btn Aceptar" type="Button" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-
 [node name="Cancelar" type="Control" parent="PopUp Ver Sitio - BLUR/Control/Botones"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -414,10 +340,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -27.0
-offset_right = -49.0
-offset_bottom = 27.0
+offset_left = -61.5
+offset_top = -27.5
+offset_right = -6.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_oduyb")
@@ -457,9 +383,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.5
+offset_left = -2.5
 offset_top = -15.0
-offset_right = 62.5
+offset_right = 104.5
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -468,6 +394,80 @@ text = "cancelar"
 uppercase = true
 
 [node name="Btn Cancelar" type="Button" parent="PopUp Ver Sitio - BLUR/Control/Botones/Cancelar"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Aceptar" type="Control" parent="PopUp Ver Sitio - BLUR/Control/Botones"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -27.5
+offset_right = -39.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_oduyb")
+
+[node name="Label" type="Label" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Highlight Aceptar" type="TextureRect" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -27.0
+offset_right = -9.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ub68o")
+
+[node name="Label" type="Label" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -15.0
+offset_right = 61.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "aceptar"
+uppercase = true
+
+[node name="Btn Aceptar" type="Button" parent="PopUp Ver Sitio - BLUR/Control/Botones/Aceptar"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
