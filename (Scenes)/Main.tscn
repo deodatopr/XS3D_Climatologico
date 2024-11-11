@@ -41,7 +41,7 @@ sitios = {
 
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("5_8ipwn")]
 skip_orquestrator_main = false
-timeToRefresh = 5.0
+timeToRefresh = 30.0
 
 [node name="[ SCENES ]" type="Node" parent="."]
 

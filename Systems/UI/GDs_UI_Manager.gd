@@ -45,6 +45,8 @@ func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly
 	menuMapa.Initialize(dataService.estaciones,5)
 	
 	popUp.hide()
+	
+	DataRefresh()
 
 func CloseInfoMenu():
 	if menuInfo.visible:
