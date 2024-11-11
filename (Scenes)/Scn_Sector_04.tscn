@@ -339,7 +339,6 @@ transform = Transform3D(42.9789, 0, 0, 0, 9.76607, 0, 0, 0, 46.2167, -18.1554, -
 [node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("26_g4unq")]
 
 [node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("27_0vsox")]
-visible = false
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
