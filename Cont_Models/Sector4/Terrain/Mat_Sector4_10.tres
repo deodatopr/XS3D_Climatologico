@@ -6,4 +6,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_ji3dx")
-shader_parameter/Albedo_Map = ExtResource("2_q5lhs")
+shader_parameter/BaseMap = ExtResource("2_q5lhs")

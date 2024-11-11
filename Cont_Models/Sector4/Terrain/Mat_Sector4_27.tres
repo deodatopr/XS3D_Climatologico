@@ -6,4 +6,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_lvvfi")
-shader_parameter/Albedo_Map = ExtResource("2_xhp14")
+shader_parameter/BaseMap = ExtResource("2_xhp14")
