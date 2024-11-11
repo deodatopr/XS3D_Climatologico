@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn2xw5xuyhnyj"
-path="res://.godot/imported/Sitio_Asfalto.jpg-e4f7e372c49640439e7fe25854d7346e.ctex"
+uid="uid://7d5js26ohv8f"
+path="res://.godot/imported/Map_Sitio_Paredes.jpg-9252196579aff0812693dad91d3176d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cont_Models/Sector4/Sitio/Sitio_Asfalto.jpg"
-dest_files=["res://.godot/imported/Sitio_Asfalto.jpg-e4f7e372c49640439e7fe25854d7346e.ctex"]
+source_file="res://Cont_Models/Sector_Shared/Map_Sitio_Paredes.jpg"
+dest_files=["res://.godot/imported/Map_Sitio_Paredes.jpg-9252196579aff0812693dad91d3176d1.ctex"]
 
 [params]
 
