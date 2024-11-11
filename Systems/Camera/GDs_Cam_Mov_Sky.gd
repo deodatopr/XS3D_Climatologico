@@ -10,17 +10,18 @@ var fov_01 : float
 var fov_lensDistIntensity : float
 
 #Movement
+var mov_speed_ms : float
 var mov_axis : Vector2
-var mov_speed01 : float = 0
 var mov_curv01 : float
 var mov_velocity : Vector3
 var mov_isMoving : bool
 var mov_isPressingMove : bool
 var mov_lastVelocity : Vector3
-var mov_lastSpeed01:float = 0
 var mov_limitSpeed : float
 var mov_isInsideBoundings : bool
 var mov_lastBounding01 : float
+var mov_speedForUI : float
+var mov_lastSpeedForUI : float
 
 #Rotation
 var rot_axis : float
@@ -44,9 +45,8 @@ func Initialize(_camMng : GDs_Cam_Manager):
 	camMng = _camMng
 	cam = camMng.sky_cam
 	pivot = camMng.sky_pivot
-	mov_speed01 = 0
 	
-	UpdateCamConfig()
+	UpdateValuesInRuntime()
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -61,14 +61,18 @@ func SetCamera():
 	
 	mov_velocity = Vector3.ZERO
 	mov_curv01 = 0
+	mov_speed_ms = (camMng.sky_speed * 1000) / 3600
+	mov_speed_ms *=.01
 	rot_hor = pivot.rotation.y
 	fov_current = cam.fov
 	
 	_SetLensDistorsion(fov_current)
 
-func UpdateCamConfig():
+func UpdateValuesInRuntime():
 	cam.global_position.y = camMng.sky_height
 	cam.fov = camMng.sky_zoom_out
+	mov_speed_ms = (camMng.sky_speed * 1000) / 3600
+	mov_speed_ms *=.01
 	
 func _physics_process(delta):
 	_Movement(delta)
@@ -95,9 +99,9 @@ func _Movement(_delta: float):
 			curvPoint = camMng.curveMovement.sample(mov_curv01)
 		
 		#Calculate velocity to move
-		mov_velocity += inputDir * camMng.sky_speed * curvPoint * _delta
+		mov_velocity += inputDir * mov_speed_ms * curvPoint * _delta
 		@warning_ignore('incompatible_ternary')
-		mov_limitSpeed = camMng.sky_speed * (camMng.sky_turbo if isPressingTurbo else 1)
+		mov_limitSpeed = mov_speed_ms * (camMng.sky_turbo if isPressingTurbo else 1)
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif not mov_isPressingMove and mov_velocity.length() > 0:
 		#Deceleration
@@ -124,17 +128,18 @@ func _Movement(_delta: float):
 	mov_lastBounding01 = (1 - CAM.boundings01)
 	mov_velocity = mov_velocity * decreaseSpeedByLimits
 	
-	#Save mov_speed01 to send it to UI
-	var fixSpeed : float =  inverse_lerp(0,camMng.sky_speed * camMng.sky_turbo,mov_velocity.length())
-	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, 10 * _delta)
-	mov_speed01 = clampf(slowSpeed,0, 1)
-	mov_lastSpeed01 = mov_speed01
-	
 	#Apply movement
 	if mov_velocity.length() > 0:
 		mov_velocity.y = 0
 		pivot.global_position += mov_velocity
 		mov_lastVelocity = mov_velocity
+		
+	#Speed to send to UI (km/hr) 
+	var fixedDir : float = 1.0 if inputDir.length() > 0 else 0.0
+	var fixedTurbo : float = camMng.sky_turbo if isPressingTurbo else 1.0
+	mov_speedForUI = lerpf(mov_lastSpeedForUI,camMng.sky_speed * fixedTurbo * fixedDir, 10 * _delta)
+	mov_lastSpeedForUI = mov_speedForUI
+	
 
 func _Rotation(_delta:float):
 	#Detect input controller

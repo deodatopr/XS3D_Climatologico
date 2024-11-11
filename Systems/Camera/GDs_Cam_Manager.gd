@@ -28,8 +28,8 @@ class_name GDs_Cam_Manager extends Node
 @export_range(.7, 1.0) var proximityEdgeLimits : float = .9
 
 @export_subgroup("SKY")
-@export var sky_height : float = 500
-@export var sky_speed: float = .5
+@export_custom(PROPERTY_HINT_NONE,"suffix: m") var sky_height : float = 500
+@export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var sky_speed: float = 50
 @export_range(1,2) var sky_turbo: float = 2
 @export var sky_rot_speed : float = .1
 @export_range(30,130) var sky_zoom_in : float = 30
@@ -38,12 +38,12 @@ class_name GDs_Cam_Manager extends Node
 @export_subgroup("FLY")
 @export_range(30,100) var fly_fov :float = 50
 @export var fly_height_speed : float = 7
-@export var fly_height_max : float = 400
-@export var fly_height_min : float = 200
-@export var fly_speed : float = .3
+@export_custom(PROPERTY_HINT_NONE,"suffix: m") var fly_height_max : float = 400
+@export_custom(PROPERTY_HINT_NONE,"suffix: m") var fly_height_min : float = 200
+@export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var fly_speed : float = 80
 @export_range(1,5) var fly_turbo : float = 2.5
 @export_range(.1,2,.1) var fly_acce_dece: float = 1
-@export var fly_rot_clamp : float = 40
+@export_custom(PROPERTY_HINT_NONE,"suffix: °") var fly_rot_clamp : float = 40
 @export var fly_rot_speed : float = .5
 
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
@@ -147,9 +147,9 @@ func _process(_delta):
 	
 	if valuesInRuntime:
 		if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-			movSky.UpdateCamConfig()
+			movSky.UpdateValuesInRuntime()
 		else:
-			movFly.UpdateCamConfig()
+			movFly.UpdateValuesInRuntime()
 
 func _CheckProximityToLimits():
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
@@ -187,9 +187,9 @@ func _UpdateCamState():
 	last_rotation = cam.global_rotation_degrees.y
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		CAM.speed = floori(lerpf(0,sky_UI_maxSpeed, movSky.mov_speed01))
+		CAM.speed = roundi(movSky.mov_speedForUI)
 	else:
-		CAM.speed = floori(lerpf(0,fly_UI_maxSpeed, movFly.mov_speed01))
+		CAM.speed = roundi(movFly.mov_speedForUI)
 		
 	auxToCalculateDistance = cam.global_position
 	auxToCalculateDistance.y = pinSitio.global_position.y

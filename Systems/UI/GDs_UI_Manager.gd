@@ -42,7 +42,7 @@ func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly
 	
 	vistaFly.Initialize(cam_manager)
 	
-	menuMapa.Initialize(dataService.estaciones,5)
+	menuMapa.Initialize(dataService.estaciones,APPSTATE.currntIdSitio)
 	
 	popUp.hide()
 	

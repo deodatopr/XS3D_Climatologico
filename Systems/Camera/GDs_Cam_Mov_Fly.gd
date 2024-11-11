@@ -5,14 +5,15 @@ var camMng : GDs_Cam_Manager
 var cam : Camera3D
 var pivot : Node3D
 
+var mov_speed_ms : float 
 var mov_axisMovement : Vector2
 var mov_sampleCurve : float
-var mov_speed01 : float
 var mov_deceleration : float = 100
 var mov_velocity : Vector3
 var mov_lastVelocity : Vector3
 var mov_lastBounding01 : float
-var mov_lastSpeed01 : float
+var mov_speedForUI : float
+var mov_lastSpeedForUI : float
 
 var mov_height_speed : float
 var mov_height_axis : float
@@ -46,10 +47,14 @@ func SetCamera():
 	pivot.global_position.y = camMng.fly_height_min
 	cam.fov = camMng.fly_fov
 	mov_height_speed = camMng.fly_height_speed * 100
+	mov_speed_ms = (camMng.fly_speed * 1000) / 3600
+	mov_speed_ms *=.01
 	
-func UpdateCamConfig():
+func UpdateValuesInRuntime():
 	cam.fov = camMng.fly_fov
 	mov_height_speed = camMng.fly_height_speed * 100
+	mov_speed_ms = (camMng.fly_speed * 1000) /3600
+	mov_speed_ms *=.01
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -128,8 +133,8 @@ func _mov_movement(_delta : float):
 			curvValue = camMng.curveMovement.sample(mov_sampleCurve)
 			
 		#Calculate velocity to move
-		mov_velocity += dir * camMng.fly_speed * curvValue * _delta
-		var mov_limitSpeed : float = camMng.fly_speed * currentTurbo
+		mov_velocity += dir * mov_speed_ms * curvValue * _delta
+		var mov_limitSpeed : float = mov_speed_ms * currentTurbo
 		mov_velocity = mov_velocity.limit_length(mov_limitSpeed)
 	elif dir.length() == 0 and mov_velocity.length() > 0:
 		#Deceleration		
@@ -147,7 +152,8 @@ func _mov_movement(_delta : float):
 	#Limits
 	#Velocity decrease by boundings
 	var decreaseSpeedByLimits : float = (1 - CAM.boundings01)
-	var isDirTowardLimit : bool = signf(mov_lastBounding01 - decreaseSpeedByLimits) > 0	
+	var isDirTowardLimit : bool = signf(mov_lastBounding01 - decreaseSpeedByLimits) > 0
+	
 	#No decrease speed if dir is diferent toward limit (to escape easily)
 	if not isDirTowardLimit:
 		decreaseSpeedByLimits = 1
@@ -159,11 +165,10 @@ func _mov_movement(_delta : float):
 	if mov_velocity.length() > 0:
 		pivot.global_position += mov_velocity
 
-	#Speed to send to UI (km/hr)
-	var fixSpeed : float =  inverse_lerp(0,camMng.fly_speed  * camMng.fly_turbo,mov_velocity.length())
-	var slowSpeed : float = lerpf(mov_lastSpeed01,fixSpeed, 10 * _delta)
-	mov_speed01 = clampf(slowSpeed,0, 1)
-	mov_lastSpeed01 = mov_speed01
+	#Speed to send to UI (km/hr) 
+	var fixedDir : float = 1.0 if dir.length() > 0 else 0.0
+	mov_speedForUI = lerpf(mov_lastSpeedForUI,camMng.fly_speed * currentTurbo * fixedDir, 10 * _delta)
+	mov_lastSpeedForUI = mov_speedForUI
 	
 func _rotation(_delta:float):
 	#Detect input controller

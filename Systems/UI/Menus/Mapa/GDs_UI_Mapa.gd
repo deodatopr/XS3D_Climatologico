@@ -17,7 +17,7 @@ func Initialize(_estaciones:Array[GDs_Data_Estacion], current:int):
 	currentSitio = current
 	visibility_changed.connect(OnVisibility)
 	var idx = 0
-	for point in mapPoints:
+	for point : GDs_MapPoint in mapPoints:
 		#CONECTAR SENALES
 		point.OnSitioPressed.connect(OnAnySitioPressed)
 		point.focus_entered.connect(PlayFocusSound)
@@ -27,7 +27,7 @@ func Initialize(_estaciones:Array[GDs_Data_Estacion], current:int):
 		point.focus_neighbor_right = barraMenus.BtnDatos.get_path()
 		
 		
-		if idx == currentSitio:
+		if _estaciones[idx].id == currentSitio:
 			point.Initialize(_estaciones[idx],true)
 		else:
 			point.Initialize(_estaciones[idx],false)

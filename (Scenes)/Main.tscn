@@ -22,11 +22,10 @@ scenes_manager = NodePath("../MngScenes")
 dataService_manager = NodePath("../DataService")
 crLocalEstaciones = ExtResource("4_rl3y7")
 
-[node name="Curtain" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("curtain", "imgCurtain", "lblCargando", "inputBlocker", "container")]
+[node name="Curtain" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("curtain", "imgCurtain", "inputBlocker", "container")]
 script = ExtResource("1_22qja")
 curtain = NodePath("../../[ UI ]/Curtain")
 imgCurtain = NodePath("../../[ UI ]/Curtain/img - Curtain")
-lblCargando = NodePath("../../[ UI ]/Curtain/img - Curtain/Container/lbl - Cargando")
 inputBlocker = NodePath("../../[ UI ]/Curtain/InputBlocker")
 container = NodePath("../../[ UI ]/Curtain/img - Curtain/Container")
 
