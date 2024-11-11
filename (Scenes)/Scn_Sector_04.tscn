@@ -25,7 +25,7 @@
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="22_i6kjy"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Shared/Meshes/Msh_Limit.glb" id="23_ag17m"]
 [ext_resource type="PackedScene" uid="uid://dulvv68yfkjjt" path="res://Cont_Models/Sector4/Msh_Terrain.glb" id="25_7qt5q"]
-[ext_resource type="PackedScene" uid="uid://5yahbieu0y1l" path="res://Cont_Models/Sector4/Msh_Sitio.glb" id="26_g4unq"]
+[ext_resource type="PackedScene" path="res://Cont_Models/Sector4/Msh_Sitio.glb" id="26_g4unq"]
 [ext_resource type="PackedScene" uid="uid://cpvbjd2rg70s" path="res://Cont_Models/Sector4/Msh_Navigation.glb" id="27_0vsox"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="27_p5pnm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="28_q7x2t"]
