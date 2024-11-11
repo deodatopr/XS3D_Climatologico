@@ -22,11 +22,11 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="19_7t10y"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Shared/Materials/Mat_Clouds.tres" id="21_ilana"]
-[ext_resource type="Material" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="22_i6kjy"]
+[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Shared/Materials/Mat_WorldBase.tres" id="22_i6kjy"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Shared/Meshes/Msh_Limit.glb" id="23_ag17m"]
-[ext_resource type="PackedScene" uid="uid://2fk1ttkfdobb" path="res://Cont_Models/Sector6/Msh_Navigation.glb" id="24_bw7m5"]
-[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Terrain.glb" id="25_0020t"]
-[ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="26_wlbay"]
+[ext_resource type="PackedScene" uid="uid://dulvv68yfkjjt" path="res://Cont_Models/Sector4/Msh_Terrain.glb" id="25_7qt5q"]
+[ext_resource type="PackedScene" uid="uid://5yahbieu0y1l" path="res://Cont_Models/Sector4/Msh_Sitio.glb" id="26_g4unq"]
+[ext_resource type="PackedScene" uid="uid://cpvbjd2rg70s" path="res://Cont_Models/Sector4/Msh_Navigation.glb" id="27_0vsox"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="27_p5pnm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="28_q7x2t"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="29_ssyy6"]
@@ -108,7 +108,7 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_evkd3")
-mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
+mshNavigation = NodePath("../../[ CONTENT ]/Msh_Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../[ CONTENT ]/Msh_Terrain/Msh_Roads")
@@ -315,7 +315,7 @@ sky_mode = 1
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.809, 56.2584, 41.4734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2626, -13.7956, 213.229)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
@@ -325,20 +325,21 @@ mesh = SubResource("QuadMesh_vcmnj")
 metadata/_edit_lock_ = true
 
 [node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(3525.65, 0, 0, 0, -0.000164656, 3556.06, 0, -3766.88, -0.00015544, -16.173, -60, -0.362)
+transform = Transform3D(4257.67, 0, 0, 0, -0.000194358, 3556.06, 0, -4446.37, -0.00015544, -16.173, -104.652, -0.362)
 material_override = ExtResource("22_i6kjy")
 mesh = SubResource("QuadMesh_e651p")
 
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("23_ag17m")]
-transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
-
-[node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("24_bw7m5")]
+transform = Transform3D(42.9789, 0, 0, 0, 9.76607, 0, 0, 0, 46.2167, -18.1554, -38.2442, -18.4659)
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
-[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("25_0020t")]
+[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("25_7qt5q")]
 
-[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("26_wlbay")]
+[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("26_g4unq")]
+
+[node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("27_0vsox")]
+visible = false
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
@@ -422,40 +423,6 @@ vistaSky = NodePath("../SKY")
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("32_vfkp2")]
 visible = false
-
-[node name="TEST_SECTOR4" type="Control" parent="[ PPE + UI ]/[ UI  ]/Interfaz"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Panel" type="Panel" parent="[ PPE + UI ]/[ UI  ]/Interfaz/TEST_SECTOR4"]
-custom_minimum_size = Vector2(1080, 50)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="[ PPE + UI ]/[ UI  ]/Interfaz/TEST_SECTOR4/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.5
-offset_top = -18.0
-offset_right = 59.5
-offset_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "DEBUG: [ SECTOR 4 ]"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain"]

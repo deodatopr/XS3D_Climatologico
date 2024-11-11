@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bysek7snqwdmp"]
+
+[ext_resource type="Shader" uid="uid://dcxkcc0fkwbws" path="res://Vfx_Shaders/Sha_Terrain.tres" id="1_sr0uu"]
+[ext_resource type="Texture2D" uid="uid://coaf8tjgiw5nl" path="res://Cont_Models/Sector4/Terrain/Map_Sec4_25.jpg" id="2_ogq4l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sr0uu")
+shader_parameter/Albedo_Map = ExtResource("2_ogq4l")
