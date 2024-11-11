@@ -1,8 +1,8 @@
 [gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://dcxkcc0fkwbws"]
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_wce54"]
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_gr6w3"]
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_i5svw"]
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_uv5ox"]
 constant = 1.0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_2iyaj"]
@@ -10,7 +10,7 @@ source = 5
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_cci1s"]
-parameter_name = "Albedo_Map"
+parameter_name = "BaseMap"
 texture_type = 1
 texture_filter = 4
 
@@ -18,14 +18,14 @@ texture_filter = 4
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_disabled;
 
-uniform sampler2D Albedo_Map : source_color, filter_linear_mipmap;
+uniform sampler2D BaseMap : source_color, filter_linear_mipmap;
 
 
 
 void fragment() {
 	vec4 n_out4p0;
 // Texture2D:4
-	n_out4p0 = texture(Albedo_Map, UV);
+	n_out4p0 = texture(BaseMap, UV);
 
 
 // FloatConstant:2
@@ -44,14 +44,15 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-502.667, -41.3333)
 modes/diffuse = 3
 modes/specular = 2
-nodes/fragment/2/node = SubResource("VisualShaderNodeFloatConstant_wce54")
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatConstant_gr6w3")
 nodes/fragment/2/position = Vector2(120, 200)
-nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_i5svw")
-nodes/fragment/3/position = Vector2(120, 260)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_uv5ox")
+nodes/fragment/3/position = Vector2(120, 280)
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_2iyaj")
 nodes/fragment/4/position = Vector2(100, 40)
 nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_cci1s")
 nodes/fragment/5/position = Vector2(-220, 20)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 2, 3, 0, 0, 3, 4, 0, 0, 0, 5, 0, 4, 2)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 2, 3, 0, 0, 3, 5, 0, 4, 2, 4, 0, 0, 0)
