@@ -69,6 +69,10 @@ shader_parameter/noiseMap = SubResource("NoiseTexture2D_xmvdm")
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_a5f8a"]
+material = ExtResource("38_mbo4u")
+size = Vector2(20, 300)
+
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
 shader_type canvas_item;
@@ -122,10 +126,6 @@ shader_parameter/lensDistortion = 1.0
 shader = SubResource("Shader_mn58d")
 shader_parameter/pixel = 1.0
 shader_parameter/sharpening = 1.5
-
-[sub_resource type="QuadMesh" id="QuadMesh_a5f8a"]
-material = ExtResource("38_mbo4u")
-size = Vector2(20, 300)
 
 [node name="SECTOR 6" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_vpunx")
@@ -406,6 +406,11 @@ transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
+[node name="LightBeam" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(0.984932, 0, 0.172943, 0, 1, 0, -0.172943, 0, 0.984932, -28.731, 194.036, 42.451)
+mesh = SubResource("QuadMesh_a5f8a")
+skeleton = NodePath("../..")
+
 [node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
 
 [node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
@@ -492,7 +497,3 @@ vistaSky = NodePath("../SKY")
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("6_7j046")]
 visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.984932, 0, 0.172943, 0, 1, 0, -0.172943, 0, 0.984932, -28.731, 194.036, 42.451)
-mesh = SubResource("QuadMesh_a5f8a")
