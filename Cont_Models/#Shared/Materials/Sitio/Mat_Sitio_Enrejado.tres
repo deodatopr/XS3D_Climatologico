@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://c4288f0ysnujo" path="res://Cont_Models/#Shared/Materials/#Maps/Map_Reja.jpg" id="1_fsh6r"]
 
 [resource]
-transparency = 3
-alpha_hash_scale = 1.0
+transparency = 2
+alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_color = Color(0.85, 0.85, 0.85, 1)
 albedo_texture = ExtResource("1_fsh6r")

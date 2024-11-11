@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="23_ag17m"]
 [ext_resource type="PackedScene" uid="uid://dulvv68yfkjjt" path="res://Cont_Models/Sector4/Msh_Terrain.glb" id="25_7qt5q"]
 [ext_resource type="Material" uid="uid://nan3iase8pij" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Limit_Fly.tres" id="25_ppnrt"]
-[ext_resource type="PackedScene" uid="uid://dg17l6rbbhkb" path="res://Cont_Models/Sector4/Mah_Sitio_04.glb" id="26_g4unq"]
+[ext_resource type="PackedScene" uid="uid://dsk1fsrkgucsg" path="res://Cont_Models/Sector4/Msh_Sitio_04.glb" id="26_g4unq"]
 [ext_resource type="PackedScene" uid="uid://cpvbjd2rg70s" path="res://Cont_Models/Sector4/Msh_Navigation.glb" id="27_0vsox"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="27_p5pnm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="28_q7x2t"]
@@ -340,7 +340,7 @@ material_override = ExtResource("25_ppnrt")
 
 [node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("25_7qt5q")]
 
-[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("26_g4unq")]
+[node name="Msh_Sitio_04" parent="[ CONTENT ]" instance=ExtResource("26_g4unq")]
 
 [node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("27_0vsox")]
 

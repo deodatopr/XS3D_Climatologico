@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dht4cg8a7ue0m"]
+
+[ext_resource type="Shader" uid="uid://con54kw2p5cnq" path="res://Vfx_Shaders/Sha_Sitio.tres" id="1_cngtd"]
+[ext_resource type="Texture2D" uid="uid://bo7dht0b40jtm" path="res://Cont_Models/#Shared/Materials/#Maps/Map_PiedraComb.jpg" id="2_monf0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pixxv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cngtd")
+shader_parameter/Metallic = 0.0
+shader_parameter/Roguhness = 1.0
+shader_parameter/BaseMap = SubResource("CompressedTexture2D_pixxv")
+shader_parameter/OverlayMapRed = ExtResource("2_monf0")
