@@ -2,11 +2,11 @@ extends Node
 
 @export_group("Moving")
 @export var sndFlying: AudioStreamPlayer
-@export var flyingStaticVolume:float = -40
+@export_custom(PROPERTY_HINT_NONE, "suffix:dB") var flyingStaticVolume:float = -40
 @export var flyingStaticPitch:float = 0.85
-@export var flyingMovingVolume:float = -25
+@export_custom(PROPERTY_HINT_NONE, "suffix:dB") var flyingMovingVolume:float = -25
 @export var flyingMovingPitch:float = 0.9
-@export var flyingBoostVolume:float = -25
+@export_custom(PROPERTY_HINT_NONE, "suffix:dB") var flyingBoostVolume:float = -25
 @export var flyingBoostPitch:float = 1
 
 @export_group("Environment")

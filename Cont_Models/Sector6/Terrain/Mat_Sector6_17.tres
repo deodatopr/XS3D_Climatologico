@@ -6,4 +6,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_oyoqi")
-shader_parameter/Albedo_Map = ExtResource("2_5ifwk")
+shader_parameter/BaseMap = ExtResource("2_5ifwk")

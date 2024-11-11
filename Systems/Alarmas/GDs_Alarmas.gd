@@ -45,16 +45,24 @@ func OnRefresh():
 
 func SetPresaToNorm():
 	ppePresa.hide()
-	sndAlarm.stop()
+	AudioServer.set_bus_mute(3,true)
+	ppePresa.material.set_shader_parameter("stop",0)
+	
 
 func SetPresaToPrev():
 	ppePresa.show()
-	sndAlarm.stop()
+	AudioServer.set_bus_mute(3,true)
+	ppePresa.material.set_shader_parameter("isCritico",false)
+	ppePresa.material.set_shader_parameter("stop",1)
+	
 
 func SetPresaToCrit():
 	ppePresa.show()
-	if not sndAlarm.playing:
-		sndAlarm.play()
+	if AudioServer.is_bus_mute(3):
+			AudioServer.set_bus_mute(3,false)
+	ppePresa.material.set_shader_parameter("isCritico",true)
+	ppePresa.material.set_shader_parameter("stop",1)
+	
 
 
 func SetTempToNorm():
@@ -65,3 +73,4 @@ func SetTempToPrev():
 func SetTempToCrit():
 	ppeTemp.show()
 	ppeTemp.material.set_shader_parameter("intensity",0.2)
+	

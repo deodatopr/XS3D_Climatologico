@@ -6,4 +6,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_b57g1")
-shader_parameter/Albedo_Map = ExtResource("2_hp3c8")
+shader_parameter/BaseMap = ExtResource("2_hp3c8")

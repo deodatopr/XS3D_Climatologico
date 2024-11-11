@@ -1,0 +1,117 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://con54kw2p5cnq"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_3366n"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_quvyx"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_v6ixf"]
+parameter_name = "OverlayMapRed"
+texture_type = 1
+texture_filter = 4
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dnbs2"]
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_7fd3p"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_1a0kq"]
+function = 31
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_es835"]
+parameter_name = "Metallic"
+hint = 1
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_t6ak6"]
+parameter_name = "Roguhness"
+hint = 1
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_l2gw8"]
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2d3s5"]
+parameter_name = "BaseMap"
+texture_type = 1
+texture_filter = 4
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D BaseMap : source_color, filter_linear_mipmap;
+uniform sampler2D OverlayMapRed : source_color, filter_linear_mipmap;
+uniform float Metallic : hint_range(0, 1) = 0;
+uniform float Roguhness : hint_range(0, 1) = 0.5;
+
+
+
+void fragment() {
+	vec4 n_out8p0;
+// Texture2D:8
+	n_out8p0 = texture(BaseMap, UV);
+
+
+	vec4 n_out13p0;
+// Texture2D:13
+	n_out13p0 = texture(OverlayMapRed, UV);
+
+
+// Input:10
+	vec3 n_out10p0 = VERTEX;
+
+
+// VectorDecompose:11
+	float n_out11p0 = n_out10p0.x;
+	float n_out11p1 = n_out10p0.y;
+	float n_out11p2 = n_out10p0.z;
+
+
+// Mix:14
+	vec3 n_out14p0 = mix(vec3(n_out8p0.xyz), vec3(n_out13p0.xyz), vec3(n_out11p0));
+
+
+// FloatParameter:6
+	float n_out6p0 = Metallic;
+
+
+// FloatParameter:7
+	float n_out7p0 = Roguhness;
+
+
+// Output:0
+	ALBEDO = n_out14p0;
+	METALLIC = n_out6p0;
+	ROUGHNESS = n_out7p0;
+
+
+}
+"
+graph_offset = Vector2(-788.75, 355)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_es835")
+nodes/fragment/6/position = Vector2(80, 220)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_t6ak6")
+nodes/fragment/7/position = Vector2(80, 480)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_l2gw8")
+nodes/fragment/8/position = Vector2(-240, 0)
+nodes/fragment/9/node = SubResource("VisualShaderNodeTexture2DParameter_2d3s5")
+nodes/fragment/9/position = Vector2(-625, -90.5)
+nodes/fragment/10/node = SubResource("VisualShaderNodeInput_3366n")
+nodes/fragment/10/position = Vector2(-620, 440)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorDecompose_quvyx")
+nodes/fragment/11/position = Vector2(-200, 420)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture2DParameter_v6ixf")
+nodes/fragment/12/position = Vector2(-625, 169.5)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_dnbs2")
+nodes/fragment/13/position = Vector2(-240, 220)
+nodes/fragment/14/node = SubResource("VisualShaderNodeMix_7fd3p")
+nodes/fragment/14/position = Vector2(100, 40)
+nodes/fragment/15/node = SubResource("VisualShaderNodeFloatFunc_1a0kq")
+nodes/fragment/15/position = Vector2(-60, 500)
+nodes/fragment/connections = PackedInt32Array(9, 0, 8, 2, 10, 0, 11, 0, 12, 0, 13, 2, 8, 0, 14, 0, 13, 0, 14, 1, 11, 0, 15, 0, 11, 0, 14, 2, 14, 0, 0, 0, 6, 0, 0, 2, 7, 0, 0, 3)
