@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://1abu1lpmqhos"
+uid="uid://b1vv1osuwmuic"
 path="res://.godot/imported/Msh_Sitio.glb-7f83699dd9c8ceffde0ba74081bf3c83.scn"
 
 [deps]
@@ -24,46 +24,46 @@ meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=false
-animation/import=false
+skins/use_named_skins=true
+animation/import=true
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
 "Mat_Sitio_Asfalto": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Asfalto.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Asfalto.tres"
 },
 "Mat_Sitio_Concreto": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Concreto.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Concreto.tres"
 },
 "Mat_Sitio_Herreria": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Herreria.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Herreria.tres"
 },
 "Mat_Sitio_Ladrillos": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Ladrillos.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Ladrillos.tres"
 },
 "Mat_Sitio_Paredes": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Paredes.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Paredes.tres"
 },
 "Mat_Sitio_Piedra": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Piedra.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Piedra.tres"
 },
 "Mat_Sitio_Tinacos": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Tinacos.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Tinacos.tres"
 },
 "Mat_Sitio_Vidrios": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector6/Sitio/Mat_Sitio_Vidrios.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Vidrios.tres"
 }
 }
 }
