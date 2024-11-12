@@ -12,13 +12,13 @@ texture_type = 1
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_cci1s"]
 parameter_name = "BaseMap"
 texture_type = 1
-texture_filter = 4
+texture_filter = 3
 
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_disabled;
 
-uniform sampler2D BaseMap : source_color, filter_linear_mipmap;
+uniform sampler2D BaseMap : source_color, filter_nearest_mipmap;
 
 
 
@@ -44,6 +44,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-468.979, -49.9095)
 modes/diffuse = 3
 modes/specular = 2
 nodes/fragment/2/node = SubResource("VisualShaderNodeFloatConstant_gr6w3")
