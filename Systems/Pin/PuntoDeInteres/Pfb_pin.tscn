@@ -11,15 +11,15 @@ region = Rect2(473, 5, 30, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bksot"]
 shader = ExtResource("2_fwvix")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.1
+shader_parameter/color = Color(1, 0.184314, 0.437745, 1)
+shader_parameter/brightness = 0.5
 shader_parameter/blur = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p8xs"]
 atlas = ExtResource("1_wfaf3")
 region = Rect2(487, 538, 2, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_foht3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i52ud"]
 shader = ExtResource("2_fwvix")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 0.2
@@ -88,6 +88,7 @@ pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_hos1s")
 
 [node name="Blur BG" type="TextureRect" parent="Diamond"]
+self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_bksot")
 layout_mode = 1
 anchors_preset = 15
@@ -149,7 +150,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 
 [node name="BG" type="TextureRect" parent="Icon/Arrows and BG"]
-material = SubResource("ShaderMaterial_foht3")
+material = SubResource("ShaderMaterial_i52ud")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

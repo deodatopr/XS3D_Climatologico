@@ -28,13 +28,13 @@ region = Rect2(468, 763, 42, 42)
 atlas = ExtResource("1_bm6wi")
 region = Rect2(473, 483, 17, 38)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlsw6"]
-atlas = ExtResource("1_bm6wi")
-region = Rect2(475, 523, 30, 29)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw5sd"]
 atlas = ExtResource("1_bm6wi")
 region = Rect2(472, 560, 34, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlsw6"]
+atlas = ExtResource("1_bm6wi")
+region = Rect2(475, 523, 30, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmxh6"]
 atlas = ExtResource("2_om8fc")
@@ -48,10 +48,6 @@ region = Rect2(0, 170, 96, 25)
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4b2pq"]
-atlas = ExtResource("2_om8fc")
-region = Rect2(0, 39, 40, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5sml"]
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 240, 40, 40)
@@ -59,6 +55,10 @@ region = Rect2(0, 240, 40, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgxgu"]
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 79, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b2pq"]
+atlas = ExtResource("2_om8fc")
+region = Rect2(0, 39, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yh3a"]
 atlas = ExtResource("2_om8fc")
@@ -492,6 +492,51 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
+[node name="HBox - UTR" type="HBoxContainer" parent="HBoxContainer/Senales/Senales"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -15
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - UTR"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_dw5sd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Senales/Senales/HBox - UTR"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Dot" type="Control" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UTR" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer/Dot"]
+self_modulate = Color(0.698039, 0.0913459, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -5.5
+offset_top = -11.0
+offset_right = 5.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
+
+[node name="SEÑAL" type="Label" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "UTR"
+horizontal_alignment = 1
+
 [node name="HBox - Senal" type="HBoxContainer" parent="HBoxContainer/Senales/Senales"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -541,51 +586,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 12
 text = "SEÑAL"
-horizontal_alignment = 1
-
-[node name="HBox - UTR" type="HBoxContainer" parent="HBoxContainer/Senales/Senales"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = -15
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - UTR"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_dw5sd")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Senales/Senales/HBox - UTR"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Dot" type="Control" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="UTR" type="TextureRect" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer/Dot"]
-self_modulate = Color(0.698039, 0.0913459, 0.0509804, 1)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -5.5
-offset_top = -11.0
-offset_right = 5.5
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = SubResource("AtlasTexture_bi5is")
-expand_mode = 1
-
-[node name="SEÑAL" type="Label" parent="HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 12
-text = "UTR"
 horizontal_alignment = 1
 
 [node name="Division Line2" type="TextureRect" parent="HBoxContainer"]
@@ -807,54 +807,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Humedad" type="Control" parent="HBoxContainer/Datos"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Humedad"]
-self_modulate = Color(1, 0, 0.415686, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_bm6wi")
-region_rect = Rect2(486, 916, 12, 90)
-
-[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Datos/Humedad"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="Lbl Valor Humedad" type="Label" parent="HBoxContainer/Datos/Humedad/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "62%"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Humedad/VBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_4b2pq")
-script = ExtResource("3_qdbvn")
-
-[node name="Lbl" type="Label" parent="HBoxContainer/Datos/Humedad/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Humedad"
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-uppercase = true
-
 [node name="Presion Atm" type="Control" parent="HBoxContainer/Datos"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -948,6 +900,54 @@ text = "Evaporacion
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
+
+[node name="Humedad" type="Control" parent="HBoxContainer/Datos"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Humedad"]
+self_modulate = Color(0.683208, 0, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(486, 916, 12, 90)
+
+[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Datos/Humedad"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Lbl Valor Humedad" type="Label" parent="HBoxContainer/Datos/Humedad/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "62%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Humedad/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_4b2pq")
+script = ExtResource("3_qdbvn")
+
+[node name="Lbl" type="Label" parent="HBoxContainer/Datos/Humedad/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Humedad"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
 uppercase = true
 
 [node name="Temperatura" type="Control" parent="HBoxContainer/Datos"]

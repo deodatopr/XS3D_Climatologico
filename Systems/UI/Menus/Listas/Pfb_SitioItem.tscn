@@ -23,13 +23,13 @@ region = Rect2(468, 456, 28, 26)
 atlas = ExtResource("1_gkrbn")
 region = Rect2(468, 763, 42, 42)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_htr5a"]
-atlas = ExtResource("1_gkrbn")
-region = Rect2(475, 523, 30, 29)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_oehhi"]
 atlas = ExtResource("1_gkrbn")
 region = Rect2(473, 560, 34, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htr5a"]
+atlas = ExtResource("1_gkrbn")
+region = Rect2(475, 523, 30, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wge0h"]
 atlas = ExtResource("1_gkrbn")
@@ -338,44 +338,6 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="HBox - Senal" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos/Senales/Senales"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal"]
-custom_minimum_size = Vector2(24, 23.2)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-texture = SubResource("AtlasTexture_htr5a")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Dot" type="Control" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Senal" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal/VBoxContainer/Dot"]
-self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 2.0
-offset_top = -4.0
-offset_right = 10.0
-offset_bottom = 4.0
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = SubResource("AtlasTexture_jc0yf")
-expand_mode = 1
-
 [node name="HBox - UTR" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos/Senales/Senales"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -400,6 +362,44 @@ size_flags_vertical = 3
 
 [node name="UTR" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - UTR/VBoxContainer/Dot"]
 self_modulate = Color(0.698039, 0.0913459, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -4.0
+offset_right = 10.0
+offset_bottom = 4.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_jc0yf")
+expand_mode = 1
+
+[node name="HBox - Senal" type="HBoxContainer" parent="AnimScale/VBoxContainer/Datos/Senales/Senales"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal"]
+custom_minimum_size = Vector2(24, 23.2)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_htr5a")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Dot" type="Control" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Senal" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal/VBoxContainer/Dot"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5

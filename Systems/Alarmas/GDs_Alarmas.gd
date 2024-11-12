@@ -12,7 +12,7 @@ extends Node
 func _ready():
 	SIGNALS.OnRefresh.connect(OnRefresh)
 
-func _process(delta):
+func _process(_delta):
 	if dbgEnable:
 		match estadoPresa:
 			0:

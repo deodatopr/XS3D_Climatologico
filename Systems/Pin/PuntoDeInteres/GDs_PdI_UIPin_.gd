@@ -31,7 +31,7 @@ func Initialize():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if not isInitialized: return
 	visible = currentCam.is_position_in_frustum(pinWorldPos.global_position)
 	position = currentCam.unproject_position(pinWorldPos.global_position)
