@@ -2,12 +2,14 @@ class_name GDs_SIGNALS
 extends Node
 
 #DATA SERVICE
+@warning_ignore('unused_signal')
 signal OnRefresh
 
 #SCENES
 @warning_ignore('unused_signal')
 signal OnGoToSitio(_idSitio : int)
 
+@warning_ignore('unused_signal')
 signal OnSitioInitialized
 
 #CAMERA

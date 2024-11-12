@@ -2,7 +2,6 @@ class_name GDs_Curtain extends Node
 
 @export var curtain : Control
 @export var imgCurtain : Control
-@export var lblCargando : Control
 @export var inputBlocker : Control
 @export var container : Control
 

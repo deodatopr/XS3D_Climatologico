@@ -57,8 +57,11 @@ func _ready():
 func DataRefresh(_estacion: GDs_Data_Estacion):
 	estacion = _estacion
 	frame.self_modulate = _estacion.color
+	frame.self_modulate.a = 1.0 if _estacion.disponible else 0.2
 	frameNombre.self_modulate = _estacion.color
+	frameNombre.self_modulate.a = 1.0 if _estacion.disponible else .2
 	patch.self_modulate = _estacion.color
+	patch.self_modulate.a = 1 if _estacion.disponible else .2
 	id.text = str(_estacion.id)
 	nombre.text = _estacion.nombre
 	estado.text = UTILITIES.FormatEstado(_estacion.estado)
@@ -91,6 +94,9 @@ func DataRefresh(_estacion: GDs_Data_Estacion):
 	viento.text = UTILITIES.FormatIntensidadViento(_estacion.intsdad_viento)#TODO sistema para que regrese N S E O
 
 func OnBtnPressed():
+	if not estacion.disponible:
+		return
+		
 	OnSitioPressed.emit(estacion)
 	pressed = true
 

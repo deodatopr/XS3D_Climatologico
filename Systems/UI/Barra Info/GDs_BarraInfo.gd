@@ -70,7 +70,7 @@ func OnDataRefresh():
 	humedad.text = UTILITIES.FormatHumedad(sitio.humedad)
 	evaporacion.text = UTILITIES.FormatEvaporacion(sitio.evaporacion)
 	temp.text = UTILITIES.FormatTemperatura(sitio.temperatura)
-	presion.text = UTILITIES.FormatPresion(sitio.temperatura)#TODO cambiar por presion
+	presion.text = UTILITIES.FormatPresion(sitio.presion)
 	viento.text = UTILITIES.FormatIntensidadViento(sitio.intsdad_viento)#TODO sistema para que regrese N S E O
 
 func PlayAnimation(_color:Color,_speed:float):

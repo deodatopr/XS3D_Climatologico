@@ -6,7 +6,18 @@
 #===========================================
 
 #	[ Pani ]
+# Error cambiarte entre sitios desde panel de lista sitios (proteger)
+# Hay cosas con control que no están actualizadas (Y no es cambio de cam), pad para menu
+# Probar sonidos que algunos aunque llegan al limite se siguen escuchando
+# (idea de sonido dif cuando no puedas)
+#Mouse detect musica panel
+# Variable 
+
+# Manager para debuggear caracteristicas
+# Que sucede cuando no hay datos con mensaje de reconexión
+# Tooggle: Maquina estados para diferentes casos
 ## Quitar de globals obtencion de navmesh
+# No se queda prendido el sitio al que me voy
 
 #Cam fly
 ## Forward hacia adelante en local y hacia atras en global
@@ -87,3 +98,5 @@
 
 #	Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 #	Tomar screenshots
+
+# Tool para hacer match entre material y textura

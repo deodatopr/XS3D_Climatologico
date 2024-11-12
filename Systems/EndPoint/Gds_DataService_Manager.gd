@@ -136,6 +136,7 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		instanceEstacionCombinada.energia_electrica = estacionEP.energia_electrica
 		instanceEstacionCombinada.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
 		instanceEstacionCombinada.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
+		instanceEstacionCombinada.presion = estacionEP.presion
 		
 		#From Local
 		instanceEstacionCombinada.nombre = estacionLocal.nombre
@@ -170,6 +171,7 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.disp_utr = estacionEP.disp_utr
 		estacionToUpdate.fallo_alim_ac = estacionEP.fallo_alim_ac
 		estacionToUpdate.volt_bat_resp = estacionEP.volt_bat_resp
+		estacionToUpdate.presion = estacionEP.presion
 		estacionToUpdate.enlace = estacionEP.enlace
 		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
 		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa

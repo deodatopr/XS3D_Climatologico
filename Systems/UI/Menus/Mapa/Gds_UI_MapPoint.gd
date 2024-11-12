@@ -39,7 +39,7 @@ func Initialize(_estacion:GDs_Data_Estacion, playCurrentAnim:bool):
 	lblId.text = str(_estacion.id)
 	lblNombre.text = _estacion.nombre
 	color = _estacion.color
-	color.a = 1 if _estacion.disponible else .3
+	color.a = 1 if _estacion.disponible else .2
 	animSquare.modulate = color
 	if playCurrentAnim:
 		PlayCurrentSitioAnimation()

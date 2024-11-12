@@ -11,6 +11,7 @@ var evaporacion : float # en milímetros (mm)
 var intsdad_viento : float # en kilómetros por hora (km/h)
 var temperatura : float # en grados
 var dir_viento : float # en grados
+var presion : float
 
 var disp_utr : bool
 var fallo_alim_ac : bool

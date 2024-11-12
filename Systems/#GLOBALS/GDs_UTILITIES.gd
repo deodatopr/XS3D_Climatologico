@@ -1,5 +1,7 @@
 class_name GDs_Utilities extends Node
 
+const txtNoData : String = " --- "
+
 func TurnOffObject(object):
 	object.hide()
 	object.process_mode = Node.PROCESS_MODE_DISABLED
@@ -18,44 +20,34 @@ func GetNodeBounds(_root : Node) -> AABB:
 	
 #region Formato strings
 func FormatNivel(nivel:float)->String:
-	nivel = roundf(nivel)
-	return "Nvl: " + str(nivel) + "m"
+	return "Nvl: " + _ValueToText(nivel) + "m"
 
 func FormatNiveles(nivel:float)->String:
-	nivel = roundf(nivel)
-	return str(nivel) + "m"
+	return _ValueToText(nivel) + "m"
 
 func FormatPptn_pluvial(pptn:float)->String:
-	pptn = roundf(pptn)
-	return str(pptn) + "mm"
+	return _ValueToText(pptn) + "mm"
 
 func FormatHumedad(humedad:float)->String:
-	humedad = roundf(humedad)
-	return str(humedad) + "%"
+	return _ValueToText(humedad) + "%"
 	
 func FormatEvaporacion(evaporacion:float)->String:
-	evaporacion = roundf(evaporacion)
-	return str(evaporacion) + "mm"
+	return _ValueToText(evaporacion) + "mm"
 
 func FormatIntensidadViento(viento:float)->String:
-	viento = roundf(viento)
-	return str(viento) + "km/h"
+	return _ValueToText(viento) + "km/h"
 
 func FormatTemperatura(temp:float)->String:
-	temp = roundf(temp)
-	return str(temp) + "°C"
+	return _ValueToText(temp) + "°C"
 
-func FormatPresion(temp:float)->String:
-	temp = roundf(temp)
-	return str(temp) + "hPa"
+func FormatPresion(presion:float)->String:
+	return _ValueToText(presion) + "hPa"
 
 func FormatDirViento(dir:float)->String:
-	dir = roundf(dir)
-	return str(dir) + "°"
+	return _ValueToText(dir) + "°"
 
 func FormatBateriaV(volt:float)->String:
-	volt = roundf(volt)
-	return str(volt) + "V"
+	return _ValueToText(volt) + "V"
 
 func FormatAltura(altura:int)->String:
 	return str(altura) + "m"
@@ -77,4 +69,11 @@ func FormatEstado(estado:int)->String:
 		return "EDOMEX"
 	else:
 		return "MICH"
+		
+func _ValueToText(_value : float) -> String:
+	if is_nan(_value):
+		return txtNoData
+	else:
+		_value = roundf(_value)
+		return str(_value)
 #endregion

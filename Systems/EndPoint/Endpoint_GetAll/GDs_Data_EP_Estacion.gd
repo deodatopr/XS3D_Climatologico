@@ -10,6 +10,7 @@ var evaporacion : float # en milímetros (mm)
 var intsdad_viento : float # en kilómetros por hora (km/h)
 var dir_viento : float # en grados
 var temperatura : float # en grados
+var presion : float
 
 var disp_utr : bool
 var fallo_alim_ac : bool
@@ -30,6 +31,7 @@ func _init(_estacion : Dictionary) :
 	intsdad_viento = _estacion["intsdad_viento"]
 	dir_viento = _estacion["dir_viento"]
 	temperatura = _estacion["temperatura"]
+	presion = _estacion["presion"]
 	
 	disp_utr = _estacion["disp_utr"]
 	fallo_alim_ac = _estacion["fallo_alim_ac"]
