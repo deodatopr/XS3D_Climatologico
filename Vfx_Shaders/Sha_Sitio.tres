@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://con54kw2p5cnq"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_3366n"]
-input_name = "vertex"
+input_name = "color"
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_quvyx"]
 
@@ -64,13 +64,13 @@ void fragment() {
 
 
 // Input:10
-	vec3 n_out10p0 = VERTEX;
+	vec4 n_out10p0 = COLOR;
 
 
 // VectorDecompose:11
-	float n_out11p0 = n_out10p0.x;
-	float n_out11p1 = n_out10p0.y;
-	float n_out11p2 = n_out10p0.z;
+	float n_out11p0 = vec3(n_out10p0.xyz).x;
+	float n_out11p1 = vec3(n_out10p0.xyz).y;
+	float n_out11p2 = vec3(n_out10p0.xyz).z;
 
 
 // Mix:14
@@ -93,7 +93,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-788.75, 355)
+graph_offset = Vector2(-406.25, -262.5)
 nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_es835")
 nodes/fragment/6/position = Vector2(80, 220)
 nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_t6ak6")
@@ -105,7 +105,7 @@ nodes/fragment/9/position = Vector2(-625, -90.5)
 nodes/fragment/10/node = SubResource("VisualShaderNodeInput_3366n")
 nodes/fragment/10/position = Vector2(-620, 440)
 nodes/fragment/11/node = SubResource("VisualShaderNodeVectorDecompose_quvyx")
-nodes/fragment/11/position = Vector2(-200, 420)
+nodes/fragment/11/position = Vector2(-240, 420)
 nodes/fragment/12/node = SubResource("VisualShaderNodeTexture2DParameter_v6ixf")
 nodes/fragment/12/position = Vector2(-625, 169.5)
 nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_dnbs2")
@@ -114,4 +114,4 @@ nodes/fragment/14/node = SubResource("VisualShaderNodeMix_7fd3p")
 nodes/fragment/14/position = Vector2(100, 40)
 nodes/fragment/15/node = SubResource("VisualShaderNodeFloatFunc_1a0kq")
 nodes/fragment/15/position = Vector2(-60, 500)
-nodes/fragment/connections = PackedInt32Array(9, 0, 8, 2, 10, 0, 11, 0, 12, 0, 13, 2, 8, 0, 14, 0, 13, 0, 14, 1, 11, 0, 15, 0, 11, 0, 14, 2, 14, 0, 0, 0, 6, 0, 0, 2, 7, 0, 0, 3)
+nodes/fragment/connections = PackedInt32Array(9, 0, 8, 2, 10, 0, 11, 0, 12, 0, 13, 2, 8, 0, 14, 0, 13, 0, 14, 1, 11, 0, 15, 0, 11, 0, 14, 2, 6, 0, 0, 2, 7, 0, 0, 3, 14, 0, 0, 0)

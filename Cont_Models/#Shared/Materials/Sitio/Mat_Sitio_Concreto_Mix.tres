@@ -1,11 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bnmph7g0leg0v"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bnmph7g0leg0v"]
 
 [ext_resource type="Shader" uid="uid://con54kw2p5cnq" path="res://Vfx_Shaders/Sha_Sitio.tres" id="1_ygxv7"]
-[ext_resource type="Texture2D" uid="uid://bodusmsqdh5nq" path="res://Cont_Models/Sector6/Terrain/Map_Sec6_1.jpg" id="2_q75j4"]
+[ext_resource type="Texture2D" uid="uid://clf7ttkafg3r3" path="res://Cont_Models/#Shared/Materials/#Maps/Map_Concreto.jpg" id="2_an3fe"]
+[ext_resource type="Texture2D" uid="uid://653scqm8b2w5" path="res://Cont_Models/#Shared/Materials/#Maps/Map_ConcretoMoho.jpg" id="3_3xtng"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_ygxv7")
 shader_parameter/Metallic = 0.0
 shader_parameter/Roguhness = 0.5
-shader_parameter/BaseMap = ExtResource("2_q75j4")
+shader_parameter/BaseMap = ExtResource("2_an3fe")
+shader_parameter/OverlayMapRed = ExtResource("3_3xtng")
