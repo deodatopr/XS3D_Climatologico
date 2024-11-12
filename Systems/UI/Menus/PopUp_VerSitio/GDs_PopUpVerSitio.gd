@@ -14,6 +14,11 @@ extends Control
 @export var btnCancelarHighlight:Control
 @export var animPlayer:AnimationPlayer
 
+@export_group("No Disponible")
+@export var lblNoDisp:Control
+@export var parentAceptar:Control
+
+
 signal OnCancelarVerSitio
 var estacion:GDs_Data_Estacion
 var currentSitioId : int = -1
@@ -45,6 +50,13 @@ func OpenPopUp(_estacion:GDs_Data_Estacion):
 	nombre.text = _estacion.nombre
 	frame.self_modulate = _estacion.color
 	framePatch.self_modulate = _estacion.color
+	
+	if estacion.disponible:
+		lblNoDisp.hide()
+		parentAceptar.show()
+	else:
+		lblNoDisp.show()
+		parentAceptar.hide()
 
 func OnVisibleChanged():
 	if visible:
@@ -56,7 +68,8 @@ func OnVisibleChanged():
 		animPlayer.stop()
 
 func OnAceptar():
-	SIGNALS.OnGoToSitio.emit(currentSitioId)
+	if estacion.disponible:
+		SIGNALS.OnGoToSitio.emit(currentSitioId)
 
 func OnAceptarFocus():
 	btnAceptarHighlight.show()

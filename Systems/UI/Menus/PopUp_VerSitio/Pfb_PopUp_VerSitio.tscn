@@ -78,7 +78,7 @@ _data = {
 "RESET": SubResource("Animation_osjvv")
 }
 
-[node name="PopUP" type="Control" node_paths=PackedStringArray("id", "nombre", "frame", "framePatch", "btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight", "animPlayer")]
+[node name="PopUP" type="Control" node_paths=PackedStringArray("id", "nombre", "frame", "framePatch", "btnAceptar", "btnAceptarHighlight", "btnCancelar", "btnCancelarHighlight", "animPlayer", "lblNoDisp", "parentAceptar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,6 +95,8 @@ btnAceptarHighlight = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Aceptar/H
 btnCancelar = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Cancelar/Btn Cancelar")
 btnCancelarHighlight = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Cancelar/Highlight Cancelar")
 animPlayer = NodePath("PopUp Ver Sitio - BLUR/AnimationPlayer")
+lblNoDisp = NodePath("PopUp Ver Sitio - BLUR/NoDisp")
+parentAceptar = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Aceptar")
 
 [node name="PopUp Ver Sitio - BLUR" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.411765)
@@ -356,7 +358,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 31
-text = "A"
+text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -404,7 +406,6 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 
 [node name="Aceptar" type="Control" parent="PopUp Ver Sitio - BLUR/Control/Botones"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -431,7 +432,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 31
-text = "B"
+text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -477,6 +478,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
+
+[node name="NoDisp" type="Label" parent="PopUp Ver Sitio - BLUR"]
+self_modulate = Color(0.816804, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = 22.0
+offset_right = 239.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SITIO NO DISPONIBLE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PopUp Ver Sitio - BLUR"]
 libraries = {

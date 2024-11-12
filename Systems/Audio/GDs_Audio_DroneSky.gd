@@ -57,10 +57,10 @@ func _process(_delta):
 		if Input.is_action_pressed("3DMove_Height_-") and Input.is_action_pressed("3DMove_Height_+"):
 			if sndCameraFOV.playing:
 				CameraFadeOut()
-		elif Input.is_action_pressed("3DMove_Height_+") and CAM.fov > 30:
+		elif Input.is_action_pressed("3DMove_Height_-") and CAM.fov > 30:
 			if not sndCameraFOV.playing:
 				CameraFadeIn()
-		elif Input.is_action_pressed("3DMove_Height_-") and CAM.fov < 100:
+		elif Input.is_action_pressed("3DMove_Height_+") and CAM.fov < 100:
 			if not sndCameraFOV.playing:
 				CameraFadeIn()
 		else:
