@@ -163,7 +163,6 @@ movFly = NodePath("MovFly")
 fly_pivot = NodePath("MovFly")
 fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_x5pt0")
-sky_speed = 200.0
 fly_height_speed = 2.0
 fly_height_max = 450.0
 fly_rot_speed = 0.7
@@ -522,7 +521,7 @@ mouse_filter = 2
 [node name="[ UI  ]" type="Node" parent="[ PPE + UI ]"]
 
 [node name="Interfaz" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 10
+layer = 7
 
 [node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
 pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
