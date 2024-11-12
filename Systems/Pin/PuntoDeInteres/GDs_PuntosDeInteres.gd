@@ -9,7 +9,7 @@ var PDIs: Array[Node3D]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for child in get_children():
-		if child is Node3D:
+		if child is Node3D and child.visible:
 			PDIs.append(child)
 	
 	for pdi in PDIs:

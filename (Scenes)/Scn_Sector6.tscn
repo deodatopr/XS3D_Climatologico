@@ -209,6 +209,7 @@ nombre = " Escuela Primaria Ignacio Lopez Rayon"
 
 [node name="Punto 7" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1084.32, 69.6268, 1403.56)
+visible = false
 script = ExtResource("39_x4bd8")
 nombre = "Primaria Lazaro Cardenas"
 
@@ -219,6 +220,7 @@ nombre = "Canchita El Bosque"
 
 [node name="Punto 9" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1020.99, 69.6268, 1598.05)
+visible = false
 script = ExtResource("39_x4bd8")
 nombre = "Parroquia San Juanita"
 

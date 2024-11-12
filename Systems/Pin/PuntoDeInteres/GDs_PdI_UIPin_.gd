@@ -3,6 +3,7 @@ extends Control
 
 @export var lblNombre:Label
 @export var anim:AnimationPlayer
+@export var littlePoint:Control
 
 var cameraFly:Camera3D
 var cameraSky:Camera3D
@@ -14,14 +15,17 @@ var isInitialized: bool = false
 var isClosed: bool = true
 var isOpened: bool = false
 
+var tween:Tween
+
 func _ready():
 	anim.play("Close")
+	PlayLittlePoint()
 
 
 func Initialize():
 	SIGNALS.OnCameraChangedMode.connect(OnChangeCamera)
 	lblNombre.text = " " + pinWorldPos.nombre + " "
-	lblNombre.visible_ratio = 1
+	lblNombre.visible_ratio = 0
 	currentCam = cameraFly
 	isInitialized = true
 
@@ -53,3 +57,8 @@ func OnChangeCamera(cam:int):
 
 func PlayBlinking():
 	anim.play("Blink")
+
+func PlayLittlePoint():
+	tween = create_tween().set_loops(0)
+	tween.tween_property(littlePoint,"self_modulate",Color.TRANSPARENT,0.2)
+	tween.tween_property(littlePoint,"self_modulate",Color.WHITE,0.2)
