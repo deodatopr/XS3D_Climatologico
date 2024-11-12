@@ -368,9 +368,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.5
+offset_left = -63.5
 offset_top = -29.5
-offset_right = -46.5
+offset_right = -4.5
 offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -404,6 +404,7 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 
 [node name="Aceptar" type="Control" parent="PopUp Ver Sitio - BLUR/Control/Botones"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -442,10 +443,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -27.0
-offset_right = -9.0
-offset_bottom = 27.0
+offset_left = -96.5
+offset_top = -29.5
+offset_right = -37.5
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_ub68o")

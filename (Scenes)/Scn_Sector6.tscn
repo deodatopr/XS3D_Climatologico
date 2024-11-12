@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=52 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="7_cjwh8"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
-[ext_resource type="PackedScene" uid="uid://1abu1lpmqhos" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
+[ext_resource type="PackedScene" uid="uid://b1vv1osuwmuic" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
 [ext_resource type="AudioStream" uid="uid://b7iu0hknp6otd" path="res://Cont_Sounds/Drones/DroneFly_Moving.mp3" id="10_2yvy7"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneFly.gd" id="10_uf8le"]
 [ext_resource type="PackedScene" uid="uid://2fk1ttkfdobb" path="res://Cont_Models/Sector6/Msh_Navigation.glb" id="11_bbryg"]
@@ -38,6 +38,7 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_WaveDeform.gdshader" id="30_uby03"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_Heat.gdshader" id="31_hk50b"]
 [ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam.tres" id="38_mbo4u"]
+[ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/Pin/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="39_it1fo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqpe"]
 shader = ExtResource("30_uby03")
@@ -496,3 +497,7 @@ vistaSky = NodePath("../SKY")
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("6_7j046")]
 visible = false
+
+[node name="Puntos de Interes" parent="." node_paths=PackedStringArray("camFly", "camSky") instance=ExtResource("39_it1fo")]
+camFly = NodePath("../[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam")
+camSky = NodePath("../[ SYSTEMS ]/Camera - Drones/MovSky/sky_cam")
