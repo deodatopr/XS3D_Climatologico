@@ -47,7 +47,7 @@ func FormatDirViento(dir:float)->String:
 	return _ValueToText(dir) + "°"
 
 func FormatBateriaV(volt:float)->String:
-	return _ValueToText(volt) + "V"
+	return str(volt).num(volt,1) + "V"
 
 func FormatAltura(altura:int)->String:
 	return str(altura) + "m"

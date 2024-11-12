@@ -30,6 +30,7 @@ extends Control
 @export var temp:Label
 @export var presion:Label
 @export var viento:Label
+@export var lblBateria : Label
 
 var tween:Tween
 
@@ -72,6 +73,7 @@ func OnDataRefresh():
 	temp.text = UTILITIES.FormatTemperatura(sitio.temperatura)
 	presion.text = UTILITIES.FormatPresion(sitio.presion)
 	viento.text = UTILITIES.FormatIntensidadViento(sitio.intsdad_viento)#TODO sistema para que regrese N S E O
+	lblBateria.text = UTILITIES.FormatBateriaV(sitio.volt_bat_resp)
 
 func PlayAnimation(_color:Color,_speed:float):
 	tween = create_tween().set_loops(0)

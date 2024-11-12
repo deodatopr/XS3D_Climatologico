@@ -5,7 +5,8 @@ class_name GDs_DataService_Manager extends Node
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
 @export var endpoint : GDs_EP_GetAllEstaciones
-@export var endpoint_Debug : GDs_EP_GetAllEstaciones_Debug
+@export var endpoint_Random : GDs_EP_GetAllEstaciones_Random
+@export var endpoint_Simulado : GDs_EP_GetAllEstaciones_Simulado
 @export var endpoint_Error : GDs_EP_GetAllEstaciones_Error
 @export var URL : String
 @export var timeToRefresh : float = 4.0
@@ -33,17 +34,19 @@ func _ready():
 
 func Initialize():
 	SIGNALS.OnGoToSitio.connect(UpdateCurrentSitio)
+	SIGNALS.OnDebugRefresh.connect(_OnDebugRefresh)
 	
 	#Connect with endpoint GetAllEstacion
 	endpoint.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
 	endpoint.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
-	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Debug,endpoint_Error)
+	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Random,endpoint_Simulado,endpoint_Error)
 	
 	#Connect with endpoint error
 	endpoint_Error.Initialize(crLocalEstaciones,timeToReconnect_Error)
 	endpoint_Error.OnFinishError.connect(MakeRequest_GetAllEstaciones)
 	
-	endpoint_Debug.Initialize(crLocalEstaciones)
+	endpoint_Random.Initialize(crLocalEstaciones)
+	endpoint_Simulado.Initialize(crLocalEstaciones)
 	
 	#Connect timer to refresh endpoint
 	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)
@@ -93,8 +96,18 @@ func _OnFailedEP_GetAllEstaciones():
 	
 	#Stop refresh EP timer
 	timerTicking.stop()
-#endregion
 
+func _OnDebugRefresh():
+	APPSTATE.EP_GetAllEstaciones_State = ENUMS.EP_GetAllEstaciones.Success
+	
+	#Update data
+	_GetDataFromEP_GetAllEstaciones()
+	
+	#Start again the timer
+	timerTicking.stop()
+	timerTicking.timeout.emit()
+	timerTicking.start(timeToRefresh)
+	
 #region [ FILL DATA ]
 func _GetDataFromEP_GetAllEstaciones():
 	#Get Data estaciones from EP | random | empty
@@ -137,6 +150,7 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		instanceEstacionCombinada.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
 		instanceEstacionCombinada.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
 		instanceEstacionCombinada.presion = estacionEP.presion
+		instanceEstacionCombinada.sensores = estacionEP.sensores
 		
 		#From Local
 		instanceEstacionCombinada.nombre = estacionLocal.nombre
@@ -172,6 +186,7 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.fallo_alim_ac = estacionEP.fallo_alim_ac
 		estacionToUpdate.volt_bat_resp = estacionEP.volt_bat_resp
 		estacionToUpdate.presion = estacionEP.presion
+		estacionToUpdate.sensores = estacionEP.sensores
 		estacionToUpdate.enlace = estacionEP.enlace
 		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
 		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa

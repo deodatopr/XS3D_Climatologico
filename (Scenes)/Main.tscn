@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpgp82rtvn4n5"]
+[gd_scene load_steps=11 format=3 uid="uid://bpgp82rtvn4n5"]
 
 [ext_resource type="PackedScene" uid="uid://ddn72texoudi0" path="res://Systems/Curtain/Pfb_curtain.tscn" id="1_2h8cb"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_Curtain.gd" id="1_22qja"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://klhd05h31soo" path="res://Systems/Splash/Pfb_Splash.tscn" id="5_qomdb"]
 [ext_resource type="PackedScene" uid="uid://dj24gdwn2bk1y" path="res://(Scenes)/Scn_Sector4.tscn" id="6_5288l"]
 [ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector6.tscn" id="6_rdc0k"]
+[ext_resource type="Script" path="res://Systems/Debug/GDs_Debug.gd" id="8_po2sq"]
 
 [node name="Main" type="Node"]
 
@@ -41,7 +42,9 @@ sitios = {
 
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("5_8ipwn")]
 skip_orquestrator_main = false
-timeToRefresh = 30.0
+
+[node name="Simulados" type="Node" parent="[ SYSTEMS ]"]
+script = ExtResource("8_po2sq")
 
 [node name="[ SCENES ]" type="Node" parent="."]
 

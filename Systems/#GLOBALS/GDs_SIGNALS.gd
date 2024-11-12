@@ -24,3 +24,7 @@ signal OnCameraCanChangeMode()
 
 @warning_ignore('unused_signal')
 signal OnCameraChangedMode(_modoToChange : int)
+
+#DEBUG
+@warning_ignore('unused_signal')
+signal OnDebugRefresh()

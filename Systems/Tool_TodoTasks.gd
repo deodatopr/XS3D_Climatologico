@@ -6,12 +6,20 @@
 #===========================================
 
 #	[ Pani ]
-# Error cambiarte entre sitios desde panel de lista sitios (proteger)
+# INPUTS:
+	# Control -> Circulo centro toggle datos random y datos endpoint / F12
+	# X y Y : cambiar modo camara
+	# T abra menu de info
+	# O Abra panel de debug
+	# A - aceptar
+	# B - Back
+
+#
+# Variables estacion actualizarlas y dejar solo las del uúltimo documento de endpoint
 # Hay cosas con control que no están actualizadas (Y no es cambio de cam), pad para menu
 # Probar sonidos que algunos aunque llegan al limite se siguen escuchando
 # (idea de sonido dif cuando no puedas)
-#Mouse detect musica panel
-# Variable 
+# Mouse detect musica panel
 
 # Manager para debuggear caracteristicas
 # Que sucede cuando no hay datos con mensaje de reconexión
