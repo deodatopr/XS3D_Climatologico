@@ -1,4 +1,4 @@
-class_name GDs_EP_GetAllEstaciones_Debug extends Node
+class_name GDs_EP_GetAllEstaciones_Random extends Node
 
 const ultFechaConInfo : String = "2024-09-11T18:32:17"
 
@@ -7,7 +7,7 @@ var CR_LocalEstaciones: GDs_CR_LocalEstaciones
 func Initialize(_CR_LocalEstaciones: GDs_CR_LocalEstaciones):
 	CR_LocalEstaciones =_CR_LocalEstaciones
 
-func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
+func GetEstaciones()-> Array[GDs_Data_EP_Estacion]:
 	var estaciones : Array[GDs_Data_EP_Estacion]
 	
 	var fecha : String
@@ -21,7 +21,9 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 	var precipitacion : float
 	var presionAtm : float
 	var viento : float
+	var dir_viento : int
 	var nivel : float
+	var sensores : bool
 	
 	var humd_bajo_min : float = 0.0
 	var humd_bajo_max : float = 70.0
@@ -46,8 +48,8 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 		bateriaConCarga = nvlBateria > 23.2
 		utr = randi() % 2 == 0 if bateriaConCarga else false
 		enlace = randi() % 2 == 0 if bateriaConCarga and utr else false
-		
-		var tengoDatos : bool =  bateriaConCarga and utr
+		sensores = randi() % 2 == 0 if bateriaConCarga and utr else false
+		var tengoDatos : bool =  bateriaConCarga and sensores and utr and enlace
 		
 		fecha = Time.get_datetime_string_from_system() if utr else ultFechaConInfo
 		
@@ -69,7 +71,7 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 		var precipitacionAlta : bool = precipitacion > 20.0
 		if tengoDatos and precipitacionAlta:
 			presionAtm = randf_range(psnAtm_bajo_min, psnAtm_bajo_max)
-			evaporacion -= randf_range(1,3)
+			evaporacion -= maxf(randf_range(1,3),0.0)
 		elif tengoDatos and not precipitacionAlta:
 			presionAtm = randf_range(psnAtm_alto_min, psnAtm_alto_max)
 		else:
@@ -77,9 +79,11 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 
 		#Viento -> (Presión y evaporacion)
 		viento = randf_range(0.0, 60.0) if tengoDatos else NAN
+		dir_viento = randi_range(0,360) if tengoDatos else NAN
+		
 		var vientoAlto : bool = viento > 30.0
 		if tengoDatos and vientoAlto:
-			presionAtm -= randf_range(5.0, 15.0)
+			presionAtm -= maxf(randf_range(5.0, 15.0),0.0)
 			evaporacion += randf_range(1.0,3.0)
 		else:
 			presionAtm += randf_range(5.0, 15.0)
@@ -93,6 +97,7 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 		"volt_bat_resp": nvlBateria,
 		"enlace": enlace,
 		"disp_utr": utr,
+		"sensores": sensores,
 		
 		"prtcion_pluvial": precipitacion,
 		"presion" : presionAtm,
@@ -102,7 +107,7 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 		"evaporacion": evaporacion,
 		"intsdad_viento": viento,
 		
-		"dir_viento": randf_range(0,360),
+		"dir_viento": dir_viento,
 		
 		"nivel": nivel,
 

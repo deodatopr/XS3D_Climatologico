@@ -30,10 +30,10 @@ class_name GDs_Cam_Manager extends Node
 @export_subgroup("SKY")
 @export_custom(PROPERTY_HINT_NONE,"suffix: m") var sky_height : float = 500
 @export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var sky_speed: float = 50
-@export_range(1,2) var sky_turbo: float = 2
+@export_custom(PROPERTY_HINT_NONE,"suffix: multiplier") var sky_turbo: float = 2
 @export var sky_rot_speed : float = .1
-@export_range(30,130) var sky_zoom_in : float = 30
-@export var sky_zoom_out : float = 100
+@export_custom(PROPERTY_HINT_NONE,"suffix: fov") var sky_zoom_in : float = 30
+@export_custom(PROPERTY_HINT_NONE,"suffix: fov") var sky_zoom_out : float = 100
 
 @export_subgroup("FLY")
 @export_range(30,100) var fly_fov :float = 50
@@ -41,7 +41,7 @@ class_name GDs_Cam_Manager extends Node
 @export_custom(PROPERTY_HINT_NONE,"suffix: m") var fly_height_max : float = 400
 @export_custom(PROPERTY_HINT_NONE,"suffix: m") var fly_height_min : float = 200
 @export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var fly_speed : float = 80
-@export_range(1,5) var fly_turbo : float = 2.5
+@export_custom(PROPERTY_HINT_NONE,"suffix: multiplier") var fly_turbo : float = 2.5
 @export_range(.1,2,.1) var fly_acce_dece: float = 1
 @export_custom(PROPERTY_HINT_NONE,"suffix: °") var fly_rot_clamp : float = 40
 @export var fly_rot_speed : float = .5

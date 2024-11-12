@@ -68,7 +68,7 @@ region = Rect2(0, 120, 40, 40)
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 160, 40, 40)
 
-[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "senal", "UTR", "nivel", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "humedad", "evaporacion", "temp", "presion", "viento")]
+[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "senal", "UTR", "nivel", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "humedad", "evaporacion", "temp", "presion", "viento", "lblBateria")]
 custom_minimum_size = Vector2(1580, 105)
 layout_mode = 3
 anchors_preset = 12
@@ -104,6 +104,7 @@ evaporacion = NodePath("HBoxContainer/Datos/Evaporacion/VBox/Lbl Valor Evaporaci
 temp = NodePath("HBoxContainer/Datos/Temperatura/VBox/Lbl Valor Temp")
 presion = NodePath("HBoxContainer/Datos/Presion Atm/VBox/Lbl Valor Presion")
 viento = NodePath("HBoxContainer/Datos/Viento/VBox/Lbl Valor Viento")
+lblBateria = NodePath("HBoxContainer/Senales/Bateria2/HBoxContainer2/Text/Lbl Bateria")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_2g4pr")

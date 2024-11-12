@@ -43,7 +43,7 @@ func Close():
 		_AnimPanelError(false)
 		panelErrorIsOpened = false
 		
-func GetEstaciones_Empty()-> Array[GDs_Data_EP_Estacion]:
+func GetEstaciones()-> Array[GDs_Data_EP_Estacion]:
 	#Llenar datos vacios de endpoint para que la app pueda funcionar pero sin datos	
 	var custom_array: Array[GDs_Data_EP_Estacion] = []
 

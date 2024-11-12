@@ -6,20 +6,22 @@ signal OnRequest_Success
 signal OnRequest_Failed
 
 var CR_LocalEstaciones : GDs_CR_LocalEstaciones
-var getAllEstaciones_Debug : GDs_EP_GetAllEstaciones_Debug
+var getAllEstaciones_Random : GDs_EP_GetAllEstaciones_Random
+var getAllEstaciones_Simulado : GDs_EP_GetAllEstaciones_Simulado
 var getAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
 var arrayEstaciones : Array[GDs_Data_EP_Estacion] = []
 var estacionesFromServer = {"Estaciones" : arrayEstaciones}
 var URL : String
 var isBusy : bool
 
-func Initialize(_url : String, _timeout : float, _CR_LocalEstaciones : GDs_CR_LocalEstaciones, _estacionesDebug : GDs_EP_GetAllEstaciones_Debug, _estacionesError : GDs_EP_GetAllEstaciones_Error):
+func Initialize(_url : String, _timeout : float, _CR_LocalEstaciones : GDs_CR_LocalEstaciones, _estacionesRnd : GDs_EP_GetAllEstaciones_Random, _estacionesSimulado : GDs_EP_GetAllEstaciones_Simulado ,_estacionesError : GDs_EP_GetAllEstaciones_Error):
 	URL = _url
 	http_request.timeout = _timeout
 	http_request.request_completed.connect(_OnRequestCompleted_GetAllEstaciones)
 	
 	CR_LocalEstaciones = _CR_LocalEstaciones
-	getAllEstaciones_Debug = _estacionesDebug
+	getAllEstaciones_Random = _estacionesRnd
+	getAllEstaciones_Simulado = _estacionesSimulado
 	getAllEstaciones_Error = _estacionesError
 	
 func Request_GetAllEstaciones():
@@ -28,19 +30,25 @@ func Request_GetAllEstaciones():
 
 	isBusy = true
 	
+	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
+		arrayEstaciones = getAllEstaciones_Simulado.GetEstaciones()
+		OnRequest_Success.emit()
+		isBusy = false
+		return
+	
 	#Request endpoint
 	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_EP:
 		http_request.request(URL)
 	
 	#Debug random
 	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Random:
-		arrayEstaciones = getAllEstaciones_Debug.GetEstaciones_Random()
+		arrayEstaciones = getAllEstaciones_Random.GetEstaciones()
 		OnRequest_Success.emit()
 		isBusy = false
 		
 	#Debug error
 	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Error:
-		arrayEstaciones = getAllEstaciones_Error.GetEstaciones_Empty()
+		arrayEstaciones = getAllEstaciones_Error.GetEstaciones()
 		OnRequest_Failed.emit()
 		isBusy = false
 	
