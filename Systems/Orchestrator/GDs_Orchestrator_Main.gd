@@ -1,5 +1,5 @@
 class_name GDs_Orchestrator_Main extends Node
-
+@export_enum("Sector6","Sector4","Random") var sitioInicial: int
 @export var splash : GDs_Splash
 @export var curtain : GDs_Curtain
 @export var scenes_manager : GDs_Scenes_Manager
@@ -8,10 +8,13 @@ class_name GDs_Orchestrator_Main extends Node
 
 func _ready():
 	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
-
 	var sitioToStart : int = scenes_manager.GetRndIdSite()
+	if sitioInicial==0: 
+		sitioToStart=6
+	elif sitioInicial==1 :
+		sitioToStart=4 
 	#HACK: Iniciar siempre en el sitio 6
-	sitioToStart = 6
+	
 	APPSTATE.currntIdSitio = sitioToStart
 	
 	#SPLASH
