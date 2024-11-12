@@ -23,13 +23,11 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 	var viento : float
 	var nivel : float
 	
-		
 	var humd_bajo_min : float = 0.0
 	var humd_bajo_max : float = 70.0
 	var humd_alto_min : float = 71.0
 	var humd_alto_max : float = 100.0
 	
-		
 	var evap_bajo_min : float = 0.0
 	var evap_bajo_max : float = 5.0
 	var evap_alto_min : float = 6.0
@@ -42,12 +40,12 @@ func GetEstaciones_Random()-> Array[GDs_Data_EP_Estacion]:
 	
 	#Llenar array con valores Random
 	for idx in CR_LocalEstaciones.LocalEstaciones.size():
-		nvlBateria = randf_range(20.0, 25.4)
+		nvlBateria = randf_range(22.5, 25.4)
 		
 		#De acuerdo a documento si tiene 23.2 es que está descargada
 		bateriaConCarga = nvlBateria > 23.2
-		enlace = randi() % 2 == 0 if bateriaConCarga else false
 		utr = randi() % 2 == 0 if bateriaConCarga else false
+		enlace = randi() % 2 == 0 if bateriaConCarga and utr else false
 		
 		var tengoDatos : bool =  bateriaConCarga and utr
 		
