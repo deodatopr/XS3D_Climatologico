@@ -11,4 +11,4 @@ canvas = NodePath("CanvasLayer")
 mat_LightBeam = ExtResource("3_p60im")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 8
+layer = 7

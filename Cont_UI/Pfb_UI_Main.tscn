@@ -70,24 +70,19 @@ popUp = NodePath("PopUP")
 [node name="------MENUS----------" type="Node" parent="."]
 
 [node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp", "sndUi1", "sndUiPressed") instance=ExtResource("3_g57u8")]
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_top = 0.0
-anchor_right = 1.0
 offset_left = 20.0
-offset_top = 19.0
-offset_right = -1485.0
-offset_bottom = -246.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.15, 1.15)
+offset_top = -982.0
+offset_right = 435.0
+offset_bottom = -167.0
+scale = Vector2(1.05, 1.05)
 barraMenu = NodePath("../Barra menus")
 popUp = NodePath("../PopUP")
 sndUi1 = NodePath("../[ AUDIO ]/UI Focus")
 sndUiPressed = NodePath("../[ AUDIO ]/UI Pressed")
 
 [node name="Menu Info" parent="." instance=ExtResource("1_pql5o")]
-visible = false
 layout_mode = 1
 
 [node name="Menu Mapa" parent="." node_paths=PackedStringArray("barraMenus", "popUp", "clickSnd", "focusSnd") instance=ExtResource("4_t41nj")]
@@ -243,6 +238,7 @@ sndUi1 = NodePath("../[ AUDIO ]/UI Focus")
 
 [node name="Barra Info" parent="." instance=ExtResource("1_a8a45")]
 layout_mode = 1
+anchors_preset = -1
 
 [node name="------POPUP----------" type="Node" parent="."]
 

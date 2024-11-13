@@ -5,6 +5,9 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2iwiy"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l53r2"]
+width = 128
+height = 128
+generate_mipmaps = false
 seamless = true
 noise = SubResource("FastNoiseLite_2iwiy")
 

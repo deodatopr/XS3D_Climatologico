@@ -404,8 +404,6 @@ libraries = {
 
 [node name="Open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_40ktq")
-volume_db = -5.0
 
 [node name="Close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qav2l")
-volume_db = -5.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddo5utgfriiew"]
+[gd_scene load_steps=15 format=3 uid="uid://ddo5utgfriiew"]
 
 [ext_resource type="Script" path="res://Systems/UI/Menus/Config/GDs_UI_Config.gd" id="1_ulouc"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_8dovo"]
@@ -14,6 +14,9 @@ shader_parameter/blur = 3
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0htj"]
 atlas = ExtResource("3_46evx")
 region = Rect2(7, 322, 44, 44)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_45085"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8igq"]
 atlas = ExtResource("3_46evx")
@@ -158,6 +161,116 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_g0htj")
 
+[node name="+3" type="NinePatchRect" parent="Menu Config"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 7.0
+offset_top = 80.0
+offset_right = 53.0
+offset_bottom = 105.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture = SubResource("CompressedTexture2D_45085")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="-" type="NinePatchRect" parent="Menu Config"]
+self_modulate = Color(0.48, 0.48, 0.48, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 79.0
+offset_right = 55.0
+offset_bottom = 107.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_46evx")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Menu Config/-"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -26.5
+offset_right = 7.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="+2" type="NinePatchRect" parent="Menu Config"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 52.0
+offset_top = 80.0
+offset_right = 98.0
+offset_bottom = 105.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture = SubResource("CompressedTexture2D_45085")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="+" type="NinePatchRect" parent="Menu Config"]
+self_modulate = Color(0.48, 0.48, 0.48, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 50.9999
+offset_top = 79.0
+offset_right = 99.9999
+offset_bottom = 107.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_46evx")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="Menu Config/+"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.5
+offset_top = -22.5
+offset_right = 7.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Pad" type="TextureRect" parent="Menu Config"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
@@ -165,9 +278,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 4.0
-offset_top = 88.0
+offset_top = 111.0
 offset_right = 83.0
-offset_bottom = 168.0
+offset_bottom = 191.0
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_h8igq")
 

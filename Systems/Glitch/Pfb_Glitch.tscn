@@ -57,7 +57,7 @@ script = ExtResource("5_u01u5")
 colorTransparent = Color(0, 0, 0, 0)
 
 [node name="Msg Perdiendo Senal" type="CanvasLayer" parent="."]
-layer = 5
+layer = 9
 visible = false
 
 [node name="Perdiendo senal" type="Control" parent="Msg Perdiendo Senal"]
@@ -105,7 +105,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="PPE - Glitch" type="CanvasLayer" parent="."]
-layer = 7
+layer = 9
 
 [node name="ColorRect" type="ColorRect" parent="PPE - Glitch"]
 process_mode = 4

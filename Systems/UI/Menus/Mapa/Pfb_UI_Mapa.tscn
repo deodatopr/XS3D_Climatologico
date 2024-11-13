@@ -235,7 +235,7 @@ pivot_offset = Vector2(10, 13)
 texture = SubResource("AtlasTexture_1yn06")
 
 [node name="Cerrar" type="NinePatchRect" parent="FrameBG"]
-self_modulate = Color(0.1426, 0.492693, 0.62, 1)
+self_modulate = Color(0.1426, 0.492693, 0.62, 0.815686)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -548,3 +548,34 @@ offset_right = 269.0
 offset_bottom = 37.0
 grow_vertical = 2
 text = "Cerrar"
+
+[node name="Title" type="NinePatchRect" parent="FrameBG"]
+self_modulate = Color(0.1426, 0.492693, 0.62, 0.835294)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -269.5
+offset_top = 39.0
+offset_right = 269.5
+offset_bottom = 100.0
+grow_horizontal = 2
+texture = ExtResource("3_4hsy0")
+region_rect = Rect2(473, 39, 30, 31)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Seleccion de sitio"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

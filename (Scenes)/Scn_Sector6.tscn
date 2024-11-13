@@ -132,9 +132,9 @@ orquestrator = NodePath("[ SYSTEMS ]/Orquestrator")
 script = ExtResource("2_q2lqn")
 cameraDrones = NodePath("../Camera - Drones")
 ppeGlitch = NodePath("../PPE - Glitch")
-fly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
-sky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
-menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/MENU")
+fly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/FLY")
+sky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/SKY")
+menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
@@ -280,8 +280,8 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="PPE - Glitch" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly") instance=ExtResource("7_cjwh8")]
-vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
-vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
+vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/SKY")
+vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/FLY")
 
 [node name="PPE - Alarmas" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("ppePresa", "ppeTemp", "sndAlarm")]
 script = ExtResource("18_xkk4p")
@@ -290,7 +290,7 @@ ppeTemp = NodePath("Alarmas Temp/Temp")
 sndAlarm = NodePath("Alarma")
 
 [node name="Alarmas Presa" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
-layer = 6
+layer = 5
 
 [node name="Presa" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Presa"]
 visible = false
@@ -302,7 +302,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Alarmas Temp" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
-layer = 7
+layer = 4
 
 [node name="Temp" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Temp"]
 visible = false
@@ -478,17 +478,23 @@ mouse_filter = 2
 
 [node name="[ UI  ]" type="Node" parent="[ PPE + UI ]"]
 
-[node name="Interfaz" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 7
+[node name="Interfaz Drones" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
+layer = 6
 
-[node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
+[node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz Drones" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
 pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 
-[node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("14_bqx8o")]
+[node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz Drones" instance=ExtResource("14_bqx8o")]
 metadata/_edit_horizontal_guides_ = [125.0]
 
-[node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("vistaSky") instance=ExtResource("7_hy666")]
-vistaSky = NodePath("../SKY")
+[node name="Interfaz MENUS" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
+layer = 8
 
-[node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("6_7j046")]
+[node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("7_hy666")]
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -1009.0
+grow_vertical = 0
+
+[node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("6_7j046")]
 visible = false
