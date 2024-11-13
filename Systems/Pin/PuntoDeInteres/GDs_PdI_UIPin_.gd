@@ -4,6 +4,9 @@ extends Control
 @export var lblNombre:Label
 @export var anim:AnimationPlayer
 @export var littlePoint:Control
+@export_group("Audio")
+@export var open: AudioStreamPlayer
+@export var close: AudioStreamPlayer
 
 var cameraFly:Camera3D
 var cameraSky:Camera3D
@@ -19,7 +22,7 @@ var isOpened: bool = false
 var tween:Tween
 
 func _ready():
-	anim.play("Close")
+	#anim.play("Close")
 	PlayLittlePoint()
 
 
@@ -64,3 +67,10 @@ func PlayLittlePoint():
 	tween = create_tween().set_loops(0)
 	tween.tween_property(littlePoint,"self_modulate",Color.TRANSPARENT,0.2)
 	tween.tween_property(littlePoint,"self_modulate",Color.WHITE,0.2)
+
+func PlayOpenSound():
+	open.stop()
+	open.play()
+func PlayCloseSound():
+	close.stop()
+	close.play()
