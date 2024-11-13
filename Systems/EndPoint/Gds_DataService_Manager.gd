@@ -73,6 +73,8 @@ func UpdateCurrentSitio(_id : int):
 	#Señal Temperatura
 	if APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_alta:
 		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Alta)
+	elif APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_calida and APPSTATE.currntSitio.temperatura <= CONST.thrshld_temperatura_alta:
+		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Calida)
 	else:
 		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Normal)
 		

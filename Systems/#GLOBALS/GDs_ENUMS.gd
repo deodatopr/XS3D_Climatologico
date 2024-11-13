@@ -42,6 +42,7 @@ enum LluviaIntsdad
 enum Temperatura
 {
 	Normal,
+	Calida,
 	Alta
 }
 

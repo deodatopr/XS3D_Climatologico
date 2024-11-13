@@ -38,9 +38,9 @@ func OnRefresh():
 		SetPresaToCrit()
 	
 	SetTempToNorm()
-	if APPSTATE.currntSitio.temperatura > 24:
+	if APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_calida:
 		SetTempToPrev()
-	if APPSTATE.currntSitio.temperatura > 28:
+	if APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_alta:
 		SetTempToCrit()
 
 func SetPresaToNorm():
@@ -63,8 +63,6 @@ func SetPresaToCrit():
 	ppePresa.material.set_shader_parameter("isCritico",true)
 	ppePresa.material.set_shader_parameter("stop",1)
 	
-
-
 func SetTempToNorm():
 	ppeTemp.hide()
 func SetTempToPrev():

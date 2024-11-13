@@ -20,11 +20,11 @@ void fragment() {
 	}else{
 		radius = fract(speed);
 	}
-	
+
 	vec2 center = vec2(0.5, 0.5);
 	vec2 st = SCREEN_UV;
 	float aspect_ratio = SCREEN_PIXEL_SIZE.y/SCREEN_PIXEL_SIZE.x;
-	vec2 scaled_st = (st -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5); 
+	vec2 scaled_st = (st -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5);
 	vec2 dist_center = scaled_st - center;
 	float mask;
 	if (isCritico){
@@ -33,7 +33,7 @@ void fragment() {
 	else{
 		mask =  (1.0 - smoothstep(radius-smoothness, radius, length(dist_center))) * smoothstep(radius - distort - smoothness, radius-distort , length(dist_center));
 	}
-	
+
 	vec2 offset = normalize(dist_center)*chromatic*mask;
 	vec2 biased_st = scaled_st - offset;
 	vec2 abber_vec = offset*mask;
@@ -41,7 +41,7 @@ void fragment() {
 	vec4 red = texture(SCREEN_TEXTURE, final_st + abber_vec);
 	vec4 blue = texture(SCREEN_TEXTURE, final_st - abber_vec);
 	vec4 ori = texture(SCREEN_TEXTURE, final_st);
-	
+
 	if (isCritico){
 		COLOR = mix(vec4(red.r, ori.g, blue.b, 1.0) , colorCritico,mask);
 	}
