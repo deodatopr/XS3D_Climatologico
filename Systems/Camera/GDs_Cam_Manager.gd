@@ -49,9 +49,6 @@ class_name GDs_Cam_Manager extends Node
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
 @onready var mat_limit_fly : ShaderMaterial = preload("uid://nan3iase8pij")
 
-@onready var mat_roads_sky : BaseMaterial3D = preload("uid://bybsj0rkirn0u")
-@onready var mat_roads_fly : BaseMaterial3D = preload("uid://bcn6j5aje8ydi")
-
 @onready var preset_env_sky : Environment = preload("uid://buu228l4r1lse")
 @onready var preset_env_fly : Environment = preload("uid://d0njvq6rqh23r")
 
@@ -219,9 +216,6 @@ func _ChangeToMode_Sky():
 		UTILITIES.TurnOffObject(child)
 	for child in ui_ppe_sky.get_children():
 		UTILITIES.TurnOnObject(child)
-			
-		#Roads
-	msh_roads.material_override = mat_roads_sky
 		
 		#Msh limit
 	msh_limit.material_override = mat_limit_sky
@@ -254,9 +248,6 @@ func _ChangeToMode_Fly():
 		UTILITIES.TurnOnObject(child)
 	for child in ui_ppe_sky.get_children():
 		UTILITIES.TurnOffObject(child)
-			
-		#Roads
-	msh_roads.material_override = mat_roads_fly
 	
 		#Msh limit
 	msh_limit.material_override = mat_limit_fly
