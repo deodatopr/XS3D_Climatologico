@@ -39,6 +39,7 @@ func _init(_estacion : Dictionary) :
 	temperatura = _estacion["temperatura"]
 	presion = _estacion["presion"]
 	presaSnsr = _estacion["presaSnsr"]
+	pcptnSnsr = _estacion["pcptnSnsr"]
 	prsnSnsr = _estacion["prsnSnsr"]
 	solSnsr = _estacion["solSnsr"]
 	humTempSnsr = _estacion["humTempSnsr"]
