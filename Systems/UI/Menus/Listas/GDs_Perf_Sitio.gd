@@ -87,7 +87,7 @@ func DataRefresh(_estacion: GDs_Data_Estacion):
 	humedad.text = UTILITIES.FormatHumedad(_estacion.humedad)
 	evaporacion.text = UTILITIES.FormatEvaporacion(_estacion.evaporacion)
 	temp.text = UTILITIES.FormatTemperatura(_estacion.temperatura)
-	presion.text = UTILITIES.FormatPresion(_estacion.temperatura)#TODO cambiar por presion
+	presion.text = UTILITIES.FormatPresion(_estacion.presion)
 	viento.text = UTILITIES.FormatIntensidadViento(_estacion.intsdad_viento)#TODO sistema para que regrese N S E O
 
 func OnBtnPressed():
