@@ -33,6 +33,10 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
+"Mat_Env_Roads": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Roads.tres"
+},
 "Mat_Env_Roads_Fly": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Roads_Fly.tres"
