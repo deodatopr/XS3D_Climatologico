@@ -1,10 +1,10 @@
-[gd_scene load_steps=51 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=49 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="2_vmk6t"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="2_xo163"]
-[ext_resource type="PackedScene" uid="uid://c0oj8d4flwjyp" path="res://Cont_Models/Sector6/Msh_Terrain.glb" id="3_htqi2"]
+[ext_resource type="PackedScene" uid="uid://b3gfivu1rhllf" path="res://Cont_Models/Sector6/Msh_Terrain.glb" id="3_htqi2"]
 [ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Presets/Preset_Curve_Movement.tres" id="3_x5pt0"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Sky.gd" id="4_w0x8b"]
 [ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Fly.gd" id="5_7w42d"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="7_cjwh8"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
-[ext_resource type="PackedScene" uid="uid://b1vv1osuwmuic" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
+[ext_resource type="PackedScene" uid="uid://sehi5tl2e6k7" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
 [ext_resource type="AudioStream" uid="uid://b7iu0hknp6otd" path="res://Cont_Sounds/Drones/DroneFly_Moving.mp3" id="10_2yvy7"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneFly.gd" id="10_uf8le"]
 [ext_resource type="PackedScene" uid="uid://2fk1ttkfdobb" path="res://Cont_Models/Sector6/Msh_Navigation.glb" id="11_bbryg"]
@@ -35,7 +35,6 @@
 [ext_resource type="AudioStream" uid="uid://ddy04w0b45rcn" path="res://Cont_Sounds/Sitio/Sitio_Alarma.mp3" id="23_qgr12"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_WaveDeform.gdshader" id="30_uby03"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_Heat.gdshader" id="31_hk50b"]
-[ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam.tres" id="38_mbo4u"]
 [ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/Pin/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="39_it1fo"]
 [ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="39_x4bd8"]
 
@@ -68,10 +67,6 @@ shader_parameter/noiseMap = SubResource("NoiseTexture2D_xmvdm")
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_a5f8a"]
-material = ExtResource("38_mbo4u")
-size = Vector2(20, 300)
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -412,11 +407,6 @@ transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
-
-[node name="LightBeam" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(0.984932, 0, 0.172943, 0, 1, 0, -0.172943, 0, 0.984932, -28.731, 194.036, 42.451)
-mesh = SubResource("QuadMesh_a5f8a")
-skeleton = NodePath("../..")
 
 [node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
 
