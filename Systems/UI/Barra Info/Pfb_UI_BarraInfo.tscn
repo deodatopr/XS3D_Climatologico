@@ -614,7 +614,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 13.0
 offset_right = -13.0
-offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
@@ -634,15 +633,42 @@ alignment = 1
 [node name="Lbl Valor Nivel" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
-text = "NVL: 12.0m"
+text = "12.0m"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
+[node name="Control" type="Control" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
+custom_minimum_size = Vector2(0, 33)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Nivel/Valor Nivel/VBox/Control"]
+layout_mode = 2
+offset_left = 28.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 37.0
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_kmxh6")
 script = ExtResource("3_qdbvn")
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Nivel/Valor Nivel/VBox/Control"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 0.5
+offset_right = -25.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/Nivel/Valor Nivel/VBox"]
 visibility_layer = 0
@@ -656,29 +682,15 @@ alignment = 1
 custom_minimum_size = Vector2(11, 11)
 layout_mode = 2
 
-[node name="Senal" type="TextureRect" parent="HBoxContainer/Nivel/Valor Nivel/VBox/HBoxContainer/Control"]
-self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+[node name="NIVEL" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox/HBoxContainer/Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -5.5
-offset_right = 5.5
-offset_bottom = 5.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = SubResource("AtlasTexture_bi5is")
-expand_mode = 1
-
-[node name="Sensor" type="Label" parent="HBoxContainer/Nivel/Valor Nivel/VBox/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "SENSOR"
+theme_override_font_sizes/font_size = 15
+text = "NIVEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -703,7 +715,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 15
-text = "80.0mts."
+text = "80.0m"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -722,7 +734,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 15
-text = "50.0mts."
+text = "50.0m
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -741,7 +754,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 15
-text = "10.0mts."
+text = "10.0m"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -794,11 +807,26 @@ text = "15mm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Precipitacion/VBox"]
+[node name="Control" type="HBoxContainer" parent="HBoxContainer/Datos/Precipitacion/VBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Precipitacion/VBox/Control"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_yto5a")
 script = ExtResource("3_qdbvn")
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Datos/Precipitacion/VBox/Control"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Precipitacion/VBox"]
 layout_mode = 2
@@ -841,11 +869,26 @@ text = "24°C"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Presion Atm/VBox"]
+[node name="Control" type="HBoxContainer" parent="HBoxContainer/Datos/Presion Atm/VBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Presion Atm/VBox/Control"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_w5sml")
 script = ExtResource("3_qdbvn")
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Datos/Presion Atm/VBox/Control"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Presion Atm/VBox"]
 layout_mode = 2
@@ -888,11 +931,25 @@ text = "80mm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Evaporacion/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Datos/Evaporacion/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Evaporacion/VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_tgxgu")
 script = ExtResource("3_qdbvn")
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Datos/Evaporacion/VBox/HBoxContainer"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Evaporacion/VBox"]
 layout_mode = 2
@@ -936,11 +993,25 @@ text = "62%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Humedad/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Datos/Humedad/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Humedad/VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_4b2pq")
 script = ExtResource("3_qdbvn")
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Datos/Humedad/VBox/HBoxContainer"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Humedad/VBox"]
 layout_mode = 2
@@ -984,11 +1055,25 @@ text = "24°C"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Temperatura/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Datos/Temperatura/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Temperatura/VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_7yh3a")
 script = ExtResource("3_qdbvn")
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Datos/Temperatura/VBox/HBoxContainer"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Temperatura/VBox"]
 layout_mode = 2
@@ -1031,11 +1116,25 @@ text = "NE 70km/hr"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Viento/VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Datos/Viento/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Datos/Viento/VBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_6qv2d")
 script = ExtResource("3_qdbvn")
+
+[node name="Senal" type="TextureRect" parent="HBoxContainer/Datos/Viento/VBox/HBoxContainer"]
+self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bi5is")
+expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Viento/VBox"]
 layout_mode = 2
