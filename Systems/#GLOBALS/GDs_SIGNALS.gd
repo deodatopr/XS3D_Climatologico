@@ -12,6 +12,16 @@ signal OnGoToSitio(_idSitio : int)
 @warning_ignore('unused_signal')
 signal OnSitioInitialized
 
+#CLIMATOLOGIA
+@warning_ignore('unused_signal')
+signal OnTemperaturaSet(_temp : int)
+@warning_ignore('unused_signal')
+signal OnLluviaSet(_lluvia : int)
+@warning_ignore('unused_signal')
+signal OnBateriaSet(_bateria : int)
+@warning_ignore('unused_signal')
+signal OnAlarmaSet(_alarma : int)
+
 #CAMERA
 @warning_ignore('unused_signal')
 signal OnCameraUpdate(_isUpdating : bool)

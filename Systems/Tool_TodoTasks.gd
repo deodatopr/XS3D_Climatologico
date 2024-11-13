@@ -14,7 +14,7 @@
 	# A - aceptar
 	# B - Back
 
-#
+# Turbo x4
 # Variables estacion actualizarlas y dejar solo las del uúltimo documento de endpoint
 # Hay cosas con control que no están actualizadas (Y no es cambio de cam), pad para menu
 # Probar sonidos que algunos aunque llegan al limite se siguen escuchando
@@ -45,6 +45,7 @@
 # "Obteniendo datos con el servidor
 # Reintentar con boton
 # Valores es 0 poner rayitas
+# Fly arreglar rotación con threshold
 
 # Maquina estados de datos:
 	# Agregar bateria cfe booleano

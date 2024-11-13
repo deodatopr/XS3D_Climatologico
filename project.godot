@@ -28,6 +28,7 @@ APPSTATE="*res://Systems/#GLOBALS/GDs_APPSTATE.gd"
 SIGNALS="*res://Systems/#GLOBALS/GDs_SIGNALS.gd"
 CAM="*res://Systems/#GLOBALS/GDs_CAMSTATE.gd"
 DEBUG="*res://Systems/#GLOBALS/GDs_DEBUGSTATE.gd"
+CONST="*res://Systems/#GLOBALS/GDs_CONSTANTS.gd"
 
 [display]
 

@@ -54,19 +54,19 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 	var idx : int = 0
 	for sitioCR in CR_LocalEstaciones.LocalEstaciones:
 		match DEBUG.bateria:
-			ENUMS.Dbg_Bateria._100:
+			ENUMS.Bateria._100:
 				nvlBateria = 25.4
-			ENUMS.Dbg_Bateria._75:
+			ENUMS.Bateria._75:
 				nvlBateria = 25.0
-			ENUMS.Dbg_Bateria._50:
+			ENUMS.Bateria._50:
 				nvlBateria = 24.4
-			ENUMS.Dbg_Bateria._25:
+			ENUMS.Bateria._25:
 				nvlBateria = 24.0
-			ENUMS.Dbg_Bateria._0:
+			ENUMS.Bateria._0:
 				nvlBateria = 23.2
 		
 		#De acuerdo a documento si tiene 23.2 es que está descargada
-		bateriaConCarga = nvlBateria > 23.2
+		bateriaConCarga = nvlBateria > CONST.thrshld_bateria_conCarga
 		utr = bateriaConCarga
 		enlace = bateriaConCarga
 		sensores = bateriaConCarga
@@ -76,13 +76,13 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 		
 		#Temperatura -> (humedad y evaporacion)
 		match DEBUG.temperatura:
-			ENUMS.Dbg_Temperatura.Normal:
+			ENUMS.Temperatura.Normal:
 				temperatura = randf_range(temp_bajo_min, temp_bajo_max)
-			ENUMS.Dbg_Temperatura.Calida:
+			ENUMS.Temperatura.Alta:
 				temperatura = randf_range(temp_alto_min, temp_alto_max)
 		temperatura = temperatura if tengoDatos else NAN
 		
-		var temperaturaAlta : bool = temperatura > 20.0
+		var temperaturaAlta : bool = temperatura > CONST.thrshld_temperatura_alta
 		if tengoDatos and temperaturaAlta:
 			humedad = randf_range(humd_alto_min, humd_alto_max)
 			evaporacion =  randf_range(evap_alto_min, evap_alto_max)
@@ -95,15 +95,15 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 			
 		#Precipitacion -> (Presion atm y evaporacion)
 		match DEBUG.lLuvia:
-			ENUMS.Dbg_ModoLluvia.SinLLuvia:
+			ENUMS.LluviaIntsdad.Nada:
 				precipitacion = 0.0
-			ENUMS.Dbg_ModoLluvia.LLuviaModerada:
+			ENUMS.LluviaIntsdad.Moderada:
 				precipitacion = randf_range(pptc_bajo_min,pptc_bajo_max)
-			ENUMS.Dbg_ModoLluvia.LluviaIntensa:
+			ENUMS.LluviaIntsdad.Intensa:
 				precipitacion = randf_range(pptc_alto_min,pptc_alto_max)
 				
 		precipitacion = precipitacion if tengoDatos else NAN
-		var precipitacionAlta : bool = precipitacion > 20.0
+		var precipitacionAlta : bool = precipitacion > CONST.thrshld_pptcn_lluvia_intensa
 		if tengoDatos and precipitacionAlta:
 			presionAtm = randf_range(psnAtm_bajo_min, psnAtm_bajo_max)
 			evaporacion -= maxf(randf_range(1,3),0)
@@ -116,7 +116,7 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 		viento = randf_range(0.0, 60.0) if tengoDatos else NAN
 		dir_viento = randi_range(0,360) if tengoDatos else NAN
 		
-		var vientoAlto : bool = viento > 30.0
+		var vientoAlto : bool = viento > CONST.thrshld_vnto_fuerte
 		if tengoDatos and vientoAlto:
 			presionAtm -= maxf(randf_range(5.0, 15.0),0.0)
 			evaporacion += randf_range(1.0,3.0)
@@ -124,11 +124,11 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 			presionAtm += randf_range(5.0, 15.0)
 		
 		match DEBUG.alarmas:
-			ENUMS.Dbg_Alarmas.Normal:
+			ENUMS.Alarmas.Normal:
 				nivel = randf_range(0,sitioCR.nivelNormal)
-			ENUMS.Dbg_Alarmas.Prev:
+			ENUMS.Alarmas.Prev:
 				nivel = randf_range(sitioCR.nivelPrev,sitioCR.nivelCrit - 1)
-			ENUMS.Dbg_Alarmas.Critico:
+			ENUMS.Alarmas.Critico:
 				nivel = randf_range(sitioCR.nivelCrit, sitioCR.nivelCrit + 5)
 			
 		nivel = nivel if tengoDatos else NAN

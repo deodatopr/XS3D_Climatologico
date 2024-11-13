@@ -32,27 +32,27 @@ enum ModoDatos
 	Simulado
 }
 
-enum Dbg_ModoLluvia
+enum LluviaIntsdad
 {
-	SinLLuvia,
-	LLuviaModerada,
-	LluviaIntensa
+	Nada,
+	Moderada,
+	Intensa
 }
 
-enum Dbg_Temperatura
+enum Temperatura
 {
 	Normal,
-	Calida
+	Alta
 }
 
-enum Dbg_Alarmas
+enum Alarmas
 {
 	Normal,
 	Prev,
 	Critico
 }
 
-enum Dbg_Bateria
+enum Bateria
 {
 	_100,
 	_75,
