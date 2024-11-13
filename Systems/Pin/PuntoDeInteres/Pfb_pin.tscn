@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxeg5f7xphsgb"]
+[gd_scene load_steps=13 format=3 uid="uid://bxeg5f7xphsgb"]
 
 [ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_UIPin_.gd" id="1_m3g1u"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_wfaf3"]
@@ -9,21 +9,9 @@
 atlas = ExtResource("1_wfaf3")
 region = Rect2(473, 5, 30, 30)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bksot"]
-shader = ExtResource("2_fwvix")
-shader_parameter/color = Color(1, 0.184314, 0.437745, 1)
-shader_parameter/brightness = 0.5
-shader_parameter/blur = 2
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p8xs"]
 atlas = ExtResource("1_wfaf3")
 region = Rect2(487, 538, 2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i52ud"]
-shader = ExtResource("2_fwvix")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.2
-shader_parameter/blur = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tul4r"]
 atlas = ExtResource("1_wfaf3")
@@ -88,8 +76,7 @@ pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_hos1s")
 
 [node name="Blur BG" type="TextureRect" parent="Diamond"]
-self_modulate = Color(0, 0, 0, 1)
-material = SubResource("ShaderMaterial_bksot")
+self_modulate = Color(1, 0.184314, 0.439216, 0.670588)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,7 +137,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 
 [node name="BG" type="TextureRect" parent="Icon/Arrows and BG"]
-material = SubResource("ShaderMaterial_i52ud")
+self_modulate = Color(0.0383711, 0.0383711, 0.0383711, 0.764706)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
