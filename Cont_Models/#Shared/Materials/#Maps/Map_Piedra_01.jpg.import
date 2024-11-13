@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo7dht0b40jtm"
-path.s3tc="res://.godot/imported/Map_PiedraComb.jpg-dd5208da6149b67e246ec4ed101f7961.s3tc.ctex"
+uid="uid://bvrquwiuhai3i"
+path.s3tc="res://.godot/imported/Map_Piedra_01.jpg-db82e534440ec977ca3a5f7d3f3622a6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/#Shared/Materials/#Maps/Map_PiedraComb.jpg"
-dest_files=["res://.godot/imported/Map_PiedraComb.jpg-dd5208da6149b67e246ec4ed101f7961.s3tc.ctex"]
+source_file="res://Cont_Models/#Shared/Materials/#Maps/Map_Piedra_01.jpg"
+dest_files=["res://.godot/imported/Map_Piedra_01.jpg-db82e534440ec977ca3a5f7d3f3622a6.s3tc.ctex"]
 
 [params]
 

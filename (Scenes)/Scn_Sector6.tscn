@@ -362,24 +362,23 @@ environment = ExtResource("20_i6few")
 camera_attributes = ExtResource("21_uyocc")
 
 [node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(-0.166769, 0.926533, -0.33723, 0, 0.34202, 0.939693, 0.985996, 0.156712, -0.0570384, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 94.9184, 0)
+visible = false
 light_color = Color(1, 0.948457, 0.877053, 1)
 shadow_enabled = true
 shadow_blur = 10.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 800.0
 sky_mode = 1
-metadata/_edit_lock_ = true
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(-0.939692, 0.296198, -0.17101, 0, 0.5, 0.866025, 0.34202, 0.813798, -0.469846, -27.0369, 72.9466, -43.7071)
-visible = false
+transform = Transform3D(-0.939693, 0.296198, -0.17101, 0, 0.5, 0.866026, 0.34202, 0.813798, -0.469846, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
-shadow_blur = 3.0
-directional_shadow_mode = 0
-directional_shadow_max_distance = 1000.0
+shadow_blur = 2.0
+directional_shadow_mode = 1
+directional_shadow_max_distance = 800.0
 sky_mode = 1
 
 [node name="[ CONTENT ]" type="Node" parent="."]
@@ -388,10 +387,9 @@ sky_mode = 1
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -11.917, 36.401, 34.4832)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
+transform = Transform3D(5277.03, 0, 0, 0, -0.000230666, 5277.03, 0, -5277.03, -0.000230666, 4.95172, 874.294, -12.2401)
 material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
-metadata/_edit_lock_ = true
 
 [node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(3525.65, 0, 0, 0, -0.000164656, 3556.06, 0, -3766.88, -0.00015544, -16.173, -60, -0.362)

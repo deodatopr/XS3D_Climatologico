@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://iyaha1bni22n"]
+
+[ext_resource type="Texture2D" uid="uid://bvrquwiuhai3i" path="res://Cont_Models/#Shared/Materials/#Maps/Map_Piedra_01.jpg" id="1_uvt8s"]
+
+[resource]
+albedo_texture = ExtResource("1_uvt8s")
+uv1_scale = Vector3(0.6, 0.6, 0.6)
