@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://r62xxuey3xg1"]
+
+[ext_resource type="Texture2D" uid="uid://dwbq7fjdo5u5u" path="res://Cont_Models/#Shared/LightBeam/LightBeam.png" id="1_7o4b1"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.8, 1, 0.9, 1)
+albedo_texture = ExtResource("1_7o4b1")
+billboard_mode = 2

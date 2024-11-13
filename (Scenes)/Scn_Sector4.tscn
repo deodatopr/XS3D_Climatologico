@@ -70,8 +70,8 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ba1cx"]
 shader = SubResource("Shader_mn58d")
-shader_parameter/pixel = 1.0
-shader_parameter/sharpening = 3.0
+shader_parameter/pixel = 3.0
+shader_parameter/sharpening = 2.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ud41"]
 shader = ExtResource("27_p5pnm")
@@ -81,7 +81,7 @@ shader_parameter/chromaticIntensity = 0.2
 shader_parameter/_ = 0
 shader_parameter/vignetteOpacity = 1.0
 shader_parameter/vignetteSize = 0.7
-shader_parameter/vignetteFeather = 0.4
+shader_parameter/vignetteFeather = 0.5
 shader_parameter/vignetteColor = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4w2k6"]
@@ -90,8 +90,8 @@ shader_parameter/lensDistortion = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ikln1"]
 shader = SubResource("Shader_mn58d")
-shader_parameter/pixel = 1.0
-shader_parameter/sharpening = 1.5
+shader_parameter/pixel = 2.0
+shader_parameter/sharpening = 2.0
 
 [node name="ScnSector4" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_m6hgx")
@@ -109,6 +109,7 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_evkd3")
+valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh_Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -129,6 +130,7 @@ fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_14cfq")
 fly_height_speed = 2.0
 fly_height_max = 450.0
+fly_height_min = 50.0
 fly_rot_speed = 0.7
 
 [node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
@@ -303,13 +305,12 @@ sky_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(0.243615, -0.685803, 0.685803, 0, 0.707107, 0.707107, -0.969872, -0.172262, 0.172262, 27.8114, -22.3838, 99.6521)
+transform = Transform3D(0.763796, 0.456408, -0.456408, 0, 0.707107, 0.707107, 0.645458, -0.540085, 0.540085, 27.8114, -22.3838, 99.6521)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
-shadow_blur = 2.0
-directional_shadow_mode = 1
-directional_shadow_max_distance = 800.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 500.0
 sky_mode = 1
 
 [node name="[ CONTENT ]" type="Node" parent="."]
@@ -338,6 +339,8 @@ material_override = ExtResource("25_ppnrt")
 [node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("25_7qt5q")]
 
 [node name="Msh_Sitio_04" parent="[ CONTENT ]" instance=ExtResource("26_g4unq")]
+
+[node name="Msh_Sitio_05" parent="[ CONTENT ]" instance=ExtResource("26_g4unq")]
 
 [node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("27_0vsox")]
 visible = false
@@ -384,7 +387,6 @@ mouse_filter = 2
 [node name="[ PPE - FLY]" type="Node" parent="[ PPE + UI ]"]
 
 [node name="PPE - Sharpening" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE - FLY]"]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="[ PPE + UI ]/[ PPE - FLY]/PPE - Sharpening"]
 material = SubResource("ShaderMaterial_ikln1")
@@ -397,7 +399,6 @@ mouse_filter = 2
 
 [node name="PPE - Lens" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE - FLY]"]
 layer = 2
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="[ PPE + UI ]/[ PPE - FLY]/PPE - Lens"]
 material = SubResource("ShaderMaterial_6ud41")
