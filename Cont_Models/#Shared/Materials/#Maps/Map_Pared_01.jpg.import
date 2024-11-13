@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bj1qp4a38qgvi"
-path.s3tc="res://.godot/imported/Map_Paredes.jpg-7fa53a6fdeaf540ff2b22b016af762ad.s3tc.ctex"
+path.s3tc="res://.godot/imported/Map_Pared_01.jpg-c22cc148eba4b648f197ce2d86fd4d1f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/#Shared/Materials/#Maps/Map_Paredes.jpg"
-dest_files=["res://.godot/imported/Map_Paredes.jpg-7fa53a6fdeaf540ff2b22b016af762ad.s3tc.ctex"]
+source_file="res://Cont_Models/#Shared/Materials/#Maps/Map_Pared_01.jpg"
+dest_files=["res://.godot/imported/Map_Pared_01.jpg-c22cc148eba4b648f197ce2d86fd4d1f.s3tc.ctex"]
 
 [params]
 

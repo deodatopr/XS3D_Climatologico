@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bnmph7g0leg0v"]
 
 [ext_resource type="Shader" uid="uid://con54kw2p5cnq" path="res://Vfx_Shaders/Sha_Sitio.tres" id="1_ygxv7"]
-[ext_resource type="Texture2D" uid="uid://clf7ttkafg3r3" path="res://Cont_Models/#Shared/Materials/#Maps/Map_Concreto.jpg" id="2_an3fe"]
+[ext_resource type="Texture2D" uid="uid://clf7ttkafg3r3" path="res://Cont_Models/#Shared/Materials/#Maps/Map_Concreto_01.jpg" id="2_an3fe"]
 [ext_resource type="Texture2D" uid="uid://653scqm8b2w5" path="res://Cont_Models/#Shared/Materials/#Maps/Map_ConcretoMoho.jpg" id="3_3xtng"]
 
 [resource]
