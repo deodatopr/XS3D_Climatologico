@@ -21,6 +21,7 @@ extends Control
 @export var OffColor:Color
 @export_subgroup("Nivel")
 @export var nivel:Label
+@export var nivelSnsr:Control
 @export var nivelBg:Control
 @export var nivelNorm:Label
 @export var nivelPrev:Label
