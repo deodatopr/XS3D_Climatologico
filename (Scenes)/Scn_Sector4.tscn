@@ -340,6 +340,7 @@ material_override = ExtResource("25_ppnrt")
 [node name="Msh_Sitio_04" parent="[ CONTENT ]" instance=ExtResource("26_g4unq")]
 
 [node name="Msh_Navigation" parent="[ CONTENT ]" instance=ExtResource("27_0vsox")]
+visible = false
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
