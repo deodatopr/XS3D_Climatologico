@@ -86,7 +86,7 @@ func _OnTimeOut():
 
 func _OnBtnReintentarPressed():
 	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Error:
-		APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
+		APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Simulado
 	
 	OnFinishError.emit()
 	timer.stop()

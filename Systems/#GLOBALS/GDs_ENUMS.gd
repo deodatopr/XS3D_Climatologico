@@ -10,7 +10,7 @@ enum EP_GetAllEstaciones
 enum EP_RequestType
 {
 	From_EP,
-	From_Debug_Random,
+	From_Debug_Simulado,
 	From_Debug_Error
 }
 

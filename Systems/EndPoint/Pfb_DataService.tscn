@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgkudi70j4n1c"]
+[gd_scene load_steps=11 format=3 uid="uid://dgkudi70j4n1c"]
 
 [ext_resource type="Script" path="res://Systems/EndPoint/Gds_DataService_Manager.gd" id="1_mcgxr"]
 [ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://Systems/EndPoint/Local_GetAll/CR_Local_Estaciones.tres" id="2_y5d4k"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones.gd" id="3_l4ktb"]
-[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Rnd.gd" id="4_eklc0"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Simulado.gd" id="5_ajx6o"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Error.gd" id="5_fxad4"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="6_y1wk7"]
@@ -22,10 +21,9 @@ font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6o6l6"]
 
-[node name="DataService" type="Node" node_paths=PackedStringArray("endpoint", "endpoint_Random", "endpoint_Simulado", "endpoint_Error", "timerTicking")]
+[node name="DataService" type="Node" node_paths=PackedStringArray("endpoint", "endpoint_Simulado", "endpoint_Error", "timerTicking")]
 script = ExtResource("1_mcgxr")
 endpoint = NodePath("EP_GetAllEstaciones/Endpoint")
-endpoint_Random = NodePath("EP_GetAllEstaciones/Endpoint_Random")
 endpoint_Simulado = NodePath("EP_GetAllEstaciones/Endpoint_Simulado")
 endpoint_Error = NodePath("EP_GetAllEstaciones/Endpoint_Error")
 URL = "www.ejemplo.com"
@@ -41,9 +39,6 @@ script = ExtResource("3_l4ktb")
 [node name="HTTPRequest" type="HTTPRequest" parent="EP_GetAllEstaciones/Endpoint"]
 
 [node name="Timer - Ticking" type="Timer" parent="EP_GetAllEstaciones/Endpoint"]
-
-[node name="Endpoint_Random" type="Node" parent="EP_GetAllEstaciones"]
-script = ExtResource("4_eklc0")
 
 [node name="Endpoint_Simulado" type="Node" parent="EP_GetAllEstaciones"]
 script = ExtResource("5_ajx6o")
