@@ -79,7 +79,7 @@ region = Rect2(160, 163, 40, 40)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvcfw"]
 
-[node name="Estacion" type="Control" node_paths=PackedStringArray("button", "animScaleNode", "blurBG", "frame", "frameNombre", "patch", "id", "nombre", "estado", "senal", "UTR", "nivel", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "humedad", "evaporacion", "temp", "presion", "viento")]
+[node name="Estacion" type="Control" node_paths=PackedStringArray("button", "animScaleNode", "blurBG", "frame", "frameNombre", "patch", "id", "nombre", "estado", "senal", "UTR", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr")]
 custom_minimum_size = Vector2(400, 91)
 layout_mode = 3
 anchors_preset = 0
@@ -101,6 +101,7 @@ UTR = NodePath("AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - UTR/VBoxCon
 OnColor = Color(0.0705882, 0.698039, 0.0509804, 1)
 OffColor = Color(0.698039, 0.0913459, 0.0509804, 1)
 nivel = NodePath("AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox/Lbl Valor Nivel")
+nivelSnsr = NodePath("AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox/HBoxContainer2/Senal")
 nivelBg = NodePath("AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/NivelBg")
 nivelNorm = NodePath("AnimScale/VBoxContainer/Datos/Nivel/Niveles/Norm/Lbl Nvl Norm")
 nivelPrev = NodePath("AnimScale/VBoxContainer/Datos/Nivel/Niveles/Prev/Lbl Nvl Prev")
@@ -109,11 +110,17 @@ ColorNorm = Color(0, 0.556863, 0.760784, 1)
 ColorPrev = Color(0.964706, 0.67451, 0.0156863, 1)
 ColorCrit = Color(0.94902, 0.137255, 0.141176, 1)
 precipitacion = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer/Precipitacion/HBoxContainer/Lbl Precipitacion")
+precipitacionSnsr = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer/Precipitacion/HBoxContainer/Senal")
 humedad = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer/Humedad/HBoxContainer/Lbl Humedad")
+humedadSnsr = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer/Humedad/HBoxContainer/Senal")
 evaporacion = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer/Evaporacion/HBoxContainer/Lbl Evaporacion")
+evaporacionSnsr = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer/Evaporacion/HBoxContainer/Senal")
 temp = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura/HBoxContainer/Lbl Temp")
+tempSnsr = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Temperatura/HBoxContainer/Senal")
 presion = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica/HBoxContainer/Lbl Presion")
+presionSnsr = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Presion Atmosferica/HBoxContainer/Senal")
 viento = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Viento/HBoxContainer/Lbl Viento")
+vientoSnsr = NodePath("AnimScale/VBoxContainer/Datos/Datos/VBoxContainer2/Viento/HBoxContainer/Senal")
 
 [node name="AnimScale" type="Control" parent="."]
 layout_mode = 1

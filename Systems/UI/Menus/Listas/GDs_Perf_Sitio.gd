@@ -31,11 +31,17 @@ extends Control
 @export var ColorCrit:Color
 @export_subgroup("Datos")
 @export var precipitacion:Label
+@export var precipitacionSnsr:Control
 @export var humedad:Label
+@export var humedadSnsr:Control
 @export var evaporacion:Label
+@export var evaporacionSnsr:Control
 @export var temp:Label
+@export var tempSnsr:Control
 @export var presion:Label
+@export var presionSnsr:Control
 @export var viento:Label
+@export var vientoSnsr:Control
 
 var estacion:GDs_Data_Estacion
 
@@ -85,11 +91,28 @@ func DataRefresh(_estacion: GDs_Data_Estacion):
 	
 	#Datos
 	precipitacion.text = UTILITIES.FormatPptn_pluvial(_estacion.pptn_pluvial)
+	precipitacionSnsr.self_modulate = OnColor 
+	if not _estacion.pcptnSnsr: precipitacionSnsr.self_modulate = OffColor 
+	
 	humedad.text = UTILITIES.FormatHumedad(_estacion.humedad)
+	humedadSnsr.self_modulate = OnColor 
+	if not _estacion.humTempSnsr: humedadSnsr.self_modulate = OffColor 
+	
 	evaporacion.text = UTILITIES.FormatEvaporacion(_estacion.evaporacion)
+	evaporacionSnsr.self_modulate = OnColor 
+	if not _estacion.solSnsr: evaporacionSnsr.self_modulate = OffColor 
+	
 	temp.text = UTILITIES.FormatTemperatura(_estacion.temperatura)
+	tempSnsr.self_modulate = OnColor 
+	if not _estacion.humTempSnsr: tempSnsr.self_modulate = OffColor 
+	
 	presion.text = UTILITIES.FormatPresion(_estacion.presion)
+	presionSnsr.self_modulate = OnColor 
+	if not _estacion.prsnSnsr: presionSnsr.self_modulate = OffColor 
+	
 	viento.text = UTILITIES.FormatIntensidadViento(_estacion.intsdad_viento)#TODO sistema para que regrese N S E O
+	vientoSnsr.self_modulate = OnColor 
+	if not _estacion.vntoSnsr: vientoSnsr.self_modulate = OffColor
 
 func OnBtnPressed():
 	OnSitioPressed.emit(estacion)

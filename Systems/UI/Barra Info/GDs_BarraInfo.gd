@@ -15,6 +15,7 @@ extends Control
 @export var OffColor:Color
 @export_subgroup("Nivel")
 @export var nivel:Label
+@export var nivelSnsr:Control
 @export var nivelBg:Control
 @export var nivelNorm:Label
 @export var nivelPrev:Label
@@ -25,11 +26,17 @@ extends Control
 @export var animColor:Color
 @export_subgroup("Datos")
 @export var precipitacion:Label
+@export var precipitacionSnsr:Control
 @export var humedad:Label
+@export var humedadSnsr:Control
 @export var evaporacion:Label
+@export var evaporacionSnsr:Control
 @export var temp:Label
+@export var tempSnsr:Control
 @export var presion:Label
+@export var presionSnsr:Control
 @export var viento:Label
+@export var vientoSnsr:Control
 @export var lblBateria : Label
 
 var tween:Tween
@@ -69,12 +76,28 @@ func OnDataRefresh():
 	
 	#Datos
 	precipitacion.text = UTILITIES.FormatPptn_pluvial(sitio.pptn_pluvial)
+	precipitacionSnsr.self_modulate = OnColor 
+	if not sitio.pcptnSnsr: precipitacionSnsr.self_modulate = OffColor 
+	
 	humedad.text = UTILITIES.FormatHumedad(sitio.humedad)
+	humedadSnsr.self_modulate = OnColor 
+	if not sitio.humTempSnsr: humedadSnsr.self_modulate = OffColor 
+	
 	evaporacion.text = UTILITIES.FormatEvaporacion(sitio.evaporacion)
+	evaporacionSnsr.self_modulate = OnColor 
+	if not sitio.solSnsr: evaporacionSnsr.self_modulate = OffColor 
+	
 	temp.text = UTILITIES.FormatTemperatura(sitio.temperatura)
+	tempSnsr.self_modulate = OnColor 
+	if not sitio.humTempSnsr: tempSnsr.self_modulate = OffColor 
+	
 	presion.text = UTILITIES.FormatPresion(sitio.presion)
+	presionSnsr.self_modulate = OnColor 
+	if not sitio.prsnSnsr: presionSnsr.self_modulate = OffColor 
+	
 	viento.text = UTILITIES.FormatIntensidadViento(sitio.intsdad_viento)#TODO sistema para que regrese N S E O
-	lblBateria.text = UTILITIES.FormatBateriaV(sitio.volt_bat_resp)
+	vientoSnsr.self_modulate = OnColor 
+	if not sitio.vntoSnsr: vientoSnsr.self_modulate = OffColor
 
 func PlayAnimation(_color:Color,_speed:float):
 	tween = create_tween().set_loops(0)

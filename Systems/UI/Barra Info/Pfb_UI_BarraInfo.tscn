@@ -68,7 +68,7 @@ region = Rect2(0, 120, 40, 40)
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 160, 40, 40)
 
-[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "senal", "UTR", "nivel", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "humedad", "evaporacion", "temp", "presion", "viento", "lblBateria")]
+[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "senal", "UTR", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr", "lblBateria")]
 custom_minimum_size = Vector2(1580, 105)
 layout_mode = 3
 anchors_preset = 12
@@ -90,6 +90,7 @@ UTR = NodePath("HBoxContainer/Senales/Senales/HBox - UTR/VBoxContainer/Dot/UTR")
 OnColor = Color(0.0705882, 0.698039, 0.0509804, 1)
 OffColor = Color(0.698039, 0.0901961, 0.0509804, 1)
 nivel = NodePath("HBoxContainer/Nivel/Valor Nivel/VBox/Lbl Valor Nivel")
+nivelSnsr = NodePath("HBoxContainer/Nivel/Valor Nivel/VBox/Control/Senal")
 nivelBg = NodePath("HBoxContainer/Nivel/Valor Nivel/Nivel BG")
 nivelNorm = NodePath("HBoxContainer/Nivel/Niveles/Norm/Lbl Nvl Norm")
 nivelPrev = NodePath("HBoxContainer/Nivel/Niveles/Prev/Lbl Nvl Prev")
@@ -99,11 +100,17 @@ ColorPrev = Color(0.972549, 0.67451, 0.0117647, 1)
 ColorCrit = Color(0.972549, 0.137255, 0.137255, 1)
 animColor = Color(0, 0, 0, 0)
 precipitacion = NodePath("HBoxContainer/Datos/Precipitacion/VBox/Lbl Valor Precipitacion")
+precipitacionSnsr = NodePath("HBoxContainer/Datos/Precipitacion/VBox/Control/Senal")
 humedad = NodePath("HBoxContainer/Datos/Humedad/VBox/Lbl Valor Humedad")
+humedadSnsr = NodePath("HBoxContainer/Datos/Humedad/VBox/HBoxContainer/Senal")
 evaporacion = NodePath("HBoxContainer/Datos/Evaporacion/VBox/Lbl Valor Evaporacion")
+evaporacionSnsr = NodePath("HBoxContainer/Datos/Evaporacion/VBox/HBoxContainer/Senal")
 temp = NodePath("HBoxContainer/Datos/Temperatura/VBox/Lbl Valor Temp")
+tempSnsr = NodePath("HBoxContainer/Datos/Temperatura/VBox/HBoxContainer/Senal")
 presion = NodePath("HBoxContainer/Datos/Presion Atm/VBox/Lbl Valor Presion")
+presionSnsr = NodePath("HBoxContainer/Datos/Presion Atm/VBox/Control/Senal")
 viento = NodePath("HBoxContainer/Datos/Viento/VBox/Lbl Valor Viento")
+vientoSnsr = NodePath("HBoxContainer/Datos/Viento/VBox/HBoxContainer/Senal")
 lblBateria = NodePath("HBoxContainer/Senales/Bateria2/HBoxContainer2/Text/Lbl Bateria")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
