@@ -98,7 +98,7 @@ nivelCrit = 70.0
 tlrncia_prep_pluv = 15
 latitud = "19° 32' 24.1\""
 longitud = "100° 29' 11.4\""
-color = Color(0.980392, 0.00392157, 0.411765, 1)
+color = Color(0.653876, 0.509002, 0.355606, 1)
 disponible = false
 
 [sub_resource type="Resource" id="Resource_hp7b6"]
