@@ -34,7 +34,7 @@ shader_parameter/blur = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8d1t"]
 atlas = ExtResource("3_46evx")
-region = Rect2(63, 272, 18, 18)
+region = Rect2(80, 256, 18, 18)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vmg0"]
 content_margin_left = 2.0
