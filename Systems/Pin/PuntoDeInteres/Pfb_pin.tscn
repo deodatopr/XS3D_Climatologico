@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxeg5f7xphsgb"]
+[gd_scene load_steps=15 format=3 uid="uid://bxeg5f7xphsgb"]
 
 [ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_UIPin_.gd" id="1_m3g1u"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_wfaf3"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_fwvix"]
 [ext_resource type="AnimationLibrary" uid="uid://bc1bs4gs2bics" path="res://Systems/Pin/PuntoDeInteres/Pin_Anims.res" id="4_3dqq0"]
+[ext_resource type="AudioStream" uid="uid://cie1fbdmvqg6y" path="res://Cont_Sounds/Pin/Open_Pin.wav" id="5_40ktq"]
+[ext_resource type="AudioStream" uid="uid://dp15k3tr2ig6q" path="res://Cont_Sounds/Pin/Close_Pin.wav" id="6_qav2l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hos1s"]
 atlas = ExtResource("1_wfaf3")
@@ -40,7 +42,7 @@ shader_parameter/blur = 2
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jyvp0"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[node name="Pin" type="Control" node_paths=PackedStringArray("lblNombre", "anim", "littlePoint")]
+[node name="Pin" type="Control" node_paths=PackedStringArray("lblNombre", "anim", "littlePoint", "open", "close")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,13 +52,15 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m3g1u")
-lblNombre = NodePath("Label")
+lblNombre = NodePath("Label (OFF)")
 anim = NodePath("AnimationPlayer")
-littlePoint = NodePath("Diamond/LittlePoint")
+littlePoint = NodePath("Diamond (ON)/LittlePoint")
+open = NodePath("Open")
+close = NodePath("Close")
 metadata/_edit_vertical_guides_ = [928.0]
 metadata/_edit_horizontal_guides_ = [570.0]
 
-[node name="Diamond" type="TextureRect" parent="."]
+[node name="Diamond (ON)" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,7 +78,7 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_hos1s")
 
-[node name="Blur BG" type="TextureRect" parent="Diamond"]
+[node name="Blur BG" type="TextureRect" parent="Diamond (ON)"]
 self_modulate = Color(1, 0.0166667, 0, 0.784314)
 layout_mode = 1
 anchors_preset = 15
@@ -89,7 +93,7 @@ grow_vertical = 2
 pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_hos1s")
 
-[node name="LittlePoint" type="TextureRect" parent="Diamond"]
+[node name="LittlePoint" type="TextureRect" parent="Diamond (ON)"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +107,7 @@ grow_vertical = 2
 pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_0p8xs")
 
-[node name="Icon" type="Control" parent="."]
+[node name="Icon (OFF)" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -119,7 +123,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 
-[node name="Arrows and BG" type="Control" parent="Icon"]
+[node name="Arrows and BG" type="Control" parent="Icon (OFF)"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,7 +138,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 
-[node name="BG" type="TextureRect" parent="Icon/Arrows and BG"]
+[node name="BG" type="TextureRect" parent="Icon (OFF)/Arrows and BG"]
 self_modulate = Color(0.0383711, 0.0383711, 0.0383711, 0.764706)
 layout_mode = 1
 anchors_preset = 8
@@ -152,7 +156,7 @@ scale = Vector2(0.335, 0.335)
 pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_tul4r")
 
-[node name="Frame" type="Control" parent="Icon/Arrows and BG"]
+[node name="Frame" type="Control" parent="Icon (OFF)/Arrows and BG"]
 modulate = Color(1, 1, 1, 0.705882)
 layout_mode = 1
 anchors_preset = 8
@@ -168,14 +172,14 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
 
-[node name="Esquina" type="TextureRect" parent="Icon/Arrows and BG/Frame"]
+[node name="Esquina" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Frame"]
 layout_mode = 1
 offset_right = 42.0
 offset_bottom = 42.0
 scale = Vector2(0.4, 0.4)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina2" type="TextureRect" parent="Icon/Arrows and BG/Frame"]
+[node name="Esquina2" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Frame"]
 layout_mode = 1
 offset_left = 40.0001
 offset_top = 6.10352e-05
@@ -185,7 +189,7 @@ rotation = 1.5708
 scale = Vector2(0.4, 0.4)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina3" type="TextureRect" parent="Icon/Arrows and BG/Frame"]
+[node name="Esquina3" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Frame"]
 layout_mode = 1
 offset_left = 40.0001
 offset_top = 39.9999
@@ -195,7 +199,7 @@ rotation = 3.14159
 scale = Vector2(0.4, 0.4)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina4" type="TextureRect" parent="Icon/Arrows and BG/Frame"]
+[node name="Esquina4" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Frame"]
 layout_mode = 1
 offset_left = 6.10352e-05
 offset_top = 40.0001
@@ -205,7 +209,7 @@ rotation = -1.5708
 scale = Vector2(0.4, 0.4)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Inner Arrows" type="Control" parent="Icon/Arrows and BG"]
+[node name="Inner Arrows" type="Control" parent="Icon (OFF)/Arrows and BG"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -222,7 +226,7 @@ grow_vertical = 2
 rotation = 1.5708
 pivot_offset = Vector2(20, 20)
 
-[node name="Esquina8" type="TextureRect" parent="Icon/Arrows and BG/Inner Arrows"]
+[node name="Esquina8" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Inner Arrows"]
 layout_mode = 1
 offset_left = -6.07764
 offset_top = 46.0784
@@ -232,7 +236,7 @@ rotation = -1.5708
 scale = Vector2(0.32, 0.32)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina7" type="TextureRect" parent="Icon/Arrows and BG/Inner Arrows"]
+[node name="Esquina7" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Inner Arrows"]
 layout_mode = 1
 offset_left = -6.07788
 offset_top = -4.92163
@@ -241,7 +245,7 @@ offset_bottom = 37.0784
 scale = Vector2(0.32, 0.32)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina6" type="TextureRect" parent="Icon/Arrows and BG/Inner Arrows"]
+[node name="Esquina6" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Inner Arrows"]
 layout_mode = 1
 offset_left = 44.9221
 offset_top = -4.922
@@ -251,7 +255,7 @@ rotation = 1.5708
 scale = Vector2(0.32, 0.32)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina5" type="TextureRect" parent="Icon/Arrows and BG/Inner Arrows"]
+[node name="Esquina5" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Inner Arrows"]
 layout_mode = 1
 offset_left = 44.9224
 offset_top = 46.0781
@@ -261,7 +265,7 @@ rotation = 3.14159
 scale = Vector2(0.32, 0.32)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Outter Arrows" type="Control" parent="Icon/Arrows and BG"]
+[node name="Outter Arrows" type="Control" parent="Icon (OFF)/Arrows and BG"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -278,7 +282,7 @@ grow_vertical = 2
 rotation = 3.14159
 pivot_offset = Vector2(20, 20)
 
-[node name="Esquina9" type="TextureRect" parent="Icon/Arrows and BG/Outter Arrows"]
+[node name="Esquina9" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Outter Arrows"]
 layout_mode = 1
 offset_left = 52.1561
 offset_top = 52.1558
@@ -288,7 +292,7 @@ rotation = 3.14159
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina8" type="TextureRect" parent="Icon/Arrows and BG/Outter Arrows"]
+[node name="Esquina8" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Outter Arrows"]
 layout_mode = 1
 offset_left = -9.84399
 offset_top = 52.1558
@@ -298,7 +302,7 @@ rotation = -1.5708
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina7" type="TextureRect" parent="Icon/Arrows and BG/Outter Arrows"]
+[node name="Esquina7" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Outter Arrows"]
 layout_mode = 1
 offset_left = -10.0
 offset_top = -10.0
@@ -307,7 +311,7 @@ offset_bottom = 32.0
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Esquina6" type="TextureRect" parent="Icon/Arrows and BG/Outter Arrows"]
+[node name="Esquina6" type="TextureRect" parent="Icon (OFF)/Arrows and BG/Outter Arrows"]
 layout_mode = 1
 offset_left = 52.1563
 offset_top = -9.84424
@@ -317,7 +321,7 @@ rotation = 1.5708
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_fnq4u")
 
-[node name="Point" type="TextureRect" parent="Icon"]
+[node name="Point" type="TextureRect" parent="Icon (OFF)"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.705882)
 layout_mode = 1
@@ -336,7 +340,8 @@ scale = Vector2(0.335, 0.335)
 pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_lrxx3")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label (OFF)" type="Label" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_5dedo")
 layout_mode = 1
 anchors_preset = 4
@@ -350,7 +355,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = " Nombre del lugar de interes "
 
-[node name="BG3" type="TextureRect" parent="Label"]
+[node name="BG3" type="TextureRect" parent="Label (OFF)"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_bn2ex")
 layout_mode = 1
@@ -362,7 +367,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_tul4r")
 expand_mode = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Label/BG3"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Label (OFF)/BG3"]
 self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 9
@@ -375,7 +380,7 @@ patch_margin_left = 5
 patch_margin_top = 10
 patch_margin_bottom = 10
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="Label/BG3"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="Label (OFF)/BG3"]
 self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 11
@@ -396,3 +401,11 @@ patch_margin_bottom = 10
 libraries = {
 "": ExtResource("4_3dqq0")
 }
+
+[node name="Open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_40ktq")
+volume_db = -5.0
+
+[node name="Close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qav2l")
+volume_db = -5.0
