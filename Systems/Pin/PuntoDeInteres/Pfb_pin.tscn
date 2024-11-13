@@ -117,8 +117,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 2.35619
-scale = Vector2(0.355, 0.355)
 pivot_offset = Vector2(20, 20)
 
 [node name="Arrows and BG" type="Control" parent="Icon"]
@@ -351,8 +349,6 @@ offset_bottom = 14.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = " Nombre del lugar de interes "
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="BG3" type="TextureRect" parent="Label"]
 show_behind_parent = true
