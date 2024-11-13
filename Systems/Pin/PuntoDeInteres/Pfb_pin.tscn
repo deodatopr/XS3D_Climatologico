@@ -57,7 +57,6 @@ metadata/_edit_vertical_guides_ = [928.0]
 metadata/_edit_horizontal_guides_ = [570.0]
 
 [node name="Diamond" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,7 +75,7 @@ pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_hos1s")
 
 [node name="Blur BG" type="TextureRect" parent="Diamond"]
-self_modulate = Color(1, 0.184314, 0.439216, 0.670588)
+self_modulate = Color(1, 0.0166667, 0, 0.784314)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,6 +104,7 @@ pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_0p8xs")
 
 [node name="Icon" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -4,7 +4,6 @@ class_name GDs_Scenes_Manager extends Node
 @export var sitios : Dictionary = {}
 
 signal OnSectorLoaded
-signal OnSectorUnloaded
 
 var dataService : GDs_DataService_Manager
 var curtain : GDs_Curtain

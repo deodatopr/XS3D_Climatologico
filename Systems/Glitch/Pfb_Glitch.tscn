@@ -105,7 +105,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="PPE - Glitch" type="CanvasLayer" parent="."]
-layer = 6
+layer = 7
 
 [node name="ColorRect" type="ColorRect" parent="PPE - Glitch"]
 process_mode = 4

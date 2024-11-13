@@ -128,6 +128,7 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 
 		#Viento -> (Presión y evaporacion)
 		viento = randf_range(0.0, 60.0) if tengoDatos else NAN
+		@warning_ignore('incompatible_ternary', 'narrowing_conversion')
 		dir_viento = randi_range(0,360) if tengoDatos else NAN
 		
 		var vientoAlto : bool = viento > CONST.thrshld_vnto_fuerte
@@ -155,7 +156,7 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 		"disp_utr": utr,
 		"presaSnsr": presaSnsr,
 		"pcptnSnsr": pcptnSnsr,
-		"prsnSnsr": presaSnsr,
+		"prsnSnsr": prsnSnsr,
 		"solSnsr": solSnsr,
 		"humTempSnsr": humTempSnsr,
 		"vntoSnsr": vntoSnsr,

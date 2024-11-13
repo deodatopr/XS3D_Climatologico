@@ -9,6 +9,7 @@ extends Node
 
 @export_group("Compass Screen")
 @export var screenMark: Control 
+@export var screenMarkBG: Control 
 @export var pointSitio: Control 
 @export var direction : Control
 @export var frameColor : Control
@@ -44,8 +45,8 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	
 	compassInitialXPosition = compass.position.x
 	pinSiteInitialXPosition = pin_sitio.position.x
-	screenMark.self_modulate = APPSTATE.currntSitio.color
-	screenMark.self_modulate.a = .5
+	screenMarkBG.self_modulate = APPSTATE.currntSitio.color
+	screenMarkBG.self_modulate.a = .5
 	
 	pin_sitio.self_modulate =  APPSTATE.currntSitio.color
 	
