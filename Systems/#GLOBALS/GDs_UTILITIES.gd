@@ -32,7 +32,7 @@ func FormatHumedad(humedad:float)->String:
 	return _ValueToText(humedad) + "%"
 	
 func FormatEvaporacion(evaporacion:float)->String:
-	return _ValueToText(evaporacion) + "mm"
+	return _ValueToText(evaporacion) + "%"
 
 func FormatIntensidadViento(viento:float)->String:
 	return _ValueToText(viento) + "km/h"
@@ -45,6 +45,7 @@ func FormatPresion(presion:float)->String:
 
 func FormatDirViento(dir:float)->String:
 	return _ValueToText(dir) + "°"
+		
 
 func FormatBateriaV(volt:float)->String:
 	return str(volt).num(volt,1) + "V"

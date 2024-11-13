@@ -59,10 +59,11 @@ func OnDataRefresh():
 	
 	nivelBg.self_modulate = ColorNorm
 	StopAnimation()
-	if sitio.nivel > sitio.nivelPrev: 
+	var hayDatos : bool = not is_nan(sitio.nivel)
+	if hayDatos and (sitio.nivel > sitio.nivelPrev and sitio.nivel <= sitio.nivelCrit): 
 		nivelBg.self_modulate = ColorPrev
 		PlayAnimation(ColorPrev,0.4)
-	if sitio.nivel > sitio.nivelCrit: 
+	if hayDatos and sitio.nivel > sitio.nivelCrit: 
 		nivelBg.self_modulate = ColorCrit
 		PlayAnimation(ColorCrit,0.3)
 	

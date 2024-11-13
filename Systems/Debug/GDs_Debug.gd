@@ -16,7 +16,7 @@ class_name GDs_Debug extends Node
 		DEBUG.lLuvia = value
 		if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
 			SIGNALS.OnDebugRefresh.emit()
-@export_enum("Normal", "Alta")var Temperatura : int:
+@export_enum("Normal","Calida", "Alta")var Temperatura : int:
 	set (value):
 		DEBUG.temperatura = value
 		if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:

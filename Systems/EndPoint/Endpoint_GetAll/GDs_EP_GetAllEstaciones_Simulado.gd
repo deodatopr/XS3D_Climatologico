@@ -25,15 +25,17 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 	var nivel : float
 	var sensores : bool
 	
-	var temp_bajo_min : float = 10.0
-	var temp_bajo_max : float = 20.0
-	var temp_alto_min : float = 21.0
-	var temp_alto_max : float = 35.0
+	var temp_normal_min : float = 5.0
+	var temp_normal_max : float = CONST.thrshld_temperatura_calida - 1.0
+	var temp_calido_min : float = CONST.thrshld_temperatura_calida
+	var temp_calido_max : float = CONST.thrshld_temperatura_alta - 1.0
+	var temp_alto_min : float = CONST.thrshld_temperatura_alta
+	var temp_alto_max : float = CONST.thrshld_temperatura_alta + 15.0
 	
 	var pptc_bajo_min : float = 2.0
-	var pptc_bajo_max : float = 19.0
-	var pptc_alto_min : float = 20.0
-	var pptc_alto_max : float = 50.0
+	var pptc_bajo_max : float = CONST.thrshld_pptcn_lluvia_moderada - 1
+	var pptc_alto_min : float = CONST.thrshld_pptcn_lluvia_moderada 
+	var pptc_alto_max : float = CONST.thrshld_pptcn_lluvia_intensa 
 	
 	var humd_bajo_min : float = 0.0
 	var humd_bajo_max : float = 70.0
@@ -77,7 +79,9 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 		#Temperatura -> (humedad y evaporacion)
 		match DEBUG.temperatura:
 			ENUMS.Temperatura.Normal:
-				temperatura = randf_range(temp_bajo_min, temp_bajo_max)
+				temperatura = randf_range(temp_normal_min, temp_normal_max)
+			ENUMS.Temperatura.Calida:
+				temperatura = randf_range(temp_calido_min, temp_calido_max)
 			ENUMS.Temperatura.Alta:
 				temperatura = randf_range(temp_alto_min, temp_alto_max)
 		temperatura = temperatura if tengoDatos else NAN
