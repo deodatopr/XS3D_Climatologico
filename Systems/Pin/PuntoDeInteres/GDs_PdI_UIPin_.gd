@@ -8,6 +8,7 @@ extends Control
 var cameraFly:Camera3D
 var cameraSky:Camera3D
 var pinWorldPos:GDs_PdI_WorldPin
+var center:Vector2
 
 var currentCam:Camera3D
 var isInitialized: bool = false
@@ -36,13 +37,14 @@ func _process(_delta):
 	visible = currentCam.is_position_in_frustum(pinWorldPos.global_position)
 	position = currentCam.unproject_position(pinWorldPos.global_position)
 	
+	center = Vector2(get_viewport_rect().size.x *.5,(get_viewport_rect().size.y *.5)-70)
 	
-	if position.distance_to(get_viewport_rect().size/2) <= 200 and not isOpened:
+	if position.distance_to(center) <= 200 and not isOpened:
 		anim.play("Open")
 		isOpened = true
 		isClosed = false
 		
-	elif position.distance_to(get_viewport_rect().size/2) > 200 and not isClosed:
+	elif position.distance_to(center) > 200 and not isClosed:
 		anim.play("Close")
 		isClosed = true
 		isOpened = false

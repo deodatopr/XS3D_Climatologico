@@ -3,6 +3,7 @@ extends Node
 @export var pfbUIPin: PackedScene
 @export var camFly: Camera3D
 @export var camSky: Camera3D
+@export_group("Refs Internas")
 @export var canvas: CanvasLayer
 
 var PDIs: Array[Node3D]

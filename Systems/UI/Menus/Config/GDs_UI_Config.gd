@@ -3,20 +3,23 @@ extends Control
 @export_group("External Refs")
 @export var barraMenus: GDs_BarraMenus
 
-@export_group("Sliders")
+@export_group("Master")
 @export var masterVol:HSlider
-@export var sfxVol:HSlider
-@export var musicVol:HSlider
-
-@export_group("Buttons")
 @export var masterBtn:Button
-@export var SFXBtn:Button
-@export var musicBtn:Button
-
-@export_group("Focus Controls")
 @export var MasterOnFocus:Control
-@export var SFXOnFocus:Control
+@export var MasterPercentage:Label
+
+@export_group("Music")
+@export var musicVol:HSlider
+@export var musicBtn:Button
 @export var MusicOnFocus:Control
+@export var MusicPercentage:Label
+
+@export_group("SFX")
+@export var sfxVol:HSlider
+@export var SFXBtn:Button
+@export var SFXOnFocus:Control
+@export var SFXPercentage:Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +38,8 @@ func _ready():
 	masterVol.value_changed.connect(MasterVolChanged)
 	sfxVol.value_changed.connect(SFXVolChanged)
 	musicVol.value_changed.connect(MusicVolChanged)
+	
+	MasterVolChanged(0.7)
 
 func _input(event):
 	if event.is_action_pressed("MasterVol+"):
@@ -77,9 +82,13 @@ func OnMusicVolumeFocus():
 
 func MasterVolChanged(_value:float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(_value))
-	
+	MasterPercentage.text = str(_value * 100) + "%"
+
 func SFXVolChanged(_value:float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(_value))
-
+	SFXPercentage.text = str(_value * 100) + "%"
+	
 func MusicVolChanged(_value:float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(_value))
+	MusicPercentage.text = str(_value * 100) + "%"
+	

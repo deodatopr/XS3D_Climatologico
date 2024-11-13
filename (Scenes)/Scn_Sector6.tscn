@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=51 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
@@ -24,8 +24,6 @@
 [ext_resource type="AudioStream" uid="uid://cbjp7ejpsjtnr" path="res://Cont_Sounds/Environment/Wind2.mp3" id="14_1tnag"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
-[ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://Cont_Sounds/#Unused/Downtown_People.mp3" id="15_oeod0"]
-[ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://Cont_Sounds/#Unused/Downtown_Cars.mp3" id="16_a3tvj"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
 [ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
 [ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Moving.mp3" id="18_og2vw"]
@@ -320,38 +318,6 @@ unit_size = 50.0
 bus = &"SFX"
 parameters/looping = true
 
-[node name="Audio - Town" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -526.541, 202.467, 286.044)
-stream = ExtResource("15_oeod0")
-volume_db = 80.0
-unit_size = 100.0
-bus = &"SFX"
-parameters/looping = true
-
-[node name="Audio - Town2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.24, 153.759, -303.367)
-stream = ExtResource("16_a3tvj")
-volume_db = 15.0
-unit_size = 30.0
-bus = &"SFX"
-parameters/looping = true
-
-[node name="Audio - Town4" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244.899, 203.941, 713.412)
-stream = ExtResource("16_a3tvj")
-volume_db = 15.0
-unit_size = 30.0
-bus = &"SFX"
-parameters/looping = true
-
-[node name="Audio - Town3" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1101.99, 202.467, -1475.1)
-stream = ExtResource("15_oeod0")
-volume_db = 15.0
-unit_size = 30.0
-bus = &"SFX"
-parameters/looping = true
-
 [node name="PPE - Glitch" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly") instance=ExtResource("7_cjwh8")]
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
@@ -367,6 +333,7 @@ dbgEnable = true
 layer = 6
 
 [node name="Presa" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Presa"]
+visible = false
 material = SubResource("ShaderMaterial_bdqpe")
 anchors_preset = 15
 anchor_right = 1.0
@@ -378,6 +345,7 @@ grow_vertical = 2
 layer = 7
 
 [node name="Temp" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Temp"]
+visible = false
 material = SubResource("ShaderMaterial_uqmtv")
 anchors_preset = 15
 anchor_right = 1.0
