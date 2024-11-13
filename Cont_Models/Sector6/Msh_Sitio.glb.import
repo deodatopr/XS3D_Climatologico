@@ -45,6 +45,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam.tres"
 },
+"Mat_LightBeam_06": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_06.tres"
+},
 "Mat_Sector6_1": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_1.tres"

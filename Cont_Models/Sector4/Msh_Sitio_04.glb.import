@@ -41,6 +41,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam.tres"
 },
+"Mat_LightBeam_04": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_04.tres"
+},
 "Mat_Sitio_Asfalto": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Asfalto.tres"
