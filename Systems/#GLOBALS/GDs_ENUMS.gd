@@ -10,8 +10,14 @@ enum EP_GetAllEstaciones
 enum EP_RequestType
 {
 	From_EP,
-	From_Debug_Simulado,
-	From_Debug_Error
+	From_Simulado
+}
+
+enum EP_RequestResult
+{
+	Success,
+	Error_NoData,
+	Error_LastData
 }
 
 enum Estado

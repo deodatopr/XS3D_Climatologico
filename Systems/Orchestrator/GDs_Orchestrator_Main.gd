@@ -7,7 +7,7 @@ class_name GDs_Orchestrator_Main extends Node
 @export var crLocalEstaciones : GDs_CR_LocalEstaciones
 
 func _ready():
-	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Simulado
+	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Simulado
 	var sitioToStart : int = scenes_manager.GetRndIdSite()
 	if sitioInicial==0: 
 		sitioToStart=6

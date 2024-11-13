@@ -9,6 +9,7 @@ var CR_LocalEstaciones : GDs_CR_LocalEstaciones
 var getAllEstaciones_Simulado : GDs_EP_GetAllEstaciones_Simulado
 var getAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
 var arrayEstaciones : Array[GDs_Data_EP_Estacion] = []
+var lastArrayEstacionesWithData : Array[GDs_Data_EP_Estacion] = []
 var estacionesFromServer = {"Estaciones" : arrayEstaciones}
 var URL : String
 var isBusy : bool
@@ -29,20 +30,28 @@ func Request_GetAllEstaciones():
 	isBusy = true
 	
 	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
-		arrayEstaciones = getAllEstaciones_Simulado.GetEstaciones()
-		OnRequest_Success.emit()
+		if DEBUG.requestResult == ENUMS.EP_RequestResult.Success:
+			arrayEstaciones = getAllEstaciones_Simulado.GetEstaciones()
+			lastArrayEstacionesWithData = arrayEstaciones.duplicate()
+			OnRequest_Success.emit()
+		elif DEBUG.requestResult == ENUMS.EP_RequestResult.Error_NoData:
+			arrayEstaciones = getAllEstaciones_Error.GetEstaciones_NoData()
+			OnRequest_Failed.emit()
+		else:
+			if lastArrayEstacionesWithData.size() > 0:
+				arrayEstaciones = getAllEstaciones_Error.GetEstaciones_LastData(lastArrayEstacionesWithData)
+				lastArrayEstacionesWithData = arrayEstaciones.duplicate()
+			else:
+				arrayEstaciones = getAllEstaciones_Error.GetEstaciones_NoData()
+			OnRequest_Failed.emit()
+			
 		isBusy = false
 		return
 	
 	#Request endpoint
-	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_EP:
+	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_GetAllEstaciones.Success:
 		http_request.request(URL)
 		
-	#Debug error
-	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Error:
-		arrayEstaciones = getAllEstaciones_Error.GetEstaciones()
-		OnRequest_Failed.emit()
-		isBusy = false
 	
 func GetEstaciones()-> Array[GDs_Data_EP_Estacion]:
 	return arrayEstaciones
