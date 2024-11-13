@@ -23,7 +23,12 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 	var viento : float
 	var dir_viento : int
 	var nivel : float
-	var sensores : bool
+	var presaSnsr : bool
+	var pcptnSnsr : bool
+	var prsnSnsr : bool
+	var solSnsr : bool
+	var humTempSnsr : bool
+	var vntoSnsr : bool
 	
 	var temp_normal_min : float = 5.0
 	var temp_normal_max : float = CONST.thrshld_temperatura_calida - 1.0
@@ -67,12 +72,17 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 			ENUMS.Bateria._0:
 				nvlBateria = 23.2
 		
-		#De acuerdo a documento si tiene 23.2 es que está descargada
 		bateriaConCarga = nvlBateria > CONST.thrshld_bateria_conCarga
 		utr = bateriaConCarga
 		enlace = bateriaConCarga
-		sensores = bateriaConCarga
-		var tengoDatos : bool =  bateriaConCarga and sensores and utr and enlace
+		presaSnsr = bateriaConCarga
+		pcptnSnsr = bateriaConCarga
+		prsnSnsr = bateriaConCarga
+		solSnsr = bateriaConCarga
+		humTempSnsr = bateriaConCarga
+		vntoSnsr = bateriaConCarga
+		
+		var tengoDatos : bool =  bateriaConCarga and utr and enlace
 		
 		fecha = Time.get_datetime_string_from_system() if utr else ultFechaConInfo
 		
@@ -143,7 +153,12 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 		"volt_bat_resp": nvlBateria,
 		"enlace": enlace,
 		"disp_utr": utr,
-		"sensores": sensores,
+		"presaSnsr": presaSnsr,
+		"pcptnSnsr": pcptnSnsr,
+		"prsnSnsr": presaSnsr,
+		"solSnsr": solSnsr,
+		"humTempSnsr": humTempSnsr,
+		"vntoSnsr": vntoSnsr,
 		
 		"prtcion_pluvial": precipitacion,
 		"presion" : presionAtm,

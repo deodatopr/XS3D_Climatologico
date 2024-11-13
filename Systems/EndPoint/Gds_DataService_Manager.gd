@@ -178,7 +178,12 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		instanceEstacionCombinada.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
 		instanceEstacionCombinada.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
 		instanceEstacionCombinada.presion = estacionEP.presion
-		instanceEstacionCombinada.sensores = estacionEP.sensores
+		instanceEstacionCombinada.presaSnsr = estacionEP.presaSnsr
+		instanceEstacionCombinada.pcptnSnsr = estacionEP.pcptnSnsr
+		instanceEstacionCombinada.prsnSnsr = estacionEP.prsnSnsr
+		instanceEstacionCombinada.solSnsr = estacionEP.solSnsr
+		instanceEstacionCombinada.humTempSnsr = estacionEP.humTempSnsr
+		instanceEstacionCombinada.vntoSnsr = estacionEP.vntoSnsr
 		
 		#From Local
 		instanceEstacionCombinada.nombre = estacionLocal.nombre
@@ -214,7 +219,12 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.fallo_alim_ac = estacionEP.fallo_alim_ac
 		estacionToUpdate.volt_bat_resp = estacionEP.volt_bat_resp
 		estacionToUpdate.presion = estacionEP.presion
-		estacionToUpdate.sensores = estacionEP.sensores
+		estacionToUpdate.presaSnsr = estacionEP.presaSnsr
+		estacionToUpdate.pcptnSnsr = estacionEP.pcptnSnsr
+		estacionToUpdate.prsnSnsr = estacionEP.prsnSnsr
+		estacionToUpdate.solSnsr = estacionEP.solSnsr
+		estacionToUpdate.humTempSnsr = estacionEP.humTempSnsr
+		estacionToUpdate.vntoSnsr = estacionEP.vntoSnsr
 		estacionToUpdate.enlace = estacionEP.enlace
 		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
 		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
