@@ -289,4 +289,5 @@ pointing/emulate_touch_from_mouse=true
 scaling_3d/mode=1
 environment/volumetric_fog/use_filter=0
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
 occlusion_culling/use_occlusion_culling=true

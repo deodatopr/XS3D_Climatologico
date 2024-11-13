@@ -106,8 +106,8 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6xc3j"]
 shader = SubResource("Shader_mn58d")
-shader_parameter/pixel = 1.0
-shader_parameter/sharpening = 3.0
+shader_parameter/pixel = 2.0
+shader_parameter/sharpening = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjg68"]
 shader = ExtResource("5_ipad4")
@@ -122,12 +122,12 @@ shader_parameter/vignetteColor = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_issi1"]
 shader = ExtResource("8_pnisj")
-shader_parameter/lensDistortion = 1.0
+shader_parameter/lensDistortion = 1.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_efvsc"]
 shader = SubResource("Shader_mn58d")
-shader_parameter/pixel = 1.0
-shader_parameter/sharpening = 1.5
+shader_parameter/pixel = 2.0
+shader_parameter/sharpening = 2.0
 
 [node name="SECTOR 6" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_vpunx")
@@ -145,6 +145,7 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
+valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -163,6 +164,8 @@ movFly = NodePath("MovFly")
 fly_pivot = NodePath("MovFly")
 fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_x5pt0")
+sky_height = 600.0
+sky_speed = 200.0
 fly_height_speed = 2.0
 fly_height_max = 450.0
 fly_rot_speed = 0.7
@@ -225,7 +228,7 @@ nombre = "Parroquia San Juanita"
 
 [node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ SYSTEMS ]"]
 stream = ExtResource("21_atymd")
-volume_db = 10.0
+volume_db = 5.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
@@ -236,7 +239,6 @@ sndMoving = NodePath("Moving")
 sndCameraFOV = NodePath("CameraFOV")
 sndCameraRot = NodePath("CameraRot")
 sndWind = NodePath("Wind")
-sndWindVolume = 5.0
 
 [node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneSky"]
 stream = ExtResource("17_p1b51")
@@ -266,11 +268,12 @@ bus = &"SFX"
 script = ExtResource("10_uf8le")
 sndFlying = NodePath("Flying")
 flyingStaticVolume = -20.0
-flyingMovingVolume = 5.0
+flyingMovingVolume = -5.0
 flyingMovingPitch = 1.0
-flyingBoostVolume = 5.0
-flyingBoostPitch = 1.15
+flyingBoostVolume = -5.0
+flyingBoostPitch = 1.2
 sndWind = NodePath("Audio - Wind")
+windMaxVolume = 10.0
 windMinHeight = 300.0
 windMaxHeight = 450.0
 sndNature = NodePath("Audio - Nature")
