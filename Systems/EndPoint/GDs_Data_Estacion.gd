@@ -12,7 +12,12 @@ var intsdad_viento : float # en kilómetros por hora (km/h)
 var temperatura : float # en grados
 var dir_viento : float # en grados
 var presion : float
-var sensores : bool
+var presaSnsr : bool
+var pcptnSnsr : bool
+var prsnSnsr : bool
+var solSnsr : bool
+var humTempSnsr : bool
+var vntoSnsr : bool
 
 var disp_utr : bool
 var fallo_alim_ac : bool
