@@ -1,11 +1,8 @@
 class_name GDs_DataService_Manager extends Node
 
-@export var skip_orquestrator_main : bool = true
-
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
 @export var endpoint : GDs_EP_GetAllEstaciones
-@export var endpoint_Random : GDs_EP_GetAllEstaciones_Random
 @export var endpoint_Simulado : GDs_EP_GetAllEstaciones_Simulado
 @export var endpoint_Error : GDs_EP_GetAllEstaciones_Error
 @export var URL : String
@@ -26,11 +23,6 @@ var estaciones_Estruc_Michoacan : GDs_Data_Estaciones_Estructura
 
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
-func _ready():
-	if skip_orquestrator_main:
-		APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Random
-		Initialize()
-		MakeRequest_GetAllEstaciones()
 
 func Initialize():
 	SIGNALS.OnGoToSitio.connect(UpdateCurrentSitio)
@@ -39,13 +31,12 @@ func Initialize():
 	#Connect with endpoint GetAllEstacion
 	endpoint.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
 	endpoint.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
-	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Random,endpoint_Simulado,endpoint_Error)
+	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Simulado,endpoint_Error)
 	
 	#Connect with endpoint error
 	endpoint_Error.Initialize(crLocalEstaciones,timeToReconnect_Error)
 	endpoint_Error.OnFinishError.connect(MakeRequest_GetAllEstaciones)
 	
-	endpoint_Random.Initialize(crLocalEstaciones)
 	endpoint_Simulado.Initialize(crLocalEstaciones)
 	
 	#Connect timer to refresh endpoint

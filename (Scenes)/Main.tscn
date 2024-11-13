@@ -41,7 +41,6 @@ sitios = {
 [node name="Find -CR_Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]
 
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("5_8ipwn")]
-skip_orquestrator_main = false
 
 [node name="Simulados" type="Node" parent="[ SYSTEMS ]"]
 script = ExtResource("8_po2sq")
