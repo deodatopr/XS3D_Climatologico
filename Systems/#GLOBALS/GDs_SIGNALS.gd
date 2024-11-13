@@ -4,11 +4,16 @@ extends Node
 #DATA SERVICE
 @warning_ignore('unused_signal')
 signal OnRefresh
+@warning_ignore('unused_signal')
+signal OnRequestResult_Success
+@warning_ignore('unused_signal')
+signal OnRequestResult_Error_NoData
+@warning_ignore('unused_signal')
+signal OnRequestResult_Error_Data
 
 #SCENES
 @warning_ignore('unused_signal')
 signal OnGoToSitio(_idSitio : int)
-
 @warning_ignore('unused_signal')
 signal OnSitioInitialized
 

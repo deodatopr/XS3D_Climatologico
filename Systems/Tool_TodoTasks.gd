@@ -17,8 +17,8 @@
 ## Que sucede cuando no hay datos con mensaje de reconexión
 # Hay cosas con control que no están actualizadas (Y no es cambio de cam), pad para menu
 # (idea de sonido dif cuando no puedas)
-#	Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
-#Limpiar variables y dejarla sigual que endpoint
+#Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
+# Limpiar variables y dejarla sigual que endpoint
 
 # ----------------------- Tareas:
 # Turbo ambos drones x4

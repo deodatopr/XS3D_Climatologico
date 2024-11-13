@@ -22,11 +22,11 @@ func _ready() -> void:
 	curtain.process_mode = Node.PROCESS_MODE_DISABLED
 	curtain.hide()
 	inputBlocker.hide()
+	container.hide()
 	
 func Show():
 	inputBlocker.show()
 	curtain.show()
-	container.show()
 	
 	curtain.process_mode = Node.PROCESS_MODE_INHERIT
 	tween = create_tween()
@@ -37,6 +37,8 @@ func Show():
 	
 	await tween.finished
 	
+	#Prender animacion loading
+	container.show()
 	OnCurtainCovered.emit()
 
 func Hide():

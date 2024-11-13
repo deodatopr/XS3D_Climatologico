@@ -1,109 +1,74 @@
 class_name GDs_EP_GetAllEstaciones_Error extends Node
 
-
-@export_category("GetAllEstaciones")
-@export var timer : Timer
-
-@export_category("Panel")
-@export var panelBgk : Control
-@export var panelError : Control
-@export var scaleShow : float
-@export var scaleHide : float
-@export var speed : float = 1
-@export var labelErrorType : Label
-@export var labelTimeToRetryValue : Label
-@export var btnReconectar : Button
-
-signal OnFinishError
-
 var CR_LocalEstaciones: GDs_CR_LocalEstaciones
-var timeToRetry : float = 10
-var originalTimeRetry : float
-var panelErrorIsOpened : bool
 
-func Initialize(_CR_LocalEstaciones: GDs_CR_LocalEstaciones, _timeToRetry : float):
-	timer.timeout.connect(_OnTimeOut)
-	btnReconectar.pressed.connect(_OnBtnReintentarPressed)
-	
-	originalTimeRetry = _timeToRetry
+func Initialize(_CR_LocalEstaciones: GDs_CR_LocalEstaciones):
 	CR_LocalEstaciones = _CR_LocalEstaciones
-	labelErrorType.text =  str("Sin conexión reintentando en: ")
-	
-func Open():
-	if not panelErrorIsOpened:
-		_AnimPanelError(true)
-		panelErrorIsOpened = true
-	
-	timer.stop()
-	timeToRetry = originalTimeRetry
-	timer.start(timeToRetry)
-	
-func Close():
-	if panelErrorIsOpened:
-		_AnimPanelError(false)
-		panelErrorIsOpened = false
 		
-func GetEstaciones()-> Array[GDs_Data_EP_Estacion]:
-	#Llenar datos vacios de endpoint para que la app pueda funcionar pero sin datos	
-	var custom_array: Array[GDs_Data_EP_Estacion] = []
+func GetEstaciones_NoData() -> Array[GDs_Data_EP_Estacion]:
+	var estaciones : Array[GDs_Data_EP_Estacion]
+	
+	var fecha : String = "---- -- ----- --:--"
+	var utr : bool = false
+	var enlace : bool = false
+	var nvlBateria : float = NAN
+	var bateriaConCarga : bool = false
+	var temperatura : float = NAN
+	var humedad : float = NAN
+	var evaporacion : float = NAN
+	var precipitacion : float = NAN
+	var presionAtm : float = NAN
+	var viento : float = NAN
+	var dir_viento : int = NAN
+	var nivel : float = NAN
+	var presaSnsr : bool = false
+	var pcptnSnsr : bool = false
+	var prsnSnsr : bool = false
+	var solSnsr : bool = false
+	var humTempSnsr : bool = false
+	var vntoSnsr : bool = false
+	
+	var idx : int = 0
+	for sitioCR in CR_LocalEstaciones.LocalEstaciones:
+		var estacionNoValues = {
+		"id" : idx + 1,
+		"fecha": fecha,
+		"volt_bat_resp": nvlBateria,
+		"enlace": enlace,
+		"disp_utr": utr,
+		"presaSnsr": presaSnsr,
+		"pcptnSnsr": pcptnSnsr,
+		"prsnSnsr": prsnSnsr,
+		"solSnsr": solSnsr,
+		"humTempSnsr": humTempSnsr,
+		"vntoSnsr": vntoSnsr,
+		
+		"prtcion_pluvial": precipitacion,
+		"presion" : presionAtm,
+		
+		"temperatura": temperatura,
+		"humedad": humedad,
+		"evaporacion": evaporacion,
+		"intsdad_viento": viento,
+		
+		"dir_viento": dir_viento,
+		
+		"nivel": nivel,
 
-	#Obtener y setear cada propiedad de la clase ENDPOINT_SITIO_EXT para agregarlo al array
-	for i in range(CR_LocalEstaciones.LocalEstaciones.size()):
-		var emptyEstacion = {
-		"id": CR_LocalEstaciones.LocalEstaciones[i].id,
-		"fecha": "--/--/-- T --:--:--",
-		"nivel": 0.0,
-		"prtcion_pluvial": 0.0,
-		"humedad": 0.0,
-		"evaporacion": 0.0,
-		"intsdad_viento": 0.0,
-		"dir_viento": 0.0,
-		"temperatura": 0.0,
-		
-		"disp_utr": false,
-		"fallo_alim_ac": false,
-		"volt_bat_resp": 0.0,
-		
-		"enlace": false,
-		"energia_electrica": false,
-		"rebasa_nvls_presa": false,
-		"rebasa_tlrncia_prep_pluv": false
+		"fallo_alim_ac": randi() % 2 == 0,
+		"energia_electrica": randi() % 2 == 0,
+		"rebasa_nvls_presa": randi() % 2 == 0,
+		"rebasa_tlrncia_prep_pluv": randi() % 2 == 0
 		}
 		
-		var custom_item = GDs_Data_EP_Estacion.new(emptyEstacion)
-		custom_array.append(custom_item)
+		var estacion : GDs_Data_EP_Estacion = GDs_Data_EP_Estacion.new(estacionNoValues)
+		estacion.rebasa_nvls_presa = false
+		estacion.rebasa_tlrncia_prep_pluv = false
 
-	return custom_array
-	
-func _process(_delta):
-	if panelErrorIsOpened:
-		timeToRetry = timer.time_left
-		labelTimeToRetryValue.text = str(roundf(timeToRetry))
-
-func _OnTimeOut():
-	timer.stop()
-	OnFinishError.emit()
-
-func _OnBtnReintentarPressed():
-	if APPSTATE.EP_GetAllEstaciones_RequestType == ENUMS.EP_RequestType.From_Debug_Error:
-		APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Debug_Simulado
-	
-	OnFinishError.emit()
-	timer.stop()
+		estaciones.append(estacion)
+		idx+=1
 		
-func _AnimPanelError(show : bool):
-	if show:
-		panelBgk.show()
-		panelError.show()
+	return estaciones
 	
-	#Animación del panel
-	var tween = create_tween()
-	var targetScale : float =  scaleShow if show else scaleHide
-	var newScale : Vector2 = Vector2(targetScale,targetScale)
-	tween.tween_property(panelError, "scale", newScale, .001)
-	tween.play()
-	
-	if not show:
-		await tween.finished
-		panelError.hide()
-		panelBgk.hide()
+func GetEstaciones_LastData(_lastEstacionesData : Array[GDs_Data_EP_Estacion]) -> Array[GDs_Data_EP_Estacion]:
+	return _lastEstacionesData

@@ -26,17 +26,15 @@ var isFirstTimeRequestGetAllEstaciones : bool = true
 
 func Initialize():
 	SIGNALS.OnGoToSitio.connect(UpdateCurrentSitio)
-	SIGNALS.OnDebugRefresh.connect(_OnDebugRefresh)
+	SIGNALS.OnDebugRefresh.connect(_OnSimuladoValueChange)
 	
 	#Connect with endpoint GetAllEstacion
 	endpoint.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
 	endpoint.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
-	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Simulado,endpoint_Error)
 	
-	#Connect with endpoint error
-	endpoint_Error.Initialize(crLocalEstaciones,timeToReconnect_Error)
-	endpoint_Error.OnFinishError.connect(MakeRequest_GetAllEstaciones)
-	
+	#Initialization
+	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Simulado,endpoint_Error)	
+	endpoint_Error.Initialize(crLocalEstaciones)
 	endpoint_Simulado.Initialize(crLocalEstaciones)
 	
 	#Connect timer to refresh endpoint
@@ -106,9 +104,6 @@ func _OnSuccessEP_GetAllEstaciones():
 	#Update data
 	_GetDataFromEP_GetAllEstaciones()
 	
-	#Close error popup in case it is opened
-	endpoint_Error.Close()
-	
 	#Start again the timer
 	if timerTicking.is_stopped():
 		timerTicking.start(timeToRefresh)
@@ -119,13 +114,10 @@ func _OnFailedEP_GetAllEstaciones():
 	#Update data
 	_GetDataFromEP_GetAllEstaciones()
 	
-	#Open error popup in case it is closed
-	endpoint_Error.Open()
-	
 	#Stop refresh EP timer
 	timerTicking.stop()
 
-func _OnDebugRefresh():
+func _OnSimuladoValueChange():
 	APPSTATE.EP_GetAllEstaciones_State = ENUMS.EP_GetAllEstaciones.Success
 	
 	#Update data
