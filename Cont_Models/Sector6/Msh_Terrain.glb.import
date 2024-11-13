@@ -35,19 +35,11 @@ _subresources={
 "materials": {
 "Mat_Env_Roads_Fly": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Roads_Fly.tres"
+"use_external/path": "res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Roads.tres"
 },
 "Mat_Env_Water": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Water.tres"
-},
-"Mat_Roads_Fly": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Roads_Fly.tres"
-},
-"Mat_Roads_Sky": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Roads_Sky.tres"
 },
 "Mat_Sector6_1": {
 "use_external/enabled": true,
@@ -232,10 +224,6 @@ _subresources={
 "Mat_Sector6_9": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/Sector6/Terrain/Mat_Sector6_9.tres"
-},
-"Mat_Water": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Shared/Materials/Mat_Water.tres"
 }
 }
 }
