@@ -138,7 +138,6 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
-valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -158,7 +157,7 @@ fly_pivot = NodePath("MovFly")
 fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_x5pt0")
 sky_height = 600.0
-sky_speed = 200.0
+sky_speed = 100.0
 fly_height_speed = 2.0
 fly_height_max = 450.0
 fly_rot_speed = 0.7
@@ -364,10 +363,9 @@ camera_attributes = ExtResource("21_uyocc")
 
 [node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(-0.166769, 0.926533, -0.33723, 0, 0.34202, 0.939693, 0.985996, 0.156712, -0.0570384, 0, 0, 0)
-visible = false
 light_color = Color(1, 0.948457, 0.877053, 1)
 shadow_enabled = true
-shadow_blur = 3.0
+shadow_blur = 10.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 800.0
 sky_mode = 1
@@ -375,12 +373,13 @@ metadata/_edit_lock_ = true
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(-0.939692, 0.296198, -0.17101, 0, 0.5, 0.866025, 0.34202, 0.813798, -0.469846, -27.0369, 72.9466, -43.7071)
+visible = false
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
 shadow_blur = 3.0
 directional_shadow_mode = 0
-directional_shadow_max_distance = 200.0
+directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
 [node name="[ CONTENT ]" type="Node" parent="."]
@@ -390,7 +389,6 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -11.917, 3
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(4423.02, 0, 0, 0, -0.000193336, 4423.02, 0, -4423.02, -0.000193336, 662.314, 874.294, 767.682)
-visible = false
 material_override = ExtResource("2_vmk6t")
 mesh = SubResource("QuadMesh_2ocno")
 metadata/_edit_lock_ = true

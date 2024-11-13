@@ -12,5 +12,5 @@ noise = SubResource("FastNoiseLite_2iwiy")
 render_priority = 0
 shader = ExtResource("1_emdrm")
 shader_parameter/Speed = 1.0
-shader_parameter/Threshold = 0.556
+shader_parameter/Threshold = 0.55
 shader_parameter/Texture2DParameter = SubResource("NoiseTexture2D_l53r2")

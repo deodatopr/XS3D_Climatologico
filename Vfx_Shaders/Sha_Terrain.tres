@@ -44,7 +44,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-468.979, -49.9095)
 modes/diffuse = 3
 modes/specular = 2
 nodes/fragment/2/node = SubResource("VisualShaderNodeFloatConstant_gr6w3")
