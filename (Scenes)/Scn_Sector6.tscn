@@ -188,37 +188,37 @@ fov = 35.0
 [node name="AudioListener3D" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
 current = true
 
-[node name="Puntos de Interes" parent="[ SYSTEMS ]" node_paths=PackedStringArray("camFly", "camSky") instance=ExtResource("39_it1fo")]
+[node name="Puntos de Interes & Baliza" parent="[ SYSTEMS ]" node_paths=PackedStringArray("camFly", "camSky") instance=ExtResource("39_it1fo")]
 camFly = NodePath("../Camera - Drones/MovFly/fly_cam")
 camSky = NodePath("../Camera - Drones/MovSky/sky_cam")
 
-[node name="Punto 4" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
+[node name="Punto 4" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 484.349, 59.6599, -148.556)
 script = ExtResource("39_x4bd8")
 nombre = " Telesecundaria Los Zapotes "
 
-[node name="Punto 5" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
+[node name="Punto 5" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 557.276, 59.6599, 415.393)
 script = ExtResource("39_x4bd8")
 nombre = " Toma & DaCa Taller "
 
-[node name="Punto 6" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
+[node name="Punto 6" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1098.19, 70.9961, 451.811)
 script = ExtResource("39_x4bd8")
 nombre = " Escuela Primaria Ignacio Lopez Rayon"
 
-[node name="Punto 7" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
+[node name="Punto 7" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1084.32, 69.6268, 1403.56)
 visible = false
 script = ExtResource("39_x4bd8")
 nombre = "Primaria Lazaro Cardenas"
 
-[node name="Punto 8" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
+[node name="Punto 8" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1217.13, 69.6268, 1417.5)
 script = ExtResource("39_x4bd8")
 nombre = "Canchita El Bosque"
 
-[node name="Punto 9" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes"]
+[node name="Punto 9" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1020.99, 69.6268, 1598.05)
 visible = false
 script = ExtResource("39_x4bd8")
