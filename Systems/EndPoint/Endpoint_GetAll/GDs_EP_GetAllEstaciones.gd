@@ -42,7 +42,6 @@ func Request_GetAllEstaciones():
 			else:
 				arrayEstaciones = getAllEstaciones_Error.GetEstaciones_NoData()
 				SIGNALS.OnRequestResult_Error_NoData.emit()
-			
 		isBusy = false
 		return
 	
@@ -65,7 +64,6 @@ func _OnRequestCompleted_GetAllEstaciones(result, _response_code, _headers, body
 	else:
 		SIGNALS.OnRequestResult_Error_NoData.emit()
 		print_rich("[color=red]Request [Get all Estaciones] failed by internet..![/color].")
-		
 	isBusy = false
 
 func _CastJsonToArrayEstaciones(json_array: Array) -> Array[GDs_Data_EP_Estacion]:

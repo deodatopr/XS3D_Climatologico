@@ -20,6 +20,8 @@ extends Node
 @export var natureMaxVolume: float = 24
 @export var natureMinHeight:float
 @export var natureMaxHeight:float
+@export var streamNature:AudioStream
+@export var streamRain:AudioStream
 
 var isBoosting:=false
 var tween:Tween
@@ -27,9 +29,13 @@ var prevCamHeight:=0
 
 var windMidPoint : float = 0.0
 var natureMidPoint : float = 0.0
+var originalNatureMinHeight: float = 0.0
 func _ready():
+	originalNatureMinHeight = natureMinHeight
+	
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
 	natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
+	SIGNALS.OnLluviaSet.connect(OnLLuvia)
 
 
 func _process(_delta):
@@ -94,3 +100,13 @@ func MovingFade(_snd:AudioStreamPlayer,_vol:float,_pitch:float,_stop:=false):
 	if _stop:
 		await tween.finished
 		_snd.stop()
+
+func OnLLuvia(_lluvia:int):
+	if _lluvia == ENUMS.LluviaIntsdad.ConLluvia:
+		natureMinHeight = 0
+		natureMidPoint = 100
+		sndNature.stream = streamRain
+	else:
+		natureMinHeight = originalNatureMinHeight
+		natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
+		sndNature.stream = streamNature
