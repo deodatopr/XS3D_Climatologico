@@ -45,6 +45,7 @@ sitios = {
 
 [node name="Simulados" type="Node" parent="[ SYSTEMS ]"]
 script = ExtResource("8_po2sq")
+LLuvia = 1
 
 [node name="[ SCENES ]" type="Node" parent="."]
 

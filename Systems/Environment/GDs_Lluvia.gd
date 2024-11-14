@@ -9,7 +9,6 @@ extends Node
 
 @export var miClouds : MeshInstance3D
 
-@export var animTruenos : AnimationPlayer
 @export var sndsTruenos : AudioStreamPlayer
 @export var sndsTormenta : AudioStreamPlayer
 
@@ -47,8 +46,6 @@ func _SinLluvia():
 	UTILITIES.TurnOnObject(miClouds)
 	UTILITIES.TurnOffObject(lightRain)
 	
-	if animTruenos.is_playing():
-		animTruenos.stop()
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		worldEnv.environment = presetEnvSky_Sunny
@@ -72,8 +69,6 @@ func _ConLluvia():
 	UTILITIES.TurnOffObject(lightSunFly)
 	UTILITIES.TurnOnObject(lightRain)
 	
-	if not animTruenos.is_playing():
-		animTruenos.play("anims_lluvia/anim_Truenos")
 		
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		worldEnv.environment = presetEnvSky_Rain
