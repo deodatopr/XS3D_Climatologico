@@ -89,7 +89,11 @@ func _CalculateScreenMark() -> void:
 
 
 	#Fix pos when point is out of limit border
-	if not rectLimits.has_point(posTarget2d):
+	var isInsideSight : bool = rectLimits.has_point(posTarget2d)
+	if isInsideSight:
+		posTarget2d.x -= screenMark.size.x * 0.5
+		posTarget2d.y -= screenMark.size.y * 0.5
+	else:
 		posTarget2d = GetValidPointOnLimits(rectLimits,aimCenter,aimCenter.direction_to(posTarget2d))
 	
 	#Fix when site is behind camera (always keep mark in on the bottom border)
@@ -104,7 +108,7 @@ func _CalculateScreenMark() -> void:
 	var angleRotation : float = rad_to_deg(aimCenter.angle_to_point(posTarget2d)) + angleOffsetRot
 	pointSitio.rotation_degrees = angleRotation
 	
-	direction.visible = aimCenter.distance_to(posTarget2d) > aimCenter.y * .5
+	direction.visible = not isInsideSight
 
 
 func GetValidPointOnLimits(_rect: Rect2, _center: Vector2, _dir: Vector2) -> Vector2:
