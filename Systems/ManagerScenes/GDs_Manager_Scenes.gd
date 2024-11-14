@@ -21,7 +21,10 @@ func GetRndIdSite() -> int:
 	var rndId : int = randi_range(0,sitios.size() -1)
 	return sitios.keys()[rndId]
 
-func GoToSector(_id : int):
+func GoToSector(_id : int, _fromOrquestratorMain : bool = false):
+	if not _fromOrquestratorMain and _id == APPSTATE.currntIdSitio:
+		return
+	
 	APPSTATE.currntIdSitio = _id
 	var _lvlSector : PackedScene = sitios[_id] as PackedScene
 	

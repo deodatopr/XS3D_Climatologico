@@ -28,7 +28,7 @@ func _ready():
 	#ESCENAS
 	scenes_manager.Initialize(dataService_manager,curtain)
 	
-	scenes_manager.GoToSector(sitioToStart)
+	scenes_manager.GoToSector(sitioToStart,true)
 	
 	await scenes_manager.OnSectorLoaded
 	await SIGNALS.OnSitioInitialized
