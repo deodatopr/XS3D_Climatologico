@@ -17,6 +17,8 @@ extends Node
 @export var rainFlyParticles : GPUParticles3D
 @export var rainSkyParticles : GPUParticles3D
 
+@export var timerCurve : Timer
+
 var presetEnvSky_Sunny : Environment = preload("uid://buu228l4r1lse")
 var presetEnvSky_Rain : Environment = preload("uid://pmji8hv2eh0f")
 
@@ -51,8 +53,10 @@ func _SinLluvia():
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		worldEnv.environment = presetEnvSky_Sunny
 		UTILITIES.TurnOnObject(lightSunSky)
+		UTILITIES.TurnOffObject(lightSunFly)
 	else:
 		worldEnv.environment = presetEnvFly_Sunny
+		UTILITIES.TurnOffObject(lightSunSky)
 		UTILITIES.TurnOnObject(lightSunFly)
 	
 	rainSkyParticles.hide()
@@ -63,6 +67,9 @@ func _SinLluvia():
 	
 func _ConLluvia():
 	UTILITIES.TurnOffObject(miClouds)
+	
+	UTILITIES.TurnOffObject(lightSunSky)
+	UTILITIES.TurnOffObject(lightSunFly)
 	UTILITIES.TurnOnObject(lightRain)
 	
 	if not animTruenos.is_playing():
@@ -70,10 +77,8 @@ func _ConLluvia():
 		
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		worldEnv.environment = presetEnvSky_Rain
-		UTILITIES.TurnOffObject(lightSunSky)
 	else:
 		worldEnv.environment = presetEnvFly_Rain
-		UTILITIES.TurnOffObject(lightSunFly)
 	
 	
 	rainSkyParticles.show()
