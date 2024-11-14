@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dkpo673knh4xx"]
+
+[ext_resource type="Shader" uid="uid://b7swwn6teldqa" path="res://Vfx_PostProcess/Raining/PPE_Rain.tres" id="1_d81hj"]
+[ext_resource type="Texture2D" uid="uid://tlsk2i66olu1" path="res://Vfx_PostProcess/Raining/Map_Rain.png" id="2_d3hph"]
+
+[resource]
+shader = ExtResource("1_d81hj")
+shader_parameter/Base_Color = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/Size = 2.0
+shader_parameter/Speed = 2.5
+shader_parameter/Alpha = 1.0
+shader_parameter/Texture2DParameter = ExtResource("2_d3hph")
