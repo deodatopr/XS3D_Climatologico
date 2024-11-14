@@ -92,6 +92,10 @@ func _CalculateScreenMark() -> void:
 	if not rectLimits.has_point(posTarget2d):
 		posTarget2d = GetValidPointOnLimits(rectLimits,aimCenter,aimCenter.direction_to(posTarget2d))
 	
+	#Fix when site is behind camera (always keep mark in on the bottom border)
+	if dotSign < 0:
+		posTarget2d.y = maxPos_Y
+		
 	#Apply
 	screenMark.global_position = posTarget2d
 	
