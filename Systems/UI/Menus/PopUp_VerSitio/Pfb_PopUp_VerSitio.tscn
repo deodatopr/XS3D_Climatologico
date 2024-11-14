@@ -99,6 +99,24 @@ animPlayer = NodePath("PopUp Ver Sitio - BLUR/AnimationPlayer")
 lblNoDisp = NodePath("PopUp Ver Sitio - BLUR/NoDisp")
 parentAceptar = NodePath("PopUp Ver Sitio - BLUR/Control/Botones/Aceptar")
 
+[node name="Mouse Stop" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mouse Stop2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="PopUp Ver Sitio - BLUR" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.411765)
 layout_mode = 1
@@ -506,21 +524,3 @@ libraries = {
 
 [node name="Warning" type="AudioStreamPlayer" parent="PopUp Ver Sitio - BLUR"]
 stream = ExtResource("4_crs7v")
-
-[node name="Mouse Stop" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -308.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Mouse Stop2" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -162.0
-grow_horizontal = 2
-grow_vertical = 2
