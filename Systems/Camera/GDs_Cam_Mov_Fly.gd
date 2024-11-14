@@ -22,6 +22,8 @@ var mov_height_velocity : float
 var mov_height_lerp : float
 var mov_height_isInGround : bool
 var mov_height_isInTop : bool
+var mov_height_speedForUI : float
+var mov_height_lastSpeedForUI : float
 
 var rot_hor : float
 var rot_vert : float
@@ -109,7 +111,7 @@ func _mov_height(_delta : float):
 		mov_height_lerp = 1
 	
 	mov_height_velocity *= mov_height_lerp
-	
+
 	#Apply
 	var finalHeight : float = pivot.position.y
 	finalHeight += mov_height_velocity
@@ -118,6 +120,11 @@ func _mov_height(_delta : float):
 	var smoothness :float = 5
 	pivot.position.y = lerpf(pivot.position.y, finalHeight, smoothness *_delta)
 	mov_height_last = pivot.position.y
+	
+	#Speed to send to UI (km/hr)
+	var targetSpeed : float = camMng.fly_height_speed * 10 * currentTurbo * absi(heightDir)
+	mov_height_speedForUI = lerpf(mov_height_lastSpeedForUI,targetSpeed, 10 * _delta)
+	mov_height_lastSpeedForUI = mov_height_speedForUI
 
 func _mov_movement(_delta : float):
 	mov_axisMovement = Input.get_vector("3DMove_Right","3DMove_Left","3DMove_Backward","3DMove_Forward")

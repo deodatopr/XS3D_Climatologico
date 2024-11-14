@@ -186,7 +186,10 @@ func _UpdateCamState():
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		CAM.speed = roundi(movSky.mov_speedForUI)
 	else:
-		CAM.speed = roundi(movFly.mov_speedForUI)
+		if movFly.mov_velocity.length() > 0.0:
+			CAM.speed = roundi(movFly.mov_speedForUI)
+		else:
+			CAM.speed = roundi(movFly.mov_height_speedForUI)
 		
 	auxToCalculateDistance = cam.global_position
 	auxToCalculateDistance.y = pinSitio.global_position.y
