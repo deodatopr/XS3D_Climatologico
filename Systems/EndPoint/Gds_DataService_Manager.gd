@@ -63,12 +63,10 @@ func UpdateCurrentSitio(_id : int):
 	
 			
 	#Señal Lluvia
-	if APPSTATE.currntSitio.pptn_pluvial > CONST.thrshld_pptcn_lluvia_intensa:
-		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.Intensa)
-	elif APPSTATE.currntSitio.pptn_pluvial > 0.0 and APPSTATE.currntSitio.pptn_pluvial <= CONST.thrshld_pptcn_lluvia_intensa:
-		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.Moderada)
+	if APPSTATE.currntSitio.pptn_pluvial > 0:
+		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.ConLluvia)
 	else:
-		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.Nada)
+		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.SinLluvia)
 		
 	#Señal Temperatura
 	if APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_alta:

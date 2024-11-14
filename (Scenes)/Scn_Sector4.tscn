@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dj24gdwn2bk1y"]
+[gd_scene load_steps=57 format=3 uid="uid://dj24gdwn2bk1y"]
 
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="1_ij72n"]
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_m6hgx"]
@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://Cont_Sounds/#Unused/Downtown_People.mp3" id="16_o6ah4"]
 [ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://Cont_Sounds/#Unused/Downtown_Cars.mp3" id="17_2nmsb"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="18_ah3la"]
-[ext_resource type="Environment" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="19_7t10y"]
+[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="19_7t10y"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="20_eyv7m"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="21_ilana"]
@@ -43,6 +43,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://ckc5tpy3srsid" path="res://Systems/Environment/anims_lluvia.res" id="30_6t0xh"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="30_b3dxc"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="31_njsju"]
+[ext_resource type="PackedScene" uid="uid://btfh1lhko803m" path="res://#Wip/Pfb_Rain.tscn" id="31_ydy2b"]
+[ext_resource type="Material" uid="uid://c1nty3ig8iwmf" path="res://Vfx_PostProces/LensDrops/Mat_LensDrop.tres" id="32_owtat"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="32_vfkp2"]
 [ext_resource type="Texture2D" uid="uid://sercn6ulr6dd" path="res://Cont_Models/Sector4/Map_Sect4_Minimap.jpg" id="43_dil7x"]
 
@@ -337,15 +339,27 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 500.0
 sky_mode = 1
 
-[node name="Lluvia" type="Node" parent="[ ENVIRONMENT ]" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "miClouds", "animTruenos", "sndsTruenos", "sndsTormenta")]
+[node name="Light - Rain" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 94.9184, 0)
+visible = false
+shadow_blur = 10.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 800.0
+sky_mode = 1
+
+[node name="Lluvia" type="Node" parent="[ ENVIRONMENT ]" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds", "animTruenos", "sndsTruenos", "sndsTormenta", "lensDrop", "rainFlyParticles", "rainSkyParticles")]
 script = ExtResource("20_eyv7m")
 worldEnv = NodePath("../WorldEnvironment")
 lightSunSky = NodePath("../Light - Sun_Sky")
 lightSunFly = NodePath("../Light - Sun_Fly")
+lightRain = NodePath("../Light - Rain")
 miClouds = NodePath("../../[ CONTENT ]/MI - Clouds")
 animTruenos = NodePath("anim_truenos")
 sndsTruenos = NodePath("Snds - Truenos")
 sndsTormenta = NodePath("Snds - Tormenta")
+lensDrop = NodePath("CanvasLayer/LensDrop")
+rainFlyParticles = NodePath("PS - Rain Fly")
+rainSkyParticles = NodePath("PS - Rain Sky")
 
 [node name="Snds - Truenos" type="AudioStreamPlayer" parent="[ ENVIRONMENT ]/Lluvia"]
 stream = SubResource("AudioStreamRandomizer_f0v3a")
@@ -358,6 +372,30 @@ libraries = {
 "anims_lluvia": ExtResource("30_6t0xh")
 }
 speed_scale = 0.2
+
+[node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("31_ydy2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.104, 201.451, 364.423)
+visible = false
+amount = 1000
+transform_align = 1
+
+[node name="PS - Rain Sky" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("31_ydy2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5425, 500, 148.762)
+visible = false
+amount = 1500
+transform_align = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
+layer = 4
+
+[node name="LensDrop" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/CanvasLayer"]
+visible = false
+material = ExtResource("32_owtat")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 

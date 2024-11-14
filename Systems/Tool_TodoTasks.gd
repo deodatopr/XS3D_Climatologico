@@ -23,6 +23,8 @@
 # Ya implementar datos del endpoint
 # Sistema presetEnv
 
+# Arreglar mesh que coincida con rotaciones
+
 # ----------------------- Tareas:
 # Turbo ambos drones x4
 # Probar sonidos que algunos aunque llegan al limite se siguen escuchando

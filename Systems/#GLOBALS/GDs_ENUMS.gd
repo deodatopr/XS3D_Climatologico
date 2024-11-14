@@ -40,9 +40,8 @@ enum ModoDatos
 
 enum LluviaIntsdad
 {
-	Nada,
-	Moderada,
-	Intensa
+	SinLluvia,
+	ConLluvia
 }
 
 enum Temperatura

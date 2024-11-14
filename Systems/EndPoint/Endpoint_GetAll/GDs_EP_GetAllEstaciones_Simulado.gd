@@ -109,11 +109,9 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 			
 		#Precipitacion -> (Presion atm y evaporacion)
 		match DEBUG.lLuvia:
-			ENUMS.LluviaIntsdad.Nada:
+			ENUMS.LluviaIntsdad.SinLluvia:
 				precipitacion = 0.0
-			ENUMS.LluviaIntsdad.Moderada:
-				precipitacion = randf_range(pptc_bajo_min,pptc_bajo_max)
-			ENUMS.LluviaIntsdad.Intensa:
+			ENUMS.LluviaIntsdad.ConLluvia:
 				precipitacion = randf_range(pptc_alto_min,pptc_alto_max)
 				
 		precipitacion = precipitacion if tengoDatos else NAN
