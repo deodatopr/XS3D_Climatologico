@@ -204,15 +204,16 @@ func _ChangeToMode(_mode : int):
 	SIGNALS.OnCameraChangedMode.emit(_mode)
 		
 func _ChangeToMode_Sky():
+		
+	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia:
 		# World env
-	worldEnv.environment = preset_env_sky
+		worldEnv.environment = preset_env_sky
 		
 		#DOF
-	worldEnv.camera_attributes = preset_cam_sky
-		
+		worldEnv.camera_attributes = preset_cam_sky
 		#Light
-	UTILITIES.TurnOnObject(light_sun_sky)
-	UTILITIES.TurnOffObject(light_sun_fly)
+		UTILITIES.TurnOnObject(light_sun_sky)
+		UTILITIES.TurnOffObject(light_sun_fly)
 		
 		# UI + PPE
 	for child in ui_ppe_fly.get_children():
@@ -236,15 +237,15 @@ func _ChangeToMode_Sky():
 		
 		
 func _ChangeToMode_Fly():
+	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia:
 		# World env
-	worldEnv.environment = preset_env_fly
+		worldEnv.environment = preset_env_fly
 		
 		#DOF
-	worldEnv.camera_attributes = preset_cam_fly
-		
+		worldEnv.camera_attributes = preset_cam_fly
 		#Light
-	UTILITIES.TurnOffObject(light_sun_sky)
-	UTILITIES.TurnOnObject(light_sun_fly)
+		UTILITIES.TurnOffObject(light_sun_sky)
+		UTILITIES.TurnOnObject(light_sun_fly)
 		
 		# UI + PPE
 	for child in ui_ppe_fly.get_children():

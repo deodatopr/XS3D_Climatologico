@@ -69,8 +69,10 @@ func PlayLittlePoint():
 	tween.tween_property(littlePoint,"self_modulate",Color.WHITE,0.2)
 
 func PlayOpenSound():
+	if not visible: return
 	open.stop()
 	open.play()
 func PlayCloseSound():
+	if not visible: return
 	close.stop()
 	close.play()

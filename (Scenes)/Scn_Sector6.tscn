@@ -405,6 +405,7 @@ visible = false
 light_color = Color(1, 0.948457, 0.877053, 1)
 light_energy = 2.0
 shadow_enabled = true
+shadow_opacity = 0.75
 shadow_blur = 10.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 1000.0

@@ -19,25 +19,20 @@ extends Node
 @export var timerCurve : Timer
 
 var presetEnvSky_Sunny : Environment = preload("uid://buu228l4r1lse")
-var presetEnvSky_Rain : Environment = preload("uid://pmji8hv2eh0f")
-
+var presetEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
 var presetEnvFly_Sunny : Environment = preload("uid://d0njvq6rqh23r")
 var presetEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
 
-var worldEnvEnergyMult : float
-var lightSunSkyEnergyMult : float
 var lightSunFlyEnergyMult : float
 var originalSky : Texture2D
 
 func _ready():
 	#Save original values
-	worldEnvEnergyMult = worldEnv.environment.background_energy_multiplier
-	lightSunSkyEnergyMult = lightSunSky.light_energy
 	lightSunFlyEnergyMult = lightSunFly.light_energy
-	var panoramaSkyMat : PanoramaSkyMaterial = worldEnv.environment.sky.sky_material
-	originalSky = panoramaSkyMat.panorama
-	
 	SIGNALS.OnLluviaSet.connect(_OnLluviaSet)
+	SIGNALS.OnCameraChangedMode.connect(SwitchRainEnvironment)
+	UTILITIES.TurnOffObject(rainFlyParticles)
+	UTILITIES.TurnOffObject(rainSkyParticles)
 
 func _exit_tree():
 	_RestoreValues()
@@ -56,8 +51,8 @@ func _SinLluvia():
 		UTILITIES.TurnOffObject(lightSunSky)
 		UTILITIES.TurnOnObject(lightSunFly)
 	
-	rainSkyParticles.hide()
-	rainFlyParticles.hide()
+	UTILITIES.TurnOffObject(rainSkyParticles)
+	UTILITIES.TurnOffObject(rainFlyParticles)
 	lensDrop.hide()
 	
 	_RestoreValues()
@@ -69,15 +64,15 @@ func _ConLluvia():
 	UTILITIES.TurnOffObject(lightSunFly)
 	UTILITIES.TurnOnObject(lightRain)
 	
-		
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		worldEnv.environment = presetEnvSky_Rain
 	else:
 		worldEnv.environment = presetEnvFly_Rain
 	
 	
-	rainSkyParticles.show()
-	rainFlyParticles.show()
+	UTILITIES.TurnOnObject(rainFlyParticles)
+	UTILITIES.TurnOnObject(rainSkyParticles)
+
 	lensDrop.show()
 
 func _OnLluviaSet(_lluviaIntensity : int):
@@ -87,12 +82,16 @@ func _OnLluviaSet(_lluviaIntensity : int):
 		ENUMS.LluviaIntsdad.ConLluvia:
 			_ConLluvia()
 
+func SwitchRainEnvironment(_cam:int):
+	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia: return
+	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
+		worldEnv.environment = presetEnvSky_Rain
+	else:
+		worldEnv.environment = presetEnvFly_Rain
+
+
 func _RestoreValues():
-	worldEnv.environment.background_energy_multiplier = worldEnvEnergyMult
-	lightSunSky.light_energy = lightSunSkyEnergyMult
 	lightSunFly.light_energy = lightSunFlyEnergyMult
-	var panoramaSkyMat : PanoramaSkyMaterial = worldEnv.environment.sky.sky_material
-	panoramaSkyMat.panorama = originalSky
 	
 func Anim_Truenos_PlaySndsTrueno():
 	sndsTruenos.play()
