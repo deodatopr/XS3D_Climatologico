@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Mat_LightBeam": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam.tres"
+"use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_0.tres"
 }
 },
 "meshes": {

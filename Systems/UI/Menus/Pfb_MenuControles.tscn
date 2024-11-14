@@ -356,7 +356,6 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_x4uqc")
 
 [node name="Label" type="Label" parent="FrameBG/Control/Botones/Y"]
-self_modulate = Color(1, 1, 1, 0.196078)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -412,9 +411,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -121.0
-offset_top = -136.0
+offset_top = -147.0
 offset_right = -72.0
-offset_bottom = -108.0
+offset_bottom = -119.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("2_x6xqf")
@@ -449,9 +448,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 9.5
-offset_top = -136.0
+offset_top = -147.0
 offset_right = 58.5
-offset_bottom = -108.0
+offset_bottom = -119.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("2_x6xqf")
@@ -477,6 +476,75 @@ theme_override_font_sizes/font_size = 30
 text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="T" type="NinePatchRect" parent="FrameBG/Control/Home"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -85.0
+offset_right = -72.0
+offset_bottom = -57.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Control/Home/T"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="O" type="NinePatchRect" parent="FrameBG/Control/Home"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 9.5
+offset_top = -86.0
+offset_right = 58.5
+offset_bottom = -58.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Control/Home/O"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Labels" type="Control" parent="FrameBG"]
 layout_mode = 1
@@ -612,7 +680,7 @@ anchor_bottom = 1.0
 offset_left = -1.0
 offset_top = 41.0
 offset_right = 1.0
-offset_bottom = -44.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_x6xqf")
@@ -626,9 +694,9 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -34.0
-offset_top = 179.0
+offset_top = 169.0
 offset_right = 36.0
-offset_bottom = -42.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_x6xqf")
@@ -747,6 +815,128 @@ offset_bottom = 20.0
 grow_horizontal = 2
 texture = SubResource("AtlasTexture_bbndl")
 
+[node name="Modo de Datos" type="Control" parent="FrameBG/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 267.5
+offset_top = -215.0
+offset_right = 727.5
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Modo de Datos"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -508.0
+offset_top = 15.0
+offset_right = -312.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Modo de Datos"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -507.0
+offset_top = 16.0
+offset_right = -326.145
+offset_bottom = 18.0
+grow_horizontal = 0
+rotation = 2.3911
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Modo de Datos"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -312.0
+offset_top = 1.0
+offset_right = -46.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="FrameBG/Labels/Modo de Datos/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Simulador de datos"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="_" type="Label" parent="FrameBG/Labels/Modo de Datos"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.0
+offset_top = -12.0
+offset_right = 9.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="F1" type="NinePatchRect" parent="FrameBG/Labels/Modo de Datos"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 51.0
+offset_bottom = 39.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Labels/Modo de Datos/F1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "F12"
+
 [node name="Camaras" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1
 anchors_preset = 8
@@ -755,9 +945,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 282.5
-offset_top = -119.5
+offset_top = -129.5
 offset_right = 724.5
-offset_bottom = -80.5
+offset_bottom = -90.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -767,7 +957,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -433.0
+offset_left = -419.0
 offset_top = 15.0
 offset_right = -238.0
 offset_bottom = 17.0
@@ -1622,6 +1812,128 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_g4jj7")
 
+[node name="Info" type="Control" parent="FrameBG/Labels"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -529.5
+offset_top = -155.0
+offset_right = -176.5
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="NinePatchRect" parent="FrameBG/Labels/Info"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -312.0
+offset_top = 19.0
+offset_right = 20.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Line2" type="NinePatchRect" parent="FrameBG/Labels/Info"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 18.0
+offset_right = 111.675
+offset_bottom = 20.0
+grow_horizontal = 0
+rotation = 0.698132
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(475, 6, 28, 28)
+
+[node name="Label" type="NinePatchRect" parent="FrameBG/Labels/Info"]
+self_modulate = Color(0, 0, 0, 0.705882)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 32.0
+offset_bottom = 15.5
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="FrameBG/Labels/Info/Label"]
+self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "INFO"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="_" type="Label" parent="FrameBG/Labels/Info"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -27.5
+offset_right = -32.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="F1" type="NinePatchRect" parent="FrameBG/Labels/Info"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -24.5
+offset_right = -83.0
+offset_bottom = 24.5
+grow_vertical = 2
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Labels/Info/F1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "F1"
+
 [node name="Cerrar" type="NinePatchRect" parent="FrameBG"]
 self_modulate = Color(0.1426, 0.492693, 0.62, 1)
 layout_mode = 1
@@ -1740,6 +2052,21 @@ visible = false
 visibility_layer = 0
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="FrameBG"]
+self_modulate = Color(0.662745, 0.662745, 0.662745, 1)
+layout_mode = 0
+offset_left = 978.0
+offset_top = 308.0
+offset_right = 1151.0
+offset_bottom = 395.0
+rotation = -0.831728
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(4, 197, 60, 59)
+patch_margin_left = 29
+patch_margin_top = 28
+patch_margin_right = 29
+patch_margin_bottom = 29
 
 [node name="Control" type="Control" parent="."]
 visible = false

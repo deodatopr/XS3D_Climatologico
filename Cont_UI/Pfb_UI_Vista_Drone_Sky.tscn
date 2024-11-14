@@ -164,7 +164,9 @@ metadata/_edit_horizontal_guides_ = [125.0, 51.0]
 [node name="Info" parent="." instance=ExtResource("2_tvd1m")]
 layout_mode = 1
 offset_left = 38.0
+offset_top = 17.0
 offset_right = 255.0
+offset_bottom = 79.0
 
 [node name="Dron Icon" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.784314)

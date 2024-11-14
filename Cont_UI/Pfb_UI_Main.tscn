@@ -83,6 +83,7 @@ sndUi1 = NodePath("../[ AUDIO ]/UI Focus")
 sndUiPressed = NodePath("../[ AUDIO ]/UI Pressed")
 
 [node name="Menu Info" parent="." instance=ExtResource("1_pql5o")]
+visible = false
 layout_mode = 1
 
 [node name="Menu Mapa" parent="." node_paths=PackedStringArray("barraMenus", "popUp", "clickSnd", "focusSnd") instance=ExtResource("4_t41nj")]
