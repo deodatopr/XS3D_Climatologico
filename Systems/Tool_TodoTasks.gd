@@ -14,13 +14,14 @@
 	# A - aceptar
 	# B - Back
 
+# Cambiarle minimapa
 ## Que sucede cuando no hay datos con mensaje de reconexión
 # Hay cosas con control que no están actualizadas (Y no es cambio de cam), pad para menu
 # (idea de sonido dif cuando no puedas)
 #Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 # Limpiar variables y dejarla sigual que endpoint
-# Cambiarle minimapa
 # Ya implementar datos del endpoint
+# Sistema presetEnv
 
 # ----------------------- Tareas:
 # Turbo ambos drones x4
@@ -29,7 +30,6 @@
 # Cambiar todo lo que diga Estaciones -> Sitios (Para estandarizar)
 # Cam fly
 	# Arreglar rotación con threshold
-	# A cierta distancia activar el AO
 
 # Variables estacion actualizarlas y dejar solo las del último documento de endpoint
 # Random  noise clouds shadows

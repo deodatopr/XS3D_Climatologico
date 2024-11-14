@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dj24gdwn2bk1y"]
+[gd_scene load_steps=55 format=3 uid="uid://dj24gdwn2bk1y"]
 
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="1_ij72n"]
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_m6hgx"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="30_b3dxc"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="31_njsju"]
 [ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="32_vfkp2"]
+[ext_resource type="Texture2D" uid="uid://sercn6ulr6dd" path="res://Cont_Models/Sector4/Map_Sect4_Minimap.jpg" id="43_dil7x"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
 playback_mode = 2
@@ -310,11 +311,6 @@ parameters/looping = true
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 
-[node name="Lluvia" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("worldEnv", "lightSunSky")]
-script = ExtResource("20_eyv7m")
-worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
-lightSunSky = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Sky")
-
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
@@ -469,6 +465,7 @@ layer = 5
 pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 
 [node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("30_b3dxc")]
+map_minimap = ExtResource("43_dil7x")
 metadata/_edit_horizontal_guides_ = [125.0]
 
 [node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz" node_paths=PackedStringArray("vistaSky") instance=ExtResource("31_njsju")]

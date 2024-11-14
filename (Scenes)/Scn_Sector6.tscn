@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=63 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
@@ -48,6 +48,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://ckc5tpy3srsid" path="res://Systems/Environment/anims_lluvia.res" id="34_s5awx"]
 [ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/Pin/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="39_it1fo"]
 [ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="39_x4bd8"]
+[ext_resource type="Texture2D" uid="uid://xh84cch52dbq" path="res://Cont_Models/Sector6/Map_Sect6_Minimap.jpg" id="47_m2c6v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqpe"]
 shader = ExtResource("30_uby03")
@@ -536,6 +537,7 @@ layer = 6
 pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
 
 [node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz Drones" instance=ExtResource("14_bqx8o")]
+map_minimap = ExtResource("47_m2c6v")
 metadata/_edit_horizontal_guides_ = [125.0]
 
 [node name="Interfaz MENUS" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]

@@ -3,6 +3,7 @@ extends Control
 
 @export_group("INTERNAL REFERENCES")
 @export var minimap : GDs_Minimap
+@export var map_minimap : Texture2D
 @export var lblAltura: Label
 @export var lblVelocidad: Label
 @export var lblRotacion: Label
@@ -12,7 +13,7 @@ var cam_manager : GDs_Cam_Manager
 
 func Initialize(_cam_manager : GDs_Cam_Manager):
 	cam_manager = _cam_manager
-	minimap.Initialize(cam_manager)
+	minimap.Initialize(cam_manager,map_minimap)
 
 func _process(_delta: float) -> void:
 	@warning_ignore('narrowing_conversion')

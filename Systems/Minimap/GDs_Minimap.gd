@@ -14,10 +14,11 @@ var pivot_cam : Node3D
 var wasInitialized : bool
 
 
-func Initialize(_cam_Manager : GDs_Cam_Manager) -> void:
+func Initialize(_cam_Manager : GDs_Cam_Manager, _map : Texture2D) -> void:
 	cam_Manager = _cam_Manager
 	pivot_cam = cam_Manager.sky_pivot
-	
+	map_texture.texture = _map
+	print(map_texture.texture.resource_name)
 	mark.self_modulate = APPSTATE.currntSitio.color
 	wasInitialized = true
 	
