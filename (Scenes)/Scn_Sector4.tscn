@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dj24gdwn2bk1y"]
+[gd_scene load_steps=43 format=3 uid="uid://dj24gdwn2bk1y"]
 
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="1_ij72n"]
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_m6hgx"]
@@ -19,7 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://Cont_Sounds/#Unused/Downtown_People.mp3" id="16_o6ah4"]
 [ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://Cont_Sounds/#Unused/Downtown_Cars.mp3" id="17_2nmsb"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="18_ah3la"]
-[ext_resource type="PackedScene" uid="uid://c1unmk0byirjg" path="res://Systems/Environment/Pfb_Environment.tscn" id="20_gqnge"]
+[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="19_7t10y"]
+[ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="21_ilana"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="22_i6kjy"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="23_ag17m"]
@@ -286,7 +287,32 @@ parameters/looping = true
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 
-[node name="[ ENVIRONMENT ]" parent="." instance=ExtResource("20_gqnge")]
+[node name="[ ENVIRONMENT ]" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
+environment = ExtResource("19_7t10y")
+camera_attributes = ExtResource("20_oe443")
+
+[node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(-0.166769, 0.926533, -0.33723, 0, 0.34202, 0.939693, 0.985996, 0.156712, -0.0570384, 0, 0, 0)
+visible = false
+light_color = Color(1, 0.948457, 0.877053, 1)
+light_energy = 1.5
+shadow_enabled = true
+shadow_blur = 10.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 800.0
+sky_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(0.763796, 0.456408, -0.456408, 0, 0.707107, 0.707107, 0.645458, -0.540085, 0.540085, 27.8114, -22.3838, 99.6521)
+light_color = Color(1, 0.926401, 0.824441, 1)
+light_energy = 2.0
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 500.0
+sky_mode = 1
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
@@ -402,6 +428,5 @@ vistaSky = NodePath("../SKY")
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz" instance=ExtResource("32_vfkp2")]
 visible = false
 
-[editable path="[ ENVIRONMENT ]"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh_Terrain"]
