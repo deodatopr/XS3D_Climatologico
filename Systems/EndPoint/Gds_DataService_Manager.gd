@@ -226,7 +226,7 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.enPrev =  estacionEP.nivel >=  estacionToUpdate.nivelPrev and estacionEP.nivel <  estacionToUpdate.nivelCrit 
 		estacionToUpdate.enCrit =  estacionEP.nivel >=  estacionToUpdate.nivelCrit
 		
-		UpdateCurrentSitio(APPSTATE.currntIdSitio)
+	UpdateCurrentSitio(APPSTATE.currntIdSitio)
 
 func _FillStructure(_estaciones_Estruc : GDs_Data_Estaciones_Estructura, _estado : int = -1):
 	_estaciones_Estruc.estaciones.clear()
