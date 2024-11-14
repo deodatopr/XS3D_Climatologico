@@ -34,4 +34,14 @@ class_name GDs_Debug extends Node
 			SIGNALS.OnDebugRefresh.emit()
 			
 func _init():
+	SIGNALS.OnDebugValuechangedByScript.connect(_OnDebugValuechangedByScript)
 	DEBUG.modoDatos = modoDatos
+	
+func _OnDebugValuechangedByScript():
+	endpointResult = DEBUG.requestResult
+	Bateria = DEBUG.requestResult
+	LLuvia = DEBUG.requestResult
+	Temperatura = DEBUG.requestResult
+	Alarmas = DEBUG.alarmas
+	SIGNALS.OnDebugRefresh.emit()
+	print("Updated")

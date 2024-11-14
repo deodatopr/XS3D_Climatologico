@@ -34,15 +34,18 @@ func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly
 	cam_manager = _cam_manager
 	
 	SIGNALS.OnRefresh.connect(DataRefresh)
+	SIGNALS.OnRequestResult_Success.connect(barraInfo.OnRequestSuccess)
+	SIGNALS.OnRequestResult_Error_Data.connect(barraInfo.OnRequestFailed)
+	SIGNALS.OnRequestResult_Error_NoData.connect(barraInfo.OnRequestFailed)
 	
 	barraMenus.BtnSitios.focus_entered.connect(CloseInfoMenu)
 	barraMenus.BtnDatos.focus_entered.connect(CloseInfoMenu)
 	barraMenus.BtnConfig.focus_entered.connect(CloseInfoMenu)
 	barraMenus.BtnMapa.focus_entered.connect(CloseInfoMenu)
 	
-	vistaFly.Initialize(cam_manager)
-	
+	vistaFly.Initialize(cam_manager)	
 	menuMapa.Initialize(dataService.estaciones,APPSTATE.currntIdSitio)
+	barraInfo.Initialize(dataService.timeToReconnect_Error)
 	
 	popUp.hide()
 	

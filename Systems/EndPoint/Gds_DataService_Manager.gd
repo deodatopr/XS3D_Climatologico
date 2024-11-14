@@ -6,7 +6,7 @@ class_name GDs_DataService_Manager extends Node
 @export var endpoint_Simulado : GDs_EP_GetAllEstaciones_Simulado
 @export var endpoint_Error : GDs_EP_GetAllEstaciones_Error
 @export var URL : String
-@export var timeToRefresh : float = 4.0
+@export var timeToRefresh : float = 30.0
 @export var timeToReconnect_Error : float = 10.0
 @export var timeoutEPGetAllEstaciones : float = 3.0
 @export var timerTicking : Timer
@@ -29,8 +29,9 @@ func Initialize():
 	SIGNALS.OnDebugRefresh.connect(_OnSimuladoValueChange)
 	
 	#Connect with endpoint GetAllEstacion
-	endpoint.OnRequest_Success.connect(_OnSuccessEP_GetAllEstaciones)
-	endpoint.OnRequest_Failed.connect(_OnFailedEP_GetAllEstaciones)
+	SIGNALS.OnRequestResult_Success.connect(_OnSuccessEP_GetAllEstaciones)
+	SIGNALS.OnRequestResult_Error_Data.connect(_OnFailedEP_GetAllEstaciones)
+	SIGNALS.OnRequestResult_Error_NoData.connect(_OnFailedEP_GetAllEstaciones)
 	
 	#Initialization
 	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Simulado,endpoint_Error)	
@@ -59,6 +60,7 @@ func UpdateCurrentSitio(_id : int):
 	for sitio in estaciones:
 		if sitio.id == _id:
 			APPSTATE.currntSitio = sitio
+	
 			
 	#Señal Lluvia
 	if APPSTATE.currntSitio.pptn_pluvial > CONST.thrshld_pptcn_lluvia_intensa:
@@ -221,7 +223,6 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
 		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
 		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
 		estacionToUpdate.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
-	
 		estacionToUpdate.enPrev =  estacionEP.nivel >=  estacionToUpdate.nivelPrev and estacionEP.nivel <  estacionToUpdate.nivelCrit 
 		estacionToUpdate.enCrit =  estacionEP.nivel >=  estacionToUpdate.nivelCrit
 		

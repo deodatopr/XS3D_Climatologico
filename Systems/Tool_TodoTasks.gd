@@ -19,6 +19,8 @@
 # (idea de sonido dif cuando no puedas)
 #Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 # Limpiar variables y dejarla sigual que endpoint
+# Cambiarle minimapa
+# Ya implementar datos del endpoint
 
 # ----------------------- Tareas:
 # Turbo ambos drones x4

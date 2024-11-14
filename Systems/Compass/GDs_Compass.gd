@@ -82,10 +82,11 @@ func _CalculateScreenMark() -> void:
 	var dirToSitio : Vector3 = (posSitio - pivotCam.global_position).normalized()
 	var dotToSitio : float = pivotCam.global_basis.z.normalized().dot(dirToSitio)
 	var dotSign : float = signf(dotToSitio)
-		
+	
 	#Convert position 3d into 2d
 	posTarget2d = cam.unproject_position(posSitio)
 	posTarget2d *= dotSign
+
 
 	#Fix pos when point is out of limit border
 	if not rectLimits.has_point(posTarget2d):

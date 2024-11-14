@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://hu5k41b7gh1x"]
+[gd_scene load_steps=25 format=3 uid="uid://hu5k41b7gh1x"]
 
 [ext_resource type="Script" path="res://Systems/UI/Barra Info/GDs_BarraInfo.gd" id="1_22tl1"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
@@ -68,7 +68,51 @@ region = Rect2(0, 120, 40, 40)
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 160, 40, 40)
 
-[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "senal", "UTR", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr", "lblBateria")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_usqxr"]
+shader = ExtResource("1_n0q2v")
+shader_parameter/color = Color(1, 0.675374, 0.675374, 1)
+shader_parameter/brightness = 0.5
+shader_parameter/blur = 2
+
+[sub_resource type="Animation" id="Animation_o55hc"]
+resource_name = "anim_pnlError_BgkBttom"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_okbv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r83aj"]
+_data = {
+"RESET": SubResource("Animation_okbv3"),
+"anim_pnlError_BgkBttom": SubResource("Animation_o55hc")
+}
+
+[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "senal", "UTR", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr", "lblBateria", "panelError", "lblTimeValue", "btnReconectar", "timer", "animBttomColor")]
 custom_minimum_size = Vector2(1580, 105)
 layout_mode = 3
 anchors_preset = 12
@@ -112,6 +156,11 @@ presionSnsr = NodePath("HBoxContainer/Datos/Presion Atm/VBox/Control/Senal")
 viento = NodePath("HBoxContainer/Datos/Viento/VBox/Lbl Valor Viento")
 vientoSnsr = NodePath("HBoxContainer/Datos/Viento/VBox/HBoxContainer/Senal")
 lblBateria = NodePath("HBoxContainer/Senales/Bateria2/HBoxContainer2/Text/Lbl Bateria")
+panelError = NodePath("Panel - Error")
+lblTimeValue = NodePath("Panel - Error/Bgk - Blur/lbl - timeValue")
+btnReconectar = NodePath("Panel - Error/Bgk - Blur/Container - Btn/Btn - Reconectar")
+timer = NodePath("Panel - Error/Timer")
+animBttomColor = NodePath("Panel - Error/Bgk - Bottom/AnimBttomColor")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_2g4pr")
@@ -1167,3 +1216,165 @@ offset_right = 3.0
 offset_bottom = 37.5
 grow_vertical = 2
 texture = SubResource("AtlasTexture_3jcsu")
+
+[node name="Panel - Error" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 105.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bgk - Blur" type="NinePatchRect" parent="Panel - Error"]
+material = SubResource("ShaderMaterial_usqxr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 425.0
+offset_top = 5.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(474, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="lbl - Error" type="Label" parent="Panel - Error/Bgk - Blur"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -51.5
+offset_right = 55.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Error de conexión"
+horizontal_alignment = 1
+
+[node name="lbl - timeValue" type="Label" parent="Panel - Error/Bgk - Blur"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -57.0
+offset_right = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "00"
+horizontal_alignment = 1
+
+[node name="Container - Btn" type="Control" parent="Panel - Error/Bgk - Blur"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_right = -1.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Border" type="NinePatchRect" parent="Panel - Error/Bgk - Blur/Container - Btn"]
+self_modulate = Color(0.527155, 0.527155, 0.527155, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(473.121, 4.73159, 29.6767, 29.6767)
+
+[node name="interior" type="NinePatchRect" parent="Panel - Error/Bgk - Blur/Container - Btn"]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(473.382, 5.37173, 29.1044, 29.5949)
+patch_margin_right = 17
+
+[node name="Btn - Reconectar" type="Button" parent="Panel - Error/Bgk - Blur/Container - Btn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -15.5
+offset_right = 47.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reconectar"
+flat = true
+
+[node name="Bgk - Bottom2" type="NinePatchRect" parent="Panel - Error"]
+self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 421.0
+offset_top = -16.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(472.734, 39.9526, 30.4577, 6.84661)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+
+[node name="Bgk - Bottom" type="NinePatchRect" parent="Panel - Error"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 421.0
+offset_top = -6.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_bm6wi")
+region_rect = Rect2(473.129, 76.4991, 30.0198, 29.2298)
+patch_margin_left = 5
+patch_margin_right = 5
+
+[node name="AnimBttomColor" type="AnimationPlayer" parent="Panel - Error/Bgk - Bottom"]
+libraries = {
+"": SubResource("AnimationLibrary_r83aj")
+}
+autoplay = "anim_pnlError_BgkBttom"
+speed_scale = 0.2
+
+[node name="Timer" type="Timer" parent="Panel - Error"]
+one_shot = true

@@ -39,8 +39,38 @@ extends Control
 @export var vientoSnsr:Control
 @export var lblBateria : Label
 
-var tween:Tween
+@export_group("Panel Error")
+@export var panelError : Control
+@export var lblTimeValue : Label
+@export var btnReconectar : Button
+@export var timer : Timer
+@export var animBttomColor : AnimationPlayer
 
+var tween:Tween
+var timeToReconect : float
+var timerIsRunning : bool
+var tweenPanelError : Tween
+
+func _ready():
+	btnReconectar.pressed.connect(_OnBtnReconectarPressed)
+	timer.timeout.connect(_OnTimerTimeOut)
+	panelError.hide()
+	
+func Initialize(_timeToReconnect : float):
+	timeToReconect = _timeToReconnect
+	
+func _process(_delta):
+	if timerIsRunning:
+		lblTimeValue.text = str(ceili(timer.time_left))
+
+func OnRequestFailed():
+	if not panelError.visible:
+		_AnimShowPaneError()
+		
+func OnRequestSuccess():
+	if panelError.visible:
+		_AnimHidePanelError()
+		
 func OnDataRefresh():
 	var sitio : GDs_Data_Estacion = APPSTATE.currntSitio
 	
@@ -58,7 +88,7 @@ func OnDataRefresh():
 		UTR.self_modulate = OnColor
 	else:
 		UTR.self_modulate = OffColor
-	
+
 	#nivel
 	nivel.text = UTILITIES.FormatNivel(sitio.nivel)
 	nivelPrev.text = UTILITIES.FormatNiveles(sitio.nivelPrev)
@@ -98,6 +128,49 @@ func OnDataRefresh():
 	viento.text = UTILITIES.FormatIntensidadViento(sitio.intsdad_viento)#TODO sistema para que regrese N S E O
 	vientoSnsr.self_modulate = OnColor 
 	if not sitio.vntoSnsr: vientoSnsr.self_modulate = OffColor
+	
+func _OnTimerTimeOut():
+	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
+		DEBUG.requestResult = ENUMS.EP_RequestResult.Success
+		SIGNALS.OnDebugValuechangedByScript.emit()
+
+func _OnBtnReconectarPressed():
+	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
+		DEBUG.requestResult = ENUMS.EP_RequestResult.Success
+		SIGNALS.OnDebugValuechangedByScript.emit()
+
+func _AnimShowPaneError():
+	var initialPanelPos : Vector2 = panelError.position
+	initialPanelPos.y = panelError.size.y
+	panelError.position = initialPanelPos
+	panelError.show()
+	animBttomColor.play()
+	
+	var targetPos : Vector2 = panelError.position
+	targetPos.y -= panelError.size.y
+	
+	tweenPanelError = create_tween()
+	tweenPanelError.tween_property(panelError,"position",targetPos, .5)
+	print("Show")
+	await tweenPanelError.finished
+	
+	timerIsRunning = true
+	timer.start(timeToReconect)
+	
+func _AnimHidePanelError():
+	timerIsRunning = false
+	timer.stop()
+	animBttomColor.stop()
+	
+	var targetPos : Vector2 = panelError.position
+	targetPos.y = panelError.size.y
+	
+	tweenPanelError = create_tween()
+	tweenPanelError.tween_property(panelError,"position",targetPos, .5)
+	
+	await tweenPanelError.finished
+	
+	panelError.hide()
 
 func PlayAnimation(_color:Color,_speed:float):
 	tween = create_tween().set_loops(0)

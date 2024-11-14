@@ -2,9 +2,6 @@ class_name GDs_EP_GetAllEstaciones extends Node
 
 @onready var http_request : HTTPRequest = $HTTPRequest
 
-signal OnRequest_Success
-signal OnRequest_Failed
-
 var CR_LocalEstaciones : GDs_CR_LocalEstaciones
 var getAllEstaciones_Simulado : GDs_EP_GetAllEstaciones_Simulado
 var getAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
@@ -33,17 +30,18 @@ func Request_GetAllEstaciones():
 		if DEBUG.requestResult == ENUMS.EP_RequestResult.Success:
 			arrayEstaciones = getAllEstaciones_Simulado.GetEstaciones()
 			lastArrayEstacionesWithData = arrayEstaciones.duplicate()
-			OnRequest_Success.emit()
+			SIGNALS.OnRequestResult_Success.emit()
 		elif DEBUG.requestResult == ENUMS.EP_RequestResult.Error_NoData:
 			arrayEstaciones = getAllEstaciones_Error.GetEstaciones_NoData()
-			OnRequest_Failed.emit()
+			SIGNALS.OnRequestResult_Error_NoData.emit()
 		else:
 			if lastArrayEstacionesWithData.size() > 0:
 				arrayEstaciones = getAllEstaciones_Error.GetEstaciones_LastData(lastArrayEstacionesWithData)
 				lastArrayEstacionesWithData = arrayEstaciones.duplicate()
+				SIGNALS.OnRequestResult_Error_Data.emit()
 			else:
 				arrayEstaciones = getAllEstaciones_Error.GetEstaciones_NoData()
-			OnRequest_Failed.emit()
+				SIGNALS.OnRequestResult_Error_NoData.emit()
 			
 		isBusy = false
 		return
@@ -62,10 +60,10 @@ func _OnRequestCompleted_GetAllEstaciones(result, _response_code, _headers, body
 		#Guardar datos en un diccionario local
 		estacionesFromServer = dataFromServer["Estaciones"]
 		arrayEstaciones = _CastJsonToArrayEstaciones(estacionesFromServer)#	
-		OnRequest_Success.emit()
+		SIGNALS.OnRequestResult_Success
 		print_rich("[color=green]Request [Get all Estaciones] success..![/color].")
 	else:
-		OnRequest_Failed.emit()
+		SIGNALS.OnRequestResult_Error_NoData
 		print_rich("[color=red]Request [Get all Estaciones] failed by internet..![/color].")
 		
 	isBusy = false

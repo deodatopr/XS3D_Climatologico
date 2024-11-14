@@ -43,3 +43,5 @@ signal OnCameraChangedMode(_modoToChange : int)
 #DEBUG
 @warning_ignore('unused_signal')
 signal OnDebugRefresh()
+@warning_ignore('unused_signal')
+signal OnDebugValuechangedByScript()
