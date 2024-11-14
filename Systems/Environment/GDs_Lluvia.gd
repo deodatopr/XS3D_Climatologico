@@ -10,6 +10,9 @@ extends Node
 @export var sndsTruenos : AudioStreamPlayer
 @export var sndsTormenta : AudioStreamPlayer
 
+@export var lensDrop : ColorRect
+@export var rainFlyParticles : GPUParticles3D
+@export var rainSkyParticles : GPUParticles3D
 @onready var sky_rain = preload("uid://djudm04t7vifd")
 
 var worldEnvEnergyMult : float
@@ -35,7 +38,11 @@ func _LluviaNada():
 	
 	if animTruenos.is_playing():
 		animTruenos.stop()
-		
+	
+	rainSkyParticles.hide()
+	rainFlyParticles.hide()
+	lensDrop.hide()
+	
 	_RestoreValues()
 	
 func _LluviaModerada():
@@ -45,7 +52,10 @@ func _LluviaModerada():
 	UTILITIES.TurnOffObject(miClouds)
 	var panoramaSkyMat : PanoramaSkyMaterial = worldEnv.environment.sky.sky_material
 	panoramaSkyMat.panorama = sky_rain
-
+	
+	rainSkyParticles.show()
+	rainFlyParticles.show()
+	lensDrop.show()
 		
 func _LluviaIntensa():
 	UTILITIES.TurnOffObject(miClouds)
@@ -54,7 +64,10 @@ func _LluviaIntensa():
 		var panoramaSkyMat : PanoramaSkyMaterial = worldEnv.environment.sky.sky_material
 		panoramaSkyMat.panorama = sky_rain
 		animTruenos.play("anims_lluvia/anim_Truenos")
-		
+	
+	rainSkyParticles.show()
+	rainFlyParticles.show()
+	lensDrop.show()
 
 func _OnLluviaSet(_lluviaIntensity : int):
 	match _lluviaIntensity:

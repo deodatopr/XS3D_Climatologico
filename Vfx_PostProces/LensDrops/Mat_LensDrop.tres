@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c1nty3ig8iwmf"]
+
+[ext_resource type="Shader" uid="uid://b2td5f37wlvj2" path="res://Vfx_PostProces/LensDrops/Sha_Drops.tres" id="1_ew7u0"]
+[ext_resource type="Texture2D" uid="uid://bkmsl3y7mtysv" path="res://Vfx_PostProces/LensDrops/Map_Drops.tga" id="2_kgfys"]
+
+[resource]
+shader = ExtResource("1_ew7u0")
+shader_parameter/Size = 2.0
+shader_parameter/Speed = 0.5
+shader_parameter/Intensity = 0.03
+shader_parameter/Drops_Map = ExtResource("2_kgfys")

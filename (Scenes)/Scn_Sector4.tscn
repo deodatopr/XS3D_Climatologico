@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://Cont_Sounds/#Unused/Downtown_People.mp3" id="16_o6ah4"]
 [ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://Cont_Sounds/#Unused/Downtown_Cars.mp3" id="17_2nmsb"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="18_ah3la"]
-[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly.tres" id="19_7t10y"]
+[ext_resource type="Environment" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="19_7t10y"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="20_eyv7m"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="21_ilana"]

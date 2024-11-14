@@ -1,0 +1,15 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://0waf6t3r3fo"]
+
+[resource]
+lifetime_randomness = 0.05
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 4.0
+direction = Vector3(0, -1, 0)
+spread = 3.0
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+hue_variation_min = -0.01
+hue_variation_max = 0.01

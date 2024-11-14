@@ -1,0 +1,13 @@
+[gd_resource type="RibbonTrailMesh" load_steps=3 format=3 uid="uid://8f4uu1y7laye"]
+
+[ext_resource type="Material" uid="uid://cwdqowt1kr1lb" path="res://#Wip/Rain/Mat_Rain_Drops.material" id="1_cw5fu"]
+
+[sub_resource type="Curve" id="Curve_gcm43"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+material = ExtResource("1_cw5fu")
+size = 0.05
+sections = 2
+curve = SubResource("Curve_gcm43")

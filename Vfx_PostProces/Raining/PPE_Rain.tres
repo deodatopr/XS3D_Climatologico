@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=38 format=3 uid="uid://b7swwn6teldqa"]
 
-[ext_resource type="Texture2D" uid="uid://tlsk2i66olu1" path="res://CONTENT/Particulares/Vfx/Raining/Map_Rain.png" id="1_07yck"]
+[ext_resource type="Texture2D" uid="uid://tlsk2i66olu1" path="res://Vfx_PostProces/Raining/Map_Rain.png" id="1_07yck"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_tbwr8"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
