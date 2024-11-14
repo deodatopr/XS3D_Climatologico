@@ -7,3 +7,4 @@ var camMode : int = ENUMS.Cam_Mode.sky
 var currntIdSitio : int = -1
 var dataReady : bool
 var popUpOpened: bool
+var panelErrorOpened: bool

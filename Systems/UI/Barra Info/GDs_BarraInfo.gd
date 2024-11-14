@@ -58,10 +58,14 @@ func _ready():
 	
 func Initialize(_timeToReconnect : float):
 	timeToReconect = _timeToReconnect
-	
+
 func _process(_delta):
 	if timerIsRunning:
 		lblTimeValue.text = str(ceili(timer.time_left))
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		_OnBtnReconectarPressed()
 
 func OnRequestFailed():
 	if not panelError.visible:
@@ -156,6 +160,7 @@ func _AnimShowPaneError():
 	
 	timerIsRunning = true
 	timer.start(timeToReconect)
+	APPSTATE.panelErrorOpened = true
 	
 func _AnimHidePanelError():
 	timerIsRunning = false
@@ -171,6 +176,7 @@ func _AnimHidePanelError():
 	await tweenPanelError.finished
 	
 	panelError.hide()
+	APPSTATE.panelErrorOpened = false
 
 func PlayAnimation(_color:Color,_speed:float):
 	tween = create_tween().set_loops(0)

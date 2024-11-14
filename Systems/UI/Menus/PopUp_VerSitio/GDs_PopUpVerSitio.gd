@@ -36,7 +36,7 @@ func _ready():
 	visibility_changed.connect(OnVisibleChanged)
 
 func _input(event):
-	if visible:
+	if visible and not APPSTATE.panelErrorOpened:
 		if event.is_action_pressed("ui_accept"):
 			OnAceptar()
 		elif event.is_action_pressed("ui_cancel"):
@@ -69,7 +69,9 @@ func OnVisibleChanged():
 
 func OnAceptar():
 	if estacion.disponible:
+		APPSTATE.popUpOpened = false
 		SIGNALS.OnGoToSitio.emit(currentSitioId)
+		
 
 func OnAceptarFocus():
 	btnAceptarHighlight.show()

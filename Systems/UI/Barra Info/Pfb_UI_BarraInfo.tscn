@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://hu5k41b7gh1x"]
+[gd_scene load_steps=28 format=3 uid="uid://hu5k41b7gh1x"]
 
 [ext_resource type="Script" path="res://Systems/UI/Barra Info/GDs_BarraInfo.gd" id="1_22tl1"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
@@ -68,26 +68,31 @@ region = Rect2(0, 120, 40, 40)
 atlas = ExtResource("2_om8fc")
 region = Rect2(0, 160, 40, 40)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_usqxr"]
-shader = ExtResource("1_n0q2v")
-shader_parameter/color = Color(1, 0.675374, 0.675374, 1)
-shader_parameter/brightness = 0.5
-shader_parameter/blur = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1ifb"]
+bg_color = Color(0.0897, 0.30992, 0.39, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="Animation" id="Animation_okbv3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icxbt"]
+bg_color = Color(0.141176, 0.494118, 0.619608, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l47u"]
+atlas = ExtResource("1_bm6wi")
+region = Rect2(471, 838, 38, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omw11"]
+atlas = ExtResource("1_bm6wi")
+region = Rect2(470, 813, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nvw8"]
+atlas = ExtResource("1_bm6wi")
+region = Rect2(7, 264, 54, 54)
 
 [sub_resource type="Animation" id="Animation_o55hc"]
 resource_name = "anim_pnlError_BgkBttom"
@@ -108,7 +113,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r83aj"]
 _data = {
-"RESET": SubResource("Animation_okbv3"),
 "anim_pnlError_BgkBttom": SubResource("Animation_o55hc")
 }
 
@@ -157,10 +161,10 @@ viento = NodePath("HBoxContainer/Datos/Viento/VBox/Lbl Valor Viento")
 vientoSnsr = NodePath("HBoxContainer/Datos/Viento/VBox/HBoxContainer/Senal")
 lblBateria = NodePath("HBoxContainer/Senales/Bateria2/HBoxContainer2/Text/Lbl Bateria")
 panelError = NodePath("Panel - Error")
-lblTimeValue = NodePath("Panel - Error/Bgk - Blur/lbl - timeValue")
-btnReconectar = NodePath("Panel - Error/Bgk - Blur/Container - Btn/Btn - Reconectar")
+lblTimeValue = NodePath("Panel - Error/Bgk - Blur/HBoxContainer/lbl - timeValue")
+btnReconectar = NodePath("Panel - Error/Bgk - Blur/Container - Btn/Button - Reconectar")
 timer = NodePath("Panel - Error/Timer")
-animBttomColor = NodePath("Panel - Error/Bgk - Bottom/AnimBttomColor")
+animBttomColor = NodePath("Panel - Error/Bgk - Blur/Bgk - Bottom/AnimBttomColor")
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_2g4pr")
@@ -1219,23 +1223,25 @@ texture = SubResource("AtlasTexture_3jcsu")
 
 [node name="Panel - Error" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 105.0
+offset_left = -1580.0
 offset_bottom = 105.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
 
 [node name="Bgk - Blur" type="NinePatchRect" parent="Panel - Error"]
-material = SubResource("ShaderMaterial_usqxr")
+self_modulate = Color(0.01, 0.01, 0.01, 0.921569)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 425.0
+offset_left = 416.0
 offset_top = 5.0
-offset_right = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1246,122 +1252,162 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="lbl - Error" type="Label" parent="Panel - Error/Bgk - Blur"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel - Error/Bgk - Blur"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -51.5
-offset_right = 55.0
-offset_bottom = 5.5
+offset_left = -147.5
+offset_top = -21.0
+offset_right = 147.5
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
+
+[node name="lbl - Error" type="Label" parent="Panel - Error/Bgk - Blur/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Error de conexión"
 horizontal_alignment = 1
+uppercase = true
 
-[node name="lbl - timeValue" type="Label" parent="Panel - Error/Bgk - Blur"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -42.0
-offset_top = -57.0
-offset_right = 27.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
+[node name="HSeparator" type="HSeparator" parent="Panel - Error/Bgk - Blur/HBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="lbl - timeValue" type="Label" parent="Panel - Error/Bgk - Blur/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "00"
 horizontal_alignment = 1
 
 [node name="Container - Btn" type="Control" parent="Panel - Error/Bgk - Blur"]
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -111.0
-offset_right = -1.0
-offset_bottom = -15.0
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -40.5
+offset_right = -9.0
+offset_bottom = 34.5
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Border" type="NinePatchRect" parent="Panel - Error/Bgk - Blur/Container - Btn"]
-self_modulate = Color(0.527155, 0.527155, 0.527155, 1)
+[node name="Button - Reconectar" type="Button" parent="Panel - Error/Bgk - Blur/Container - Btn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_bm6wi")
-region_rect = Rect2(473.121, 4.73159, 29.6767, 29.6767)
+theme_override_styles/hover = SubResource("StyleBoxFlat_p1ifb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_icxbt")
 
-[node name="interior" type="NinePatchRect" parent="Panel - Error/Bgk - Blur/Container - Btn"]
-self_modulate = Color(0.2, 0.2, 0.2, 1)
+[node name="Cerrar" type="Control" parent="Panel - Error/Bgk - Blur/Container - Btn"]
+self_modulate = Color(0.1426, 0.492693, 0.62, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = -3.0
-offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_bm6wi")
-region_rect = Rect2(473.382, 5.37173, 29.1044, 29.5949)
-patch_margin_right = 17
+mouse_filter = 2
 
-[node name="Btn - Reconectar" type="Button" parent="Panel - Error/Bgk - Blur/Container - Btn"]
+[node name="Lbl INfo" type="Label" parent="Panel - Error/Bgk - Blur/Container - Btn/Cerrar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.5
-offset_top = -15.5
-offset_right = 47.5
-offset_bottom = 15.5
+offset_left = -49.5
+offset_top = -25.0
+offset_right = 50.5
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Reconectar"
-flat = true
+theme_override_font_sizes/font_size = 15
+text = "REINTENTAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
-[node name="Bgk - Bottom2" type="NinePatchRect" parent="Panel - Error"]
-self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+[node name="Hbox" type="HBoxContainer" parent="Panel - Error/Bgk - Blur/Container - Btn/Cerrar"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 421.0
-offset_top = -16.0
-offset_bottom = -2.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -15.0
+offset_right = 65.0
+offset_bottom = 40.0
 grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("1_bm6wi")
-region_rect = Rect2(472.734, 39.9526, 30.4577, 6.84661)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(65, 27)
+mouse_filter = 2
+theme_override_constants/separation = 10
 
-[node name="Bgk - Bottom" type="NinePatchRect" parent="Panel - Error"]
-self_modulate = Color(1, 0, 0, 1)
+[node name="Mouse" type="TextureRect" parent="Panel - Error/Bgk - Blur/Container - Btn/Cerrar/Hbox"]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_8l47u")
+
+[node name="Click" type="TextureRect" parent="Panel - Error/Bgk - Blur/Container - Btn/Cerrar/Hbox/Mouse"]
+show_behind_parent = true
+layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 21.0
+offset_bottom = 21.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_omw11")
+
+[node name="_" type="Label" parent="Panel - Error/Bgk - Blur/Container - Btn/Cerrar/Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="Panel - Error/Bgk - Blur/Container - Btn/Cerrar/Hbox"]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_0nvw8")
+
+[node name="Label" type="Label" parent="Panel - Error/Bgk - Blur/Container - Btn/Cerrar/Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bgk - Bottom" type="NinePatchRect" parent="Panel - Error/Bgk - Blur"]
+self_modulate = Color(1, 0.759951, 0.759951, 1)
+custom_minimum_size = Vector2(0, 7)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 421.0
-offset_top = -6.0
-offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_bm6wi")
@@ -1369,12 +1415,11 @@ region_rect = Rect2(473.129, 76.4991, 30.0198, 29.2298)
 patch_margin_left = 5
 patch_margin_right = 5
 
-[node name="AnimBttomColor" type="AnimationPlayer" parent="Panel - Error/Bgk - Bottom"]
+[node name="AnimBttomColor" type="AnimationPlayer" parent="Panel - Error/Bgk - Blur/Bgk - Bottom"]
 libraries = {
 "": SubResource("AnimationLibrary_r83aj")
 }
 autoplay = "anim_pnlError_BgkBttom"
-speed_scale = 0.2
 
 [node name="Timer" type="Timer" parent="Panel - Error"]
 one_shot = true
