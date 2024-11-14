@@ -22,6 +22,8 @@ extends Node
 @export var natureMaxHeight:float
 @export var streamNature:AudioStream
 @export var streamRain:AudioStream
+@export var rainVolume:float = -5.0
+
 
 var isBoosting:=false
 var tween:Tween
@@ -30,7 +32,9 @@ var prevCamHeight:=0
 var windMidPoint : float = 0.0
 var natureMidPoint : float = 0.0
 var originalNatureMinHeight: float = 0.0
+var originalNatureVolume: float = 0.0
 func _ready():
+	originalNatureVolume = sndNature.volume_db
 	originalNatureMinHeight = natureMinHeight
 	
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
@@ -106,7 +110,10 @@ func OnLLuvia(_lluvia:int):
 		natureMinHeight = 0
 		natureMidPoint = 100
 		sndNature.stream = streamRain
+		sndNature.volume_db = rainVolume
 	else:
 		natureMinHeight = originalNatureMinHeight
 		natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
 		sndNature.stream = streamNature
+		sndNature.volume_db = originalNatureVolume
+		
