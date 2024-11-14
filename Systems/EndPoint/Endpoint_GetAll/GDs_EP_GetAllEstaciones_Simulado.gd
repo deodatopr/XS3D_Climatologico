@@ -37,8 +37,6 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 	var temp_alto_min : float = CONST.thrshld_temperatura_alta
 	var temp_alto_max : float = CONST.thrshld_temperatura_alta + 15.0
 	
-	var pptc_bajo_min : float = 2.0
-	var pptc_bajo_max : float = CONST.thrshld_pptcn_lluvia_moderada - 1
 	var pptc_alto_min : float = CONST.thrshld_pptcn_lluvia_intensa
 	var pptc_alto_max : float = CONST.thrshld_pptcn_lluvia_intensa  + 30.0 
 	

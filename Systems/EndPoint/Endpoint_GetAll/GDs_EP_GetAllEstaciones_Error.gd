@@ -12,13 +12,13 @@ func GetEstaciones_NoData() -> Array[GDs_Data_EP_Estacion]:
 	var utr : bool = false
 	var enlace : bool = false
 	var nvlBateria : float = NAN
-	var bateriaConCarga : bool = false
 	var temperatura : float = NAN
 	var humedad : float = NAN
 	var evaporacion : float = NAN
 	var precipitacion : float = NAN
 	var presionAtm : float = NAN
 	var viento : float = NAN
+	@warning_ignore('narrowing_conversion')
 	var dir_viento : int = NAN
 	var nivel : float = NAN
 	var presaSnsr : bool = false

@@ -60,10 +60,10 @@ func _OnRequestCompleted_GetAllEstaciones(result, _response_code, _headers, body
 		#Guardar datos en un diccionario local
 		estacionesFromServer = dataFromServer["Estaciones"]
 		arrayEstaciones = _CastJsonToArrayEstaciones(estacionesFromServer)#	
-		SIGNALS.OnRequestResult_Success
+		SIGNALS.OnRequestResult_Success.emit()
 		print_rich("[color=green]Request [Get all Estaciones] success..![/color].")
 	else:
-		SIGNALS.OnRequestResult_Error_NoData
+		SIGNALS.OnRequestResult_Error_NoData.emit()
 		print_rich("[color=red]Request [Get all Estaciones] failed by internet..![/color].")
 		
 	isBusy = false

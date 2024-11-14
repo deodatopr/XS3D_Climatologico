@@ -122,7 +122,7 @@ func _mov_height(_delta : float):
 	mov_height_last = pivot.position.y
 	
 	#Speed to send to UI (km/hr)
-	var targetSpeed : float = camMng.fly_height_speed * 10 * currentTurbo * absi(heightDir)
+	var targetSpeed : float = camMng.fly_height_speed * 10.0 * currentTurbo * absf(heightDir)
 	mov_height_speedForUI = lerpf(mov_height_lastSpeedForUI,targetSpeed, 10 * _delta)
 	mov_height_lastSpeedForUI = mov_height_speedForUI
 
