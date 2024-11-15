@@ -25,7 +25,7 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 script = ExtResource("2_phbf3")
 anim = NodePath("AnimationPlayer")
-duration = 30.0
+duration = 60.0
 
 [node name="Lbl INfo" type="Label" parent="."]
 layout_mode = 1

@@ -163,7 +163,6 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
-valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -183,10 +182,8 @@ fly_pivot = NodePath("MovFly")
 fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_x5pt0")
 sky_height = 600.0
-sky_speed = 1000.0
 fly_height_speed = 2.0
 fly_height_max = 450.0
-fly_speed = 500.0
 fly_rot_speed = 0.7
 
 [node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
@@ -298,24 +295,27 @@ parameters/looping = true
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
 stream = ExtResource("13_de45w")
-volume_db = 15.0
-unit_size = 50.0
+volume_db = 20.0
+unit_size = 25.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.948, 36.709, -1116.42)
 stream = ExtResource("13_de45w")
-volume_db = 15.0
-unit_size = 50.0
+volume_db = 20.0
+unit_size = 25.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.157, 36.709, -1866.21)
 stream = ExtResource("13_de45w")
-volume_db = 15.0
-unit_size = 50.0
+volume_db = 20.0
+unit_size = 25.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
