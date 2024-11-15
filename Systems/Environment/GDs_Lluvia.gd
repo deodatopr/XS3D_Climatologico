@@ -10,33 +10,60 @@ extends Node
 @export var miClouds : MeshInstance3D
 
 @export var sndsTruenos : AudioStreamPlayer
-@export var sndsTormenta : AudioStreamPlayer
 
 @export var lensDrop : ColorRect
 @export var rainFlyParticles : GPUParticles3D
 @export var rainSkyParticles : GPUParticles3D
 
-@export var timerCurve : Timer
+@export_group("Truenos")
+@export var minTrueno : int = 10
+@export var maxTrueno : int = 30
+@export var timerTruenos : Timer
+@export var curveTrueno : Curve
+
+var thunderIsPlaying : bool
+var timeCurve : float
+
+var initWorldEnvIntensity : float
+var initDirLightIntensity : float
 
 var presetEnvSky_Sunny : Environment = preload("uid://buu228l4r1lse")
 var presetEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
 var presetEnvFly_Sunny : Environment = preload("uid://d0njvq6rqh23r")
 var presetEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
 
-var lightSunFlyEnergyMult : float
-var originalSky : Texture2D
-
 func _ready():
 	#Save original values
-	lightSunFlyEnergyMult = lightSunFly.light_energy
 	SIGNALS.OnLluviaSet.connect(_OnLluviaSet)
 	SIGNALS.OnCameraChangedMode.connect(SwitchRainEnvironment)
 	UTILITIES.TurnOffObject(rainFlyParticles)
 	UTILITIES.TurnOffObject(rainSkyParticles)
+	
+	timerTruenos.timeout.connect(_Timeout)
+	
+	#Direct & Indirect lighting
+	initWorldEnvIntensity = worldEnv.environment.background_intensity
+	initDirLightIntensity = lightRain.light_energy
 
-func _exit_tree():
-	_RestoreValues()
+func _process(delta):
+	if thunderIsPlaying:
+		worldEnv.environment.background_intensity = initWorldEnvIntensity * curveTrueno.sample(timeCurve)
+		lightRain.light_energy = initDirLightIntensity * curveTrueno.sample(timeCurve)
+		timeCurve += delta
+		
+		if timeCurve > 1.0:
+			thunderIsPlaying = false
+			timerTruenos.start(randi_range(minTrueno,maxTrueno))
+			
 
+func _Timeout():
+	timeCurve = 0.0
+	worldEnv.environment.background_intensity = initWorldEnvIntensity
+	lightRain.light_energy = initDirLightIntensity
+	
+	sndsTruenos.play()
+	thunderIsPlaying = true
+	
 func _SinLluvia():
 	UTILITIES.TurnOnObject(miClouds)
 	UTILITIES.TurnOffObject(lightRain)
@@ -54,8 +81,7 @@ func _SinLluvia():
 	UTILITIES.TurnOffObject(rainSkyParticles)
 	UTILITIES.TurnOffObject(rainFlyParticles)
 	lensDrop.hide()
-	
-	_RestoreValues()
+
 	
 func _ConLluvia():
 	UTILITIES.TurnOffObject(miClouds)
@@ -74,6 +100,9 @@ func _ConLluvia():
 	UTILITIES.TurnOnObject(rainSkyParticles)
 
 	lensDrop.show()
+	
+	if timerTruenos.is_stopped():
+		timerTruenos.start(randi_range(minTrueno,maxTrueno))
 
 func _OnLluviaSet(_lluviaIntensity : int):
 	match _lluviaIntensity:
@@ -88,11 +117,3 @@ func SwitchRainEnvironment(_cam:int):
 		worldEnv.environment = presetEnvSky_Rain
 	else:
 		worldEnv.environment = presetEnvFly_Rain
-
-
-func _RestoreValues():
-	lightSunFly.light_energy = lightSunFlyEnergyMult
-	
-func Anim_Truenos_PlaySndsTrueno():
-	sndsTruenos.play()
-	sndsTormenta.play()

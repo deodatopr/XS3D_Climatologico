@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=65 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="13_enybh"]
 [ext_resource type="AudioStream" uid="uid://cbjp7ejpsjtnr" path="res://Cont_Sounds/Environment/Wind2.mp3" id="14_1tnag"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
+[ext_resource type="AudioStream" uid="uid://bs7feyqeqvdqo" path="res://Cont_Sounds/Raining/Rainning.mp3" id="14_pcnw8"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
 [ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
@@ -36,6 +37,7 @@
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="26_pgufy"]
 [ext_resource type="PackedScene" uid="uid://duwmggtrv8oco" path="res://Cont_Models/#Shared/LightBeam/Msh_LighBeam.glb" id="26_yysch"]
 [ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_06.tres" id="27_k5hsy"]
+[ext_resource type="Curve" uid="uid://cpuavtle02v5x" path="res://Systems/Environment/Crv_Trueno.tres" id="27_ri71f"]
 [ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="27_x3gx3"]
 [ext_resource type="AudioStream" uid="uid://cqtj6um5qrv4d" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_2.mp3" id="28_w1laa"]
 [ext_resource type="AudioStream" uid="uid://chb2ci43uoaql" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_3.mp3" id="29_t2sr5"]
@@ -44,7 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://dpokn0ojlkyvp" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_2.mp3" id="31_7gdf3"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_Heat.gdshader" id="31_hk50b"]
 [ext_resource type="AudioStream" uid="uid://bjvttsjy5vuyi" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_3.mp3" id="32_bvkg3"]
-[ext_resource type="AudioStream" uid="uid://uoyrb4ick3by" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_34.mp3" id="33_s5ktt"]
+[ext_resource type="AudioStream" uid="uid://uoyrb4ick3by" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_4.mp3" id="33_s5ktt"]
 [ext_resource type="Material" uid="uid://c1nty3ig8iwmf" path="res://Vfx_PostProces/LensDrops/Mat_LensDrop.tres" id="36_l6fs6"]
 [ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/Pin/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="39_it1fo"]
 [ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="39_x4bd8"]
@@ -78,18 +80,14 @@ shader_parameter/speed = 0.5
 shader_parameter/noiseMap = SubResource("NoiseTexture2D_xmvdm")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
-playback_mode = 2
-streams_count = 3
+streams_count = 7
 stream_0/stream = ExtResource("27_x3gx3")
 stream_1/stream = ExtResource("28_w1laa")
 stream_2/stream = ExtResource("29_t2sr5")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ybv0"]
-streams_count = 4
-stream_0/stream = ExtResource("30_4kkht")
-stream_1/stream = ExtResource("31_7gdf3")
-stream_2/stream = ExtResource("32_bvkg3")
-stream_3/stream = ExtResource("33_s5ktt")
+stream_3/stream = ExtResource("30_4kkht")
+stream_4/stream = ExtResource("31_7gdf3")
+stream_5/stream = ExtResource("32_bvkg3")
+stream_6/stream = ExtResource("33_s5ktt")
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
@@ -165,6 +163,7 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
+valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -184,9 +183,10 @@ fly_pivot = NodePath("MovFly")
 fly_cam = NodePath("MovFly/fly_cam")
 curveMovement = ExtResource("3_x5pt0")
 sky_height = 600.0
-sky_speed = 100.0
+sky_speed = 1000.0
 fly_height_speed = 2.0
 fly_height_max = 450.0
+fly_speed = 500.0
 fly_rot_speed = 0.7
 
 [node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
@@ -274,6 +274,8 @@ sndNature = NodePath("Audio - Nature")
 natureMaxVolume = 15.0
 natureMinHeight = 150.0
 natureMaxHeight = 380.0
+streamNature = ExtResource("12_6b1iq")
+streamRain = ExtResource("14_pcnw8")
 
 [node name="Flying" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
 stream = ExtResource("10_2yvy7")
@@ -424,12 +426,13 @@ sky_mode = 1
 [node name="Light - Rain" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 94.9184, 0)
 visible = false
+light_energy = 0.5
 shadow_blur = 10.0
 directional_shadow_mode = 0
 directional_shadow_max_distance = 800.0
 sky_mode = 1
 
-[node name="Lluvia" type="Node" parent="[ ENVIRONMENT ]" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds", "sndsTruenos", "sndsTormenta", "lensDrop", "rainFlyParticles", "rainSkyParticles")]
+[node name="Lluvia" type="Node" parent="[ ENVIRONMENT ]" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds", "sndsTruenos", "lensDrop", "rainFlyParticles", "rainSkyParticles", "timerTruenos")]
 script = ExtResource("26_pgufy")
 worldEnv = NodePath("../WorldEnvironment")
 lightSunSky = NodePath("../Light - Sun_Sky")
@@ -437,16 +440,15 @@ lightSunFly = NodePath("../Light - Sun_Fly")
 lightRain = NodePath("../Light - Rain")
 miClouds = NodePath("../../[ CONTENT ]/MI - Clouds")
 sndsTruenos = NodePath("Snds - Truenos")
-sndsTormenta = NodePath("Snds - Tormenta")
 lensDrop = NodePath("CanvasLayer/LensDrop")
 rainFlyParticles = NodePath("PS - Rain Fly")
 rainSkyParticles = NodePath("PS - Rain Sky")
+minTrueno = 5
+timerTruenos = NodePath("timer - truenos")
+curveTrueno = ExtResource("27_ri71f")
 
 [node name="Snds - Truenos" type="AudioStreamPlayer" parent="[ ENVIRONMENT ]/Lluvia"]
 stream = SubResource("AudioStreamRandomizer_f0v3a")
-
-[node name="Snds - Tormenta" type="AudioStreamPlayer" parent="[ ENVIRONMENT ]/Lluvia"]
-stream = SubResource("AudioStreamRandomizer_6ybv0")
 
 [node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("40_sxi81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.104, 201.451, 364.423)
@@ -470,6 +472,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="timer - truenos" type="Timer" parent="[ ENVIRONMENT ]/Lluvia"]
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 

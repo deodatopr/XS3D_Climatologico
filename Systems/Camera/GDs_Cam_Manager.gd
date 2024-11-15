@@ -105,7 +105,7 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	positionInMap01.y = lerpf(-1,1,positionInMap01.y)
 	
 	var boundingX : float = abs(positionInMap01.x)
-	var boundingY : float = abs(positionInMap01.y) + .15
+	var boundingY : float = abs(positionInMap01.y)
 	
 	#Only inside range limits calculate a value to detect proximity to end limit
 	if boundingX >= proximityEdgeLimits  || boundingY >= proximityEdgeLimits:
