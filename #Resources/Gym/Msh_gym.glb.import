@@ -35,7 +35,7 @@ _subresources={
 "materials": {
 "Mat_Gym": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Gym/Mat_Gym.tres"
+"use_external/path": "res://#Resources/Gym/Mat_Gym.tres"
 }
 }
 }

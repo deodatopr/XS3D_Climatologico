@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpgp82rtvn4n5"]
+[gd_scene load_steps=12 format=3 uid="uid://bpgp82rtvn4n5"]
 
 [ext_resource type="PackedScene" uid="uid://ddn72texoudi0" path="res://Systems/Curtain/Pfb_curtain.tscn" id="1_2h8cb"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_Curtain.gd" id="1_22qja"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="5_8ipwn"]
 [ext_resource type="PackedScene" uid="uid://klhd05h31soo" path="res://Systems/Splash/Pfb_Splash.tscn" id="5_qomdb"]
 [ext_resource type="PackedScene" uid="uid://dj24gdwn2bk1y" path="res://(Scenes)/Scn_Sector4.tscn" id="6_5288l"]
+[ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector6.tscn" id="6_kmvln"]
 [ext_resource type="PackedScene" uid="uid://bssp4cclscsmr" path="res://#Resources/Gym/#Scn_Gym.tscn" id="6_qgy7a"]
 [ext_resource type="Script" path="res://Systems/Debug/GDs_Debug.gd" id="8_po2sq"]
 
@@ -17,6 +18,7 @@
 
 [node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("splash", "curtain", "scenes_manager", "dataService_manager")]
 script = ExtResource("3_7k0af")
+sitioInicial = 2
 splash = NodePath("../../[ UI ]/Splash")
 curtain = NodePath("../Curtain")
 scenes_manager = NodePath("../MngScenes")
@@ -34,8 +36,9 @@ container = NodePath("../../[ UI ]/Curtain/img - Curtain/Container")
 script = ExtResource("2_t3lcg")
 sceneParentRoot = NodePath("../../[ SCENES ]")
 sitios = {
+-1: ExtResource("6_qgy7a"),
 4: ExtResource("6_5288l"),
-6: ExtResource("6_qgy7a")
+6: ExtResource("6_kmvln")
 }
 
 [node name="Find -CR_Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]

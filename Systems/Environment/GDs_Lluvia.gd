@@ -32,6 +32,12 @@ var presetEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
 var presetEnvFly_Sunny : Environment = preload("uid://d0njvq6rqh23r")
 var presetEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
 
+var presetGymEnvSky_Sunny : Environment = preload("uid://buu228l4r1lse")
+var presetGymEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
+
+var presetGymEnvFly_Sunny : Environment = preload("uid://d0njvq6rqh23r")
+var presetGymEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
+
 func _ready():
 	#Save original values
 	SIGNALS.OnLluviaSet.connect(_OnLluviaSet)
@@ -70,11 +76,11 @@ func _SinLluvia():
 	
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		worldEnv.environment = presetEnvSky_Sunny
+		worldEnv.environment = _GetEnvPreset(presetEnvSky_Sunny, presetGymEnvSky_Sunny, DEBUG.isGym) 
 		UTILITIES.TurnOnObject(lightSunSky)
 		UTILITIES.TurnOffObject(lightSunFly)
 	else:
-		worldEnv.environment = presetEnvFly_Sunny
+		worldEnv.environment = _GetEnvPreset(presetEnvFly_Sunny, presetGymEnvFly_Sunny, DEBUG.isGym) 
 		UTILITIES.TurnOffObject(lightSunSky)
 		UTILITIES.TurnOnObject(lightSunFly)
 	
@@ -91,9 +97,9 @@ func _ConLluvia():
 	UTILITIES.TurnOnObject(lightRain)
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		worldEnv.environment = presetEnvSky_Rain
+		worldEnv.environment = _GetEnvPreset(presetEnvSky_Rain, presetGymEnvSky_Rain, DEBUG.isGym)
 	else:
-		worldEnv.environment = presetEnvFly_Rain
+		worldEnv.environment = _GetEnvPreset(presetEnvFly_Rain, presetGymEnvFly_Rain, DEBUG.isGym)
 	
 	
 	UTILITIES.TurnOnObject(rainFlyParticles)
@@ -114,6 +120,12 @@ func _OnLluviaSet(_lluviaIntensity : int):
 func SwitchRainEnvironment(_cam:int):
 	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia: return
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		worldEnv.environment = presetEnvSky_Rain
+		worldEnv.environment = _GetEnvPreset(presetEnvSky_Rain, presetGymEnvSky_Rain, DEBUG.isGym)
 	else:
-		worldEnv.environment = presetEnvFly_Rain
+		worldEnv.environment = _GetEnvPreset(presetEnvFly_Rain, presetGymEnvFly_Rain, DEBUG.isGym)
+		
+func _GetEnvPreset(_realPreset : Environment, _gymPreset : Environment, _isGym) -> Environment:
+	if _isGym:
+		return _gymPreset
+	else:
+		return _realPreset

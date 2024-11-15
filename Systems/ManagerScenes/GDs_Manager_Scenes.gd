@@ -26,6 +26,14 @@ func GoToSector(_id : int, _fromOrquestratorMain : bool = false):
 		return
 	
 	APPSTATE.currntIdSitio = _id
+	
+	#HACK: Cargar a escena de gym usando info de sitio 6
+	#TODO: Borrame [lineas 31-36] después de entregar el video
+	var fixedForGym : int
+	if DEBUG.isGym:
+		fixedForGym = -1	
+	_id = fixedForGym if DEBUG.isGym else _id
+	
 	var _lvlSector : PackedScene = sitios[_id] as PackedScene
 	
 	#Mostrar cortina
