@@ -29,7 +29,7 @@ class_name GDs_Cam_Manager extends Node
 
 @export_subgroup("SKY")
 @export_custom(PROPERTY_HINT_NONE,"suffix: m") var sky_height : float = 500
-@export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var sky_speed: float = 50
+@export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var sky_speed: float = 100
 @export_custom(PROPERTY_HINT_NONE,"suffix: multiplier") var sky_turbo: float = 2
 @export var sky_rot_speed : float = .1
 @export_custom(PROPERTY_HINT_NONE,"suffix: fov") var sky_zoom_in : float = 30
@@ -207,7 +207,6 @@ func _ChangeToMode(_mode : int):
 	SIGNALS.OnCameraChangedMode.emit(_mode)
 		
 func _ChangeToMode_Sky():
-		
 	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia:
 		# World env
 		if DEBUG.isGym:
@@ -273,5 +272,5 @@ func _ChangeToMode_Fly():
 	movFly.process_mode = Node.PROCESS_MODE_ALWAYS
 	UTILITIES.TurnOnObject(fly_pivot)
 		
-		#Apply initial values
+	#Apply initial values
 	movFly.SetCamera()

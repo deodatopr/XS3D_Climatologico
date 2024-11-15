@@ -1,6 +1,6 @@
 extends Node
 
-var isGym : bool
+var isGym : bool = false
 var modoDatos : int
 var requestResult : int
 var lLuvia : int
