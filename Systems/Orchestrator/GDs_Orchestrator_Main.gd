@@ -9,7 +9,7 @@ class_name GDs_Orchestrator_Main extends Node
 func _ready():
 	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Simulado
 	var sitioToStart : int = scenes_manager.GetRndIdSite()
-	
+	DEBUG.isGym = false
 	if sitioInicial==0: 
 		sitioToStart=6
 	elif sitioInicial==1 :

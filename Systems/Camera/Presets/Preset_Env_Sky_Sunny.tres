@@ -4,6 +4,7 @@
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sw6ld"]
 panorama = ExtResource("1_gn7qd")
+energy_multiplier = 0.5
 
 [sub_resource type="Sky" id="Sky_xomvr"]
 sky_material = SubResource("PanoramaSkyMaterial_sw6ld")
@@ -11,6 +12,7 @@ sky_material = SubResource("PanoramaSkyMaterial_sw6ld")
 [resource]
 background_mode = 2
 background_color = Color(0.409981, 0.569038, 0.708186, 1)
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_xomvr")
 sky_rotation = Vector3(0, -1.5708, 0)
 tonemap_mode = 3

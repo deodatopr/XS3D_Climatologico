@@ -27,15 +27,15 @@ var timeCurve : float
 var initWorldEnvIntensity : float
 var initDirLightIntensity : float
 
-var presetEnvSky_Sunny : Environment = preload("uid://buu228l4r1lse")
+var presetEnvSky_Sunny : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Sky_Sunny.tres')
 var presetEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
-var presetEnvFly_Sunny : Environment = preload("uid://d0njvq6rqh23r")
+var presetEnvFly_Sunny : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres')
 var presetEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
 
-var presetGymEnvSky_Sunny : Environment = preload("uid://buu228l4r1lse")
+var presetGymEnvSky_Sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Sky_Sunny.tres')
 var presetGymEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
 
-var presetGymEnvFly_Sunny : Environment = preload("uid://d0njvq6rqh23r")
+var presetGymEnvFly_Sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres')
 var presetGymEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
 
 func _ready():
@@ -61,7 +61,8 @@ func _process(delta):
 			thunderIsPlaying = false
 			timerTruenos.start(randi_range(minTrueno,maxTrueno))
 			
-
+	
+	
 func _Timeout():
 	timeCurve = 0.0
 	worldEnv.environment.background_intensity = initWorldEnvIntensity
@@ -87,6 +88,8 @@ func _SinLluvia():
 	UTILITIES.TurnOffObject(rainSkyParticles)
 	UTILITIES.TurnOffObject(rainFlyParticles)
 	lensDrop.hide()
+	thunderIsPlaying = false
+	timerTruenos.stop()
 
 	
 func _ConLluvia():
