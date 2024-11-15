@@ -49,11 +49,11 @@ class_name GDs_Cam_Manager extends Node
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
 @onready var mat_limit_fly : ShaderMaterial = preload("uid://nan3iase8pij")
 
-@onready var preset_env_sky : Environment = preload("uid://buu228l4r1lse")
-@onready var preset_env_fly : Environment = preload("uid://d0njvq6rqh23r")
+@onready var preset_env_sky : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Sky_Sunny.tres')
+@onready var preset_env_fly : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres')
 
-@onready var preset_gym_fly_sunny : Environment = preload("uid://d0njvq6rqh23r")
-@onready var preset_gym_sky_sunny : Environment = preload("uid://buu228l4r1lse")
+@onready var preset_gym_fly_sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres')
+@onready var preset_gym_sky_sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Sky_Sunny.tres')
 
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")

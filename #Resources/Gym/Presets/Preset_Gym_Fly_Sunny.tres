@@ -2,15 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://#Resources/Gym/Sky_Gym.hdr" id="1_g5kwo"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vuss3"]
 panorama = ExtResource("1_g5kwo")
 
-[sub_resource type="Sky" id="Sky_al770"]
-sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
+[sub_resource type="Sky" id="Sky_18q5n"]
+sky_material = SubResource("PanoramaSkyMaterial_vuss3")
 
 [resource]
 background_mode = 2
-sky = SubResource("Sky_al770")
+sky = SubResource("Sky_18q5n")
 sky_rotation = Vector3(0, 1.0472, 0)
 tonemap_mode = 2
 ssao_enabled = true

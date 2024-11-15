@@ -2,16 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://0b2c6bogsi2r" path="res://Cont_Models/#Shared/Skyes/Sky_Sunny.hdr" id="1_gn7qd"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sw6ld"]
 panorama = ExtResource("1_gn7qd")
 
-[sub_resource type="Sky" id="Sky_al770"]
-sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
+[sub_resource type="Sky" id="Sky_xomvr"]
+sky_material = SubResource("PanoramaSkyMaterial_sw6ld")
 
 [resource]
 background_mode = 2
 background_color = Color(0.409981, 0.569038, 0.708186, 1)
-sky = SubResource("Sky_al770")
+sky = SubResource("Sky_xomvr")
 sky_rotation = Vector3(0, -1.5708, 0)
 tonemap_mode = 3
 ssil_radius = 15.51

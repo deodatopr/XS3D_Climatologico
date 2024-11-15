@@ -1,16 +1,16 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://d0njvq6rqh23r"]
 
-[ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://#Resources/Gym/Sky_Gym.hdr" id="1_rdatr"]
+[ext_resource type="Texture2D" uid="uid://0b2c6bogsi2r" path="res://Cont_Models/#Shared/Skyes/Sky_Sunny.hdr" id="1_or2xc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
-panorama = ExtResource("1_rdatr")
+panorama = ExtResource("1_or2xc")
 
-[sub_resource type="Sky" id="Sky_al770"]
+[sub_resource type="Sky" id="Sky_2mq7v"]
 sky_material = SubResource("PanoramaSkyMaterial_rsk6i")
 
 [resource]
 background_mode = 2
-sky = SubResource("Sky_al770")
+sky = SubResource("Sky_2mq7v")
 sky_rotation = Vector3(0, 1.0472, 0)
 tonemap_mode = 2
 ssao_enabled = true
