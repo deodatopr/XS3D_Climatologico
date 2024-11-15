@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bssp4cclscsmr"]
+[gd_scene load_steps=64 format=3 uid="uid://bssp4cclscsmr"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_8ehgx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_v027c"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cvrup4u3rlg0e" path="res://Cont_Sounds/Drones/DroneSky_Camera.mp3" id="11_6rq0m"]
 [ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneFly.gd" id="12_7s6bp"]
 [ext_resource type="AudioStream" uid="uid://b7iu0hknp6otd" path="res://Cont_Sounds/Drones/DroneFly_Moving.mp3" id="13_cxqio"]
+[ext_resource type="AudioStream" uid="uid://bs7feyqeqvdqo" path="res://Cont_Sounds/Raining/Rainning.mp3" id="14_06t6e"]
 [ext_resource type="AudioStream" uid="uid://cbjp7ejpsjtnr" path="res://Cont_Sounds/Environment/Wind2.mp3" id="14_37ypa"]
 [ext_resource type="AudioStream" uid="uid://dygv4u1k6q2kl" path="res://Cont_Sounds/Environment/Nature.mp3" id="15_i4d5l"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="16_kngsa"]
@@ -29,7 +30,7 @@
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="24_a45ql"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="24_aan3k"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="26_yfy3m"]
-[ext_resource type="Curve" uid="uid://cpuavtle02v5x" path="res://Systems/Environment/Crv_Trueno.tres" id="27_6dad1"]
+[ext_resource type="Curve" path="res://Systems/Environment/Crv_Trueno.tres" id="27_6dad1"]
 [ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="28_lwfa0"]
 [ext_resource type="AudioStream" uid="uid://cqtj6um5qrv4d" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_2.mp3" id="29_bpmro"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="29_g1w3l"]
@@ -271,6 +272,8 @@ sndNature = NodePath("Audio - Nature")
 natureMaxVolume = 15.0
 natureMinHeight = 150.0
 natureMaxHeight = 380.0
+streamNature = ExtResource("15_i4d5l")
+streamRain = ExtResource("14_06t6e")
 
 [node name="Flying" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio - DroneFly"]
 stream = ExtResource("13_cxqio")
@@ -293,24 +296,27 @@ parameters/looping = true
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
 stream = ExtResource("16_kngsa")
-volume_db = 15.0
-unit_size = 50.0
+volume_db = 20.0
+unit_size = 30.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.948, 36.709, -1116.42)
 stream = ExtResource("16_kngsa")
-volume_db = 15.0
-unit_size = 50.0
+volume_db = 20.0
+unit_size = 30.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.157, 36.709, -1866.21)
 stream = ExtResource("16_kngsa")
-volume_db = 15.0
-unit_size = 50.0
+volume_db = 20.0
+unit_size = 30.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
