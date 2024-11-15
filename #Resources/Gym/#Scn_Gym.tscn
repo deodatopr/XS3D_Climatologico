@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bssp4cclscsmr"]
+[gd_scene load_steps=51 format=3 uid="uid://bssp4cclscsmr"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_8ehgx"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_v027c"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" path="res://Systems/Alarmas/GDs_Alarmas.gd" id="18_vnbme"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="19_p0pps"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_WaveDeform.gdshader" id="19_rk1uw"]
-[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="20_1fpwn"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_Heat.gdshader" id="20_qy4yl"]
 [ext_resource type="AudioStream" uid="uid://ddy04w0b45rcn" path="res://Cont_Sounds/Sitio/Sitio_Alarma.mp3" id="21_bs48s"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_s6aef"]
@@ -27,11 +26,14 @@
 [ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/Pin/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="22_rrafs"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="23_faqly"]
 [ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="23_lp45b"]
+[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres" id="24_a45ql"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="24_aan3k"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="29_g1w3l"]
-[ext_resource type="PackedScene" uid="uid://dbnlu2dl6u132" path="res://Cont_Models/Gym/Msh_NavigationGym.glb" id="29_v1x3j"]
-[ext_resource type="PackedScene" uid="uid://dfsxedcaujtf2" path="res://Cont_Models/Gym/Msh_gym.glb" id="30_c4qmd"]
+[ext_resource type="PackedScene" uid="uid://dbnlu2dl6u132" path="res://#Resources/Gym/Msh_NavigationGym.glb" id="29_v1x3j"]
+[ext_resource type="PackedScene" uid="uid://dfsxedcaujtf2" path="res://#Resources/Gym/Msh_gym.glb" id="30_c4qmd"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="30_x31gd"]
+[ext_resource type="Material" uid="uid://ck6keiqe7mklq" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Water.tres" id="31_4j5de"]
+[ext_resource type="Material" uid="uid://dx04cd0gr5ov6" path="res://#Resources/Gym/Mat_Gym.tres" id="31_has1n"]
 [ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="31_q0dav"]
 [ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="32_kvoee"]
 [ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="33_ynygv"]
@@ -66,6 +68,8 @@ shader_parameter/noiseMap = SubResource("NoiseTexture2D_xmvdm")
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y8chu"]
 
 [sub_resource type="Shader" id="Shader_mn58d"]
 code = "// SHARPENING PIXLES
@@ -361,25 +365,26 @@ nombre = "Parroquia San Juanita"
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
-environment = ExtResource("20_1fpwn")
+environment = ExtResource("24_a45ql")
 camera_attributes = ExtResource("21_s6aef")
 
 [node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 94.9184, 0)
 visible = false
-light_color = Color(1, 0.948457, 0.877053, 1)
+light_color = Color(1, 0.925623, 0.877053, 1)
+light_energy = 2.0
 shadow_enabled = true
-shadow_blur = 10.0
+shadow_blur = 3.0
 directional_shadow_mode = 0
-directional_shadow_max_distance = 800.0
+directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(-0.939693, 0.296198, -0.17101, 0, 0.5, 0.866026, 0.34202, 0.813798, -0.469846, 0, 94.9184, 0)
-light_color = Color(1, 0.926401, 0.824441, 1)
-light_energy = 2.0
+light_energy = 3.0
+light_angular_distance = 0.5
 shadow_enabled = true
-shadow_blur = 2.0
+shadow_opacity = 0.7
 directional_shadow_mode = 1
 directional_shadow_max_distance = 800.0
 sky_mode = 1
@@ -391,7 +396,6 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -11.917, 3
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(5277.03, 0, 0, 0, -0.000230666, 5277.03, 0, -5277.03, -0.000230666, 4.95172, 874.294, -12.2401)
-visible = false
 material_override = ExtResource("22_1lvde")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -412,6 +416,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62.9731, 0)
 
 [node name="Msh_gym" parent="[ CONTENT ]" instance=ExtResource("30_c4qmd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 62.9731, 0)
+
+[node name="Gym_Terreno" parent="[ CONTENT ]/Msh_gym" index="0"]
+transform = Transform3D(1.00228, 0, 0, 0, 1.00228, 0, 0, 0, 1.00228, 0, 0, 0)
+material_override = ExtResource("31_has1n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(2009.12, 0, 0, 0, 2009.12, 0, 0, 0, 2009.12, 0, 51.9617, 0)
+material_override = ExtResource("31_4j5de")
+mesh = SubResource("PlaneMesh_y8chu")
 
 [node name="[ PPE + UI ]" type="Node" parent="."]
 
@@ -501,3 +514,5 @@ grow_vertical = 0
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("34_8lwyx")]
 visible = false
+
+[editable path="[ CONTENT ]/Msh_gym"]

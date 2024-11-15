@@ -1,9 +1,9 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://d0njvq6rqh23r"]
 
-[ext_resource type="Texture2D" uid="uid://0b2c6bogsi2r" path="res://Cont_Models/#Shared/Skyes/Sky_Sunny.hdr" id="1_aq023"]
+[ext_resource type="Texture2D" uid="uid://dc7sejfcun0iw" path="res://#Resources/Gym/Sky_Gym.hdr" id="1_g5kwo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rsk6i"]
-panorama = ExtResource("1_aq023")
+panorama = ExtResource("1_g5kwo")
 
 [sub_resource type="Sky" id="Sky_al770"]
 sky_material = SubResource("PanoramaSkyMaterial_rsk6i")

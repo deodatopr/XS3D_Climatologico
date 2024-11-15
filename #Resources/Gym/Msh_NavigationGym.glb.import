@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dbnlu2dl6u132"
-path="res://.godot/imported/Msh_NavigationGym.glb-b8fccc962d3ab7d93c2df612d20c6ec3.scn"
+path="res://.godot/imported/Msh_NavigationGym.glb-bcf9d562d05aa2904b8d698d451e6c87.scn"
 
 [deps]
 
-source_file="res://Cont_Models/Gym/Msh_NavigationGym.glb"
-dest_files=["res://.godot/imported/Msh_NavigationGym.glb-b8fccc962d3ab7d93c2df612d20c6ec3.scn"]
+source_file="res://#Resources/Gym/Msh_NavigationGym.glb"
+dest_files=["res://.godot/imported/Msh_NavigationGym.glb-bcf9d562d05aa2904b8d698d451e6c87.scn"]
 
 [params]
 

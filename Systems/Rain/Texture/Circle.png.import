@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7a4n325w3pc8"
-path.s3tc="res://.godot/imported/Map_gym.png-0dd6a11afc31b5393399b7d2c69a9736.s3tc.ctex"
+uid="uid://7drnpi7h8533"
+path.s3tc="res://.godot/imported/Circle.png-0bfa9273e216796ae286adcb00f52bb9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/Gym/Map_gym.png"
-dest_files=["res://.godot/imported/Map_gym.png-0dd6a11afc31b5393399b7d2c69a9736.s3tc.ctex"]
+source_file="res://Systems/Rain/Texture/Circle.png"
+dest_files=["res://.godot/imported/Circle.png-0bfa9273e216796ae286adcb00f52bb9.s3tc.ctex"]
 
 [params]
 

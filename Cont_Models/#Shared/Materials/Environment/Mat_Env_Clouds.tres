@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://dqlu15mfw8cko" path="res://Vfx_Shaders/Sha_CloudsShadow.tres" id="1_emdrm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2iwiy"]
+fractal_weighted_strength = 0.2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l53r2"]
 generate_mipmaps = false

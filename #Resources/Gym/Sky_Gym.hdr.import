@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0b2c6bogsi2r"
-path.bptc="res://.godot/imported/Sky_1.hdr-7346f170db0ca82a701a710e93c771aa.bptc.ctex"
+uid="uid://dc7sejfcun0iw"
+path.bptc="res://.godot/imported/Sky_Gym.hdr-0e1e0651041bc280e4f36b2a575b07c7.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/#Shared/Skyes/Sky_1.hdr"
-dest_files=["res://.godot/imported/Sky_1.hdr-7346f170db0ca82a701a710e93c771aa.bptc.ctex"]
+source_file="res://#Resources/Gym/Sky_Gym.hdr"
+dest_files=["res://.godot/imported/Sky_Gym.hdr-0e1e0651041bc280e4f36b2a575b07c7.bptc.ctex"]
 
 [params]
 

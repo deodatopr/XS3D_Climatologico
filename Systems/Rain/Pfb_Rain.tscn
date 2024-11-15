@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://btfh1lhko803m"]
 
-[ext_resource type="Material" uid="uid://c3ev2xmxjpya" path="res://#Wip/Rain/PPMat_Rain_Fly.tres" id="1_k2jee"]
-[ext_resource type="RibbonTrailMesh" uid="uid://8f4uu1y7laye" path="res://#Wip/Rain/Msh_Rain_Fly.tres" id="2_skrxr"]
+[ext_resource type="Material" uid="uid://c3ev2xmxjpya" path="res://Systems/Rain/PPMat_Rain_Fly.tres" id="1_k2jee"]
+[ext_resource type="RibbonTrailMesh" uid="uid://8f4uu1y7laye" path="res://Systems/Rain/Msh_Rain_Fly.tres" id="2_skrxr"]
 
 [node name="Node3D" type="GPUParticles3D"]
 amount = 400

@@ -50,7 +50,7 @@
 [ext_resource type="Material" uid="uid://c1nty3ig8iwmf" path="res://Vfx_PostProces/LensDrops/Mat_LensDrop.tres" id="36_l6fs6"]
 [ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/Pin/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="39_it1fo"]
 [ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="39_x4bd8"]
-[ext_resource type="PackedScene" uid="uid://btfh1lhko803m" path="res://#Wip/Pfb_Rain.tscn" id="40_sxi81"]
+[ext_resource type="PackedScene" uid="uid://btfh1lhko803m" path="res://Systems/Rain/Pfb_Rain.tscn" id="40_sxi81"]
 [ext_resource type="Texture2D" uid="uid://xh84cch52dbq" path="res://Cont_Models/Sector6/Map_Sect6_Minimap.jpg" id="49_quvql"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqpe"]
