@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dj24gdwn2bk1y" path="res://(Scenes)/Scn_Sector4.tscn" id="6_5288l"]
 [ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector6.tscn" id="6_kmvln"]
 [ext_resource type="PackedScene" uid="uid://bssp4cclscsmr" path="res://#Resources/Gym/#Scn_Gym.tscn" id="6_qgy7a"]
-[ext_resource type="Script" path="res://Systems/Debug/GDs_Debug.gd" id="8_po2sq"]
+[ext_resource type="Script" path="res://Systems/Debug_Alrmas/GDs_Debug.gd" id="8_po2sq"]
 
 [node name="Main" type="Node"]
 
@@ -46,7 +46,6 @@ sitios = {
 
 [node name="Simulados" type="Node" parent="[ SYSTEMS ]"]
 script = ExtResource("8_po2sq")
-LLuvia = 1
 
 [node name="[ SCENES ]" type="Node" parent="."]
 

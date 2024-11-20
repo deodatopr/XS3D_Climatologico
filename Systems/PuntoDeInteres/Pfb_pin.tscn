@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://bxeg5f7xphsgb"]
 
-[ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_UIPin_.gd" id="1_m3g1u"]
+[ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_UIPin_.gd" id="1_m3g1u"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_wfaf3"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_fwvix"]
-[ext_resource type="AnimationLibrary" uid="uid://bc1bs4gs2bics" path="res://Systems/Pin/PuntoDeInteres/Pin_Anims.res" id="4_3dqq0"]
+[ext_resource type="AnimationLibrary" uid="uid://bc1bs4gs2bics" path="res://Systems/PuntoDeInteres/Pin_Anims.res" id="4_3dqq0"]
 [ext_resource type="AudioStream" uid="uid://cie1fbdmvqg6y" path="res://Cont_Sounds/Pin/Open_Pin.wav" id="5_40ktq"]
 [ext_resource type="AudioStream" uid="uid://dp15k3tr2ig6q" path="res://Cont_Sounds/Pin/Close_Pin.wav" id="6_qav2l"]
 

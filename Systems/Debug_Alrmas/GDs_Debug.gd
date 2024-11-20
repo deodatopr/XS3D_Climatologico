@@ -44,4 +44,3 @@ func _OnDebugValuechangedByScript():
 	Temperatura = DEBUG.requestResult
 	Alarmas = DEBUG.alarmas
 	SIGNALS.OnDebugRefresh.emit()
-	print("Updated")

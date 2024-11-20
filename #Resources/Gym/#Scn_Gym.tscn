@@ -24,13 +24,13 @@
 [ext_resource type="AudioStream" uid="uid://ddy04w0b45rcn" path="res://Cont_Sounds/Sitio/Sitio_Alarma.mp3" id="21_bs48s"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_s6aef"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="22_1lvde"]
-[ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/Pin/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="22_rrafs"]
+[ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="22_rrafs"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="23_faqly"]
-[ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="23_lp45b"]
-[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres" id="24_a45ql"]
+[ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="23_lp45b"]
+[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="24_a45ql"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="24_aan3k"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="26_yfy3m"]
-[ext_resource type="Curve" path="res://Systems/Environment/Crv_Trueno.tres" id="27_6dad1"]
+[ext_resource type="Curve" uid="uid://cpuavtle02v5x" path="res://Systems/Environment/Crv_Trueno.tres" id="27_6dad1"]
 [ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="28_lwfa0"]
 [ext_resource type="AudioStream" uid="uid://cqtj6um5qrv4d" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_2.mp3" id="29_bpmro"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="29_g1w3l"]
@@ -185,7 +185,6 @@ sky_height = 600.0
 fly_height_speed = 2.0
 fly_height_max = 450.0
 fly_height_min = 100.0
-fly_rot_speed = 0.7
 
 [node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
 transform = Transform3D(-0.982936, -0.181157, -0.0319427, 0, 0.173648, -0.984808, 0.183952, -0.968002, -0.170685, 97.5425, 500, 148.762)
@@ -197,7 +196,6 @@ current = true
 fov = 100.0
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="[ SYSTEMS ]/Camera - Drones/MovSky/sky_cam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 remote_path = NodePath("../../../../../[ ENVIRONMENT ]/Lluvia/PS - Rain Sky")
 update_rotation = false
 update_scale = false

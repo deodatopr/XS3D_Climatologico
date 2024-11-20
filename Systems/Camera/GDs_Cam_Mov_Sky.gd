@@ -51,8 +51,6 @@ func Initialize(_camMng : GDs_Cam_Manager):
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		mouseMotion = event
-	else:
-		mouseMotion = null
 	
 func SetCamera():
 	cam.current = true

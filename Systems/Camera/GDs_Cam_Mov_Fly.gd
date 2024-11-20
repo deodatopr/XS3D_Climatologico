@@ -61,8 +61,6 @@ func UpdateValuesInRuntime():
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouseMotion = event
-	else:
-		mouseMotion = null
 
 func _physics_process(delta:float):
 	@warning_ignore('incompatible_ternary')
@@ -135,7 +133,7 @@ func _mov_movement(_delta : float):
 		#Acceleration
 		if mov_sampleCurve < 1:
 			#Curve acceleration
-			mov_sampleCurve += camMng.fly_acce_dece * _delta
+			mov_sampleCurve += _delta
 			mov_sampleCurve = clampf(mov_sampleCurve,0,1)
 			curvValue = camMng.curveMovement.sample(mov_sampleCurve)
 			
@@ -146,7 +144,7 @@ func _mov_movement(_delta : float):
 	elif dir.length() == 0 and mov_velocity.length() > 0:
 		#Deceleration		
 		#Calculate curve dec
-		mov_sampleCurve -= camMng.fly_acce_dece * _delta
+		mov_sampleCurve -= _delta
 		mov_sampleCurve = clampf(mov_sampleCurve,0,1)
 		curvValue = camMng.curveMovement.sample(mov_sampleCurve)
 		
@@ -200,14 +198,14 @@ func _rotation(_delta:float):
 	rot_lastDir = dir
 
 func _rotation_hor(_dir:float, _delta:float):
-	rot_hor -= _dir * camMng.fly_rot_speed * _delta
+	rot_hor -= _dir * camMng.fly_rot_speed_hor * _delta
 	var targetAngle : float = rot_hor
 	var smoothTarget : float = lerp_angle(rot_lastRotY,targetAngle,15 * _delta)
 	pivot.rotation.y = smoothTarget
 
 func _rotation_vert(_dir:float, _delta:float):
 	var toEvaluateAngle : float = rot_vert
-	toEvaluateAngle -= -_dir * camMng.fly_rot_speed * _delta 
+	toEvaluateAngle -= -_dir * camMng.fly_rot_speed_vert * _delta 
 	toEvaluateAngle = clampf(toEvaluateAngle,deg_to_rad(-camMng.fly_rot_clamp),deg_to_rad(camMng.fly_rot_clamp))
 	rot_vert = toEvaluateAngle
 	var targetAngle : float = rot_vert

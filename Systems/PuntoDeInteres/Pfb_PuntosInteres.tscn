@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bakojsc51v3ae"]
 
-[ext_resource type="Script" path="res://Systems/Pin/PuntoDeInteres/GDs_PuntosDeInteres.gd" id="1_uwuot"]
-[ext_resource type="PackedScene" uid="uid://bxeg5f7xphsgb" path="res://Systems/Pin/PuntoDeInteres/Pfb_pin.tscn" id="2_sdxg7"]
+[ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PuntosDeInteres.gd" id="1_uwuot"]
+[ext_resource type="PackedScene" uid="uid://bxeg5f7xphsgb" path="res://Systems/PuntoDeInteres/Pfb_pin.tscn" id="2_sdxg7"]
 
 [node name="Puntos de Interes" type="Node" node_paths=PackedStringArray("canvas")]
 script = ExtResource("1_uwuot")
