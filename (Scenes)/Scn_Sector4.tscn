@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://#Resources/Audios/Downtown_People.mp3" id="16_o6ah4"]
 [ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://#Resources/Audios/Downtown_Cars.mp3" id="17_2nmsb"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="18_ah3la"]
-[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres" id="19_7t10y"]
+[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="19_7t10y"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="20_eyv7m"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="21_ilana"]
@@ -132,7 +132,6 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/MENU")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_evkd3")
-valuesInRuntime = true
 mshNavigation = NodePath("../../[ CONTENT ]/Msh_Navigation")
 Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -157,11 +156,10 @@ fly_height_min = 50.0
 fly_rot_speed = 0.7
 
 [node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(-0.982936, -0.181157, -0.0319427, 0, 0.173648, -0.984808, 0.183952, -0.968002, -0.170685, 97.5425, 500, 148.762)
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984807, 0.173648, 97.5425, 500, 148.762)
 script = ExtResource("4_dgjav")
 
 [node name="sky_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovSky"]
-transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
 current = true
 fov = 100.0
 
@@ -171,11 +169,10 @@ update_rotation = false
 update_scale = false
 
 [node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(-0.932507, -0.15263, -0.327316, 1.70939e-08, 0.906308, -0.422618, 0.361152, -0.394095, -0.845138, 149.544, 200, 368.141)
+transform = Transform3D(-0.0523359, -0.291971, 0.954994, 0, 0.956305, 0.292372, -0.99863, 0.0153016, -0.0500491, 177.586, 20.6876, 182.48)
 script = ExtResource("5_4cwhh")
 
 [node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
@@ -340,7 +337,7 @@ sky_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(-0.939693, 0.296198, -0.17101, 0, 0.5, 0.866026, 0.34202, 0.813798, -0.469846, 0, 94.9184, 0)
+transform = Transform3D(-0.939693, 0.314598, 0.134187, 0, -0.392337, 0.919822, 0.34202, 0.86435, 0.368676, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
@@ -377,7 +374,7 @@ curveTrueno = ExtResource("23_ul3xw")
 stream = SubResource("AudioStreamRandomizer_cmfaf")
 
 [node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("31_ydy2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.544, 200, 368.141)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.586, 20.6876, 182.48)
 visible = false
 amount = 1000
 transform_align = 1
@@ -410,7 +407,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7814, -18.5579, 210.571)
 surface_material_override/0 = ExtResource("30_0xdf2")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.781, -30, 210.571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4854, -23.0553, 210.436)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(5819.25, 0, 0, 0, -0.000254367, 5819.25, 0, -5819.25, -0.000254367, 18.8253, 941.527, -39.2324)

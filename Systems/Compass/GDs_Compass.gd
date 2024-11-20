@@ -80,7 +80,8 @@ func _CalculateScreenMark() -> void:
 
 	#Calculate if is in front or back to fix finalPosition	
 	var dirToSitio : Vector3 = (posSitio - pivotCam.global_position).normalized()
-	var dotToSitio : float = pivotCam.global_basis.z.normalized().dot(dirToSitio)
+	var pivotCamForward : Vector3 = -pivotCam.global_basis.z.normalized()
+	var dotToSitio : float = pivotCamForward.dot(dirToSitio)
 	var dotSign : float = signf(dotToSitio)
 	
 	#Convert position 3d into 2d
@@ -129,21 +130,12 @@ func _CalculateCompassNorth() -> void:
 	lblDistance.text = str(CAM.distToSitio)
 	
 	#calculate degrees of pivot cam
-	var rotationDegrees = (abs(pivotCam.rotation.y) * 180)/3.1333
-	@warning_ignore('unused_variable')
-	var compassPosition = rotationDegrees * (compass.size.x/6)/180
-
-	#check if look to left or right
-	@warning_ignore('unused_variable')
-	var rotationDir := 1
-	if pivotCam.rotation.y < 0:
-		rotationDir = -1
+	var rotationDegrees : float = absf(pivotCam.rotation_degrees.y)
 
 	#update compass direction
-	#compass.position.x = (compassPosition * rotationDir) + compassInitialXPosition
 	compass.position.x = compassInitialXPosition + (int(pivotCam.rotation.y * 180) %1128) 
 
-	var pivotCamNormal := pivotCam.global_basis.z
+	var pivotCamNormal := -pivotCam.global_basis.z
 	pivotCamNormal.y = 0;
 	
 	var markNormal := (posSitio - pivotCam.global_position).normalized()

@@ -127,7 +127,7 @@ func _mov_height(_delta : float):
 	mov_height_lastSpeedForUI = mov_height_speedForUI
 
 func _mov_movement(_delta : float):
-	mov_axisMovement = Input.get_vector("3DMove_Right","3DMove_Left","3DMove_Backward","3DMove_Forward")
+	mov_axisMovement = Input.get_vector("3DMove_Left","3DMove_Right","3DMove_Forward","3DMove_Backward")
 	var dir : Vector3 = (pivot.basis * Vector3(mov_axisMovement.x,0,mov_axisMovement.y).normalized())
 	dir.y = 0
 	
@@ -179,15 +179,13 @@ func _mov_movement(_delta : float):
 	
 func _rotation(_delta:float):
 	#Detect input controller
-	rot_axisRotation = Input.get_vector("3DLook_Left",'3DLook_Right','3DLook_Down','3DLook_Up')
+	rot_axisRotation = Input.get_vector("3DLook_Left",'3DLook_Right','3DLook_Up','3DLook_Down')
 	var dir : Vector2 = rot_axisRotation
 	
 	#Detect input mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if mouseMotion != null:
-			var fixedMouseMotion : Vector2 = mouseMotion.relative
-			fixedMouseMotion.y = -fixedMouseMotion.y
-			dir = fixedMouseMotion.normalized()
+			dir = mouseMotion.relative.normalized()
 
 	CAM.isRotating = dir.length() > 0
 	

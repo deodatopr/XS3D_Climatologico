@@ -83,7 +83,7 @@ func _physics_process(delta):
 	mov_isInsideBoundings = camMng.CheckMapBoundings(pivot)
 
 func _Movement(_delta: float):
-	mov_axis = Input.get_vector('3DMove_Left','3DMove_Right','3DMove_Backward','3DMove_Forward')	
+	mov_axis = Input.get_vector('3DMove_Right','3DMove_Left','3DMove_Backward','3DMove_Forward')	
 	var isPressingTurbo : bool = Input.is_action_pressed('3DMove_SpeedBoost') 
 	var inputDir : Vector3 = pivot.global_basis * Vector3(-mov_axis.x,mov_axis.y,0).normalized()
 	

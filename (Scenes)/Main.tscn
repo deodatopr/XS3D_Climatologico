@@ -18,7 +18,7 @@
 
 [node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("splash", "curtain", "scenes_manager", "dataService_manager")]
 script = ExtResource("3_7k0af")
-sitioInicial = 2
+sitioInicial = 1
 splash = NodePath("../../[ UI ]/Splash")
 curtain = NodePath("../Curtain")
 scenes_manager = NodePath("../MngScenes")

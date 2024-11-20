@@ -19,16 +19,13 @@ curveMovement = ExtResource("3_goarf")
 script = ExtResource("2_s21o3")
 
 [node name="sky_cam" type="Camera3D" parent="MovSky"]
-transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
 current = true
 fov = 35.0
 
-[node name="MovFly" type="Node3D" parent="." node_paths=PackedStringArray("testTimer")]
+[node name="MovFly" type="Node3D" parent="."]
 script = ExtResource("4_iwq67")
-testTimer = NodePath("../TestTimer")
 
 [node name="fly_cam" type="Camera3D" parent="MovFly"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0
 
 [node name="TestTimer" type="Timer" parent="."]

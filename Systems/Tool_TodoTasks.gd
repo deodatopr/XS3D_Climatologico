@@ -14,25 +14,21 @@
 	# A - aceptar
 	# B - Back
 
-## Que sucede cuando no hay datos con mensaje de reconexión
+
 # Hay cosas con control que no están actualizadas (Y no es cambio de cam), pad para menu
-# (idea de sonido dif cuando no puedas)
 #Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
+# Revisar carpetas sistemas para eliminar lo que no se use
+# Cam fly
+	# Arreglar rotación con threshold
 
 # Limpiar variables y dejarla sigual que endpoint
 # Ya implementar datos del endpoint
 # Sistema presetEnv
 
-# Arreglar mesh que coincida con rotaciones
-# Arreglar camara minimapa parchado
-
-# ----------------------- Tareas:
+# Arreglar mesh/sistema norte que coincida con rotaciones
 # Turbo ambos drones x4/x2
 # Cambiar todo lo que diga Estaciones -> Sitios (Para estandarizar)
-# Cam fly
-	# Arreglar rotación con threshold
 
-# Random  noise clouds shadows 
 # Parpadear opcion de menu guia
 # Tutorial guiado cuando aparece home (primero como que se presiona home y luego se prenda guia)
 

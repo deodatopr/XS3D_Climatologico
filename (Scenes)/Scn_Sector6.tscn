@@ -164,7 +164,7 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")
 mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
-Terrains = [null]
+Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../[ CONTENT ]/Msh_Terrain/Msh_Roads")
 msh_limit = NodePath("../../[ CONTENT ]/Msh - Limit/Msh_Limit")
@@ -187,11 +187,10 @@ fly_height_max = 450.0
 fly_rot_speed = 0.7
 
 [node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(-0.982936, -0.181157, -0.0319427, 0, 0.173648, -0.984808, 0.183952, -0.968002, -0.170685, 97.5425, 500, 148.762)
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984807, 0.173648, 97, 500, 149)
 script = ExtResource("4_w0x8b")
 
 [node name="sky_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovSky"]
-transform = Transform3D(-1, 2.72847e-12, -8.74861e-08, 2.72848e-12, 1, -1.16415e-10, 8.74861e-08, -1.16415e-10, -1, 0, 0, 0)
 current = true
 fov = 100.0
 
@@ -201,11 +200,10 @@ update_rotation = false
 update_scale = false
 
 [node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(-0.932507, -0.15263, -0.327316, 1.70939e-08, 0.906308, -0.422618, 0.361152, -0.394095, -0.845138, 149.544, 200, 368.141)
+transform = Transform3D(-0.866026, 0.211309, -0.453154, 0, 0.906308, 0.422618, 0.5, 0.365998, -0.784886, -254.94, 253.471, -393.202)
 script = ExtResource("5_7w42d")
 
 [node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 fov = 35.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
@@ -293,7 +291,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 117.172, 36.709, 248.01)
 stream = ExtResource("13_de45w")
 volume_db = 20.0
 unit_size = 25.0
@@ -302,7 +300,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.948, 36.709, -1116.42)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -105.948, 36.709, 1116.42)
 stream = ExtResource("13_de45w")
 volume_db = 20.0
 unit_size = 25.0
@@ -311,7 +309,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio - DroneFly"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.157, 36.709, -1866.21)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 214.157, 36.709, 1866.21)
 stream = ExtResource("13_de45w")
 volume_db = 20.0
 unit_size = 25.0
@@ -364,33 +362,33 @@ camFly = NodePath("../Camera - Drones/MovFly/fly_cam")
 camSky = NodePath("../Camera - Drones/MovSky/sky_cam")
 
 [node name="Punto 4" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 484.349, 59.6599, -148.556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -484.349, 59.6599, 148.556)
 script = ExtResource("39_x4bd8")
 nombre = " Telesecundaria Los Zapotes "
 
 [node name="Punto 5" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 557.276, 59.6599, 415.393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -557.276, 59.6599, -415.393)
 script = ExtResource("39_x4bd8")
 nombre = " Toma & DaCa Taller "
 
 [node name="Punto 6" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1098.19, 70.9961, 451.811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1098.19, 70.9961, -451.811)
 script = ExtResource("39_x4bd8")
 nombre = " Escuela Primaria Ignacio Lopez Rayon"
 
 [node name="Punto 7" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1084.32, 69.6268, 1403.56)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1084.32, 69.6268, -1403.56)
 visible = false
 script = ExtResource("39_x4bd8")
 nombre = "Primaria Lazaro Cardenas"
 
 [node name="Punto 8" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1217.13, 69.6268, 1417.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1217.13, 69.6268, -1417.5)
 script = ExtResource("39_x4bd8")
 nombre = "Canchita El Bosque"
 
 [node name="Punto 9" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1020.99, 69.6268, 1598.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1020.99, 69.6268, -1598.05)
 visible = false
 script = ExtResource("39_x4bd8")
 nombre = "Parroquia San Juanita"
@@ -414,7 +412,7 @@ directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(-0.939693, 0.296198, -0.17101, 0, 0.5, 0.866026, 0.34202, 0.813798, -0.469846, 0, 94.9184, 0)
+transform = Transform3D(-0.47977, 0.862405, -0.161487, 0.143362, 0.258632, 0.955278, 0.865603, 0.435163, -0.24772, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
@@ -451,13 +449,13 @@ curveTrueno = ExtResource("27_ri71f")
 stream = SubResource("AudioStreamRandomizer_f0v3a")
 
 [node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("40_sxi81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.104, 201.451, 364.423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -252.946, 254.922, -389.749)
 visible = false
 amount = 1000
 transform_align = 1
 
 [node name="PS - Rain Sky" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("40_sxi81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5425, 500, 148.762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97, 500, 149)
 amount = 1500
 transform_align = 1
 
@@ -478,13 +476,13 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("26_yysch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9719, 38.9696, 27.3613)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.489, 38.9696, -16.1574)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 surface_material_override/0 = ExtResource("27_k5hsy")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -11.972, 30, 27.361)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 10.4751, 52.0775, -16.1114)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(5277.03, 0, 0, 0, -0.000230666, 5277.03, 0, -5277.03, -0.000230666, 4.95172, 874.294, -12.2401)
@@ -497,7 +495,7 @@ material_override = ExtResource("23_2ha5g")
 mesh = SubResource("QuadMesh_k5wsg")
 
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, -18.1554, -38.2442, -18.4659)
+transform = Transform3D(36.5868, 0, 0, 0, 9.76607, 0, 0, 0, 38.7493, 1.78137, -38.2442, 36.1502)
 
 [node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
