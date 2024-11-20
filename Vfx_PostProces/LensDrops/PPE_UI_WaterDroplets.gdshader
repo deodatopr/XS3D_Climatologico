@@ -40,7 +40,7 @@ vec2 RainDrops(vec2 uv,float _tile, float _speed, float _wiggle){
 	x += sin(w  + cos(w * 4.0) * pow(sin(w),2.0)) * (drop_Offs - abs(x));
 	float y = cos(t + cos(t + cos(t)*0.5)) * drop_Offs;
 	//Shape of Drop
-	y += (gridUV.x-x) * (gridUV.x-x) * -5.0;
+	y += (gridUV.x-x) * (gridUV.x-x) * -3.0;
 	
 	vec2 dropPos = gridUV - vec2(x,y);
 	float drop = smoothstep(radious,0.01,length(dropPos));
@@ -61,8 +61,8 @@ vec2 RainDrops(vec2 uv,float _tile, float _speed, float _wiggle){
 void fragment() {
 	vec2 droplets = vec2(0);
 	for(int i = 1; i<= layers;i++){
-		droplets += RainDrops(UV,tile,speed,wiggle);
+		droplets += RainDrops(UV,tile  * float(i),speed  * float(i),wiggle * float(i));
 	}
-	COLOR.rgb = textureLod(screen_texture,SCREEN_UV - droplets,smoothstep(.001,.0001,droplets.x) * fogginess).rgb;
+	COLOR.rgb = textureLod(screen_texture,SCREEN_UV - droplets,smoothstep(.001,.0001,abs(droplets.x)) * fogginess).rgb;
 }
 
