@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://8ogd5844tnm4"]
+[gd_scene load_steps=17 format=3 uid="uid://8ogd5844tnm4"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_xwbp0"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_x6xqf"]
@@ -33,14 +33,6 @@ region = Rect2(7, 264, 54, 54)
 atlas = ExtResource("2_x6xqf")
 region = Rect2(473, 301, 16, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctu50"]
-atlas = ExtResource("2_x6xqf")
-region = Rect2(471, 838, 38, 51)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbndl"]
-atlas = ExtResource("2_x6xqf")
-region = Rect2(499, 812, 8, 19)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_glfil"]
 atlas = ExtResource("2_x6xqf")
 region = Rect2(476, 646, 29, 19)
@@ -48,6 +40,10 @@ region = Rect2(476, 646, 29, 19)
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwpjb"]
 atlas = ExtResource("2_x6xqf")
 region = Rect2(470, 813, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctu50"]
+atlas = ExtResource("2_x6xqf")
+region = Rect2(471, 838, 38, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4jj7"]
 atlas = ExtResource("2_x6xqf")
@@ -791,29 +787,63 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="Mouse" type="TextureRect" parent="FrameBG/Labels/Subir Bajar"]
+[node name="Q" type="NinePatchRect" parent="FrameBG/Labels/Subir Bajar"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -92.0
-offset_top = -12.0
-offset_right = -54.0
-offset_bottom = 39.0
+offset_left = -93.0
+offset_top = -6.5
+offset_right = -51.0
+offset_bottom = 35.5
 grow_horizontal = 0
-texture = SubResource("AtlasTexture_ctu50")
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="Scroll" type="TextureRect" parent="FrameBG/Labels/Subir Bajar/Mouse"]
+[node name="Label" type="Label" parent="FrameBG/Labels/Subir Bajar/Q"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -4.0
-offset_top = 1.0
-offset_right = 4.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-texture = SubResource("AtlasTexture_bbndl")
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "Q
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="NinePatchRect" parent="FrameBG/Labels/Subir Bajar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -42.0
+offset_top = -6.5
+offset_bottom = 35.5
+grow_horizontal = 0
+texture = ExtResource("2_x6xqf")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="FrameBG/Labels/Subir Bajar/E"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Modo de Datos" type="Control" parent="FrameBG/Labels"]
 layout_mode = 1

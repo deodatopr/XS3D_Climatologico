@@ -13,10 +13,12 @@ _data = {
 }
 
 [node name="Info" type="NinePatchRect" node_paths=PackedStringArray("anim")]
+self_modulate = Color(1, 1, 1, 0)
 offset_left = 39.0
 offset_top = 41.0
 offset_right = 256.0
 offset_bottom = 103.0
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_4si1h")
 region_rect = Rect2(473, 258, 34, 34)
 patch_margin_left = 10
@@ -142,3 +144,126 @@ libraries = {
 "": SubResource("AnimationLibrary_36itp")
 }
 autoplay = "Blinking"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0.681031, 0, 0, 1)
+layout_mode = 0
+offset_left = 234.0
+offset_top = 1.0
+offset_right = 517.0
+offset_bottom = 63.0
+texture = ExtResource("1_4si1h")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Lbl INfo2" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -147.714
+offset_top = -21.0
+offset_right = -5.71429
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "[ SIm. datos ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox2" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.4286
+offset_top = -20.3572
+offset_right = 166.429
+offset_bottom = 34.6428
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 10
+
+[node name="W" type="NinePatchRect" parent="NinePatchRect/Hbox2"]
+custom_minimum_size = Vector2(59.475, 0)
+layout_mode = 2
+texture = ExtResource("1_4si1h")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/Hbox2/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 27
+text = "F12"
+
+[node name="_" type="Label" parent="NinePatchRect/Hbox2"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="+2" type="NinePatchRect" parent="NinePatchRect/Hbox2"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("CompressedTexture2D_ikcar")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="+" type="NinePatchRect" parent="NinePatchRect/Hbox2/+2"]
+self_modulate = Color(0.48, 0.48, 0.48, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4si1h")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/Hbox2/+2/+"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1
