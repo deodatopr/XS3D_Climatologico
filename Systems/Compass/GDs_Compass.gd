@@ -128,9 +128,6 @@ func GetValidPointOnLimits(_rect: Rect2, _center: Vector2, _dir: Vector2) -> Vec
 
 func _CalculateCompassNorth() -> void:
 	lblDistance.text = str(CAM.distToSitio)
-	
-	#calculate degrees of pivot cam
-	var rotationDegrees : float = absf(pivotCam.rotation_degrees.y)
 
 	#update compass direction
 	compass.position.x = compassInitialXPosition + (int(pivotCam.rotation.y * 180) %1128) 
