@@ -420,7 +420,7 @@ material_override = ExtResource("22_i6kjy")
 mesh = SubResource("QuadMesh_e651p")
 
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("23_ag17m")]
-transform = Transform3D(42.9789, 0, 0, 0, 9.76607, 0, 0, 0, 46.2167, -18.1554, -38.2442, -18.4659)
+transform = Transform3D(42.9789, 0, 0, 0, 9.76607, 0, 0, 0, 46.0942, -18.1554, -83.6704, -0.909504)
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 

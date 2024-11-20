@@ -449,7 +449,7 @@ curveTrueno = ExtResource("27_ri71f")
 stream = SubResource("AudioStreamRandomizer_f0v3a")
 
 [node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("40_sxi81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -252.946, 254.922, -389.749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -252.947, 254.922, -389.749)
 visible = false
 amount = 1000
 transform_align = 1
