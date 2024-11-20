@@ -18,7 +18,6 @@
 
 [node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("splash", "curtain", "scenes_manager", "dataService_manager")]
 script = ExtResource("3_7k0af")
-sitioInicial = 1
 splash = NodePath("../../[ UI ]/Splash")
 curtain = NodePath("../Curtain")
 scenes_manager = NodePath("../MngScenes")
@@ -47,6 +46,7 @@ sitios = {
 
 [node name="Simulados" type="Node" parent="[ SYSTEMS ]"]
 script = ExtResource("8_po2sq")
+LLuvia = 1
 
 [node name="[ SCENES ]" type="Node" parent="."]
 

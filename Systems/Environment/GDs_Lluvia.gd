@@ -12,6 +12,7 @@ extends Node
 @export var sndsTruenos : AudioStreamPlayer
 
 @export var lensDrop : ColorRect
+@export var lensDroplets : ColorRect
 @export var rainFlyParticles : GPUParticles3D
 @export var rainSkyParticles : GPUParticles3D
 
@@ -88,6 +89,7 @@ func _SinLluvia():
 	UTILITIES.TurnOffObject(rainSkyParticles)
 	UTILITIES.TurnOffObject(rainFlyParticles)
 	lensDrop.hide()
+	lensDroplets.hide()
 	thunderIsPlaying = false
 	timerTruenos.stop()
 
@@ -109,6 +111,7 @@ func _ConLluvia():
 	UTILITIES.TurnOnObject(rainSkyParticles)
 
 	lensDrop.show()
+	lensDroplets.show()
 	
 	if timerTruenos.is_stopped():
 		timerTruenos.start(randi_range(minTrueno,maxTrueno))
@@ -124,8 +127,11 @@ func SwitchRainEnvironment(_cam:int):
 	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia: return
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		worldEnv.environment = _GetEnvPreset(presetEnvSky_Rain, presetGymEnvSky_Rain, DEBUG.isGym)
+		lensDroplets.hide()
 	else:
 		worldEnv.environment = _GetEnvPreset(presetEnvFly_Rain, presetGymEnvFly_Rain, DEBUG.isGym)
+		lensDroplets.show()
+		
 		
 func _GetEnvPreset(_realPreset : Environment, _gymPreset : Environment, _isGym) -> Environment:
 	if _isGym:
