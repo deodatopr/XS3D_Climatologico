@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ea308yhjo2ta"]
+
+[ext_resource type="Shader" uid="uid://dcxkcc0fkwbws" path="res://Vfx_Shaders/Sha_Terrain.tres" id="1_v7k5l"]
+[ext_resource type="Texture2D" uid="uid://dqpg2xkcfrkd7" path="res://Cont_Models/Sector1/Terrain/Map_Sec1_36.jpg" id="2_lmqbu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_v7k5l")
+shader_parameter/BaseMap = ExtResource("2_lmqbu")
