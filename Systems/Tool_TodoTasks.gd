@@ -17,7 +17,7 @@
 # Si estas en un modo, está perdiendo señal y te cambias se queda con UI de perdiendo señal
 # Sonidos de agua se escuchan en sky
 # Hay cosas con control que no están actualizadas (Y no es cambio de cam), pad para menu
-#Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
+# Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
 # Revisar carpetas sistemas para eliminar lo que no se use
 # Cam fly
 	# Arreglar rotación con threshold
