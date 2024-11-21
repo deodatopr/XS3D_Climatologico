@@ -183,32 +183,37 @@ func _rotation(_delta:float):
 	#Detect input mouse
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if mouseMotion != null:
+
 			dir = mouseMotion.relative.normalized()
 
 	CAM.isRotating = dir.length() > 0
 	
 	dir = lerp(rot_lastDir,dir,5 *_delta)
 	
+	var turbo : float = camMng.fly_rot_turbo if Input.is_action_pressed('3DMove_SpeedBoost') else 1
+	
 	#Apply rot
-	_rotation_hor(dir.x,_delta)
-	_rotation_vert(-dir.y,_delta)
+	_rotation_hor(dir.x,turbo,_delta)
+	_rotation_vert(-dir.y,turbo,_delta)
 
 	rot_lastRotX = pivot.rotation.x
 	rot_lastRotY = pivot.rotation.y
 	rot_lastDir = dir
 
-func _rotation_hor(_dir:float, _delta:float):
-	rot_hor -= _dir * camMng.fly_rot_speed_hor * _delta
+func _rotation_hor(_dir:float, _turbo : float, _delta:float):
+	rot_hor -= _dir * camMng.fly_rot_speed_hor * _turbo * _delta
 	var targetAngle : float = rot_hor
-	var smoothTarget : float = lerp_angle(rot_lastRotY,targetAngle,15 * _delta)
+	var smoothness : float = 15.0
+	var smoothTarget : float = lerp_angle(rot_lastRotY,targetAngle,smoothness * _delta)
 	pivot.rotation.y = smoothTarget
 
-func _rotation_vert(_dir:float, _delta:float):
+func _rotation_vert(_dir:float, _turbo : float, _delta:float):
 	var toEvaluateAngle : float = rot_vert
-	toEvaluateAngle -= -_dir * camMng.fly_rot_speed_vert * _delta 
+	toEvaluateAngle -= -_dir * camMng.fly_rot_speed_vert * _turbo * _delta 
 	toEvaluateAngle = clampf(toEvaluateAngle,deg_to_rad(-camMng.fly_rot_clamp),deg_to_rad(camMng.fly_rot_clamp))
 	rot_vert = toEvaluateAngle
 	var targetAngle : float = rot_vert
-	var smoothTarget : float = lerp_angle(rot_lastRotX,targetAngle,15 * _delta)
+	var smoothness : float = 20.0
+	var smoothTarget : float = lerp_angle(rot_lastRotX,targetAngle,smoothness * _delta)
 	
 	pivot.rotation.x = smoothTarget

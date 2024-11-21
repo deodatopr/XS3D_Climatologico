@@ -43,9 +43,9 @@ class_name GDs_Cam_Manager extends Node
 @export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var fly_speed : float = 80
 @export_custom(PROPERTY_HINT_NONE,"suffix: x") var fly_turbo : float = 2.5
 @export_custom(PROPERTY_HINT_NONE,"suffix: °") var fly_rot_clamp : float = 40
-@export var fly_rot_speed_hor : float = .5
-@export var fly_rot_speed_vert : float = .5
-@export var fly_rot_turbo = 2
+@export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var fly_rot_speed_hor : float = .5
+@export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var fly_rot_speed_vert : float = .25
+@export_custom(PROPERTY_HINT_NONE,"suffix: x") var fly_rot_turbo = 2
 
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
 @onready var mat_limit_fly : ShaderMaterial = preload("uid://nan3iase8pij")
