@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cm67wfyxqmxlm" path="res://#Resources/Audios/Downtown_People.mp3" id="16_o6ah4"]
 [ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://#Resources/Audios/Downtown_Cars.mp3" id="17_2nmsb"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="18_ah3la"]
-[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres" id="19_7t10y"]
+[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="19_7t10y"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="20_eyv7m"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="21_ilana"]
@@ -349,13 +349,13 @@ sky_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(-0.939693, 0.314598, 0.134187, 0, -0.392337, 0.919822, 0.34202, 0.86435, 0.368676, 0, 94.9184, 0)
+transform = Transform3D(0.92388, -0.318004, 0.212885, 0, 0.556296, 0.830985, -0.382684, -0.76773, 0.51395, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
 shadow_blur = 3.0
 directional_shadow_mode = 0
-directional_shadow_max_distance = 1500.0
+directional_shadow_max_distance = 200.0
 sky_mode = 1
 
 [node name="Light - Rain" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
@@ -436,6 +436,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4854, -23.0553, 210.436)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(5819.25, 0, 0, 0, -0.000254367, 5819.25, 0, -5819.25, -0.000254367, 18.8253, 941.527, -39.2324)
+visible = false
 material_override = ExtResource("21_ilana")
 mesh = SubResource("QuadMesh_vcmnj")
 
