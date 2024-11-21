@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://y1iugd6uyl42"]
+[gd_scene load_steps=31 format=3 uid="uid://y1iugd6uyl42"]
 
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/UI/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/UI/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ddo5utgfriiew" path="res://Systems/UI/Menus/Config/Pfb_Menu_Config.tscn" id="9_cajyl"]
 [ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]
 [ext_resource type="AudioStream" uid="uid://ceixgjxmpnakr" path="res://Cont_Sounds/UI/UI_Button_Click.mp3" id="12_6c0h6"]
+[ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://#Wip/Test_Theme.tres" id="14_35ily"]
+[ext_resource type="Script" path="res://Systems/Debug_Alrmas/GDs_UI_DebugPanel.gd" id="14_kilhm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uhu7b"]
 shader = ExtResource("4_dj00u")
@@ -312,7 +314,7 @@ bus = &"SFX"
 visible = false
 layout_mode = 1
 
-[node name="Menu Debug" type="Control" parent="."]
+[node name="Menu Debug" type="Control" parent="." node_paths=PackedStringArray("menuBtn")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -322,6 +324,8 @@ offset_top = -382.0
 offset_right = 476.0
 offset_bottom = -126.0
 grow_vertical = 0
+script = ExtResource("14_kilhm")
+menuBtn = NodePath("Menu Config/MarginContainer/VBoxContainer/Master Vol/OptionButton")
 metadata/_edit_vertical_guides_ = [-199.0]
 
 [node name="Menu Config" type="ColorRect" parent="Menu Debug"]
@@ -504,6 +508,7 @@ offset_right = -4.0
 offset_bottom = 14.5
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("14_35ily")
 flat = true
 selected = 0
 allow_reselect = true

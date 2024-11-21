@@ -1,8 +1,13 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://d0o7330ujtqc4"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3lnm"]
-bg_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8x43b"]
+bg_color = Color(0, 0, 0, 0.894118)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [resource]
-OptionButton/colors/font_color = Color(1, 0, 0, 1)
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_e3lnm")
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_separator_color = Color(1, 1, 1, 1)
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_8x43b")
