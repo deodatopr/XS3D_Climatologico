@@ -9,8 +9,11 @@ extends Control
 @export var estado:Label
 @export var fecha:Label
 @export_subgroup("Senales")
-@export var senal:Control
+@export var lblBateria : Label
+@export var rellenoBateria : Control
+@export var falloAC:Control
 @export var UTR:Control
+@export var senal:Control
 @export var OnColor:Color
 @export var OffColor:Color
 @export_subgroup("Nivel")
@@ -37,7 +40,6 @@ extends Control
 @export var presionSnsr:Control
 @export var viento:Label
 @export var vientoSnsr:Control
-@export var lblBateria : Label
 
 @export_group("Panel Error")
 @export var panelError : Control
@@ -84,6 +86,10 @@ func OnDataRefresh():
 	estado.text = UTILITIES.FormatEstado(sitio.estado)
 	
 	#Senales
+	if sitio.fallo_alim_ac:
+		falloAC.self_modulate - OffColor
+	else:
+		falloAC.self_modulate - OnColor
 	if sitio.enlace:
 		senal.self_modulate = OnColor
 	else:
@@ -92,6 +98,9 @@ func OnDataRefresh():
 		UTR.self_modulate = OnColor
 	else:
 		UTR.self_modulate = OffColor
+	
+	lblBateria.text = UTILITIES.FormatBateriaV(sitio.volt_bat_resp)
+	
 
 	#nivel
 	nivel.text = UTILITIES.FormatNivel(sitio.nivel)
