@@ -26,6 +26,7 @@ class_name GDs_Cam_Manager extends Node
 @export_group("CAMERAS")
 @export var curveMovement : Curve
 @export_range(.7, 1.0) var proximityEdgeLimits : float = .9
+@export_range(0.0,0.2) var offsetToDetectLimits : float = 0.0
 
 @export_subgroup("SKY")
 @export_custom(PROPERTY_HINT_NONE,"suffix: m") var sky_height : float = 500
@@ -105,9 +106,10 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	positionInMap01.x = lerpf(-1,1,positionInMap01.x)
 	positionInMap01.y = lerpf(-1,1,positionInMap01.y)
 	
-	var boundingX : float = abs(positionInMap01.x)
-	var boundingY : float = abs(positionInMap01.y)
+	var boundingX : float = abs(positionInMap01.x) + offsetToDetectLimits
+	var boundingY : float = abs(positionInMap01.y) + offsetToDetectLimits
 	
+	print(CAM.boundings01)
 	#Only inside range limits calculate a value to detect proximity to end limit
 	if boundingX >= proximityEdgeLimits  || boundingY >= proximityEdgeLimits:
 		var boundingValue := boundingX if boundingX >= boundingY else boundingY
