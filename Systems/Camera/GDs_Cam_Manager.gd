@@ -115,6 +115,8 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 		CAM.boundings01 = inverse_lerp(proximityEdgeLimits,1,boundingValue)
 		if CAM.boundings01 < .02:
 			CAM.boundings01 = 0
+	else:
+		CAM.boundings01 = 0
 			
 	var insideBoundings := boundingX < 1 and boundingY < 1
 	return insideBoundings

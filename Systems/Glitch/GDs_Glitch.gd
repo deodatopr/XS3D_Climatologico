@@ -21,7 +21,7 @@ func Initialize():
 
 func _process(_delta):
 	if CAM.boundings01 == 0: 
-		if glitch.visible and not isInTransition:
+		if mensaje.visible and not isInTransition:
 			UTILITIES.TurnOffObject(glitch)
 			sndGlitchLimit.stop()
 			mensaje.hide()
