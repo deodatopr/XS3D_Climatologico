@@ -10,6 +10,7 @@ class_name GDs_UI_Manager extends Control
 @export var menuMapa:GDs_MenuMapa
 @export var menuInfo:Control
 @export var popUp:Control
+@export var panelDebug:Control
 
 var dataService : GDs_DataService_Manager
 var vistaFly : GDs_VistaFly
@@ -23,10 +24,17 @@ func _input(event):
 		if not APPSTATE.popUpOpened:
 			menuInfo.visible = true
 			barraMenus.StopFocusOnMenus()
+			CloseDebugPanel()
 	if event.is_action_pressed("ui_cancel"):
 		CloseInfoMenu()
 		if not APPSTATE.popUpOpened:
 			barraMenus.StopFocusOnMenus()
+	if event.is_action_pressed("UI_Simulado"):
+		CloseInfoMenu()
+		if not APPSTATE.popUpOpened:
+			barraMenus.StopFocusOnMenus()
+			panelDebug.visible = !panelDebug.visible
+			
 	
 func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly, _cam_manager:GDs_Cam_Manager):
 	dataService = _dataService
@@ -38,22 +46,31 @@ func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly
 	SIGNALS.OnRequestResult_Error_Data.connect(barraInfo.OnRequestFailed)
 	SIGNALS.OnRequestResult_Error_NoData.connect(barraInfo.OnRequestFailed)
 	
-	barraMenus.BtnSitios.focus_entered.connect(CloseInfoMenu)
-	barraMenus.BtnDatos.focus_entered.connect(CloseInfoMenu)
-	barraMenus.BtnConfig.focus_entered.connect(CloseInfoMenu)
-	barraMenus.BtnMapa.focus_entered.connect(CloseInfoMenu)
+	barraMenus.BtnSitios.focus_entered.connect(ClosePanels,)
+	barraMenus.BtnDatos.focus_entered.connect(ClosePanels)
+	barraMenus.BtnConfig.focus_entered.connect(ClosePanels)
+	barraMenus.BtnMapa.focus_entered.connect(ClosePanels)
 	
 	vistaFly.Initialize(cam_manager)	
 	menuMapa.Initialize(dataService.estaciones,APPSTATE.currntIdSitio)
 	barraInfo.Initialize(dataService.timeToReconnect_Error)
 	
 	popUp.hide()
+	panelDebug.visible = false
 	
 	DataRefresh()
+
+func ClosePanels():
+	CloseInfoMenu()
+	CloseDebugPanel()
 
 func CloseInfoMenu():
 	if menuInfo.visible:
 		menuInfo.visible = false
+
+func CloseDebugPanel():
+	if panelDebug.visible:
+		panelDebug.visible = false
 
 func DataRefresh():
 	barraInfo.OnDataRefresh()

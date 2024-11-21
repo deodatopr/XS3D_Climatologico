@@ -33,13 +33,12 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("UI_FocusMenus"):
+		if APPSTATE.popUpOpened: return
 		isFocusingMenu = !isFocusingMenu
 		if isFocusingMenu:
 			FocusLastMenu()
 		else:
 			StopFocusOnMenus()
-	if event.is_action_pressed("ui_cancel"):
-		pass
 	
 
 func FocusLastMenu():

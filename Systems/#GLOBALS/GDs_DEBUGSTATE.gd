@@ -1,9 +1,8 @@
 extends Node
 
-var isGym : bool = false
-var modoDatos : int
-var requestResult : int
-var lLuvia : int
-var temperatura : int
-var alarmas : int
-var bateria : int
+var modoDatos : int = ENUMS.ModoDatos.Simulado
+var requestResult : int = ENUMS.EP_RequestResult.Success
+var lLuvia : int = ENUMS.LluviaIntsdad.SinLluvia
+var temperatura : int = ENUMS.Temperatura.Normal
+var alarmas : int = ENUMS.Alarmas.Normal
+var bateria : int = ENUMS.Bateria._100
