@@ -19,7 +19,7 @@ var isFirstRun : bool = true
 var tween:Tween
 
 func _input(event):
-	if event.is_action_pressed("UIShowInfo"):
+	if event.is_action_pressed("UI_Info"):
 		if not APPSTATE.popUpOpened:
 			menuInfo.visible = true
 			barraMenus.StopFocusOnMenus()

@@ -20,7 +20,7 @@ extends Control
 
 
 signal OnCancelarVerSitio
-var estacion:GDs_Data_Estacion
+var estacion:GDs_Data_Sitio
 var currentSitioId : int = -1
 
 func _ready():
@@ -42,7 +42,7 @@ func _input(event):
 		elif event.is_action_pressed("ui_cancel"):
 			OnCancelar()
 
-func OpenPopUp(_estacion:GDs_Data_Estacion):
+func OpenPopUp(_estacion:GDs_Data_Sitio):
 	show()
 	estacion = _estacion
 	currentSitioId = _estacion.id

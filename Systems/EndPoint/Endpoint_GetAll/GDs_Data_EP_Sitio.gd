@@ -1,5 +1,4 @@
-extends Node
-class_name GDs_Data_EP_Estacion
+class_name GDs_Data_EP_Sitio extends Node
 
 var id: int
 var fecha : String

@@ -1,17 +1,17 @@
-class_name GDs_EP_GetAllEstaciones extends Node
+class_name GDs_EP_GetAllSitios extends Node
 
 @onready var http_request : HTTPRequest = $HTTPRequest
 
-var CR_LocalEstaciones : GDs_CR_LocalEstaciones
-var getAllEstaciones_Simulado : GDs_EP_GetAllEstaciones_Simulado
-var getAllEstaciones_Error : GDs_EP_GetAllEstaciones_Error
-var arrayEstaciones : Array[GDs_Data_EP_Estacion] = []
-var lastArrayEstacionesWithData : Array[GDs_Data_EP_Estacion] = []
+var CR_LocalEstaciones : GDs_CR_LocalSitios
+var getAllEstaciones_Simulado : GDs_EP_GetAllSitios_Simulado
+var getAllEstaciones_Error : GDs_EP_GetAllSitios_Error
+var arrayEstaciones : Array[GDs_Data_EP_Sitio] = []
+var lastArrayEstacionesWithData : Array[GDs_Data_EP_Sitio] = []
 var estacionesFromServer = {"Estaciones" : arrayEstaciones}
 var URL : String
 var isBusy : bool
 
-func Initialize(_url : String, _timeout : float, _CR_LocalEstaciones : GDs_CR_LocalEstaciones, _estacionesSimulado : GDs_EP_GetAllEstaciones_Simulado ,_estacionesError : GDs_EP_GetAllEstaciones_Error):
+func Initialize(_url : String, _timeout : float, _CR_LocalEstaciones : GDs_CR_LocalSitios, _estacionesSimulado : GDs_EP_GetAllSitios_Simulado ,_estacionesError : GDs_EP_GetAllSitios_Error):
 	URL = _url
 	http_request.timeout = _timeout
 	http_request.request_completed.connect(_OnRequestCompleted_GetAllEstaciones)
@@ -50,7 +50,7 @@ func Request_GetAllEstaciones():
 		http_request.request(URL)
 		
 	
-func GetEstaciones()-> Array[GDs_Data_EP_Estacion]:
+func GetEstaciones()-> Array[GDs_Data_EP_Sitio]:
 	return arrayEstaciones
 
 func _OnRequestCompleted_GetAllEstaciones(result, _response_code, _headers, body):
@@ -66,11 +66,11 @@ func _OnRequestCompleted_GetAllEstaciones(result, _response_code, _headers, body
 		print_rich("[color=red]Request [Get all Estaciones] failed by internet..![/color].")
 	isBusy = false
 
-func _CastJsonToArrayEstaciones(json_array: Array) -> Array[GDs_Data_EP_Estacion]:
-	var custom_array: Array[GDs_Data_EP_Estacion] = []
+func _CastJsonToArrayEstaciones(json_array: Array) -> Array[GDs_Data_EP_Sitio]:
+	var custom_array: Array[GDs_Data_EP_Sitio] = []
 	
 	for item_data in json_array:
-		var custom_item = GDs_Data_EP_Estacion.new(item_data)
+		var custom_item = GDs_Data_EP_Sitio.new(item_data)
 		custom_array.append(custom_item)
 		
 	return custom_array

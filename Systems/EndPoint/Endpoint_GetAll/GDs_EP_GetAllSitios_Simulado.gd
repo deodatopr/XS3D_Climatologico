@@ -1,14 +1,14 @@
-class_name GDs_EP_GetAllEstaciones_Simulado extends Node
+class_name GDs_EP_GetAllSitios_Simulado extends Node
 
 const ultFechaConInfo : String = "2024-09-11T18:32:17"
 
-var CR_LocalEstaciones: GDs_CR_LocalEstaciones
+var CR_LocalEstaciones: GDs_CR_LocalSitios
 
-func Initialize(_CR_LocalEstaciones: GDs_CR_LocalEstaciones):
+func Initialize(_CR_LocalEstaciones: GDs_CR_LocalSitios):
 	CR_LocalEstaciones =_CR_LocalEstaciones
 
-func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
-	var estaciones : Array[GDs_Data_EP_Estacion]
+func GetEstaciones() -> Array[GDs_Data_EP_Sitio]:
+	var estaciones : Array[GDs_Data_EP_Sitio]
 	
 	var fecha : String
 	var utr : bool
@@ -174,7 +174,7 @@ func GetEstaciones() -> Array[GDs_Data_EP_Estacion]:
 		"rebasa_nvls_presa": randi() % 2 == 0,
 		"rebasa_tlrncia_prep_pluv": randi() % 2 == 0
 		}
-		var estacion : GDs_Data_EP_Estacion = GDs_Data_EP_Estacion.new(estacionRndValues)
+		var estacion : GDs_Data_EP_Sitio = GDs_Data_EP_Sitio.new(estacionRndValues)
 		estacion.rebasa_nvls_presa = estacion.nivel >= CR_LocalEstaciones.LocalEstaciones[idx].nivelPrev
 		estacion.rebasa_tlrncia_prep_pluv = estacion.pptn_pluvial >= CR_LocalEstaciones.LocalEstaciones[idx].tlrncia_prep_pluv
 

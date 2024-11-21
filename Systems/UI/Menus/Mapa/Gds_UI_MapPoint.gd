@@ -14,12 +14,12 @@ var currenttween:Tween
 var squareScale:Vector2
 var color:Color
 
-var estacion:GDs_Data_Estacion
+var estacion:GDs_Data_Sitio
 
-signal OnSitioPressed(_estacion:GDs_Data_Estacion)
+signal OnSitioPressed(_estacion:GDs_Data_Sitio)
 
 # Called when the node enters the scene tree for the first time.
-func Initialize(_estacion:GDs_Data_Estacion, playCurrentAnim:bool):
+func Initialize(_estacion:GDs_Data_Sitio, playCurrentAnim:bool):
 	estacion = _estacion
 	
 	btn.mouse_entered.connect(btn.grab_focus)

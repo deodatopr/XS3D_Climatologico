@@ -4,7 +4,7 @@ class_name GDs_Orchestrator_Main extends Node
 @export var curtain : GDs_Curtain
 @export var scenes_manager : GDs_Scenes_Manager
 @export var dataService_manager : GDs_DataService_Manager
-@export var crLocalEstaciones : GDs_CR_LocalEstaciones
+@export var crLocalEstaciones : GDs_CR_LocalSitios
 
 func _ready():
 	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Simulado

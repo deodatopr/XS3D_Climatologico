@@ -1,5 +1,4 @@
-extends Resource
-class_name GDs_Data_Local_Estacion
+class_name GDs_Data_Local_Sitio extends Resource
 
 @export var id:int
 @export var nombre:String

@@ -1,34 +1,33 @@
 [gd_scene load_steps=6 format=3 uid="uid://dgkudi70j4n1c"]
 
 [ext_resource type="Script" path="res://Systems/EndPoint/Gds_DataService_Manager.gd" id="1_mcgxr"]
-[ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://Systems/EndPoint/Local_GetAll/CR_Local_Estaciones.tres" id="2_y5d4k"]
-[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones.gd" id="3_l4ktb"]
-[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Simulado.gd" id="5_ajx6o"]
-[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllEstaciones_Error.gd" id="5_fxad4"]
+[ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://Systems/EndPoint/Local_GetAll/CR_Local_Sitios.tres" id="2_y5d4k"]
+[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllSitios.gd" id="3_l4ktb"]
+[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllSitios_Simulado.gd" id="5_ajx6o"]
+[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllSitios_Error.gd" id="5_fxad4"]
 
 [node name="DataService" type="Node" node_paths=PackedStringArray("endpoint", "endpoint_Simulado", "endpoint_Error", "timerTicking")]
 script = ExtResource("1_mcgxr")
-endpoint = NodePath("EP_GetAllEstaciones/Endpoint")
-endpoint_Simulado = NodePath("EP_GetAllEstaciones/Endpoint_Simulado")
-endpoint_Error = NodePath("EP_GetAllEstaciones/Endpoint_Error")
 URL = "www.ejemplo.com"
-timeToRefresh = 30.0
-timerTicking = NodePath("EP_GetAllEstaciones/Endpoint/Timer - Ticking")
 crLocalEstaciones = ExtResource("2_y5d4k")
+endpoint = NodePath("EP_GetAllSitios/Endpoint")
+endpoint_Simulado = NodePath("EP_GetAllSitios/Endpoint_Simulado")
+endpoint_Error = NodePath("EP_GetAllSitios/Endpoint_Error")
+timerTicking = NodePath("EP_GetAllSitios/Endpoint/Timer - Ticking")
 
-[node name="EP_GetAllEstaciones" type="Node" parent="."]
+[node name="EP_GetAllSitios" type="Node" parent="."]
 
-[node name="Endpoint" type="Node" parent="EP_GetAllEstaciones"]
+[node name="Endpoint" type="Node" parent="EP_GetAllSitios"]
 script = ExtResource("3_l4ktb")
 
-[node name="HTTPRequest" type="HTTPRequest" parent="EP_GetAllEstaciones/Endpoint"]
+[node name="HTTPRequest" type="HTTPRequest" parent="EP_GetAllSitios/Endpoint"]
 
-[node name="Timer - Ticking" type="Timer" parent="EP_GetAllEstaciones/Endpoint"]
+[node name="Timer - Ticking" type="Timer" parent="EP_GetAllSitios/Endpoint"]
 
-[node name="Endpoint_Simulado" type="Node" parent="EP_GetAllEstaciones"]
+[node name="Endpoint_Simulado" type="Node" parent="EP_GetAllSitios"]
 script = ExtResource("5_ajx6o")
 
-[node name="Endpoint_Error" type="Node" parent="EP_GetAllEstaciones"]
+[node name="Endpoint_Error" type="Node" parent="EP_GetAllSitios"]
 script = ExtResource("5_fxad4")
 
-[node name="Timer - Retry" type="Timer" parent="EP_GetAllEstaciones/Endpoint_Error"]
+[node name="Timer - Retry" type="Timer" parent="EP_GetAllSitios/Endpoint_Error"]

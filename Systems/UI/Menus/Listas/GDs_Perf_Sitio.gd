@@ -43,9 +43,9 @@ extends Control
 @export var viento:Label
 @export var vientoSnsr:Control
 
-var estacion:GDs_Data_Estacion
+var estacion:GDs_Data_Sitio
 
-signal OnSitioPressed(GDs_Data_Estacion) 
+signal OnSitioPressed(GDs_Data_Sitio) 
 var tween:Tween
 
 var whiteBlur := Color.WHITE
@@ -61,7 +61,7 @@ func _ready():
 	button.focus_exited.connect(ScaleDown)
 	button.mouse_exited.connect(ScaleDown)
 
-func DataRefresh(_estacion: GDs_Data_Estacion):
+func DataRefresh(_estacion: GDs_Data_Sitio):
 	estacion = _estacion
 	frame.self_modulate = _estacion.color
 	frameNombre.self_modulate = _estacion.color

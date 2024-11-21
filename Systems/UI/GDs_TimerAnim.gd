@@ -8,5 +8,5 @@ func _ready():
 	anim.stop()	
 
 func _input(event):
-	if event.is_action_pressed("UIShowInfo"):
+	if event.is_action_pressed("UI_Info"):
 		anim.stop()

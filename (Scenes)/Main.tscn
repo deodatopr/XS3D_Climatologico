@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_Curtain.gd" id="1_22qja"]
 [ext_resource type="Script" path="res://Systems/ManagerScenes/GDs_Manager_Scenes.gd" id="2_t3lcg"]
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orchestrator_Main.gd" id="3_7k0af"]
-[ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://Systems/EndPoint/Local_GetAll/CR_Local_Estaciones.tres" id="4_rl3y7"]
+[ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://Systems/EndPoint/Local_GetAll/CR_Local_Sitios.tres" id="4_rl3y7"]
 [ext_resource type="PackedScene" uid="uid://dgkudi70j4n1c" path="res://Systems/EndPoint/Pfb_DataService.tscn" id="5_8ipwn"]
 [ext_resource type="PackedScene" uid="uid://klhd05h31soo" path="res://Systems/Splash/Pfb_Splash.tscn" id="5_qomdb"]
 [ext_resource type="PackedScene" uid="uid://dj24gdwn2bk1y" path="res://(Scenes)/Scn_Sector4.tscn" id="6_5288l"]
@@ -17,6 +17,7 @@
 
 [node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("splash", "curtain", "scenes_manager", "dataService_manager")]
 script = ExtResource("3_7k0af")
+sitioInicial = 1
 splash = NodePath("../../[ UI ]/Splash")
 curtain = NodePath("../Curtain")
 scenes_manager = NodePath("../MngScenes")
@@ -41,6 +42,9 @@ sitios = {
 [node name="Find -CR_Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]
 
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("5_8ipwn")]
+timeToRefresh = null
+timeToReconnect_Error = null
+timeoutEPGetAllEstaciones = null
 
 [node name="Simulados" type="Node" parent="[ SYSTEMS ]"]
 script = ExtResource("8_po2sq")

@@ -13,7 +13,7 @@ var currentSitio:=0#IDX del array
 var sitioIdPressed:=-1
 
 # Called when the node enters the scene tree for the first time.
-func Initialize(_estaciones:Array[GDs_Data_Estacion], current:int):
+func Initialize(_estaciones:Array[GDs_Data_Sitio], current:int):
 	currentSitio = current
 	visibility_changed.connect(OnVisibility)
 	var idx = 0
@@ -39,7 +39,7 @@ func OnVisibility():
 	if visible:
 		mapPoints[currentSitio].grab_focus()
 
-func OnAnySitioPressed(_estacion:GDs_Data_Estacion):
+func OnAnySitioPressed(_estacion:GDs_Data_Sitio):
 	#AUDIO
 	if not APPSTATE.popUpOpened:
 		clickSnd.play()

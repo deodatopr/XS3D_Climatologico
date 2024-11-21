@@ -38,7 +38,7 @@ func Initialize():
 		#AUDIOS
 		sitio.button.focus_entered.connect(PlayUISound)
 
-func DataRefresh(_estaciones : Array[GDs_Data_Estacion]):
+func DataRefresh(_estaciones : Array[GDs_Data_Sitio]):
 	var idx=0
 	for sitio in sitios:
 		sitio.DataRefresh(_estaciones[idx])
@@ -55,7 +55,7 @@ func GetCurrentFocus():
 			lastOneFocused = idx
 		idx+=1
 
-func OnAnySitioPressed(_estacion:GDs_Data_Estacion):
+func OnAnySitioPressed(_estacion:GDs_Data_Sitio):
 	#AUDIO
 	if not APPSTATE.popUpOpened:
 		sndUiPressed.play()

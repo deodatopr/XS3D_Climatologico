@@ -1,12 +1,12 @@
-class_name GDs_EP_GetAllEstaciones_Error extends Node
+class_name GDs_EP_GetAllSitios_Error extends Node
 
-var CR_LocalEstaciones: GDs_CR_LocalEstaciones
+var CR_LocalEstaciones: GDs_CR_LocalSitios
 
-func Initialize(_CR_LocalEstaciones: GDs_CR_LocalEstaciones):
+func Initialize(_CR_LocalEstaciones: GDs_CR_LocalSitios):
 	CR_LocalEstaciones = _CR_LocalEstaciones
 		
-func GetEstaciones_NoData() -> Array[GDs_Data_EP_Estacion]:
-	var estaciones : Array[GDs_Data_EP_Estacion]
+func GetEstaciones_NoData() -> Array[GDs_Data_EP_Sitio]:
+	var estaciones : Array[GDs_Data_EP_Sitio]
 	
 	var fecha : String = "---- -- ----- --:--"
 	var utr : bool = false
@@ -61,7 +61,7 @@ func GetEstaciones_NoData() -> Array[GDs_Data_EP_Estacion]:
 		"rebasa_tlrncia_prep_pluv": randi() % 2 == 0
 		}
 		
-		var estacion : GDs_Data_EP_Estacion = GDs_Data_EP_Estacion.new(estacionNoValues)
+		var estacion : GDs_Data_EP_Sitio = GDs_Data_EP_Sitio.new(estacionNoValues)
 		estacion.rebasa_nvls_presa = false
 		estacion.rebasa_tlrncia_prep_pluv = false
 
@@ -70,5 +70,5 @@ func GetEstaciones_NoData() -> Array[GDs_Data_EP_Estacion]:
 		
 	return estaciones
 	
-func GetEstaciones_LastData(_lastEstacionesData : Array[GDs_Data_EP_Estacion]) -> Array[GDs_Data_EP_Estacion]:
+func GetEstaciones_LastData(_lastEstacionesData : Array[GDs_Data_EP_Sitio]) -> Array[GDs_Data_EP_Sitio]:
 	return _lastEstacionesData

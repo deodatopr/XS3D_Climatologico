@@ -76,7 +76,7 @@ func OnRequestSuccess():
 		_AnimHidePanelError()
 		
 func OnDataRefresh():
-	var sitio : GDs_Data_Estacion = APPSTATE.currntSitio
+	var sitio : GDs_Data_Sitio = APPSTATE.currntSitio
 	
 	id.text = str(sitio.id)
 	idframe.self_modulate = sitio.color

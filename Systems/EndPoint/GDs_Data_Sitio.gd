@@ -1,5 +1,4 @@
-extends Node
-class_name GDs_Data_Estacion
+class_name GDs_Data_Sitio extends Node
 
 #ENDPOINT
 var id: int

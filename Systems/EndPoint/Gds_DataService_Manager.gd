@@ -2,9 +2,9 @@ class_name GDs_DataService_Manager extends Node
 
 @export_category("ENDPOINT - GetAllSitios")
 @export_group("Endpoint")
-@export var endpoint : GDs_EP_GetAllEstaciones
-@export var endpoint_Simulado : GDs_EP_GetAllEstaciones_Simulado
-@export var endpoint_Error : GDs_EP_GetAllEstaciones_Error
+@export var endpoint : GDs_EP_GetAllSitios
+@export var endpoint_Simulado : GDs_EP_GetAllSitios_Simulado
+@export var endpoint_Error : GDs_EP_GetAllSitios_Error
 @export var URL : String
 @export var timeToRefresh : float = 30.0
 @export var timeToReconnect_Error : float = 10.0
@@ -12,14 +12,11 @@ class_name GDs_DataService_Manager extends Node
 @export var timerTicking : Timer
 
 @export_group("Local")
-@export var crLocalEstaciones : GDs_CR_LocalEstaciones
+@export var crLocalEstaciones : GDs_CR_LocalSitios
 
-var estacionesFromEP : Array[GDs_Data_EP_Estacion] = []
+var estacionesFromEP : Array[GDs_Data_EP_Sitio] = []
 
-var estaciones : Array[GDs_Data_Estacion] = []
-var estaciones_Estruc_Todas : GDs_Data_Estaciones_Estructura
-var estaciones_Estruc_Mexico : GDs_Data_Estaciones_Estructura
-var estaciones_Estruc_Michoacan : GDs_Data_Estaciones_Estructura
+var estaciones : Array[GDs_Data_Sitio] = []
 
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
@@ -40,16 +37,11 @@ func Initialize():
 	
 	#Connect timer to refresh endpoint
 	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)
-	
-	#Create objects
-	estaciones_Estruc_Todas = GDs_Data_Estaciones_Estructura.new()
-	estaciones_Estruc_Mexico = GDs_Data_Estaciones_Estructura.new()
-	estaciones_Estruc_Michoacan = GDs_Data_Estaciones_Estructura.new()
 
 func MakeRequest_GetAllEstaciones():
 	endpoint.Request_GetAllEstaciones()
 	
-func GetEstacionById(_id : int) -> GDs_Data_Estacion:
+func GetEstacionById(_id : int) -> GDs_Data_Sitio:
 	for estacion in estaciones:
 		if estacion.id == _id:
 			return estacion
@@ -141,111 +133,83 @@ func _GetDataFromEP_GetAllEstaciones():
 		
 	_UpdateFromEP(estacionesFromEP)
 	
-	#Fill structs by estado
-	_FillStructure(estaciones_Estruc_Todas)
-	_FillStructure(estaciones_Estruc_Mexico, ENUMS.Estado.Mexico)
-	_FillStructure(estaciones_Estruc_Michoacan,ENUMS.Estado.Michoacan)
-	
 	SIGNALS.OnRefresh.emit()
 
-func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
-	for estacionEP in arrayEndPoint:
-		var estacionLocal = crLocalEstaciones.GetEstacion(estacionEP.id)
-		var instanceEstacionCombinada : GDs_Data_Estacion = GDs_Data_Estacion.new()
+func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
+	for sitioEP in arrayEndPoint:
+		var sitioLocal = crLocalEstaciones.GetEstacion(sitioEP.id)
+		var instanceSitioCombinado : GDs_Data_Sitio = GDs_Data_Sitio.new()
 		
 		#From EP
-		instanceEstacionCombinada.id = estacionEP.id
-		instanceEstacionCombinada.fecha = estacionEP.fecha
-		instanceEstacionCombinada.nivel = estacionEP.nivel
-		instanceEstacionCombinada.pptn_pluvial = estacionEP.pptn_pluvial
-		instanceEstacionCombinada.humedad = estacionEP.humedad
-		instanceEstacionCombinada.evaporacion = estacionEP.evaporacion
-		instanceEstacionCombinada.intsdad_viento = estacionEP.intsdad_viento
-		instanceEstacionCombinada.temperatura = estacionEP.temperatura
-		instanceEstacionCombinada.disp_utr = estacionEP.disp_utr
-		instanceEstacionCombinada.fallo_alim_ac = estacionEP.fallo_alim_ac
-		instanceEstacionCombinada.volt_bat_resp = estacionEP.volt_bat_resp
-		instanceEstacionCombinada.enlace = estacionEP.enlace
-		instanceEstacionCombinada.energia_electrica = estacionEP.energia_electrica
-		instanceEstacionCombinada.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
-		instanceEstacionCombinada.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
-		instanceEstacionCombinada.presion = estacionEP.presion
-		instanceEstacionCombinada.presaSnsr = estacionEP.presaSnsr
-		instanceEstacionCombinada.pcptnSnsr = estacionEP.pcptnSnsr
-		instanceEstacionCombinada.prsnSnsr = estacionEP.prsnSnsr
-		instanceEstacionCombinada.solSnsr = estacionEP.solSnsr
-		instanceEstacionCombinada.humTempSnsr = estacionEP.humTempSnsr
-		instanceEstacionCombinada.vntoSnsr = estacionEP.vntoSnsr
+		instanceSitioCombinado.id = sitioEP.id
+		instanceSitioCombinado.fecha = sitioEP.fecha
+		instanceSitioCombinado.nivel = sitioEP.nivel
+		instanceSitioCombinado.pptn_pluvial = sitioEP.pptn_pluvial
+		instanceSitioCombinado.humedad = sitioEP.humedad
+		instanceSitioCombinado.evaporacion = sitioEP.evaporacion
+		instanceSitioCombinado.intsdad_viento = sitioEP.intsdad_viento
+		instanceSitioCombinado.temperatura = sitioEP.temperatura
+		instanceSitioCombinado.disp_utr = sitioEP.disp_utr
+		instanceSitioCombinado.fallo_alim_ac = sitioEP.fallo_alim_ac
+		instanceSitioCombinado.volt_bat_resp = sitioEP.volt_bat_resp
+		instanceSitioCombinado.enlace = sitioEP.enlace
+		instanceSitioCombinado.energia_electrica = sitioEP.energia_electrica
+		instanceSitioCombinado.rebasa_nvls_presa = sitioEP.rebasa_nvls_presa
+		instanceSitioCombinado.rebasa_tlrncia_prep_pluv = sitioEP.rebasa_tlrncia_prep_pluv
+		instanceSitioCombinado.presion = sitioEP.presion
+		instanceSitioCombinado.presaSnsr = sitioEP.presaSnsr
+		instanceSitioCombinado.pcptnSnsr = sitioEP.pcptnSnsr
+		instanceSitioCombinado.prsnSnsr = sitioEP.prsnSnsr
+		instanceSitioCombinado.solSnsr = sitioEP.solSnsr
+		instanceSitioCombinado.humTempSnsr = sitioEP.humTempSnsr
+		instanceSitioCombinado.vntoSnsr = sitioEP.vntoSnsr
 		
 		#From Local
-		instanceEstacionCombinada.nombre = estacionLocal.nombre
-		instanceEstacionCombinada.estado = estacionLocal.estado
-		instanceEstacionCombinada.latitud = estacionLocal.latitud
-		instanceEstacionCombinada.longitud = estacionLocal.longitud
-		instanceEstacionCombinada.nivelNormal = estacionLocal.nivelNormal
-		instanceEstacionCombinada.nivelPrev = estacionLocal.nivelPrev
-		instanceEstacionCombinada.nivelCrit = estacionLocal.nivelCrit
-		instanceEstacionCombinada.disponible = estacionLocal.disponible
-		instanceEstacionCombinada.color = estacionLocal.color
+		instanceSitioCombinado.nombre = sitioLocal.nombre
+		instanceSitioCombinado.estado = sitioLocal.estado
+		instanceSitioCombinado.latitud = sitioLocal.latitud
+		instanceSitioCombinado.longitud = sitioLocal.longitud
+		instanceSitioCombinado.nivelNormal = sitioLocal.nivelNormal
+		instanceSitioCombinado.nivelPrev = sitioLocal.nivelPrev
+		instanceSitioCombinado.nivelCrit = sitioLocal.nivelCrit
+		instanceSitioCombinado.disponible = sitioLocal.disponible
+		instanceSitioCombinado.color = sitioLocal.color
 		
 		#Extras
-		instanceEstacionCombinada.enPrev =  estacionEP.nivel >=  estacionLocal.nivelPrev and estacionEP.nivel <  estacionLocal.nivelCrit 
-		instanceEstacionCombinada.enCrit =  estacionEP.nivel >=  estacionLocal.nivelCrit
+		instanceSitioCombinado.enPrev =  sitioEP.nivel >=  sitioLocal.nivelPrev and sitioEP.nivel <  sitioLocal.nivelCrit 
+		instanceSitioCombinado.enCrit =  sitioEP.nivel >=  sitioLocal.nivelCrit
 		
 		#Add to Final array
-		estaciones.append(instanceEstacionCombinada)
+		estaciones.append(instanceSitioCombinado)
 		
-func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Estacion]):
+func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 	#Update data only for properties from EP
 	
-	for estacionEP in arrayEndPoint:
-		var estacionToUpdate : GDs_Data_Estacion = GetEstacionById(estacionEP.id)
-		estacionToUpdate.fecha = estacionEP.fecha
-		estacionToUpdate.nivel = estacionEP.nivel
-		estacionToUpdate.pptn_pluvial = estacionEP.pptn_pluvial
-		estacionToUpdate.humedad = estacionEP.humedad
-		estacionToUpdate.evaporacion = estacionEP.evaporacion
-		estacionToUpdate.intsdad_viento = estacionEP.intsdad_viento
-		estacionToUpdate.temperatura = estacionEP.temperatura
-		estacionToUpdate.disp_utr = estacionEP.disp_utr
-		estacionToUpdate.fallo_alim_ac = estacionEP.fallo_alim_ac
-		estacionToUpdate.volt_bat_resp = estacionEP.volt_bat_resp
-		estacionToUpdate.presion = estacionEP.presion
-		estacionToUpdate.presaSnsr = estacionEP.presaSnsr
-		estacionToUpdate.pcptnSnsr = estacionEP.pcptnSnsr
-		estacionToUpdate.prsnSnsr = estacionEP.prsnSnsr
-		estacionToUpdate.solSnsr = estacionEP.solSnsr
-		estacionToUpdate.humTempSnsr = estacionEP.humTempSnsr
-		estacionToUpdate.vntoSnsr = estacionEP.vntoSnsr
-		estacionToUpdate.enlace = estacionEP.enlace
-		estacionToUpdate.energia_electrica = estacionEP.energia_electrica
-		estacionToUpdate.rebasa_nvls_presa = estacionEP.rebasa_nvls_presa
-		estacionToUpdate.rebasa_tlrncia_prep_pluv = estacionEP.rebasa_tlrncia_prep_pluv
-		estacionToUpdate.enPrev =  estacionEP.nivel >=  estacionToUpdate.nivelPrev and estacionEP.nivel <  estacionToUpdate.nivelCrit 
-		estacionToUpdate.enCrit =  estacionEP.nivel >=  estacionToUpdate.nivelCrit
+	for sitioEP in arrayEndPoint:
+		var estacionToUpdate : GDs_Data_Sitio = GetEstacionById(sitioEP.id)
+		estacionToUpdate.fecha = sitioEP.fecha
+		estacionToUpdate.nivel = sitioEP.nivel
+		estacionToUpdate.pptn_pluvial = sitioEP.pptn_pluvial
+		estacionToUpdate.humedad = sitioEP.humedad
+		estacionToUpdate.evaporacion = sitioEP.evaporacion
+		estacionToUpdate.intsdad_viento = sitioEP.intsdad_viento
+		estacionToUpdate.temperatura = sitioEP.temperatura
+		estacionToUpdate.disp_utr = sitioEP.disp_utr
+		estacionToUpdate.fallo_alim_ac = sitioEP.fallo_alim_ac
+		estacionToUpdate.volt_bat_resp = sitioEP.volt_bat_resp
+		estacionToUpdate.presion = sitioEP.presion
+		estacionToUpdate.presaSnsr = sitioEP.presaSnsr
+		estacionToUpdate.pcptnSnsr = sitioEP.pcptnSnsr
+		estacionToUpdate.prsnSnsr = sitioEP.prsnSnsr
+		estacionToUpdate.solSnsr = sitioEP.solSnsr
+		estacionToUpdate.humTempSnsr = sitioEP.humTempSnsr
+		estacionToUpdate.vntoSnsr = sitioEP.vntoSnsr
+		estacionToUpdate.enlace = sitioEP.enlace
+		estacionToUpdate.energia_electrica = sitioEP.energia_electrica
+		estacionToUpdate.rebasa_nvls_presa = sitioEP.rebasa_nvls_presa
+		estacionToUpdate.rebasa_tlrncia_prep_pluv = sitioEP.rebasa_tlrncia_prep_pluv
+		estacionToUpdate.enPrev =  sitioEP.nivel >=  estacionToUpdate.nivelPrev and sitioEP.nivel <  estacionToUpdate.nivelCrit 
+		estacionToUpdate.enCrit =  sitioEP.nivel >=  estacionToUpdate.nivelCrit
 		
 		UpdateCurrentSitio(APPSTATE.currntIdSitio)
-
-func _FillStructure(_estaciones_Estruc : GDs_Data_Estaciones_Estructura, _estado : int = -1):
-	_estaciones_Estruc.estaciones.clear()
-	
-	var alrmEnlace := 0
-	var alrmEnergiaElectrica := 0
-	var alrmRebasaNvlsPresa := 0
-	var alrmRebasaTlrnciaPrepPluv := 0
-	
-	for estacion in estaciones:
-		if _estado == -1 || _estado == estacion.estado:
-			#Count alarms
-			if estacion.enlace: alrmEnlace+=1
-			if estacion.energia_electrica: alrmEnergiaElectrica+=1
-			if estacion.rebasa_nvls_presa: alrmRebasaNvlsPresa+=1
-			if estacion.rebasa_tlrncia_prep_pluv: alrmRebasaTlrnciaPrepPluv+=1
-			
-			#Set struct data
-			_estaciones_Estruc.alrmEnlace = alrmEnlace
-			_estaciones_Estruc.alrmEnergiaElectrica = alrmEnergiaElectrica
-			_estaciones_Estruc.alrmRebasaNvlsPresa = alrmRebasaNvlsPresa
-			_estaciones_Estruc.alrmRebasaTlrnciaPrepPluv = alrmRebasaTlrnciaPrepPluv
-			_estaciones_Estruc.estaciones.append(estacion)
 #endregion
