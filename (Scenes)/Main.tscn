@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpgp82rtvn4n5"]
+[gd_scene load_steps=11 format=3 uid="uid://bpgp82rtvn4n5"]
 
 [ext_resource type="PackedScene" uid="uid://ddn72texoudi0" path="res://Systems/Curtain/Pfb_curtain.tscn" id="1_2h8cb"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_Curtain.gd" id="1_22qja"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://klhd05h31soo" path="res://Systems/Splash/Pfb_Splash.tscn" id="5_qomdb"]
 [ext_resource type="PackedScene" uid="uid://dj24gdwn2bk1y" path="res://(Scenes)/Scn_Sector4.tscn" id="6_5288l"]
 [ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector6.tscn" id="6_kmvln"]
-[ext_resource type="PackedScene" uid="uid://bssp4cclscsmr" path="res://#Resources/Gym/#Scn_Gym.tscn" id="6_qgy7a"]
 [ext_resource type="Script" path="res://Systems/Debug_Alrmas/GDs_Debug.gd" id="8_po2sq"]
 
 [node name="Main" type="Node"]
@@ -35,7 +34,6 @@ container = NodePath("../../[ UI ]/Curtain/img - Curtain/Container")
 script = ExtResource("2_t3lcg")
 sceneParentRoot = NodePath("../../[ SCENES ]")
 sitios = {
--1: ExtResource("6_qgy7a"),
 4: ExtResource("6_5288l"),
 6: ExtResource("6_kmvln")
 }

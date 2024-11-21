@@ -53,9 +53,6 @@ class_name GDs_Cam_Manager extends Node
 @onready var preset_env_sky : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Sky_Sunny.tres')
 @onready var preset_env_fly : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres')
 
-@onready var preset_gym_fly_sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres')
-@onready var preset_gym_sky_sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Sky_Sunny.tres')
-
 @onready var preset_cam_sky : CameraAttributesPractical = preload("uid://ddf3muiyuuvj6")
 @onready var preset_cam_fly : CameraAttributesPractical = preload("uid://b6jeytnq38xvp")
 
@@ -210,10 +207,7 @@ func _ChangeToMode(_mode : int):
 func _ChangeToMode_Sky():
 	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia:
 		# World env
-		if DEBUG.isGym:
-			worldEnv.environment = preset_gym_sky_sunny
-		else:
-			worldEnv.environment = preset_env_sky
+		worldEnv.environment = preset_env_sky
 		
 		#DOF
 		worldEnv.camera_attributes = preset_cam_sky
@@ -245,10 +239,7 @@ func _ChangeToMode_Sky():
 func _ChangeToMode_Fly():
 	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia:
 		# World env
-		if DEBUG.isGym:
-			worldEnv.environment = preset_gym_fly_sunny
-		else:
-			worldEnv.environment = preset_env_fly
+		worldEnv.environment = preset_env_fly
 		
 		#DOF
 		worldEnv.camera_attributes = preset_cam_fly
