@@ -109,7 +109,6 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	var boundingX : float = abs(positionInMap01.x) + offsetToDetectLimits
 	var boundingY : float = abs(positionInMap01.y) + offsetToDetectLimits
 	
-	print(CAM.boundings01)
 	#Only inside range limits calculate a value to detect proximity to end limit
 	if boundingX >= proximityEdgeLimits  || boundingY >= proximityEdgeLimits:
 		var boundingValue := boundingX if boundingX >= boundingY else boundingY
