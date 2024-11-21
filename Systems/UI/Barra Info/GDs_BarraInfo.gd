@@ -155,7 +155,7 @@ func _AnimShowPaneError():
 	
 	tweenPanelError = create_tween()
 	tweenPanelError.tween_property(panelError,"position",targetPos, .5)
-	print("Show")
+	#print("Show")
 	await tweenPanelError.finished
 	
 	timerIsRunning = true

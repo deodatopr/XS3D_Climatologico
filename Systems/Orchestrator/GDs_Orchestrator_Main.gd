@@ -1,5 +1,5 @@
 class_name GDs_Orchestrator_Main extends Node
-@export_enum("Sector6","Sector4","Gym","Random") var sitioInicial: int
+@export_enum("Sector6","Sector4","Random") var sitioInicial: int
 @export var splash : GDs_Splash
 @export var curtain : GDs_Curtain
 @export var scenes_manager : GDs_Scenes_Manager
@@ -9,14 +9,11 @@ class_name GDs_Orchestrator_Main extends Node
 func _ready():
 	APPSTATE.EP_GetAllEstaciones_RequestType = ENUMS.EP_RequestType.From_Simulado
 	var sitioToStart : int = scenes_manager.GetRndIdSite()
-	DEBUG.isGym = false
-	if sitioInicial==0: 
-		sitioToStart=6
-	elif sitioInicial==1 :
-		sitioToStart=4
-	elif sitioInicial == 2:
-		DEBUG.isGym = true
-		sitioToStart=6
+
+	if sitioInicial == 0: 
+		sitioToStart = 6
+	elif sitioInicial == 1:
+		sitioToStart = 4
 	
 	APPSTATE.currntIdSitio = sitioToStart
 	

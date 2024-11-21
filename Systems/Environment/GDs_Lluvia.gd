@@ -33,12 +33,6 @@ var presetEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
 var presetEnvFly_Sunny : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres')
 var presetEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
 
-var presetGymEnvSky_Sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Sky_Sunny.tres')
-var presetGymEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
-
-var presetGymEnvFly_Sunny : Environment = preload('res://#Resources/Gym/Presets/Preset_Gym_Fly_Sunny.tres')
-var presetGymEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
-
 func _ready():
 	#Save original values
 	SIGNALS.OnLluviaSet.connect(_OnLluviaSet)
@@ -78,11 +72,11 @@ func _SinLluvia():
 	
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		worldEnv.environment = _GetEnvPreset(presetEnvSky_Sunny, presetGymEnvSky_Sunny, DEBUG.isGym) 
+		worldEnv.environment = presetEnvSky_Sunny
 		UTILITIES.TurnOnObject(lightSunSky)
 		UTILITIES.TurnOffObject(lightSunFly)
 	else:
-		worldEnv.environment = _GetEnvPreset(presetEnvFly_Sunny, presetGymEnvFly_Sunny, DEBUG.isGym) 
+		worldEnv.environment = presetEnvFly_Sunny 
 		UTILITIES.TurnOffObject(lightSunSky)
 		UTILITIES.TurnOnObject(lightSunFly)
 	
@@ -102,10 +96,9 @@ func _ConLluvia():
 	UTILITIES.TurnOnObject(lightRain)
 	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		worldEnv.environment = _GetEnvPreset(presetEnvSky_Rain, presetGymEnvSky_Rain, DEBUG.isGym)
+		worldEnv.environment = presetEnvSky_Rain
 	else:
-		worldEnv.environment = _GetEnvPreset(presetEnvFly_Rain, presetGymEnvFly_Rain, DEBUG.isGym)
-	
+		worldEnv.environment = presetEnvFly_Rain
 	
 	UTILITIES.TurnOnObject(rainFlyParticles)
 	UTILITIES.TurnOnObject(rainSkyParticles)
@@ -126,15 +119,8 @@ func _OnLluviaSet(_lluviaIntensity : int):
 func SwitchRainEnvironment(_cam:int):
 	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia: return
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
-		worldEnv.environment = _GetEnvPreset(presetEnvSky_Rain, presetGymEnvSky_Rain, DEBUG.isGym)
+		worldEnv.environment = presetEnvSky_Rain
 		lensDroplets.hide()
 	else:
-		worldEnv.environment = _GetEnvPreset(presetEnvFly_Rain, presetGymEnvFly_Rain, DEBUG.isGym)
+		worldEnv.environment = presetEnvFly_Rain
 		lensDroplets.show()
-		
-		
-func _GetEnvPreset(_realPreset : Environment, _gymPreset : Environment, _isGym) -> Environment:
-	if _isGym:
-		return _gymPreset
-	else:
-		return _realPreset
