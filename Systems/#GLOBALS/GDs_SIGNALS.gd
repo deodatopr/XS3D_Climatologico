@@ -45,3 +45,5 @@ signal OnCameraChangedMode(_modoToChange : int)
 signal OnDebugRefresh()
 @warning_ignore('unused_signal')
 signal OnDebugValuechangedByScript()
+signal OnDatosSimuladosON
+signal OnDatosSimuladosOFF

@@ -55,6 +55,7 @@ func OnModoDatosChanged(idx:int):
 		alarma.disabled = true
 		bateria.disabled = true
 		conexion.disabled = true
+		SIGNALS.OnDatosSimuladosOFF.emit()
 	else:
 		DEBUG.modoDatos = ENUMS.ModoDatos.Simulado
 		precipitacion.disabled = false
@@ -62,6 +63,7 @@ func OnModoDatosChanged(idx:int):
 		alarma.disabled = false
 		bateria.disabled = false
 		conexion.disabled = false
+		SIGNALS.OnDatosSimuladosON.emit()
 	SIGNALS.OnDebugRefresh.emit()
 
 func OnPrecipitacionMouseEntered():
@@ -73,11 +75,9 @@ func OnPrecipitacionMouseEntered():
 func OnPrecipitacionChanged(idx:int):
 	#SIN LLUVIA
 	if idx == 1:
-		print_debug("asd")
 		DEBUG.lLuvia = ENUMS.LluviaIntsdad.SinLluvia
 	#CON LLUVIA
 	else:
-		print_debug("asdasdasd")
 		DEBUG.lLuvia = ENUMS.LluviaIntsdad.ConLluvia
 	SIGNALS.OnDebugRefresh.emit()
 
