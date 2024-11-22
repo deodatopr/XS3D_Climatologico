@@ -7,7 +7,6 @@ var getAllSitios_Simulado : GDs_EP_GetAllSitios_Simulado
 var getAllSitios_Error : GDs_EP_GetAllSitios_Error
 var arraySitios : Array[GDs_Data_EP_Sitio] = []
 var lastArraySitiosWithData : Array[GDs_Data_EP_Sitio] = []
-var sitiosFromServer = {"Estaciones" : arraySitios}
 var URL : String
 var isBusy : bool
 
@@ -57,8 +56,7 @@ func _OnRequestCompleted_GetAllEstaciones(result, _response_code, _headers, body
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var dataFromServer= JSON.parse_string(body.get_string_from_utf8())
 		#Guardar datos en un diccionario local
-		sitiosFromServer = dataFromServer["Estaciones"]
-		arraySitios = _CastJsonToArrayEstaciones(sitiosFromServer)#	
+		arraySitios = _CastJsonToArrayEstaciones(dataFromServer)
 		SIGNALS.OnRequestResult_Success.emit()
 		print_rich("[color=green]Request [Get all Estaciones] success..![/color].")
 	else:
