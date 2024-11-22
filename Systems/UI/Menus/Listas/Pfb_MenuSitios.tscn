@@ -133,7 +133,6 @@ texture = SubResource("AtlasTexture_rifoi")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/Controles/Botones/A"]
-self_modulate = Color(1, 1, 1, 0.313726)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -198,6 +197,7 @@ texture = SubResource("AtlasTexture_rifoi")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="NinePatchRect/Controles/Botones/B"]
+self_modulate = Color(1, 1, 1, 0.313726)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

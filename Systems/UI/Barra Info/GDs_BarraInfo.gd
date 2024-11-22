@@ -87,9 +87,9 @@ func OnDataRefresh():
 	
 	#Senales
 	if sitio.fallo_alim_ac:
-		falloAC.self_modulate - OffColor
+		falloAC.self_modulate = OffColor
 	else:
-		falloAC.self_modulate - OnColor
+		falloAC.self_modulate = OnColor
 	if sitio.enlace:
 		senal.self_modulate = OnColor
 	else:
