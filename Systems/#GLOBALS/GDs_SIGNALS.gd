@@ -15,7 +15,7 @@ signal OnRequestResult_Error_Data
 @warning_ignore('unused_signal')
 signal OnGoToSitio(_idSitio : int)
 @warning_ignore('unused_signal')
-signal OnSitioInitialized
+signal OnSitioReady
 
 #CLIMATOLOGIA
 @warning_ignore('unused_signal')

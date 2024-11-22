@@ -17,5 +17,3 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	fly.Initialize(cameraDrones)
 	sky.Initialize(cameraDrones)
 	menu.Initialize(dataService,fly,cameraDrones)
-	
-	SIGNALS.OnSitioInitialized.emit()

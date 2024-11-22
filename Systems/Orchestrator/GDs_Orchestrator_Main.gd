@@ -28,11 +28,9 @@ func _ready():
 	#ESCENAS
 	scenes_manager.Initialize(dataService_manager,curtain)
 	
-	scenes_manager.GoToSector(sitioToStart,true)
+	await splash.OnFinishSplash
 	
-	await scenes_manager.OnSectorLoaded
-	await SIGNALS.OnSitioInitialized
+	scenes_manager.GoToSector(sitioToStart,true)
 	
 	#Send data to refresh inmediatly
 	SIGNALS.OnRefresh.emit()
-	

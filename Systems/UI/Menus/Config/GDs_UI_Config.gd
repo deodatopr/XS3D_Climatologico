@@ -1,4 +1,4 @@
-extends Control
+class_name GDs_UI_Config extends Control
 
 @export_group("External Refs")
 @export var barraMenus: GDs_BarraMenus
@@ -39,10 +39,9 @@ func _ready():
 	sfxVol.value_changed.connect(SFXVolChanged)
 	musicVol.value_changed.connect(MusicVolChanged)
 	
-	
-	masterVol.value = AUDIO.MasterVolume
 	sfxVol.value = AUDIO.SFXVolume
 	musicVol.value = AUDIO.MusicVolume
+	
 
 func _input(event):
 	if event.is_action_pressed("MasterVol+"):
@@ -64,9 +63,11 @@ func _input(event):
 			musicVol.value = musicVol.value - 0.05
 		if not visible:
 			masterVol.value = masterVol.value - 0.05
+
 func OnVisibility():
 	if visible:
 		masterBtn.grab_focus()
+		masterVol.value = AUDIO.MasterVolume
 
 func OnMasterVolumeFocus():
 	MasterOnFocus.show()
