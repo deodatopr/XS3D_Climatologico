@@ -55,27 +55,27 @@ func UpdateCurrentSitio(_id : int):
 	
 			
 	#Señal Lluvia
-	if APPSTATE.currntSitio.pptn_pluvial > 0:
+	if APPSTATE.currntSitio.pcptnVal > 0:
 		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.ConLluvia)
 	else:
 		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.SinLluvia)
 		
 	#Señal Temperatura
-	if APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_alta:
+	if APPSTATE.currntSitio.tempVal > CONST.thrshld_temperatura_alta:
 		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Alta)
-	elif APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_calida and APPSTATE.currntSitio.temperatura <= CONST.thrshld_temperatura_alta:
+	elif APPSTATE.currntSitio.tempVal > CONST.thrshld_temperatura_calida and APPSTATE.currntSitio.tempVal <= CONST.thrshld_temperatura_alta:
 		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Calida)
 	else:
 		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Normal)
 		
 	#Señal Bateria
-	if APPSTATE.currntSitio.volt_bat_resp == 25.4:
+	if APPSTATE.currntSitio.volt == 25.4:
 		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._100)
-	elif APPSTATE.currntSitio.volt_bat_resp == 25.0:
+	elif APPSTATE.currntSitio.volt == 25.0:
 		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._75)
-	elif APPSTATE.currntSitio.volt_bat_resp == 24.4:
+	elif APPSTATE.currntSitio.volt == 24.4:
 		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._50)
-	elif APPSTATE.currntSitio.volt_bat_resp == 24.0:
+	elif APPSTATE.currntSitio.volt == 24.0:
 		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._25)
 	else:
 		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._0)
@@ -143,26 +143,24 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 		#From EP
 		instanceSitioCombinado.id = sitioEP.id
 		instanceSitioCombinado.fecha = sitioEP.fecha
-		instanceSitioCombinado.nivel = sitioEP.nivel
-		instanceSitioCombinado.pptn_pluvial = sitioEP.pptn_pluvial
-		instanceSitioCombinado.humedad = sitioEP.humedad
-		instanceSitioCombinado.evaporacion = sitioEP.evaporacion
-		instanceSitioCombinado.intsdad_viento = sitioEP.intsdad_viento
-		instanceSitioCombinado.temperatura = sitioEP.temperatura
-		instanceSitioCombinado.disp_utr = sitioEP.disp_utr
-		instanceSitioCombinado.fallo_alim_ac = sitioEP.fallo_alim_ac
-		instanceSitioCombinado.volt_bat_resp = sitioEP.volt_bat_resp
+		instanceSitioCombinado.ac = sitioEP.ac
+		instanceSitioCombinado.volt = sitioEP.volt
+		instanceSitioCombinado.utr = sitioEP.utr
 		instanceSitioCombinado.enlace = sitioEP.enlace
-		instanceSitioCombinado.energia_electrica = sitioEP.energia_electrica
-		instanceSitioCombinado.rebasa_nvls_presa = sitioEP.rebasa_nvls_presa
-		instanceSitioCombinado.rebasa_tlrncia_prep_pluv = sitioEP.rebasa_tlrncia_prep_pluv
-		instanceSitioCombinado.presion = sitioEP.presion
 		instanceSitioCombinado.presaSnsr = sitioEP.presaSnsr
+		instanceSitioCombinado.presaVal = sitioEP.presaVal
 		instanceSitioCombinado.pcptnSnsr = sitioEP.pcptnSnsr
+		instanceSitioCombinado.pcptnVal = sitioEP.pcptnVal
 		instanceSitioCombinado.prsnSnsr = sitioEP.prsnSnsr
-		instanceSitioCombinado.solSnsr = sitioEP.solSnsr
+		instanceSitioCombinado.prsnVal = sitioEP.prsnVal
+		instanceSitioCombinado.rSolSnsr = sitioEP.rSolSnsr
+		instanceSitioCombinado.rSolVal = sitioEP.rSolVal
 		instanceSitioCombinado.humTempSnsr = sitioEP.humTempSnsr
+		instanceSitioCombinado.humVal = sitioEP.humVal
+		instanceSitioCombinado.tempVal = sitioEP.tempVal
 		instanceSitioCombinado.vntoSnsr = sitioEP.vntoSnsr
+		instanceSitioCombinado.vntoInt = sitioEP.vntoInt
+		instanceSitioCombinado.vntoDir = sitioEP.vntoDir
 		
 		#From Local
 		instanceSitioCombinado.nombre = sitioLocal.nombre
@@ -176,8 +174,8 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 		instanceSitioCombinado.color = sitioLocal.color
 		
 		#Extras
-		instanceSitioCombinado.enPrev =  sitioEP.nivel >=  sitioLocal.nivelPrev and sitioEP.nivel <  sitioLocal.nivelCrit 
-		instanceSitioCombinado.enCrit =  sitioEP.nivel >=  sitioLocal.nivelCrit
+		instanceSitioCombinado.enPrev = sitioEP.presaSnsr and (sitioEP.presaVal >=  sitioLocal.nivelPrev and sitioEP.presaVal <  sitioLocal.nivelCrit) 
+		instanceSitioCombinado.enCrit = sitioEP.presaSnsr and (sitioEP.presaVal >=  sitioLocal.nivelCrit)
 		
 		#Add to Final array
 		estaciones.append(instanceSitioCombinado)
@@ -188,28 +186,27 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 	for sitioEP in arrayEndPoint:
 		var estacionToUpdate : GDs_Data_Sitio = GetEstacionById(sitioEP.id)
 		estacionToUpdate.fecha = sitioEP.fecha
-		estacionToUpdate.nivel = sitioEP.nivel
-		estacionToUpdate.pptn_pluvial = sitioEP.pptn_pluvial
-		estacionToUpdate.humedad = sitioEP.humedad
-		estacionToUpdate.evaporacion = sitioEP.evaporacion
-		estacionToUpdate.intsdad_viento = sitioEP.intsdad_viento
-		estacionToUpdate.temperatura = sitioEP.temperatura
-		estacionToUpdate.disp_utr = sitioEP.disp_utr
-		estacionToUpdate.fallo_alim_ac = sitioEP.fallo_alim_ac
-		estacionToUpdate.volt_bat_resp = sitioEP.volt_bat_resp
-		estacionToUpdate.presion = sitioEP.presion
-		estacionToUpdate.presaSnsr = sitioEP.presaSnsr
-		estacionToUpdate.pcptnSnsr = sitioEP.pcptnSnsr
-		estacionToUpdate.prsnSnsr = sitioEP.prsnSnsr
-		estacionToUpdate.solSnsr = sitioEP.solSnsr
-		estacionToUpdate.humTempSnsr = sitioEP.humTempSnsr
-		estacionToUpdate.vntoSnsr = sitioEP.vntoSnsr
+		estacionToUpdate.ac = sitioEP.ac
+		estacionToUpdate.volt = sitioEP.volt
+		estacionToUpdate.utr = sitioEP.utr
 		estacionToUpdate.enlace = sitioEP.enlace
-		estacionToUpdate.energia_electrica = sitioEP.energia_electrica
-		estacionToUpdate.rebasa_nvls_presa = sitioEP.rebasa_nvls_presa
-		estacionToUpdate.rebasa_tlrncia_prep_pluv = sitioEP.rebasa_tlrncia_prep_pluv
-		estacionToUpdate.enPrev =  sitioEP.nivel >=  estacionToUpdate.nivelPrev and sitioEP.nivel <  estacionToUpdate.nivelCrit 
-		estacionToUpdate.enCrit =  sitioEP.nivel >=  estacionToUpdate.nivelCrit
+		estacionToUpdate.presaSnsr = sitioEP.presaSnsr
+		estacionToUpdate.presaVal = sitioEP.presaVal
+		estacionToUpdate.pcptnSnsr = sitioEP.pcptnSnsr
+		estacionToUpdate.pcptnVal = sitioEP.pcptnVal
+		estacionToUpdate.prsnSnsr = sitioEP.prsnSnsr
+		estacionToUpdate.prsnVal = sitioEP.prsnVal
+		estacionToUpdate.rSolSnsr = sitioEP.rSolSnsr
+		estacionToUpdate.rSolVal = sitioEP.rSolVal
+		estacionToUpdate.humTempSnsr = sitioEP.humTempSnsr
+		estacionToUpdate.humVal = sitioEP.humVal
+		estacionToUpdate.tempVal = sitioEP.tempVal
+		estacionToUpdate.vntoSnsr = sitioEP.vntoSnsr
+		estacionToUpdate.vntoInt = sitioEP.vntoInt
+		estacionToUpdate.vntoDir = sitioEP.vntoDir
+
+		estacionToUpdate.enPrev = sitioEP.presaSnsr and (sitioEP.presaVal >=  estacionToUpdate.nivelPrev and sitioEP.presaVal <  estacionToUpdate.nivelCrit)
+		estacionToUpdate.enCrit = sitioEP.presaSnsr and (sitioEP.presaVal >=  estacionToUpdate.nivelCrit)
 		
 		UpdateCurrentSitio(APPSTATE.currntIdSitio)
 #endregion

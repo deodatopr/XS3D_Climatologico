@@ -169,7 +169,6 @@ orquestrator = NodePath("[ SYSTEMS ]/Orquestrator")
 
 [node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("cameraDrones", "ppeGlitch", "fly", "sky", "menu")]
 script = ExtResource("2_q2lqn")
-initCamMode = 1
 cameraDrones = NodePath("../Camera - Drones")
 ppeGlitch = NodePath("../PPE - Glitch")
 fly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/FLY")

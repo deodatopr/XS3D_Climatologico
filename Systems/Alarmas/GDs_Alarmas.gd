@@ -38,9 +38,9 @@ func OnRefresh():
 		SetPresaToCrit()
 	
 	SetTempToNorm()
-	if APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_calida:
+	if APPSTATE.currntSitio.tempVal > CONST.thrshld_temperatura_calida:
 		SetTempToPrev()
-	if APPSTATE.currntSitio.temperatura > CONST.thrshld_temperatura_alta:
+	if APPSTATE.currntSitio.tempVal > CONST.thrshld_temperatura_alta:
 		SetTempToCrit()
 
 func SetPresaToNorm():

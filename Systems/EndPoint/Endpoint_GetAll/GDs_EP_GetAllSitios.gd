@@ -2,23 +2,23 @@ class_name GDs_EP_GetAllSitios extends Node
 
 @onready var http_request : HTTPRequest = $HTTPRequest
 
-var CR_LocalEstaciones : GDs_CR_LocalSitios
-var getAllEstaciones_Simulado : GDs_EP_GetAllSitios_Simulado
-var getAllEstaciones_Error : GDs_EP_GetAllSitios_Error
-var arrayEstaciones : Array[GDs_Data_EP_Sitio] = []
-var lastArrayEstacionesWithData : Array[GDs_Data_EP_Sitio] = []
-var estacionesFromServer = {"Estaciones" : arrayEstaciones}
+var CR_LocalSitios : GDs_CR_LocalSitios
+var getAllSitios_Simulado : GDs_EP_GetAllSitios_Simulado
+var getAllSitios_Error : GDs_EP_GetAllSitios_Error
+var arraySitios : Array[GDs_Data_EP_Sitio] = []
+var lastArraySitiosWithData : Array[GDs_Data_EP_Sitio] = []
+var sitiosFromServer = {"Estaciones" : arraySitios}
 var URL : String
 var isBusy : bool
 
-func Initialize(_url : String, _timeout : float, _CR_LocalEstaciones : GDs_CR_LocalSitios, _estacionesSimulado : GDs_EP_GetAllSitios_Simulado ,_estacionesError : GDs_EP_GetAllSitios_Error):
+func Initialize(_url : String, _timeout : float, _CR_LocalSitios : GDs_CR_LocalSitios, _sitiosSimulado : GDs_EP_GetAllSitios_Simulado ,_sitiosError : GDs_EP_GetAllSitios_Error):
 	URL = _url
 	http_request.timeout = _timeout
 	http_request.request_completed.connect(_OnRequestCompleted_GetAllEstaciones)
 	
-	CR_LocalEstaciones = _CR_LocalEstaciones
-	getAllEstaciones_Simulado = _estacionesSimulado
-	getAllEstaciones_Error = _estacionesError
+	CR_LocalSitios = _CR_LocalSitios
+	getAllSitios_Simulado = _sitiosSimulado
+	getAllSitios_Error = _sitiosError
 	
 func Request_GetAllEstaciones():
 	if isBusy:
@@ -28,19 +28,19 @@ func Request_GetAllEstaciones():
 	
 	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
 		if DEBUG.requestResult == ENUMS.EP_RequestResult.Success:
-			arrayEstaciones = getAllEstaciones_Simulado.GetEstaciones()
-			lastArrayEstacionesWithData = arrayEstaciones.duplicate()
+			arraySitios = getAllSitios_Simulado.GetEstaciones()
+			lastArraySitiosWithData = arraySitios.duplicate()
 			SIGNALS.OnRequestResult_Success.emit()
 		elif DEBUG.requestResult == ENUMS.EP_RequestResult.Error_NoData:
-			arrayEstaciones = getAllEstaciones_Error.GetEstaciones_NoData()
+			arraySitios = getAllSitios_Error.GetEstaciones_NoData()
 			SIGNALS.OnRequestResult_Error_NoData.emit()
 		else:
-			if lastArrayEstacionesWithData.size() > 0:
-				arrayEstaciones = getAllEstaciones_Error.GetEstaciones_LastData(lastArrayEstacionesWithData)
-				lastArrayEstacionesWithData = arrayEstaciones.duplicate()
+			if lastArraySitiosWithData.size() > 0:
+				arraySitios = getAllSitios_Error.GetEstaciones_LastData(lastArraySitiosWithData)
+				lastArraySitiosWithData = arraySitios.duplicate()
 				SIGNALS.OnRequestResult_Error_Data.emit()
 			else:
-				arrayEstaciones = getAllEstaciones_Error.GetEstaciones_NoData()
+				arraySitios = getAllSitios_Error.GetEstaciones_NoData()
 				SIGNALS.OnRequestResult_Error_NoData.emit()
 		isBusy = false
 		return
@@ -51,14 +51,14 @@ func Request_GetAllEstaciones():
 		
 	
 func GetEstaciones()-> Array[GDs_Data_EP_Sitio]:
-	return arrayEstaciones
+	return arraySitios
 
 func _OnRequestCompleted_GetAllEstaciones(result, _response_code, _headers, body):
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var dataFromServer= JSON.parse_string(body.get_string_from_utf8())
 		#Guardar datos en un diccionario local
-		estacionesFromServer = dataFromServer["Estaciones"]
-		arrayEstaciones = _CastJsonToArrayEstaciones(estacionesFromServer)#	
+		sitiosFromServer = dataFromServer["Estaciones"]
+		arraySitios = _CastJsonToArrayEstaciones(sitiosFromServer)#	
 		SIGNALS.OnRequestResult_Success.emit()
 		print_rich("[color=green]Request [Get all Estaciones] success..![/color].")
 	else:

@@ -2,30 +2,26 @@ class_name GDs_Data_Sitio extends Node
 
 #ENDPOINT
 var id: int
-var fecha : String
-var nivel : float
-var pptn_pluvial : float # en milímetros (mm)
-var humedad : float # en porcentaje (%)
-var evaporacion : float # en milímetros (mm)
-var intsdad_viento : float # en kilómetros por hora (km/h)
-var temperatura : float # en grados
-var dir_viento : float # en grados
-var presion : float
-var presaSnsr : bool
-var pcptnSnsr : bool
-var prsnSnsr : bool
-var solSnsr : bool
-var humTempSnsr : bool
-var vntoSnsr : bool
+var fecha: String
+var ac: bool
+var volt: float
+var utr: bool
+var enlace: bool
+var presaSnsr: bool
+var presaVal: float
+var pcptnSnsr: bool
+var pcptnVal: float
+var prsnSnsr: bool
+var prsnVal: float
+var rSolSnsr: bool
+var rSolVal: float
+var humTempSnsr: bool
+var humVal: float
+var tempVal: float
+var vntoSnsr: bool
+var vntoInt: float
+var vntoDir: float
 
-var disp_utr : bool
-var fallo_alim_ac : bool
-var volt_bat_resp : float
-
-var enlace : bool
-var energia_electrica : bool
-var rebasa_nvls_presa : bool
-var rebasa_tlrncia_prep_pluv : bool
 
 #LOCAL
 var nombre:String

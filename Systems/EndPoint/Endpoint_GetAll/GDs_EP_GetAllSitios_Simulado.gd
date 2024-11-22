@@ -11,24 +11,28 @@ func GetEstaciones() -> Array[GDs_Data_EP_Sitio]:
 	var estaciones : Array[GDs_Data_EP_Sitio]
 	
 	var fecha : String
-	var utr : bool
-	var enlace : bool
-	var nvlBateria : float
+	var id: int
+	var fch: String
+	var ac: bool
+	var volt: float
+	var utr: bool
+	var enlace: bool
+	var presaSnsr: bool
+	var presaVal: float
+	var pcptnSnsr: bool
+	var pcptnVal: float
+	var prsnSnsr: bool
+	var prsnVal: float
+	var rSolSnsr: bool
+	var rSolVal: float
+	var humTempSnsr: bool
+	var humVal: float
+	var tempVal: float
+	var vntoSnsr: bool
+	var vntoInt: float
+	var vntoDir: float
+	
 	var bateriaConCarga : bool
-	var temperatura : float
-	var humedad : float
-	var evaporacion : float
-	var precipitacion : float
-	var presionAtm : float
-	var viento : float
-	var dir_viento : int
-	var nivel : float
-	var presaSnsr : bool
-	var pcptnSnsr : bool
-	var prsnSnsr : bool
-	var solSnsr : bool
-	var humTempSnsr : bool
-	var vntoSnsr : bool
 	
 	var temp_normal_min : float = 5.0
 	var temp_normal_max : float = CONST.thrshld_temperatura_calida - 1.0
@@ -60,23 +64,23 @@ func GetEstaciones() -> Array[GDs_Data_EP_Sitio]:
 	for sitioCR in CR_LocalEstaciones.LocalEstaciones:
 		match DEBUG.bateria:
 			ENUMS.Bateria._100:
-				nvlBateria = 25.4
+				volt = 25.4
 			ENUMS.Bateria._75:
-				nvlBateria = 25.0
+				volt = 25.0
 			ENUMS.Bateria._50:
-				nvlBateria = 24.4
+				volt = 24.4
 			ENUMS.Bateria._25:
-				nvlBateria = 24.0
+				volt = 24.0
 			ENUMS.Bateria._0:
-				nvlBateria = 23.2
+				volt = 23.2
 		
-		bateriaConCarga = nvlBateria > CONST.thrshld_bateria_conCarga
+		bateriaConCarga = volt > CONST.thrshld_bateria_conCarga
 		utr = bateriaConCarga
 		enlace = bateriaConCarga
 		presaSnsr = bateriaConCarga
 		pcptnSnsr = bateriaConCarga
 		prsnSnsr = bateriaConCarga
-		solSnsr = bateriaConCarga
+		rSolSnsr = bateriaConCarga
 		humTempSnsr = bateriaConCarga
 		vntoSnsr = bateriaConCarga
 		
@@ -87,97 +91,87 @@ func GetEstaciones() -> Array[GDs_Data_EP_Sitio]:
 		#Temperatura -> (humedad y evaporacion)
 		match DEBUG.temperatura:
 			ENUMS.Temperatura.Normal:
-				temperatura = randf_range(temp_normal_min, temp_normal_max)
+				tempVal = randf_range(temp_normal_min, temp_normal_max)
 			ENUMS.Temperatura.Calida:
-				temperatura = randf_range(temp_calido_min, temp_calido_max)
+				tempVal = randf_range(temp_calido_min, temp_calido_max)
 			ENUMS.Temperatura.Alta:
-				temperatura = randf_range(temp_alto_min, temp_alto_max)
-		temperatura = temperatura if tengoDatos else NAN
+				tempVal = randf_range(temp_alto_min, temp_alto_max)
+		tempVal = tempVal if tengoDatos else NAN
 		
-		var temperaturaAlta : bool = temperatura > CONST.thrshld_temperatura_alta
+		var temperaturaAlta : bool = tempVal > CONST.thrshld_temperatura_alta
 		if tengoDatos and temperaturaAlta:
-			humedad = randf_range(humd_alto_min, humd_alto_max)
-			evaporacion =  randf_range(evap_alto_min, evap_alto_max)
+			humVal = randf_range(humd_alto_min, humd_alto_max)
+			rSolVal =  randf_range(evap_alto_min, evap_alto_max)
 		elif tengoDatos and not temperaturaAlta:
-			humedad = randf_range(humd_bajo_min, humd_bajo_max)
-			evaporacion =  randf_range(evap_bajo_min, evap_bajo_max)
+			humVal = randf_range(humd_bajo_min, humd_bajo_max)
+			rSolVal =  randf_range(evap_bajo_min, evap_bajo_max)
 		else:
-			humedad = NAN
-			evaporacion =  NAN
+			humVal = NAN
+			rSolVal =  NAN
 			
 		#Precipitacion -> (Presion atm y evaporacion)
 		match DEBUG.lLuvia:
 			ENUMS.LluviaIntsdad.SinLluvia:
-				precipitacion = 0.0
+				pcptnVal = 0.0
 			ENUMS.LluviaIntsdad.ConLluvia:
-				precipitacion = randf_range(pptc_alto_min,pptc_alto_max)
+				pcptnVal = randf_range(pptc_alto_min,pptc_alto_max)
 				
-		precipitacion = precipitacion if tengoDatos else NAN
-		var precipitacionAlta : bool = precipitacion > CONST.thrshld_pptcn_lluvia_intensa
+		pcptnVal = pcptnVal if tengoDatos else NAN
+		var precipitacionAlta : bool = pcptnVal > CONST.thrshld_pptcn_lluvia_intensa
 		if tengoDatos and precipitacionAlta:
-			presionAtm = randf_range(psnAtm_bajo_min, psnAtm_bajo_max)
-			evaporacion -= maxf(randf_range(1,3),0)
+			prsnVal = randf_range(psnAtm_bajo_min, psnAtm_bajo_max)
+			rSolVal -= maxf(randf_range(1,3),0)
 		elif tengoDatos and not precipitacionAlta:
-			presionAtm = randf_range(psnAtm_alto_min, psnAtm_alto_max)
+			prsnVal = randf_range(psnAtm_alto_min, psnAtm_alto_max)
 		else:
-			presionAtm = NAN
+			prsnVal = NAN
 
 		#Viento -> (Presión y evaporacion)
-		viento = randf_range(0.0, 60.0) if tengoDatos else NAN
+		vntoInt = randf_range(0.0, 60.0) if tengoDatos else NAN
 		@warning_ignore('incompatible_ternary', 'narrowing_conversion')
-		dir_viento = randi_range(0,360) if tengoDatos else NAN
+		vntoDir = randi_range(0,360) if tengoDatos else NAN
 		
-		var vientoAlto : bool = viento > CONST.thrshld_vnto_fuerte
+		var vientoAlto : bool = vntoInt > CONST.thrshld_vnto_fuerte
 		if tengoDatos and vientoAlto:
-			presionAtm -= maxf(randf_range(5.0, 15.0),0.0)
-			evaporacion += randf_range(1.0,3.0)
+			prsnVal -= maxf(randf_range(5.0, 15.0),0.0)
+			rSolVal += randf_range(1.0,3.0)
 		else:
-			presionAtm += randf_range(5.0, 15.0)
+			prsnVal += randf_range(5.0, 15.0)
 		
 		match DEBUG.alarmas:
 			ENUMS.Alarmas.Normal:
-				nivel = randf_range(0,sitioCR.nivelNormal)
+				presaVal = randf_range(0,sitioCR.nivelNormal)
 			ENUMS.Alarmas.Prev:
-				nivel = randf_range(sitioCR.nivelPrev,sitioCR.nivelCrit - 1)
+				presaVal = randf_range(sitioCR.nivelPrev,sitioCR.nivelCrit - 1)
 			ENUMS.Alarmas.Critico:
-				nivel = randf_range(sitioCR.nivelCrit, sitioCR.nivelCrit + 5)
+				presaVal = randf_range(sitioCR.nivelCrit, sitioCR.nivelCrit + 5)
 			
-		nivel = nivel if tengoDatos else NAN
+		presaVal = presaVal if tengoDatos else NAN
 		
 		var estacionRndValues = {
 		"id" : idx + 1,
-		"fecha": fecha,
-		"volt_bat_resp": nvlBateria,
+		"fch": fch,
+		"ac": ac,
+		"volt": volt,
+		"utr": utr,
 		"enlace": enlace,
-		"disp_utr": utr,
 		"presaSnsr": presaSnsr,
+		"presaVal": presaVal,
 		"pcptnSnsr": pcptnSnsr,
+		"pcptnVal": pcptnVal,
 		"prsnSnsr": prsnSnsr,
-		"solSnsr": solSnsr,
+		"prsnVal": prsnVal,
+		"rSolSnsr": rSolSnsr,
+		"rSolVal": rSolVal,
 		"humTempSnsr": humTempSnsr,
+		"humVal": humVal,
+		"tempVal": tempVal,
 		"vntoSnsr": vntoSnsr,
-		
-		"prtcion_pluvial": precipitacion,
-		"presion" : presionAtm,
-		
-		"temperatura": temperatura,
-		"humedad": humedad,
-		"evaporacion": evaporacion,
-		"intsdad_viento": viento,
-		
-		"dir_viento": dir_viento,
-		
-		"nivel": nivel,
-
-		"fallo_alim_ac": randi() % 2 == 0,
-		"energia_electrica": randi() % 2 == 0,
-		"rebasa_nvls_presa": randi() % 2 == 0,
-		"rebasa_tlrncia_prep_pluv": randi() % 2 == 0
+		"vntoInt": vntoInt,
+		"vntoDir": vntoDir
 		}
+		
 		var estacion : GDs_Data_EP_Sitio = GDs_Data_EP_Sitio.new(estacionRndValues)
-		estacion.rebasa_nvls_presa = estacion.nivel >= CR_LocalEstaciones.LocalEstaciones[idx].nivelPrev
-		estacion.rebasa_tlrncia_prep_pluv = estacion.pptn_pluvial >= CR_LocalEstaciones.LocalEstaciones[idx].tlrncia_prep_pluv
-
 		estaciones.append(estacion)
 		idx+=1
 		

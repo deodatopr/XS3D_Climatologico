@@ -8,67 +8,58 @@ func Initialize(_CR_LocalEstaciones: GDs_CR_LocalSitios):
 func GetEstaciones_NoData() -> Array[GDs_Data_EP_Sitio]:
 	var estaciones : Array[GDs_Data_EP_Sitio]
 	
-	var fecha : String = "---- -- ----- --:--"
-	var utr : bool = false
-	var enlace : bool = false
-	var nvlBateria : float = NAN
-	var temperatura : float = NAN
-	var humedad : float = NAN
-	var evaporacion : float = NAN
-	var precipitacion : float = NAN
-	var presionAtm : float = NAN
-	var viento : float = NAN
-	@warning_ignore('narrowing_conversion')
-	var dir_viento : int = NAN
-	var nivel : float = NAN
-	var presaSnsr : bool = false
-	var pcptnSnsr : bool = false
-	var prsnSnsr : bool = false
-	var solSnsr : bool = false
-	var humTempSnsr : bool = false
-	var vntoSnsr : bool = false
+	var fecha: String = "---- -- ----- --:--"
+	var ac: bool = false
+	var volt: float = NAN
+	var utr: bool = false
+	var enlace: bool = false
+	var presaSnsr: bool = false
+	var presaVal: float = NAN
+	var pcptnSnsr: bool = false
+	var pcptnVal: float = NAN
+	var prsnSnsr: bool = false
+	var prsnVal: float = NAN
+	var rSolSnsr: bool = false
+	var rSolVal: float = NAN
+	var humTempSnsr: bool = false
+	var humVal: float = NAN
+	var tempVal: float = NAN
+	var vntoSnsr: bool = false
+	var vntoInt: float = NAN
+	var vntoDir: float = NAN
+	
 	
 	var idx : int = 0
 	for sitioCR in CR_LocalEstaciones.LocalEstaciones:
 		var estacionNoValues = {
 		"id" : idx + 1,
-		"fecha": fecha,
-		"volt_bat_resp": nvlBateria,
+		"fch": fecha,
+		"ac": ac,
+		"volt": volt,
+		"utr": utr,
 		"enlace": enlace,
-		"disp_utr": utr,
 		"presaSnsr": presaSnsr,
+		"presaVal": presaVal,
 		"pcptnSnsr": pcptnSnsr,
+		"pcptnVal": pcptnVal,
 		"prsnSnsr": prsnSnsr,
-		"solSnsr": solSnsr,
+		"prsnVal": prsnVal,
+		"rSolSnsr": rSolSnsr,
+		"rSolVal": rSolVal,
 		"humTempSnsr": humTempSnsr,
+		"humVal": humVal,
+		"tempVal": tempVal,
 		"vntoSnsr": vntoSnsr,
-		
-		"prtcion_pluvial": precipitacion,
-		"presion" : presionAtm,
-		
-		"temperatura": temperatura,
-		"humedad": humedad,
-		"evaporacion": evaporacion,
-		"intsdad_viento": viento,
-		
-		"dir_viento": dir_viento,
-		
-		"nivel": nivel,
-
-		"fallo_alim_ac": randi() % 2 == 0,
-		"energia_electrica": randi() % 2 == 0,
-		"rebasa_nvls_presa": randi() % 2 == 0,
-		"rebasa_tlrncia_prep_pluv": randi() % 2 == 0
+		"vntoInt": vntoInt,
+		"vntoDir": vntoDir
 		}
 		
 		var estacion : GDs_Data_EP_Sitio = GDs_Data_EP_Sitio.new(estacionNoValues)
-		estacion.rebasa_nvls_presa = false
-		estacion.rebasa_tlrncia_prep_pluv = false
 
 		estaciones.append(estacion)
 		idx+=1
 		
 	return estaciones
 	
-func GetEstaciones_LastData(_lastEstacionesData : Array[GDs_Data_EP_Sitio]) -> Array[GDs_Data_EP_Sitio]:
-	return _lastEstacionesData
+func GetEstaciones_LastData(_lastSitiosData : Array[GDs_Data_EP_Sitio]) -> Array[GDs_Data_EP_Sitio]:
+	return _lastSitiosData

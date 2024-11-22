@@ -1,5 +1,5 @@
 class_name GDs_Orchestrator_Main extends Node
-@export_enum("Sector6","Sector4","Random") var sitioInicial: int
+@export_enum("Sector6","Sector4","Sector1","Random") var sitioInicial: int
 @export var splash : GDs_Splash
 @export var curtain : GDs_Curtain
 @export var scenes_manager : GDs_Scenes_Manager
@@ -14,6 +14,8 @@ func _ready():
 		sitioToStart = 6
 	elif sitioInicial == 1:
 		sitioToStart = 4
+	elif sitioInicial == 2:
+		sitioToStart = 1
 	
 	APPSTATE.currntIdSitio = sitioToStart
 	

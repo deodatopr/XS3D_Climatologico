@@ -76,7 +76,7 @@ func DataRefresh(_estacion: GDs_Data_Sitio):
 	estado.text = UTILITIES.FormatEstado(_estacion.estado)
 	
 	#Senales
-	if _estacion.fallo_alim_ac:
+	if _estacion.ac:
 		falloAC.self_modulate = OffColor
 	else:
 		falloAC.self_modulate = OnColor
@@ -84,12 +84,12 @@ func DataRefresh(_estacion: GDs_Data_Sitio):
 		senal.self_modulate = OnColor
 	else:
 		senal.self_modulate = OffColor
-	if _estacion.disp_utr:
+	if _estacion.utr:
 		UTR.self_modulate = OnColor
 	else:
 		UTR.self_modulate = OffColor
 	
-	match _estacion.volt_bat_resp:
+	match _estacion.volt:
 		25.4:#100%
 			bateriaRelleno.scale = Vector2(1.0,1.0)
 			bateriaRelleno.self_modulate =  bateriaColorNorm
@@ -106,39 +106,39 @@ func DataRefresh(_estacion: GDs_Data_Sitio):
 			bateriaRelleno.scale = Vector2(1.0,0.1)
 			bateriaRelleno.self_modulate =  ColorCrit
 	
-	lblBateria.text = UTILITIES.FormatBateriaV(_estacion.volt_bat_resp)
+	lblBateria.text = UTILITIES.FormatBateriaV(_estacion.volt)
 	
 	#nivel
-	nivel.text = UTILITIES.FormatNivel(_estacion.nivel)
+	nivel.text = UTILITIES.FormatNivel(_estacion.presaVal)
 	nivelPrev.text = UTILITIES.FormatNiveles(_estacion.nivelPrev)
 	nivelCrit.text = UTILITIES.FormatNiveles(_estacion.nivelCrit)
 	
 	nivelBg.self_modulate = ColorNorm
-	if _estacion.nivel > _estacion.nivelPrev: nivelBg.self_modulate = ColorPrev
-	if _estacion.nivel > _estacion.nivelCrit: nivelBg.self_modulate = ColorCrit
+	if _estacion.presaVal > _estacion.nivelPrev: nivelBg.self_modulate = ColorPrev
+	if _estacion.presaVal > _estacion.nivelCrit: nivelBg.self_modulate = ColorCrit
 	
 	#Datos
-	precipitacion.text = UTILITIES.FormatPptn_pluvial(_estacion.pptn_pluvial)
+	precipitacion.text = UTILITIES.FormatPptn_pluvial(_estacion.pcptnVal)
 	precipitacionSnsr.self_modulate = OnColor 
 	if not _estacion.pcptnSnsr: precipitacionSnsr.self_modulate = OffColor 
 	
-	humedad.text = UTILITIES.FormatHumedad(_estacion.humedad)
+	humedad.text = UTILITIES.FormatHumedad(_estacion.humVal)
 	humedadSnsr.self_modulate = OnColor 
 	if not _estacion.humTempSnsr: humedadSnsr.self_modulate = OffColor 
 	
-	evaporacion.text = UTILITIES.FormatEvaporacion(_estacion.evaporacion)
+	evaporacion.text = UTILITIES.FormatEvaporacion(_estacion.rSolVal)
 	evaporacionSnsr.self_modulate = OnColor 
-	if not _estacion.solSnsr: evaporacionSnsr.self_modulate = OffColor 
+	if not _estacion.rSolSnsr: evaporacionSnsr.self_modulate = OffColor 
 	
-	temp.text = UTILITIES.FormatTemperatura(_estacion.temperatura)
+	temp.text = UTILITIES.FormatTemperatura(_estacion.tempVal)
 	tempSnsr.self_modulate = OnColor 
 	if not _estacion.humTempSnsr: tempSnsr.self_modulate = OffColor 
 	
-	presion.text = UTILITIES.FormatPresion(_estacion.presion)
+	presion.text = UTILITIES.FormatPresion(_estacion.prsnVal)
 	presionSnsr.self_modulate = OnColor 
 	if not _estacion.prsnSnsr: presionSnsr.self_modulate = OffColor 
 	
-	viento.text = UTILITIES.FormatIntensidadViento(_estacion.intsdad_viento)#TODO sistema para que regrese N S E O
+	viento.text = UTILITIES.FormatIntensidadViento(_estacion.vntoInt)#TODO sistema para que regrese N S E O
 	vientoSnsr.self_modulate = OnColor 
 	if not _estacion.vntoSnsr: vientoSnsr.self_modulate = OffColor
 

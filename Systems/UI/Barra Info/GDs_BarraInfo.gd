@@ -89,7 +89,7 @@ func OnDataRefresh():
 	estado.text = UTILITIES.FormatEstado(sitio.estado)
 	
 	#Senales
-	if sitio.fallo_alim_ac:
+	if sitio.ac:
 		falloAC.self_modulate = OffColor
 	else:
 		falloAC.self_modulate = OnColor
@@ -97,12 +97,12 @@ func OnDataRefresh():
 		senal.self_modulate = OnColor
 	else:
 		senal.self_modulate = OffColor
-	if sitio.disp_utr:
+	if sitio.utr:
 		UTR.self_modulate = OnColor
 	else:
 		UTR.self_modulate = OffColor
 	
-	match sitio.volt_bat_resp:
+	match sitio.volt:
 		25.4:#100%
 			rellenoBateria.scale = Vector2(1.0,1.0)
 			rellenoBateria.self_modulate =  bateriaColorNorm
@@ -119,46 +119,45 @@ func OnDataRefresh():
 			rellenoBateria.scale = Vector2(1.0,0.1)
 			rellenoBateria.self_modulate =  ColorCrit
 	
-	lblBateria.text = UTILITIES.FormatBateriaV(sitio.volt_bat_resp)
-	
+	lblBateria.text = UTILITIES.FormatBateriaV(sitio.volt)	
 
 	#nivel
-	nivel.text = UTILITIES.FormatNivel(sitio.nivel)
+	nivel.text = UTILITIES.FormatNivel(sitio.presaVal)
 	nivelPrev.text = UTILITIES.FormatNiveles(sitio.nivelPrev)
 	nivelCrit.text = UTILITIES.FormatNiveles(sitio.nivelCrit)
 	
 	nivelBg.self_modulate = ColorNorm
 	StopAnimation()
-	var hayDatos : bool = not is_nan(sitio.nivel)
-	if hayDatos and (sitio.nivel > sitio.nivelPrev and sitio.nivel <= sitio.nivelCrit): 
+	var hayDatos : bool = not is_nan(sitio.presaVal)
+	if hayDatos and (sitio.presaVal > sitio.nivelPrev and sitio.presaVal <= sitio.nivelCrit): 
 		nivelBg.self_modulate = ColorPrev
 		PlayAnimation(ColorPrev,0.4)
-	if hayDatos and sitio.nivel > sitio.nivelCrit: 
+	if hayDatos and sitio.presaVal > sitio.nivelCrit: 
 		nivelBg.self_modulate = ColorCrit
 		PlayAnimation(ColorCrit,0.3)
 	
 	#Datos
-	precipitacion.text = UTILITIES.FormatPptn_pluvial(sitio.pptn_pluvial)
+	precipitacion.text = UTILITIES.FormatPptn_pluvial(sitio.pcptnVal)
 	precipitacionSnsr.self_modulate = OnColor 
 	if not sitio.pcptnSnsr: precipitacionSnsr.self_modulate = OffColor 
 	
-	humedad.text = UTILITIES.FormatHumedad(sitio.humedad)
+	humedad.text = UTILITIES.FormatHumedad(sitio.humVal)
 	humedadSnsr.self_modulate = OnColor 
 	if not sitio.humTempSnsr: humedadSnsr.self_modulate = OffColor 
 	
-	evaporacion.text = UTILITIES.FormatEvaporacion(sitio.evaporacion)
+	evaporacion.text = UTILITIES.FormatEvaporacion(sitio.rSolVal)
 	evaporacionSnsr.self_modulate = OnColor 
-	if not sitio.solSnsr: evaporacionSnsr.self_modulate = OffColor 
+	if not sitio.rSolVal: evaporacionSnsr.self_modulate = OffColor 
 	
-	temp.text = UTILITIES.FormatTemperatura(sitio.temperatura)
+	temp.text = UTILITIES.FormatTemperatura(sitio.tempVal)
 	tempSnsr.self_modulate = OnColor 
 	if not sitio.humTempSnsr: tempSnsr.self_modulate = OffColor 
 	
-	presion.text = UTILITIES.FormatPresion(sitio.presion)
+	presion.text = UTILITIES.FormatPresion(sitio.prsnVal)
 	presionSnsr.self_modulate = OnColor 
 	if not sitio.prsnSnsr: presionSnsr.self_modulate = OffColor 
 	
-	viento.text = UTILITIES.FormatIntensidadViento(sitio.intsdad_viento)#TODO sistema para que regrese N S E O
+	viento.text = UTILITIES.FormatIntensidadViento(sitio.vntoInt)#TODO sistema para que regrese N S E O
 	vientoSnsr.self_modulate = OnColor 
 	if not sitio.vntoSnsr: vientoSnsr.self_modulate = OffColor
 	
