@@ -181,7 +181,7 @@ update_rotation = false
 update_scale = false
 
 [node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(-0.0523359, -0.291971, 0.954994, 0, 0.956305, 0.292372, -0.99863, 0.0153016, -0.0500491, 177.586, 20.6876, 182.48)
+transform = Transform3D(0.462105, 0.62007, -0.634013, 7.45058e-09, 0.714925, 0.699202, 0.886826, -0.323105, 0.33037, -399.515, 370, 407.516)
 script = ExtResource("5_4cwhh")
 
 [node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
@@ -352,7 +352,7 @@ metadata/_edit_lock_ = true
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(0.92388, -0.318004, 0.212885, 0, 0.556296, 0.830985, -0.382684, -0.76773, 0.51395, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
-light_energy = 2.0
+light_energy = 1.5
 shadow_enabled = true
 shadow_blur = 3.0
 directional_shadow_mode = 0
@@ -388,7 +388,7 @@ curveTrueno = ExtResource("23_ul3xw")
 stream = SubResource("AudioStreamRandomizer_cmfaf")
 
 [node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("31_ydy2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.586, 20.6876, 182.48)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -399.515, 370, 407.516)
 visible = false
 amount = 1000
 transform_align = 1
@@ -427,6 +427,7 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("29_7w0wy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5578, 0)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7814, -18.5579, 210.571)

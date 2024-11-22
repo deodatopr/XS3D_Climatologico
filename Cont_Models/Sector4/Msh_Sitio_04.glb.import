@@ -105,6 +105,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Piedra02.tres"
 },
+"Mat_Sitio_Roca": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Roca.tres"
+},
 "Mat_Sitio_Tinacos": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Tinacos.tres"
