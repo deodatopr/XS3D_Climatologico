@@ -476,6 +476,7 @@ transform_align = 1
 layer = 4
 
 [node name="LensDrop" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/Drops"]
+visible = false
 material = ExtResource("36_l6fs6")
 anchors_preset = 15
 anchor_right = 1.0
