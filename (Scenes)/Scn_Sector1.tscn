@@ -176,7 +176,7 @@ menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("3_uxcfq")
 mshNavigation = NodePath("../../[ CONTENT ]/Msh_Navigation_01")
-Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain_01")]
+Terrains = [null]
 worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../[ CONTENT ]/Msh_Terrain_01/Msh_Roads")
 msh_limit = NodePath("../../[ CONTENT ]/Msh - Limit/Msh_Limit")
@@ -373,36 +373,69 @@ camFly = NodePath("../Camera - Drones/MovFly/fly_cam")
 camSky = NodePath("../Camera - Drones/MovSky/sky_cam")
 
 [node name="Punto 4" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -484.349, 59.6599, 148.556)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1465.25, 46.9903, -1926.66)
 script = ExtResource("24_ndxsl")
-nombre = " Escula Secundaria \"Lic. Vicente Riva Palacio\"tes "
+nombre = " Escula Secundaria \"Lic. Vicente Riva Palacio\""
 
 [node name="Punto 5" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -557.276, 59.6599, -415.393)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1275.49, 51.7821, -2071.51)
 script = ExtResource("24_ndxsl")
 nombre = " Preescolar \"El jacal\""
 
 [node name="Punto 6" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1098.19, 70.9961, -451.811)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1244.12, 51.1606, -1899.37)
 script = ExtResource("24_ndxsl")
 nombre = "IMSS Bienestar - Centro de Salud El Jacal"
 
 [node name="Punto 7" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1084.32, 69.6268, -1403.56)
-visible = false
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -720.742, 51.1583, -1838.56)
 script = ExtResource("24_ndxsl")
 nombre = "Pemex"
 
 [node name="Punto 8" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1217.13, 69.6268, -1417.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1430.21, 71.9749, -1275.56)
 script = ExtResource("24_ndxsl")
 nombre = "Secundaria Simón Bolivar"
 
 [node name="Punto 9" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1020.99, 69.6268, -1598.05)
-visible = false
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -878.875, 67.9057, -1216.68)
 script = ExtResource("24_ndxsl")
 nombre = "Iglesia CANP"
+
+[node name="Punto 10" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1543.42, 61.2508, -795.805)
+script = ExtResource("24_ndxsl")
+nombre = "San Isidro"
+
+[node name="Punto 11" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -735.742, 9.27229, -623.705)
+script = ExtResource("24_ndxsl")
+nombre = "Valle Escondido"
+
+[node name="Punto 12" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1620.1, 22.4175, -455.012)
+script = ExtResource("24_ndxsl")
+nombre = "Planta de Tratamiento de aguas residuales San Isidro"
+
+[node name="Punto 13" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1580.91, 40.3676, 761.619)
+script = ExtResource("24_ndxsl")
+nombre = "Iglesia de Cristo Ebenezer"
+
+[node name="Punto 14" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -686.327, 56.7711, 1083.67)
+script = ExtResource("24_ndxsl")
+nombre = "UMBI"
+
+[node name="Punto 15" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1450.03, 125.966, -1435.66)
+script = ExtResource("24_ndxsl")
+nombre = "Monumento Miguel Alemán"
+
+[node name="Punto 16" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1715.93, 165.488, -1156.15)
+script = ExtResource("24_ndxsl")
+nombre = "Telebachillerato Comunitario Núm.274"
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
@@ -414,7 +447,6 @@ camera_attributes = ExtResource("26_3vjvv")
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 94.9184, 0)
 visible = false
 light_color = Color(1, 0.948457, 0.877053, 1)
-light_energy = 2.0
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 10.0
@@ -425,7 +457,6 @@ sky_mode = 1
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
 transform = Transform3D(0.939693, -0.296198, 0.17101, 0, 0.5, 0.866026, -0.34202, -0.813798, 0.469846, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
-light_energy = 2.0
 shadow_enabled = true
 shadow_blur = 3.0
 directional_shadow_mode = 0
