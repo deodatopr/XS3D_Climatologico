@@ -564,9 +564,9 @@ allow_reselect = true
 item_count = 3
 popup/item_0/text = "Precipitacion"
 popup/item_0/separator = true
-popup/item_1/text = "Sin Lluvia"
+popup/item_1/text = "Despejado"
 popup/item_1/id = 1
-popup/item_2/text = "Con Lluvia"
+popup/item_2/text = "Lloviendo"
 popup/item_2/id = 2
 
 [node name="Temperatura" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]

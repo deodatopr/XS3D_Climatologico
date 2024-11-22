@@ -219,7 +219,6 @@ script = ExtResource("5_7w42d")
 fov = 35.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
-current = true
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
@@ -451,7 +450,7 @@ lightRain = NodePath("../Light - Rain")
 miClouds = NodePath("../../[ CONTENT ]/MI - Clouds")
 sndsTruenos = NodePath("Snds - Truenos")
 lensDrop = NodePath("Drops/LensDrop")
-lensDroplets = NodePath("DropLets/Droplets")
+lensDroplets = NodePath("Dripping/Dripping")
 rainFlyParticles = NodePath("PS - Rain Fly")
 rainSkyParticles = NodePath("PS - Rain Sky")
 minTrueno = 5
@@ -476,7 +475,6 @@ transform_align = 1
 layer = 4
 
 [node name="LensDrop" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/Drops"]
-visible = false
 material = ExtResource("36_l6fs6")
 anchors_preset = 15
 anchor_right = 1.0
@@ -484,10 +482,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DropLets" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
+[node name="Dripping" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
 layer = 4
 
-[node name="Droplets" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/DropLets"]
+[node name="Dripping" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/Dripping"]
 visible = false
 material = SubResource("ShaderMaterial_b5nug")
 anchors_preset = 15

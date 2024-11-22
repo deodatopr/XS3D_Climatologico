@@ -39,7 +39,10 @@ func _ready():
 	sfxVol.value_changed.connect(SFXVolChanged)
 	musicVol.value_changed.connect(MusicVolChanged)
 	
-	MasterVolChanged(0.7)
+	
+	masterVol.value = AUDIO.MasterVolume
+	sfxVol.value = AUDIO.SFXVolume
+	musicVol.value = AUDIO.MusicVolume
 
 func _input(event):
 	if event.is_action_pressed("MasterVol+"):
@@ -81,14 +84,16 @@ func OnMusicVolumeFocus():
 	MusicOnFocus.show()
 
 func MasterVolChanged(_value:float):
+	AUDIO.MasterVolume = _value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(_value))
 	MasterPercentage.text = str(_value * 100) + "%"
 
 func SFXVolChanged(_value:float):
+	AUDIO.SFXVolume = _value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(_value))
 	SFXPercentage.text = str(_value * 100) + "%"
 	
 func MusicVolChanged(_value:float):
+	AUDIO.MusicVolume = _value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(_value))
 	MusicPercentage.text = str(_value * 100) + "%"
-	
