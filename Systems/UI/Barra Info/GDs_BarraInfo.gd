@@ -16,6 +16,8 @@ extends Control
 @export var senal:Control
 @export var OnColor:Color
 @export var OffColor:Color
+var bateriaColorNorm: Color
+
 @export_subgroup("Nivel")
 @export var nivel:Label
 @export var nivelSnsr:Control
@@ -54,6 +56,7 @@ var timerIsRunning : bool
 var tweenPanelError : Tween
 
 func _ready():
+	bateriaColorNorm = rellenoBateria.self_modulate
 	btnReconectar.pressed.connect(_OnBtnReconectarPressed)
 	timer.timeout.connect(_OnTimerTimeOut)
 	panelError.hide()
@@ -98,6 +101,23 @@ func OnDataRefresh():
 		UTR.self_modulate = OnColor
 	else:
 		UTR.self_modulate = OffColor
+	
+	match sitio.volt_bat_resp:
+		25.4:#100%
+			rellenoBateria.scale = Vector2(1.0,1.0)
+			rellenoBateria.self_modulate =  bateriaColorNorm
+		25.0:#75%
+			rellenoBateria.scale = Vector2(1.0,0.75)
+			rellenoBateria.self_modulate =  bateriaColorNorm
+		24.4:#50%
+			rellenoBateria.scale = Vector2(1.0,0.50)
+			rellenoBateria.self_modulate =  ColorPrev
+		24.0:#25%
+			rellenoBateria.scale = Vector2(1.0,0.25)
+			rellenoBateria.self_modulate =  ColorCrit
+		23.2:#0%
+			rellenoBateria.scale = Vector2(1.0,0.1)
+			rellenoBateria.self_modulate =  ColorCrit
 	
 	lblBateria.text = UTILITIES.FormatBateriaV(sitio.volt_bat_resp)
 	

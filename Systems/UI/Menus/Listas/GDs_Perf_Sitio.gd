@@ -17,8 +17,12 @@ extends Control
 @export_subgroup("Senales")
 @export var senal:Control
 @export var UTR:Control
+@export var falloAC:Control
+@export var lblBateria:Label
+@export var bateriaRelleno:Control
 @export var OnColor:Color
 @export var OffColor:Color
+var bateriaColorNorm: Color
 @export_subgroup("Nivel")
 @export var nivel:Label
 @export var nivelSnsr:Control
@@ -53,6 +57,7 @@ var transparent: Color
 var pressed:= false
 
 func _ready():
+	bateriaColorNorm = bateriaRelleno.self_modulate
 	transparent = whiteBlur
 	transparent.a = 0
 	button.pressed.connect(OnBtnPressed)
@@ -71,6 +76,10 @@ func DataRefresh(_estacion: GDs_Data_Sitio):
 	estado.text = UTILITIES.FormatEstado(_estacion.estado)
 	
 	#Senales
+	if _estacion.fallo_alim_ac:
+		falloAC.self_modulate = OffColor
+	else:
+		falloAC.self_modulate = OnColor
 	if _estacion.enlace:
 		senal.self_modulate = OnColor
 	else:
@@ -79,6 +88,25 @@ func DataRefresh(_estacion: GDs_Data_Sitio):
 		UTR.self_modulate = OnColor
 	else:
 		UTR.self_modulate = OffColor
+	
+	match _estacion.volt_bat_resp:
+		25.4:#100%
+			bateriaRelleno.scale = Vector2(1.0,1.0)
+			bateriaRelleno.self_modulate =  bateriaColorNorm
+		25.0:#75%
+			bateriaRelleno.scale = Vector2(1.0,0.75)
+			bateriaRelleno.self_modulate =  bateriaColorNorm
+		24.4:#50%
+			bateriaRelleno.scale = Vector2(1.0,0.50)
+			bateriaRelleno.self_modulate =  ColorPrev
+		24.0:#25%
+			bateriaRelleno.scale = Vector2(1.0,0.25)
+			bateriaRelleno.self_modulate =  ColorCrit
+		23.2:#0%
+			bateriaRelleno.scale = Vector2(1.0,0.1)
+			bateriaRelleno.self_modulate =  ColorCrit
+	
+	lblBateria.text = UTILITIES.FormatBateriaV(_estacion.volt_bat_resp)
 	
 	#nivel
 	nivel.text = UTILITIES.FormatNivel(_estacion.nivel)

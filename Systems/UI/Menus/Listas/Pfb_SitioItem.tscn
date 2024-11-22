@@ -79,7 +79,7 @@ region = Rect2(160, 163, 40, 40)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvcfw"]
 
-[node name="Estacion" type="Control" node_paths=PackedStringArray("button", "animScaleNode", "blurBG", "frame", "frameNombre", "patch", "id", "nombre", "estado", "senal", "UTR", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr")]
+[node name="Estacion" type="Control" node_paths=PackedStringArray("button", "animScaleNode", "blurBG", "frame", "frameNombre", "patch", "id", "nombre", "estado", "senal", "UTR", "falloAC", "lblBateria", "bateriaRelleno", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr")]
 custom_minimum_size = Vector2(400, 91)
 layout_mode = 3
 anchors_preset = 0
@@ -98,6 +98,9 @@ nombre = NodePath("AnimScale/VBoxContainer/Nombre/Frame Nombre/Nombre")
 estado = NodePath("AnimScale/VBoxContainer/Nombre/Frame Nombre/Estado")
 senal = NodePath("AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - Senal/VBoxContainer/Dot/Senal")
 UTR = NodePath("AnimScale/VBoxContainer/Datos/Senales/Senales/HBox - UTR/VBoxContainer/Dot/UTR")
+falloAC = NodePath("AnimScale/VBoxContainer/Datos/Senales/Bateria/AC Icono/Senal Fallo AC")
+lblBateria = NodePath("AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria/Label")
+bateriaRelleno = NodePath("AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria/Bateria Relleno")
 OnColor = Color(0.0705882, 0.698039, 0.0509804, 1)
 OffColor = Color(0.698039, 0.0913459, 0.0509804, 1)
 nivel = NodePath("AnimScale/VBoxContainer/Datos/Nivel/Valor Nivel/VBox/Lbl Valor Nivel")
@@ -261,52 +264,55 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Bateria Relleno" type="NinePatchRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria"]
-self_modulate = Color(0.0707, 0.7, 0.049, 0.470588)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = 5.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_gkrbn")
-region_rect = Rect2(480, 11, 10, 15)
-
-[node name="Bateria" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria Relleno"]
+[node name="Bateria" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -25.0
-offset_right = 10.0
-offset_bottom = 1.0
+offset_left = 6.0
+offset_top = -33.0
+offset_right = 17.0
+offset_bottom = -7.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_3vi0o")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria Relleno"]
+[node name="Label" type="Label" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -13.0
-offset_right = 34.0
-offset_bottom = 4.0
+offset_left = 1.0
+offset_top = -14.0
+offset_right = 33.0
+offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 10
 text = "24.5V"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Bateria Relleno" type="NinePatchRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/Bateria"]
+self_modulate = Color(0.0707, 0.7, 0.049, 0.470588)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -10.0
+offset_right = 4.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(4, 19)
+texture = ExtResource("1_gkrbn")
+region_rect = Rect2(480, 11, 10, 15)
 
 [node name="AC Icono" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria"]
 layout_mode = 1
@@ -319,7 +325,7 @@ size_flags_vertical = 4
 texture = SubResource("AtlasTexture_it1pt")
 expand_mode = 1
 
-[node name="Senal" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/AC Icono"]
+[node name="Senal Fallo AC" type="TextureRect" parent="AnimScale/VBoxContainer/Datos/Senales/Bateria/AC Icono"]
 self_modulate = Color(0.0705882, 0.698039, 0.0509804, 1)
 layout_mode = 1
 anchors_preset = 6
