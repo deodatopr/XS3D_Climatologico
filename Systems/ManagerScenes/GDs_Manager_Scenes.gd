@@ -16,6 +16,7 @@ func _ready():
 func Initialize(_dataService : GDs_DataService_Manager, _curtain : GDs_Curtain):
 	dataService = _dataService
 	curtain = _curtain
+	curtain.Show()
 	
 func GetRndIdSite() -> int:
 	var rndId : int = randi_range(0,sitios.size() -1)
@@ -31,8 +32,8 @@ func GoToSector(_id : int, _fromOrquestratorMain : bool = false):
 	
 	#Mostrar cortina
 	curtain.Show()
-	await  curtain.OnCurtainCovered
-	await get_tree().create_timer(0.5).timeout
+	if not curtain.isCovered:
+		await  curtain.OnCurtainCovered
 	
 	#Descargar sector si es que esta cargada
 	lastIdSectorVisited = -1
@@ -43,8 +44,13 @@ func GoToSector(_id : int, _fromOrquestratorMain : bool = false):
 	#Cargar nuevo sector
 	_ProcessToLoadSector(_lvlSector)
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.25).timeout
+	
+	#Quitar cortina
 	curtain.Hide()
+	await curtain.OnCurtainFinished
+	
+	SIGNALS.OnSitioReady.emit()
 
 func _ProcessToLoadSector(_lvlSector : PackedScene):
 	instanceSector = _lvlSector.instantiate() as GDs_Sector
@@ -57,7 +63,6 @@ func _ProcessToLoadSector(_lvlSector : PackedScene):
 		await instanceSector.ready
 	
 	instanceSector.Initialize(dataService)
-	OnSectorLoaded.emit()
 
 func _ProcessToUnloadSector():
 	instanceSector.free()

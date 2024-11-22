@@ -8,6 +8,7 @@ class_name GDs_Curtain extends Node
 signal OnCurtainCovered
 signal OnCurtainFinished
 
+var isCovered : bool
 var originalColor : Color
 var tween : Tween
 var speedFade : float = 0.5
@@ -25,6 +26,9 @@ func _ready() -> void:
 	container.hide()
 	
 func Show():
+	if isCovered:
+		return
+	
 	inputBlocker.show()
 	curtain.show()
 	
@@ -38,6 +42,7 @@ func Show():
 	await tween.finished
 	
 	#Prender animacion loading
+	isCovered = true
 	container.show()
 	OnCurtainCovered.emit()
 
@@ -52,6 +57,7 @@ func Hide():
 	
 	inputBlocker.hide()
 	await tween.finished
+	isCovered = false
 	curtain.process_mode = Node.PROCESS_MODE_DISABLED
 	curtain.hide()
 	
