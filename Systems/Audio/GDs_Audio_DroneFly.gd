@@ -23,7 +23,8 @@ extends Node
 @export var streamNature:AudioStream
 @export var streamRain:AudioStream
 @export var rainVolume:float = -5.0
-
+@export_subgroup("Audios 3D")
+@export var audios3D : Array[Node3D] = []
 
 var isBoosting:=false
 var tween:Tween
@@ -33,14 +34,25 @@ var windMidPoint : float = 0.0
 var natureMidPoint : float = 0.0
 var originalNatureMinHeight: float = 0.0
 var originalNatureVolume: float = 0.0
+
+
 func _ready():
 	originalNatureVolume = sndNature.volume_db
 	originalNatureMinHeight = natureMinHeight
 	
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
 	natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
+	
 	SIGNALS.OnLluviaSet.connect(OnLLuvia)
+	SIGNALS.OnCameraChangedMode.connect(_OnCameraChange)
 
+func _OnCameraChange(_mode : int):
+	if _mode == ENUMS.Cam_Mode.sky:
+		for audio in audios3D:
+			UTILITIES.TurnOffObject(audio)
+	else:
+		for audio in audios3D:
+			UTILITIES.TurnOnObject(audio)
 
 func _process(_delta):
 	if APPSTATE.camMode == ENUMS.Cam_Mode.fly:

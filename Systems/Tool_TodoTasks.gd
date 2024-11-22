@@ -13,13 +13,12 @@
 	# A - aceptar
 	# B - Back
 
-#TODO:: Arreglar inputs de control
-
-#TODO:  En código Cambiar todo lo que diga Estaciones -> Sitios (Para estandarizar)
-#TODO:  Limpiar variables y dejarlas igual que endpoint
-#TODO:  Ya implementar datos del endpoint
-#TODO: Sonidos de agua se escuchan en sky
-#TODO: Traducir los grados en la dirección del viento (ej. 90 = N, 45 = E)
+# AUDIO ENTRE HASTA CORTINILLA Y CONTROLAR EL AUDIO GENERAL CUANDO INICIA SUBIR GRADUAL 0-
+#TODO: Environment,que pase por el initialize para saber el preset inicial al entrar al sitio
+#TODO: Temperatura no funciona en sector 4
+#TODO: Bateria bajar/subir barra y cambiar color
+#TODO: Limpiar variables y dejarlas igual que endpoint
+#TODO: Sonidos de agua se escuchan en sky, apagar listener fly en sky
 
 # Pruebas de compilado
 

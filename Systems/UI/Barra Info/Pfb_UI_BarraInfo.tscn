@@ -1,34 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://hu5k41b7gh1x"]
+[gd_scene load_steps=28 format=3 uid="uid://hu5k41b7gh1x"]
 
 [ext_resource type="Script" path="res://Systems/UI/Barra Info/GDs_BarraInfo.gd" id="1_22tl1"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_bm6wi"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_n0q2v"]
 [ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_om8fc"]
 [ext_resource type="Script" path="res://Systems/Sprites/GDs_SpriteAnim.gd" id="3_qdbvn"]
-
-[sub_resource type="Animation" id="Animation_s4g12"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_t1g5l"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/Nombre/ID - Estado/Lbl Fecha:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhanr"]
-_data = {
-"RESET": SubResource("Animation_s4g12"),
-"new_animation": SubResource("Animation_t1g5l")
-}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2g4pr"]
 shader = ExtResource("1_n0q2v")
@@ -191,11 +167,6 @@ lblTimeValue = NodePath("Panel - Error/Bgk - Blur/HBoxContainer/lbl - timeValue"
 btnReconectar = NodePath("Panel - Error/Bgk - Blur/Container - Btn/Button - Reconectar")
 timer = NodePath("Panel - Error/Timer")
 animBttomColor = NodePath("Panel - Error/Bgk - Blur/Bgk - Bottom/AnimBttomColor")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_qhanr")
-}
 
 [node name="Background BLUR" type="NinePatchRect" parent="."]
 material = SubResource("ShaderMaterial_2g4pr")

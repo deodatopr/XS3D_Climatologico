@@ -23,10 +23,10 @@ class_name GDs_Cam_Manager extends Node
 @export var fly_pivot : Node3D
 @export var fly_cam : Camera3D
 
+
 @export_group("CAMERAS")
 @export var curveMovement : Curve
 @export_range(.7, 1.0) var proximityEdgeLimits : float = .9
-@export_range(0.0,0.2) var offsetToDetectLimits : float = 0.0
 
 @export_subgroup("SKY")
 @export_custom(PROPERTY_HINT_NONE,"suffix: m") var sky_height : float = 500
@@ -47,6 +47,7 @@ class_name GDs_Cam_Manager extends Node
 @export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var fly_rot_speed_hor : float = .5
 @export_custom(PROPERTY_HINT_NONE,"suffix: km/h") var fly_rot_speed_vert : float = .25
 @export_custom(PROPERTY_HINT_NONE,"suffix: x") var fly_rot_turbo = 2
+
 
 @onready var mat_limit_sky : ShaderMaterial = preload("uid://b5mdctmpig2lv")
 @onready var mat_limit_fly : ShaderMaterial = preload("uid://nan3iase8pij")
@@ -76,7 +77,6 @@ var lastCamFlyHeight : float
 	
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
-	
 	matFishEye = ppe_fishEye_DroneSky.material
 	mat_limit_sky.set_shader_parameter("DangerToClose",false)
 	mat_limit_fly.set_shader_parameter("DangerToClose",false)
@@ -106,8 +106,8 @@ func CheckMapBoundings(_pivot:Node3D) -> bool:
 	positionInMap01.x = lerpf(-1,1,positionInMap01.x)
 	positionInMap01.y = lerpf(-1,1,positionInMap01.y)
 	
-	var boundingX : float = abs(positionInMap01.x) + offsetToDetectLimits
-	var boundingY : float = abs(positionInMap01.y) + offsetToDetectLimits
+	var boundingX : float = abs(positionInMap01.x)
+	var boundingY : float = abs(positionInMap01.y)
 	
 	#Only inside range limits calculate a value to detect proximity to end limit
 	if boundingX >= proximityEdgeLimits  || boundingY >= proximityEdgeLimits:
