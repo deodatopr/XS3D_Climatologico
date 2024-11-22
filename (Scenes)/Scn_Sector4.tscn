@@ -336,7 +336,9 @@ parameters/looping = true
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 
-[node name="Puntos de Interes & Baliza" parent="[ SYSTEMS ]" instance=ExtResource("20_01aqh")]
+[node name="Puntos de Interes & Baliza" parent="[ SYSTEMS ]" node_paths=PackedStringArray("camFly", "camSky") instance=ExtResource("20_01aqh")]
+camFly = NodePath("../Camera - Drones/MovFly/fly_cam")
+camSky = NodePath("../Camera - Drones/MovSky/sky_cam")
 
 [node name="Punto 1" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1371.08, -52.9959, -1763.33)
@@ -357,11 +359,6 @@ nombre = " Casa del Lago"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1210.46, 69.9905, -812.93)
 script = ExtResource("21_lkc62")
 nombre = "Casa del Viento"
-
-[node name="Punto 5" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1490.07, 52.7448, -779.447)
-script = ExtResource("21_lkc62")
-nombre = " Casa Pura Vida"
 
 [node name="Punto 6" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1581.26, -5.6043, -476.479)

@@ -218,7 +218,7 @@ transform = Transform3D(-0.669131, 0.204839, -0.714357, 0, 0.961262, 0.275637, 0
 script = ExtResource("5_7w42d")
 
 [node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
-transform = Transform3D(0.907235, -0.152758, 0.391905, 0.11594, 0.986446, 0.116108, -0.40433, -0.0598993, 0.912649, 222.696, 17.2918, 203.049)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
 fov = 35.0
 
 [node name="fly_listener" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
@@ -468,7 +468,7 @@ curveTrueno = ExtResource("27_ri71f")
 stream = SubResource("AudioStreamRandomizer_f0v3a")
 
 [node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("40_sxi81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -503.755, 195.373, -146.104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.189, 123.135, -182.846)
 visible = false
 amount = 1000
 transform_align = 1
