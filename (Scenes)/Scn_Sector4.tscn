@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dj24gdwn2bk1y"]
+[gd_scene load_steps=60 format=3 uid="uid://dj24gdwn2bk1y"]
 
 [ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="1_ij72n"]
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_m6hgx"]
@@ -20,9 +20,11 @@
 [ext_resource type="AudioStream" uid="uid://da63yamoyyqj0" path="res://#Resources/Audios/Downtown_Cars.mp3" id="17_2nmsb"]
 [ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="18_ah3la"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="19_7t10y"]
+[ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="20_01aqh"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="20_eyv7m"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="21_ilana"]
+[ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="21_lkc62"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="22_i6kjy"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="23_ag17m"]
 [ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="23_hrvi1"]
@@ -330,6 +332,58 @@ parameters/looping = true
 vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/SKY")
 vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz/FLY")
 
+[node name="Puntos de Interes & Baliza" parent="[ SYSTEMS ]" instance=ExtResource("20_01aqh")]
+
+[node name="Punto 1" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1371.08, -52.9959, -1763.33)
+script = ExtResource("21_lkc62")
+nombre = " Capilla vieja Santa Teesa Tiloxtoc"
+
+[node name="Punto 2" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -452.92, -84.3228, -1208.85)
+script = ExtResource("21_lkc62")
+nombre = " Planta de Bombeo Sistema Cutzamala"
+
+[node name="Punto 3" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 658.181, -16.4113, -601.215)
+script = ExtResource("21_lkc62")
+nombre = " Casa del Lago"
+
+[node name="Punto 4" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1210.46, 69.9905, -812.93)
+script = ExtResource("21_lkc62")
+nombre = "Casa del Viento"
+
+[node name="Punto 5" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1490.07, 52.7448, -779.447)
+script = ExtResource("21_lkc62")
+nombre = " Casa Pura Vida"
+
+[node name="Punto 6" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1581.26, -5.6043, -476.479)
+script = ExtResource("21_lkc62")
+nombre = "Casa de la Cueva"
+
+[node name="Punto 7" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -879.223, -63.0837, 200.299)
+script = ExtResource("21_lkc62")
+nombre = "La Piedra del molino"
+
+[node name="Punto 8" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 75.0618, -17.4138, 363.612)
+script = ExtResource("21_lkc62")
+nombre = "Torre de vigilancia Cualtenco"
+
+[node name="Punto 9" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 361.718, -10.0752, 544.598)
+script = ExtResource("21_lkc62")
+nombre = "La Boquilla"
+
+[node name="Punto 10" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 644.713, -5.68269, 959.834)
+script = ExtResource("21_lkc62")
+nombre = "Virgen de Guadalupe"
+
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
@@ -438,6 +492,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4854, -23.0553, 210.436)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(5819.25, 0, 0, 0, -0.000254367, 5819.25, 0, -5819.25, -0.000254367, 18.8253, 941.527, -39.2324)
+visible = false
 material_override = ExtResource("21_ilana")
 mesh = SubResource("QuadMesh_vcmnj")
 
