@@ -1,4 +1,4 @@
-extends Node
+class_name GDs_Lluvia extends Node
 
 @export var worldEnv : WorldEnvironment
 
@@ -33,9 +33,15 @@ var presetEnvSky_Rain : Environment = preload("uid://hlek0c7p6ya0")
 var presetEnvFly_Sunny : Environment = preload('res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres')
 var presetEnvFly_Rain : Environment = preload("uid://ow45nqgfxtnq")
 
+func Initialize():
+	if APPSTATE.currntSitio.lloviendo:
+		_ConLluvia()
+	else:
+		_SinLluvia()
+		
 func _ready():
 	#Save original values
-	SIGNALS.OnLluviaSet.connect(_OnLluviaSet)
+	SIGNALS.OnRefresh.connect(_OnRefresh)
 	SIGNALS.OnCameraChangedMode.connect(SwitchRainEnvironment)
 	UTILITIES.TurnOffObject(rainFlyParticles)
 	UTILITIES.TurnOffObject(rainSkyParticles)
@@ -45,6 +51,7 @@ func _ready():
 	#Direct & Indirect lighting
 	initWorldEnvIntensity = worldEnv.environment.background_intensity
 	initDirLightIntensity = lightRain.light_energy
+	
 
 func _process(delta):
 	if thunderIsPlaying:
@@ -109,15 +116,14 @@ func _ConLluvia():
 	if timerTruenos.is_stopped():
 		timerTruenos.start(randi_range(minTrueno,maxTrueno))
 
-func _OnLluviaSet(_lluviaIntensity : int):
-	match _lluviaIntensity:
-		ENUMS.LluviaIntsdad.SinLluvia:
-			_SinLluvia()
-		ENUMS.LluviaIntsdad.ConLluvia:
-			_ConLluvia()
+func _OnRefresh():
+	if APPSTATE.currntSitio.lloviendo:
+		_ConLluvia()
+	else:
+		_SinLluvia()
 
 func SwitchRainEnvironment(_cam:int):
-	if DEBUG.lLuvia == ENUMS.LluviaIntsdad.SinLluvia: return
+	if not APPSTATE.currntSitio.lloviendo: return
 	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
 		worldEnv.environment = presetEnvSky_Rain
 		lensDroplets.hide()

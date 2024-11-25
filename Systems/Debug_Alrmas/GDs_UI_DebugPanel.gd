@@ -13,7 +13,7 @@ var dropdown: PopupMenu
 
 var allowSliderChange:bool
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	visibility_changed.connect(func v():if visible: modoDatos.grab_focus())
 	

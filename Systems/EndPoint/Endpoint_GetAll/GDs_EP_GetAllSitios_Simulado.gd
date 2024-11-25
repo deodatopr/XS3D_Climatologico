@@ -41,8 +41,8 @@ func GetEstaciones_Manual() -> Array[GDs_Data_EP_Sitio]:
 	var temp_alto_min : float = CONST.thrshld_temperatura_alta
 	var temp_alto_max : float = CONST.thrshld_temperatura_alta + 15.0
 	
-	var pptc_alto_min : float = CONST.thrshld_pptcn_lluvia_intensa
-	var pptc_alto_max : float = CONST.thrshld_pptcn_lluvia_intensa  + 30.0 
+	var pptc_alto_min : float = CONST.thrshld_pptcn_lluvia
+	var pptc_alto_max : float = CONST.thrshld_pptcn_lluvia  + 30.0 
 	
 	var humd_bajo_min : float = 0.0
 	var humd_bajo_max : float = 70.0
@@ -122,7 +122,7 @@ func GetEstaciones_Manual() -> Array[GDs_Data_EP_Sitio]:
 				pcptnVal = randf_range(pptc_alto_min,pptc_alto_max)
 				
 		pcptnVal = pcptnVal if tengoDatos else NAN
-		var precipitacionAlta : bool = pcptnVal > CONST.thrshld_pptcn_lluvia_intensa
+		var precipitacionAlta : bool = pcptnVal > CONST.thrshld_pptcn_lluvia
 		if tengoDatos and precipitacionAlta:
 			prsnVal = randf_range(psnAtm_bajo_min, psnAtm_bajo_max)
 			rSolVal -= maxf(randf_range(1,3),0)
@@ -219,8 +219,8 @@ func GetEstaciones_Random() -> Array[GDs_Data_EP_Sitio]:
 	var temp_alto_min : float = CONST.thrshld_temperatura_alta
 	var temp_alto_max : float = CONST.thrshld_temperatura_alta + 15.0
 	
-	var pptc_alto_min : float = CONST.thrshld_pptcn_lluvia_intensa
-	var pptc_alto_max : float = CONST.thrshld_pptcn_lluvia_intensa  + 30.0 
+	var pptc_alto_min : float = CONST.thrshld_pptcn_lluvia
+	var pptc_alto_max : float = CONST.thrshld_pptcn_lluvia  + 30.0 
 	
 	var humd_bajo_min : float = 0.0
 	var humd_bajo_max : float = 70.0
@@ -306,7 +306,7 @@ func GetEstaciones_Random() -> Array[GDs_Data_EP_Sitio]:
 				pcptnVal = randf_range(pptc_alto_min,pptc_alto_max)
 				
 		pcptnVal = pcptnVal if tengoDatos else NAN
-		var precipitacionAlta : bool = pcptnVal > CONST.thrshld_pptcn_lluvia_intensa
+		var precipitacionAlta : bool = pcptnVal > CONST.thrshld_pptcn_lluvia
 		if tengoDatos and precipitacionAlta:
 			prsnVal = randf_range(psnAtm_bajo_min, psnAtm_bajo_max)
 			rSolVal -= maxf(randf_range(1,3),0)

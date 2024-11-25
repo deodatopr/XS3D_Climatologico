@@ -38,7 +38,7 @@
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="26_pgufy"]
 [ext_resource type="PackedScene" uid="uid://duwmggtrv8oco" path="res://Cont_Models/#Shared/LightBeam/Msh_LighBeam.glb" id="26_yysch"]
 [ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_06.tres" id="27_k5hsy"]
-[ext_resource type="Curve" path="res://Systems/Environment/Crv_Trueno.tres" id="27_ri71f"]
+[ext_resource type="Curve" uid="uid://cpuavtle02v5x" path="res://Systems/Environment/Crv_Trueno.tres" id="27_ri71f"]
 [ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="27_x3gx3"]
 [ext_resource type="AudioStream" uid="uid://cqtj6um5qrv4d" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_2.mp3" id="28_w1laa"]
 [ext_resource type="AudioStream" uid="uid://chb2ci43uoaql" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_3.mp3" id="29_t2sr5"]
@@ -167,13 +167,14 @@ orquestrator = NodePath("[ SYSTEMS ]/Orquestrator")
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("cameraDrones", "ppeGlitch", "fly", "sky", "menu")]
+[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("cameraDrones", "ppeGlitch", "fly", "sky", "menu", "lluvia")]
 script = ExtResource("2_q2lqn")
 cameraDrones = NodePath("../Camera - Drones")
 ppeGlitch = NodePath("../PPE - Glitch")
 fly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/FLY")
 sky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/SKY")
 menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
+lluvia = NodePath("../../[ ENVIRONMENT ]/Lluvia")
 
 [node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
 script = ExtResource("2_xo163")

@@ -6,14 +6,16 @@ class_name GDs_Orquestrator_Sector extends Node
 @export var fly : GDs_VistaFly
 @export var sky : GDs_Vista_Sky
 @export var menu : GDs_UI_Manager
+@export var lluvia : GDs_Lluvia
 
 var dataService : GDs_DataService_Manager
 
 func Initialize(_dataService : GDs_DataService_Manager):
 	dataService = _dataService
-	
+
 	cameraDrones.Initialize(initCamMode)
 	ppeGlitch.Initialize()
 	fly.Initialize(cameraDrones)
 	sky.Initialize(cameraDrones)
 	menu.Initialize(dataService,fly,cameraDrones)
+	lluvia.Initialize()

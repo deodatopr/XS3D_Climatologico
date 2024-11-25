@@ -166,12 +166,10 @@ func OnDataRefresh():
 func _OnTimerTimeOut():
 	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
 		DEBUG.requestResult = ENUMS.EP_RequestResult.Success
-		SIGNALS.OnDebugValuechangedByScript.emit()
 
 func _OnBtnReconectarPressed():
 	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
 		DEBUG.requestResult = ENUMS.EP_RequestResult.Success
-		SIGNALS.OnDebugValuechangedByScript.emit()
 
 func _AnimShowPaneError():
 	var initialPanelPos : Vector2 = panelError.position

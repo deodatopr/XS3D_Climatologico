@@ -3,8 +3,6 @@ class_name GDs_Scenes_Manager extends Node
 @export var sceneParentRoot: Node
 @export var sitios : Dictionary = {}
 
-@warning_ignore('unused_signal')
-signal OnSectorLoaded
 
 var dataService : GDs_DataService_Manager
 var curtain : GDs_Curtain
@@ -35,7 +33,6 @@ func GoToSector(_id : int, _fromOrquestratorMain : bool = false):
 	curtain.Show()
 	if not curtain.isCovered:
 		await  curtain.OnCurtainCovered
-	
 	#Descargar sector si es que esta cargada
 	lastIdSectorVisited = -1
 	if instanceSector:
@@ -63,6 +60,7 @@ func _ProcessToLoadSector(_lvlSector : PackedScene):
 	if not instanceSector.is_node_ready():
 		await instanceSector.ready
 	
+	SIGNALS.OnSectorLoaded.emit()
 	instanceSector.Initialize(dataService)
 
 func _ProcessToUnloadSector():

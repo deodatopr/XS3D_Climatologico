@@ -43,7 +43,7 @@ func _ready():
 	windMidPoint = ((windMaxHeight - windMinHeight)/2) + windMinHeight
 	natureMidPoint = ((natureMaxHeight - natureMinHeight)/2) + natureMinHeight
 	
-	SIGNALS.OnLluviaSet.connect(OnLLuvia)
+	SIGNALS.OnRefresh.connect(_OnRefresh)
 	SIGNALS.OnCameraChangedMode.connect(_OnCameraChange)
 
 func _OnCameraChange(_mode : int):
@@ -117,8 +117,8 @@ func MovingFade(_snd:AudioStreamPlayer,_vol:float,_pitch:float,_stop:=false):
 		await tween.finished
 		_snd.stop()
 
-func OnLLuvia(_lluvia:int):
-	if _lluvia == ENUMS.LluviaIntsdad.ConLluvia:
+func _OnRefresh():
+	if APPSTATE.currntSitio.lloviendo:
 		natureMinHeight = 0
 		natureMidPoint = 100
 		sndNature.stream = streamRain

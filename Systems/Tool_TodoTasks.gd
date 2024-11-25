@@ -14,3 +14,4 @@
 #===========================================
 
 # Tool para hacer match entre material y textura
+# Pensar algo para manejar Canvas layers

@@ -54,45 +54,11 @@ func GetEstacionById(_id : int) -> GDs_Data_Sitio:
 	return null
 	
 func UpdateCurrentSitio(_id : int):
+	await SIGNALS.OnSectorLoaded
+	
 	for sitio in estaciones:
 		if sitio.id == _id:
 			APPSTATE.currntSitio = sitio
-	
-			
-	#Señal Lluvia
-	if APPSTATE.currntSitio.pcptnVal > 0:
-		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.ConLluvia)
-	else:
-		SIGNALS.OnLluviaSet.emit(ENUMS.LluviaIntsdad.SinLluvia)
-		
-	#Señal Temperatura
-	if APPSTATE.currntSitio.tempVal > CONST.thrshld_temperatura_alta:
-		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Alta)
-	elif APPSTATE.currntSitio.tempVal > CONST.thrshld_temperatura_calida and APPSTATE.currntSitio.tempVal <= CONST.thrshld_temperatura_alta:
-		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Calida)
-	else:
-		SIGNALS.OnTemperaturaSet.emit(ENUMS.Temperatura.Normal)
-		
-	#Señal Bateria
-	if APPSTATE.currntSitio.volt == 25.4:
-		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._100)
-	elif APPSTATE.currntSitio.volt == 25.0:
-		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._75)
-	elif APPSTATE.currntSitio.volt == 24.4:
-		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._50)
-	elif APPSTATE.currntSitio.volt == 24.0:
-		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._25)
-	else:
-		SIGNALS.OnBateriaSet.emit(ENUMS.Bateria._0)
-		
-	#Señal alarmas
-	if APPSTATE.currntSitio.enCrit:
-		SIGNALS.OnAlarmaSet.emit(ENUMS.Alarmas.Critico)
-	elif APPSTATE.currntSitio.enPrev:
-		SIGNALS.OnAlarmaSet.emit(ENUMS.Alarmas.Prev)
-	else:
-		SIGNALS.OnAlarmaSet.emit(ENUMS.Alarmas.Normal)
-	
 
 #region [ EVENTS ]
 func _OnSuccessEP_GetAllEstaciones():
@@ -181,6 +147,7 @@ func _FetchEndpointWithLocalData(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 		#Extras
 		instanceSitioCombinado.enPrev = sitioEP.presaSnsr and (sitioEP.presaVal >=  sitioLocal.nivelPrev and sitioEP.presaVal <  sitioLocal.nivelCrit) 
 		instanceSitioCombinado.enCrit = sitioEP.presaSnsr and (sitioEP.presaVal >=  sitioLocal.nivelCrit)
+		instanceSitioCombinado.lloviendo = sitioEP.pcptnVal >= CONST.thrshld_pptcn_lluvia
 		
 		#Add to Final array
 		estaciones.append(instanceSitioCombinado)
@@ -212,6 +179,7 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 
 		estacionToUpdate.enPrev = sitioEP.presaSnsr and (sitioEP.presaVal >=  estacionToUpdate.nivelPrev and sitioEP.presaVal <  estacionToUpdate.nivelCrit)
 		estacionToUpdate.enCrit = sitioEP.presaSnsr and (sitioEP.presaVal >=  estacionToUpdate.nivelCrit)
+		estacionToUpdate.lloviendo = sitioEP.pcptnVal >= CONST.thrshld_pptcn_lluvia
 		
 		UpdateCurrentSitio(APPSTATE.currntIdSitio)
 #endregion

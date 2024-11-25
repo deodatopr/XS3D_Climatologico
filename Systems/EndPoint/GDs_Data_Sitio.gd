@@ -22,7 +22,6 @@ var vntoSnsr: bool
 var vntoInt: float
 var vntoDir: float
 
-
 #LOCAL
 var nombre:String
 var estado := ENUMS.Estado.Mexico
@@ -38,3 +37,4 @@ var color:Color
 #EXTRAS
 var enPrev : bool
 var enCrit : bool
+var lloviendo : bool

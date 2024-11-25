@@ -15,17 +15,13 @@ signal OnRequestResult_Error_Data
 @warning_ignore('unused_signal')
 signal OnGoToSitio(_idSitio : int)
 @warning_ignore('unused_signal')
+signal OnSectorLoaded
+@warning_ignore('unused_signal')
 signal OnSitioReady
 
 #CLIMATOLOGIA
 @warning_ignore('unused_signal')
-signal OnTemperaturaSet(_temp : int)
-@warning_ignore('unused_signal')
 signal OnLluviaSet(_lluvia : int)
-@warning_ignore('unused_signal')
-signal OnBateriaSet(_bateria : int)
-@warning_ignore('unused_signal')
-signal OnAlarmaSet(_alarma : int)
 
 #CAMERA
 @warning_ignore('unused_signal')
@@ -43,8 +39,6 @@ signal OnCameraChangedMode(_modoToChange : int)
 #DEBUG
 @warning_ignore('unused_signal')
 signal OnDebugRefresh()
-@warning_ignore('unused_signal')
-signal OnDebugValuechangedByScript()
 @warning_ignore('unused_signal')
 signal OnDatosSimuladosON
 @warning_ignore('unused_signal')
