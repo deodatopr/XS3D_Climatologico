@@ -2,6 +2,8 @@ extends Control
 
 @export var modoDatos: OptionButton
 @export var datosRandom: CheckButton
+@export var lblAuto:Control
+@export var lblManual:Control
 @export var intervalo: HSlider
 @export var intervaloPerc: Label
 @export var precipitacion: OptionButton
@@ -72,6 +74,10 @@ func OnModoDatosChanged(idx:int):
 		alarma.disabled = true
 		bateria.disabled = true
 		conexion.disabled = true
+		datosRandom.disabled = true
+		lblAuto.self_modulate.a = 0.7
+		lblManual.self_modulate.a = 0.7
+		intervalo.editable = false
 		SIGNALS.OnDatosSimuladosOFF.emit()
 	else:
 		DEBUG.modoDatos = ENUMS.ModoDatos.Simulado
@@ -80,6 +86,10 @@ func OnModoDatosChanged(idx:int):
 		alarma.disabled = false
 		bateria.disabled = false
 		conexion.disabled = false
+		datosRandom.disabled = false
+		lblAuto.self_modulate.a = 1.0
+		lblManual.self_modulate.a = 1.0
+		intervalo.editable = true
 		SIGNALS.OnDatosSimuladosON.emit()
 	SIGNALS.OnDebugRefresh.emit()
 
@@ -114,7 +124,7 @@ func OnPrecipitacionMouseEntered():
 	conexion.release_focus()
 func OnPrecipitacionChanged(idx:int):
 	#SIN LLUVIA
-	if idx == 1:
+	if idx == 0:
 		DEBUG.lLuvia = ENUMS.LluviaIntsdad.SinLluvia
 	#CON LLUVIA
 	else:
@@ -129,7 +139,7 @@ func OnTemperaturaMouseEntered():
 	bateria.release_focus()
 	conexion.release_focus()
 func OnTemperaturaChanged(idx:int):
-	DEBUG.temperatura = idx - 1
+	DEBUG.temperatura = idx
 	SIGNALS.OnDebugRefresh.emit()
 	
 
@@ -140,7 +150,7 @@ func OnAlarmaMouseEntered():
 	bateria.release_focus()
 	conexion.release_focus()
 func OnAlarmaChanged(idx:int):
-	DEBUG.alarmas = idx - 1
+	DEBUG.alarmas = idx
 	SIGNALS.OnDebugRefresh.emit()
 
 func OnBateriaMouseEntered():
@@ -150,7 +160,7 @@ func OnBateriaMouseEntered():
 	alarma.release_focus()
 	conexion.release_focus()
 func OnBateriaChanged(idx:int):
-	DEBUG.bateria = idx - 1
+	DEBUG.bateria = idx
 	SIGNALS.OnDebugRefresh.emit()
 
 func OnConexionMouseEntered():
@@ -160,5 +170,5 @@ func OnConexionMouseEntered():
 	alarma.release_focus()
 	bateria.release_focus()
 func OnConexionChanged(idx:int):
-	DEBUG.requestResult = idx - 1
+	DEBUG.requestResult = idx
 	SIGNALS.OnDebugRefresh.emit()

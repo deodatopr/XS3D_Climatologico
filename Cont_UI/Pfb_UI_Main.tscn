@@ -97,7 +97,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es136"]
-bg_color = Color(0.529412, 0.0588235, 1, 1)
+bg_color = Color(0.207, 0.7152, 0.9, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -136,6 +136,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -9.0
+offset_right = 2.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vcggy")
@@ -339,7 +343,7 @@ bus = &"SFX"
 visible = false
 layout_mode = 1
 
-[node name="Menu Debug" type="Control" parent="." node_paths=PackedStringArray("modoDatos", "datosRandom", "intervalo", "intervaloPerc", "precipitacion", "temperatura", "alarma", "bateria", "conexion")]
+[node name="Menu Debug" type="Control" parent="." node_paths=PackedStringArray("modoDatos", "datosRandom", "lblAuto", "lblManual", "intervalo", "intervaloPerc", "precipitacion", "temperatura", "alarma", "bateria", "conexion")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -347,7 +351,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -255.0
-offset_top = -270.5
+offset_top = -306.5
 offset_right = 255.0
 offset_bottom = 270.5
 grow_horizontal = 2
@@ -355,6 +359,8 @@ grow_vertical = 2
 script = ExtResource("14_kilhm")
 modoDatos = NodePath("Menu Config/MarginContainer/VBoxContainer/Modo de datos/OptionButton")
 datosRandom = NodePath("Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer/Control/CheckButton")
+lblAuto = NodePath("Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer/Control/Label Auto")
+lblManual = NodePath("Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer/Control/Label Manual")
 intervalo = NodePath("Menu Config/MarginContainer/VBoxContainer/Intervalo/HBoxContainer/Slider")
 intervaloPerc = NodePath("Menu Config/MarginContainer/VBoxContainer/Intervalo/HBoxContainer/Slider/Intervalo Perc")
 precipitacion = NodePath("Menu Config/MarginContainer/VBoxContainer/Lluvia/OptionButton")
@@ -524,7 +530,7 @@ offset_top = -11.5
 offset_right = 145.0
 offset_bottom = 11.5
 grow_vertical = 2
-text = "Modo de Datos"
+text = "Inyección de Datos"
 
 [node name="Master Button" type="Button" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Modo de datos"]
 modulate = Color(1, 1, 1, 0)
@@ -555,18 +561,99 @@ focus_neighbor_right = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 theme = ExtResource("14_35ily")
-flat = true
-selected = 2
+selected = 1
 allow_reselect = true
-item_count = 3
-popup/item_0/text = "Modo"
-popup/item_0/separator = true
-popup/item_1/text = "Servidor"
-popup/item_1/id = 1
-popup/item_2/text = "Simulados"
-popup/item_2/id = 2
+item_count = 2
+popup/item_0/text = "Servidor"
+popup/item_0/id = 1
+popup/item_1/text = "Simulados"
+popup/item_1/id = 2
 
 [node name="HSeparator" type="HSeparator" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Random" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_ye56v")
+custom_minimum_size = Vector2(420, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_omcqt")
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
+layout_mode = 2
+text = "Valores Aleatorios"
+
+[node name="VSeparator3" type="VSeparator" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(57.24, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -17.5
+offset_right = 28.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_35ily")
+button_pressed = true
+
+[node name="Label Auto" type="Label" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Auto"
+
+[node name="Label Manual" type="Label" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Manual"
+
+[node name="VSeparator2" type="VSeparator" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
+visibility_layer = 0
 layout_mode = 2
 
 [node name="Intervalo" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
@@ -616,17 +703,17 @@ tick_count = 1
 
 [node name="Intervalo Perc" type="Label" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Intervalo/HBoxContainer/Slider"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -12.5
-offset_top = -6.0
-offset_right = 12.5
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -10.5
+offset_right = 28.0
+offset_bottom = 6.5
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_font_sizes/font_size = 12
 text = "30s"
 horizontal_alignment = 1
@@ -634,59 +721,7 @@ vertical_alignment = 2
 
 [node name="VSeparator2" type="VSeparator" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Intervalo/HBoxContainer"]
 visibility_layer = 0
-layout_mode = 2
-
-[node name="Random" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
-material = SubResource("ShaderMaterial_ye56v")
-custom_minimum_size = Vector2(420, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("8_omcqt")
-region_rect = Rect2(473, 40, 30, 30)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
-layout_mode = 2
-text = "  Random"
-
-[node name="VSeparator" type="VSeparator" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
-visibility_layer = 0
-custom_minimum_size = Vector2(122.655, 0)
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CheckButton" type="CheckButton" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -17.5
-offset_right = 28.0
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("14_35ily")
-
-[node name="VSeparator2" type="VSeparator" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer/Random/HBoxContainer"]
-visibility_layer = 0
+custom_minimum_size = Vector2(32.125, 0)
 layout_mode = 2
 
 [node name="Lluvia" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
@@ -727,15 +762,12 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("14_35ily")
-selected = 1
+selected = 0
 allow_reselect = true
-item_count = 3
-popup/item_0/text = "Precipitacion"
-popup/item_0/separator = true
-popup/item_1/text = "Despejado"
+item_count = 2
+popup/item_0/text = "Despejado"
+popup/item_1/text = "Lloviendo"
 popup/item_1/id = 1
-popup/item_2/text = "Lloviendo"
-popup/item_2/id = 2
 
 [node name="Temperatura" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_ye56v")
@@ -775,17 +807,14 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("14_35ily")
-selected = 1
+selected = 0
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "Temperatura"
-popup/item_0/separator = true
-popup/item_1/text = "Normal"
+item_count = 3
+popup/item_0/text = "Normal"
+popup/item_1/text = "Calida"
 popup/item_1/id = 1
-popup/item_2/text = "Calida"
+popup/item_2/text = "Alta"
 popup/item_2/id = 2
-popup/item_3/text = "Alta"
-popup/item_3/id = 3
 
 [node name="Alarma" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_ye56v")
@@ -827,15 +856,12 @@ grow_vertical = 2
 theme = ExtResource("14_35ily")
 selected = 0
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "Alarma"
-popup/item_0/separator = true
-popup/item_1/text = "Normal"
+item_count = 3
+popup/item_0/text = "Normal"
+popup/item_1/text = "Preventivo"
 popup/item_1/id = 1
-popup/item_2/text = "Preventivo"
+popup/item_2/text = "Critico"
 popup/item_2/id = 2
-popup/item_3/text = "Critico"
-popup/item_3/id = 3
 
 [node name="Bateria" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_ye56v")
@@ -875,21 +901,18 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("14_35ily")
-selected = 1
+selected = 0
 allow_reselect = true
-item_count = 6
-popup/item_0/text = "Bateria"
-popup/item_0/separator = true
-popup/item_1/text = "100%"
+item_count = 5
+popup/item_0/text = "100%"
+popup/item_1/text = "75%"
 popup/item_1/id = 1
-popup/item_2/text = "75%"
+popup/item_2/text = "50%"
 popup/item_2/id = 2
-popup/item_3/text = "50%"
+popup/item_3/text = "25%"
 popup/item_3/id = 3
-popup/item_4/text = "25%"
+popup/item_4/text = "0%"
 popup/item_4/id = 4
-popup/item_5/text = "0%"
-popup/item_5/id = 5
 
 [node name="Conexion" type="NinePatchRect" parent="Menu Debug/Menu Config/MarginContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_ye56v")
@@ -930,20 +953,17 @@ grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_bottom = NodePath("../../Modo de datos/OptionButton")
 theme = ExtResource("14_35ily")
-selected = 1
+selected = 0
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "Conexion"
-popup/item_0/separator = true
-popup/item_1/text = "Exitosa"
-popup/item_1/id = 3
-popup/item_2/text = "Error - Sin Datos"
-popup/item_2/id = 1
-popup/item_3/text = "Error - Ult. Datos"
-popup/item_3/id = 2
+item_count = 3
+popup/item_0/text = "Exitosa"
+popup/item_1/text = "Error - Sin Datos"
+popup/item_1/id = 1
+popup/item_2/text = "Error - Ult. Datos"
+popup/item_2/id = 2
 
 [node name="Sim Datos" type="NinePatchRect" parent="Menu Debug/Menu Config"]
-self_modulate = Color(0.68, 0, 0, 0)
+self_modulate = Color(0.141176, 0.494118, 0.619608, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -951,17 +971,17 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -134.0
-offset_top = -74.0
+offset_top = -96.0
 offset_right = 149.0
-offset_bottom = -12.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_omcqt")
-region_rect = Rect2(473, 258, 34, 34)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+region_rect = Rect2(473, 40, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="Lbl INfo2" type="Label" parent="Menu Debug/Menu Config/Sim Datos"]
 layout_mode = 1
@@ -970,9 +990,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -147.5
+offset_left = -137.0
 offset_top = -21.0
-offset_right = -5.50031
+offset_right = -18.0
 offset_bottom = 21.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -987,9 +1007,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 11.4286
+offset_left = 29.0
 offset_top = -20.3572
-offset_right = 166.429
+offset_right = 189.0
 offset_bottom = 34.6428
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
