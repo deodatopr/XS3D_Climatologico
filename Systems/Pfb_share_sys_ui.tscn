@@ -154,7 +154,9 @@ sky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/SKY")
 menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
 lluvia = NodePath("../Lluvia")
 
-[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly") instance=ExtResource("2_ib82i")]
+[node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("ps_rain_sky", "ps_rain_fly", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly") instance=ExtResource("2_ib82i")]
+ps_rain_sky = NodePath("../Lluvia/PS - Rain Sky")
+ps_rain_fly = NodePath("../Lluvia/PS - Rain Fly")
 ppe_fishEye_DroneSky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]/PPE - FishEye/ppe_fishEye_DroneSky")
 ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
 ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
@@ -414,7 +416,10 @@ layer = 8
 [node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("39_y7lqb")]
 anchors_preset = 12
 anchor_top = 1.0
+offset_left = 0.0
 offset_top = -1009.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_vertical = 0
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("40_p53q7")]

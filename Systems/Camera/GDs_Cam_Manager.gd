@@ -19,6 +19,10 @@ class_name GDs_Cam_Manager extends Node
 @export var movFly : GDs_Cam_Mov_Fly
 @export var fly_pivot : Node3D
 @export var fly_cam : Camera3D
+@export var remoteTransform_Sky : RemoteTransform3D
+@export var remoteTransform_Fly : RemoteTransform3D
+@export var ps_rain_sky : Node3D
+@export var ps_rain_fly : Node3D
 
 @export var ppe_fishEye_DroneSky : ColorRect
 @export var ui_ppe_sky : Node
@@ -78,6 +82,8 @@ var lastCamFlyHeight : float
 	
 func Initialize(_modeToIntializeCam : int):
 	APPSTATE.camMode = _modeToIntializeCam
+	remoteTransform_Sky.remote_path = ps_rain_sky.get_path()
+	remoteTransform_Fly.remote_path = ps_rain_fly.get_path()
 	matFishEye = ppe_fishEye_DroneSky.material
 	mat_limit_sky.set_shader_parameter("DangerToClose",false)
 	mat_limit_fly.set_shader_parameter("DangerToClose",false)
