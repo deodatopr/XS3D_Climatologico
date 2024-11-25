@@ -3,6 +3,7 @@ class_name GDs_Scenes_Manager extends Node
 @export var sceneParentRoot: Node
 @export var sitios : Dictionary = {}
 
+@warning_ignore('unused_signal')
 signal OnSectorLoaded
 
 var dataService : GDs_DataService_Manager

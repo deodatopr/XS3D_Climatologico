@@ -116,7 +116,7 @@ _data = {
 "anim_pnlError_BgkBttom": SubResource("Animation_o55hc")
 }
 
-[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "lblBateria", "rellenoBateria", "falloAC", "UTR", "senal", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr", "panelError", "lblTimeValue", "btnReconectar", "timer", "animBttomColor")]
+[node name="Barra Info" type="Control" node_paths=PackedStringArray("id", "idframe", "nombre", "estado", "fecha", "lblBateria", "rellenoBateria", "falloAC", "UTR", "senal", "nivel", "nivelSnsr", "nivelBg", "nivelNorm", "nivelPrev", "nivelCrit", "precipitacion", "precipitacionSnsr", "humedad", "humedadSnsr", "evaporacion", "evaporacionSnsr", "temp", "tempSnsr", "presion", "presionSnsr", "viento", "vientoSnsr", "panelError", "lblTimeValue", "btnReconectar", "timer", "animBttomColor")]
 custom_minimum_size = Vector2(1580, 105)
 layout_mode = 3
 anchors_preset = 12
@@ -133,6 +133,7 @@ id = NodePath("HBoxContainer/Nombre/ID - Estado/ID Frame/Lbl ID")
 idframe = NodePath("HBoxContainer/Nombre/ID - Estado/ID Frame")
 nombre = NodePath("HBoxContainer/Nombre/Nombre/Lbl Nombre")
 estado = NodePath("HBoxContainer/Nombre/ID - Estado/Lbl Estado")
+fecha = NodePath("HBoxContainer/Nombre/ID - Estado/Lbl Fecha")
 lblBateria = NodePath("HBoxContainer/Senales/Bateria/HBoxContainer2/Text/Lbl Bateria")
 rellenoBateria = NodePath("HBoxContainer/Senales/Bateria/HBoxContainer2/Icono Bateria/Bateria Relleno")
 falloAC = NodePath("HBoxContainer/Senales/Bateria/AC/HBoxContainer/Dot/Senal")

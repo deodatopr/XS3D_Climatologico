@@ -10,7 +10,7 @@ func Initialize(_CR_LocalEstaciones: GDs_CR_LocalSitios):
 func GetEstaciones_Manual() -> Array[GDs_Data_EP_Sitio]:
 	var estaciones : Array[GDs_Data_EP_Sitio]
 	
-	var fecha : String
+	@warning_ignore('unused_variable')
 	var id: int
 	var fch: String
 	var ac: bool
@@ -91,7 +91,7 @@ func GetEstaciones_Manual() -> Array[GDs_Data_EP_Sitio]:
 		
 		var tengoDatos : bool =  bateriaConCarga and utr and enlace
 		
-		fecha = Time.get_datetime_string_from_system() if utr else ultFechaConInfo
+		fch = Time.get_datetime_string_from_system() if utr else ultFechaConInfo
 		
 		#Temperatura -> (humedad y evaporacion)
 		match DEBUG.temperatura:
@@ -188,7 +188,7 @@ func GetEstaciones_Manual() -> Array[GDs_Data_EP_Sitio]:
 func GetEstaciones_Random() -> Array[GDs_Data_EP_Sitio]:
 	var estaciones : Array[GDs_Data_EP_Sitio]
 	
-	var fecha : String
+	@warning_ignore('unused_variable')
 	var id: int
 	var fch: String
 	var ac: bool
@@ -270,7 +270,7 @@ func GetEstaciones_Random() -> Array[GDs_Data_EP_Sitio]:
 		
 		var tengoDatos : bool =  bateriaConCarga and utr and enlace
 		
-		fecha = Time.get_datetime_string_from_system() if utr else ultFechaConInfo
+		fch = Time.get_datetime_string_from_system() if utr else ultFechaConInfo
 		
 		#Temperatura -> (humedad y evaporacion)
 		var rndTemperatura : int = randi_range(0,2)

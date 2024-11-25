@@ -87,6 +87,8 @@ func OnDataRefresh():
 	idframe.self_modulate = sitio.color
 	nombre.text = sitio.nombre
 	estado.text = UTILITIES.FormatEstado(sitio.estado)
+	fecha.text = UTILITIES.FormatFecha(sitio.fecha)
+	
 	
 	#Senales
 	if sitio.ac:

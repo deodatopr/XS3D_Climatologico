@@ -19,6 +19,9 @@ func GetNodeBounds(_root : Node) -> AABB:
 	return total_aabb
 	
 #region Formato strings
+func FormatFecha(fecha:String)->String:
+	return "Ult. Act. : " + fecha
+
 func FormatNivel(nivel:float)->String:
 	return "Nvl: " + _ValueToText(nivel) + "m"
 
