@@ -27,7 +27,11 @@ func Request_GetAllEstaciones():
 	
 	if DEBUG.modoDatos == ENUMS.ModoDatos.Simulado:
 		if DEBUG.requestResult == ENUMS.EP_RequestResult.Success:
-			arraySitios = getAllSitios_Simulado.GetEstaciones()
+			if DEBUG.simuladoRandom:
+				arraySitios = getAllSitios_Simulado.GetEstaciones_Random()
+			else:
+				arraySitios = getAllSitios_Simulado.GetEstaciones_Manual()
+				
 			lastArraySitiosWithData = arraySitios.duplicate()
 			SIGNALS.OnRequestResult_Success.emit()
 		elif DEBUG.requestResult == ENUMS.EP_RequestResult.Error_NoData:

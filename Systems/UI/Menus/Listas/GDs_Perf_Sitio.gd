@@ -77,9 +77,9 @@ func DataRefresh(_estacion: GDs_Data_Sitio):
 	
 	#Senales
 	if _estacion.ac:
-		falloAC.self_modulate = OffColor
-	else:
 		falloAC.self_modulate = OnColor
+	else:
+		falloAC.self_modulate = OffColor
 	if _estacion.enlace:
 		senal.self_modulate = OnColor
 	else:

@@ -6,7 +6,12 @@ class_name GDs_DataService_Manager extends Node
 @export var endpoint_Simulado : GDs_EP_GetAllSitios_Simulado
 @export var endpoint_Error : GDs_EP_GetAllSitios_Error
 @export var URL : String
-@export var timeToRefresh : float = 30.0
+@export var timeToRefresh : float = 30.0:
+	get:
+		if DEBUG.modoDatos == ENUMS.ModoDatos.Endpoint or (DEBUG.modoDatos == ENUMS.ModoDatos.Simulado and not DEBUG.simuladoRandom):
+			return timeToRefresh
+		else:
+			return DEBUG.timeToRefresh
 @export var timeToReconnect_Error : float = 10.0
 @export var timeoutEPGetAllEstaciones : float = 3.0
 @export var timerTicking : Timer

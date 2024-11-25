@@ -6,8 +6,7 @@
 
 #	[ Pani ]
 
-#TODO: Temperatura no funciona en sector 4
-
+# Condición de sitio se cheque al iniciar cada sitio
 # Pruebas de compilado
 
 #===========================================
