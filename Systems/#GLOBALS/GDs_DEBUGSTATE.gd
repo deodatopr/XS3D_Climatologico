@@ -1,7 +1,7 @@
 extends Node
 
 var modoDatos : int = ENUMS.ModoDatos.Simulado
-var simuladoRandom : bool = false
+var simuladoRandom : bool = true
 var timeToRefresh : float = 10.0
 var requestResult : int = ENUMS.EP_RequestResult.Success
 var lLuvia : int = ENUMS.LluviaIntsdad.SinLluvia

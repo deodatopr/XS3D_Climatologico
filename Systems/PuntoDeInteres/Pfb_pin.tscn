@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxeg5f7xphsgb"]
+[gd_scene load_steps=14 format=3 uid="uid://bxeg5f7xphsgb"]
 
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_UIPin_.gd" id="1_m3g1u"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_wfaf3"]
@@ -27,22 +27,17 @@ region = Rect2(80, 277, 13, 13)
 atlas = ExtResource("1_wfaf3")
 region = Rect2(468, 763, 42, 42)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dedo"]
-shader = ExtResource("2_fwvix")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.2
-shader_parameter/blur = 1
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bn2ex"]
 shader = ExtResource("2_fwvix")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/brightness = 1.0
-shader_parameter/blur = 2
+shader_parameter/blur = 4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jyvp0"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
 [node name="Pin" type="Control" node_paths=PackedStringArray("lblNombre", "anim", "littlePoint", "open", "close")]
+modulate = Color(1, 1, 1, 0.862745)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,7 +74,7 @@ pivot_offset = Vector2(21, 21)
 texture = SubResource("AtlasTexture_hos1s")
 
 [node name="Blur BG" type="TextureRect" parent="Diamond (ON)"]
-self_modulate = Color(1, 0.0166667, 0, 0.784314)
+self_modulate = Color(1, 0.0166667, 0, 0.815686)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -342,7 +337,7 @@ texture = SubResource("AtlasTexture_lrxx3")
 
 [node name="Label (OFF)" type="Label" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_5dedo")
+self_modulate = Color(0.110784, 0.110784, 0.110784, 1)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
