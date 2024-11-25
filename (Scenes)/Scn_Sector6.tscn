@@ -1,314 +1,129 @@
-[gd_scene load_steps=68 format=3 uid="uid://18lddgnvbqsx"]
+[gd_scene load_steps=17 format=3 uid="uid://18lddgnvbqsx"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_vpunx"]
-[ext_resource type="Script" path="res://Systems/Orchestrator/GDs_Orquestrator_Sector_.gd" id="2_q2lqn"]
+[ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_68nee"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="2_vmk6t"]
-[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Manager.gd" id="2_xo163"]
 [ext_resource type="PackedScene" uid="uid://b3gfivu1rhllf" path="res://Cont_Models/Sector6/Msh_Terrain.glb" id="3_htqi2"]
-[ext_resource type="Curve" uid="uid://cpw1k4x32frc6" path="res://Systems/Camera/Presets/Preset_Curve_Movement.tres" id="3_x5pt0"]
-[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Sky.gd" id="4_w0x8b"]
-[ext_resource type="Script" path="res://Systems/Camera/GDs_Cam_Mov_Fly.gd" id="5_7w42d"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Lens.gdshader" id="5_ipad4"]
-[ext_resource type="PackedScene" uid="uid://ds8p74qmynqr1" path="res://Systems/RenderTools/Pfb_Viewport.tscn" id="6_7j046"]
-[ext_resource type="AudioStream" uid="uid://cvrup4u3rlg0e" path="res://Cont_Sounds/Drones/DroneSky_Camera.mp3" id="6_ehp13"]
-[ext_resource type="Script" path="res://Systems/Audio/GDs_Audio.gd" id="7_131lt"]
-[ext_resource type="PackedScene" uid="uid://bb0u21qbxmbv1" path="res://Systems/Glitch/Pfb_Glitch.tscn" id="7_cjwh8"]
-[ext_resource type="PackedScene" uid="uid://y1iugd6uyl42" path="res://Cont_UI/Pfb_UI_Main.tscn" id="7_hy666"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_FishEyes.gdshader" id="8_pnisj"]
 [ext_resource type="PackedScene" uid="uid://sehi5tl2e6k7" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
-[ext_resource type="AudioStream" uid="uid://b7iu0hknp6otd" path="res://Cont_Sounds/Drones/DroneFly_Moving.mp3" id="10_2yvy7"]
-[ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneFly.gd" id="10_uf8le"]
 [ext_resource type="PackedScene" uid="uid://2fk1ttkfdobb" path="res://Cont_Models/Sector6/Msh_Navigation.glb" id="11_bbryg"]
-[ext_resource type="AudioStream" uid="uid://dygv4u1k6q2kl" path="res://Cont_Sounds/Environment/Nature.mp3" id="12_6b1iq"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="13_de45w"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="13_enybh"]
-[ext_resource type="AudioStream" uid="uid://cbjp7ejpsjtnr" path="res://Cont_Sounds/Environment/Wind2.mp3" id="14_1tnag"]
-[ext_resource type="PackedScene" uid="uid://djyvw3ftsu25d" path="res://Cont_UI/Pfb_UI_Vista_Drone_Sky.tscn" id="14_bqx8o"]
-[ext_resource type="AudioStream" uid="uid://bs7feyqeqvdqo" path="res://Cont_Sounds/Raining/Rainning.mp3" id="14_pcnw8"]
-[ext_resource type="PackedScene" uid="uid://cocko4ft5524e" path="res://Cont_UI/Pfb_UI_Vista_Drone_Fly.tscn" id="15_bomeh"]
-[ext_resource type="Script" path="res://Systems/Audio/GDs_Audio_DroneSky.gd" id="16_r0mi2"]
-[ext_resource type="AudioStream" uid="uid://r0w6j0r5hj07" path="res://Cont_Sounds/Environment/Wind1.mp3" id="17_p1b51"]
-[ext_resource type="AudioStream" uid="uid://cgqk5wdq4bjqs" path="res://Cont_Sounds/Drones/DroneSky_Moving.mp3" id="18_og2vw"]
-[ext_resource type="Script" path="res://Systems/Alarmas/GDs_Alarmas.gd" id="18_xkk4p"]
-[ext_resource type="AudioStream" uid="uid://44by4jeapvlc" path="res://Cont_Sounds/Audio_Music.mp3" id="21_atymd"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="21_uyocc"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="23_2ha5g"]
-[ext_resource type="AudioStream" uid="uid://ddy04w0b45rcn" path="res://Cont_Sounds/Sitio/Sitio_Alarma.mp3" id="23_qgr12"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="24_0nrau"]
-[ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="26_pgufy"]
 [ext_resource type="PackedScene" uid="uid://duwmggtrv8oco" path="res://Cont_Models/#Shared/LightBeam/Msh_LighBeam.glb" id="26_yysch"]
 [ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_06.tres" id="27_k5hsy"]
-[ext_resource type="Curve" uid="uid://cpuavtle02v5x" path="res://Systems/Environment/Crv_Trueno.tres" id="27_ri71f"]
-[ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="27_x3gx3"]
-[ext_resource type="AudioStream" uid="uid://cqtj6um5qrv4d" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_2.mp3" id="28_w1laa"]
-[ext_resource type="AudioStream" uid="uid://chb2ci43uoaql" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_3.mp3" id="29_t2sr5"]
-[ext_resource type="AudioStream" uid="uid://cgqdbltf0gqgh" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_1.mp3" id="30_4kkht"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_WaveDeform.gdshader" id="30_uby03"]
-[ext_resource type="AudioStream" uid="uid://dpokn0ojlkyvp" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_2.mp3" id="31_7gdf3"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/PPE_Heat.gdshader" id="31_hk50b"]
-[ext_resource type="AudioStream" uid="uid://bjvttsjy5vuyi" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_3.mp3" id="32_bvkg3"]
-[ext_resource type="AudioStream" uid="uid://uoyrb4ick3by" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_4.mp3" id="33_s5ktt"]
-[ext_resource type="Material" uid="uid://c1nty3ig8iwmf" path="res://Vfx_PostProces/LensDrops/Mat_LensDrop.tres" id="36_l6fs6"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/LensDrops/PPE_UI_WaterDroplets.gdshader" id="38_vqqgd"]
-[ext_resource type="PackedScene" uid="uid://bakojsc51v3ae" path="res://Systems/PuntoDeInteres/Pfb_PuntosInteres.tscn" id="39_it1fo"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="39_x4bd8"]
-[ext_resource type="PackedScene" uid="uid://btfh1lhko803m" path="res://Systems/Rain/Pfb_Rain.tscn" id="40_sxi81"]
-[ext_resource type="Texture2D" uid="uid://xh84cch52dbq" path="res://Cont_Models/Sector6/Map_Sect6_Minimap.jpg" id="49_quvql"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqpe"]
-shader = ExtResource("30_uby03")
-shader_parameter/distort = 0.05
-shader_parameter/chromatic = 0.025
-shader_parameter/smoothness = 0.15
-shader_parameter/stop = 1
-shader_parameter/speed = 0.5
-shader_parameter/isCritico = true
-shader_parameter/colorCritico = Color(0.3, 0, 0, 0.04)
-shader_parameter/smoothnessCrit = 0.1
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tgoyg"]
-fractal_octaves = 10
-fractal_lacunarity = 7.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xmvdm"]
-generate_mipmaps = false
-seamless = true
-noise = SubResource("FastNoiseLite_tgoyg")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqmtv"]
-shader = ExtResource("31_hk50b")
-shader_parameter/intensity = 0.25
-shader_parameter/speed = 0.5
-shader_parameter/noiseMap = SubResource("NoiseTexture2D_xmvdm")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
-streams_count = 7
-stream_0/stream = ExtResource("27_x3gx3")
-stream_1/stream = ExtResource("28_w1laa")
-stream_2/stream = ExtResource("29_t2sr5")
-stream_3/stream = ExtResource("30_4kkht")
-stream_4/stream = ExtResource("31_7gdf3")
-stream_5/stream = ExtResource("32_bvkg3")
-stream_6/stream = ExtResource("33_s5ktt")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5nug"]
-shader = ExtResource("38_vqqgd")
-shader_parameter/tile = 2.0
-shader_parameter/speed = 2.0
-shader_parameter/wiggle = 2.0
-shader_parameter/refraction = 0.05
-shader_parameter/fogginess = 0.0
-shader_parameter/drop_Radious = 0.08
-shader_parameter/drop_Strength = 10.0
-shader_parameter/trail_Strength = 20.0
-shader_parameter/layers = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
-[sub_resource type="Shader" id="Shader_mn58d"]
-code = "// SHARPENING PIXLES
-shader_type canvas_item;
-
-// Parameters
-uniform sampler2D screen_tex : hint_screen_texture, filter_nearest, repeat_disable;
-uniform float pixel: hint_range(1.0, 5.0, 1.0) = 1.0;
-uniform float sharpening: hint_range(0.0, 5.0, 0.01) = 0.0;
-
-void fragment() {
-	// Screen Coordinates
-	vec2 coord = (1.0 / FRAGCOORD.xy) * SCREEN_UV;
-	// Screen Sample
-	vec3 screen = texture(screen_tex, SCREEN_UV).rgb;
-	//Blur Sharp Smaple
-	vec3 N = texture(screen_tex, SCREEN_UV + (coord * (vec2(0.0, pixel)))).rgb;
-	vec3 S = texture(screen_tex, SCREEN_UV + (coord * (vec2(0.0, -pixel)))).rgb;
-	vec3 NE = texture(screen_tex, SCREEN_UV + (coord * (vec2(pixel, pixel)))).rgb;
-	vec3 SE = texture(screen_tex, SCREEN_UV + (coord * (vec2(pixel, -pixel)))).rgb;
-	vec3 NW = texture(screen_tex, SCREEN_UV + (coord * (vec2(-pixel, pixel)))).rgb;
-	vec3 SW = texture(screen_tex, SCREEN_UV + (coord * (vec2(-pixel,-pixel)))).rgb;
-	//Combined Samples
-	vec3 sample = ((N + S + NE + SE + NW + SW) / 6.0) * 0.7;
-	vec3 blur_sample = clamp((screen * 0.3) + sample, 0.0, 1.0);
-	//Final COLOR
-	vec3 mix_sharpening = mix(screen, blur_sample, 1.0-sharpening);
-	COLOR.rgb = mix_sharpening ;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xc3j"]
-shader = SubResource("Shader_mn58d")
-shader_parameter/pixel = 2.0
-shader_parameter/sharpening = 2.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjg68"]
-shader = ExtResource("5_ipad4")
-shader_parameter/chromaticRedPx = 2.0
-shader_parameter/chromaticBluePx = 2.0
-shader_parameter/chromaticIntensity = 0.2
-shader_parameter/_ = 0
-shader_parameter/vignetteOpacity = 1.0
-shader_parameter/vignetteSize = 0.7
-shader_parameter/vignetteFeather = 0.4
-shader_parameter/vignetteColor = Color(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_issi1"]
-shader = ExtResource("8_pnisj")
-shader_parameter/lensDistortion = 1.2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_efvsc"]
-shader = SubResource("Shader_mn58d")
-shader_parameter/pixel = 2.0
-shader_parameter/sharpening = 2.0
-
 [node name="SECTOR 6" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_vpunx")
-orquestrator = NodePath("[ SYSTEMS ]/Orquestrator")
+orquestrator = NodePath("SHARE_SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
-[node name="[ SYSTEMS ]" type="Node" parent="."]
+[node name="SHARE_SYSTEMS & UI" parent="." instance=ExtResource("2_68nee")]
 
-[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("cameraDrones", "ppeGlitch", "fly", "sky", "menu", "lluvia")]
-script = ExtResource("2_q2lqn")
-cameraDrones = NodePath("../Camera - Drones")
-ppeGlitch = NodePath("../PPE - Glitch")
-fly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/FLY")
-sky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/SKY")
-menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
-lluvia = NodePath("../../[ ENVIRONMENT ]/Lluvia")
+[node name="Camera - Drones" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+mshNavigation = NodePath("../../../[ CONTENT ]/Msh - Navigation")
+Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain")]
+worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
+msh_roads = NodePath("../../../[ CONTENT ]/Msh_Terrain/Msh_Roads")
+msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
+pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
+light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
+light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+fly_height_min = 200.0
 
-[node name="Camera - Drones" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly", "light_sun_sky", "light_sun_fly", "movSky", "sky_pivot", "sky_cam", "movFly", "fly_pivot", "fly_cam")]
-script = ExtResource("2_xo163")
-mshNavigation = NodePath("../../[ CONTENT ]/Msh - Navigation")
-Terrains = [NodePath("../../[ CONTENT ]/Msh_Terrain")]
-worldEnv = NodePath("../../[ ENVIRONMENT ]/WorldEnvironment")
-msh_roads = NodePath("../../[ CONTENT ]/Msh_Terrain/Msh_Roads")
-msh_limit = NodePath("../../[ CONTENT ]/Msh - Limit/Msh_Limit")
-pinSitio = NodePath("../../[ CONTENT ]/Pin - Sitio")
-ppe_fishEye_DroneSky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]/PPE - FishEye/DroneSky")
-ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
-ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
-light_sun_sky = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Sky")
-light_sun_fly = NodePath("../../[ ENVIRONMENT ]/Light - Sun_Fly")
-movSky = NodePath("MovSky")
-sky_pivot = NodePath("MovSky")
-sky_cam = NodePath("MovSky/sky_cam")
-movFly = NodePath("MovFly")
-fly_pivot = NodePath("MovFly")
-fly_cam = NodePath("MovFly/fly_cam")
-curveMovement = ExtResource("3_x5pt0")
-sky_height = 600.0
-fly_height_speed = 2.0
-fly_height_max = 450.0
+[node name="Audio - DroneFly" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
+audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water2"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water3")]
 
-[node name="MovSky" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984807, 0.173648, 50, 500, 148)
-script = ExtResource("4_w0x8b")
+[node name="Puntos de Interes & Baliza" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="5" node_paths=PackedStringArray("puntosInteres")]
+puntosInteres = NodePath("../../../[ CONTENT ]/Puntos interes")
 
-[node name="sky_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovSky"]
-current = true
-fov = 100.0
+[node name="Lluvia" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="6" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds")]
+worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
+lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
+lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
+miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="[ SYSTEMS ]/Camera - Drones/MovSky/sky_cam"]
-remote_path = NodePath("../../../../../[ ENVIRONMENT ]/Lluvia/PS - Rain Sky")
-update_rotation = false
-update_scale = false
+[node name="FLY" parent="SHARE_SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
+pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
-[node name="MovFly" type="Node3D" parent="[ SYSTEMS ]/Camera - Drones"]
-transform = Transform3D(-0.669131, 0.204839, -0.714357, 0, 0.961262, 0.275637, 0.743145, 0.184437, -0.64321, -216.947, 121.078, -185.329)
-script = ExtResource("5_7w42d")
+[node name="[ CONTENT ]" type="Node" parent="."]
 
-[node name="fly_cam" type="Camera3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
-fov = 35.0
+[node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("26_yysch")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 38.9696, -13.4788)
 
-[node name="fly_listener" type="AudioListener3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
+[node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
+surface_material_override/0 = ExtResource("27_k5hsy")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
-remote_path = NodePath("../../../../../[ ENVIRONMENT ]/Lluvia/PS - Rain Fly")
-update_rotation = false
-update_scale = false
+[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 47.153, -13.9504)
 
-[node name="Audio" type="Node" parent="[ SYSTEMS ]"]
-script = ExtResource("7_131lt")
+[node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
+material_override = ExtResource("2_vmk6t")
+mesh = SubResource("QuadMesh_2ocno")
 
-[node name="Audio - Music Env" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio"]
-stream = ExtResource("21_atymd")
-volume_db = 5.0
-autoplay = true
-bus = &"Music"
-parameters/looping = true
+[node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(-3495.15, 0.000558881, 2.34708e-11, 0, -0.000161789, 3556.06, 0.000527753, 3701.3, 0.00015544, 8, -60, 37.1)
+material_override = ExtResource("23_2ha5g")
+mesh = SubResource("QuadMesh_k5wsg")
 
-[node name="Audio - DroneSky" type="Node" parent="[ SYSTEMS ]/Audio" node_paths=PackedStringArray("sndMoving", "sndCameraFOV", "sndCameraRot", "sndWind")]
-script = ExtResource("16_r0mi2")
-sndMoving = NodePath("Moving")
-sndCameraFOV = NodePath("CameraFOV")
-sndCameraRot = NodePath("CameraRot")
-sndWind = NodePath("Wind")
+[node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
+transform = Transform3D(-36.5868, 0, -3.38757e-06, 0, 9.76607, 0, 3.19852e-06, 0, -38.7493, 18.1554, -38.2442, 18.4659)
 
-[node name="Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio/Audio - DroneSky"]
-stream = ExtResource("17_p1b51")
-volume_db = -5.0
-autoplay = true
-bus = &"SFX"
-parameters/looping = true
+[node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Moving" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio/Audio - DroneSky"]
-stream = ExtResource("18_og2vw")
-volume_db = 7.0
-bus = &"SFX"
-parameters/looping = true
+[node name="================" type="Node" parent="[ CONTENT ]"]
 
-[node name="CameraFOV" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio/Audio - DroneSky"]
-stream = ExtResource("6_ehp13")
-pitch_scale = 0.7
-bus = &"SFX"
+[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
 
-[node name="CameraRot" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio/Audio - DroneSky"]
-stream = ExtResource("6_ehp13")
-volume_db = 7.0
-pitch_scale = 0.5
-bus = &"SFX"
+[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
 
-[node name="Audio - DroneFly" type="Node" parent="[ SYSTEMS ]/Audio" node_paths=PackedStringArray("sndFlying", "sndWind", "sndNature", "audios3D")]
-script = ExtResource("10_uf8le")
-sndFlying = NodePath("Flying")
-flyingStaticVolume = -20.0
-flyingMovingVolume = -5.0
-flyingMovingPitch = 1.0
-flyingBoostVolume = -5.0
-flyingBoostPitch = 1.2
-sndWind = NodePath("Audio - Wind")
-windMaxVolume = 10.0
-windMinHeight = 300.0
-windMaxHeight = 450.0
-sndNature = NodePath("Audio - Nature")
-natureMaxVolume = 15.0
-natureMinHeight = 150.0
-natureMaxHeight = 380.0
-streamNature = ExtResource("12_6b1iq")
-streamRain = ExtResource("14_pcnw8")
-audios3D = [NodePath("Audio - Water"), NodePath("Audio - Water2"), NodePath("Audio - Water3")]
+[node name="===============" type="Node" parent="[ CONTENT ]"]
 
-[node name="Flying" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio/Audio - DroneFly"]
-stream = ExtResource("10_2yvy7")
-volume_db = -25.0
-bus = &"SFX"
-parameters/looping = true
+[node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
-[node name="Audio - Wind" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio/Audio - DroneFly"]
-stream = ExtResource("14_1tnag")
-autoplay = true
-bus = &"SFX"
-parameters/looping = true
+[node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -484.349, 59.6599, 148.556)
+script = ExtResource("39_x4bd8")
+nombre = " Telesecundaria Los Zapotes "
 
-[node name="Audio - Nature" type="AudioStreamPlayer" parent="[ SYSTEMS ]/Audio/Audio - DroneFly"]
-stream = ExtResource("12_6b1iq")
-autoplay = true
-bus = &"SFX"
-parameters/looping = true
+[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -557.276, 59.6599, -415.393)
+script = ExtResource("39_x4bd8")
+nombre = " Toma & DaCa Taller "
 
-[node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio/Audio - DroneFly"]
+[node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1098.19, 70.9961, -451.811)
+script = ExtResource("39_x4bd8")
+nombre = " Escuela Primaria Ignacio Lopez Rayon"
+
+[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1084.32, 69.6268, -1403.56)
+visible = false
+script = ExtResource("39_x4bd8")
+nombre = "Primaria Lazaro Cardenas"
+
+[node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1217.13, 69.6268, -1417.5)
+script = ExtResource("39_x4bd8")
+nombre = "Canchita El Bosque"
+
+[node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1020.99, 69.6268, -1598.05)
+visible = false
+script = ExtResource("39_x4bd8")
+nombre = "Parroquia San Juanita"
+
+[node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
+
+[node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
 stream = ExtResource("13_de45w")
 volume_db = 20.0
@@ -317,7 +132,7 @@ autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
-[node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio/Audio - DroneFly"]
+[node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.948, 36.709, -1116.42)
 stream = ExtResource("13_de45w")
 volume_db = 20.0
@@ -326,7 +141,7 @@ autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
-[node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ SYSTEMS ]/Audio/Audio - DroneFly"]
+[node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.157, 36.709, -1866.21)
 stream = ExtResource("13_de45w")
 volume_db = 20.0
@@ -334,82 +149,6 @@ unit_size = 25.0
 autoplay = true
 bus = &"SFX"
 parameters/looping = true
-
-[node name="PPE - Glitch" parent="[ SYSTEMS ]" node_paths=PackedStringArray("vistaSky", "vistaFly") instance=ExtResource("7_cjwh8")]
-vistaSky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/SKY")
-vistaFly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/FLY")
-
-[node name="PPE - Alarmas" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("ppePresa", "ppeTemp", "sndAlarm")]
-script = ExtResource("18_xkk4p")
-ppePresa = NodePath("Alarmas Presa/Presa")
-ppeTemp = NodePath("Alarmas Temp/Temp")
-sndAlarm = NodePath("Alarma")
-
-[node name="Alarmas Presa" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
-layer = 5
-
-[node name="Presa" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Presa"]
-visible = false
-material = SubResource("ShaderMaterial_bdqpe")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Alarmas Temp" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
-layer = 4
-
-[node name="Temp" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Temp"]
-visible = false
-material = SubResource("ShaderMaterial_uqmtv")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Alarma" type="AudioStreamPlayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
-stream = ExtResource("23_qgr12")
-autoplay = true
-bus = &"Alarm"
-parameters/looping = true
-
-[node name="Puntos de Interes & Baliza" parent="[ SYSTEMS ]" node_paths=PackedStringArray("camFly", "camSky") instance=ExtResource("39_it1fo")]
-camFly = NodePath("../Camera - Drones/MovFly/fly_cam")
-camSky = NodePath("../Camera - Drones/MovSky/sky_cam")
-
-[node name="Punto 4" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -484.349, 59.6599, 148.556)
-script = ExtResource("39_x4bd8")
-nombre = " Telesecundaria Los Zapotes "
-
-[node name="Punto 5" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -557.276, 59.6599, -415.393)
-script = ExtResource("39_x4bd8")
-nombre = " Toma & DaCa Taller "
-
-[node name="Punto 6" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1098.19, 70.9961, -451.811)
-script = ExtResource("39_x4bd8")
-nombre = " Escuela Primaria Ignacio Lopez Rayon"
-
-[node name="Punto 7" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1084.32, 69.6268, -1403.56)
-visible = false
-script = ExtResource("39_x4bd8")
-nombre = "Primaria Lazaro Cardenas"
-
-[node name="Punto 8" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1217.13, 69.6268, -1417.5)
-script = ExtResource("39_x4bd8")
-nombre = "Canchita El Bosque"
-
-[node name="Punto 9" type="Node3D" parent="[ SYSTEMS ]/Puntos de Interes & Baliza"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1020.99, 69.6268, -1598.05)
-visible = false
-script = ExtResource("39_x4bd8")
-nombre = "Parroquia San Juanita"
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
@@ -448,183 +187,7 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 800.0
 sky_mode = 1
 
-[node name="Lluvia" type="Node" parent="[ ENVIRONMENT ]" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds", "sndsTruenos", "lensDrop", "lensDroplets", "rainFlyParticles", "rainSkyParticles", "timerTruenos")]
-script = ExtResource("26_pgufy")
-worldEnv = NodePath("../WorldEnvironment")
-lightSunSky = NodePath("../Light - Sun_Sky")
-lightSunFly = NodePath("../Light - Sun_Fly")
-lightRain = NodePath("../Light - Rain")
-miClouds = NodePath("../../[ CONTENT ]/MI - Clouds")
-sndsTruenos = NodePath("Snds - Truenos")
-lensDrop = NodePath("Drops/LensDrop")
-lensDroplets = NodePath("Dripping/Dripping")
-rainFlyParticles = NodePath("PS - Rain Fly")
-rainSkyParticles = NodePath("PS - Rain Sky")
-minTrueno = 5
-timerTruenos = NodePath("timer - truenos")
-curveTrueno = ExtResource("27_ri71f")
-
-[node name="Snds - Truenos" type="AudioStreamPlayer" parent="[ ENVIRONMENT ]/Lluvia"]
-stream = SubResource("AudioStreamRandomizer_f0v3a")
-
-[node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("40_sxi81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.189, 123.135, -182.846)
-visible = false
-amount = 1000
-transform_align = 1
-
-[node name="PS - Rain Sky" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("40_sxi81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 500, 148)
-amount = 1500
-transform_align = 1
-
-[node name="Drops" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
-layer = 4
-
-[node name="LensDrop" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/Drops"]
-visible = false
-material = ExtResource("36_l6fs6")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Dripping" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
-layer = 4
-
-[node name="Dripping" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/Dripping"]
-visible = false
-material = SubResource("ShaderMaterial_b5nug")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="timer - truenos" type="Timer" parent="[ ENVIRONMENT ]/Lluvia"]
-
-[node name="[ CONTENT ]" type="Node" parent="."]
-
-[node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("26_yysch")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 38.9696, -13.4788)
-
-[node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
-surface_material_override/0 = ExtResource("27_k5hsy")
-
-[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 47.153, -13.9504)
-
-[node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
-material_override = ExtResource("2_vmk6t")
-mesh = SubResource("QuadMesh_2ocno")
-
-[node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(-3495.15, 0.000558881, 2.34708e-11, 0, -0.000161789, 3556.06, 0.000527753, 3701.3, 0.00015544, 8, -60, 37.1)
-material_override = ExtResource("23_2ha5g")
-mesh = SubResource("QuadMesh_k5wsg")
-
-[node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(-36.5868, 0, -3.38757e-06, 0, 9.76607, 0, 3.19852e-06, 0, -38.7493, 18.1554, -38.2442, 18.4659)
-
-[node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="================" type="Node" parent="[ CONTENT ]"]
-
-[node name="Msh_Terrain" parent="[ CONTENT ]" instance=ExtResource("3_htqi2")]
-
-[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("9_s7pct")]
-
-[node name="[ PPE + UI ]" type="Node" parent="."]
-
-[node name="[ PPE- SKY]" type="Node" parent="[ PPE + UI ]"]
-
-[node name="PPE - Sharpening" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE- SKY]"]
-
-[node name="ColorRect" type="ColorRect" parent="[ PPE + UI ]/[ PPE- SKY]/PPE - Sharpening"]
-material = SubResource("ShaderMaterial_6xc3j")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PPE - Lens" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE- SKY]"]
-layer = 2
-
-[node name="ColorRect" type="ColorRect" parent="[ PPE + UI ]/[ PPE- SKY]/PPE - Lens"]
-material = SubResource("ShaderMaterial_xjg68")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PPE - FishEye" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE- SKY]"]
-layer = 3
-
-[node name="DroneSky" type="ColorRect" parent="[ PPE + UI ]/[ PPE- SKY]/PPE - FishEye"]
-material = SubResource("ShaderMaterial_issi1")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="[ PPE - FLY]" type="Node" parent="[ PPE + UI ]"]
-
-[node name="PPE - Sharpening" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE - FLY]"]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="[ PPE + UI ]/[ PPE - FLY]/PPE - Sharpening"]
-material = SubResource("ShaderMaterial_efvsc")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PPE - Lens" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE - FLY]"]
-layer = 2
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="[ PPE + UI ]/[ PPE - FLY]/PPE - Lens"]
-material = SubResource("ShaderMaterial_xjg68")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="[ UI  ]" type="Node" parent="[ PPE + UI ]"]
-
-[node name="Interfaz Drones" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 6
-
-[node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz Drones" node_paths=PackedStringArray("pinSitio") instance=ExtResource("15_bomeh")]
-pinSitio = NodePath("../../../../[ CONTENT ]/Pin - Sitio")
-
-[node name="SKY" parent="[ PPE + UI ]/[ UI  ]/Interfaz Drones" instance=ExtResource("14_bqx8o")]
-map_minimap = ExtResource("49_quvql")
-metadata/_edit_horizontal_guides_ = [125.0]
-
-[node name="Interfaz MENUS" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 8
-
-[node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("7_hy666")]
-anchors_preset = 12
-anchor_top = 1.0
-offset_top = -1009.0
-grow_vertical = 0
-
-[node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("6_7j046")]
-visible = false
-
+[editable path="SHARE_SYSTEMS & UI"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
+[editable path="[ CONTENT ]/Msh - Limit"]
+[editable path="[ CONTENT ]/Msh_Terrain"]

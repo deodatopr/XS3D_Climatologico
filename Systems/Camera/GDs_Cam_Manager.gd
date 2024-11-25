@@ -9,9 +9,6 @@ class_name GDs_Cam_Manager extends Node
 @export var msh_roads : MeshInstance3D
 @export var msh_limit : MeshInstance3D
 @export var pinSitio : Node3D
-@export var ppe_fishEye_DroneSky : ColorRect
-@export var ui_ppe_sky : Node
-@export var ui_ppe_fly : Node
 @export var light_sun_sky : Node3D
 @export var light_sun_fly : Node3D
 
@@ -22,6 +19,10 @@ class_name GDs_Cam_Manager extends Node
 @export var movFly : GDs_Cam_Mov_Fly
 @export var fly_pivot : Node3D
 @export var fly_cam : Camera3D
+
+@export var ppe_fishEye_DroneSky : ColorRect
+@export var ui_ppe_sky : Node
+@export var ui_ppe_fly : Node
 
 
 @export_group("CAMERAS")

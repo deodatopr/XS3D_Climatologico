@@ -1,8 +1,5 @@
 class_name GDs_UI_Manager extends Control
 
-@export_group("SCENE REFERENCES")
-@export var vistaSky:Control
-
 @export_group("INTERNAL REFERENCES")
 @export var menuPerfiles:GDs_MenuPerfiles
 @export var barraMenus:GDs_BarraMenus

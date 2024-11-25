@@ -37,6 +37,9 @@ var originalNatureVolume: float = 0.0
 
 
 func _ready():
+	if audios3D.size() == 0:
+		print("NOTA: FALTA AGREGAR LOS AUDIOS 3D EN ESTE SCRIPT [ ",name," ]")
+	
 	originalNatureVolume = sndNature.volume_db
 	originalNatureMinHeight = natureMinHeight
 	
