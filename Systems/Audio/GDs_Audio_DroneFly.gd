@@ -2,6 +2,7 @@ extends Node
 
 @export_group("Moving")
 @export var sndFlying: AudioStreamPlayer
+@export var sndCameraRot: AudioStreamPlayer
 @export_custom(PROPERTY_HINT_NONE, "suffix:dB") var flyingStaticVolume:float = -40
 @export var flyingStaticPitch:float = 0.85
 @export_custom(PROPERTY_HINT_NONE, "suffix:dB") var flyingMovingVolume:float = -25
@@ -72,10 +73,6 @@ func _process(_delta):
 				if not sndFlying.playing:
 					isBoosting = false
 					MovingFade(sndFlying,flyingMovingVolume,flyingMovingPitch)
-		#ROTATION SOUND
-		elif CAM.isRotating:
-			if not sndFlying.playing:
-				MovingFade(sndFlying,0,0.7)
 		#HEIGHT
 		elif CAM.isHeightChanging:
 			if not sndFlying.playing:
@@ -84,6 +81,15 @@ func _process(_delta):
 		else:
 			if sndFlying.playing:
 				MovingFade(sndFlying,flyingStaticVolume,flyingStaticPitch,true)
+			
+		
+		if CAM.isRotating:
+			if not sndCameraRot.playing:
+				MovingFade(sndCameraRot,0,0.7)
+		else:
+			if sndCameraRot.playing:
+				MovingFade(sndCameraRot,flyingStaticVolume,flyingStaticPitch,true)
+			
 #endregion
 #region Environment
 		if CAM.height > natureMinHeight and CAM.height < natureMidPoint:
