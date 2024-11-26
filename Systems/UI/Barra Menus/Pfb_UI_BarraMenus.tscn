@@ -23,14 +23,14 @@ atlas = ExtResource("1_bu15u")
 region = Rect2(472, 301, 16, 18)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ov4cf"]
-bg_color = Color(0.529412, 0.0588235, 1, 1)
+bg_color = Color(0.207, 0.7152, 0.9, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxxn3"]
-bg_color = Color(0.529412, 0.0588235, 1, 1)
+bg_color = Color(0.207, 0.7152, 0.9, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5

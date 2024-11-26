@@ -1102,7 +1102,6 @@ visibility_layer = 0
 layout_mode = 2
 
 [node name="Left Line" type="TextureRect" parent="."]
-self_modulate = Color(0.529412, 0.0588235, 1, 1)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
