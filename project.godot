@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="XS3D_Climatologico"
+config/name="XS3D Climatologico"
 config/tags=PackedStringArray("xsoft3d")
 run/main_scene="res://(Scenes)/Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
