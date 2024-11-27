@@ -23,11 +23,11 @@
 
 [node name="ScnSector4" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_m6hgx")
-orquestrator = NodePath("SHARE_SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
+orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
-[node name="SHARE_SYSTEMS & UI" parent="." instance=ExtResource("2_cdep1")]
+[node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_cdep1")]
 
-[node name="Camera - Drones" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 mshNavigation = NodePath("../../../[ CONTENT ]/Msh_Navigation")
 Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -37,23 +37,23 @@ pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 
-[node name="Audio - DroneFly" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
+[node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
 audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water2"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water3"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Town"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Town2"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Town4"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Town3")]
 
-[node name="Temp" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]/PPE - Alarmas/Alarmas Temp" index="0"]
+[node name="Temp" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/PPE - Alarmas/Alarmas Temp" index="0"]
 visible = true
 
-[node name="Puntos de Interes & Baliza" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="5" node_paths=PackedStringArray("puntosInteres")]
+[node name="Puntos de Interes & Baliza" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="5" node_paths=PackedStringArray("puntosInteres")]
 puntosInteres = NodePath("../../../[ CONTENT ]/Puntos Interes")
 
-[node name="Lluvia" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="6" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds")]
+[node name="Lluvia" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="6" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
 lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 
-[node name="FLY" parent="SHARE_SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
+[node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
@@ -82,7 +82,7 @@ light_energy = 1.5
 shadow_enabled = true
 shadow_blur = 3.0
 directional_shadow_mode = 0
-directional_shadow_max_distance = 2000.0
+directional_shadow_max_distance = 200.0
 sky_mode = 1
 
 [node name="Light - Rain" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
@@ -202,7 +202,6 @@ nombre = " Planta de Bombeo Sistema Cutzamala"
 
 [node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 658.181, -16.4113, -601.215)
-visible = false
 script = ExtResource("21_lkc62")
 nombre = " Casa del Lago"
 
@@ -213,7 +212,6 @@ nombre = "Casa del Viento"
 
 [node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1581.26, -5.6043, -476.479)
-visible = false
 script = ExtResource("21_lkc62")
 nombre = "Casa de la Cueva"
 
@@ -237,7 +235,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 644.71
 script = ExtResource("21_lkc62")
 nombre = "Virgen de Guadalupe"
 
-[editable path="SHARE_SYSTEMS & UI"]
+[editable path="SHARED SYSTEMS & UI"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain"]
