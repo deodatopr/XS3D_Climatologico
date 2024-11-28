@@ -588,7 +588,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Abrir Cerrar Menu/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -651,7 +651,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Volumen/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -760,7 +760,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Subir Bajar/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -907,7 +907,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Modo de Datos/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1014,7 +1014,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Camaras/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1131,7 +1131,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Cancelar/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1244,7 +1244,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Aceptar/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1358,7 +1358,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Rotacion/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1486,7 +1486,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Navegar UI/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1561,7 +1561,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Paneo/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1783,7 +1783,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Acelerar/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1904,7 +1904,7 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="Label" type="Label" parent="FrameBG/Labels/Info/Label"]
-self_modulate = Color(0.215686, 0.737255, 0.929412, 1)
+self_modulate = Color(0.866667, 0.788235, 0.643137, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1965,7 +1965,7 @@ theme_override_font_sizes/font_size = 30
 text = "F1"
 
 [node name="Cerrar" type="NinePatchRect" parent="FrameBG"]
-self_modulate = Color(0.1426, 0.492693, 0.62, 1)
+self_modulate = Color(0.1368, 0.36, 0.30792, 0.815686)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

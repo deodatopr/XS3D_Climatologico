@@ -8,7 +8,6 @@ extends Control
 @export var blurBG:Control
 @export_group("Data Refresh")
 @export_subgroup("Color, ID & Nombre")
-@export var frame:Control
 @export var frameNombre:Control
 @export var patch:Control
 @export var id:Label
@@ -68,8 +67,7 @@ func _ready():
 
 func DataRefresh(_estacion: GDs_Data_Sitio):
 	estacion = _estacion
-	frame.self_modulate = _estacion.color
-	frameNombre.self_modulate = _estacion.color
+	#frameNombre.self_modulate = _estacion.color
 	patch.self_modulate = _estacion.color
 	id.text = str(_estacion.id)
 	nombre.text = _estacion.nombre

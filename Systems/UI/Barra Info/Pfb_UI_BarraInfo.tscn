@@ -8,8 +8,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2g4pr"]
 shader = ExtResource("1_n0q2v")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.1
+shader_parameter/color = Color(0.462745, 0.458824, 0.45098, 1)
+shader_parameter/brightness = 0.6
 shader_parameter/blur = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jcsu"]
@@ -69,14 +69,14 @@ atlas = ExtResource("2_om8fc")
 region = Rect2(0, 160, 40, 40)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1ifb"]
-bg_color = Color(0.0897, 0.30992, 0.39, 1)
+bg_color = Color(0.0627451, 0.188235, 0.168627, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icxbt"]
-bg_color = Color(0.141176, 0.494118, 0.619608, 1)
+bg_color = Color(0.137255, 0.356863, 0.305882, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -147,9 +147,9 @@ nivelBg = NodePath("HBoxContainer/Nivel/Valor Nivel/Nivel BG")
 nivelNorm = NodePath("HBoxContainer/Nivel/Niveles/Norm/Lbl Nvl Norm")
 nivelPrev = NodePath("HBoxContainer/Nivel/Niveles/Prev/Lbl Nvl Prev")
 nivelCrit = NodePath("HBoxContainer/Nivel/Niveles/Crit/Lbl Nvl Crit")
-ColorNorm = Color(0.137255, 0.745098, 0.972549, 1)
-ColorPrev = Color(0.972549, 0.67451, 0.0117647, 1)
-ColorCrit = Color(0.972549, 0.137255, 0.137255, 1)
+ColorNorm = Color(0.1358, 0.747547, 0.97, 0.588235)
+ColorPrev = Color(0.97, 0.665905, 0.00969999, 0.588235)
+ColorCrit = Color(0.97, 0.1358, 0.1358, 0.588235)
 animColor = Color(0, 0, 0, 0)
 precipitacion = NodePath("HBoxContainer/Datos/Precipitacion/VBox/Lbl Valor Precipitacion")
 precipitacionSnsr = NodePath("HBoxContainer/Datos/Precipitacion/VBox/Control/Senal")
@@ -560,7 +560,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Nivel BG" type="NinePatchRect" parent="HBoxContainer/Nivel/Valor Nivel"]
-self_modulate = Color(0.141176, 0.768627, 1, 1)
+self_modulate = Color(0.14, 0.770667, 1, 0.588235)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -654,7 +654,7 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Crit" type="TextureRect" parent="HBoxContainer/Nivel/Niveles"]
-self_modulate = Color(1, 0.141176, 0.141176, 1)
+self_modulate = Color(1, 0.14, 0.14, 0.588235)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -673,7 +673,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Prev" type="TextureRect" parent="HBoxContainer/Nivel/Niveles"]
-self_modulate = Color(1, 0.694118, 0.0117647, 1)
+self_modulate = Color(1, 0.6865, 0.00999999, 0.588235)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -693,7 +693,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Norm" type="TextureRect" parent="HBoxContainer/Nivel/Niveles"]
-self_modulate = Color(0.141176, 0.768627, 1, 1)
+self_modulate = Color(0.14, 0.770667, 1, 0.588235)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -732,7 +732,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Precipitacion"]
-self_modulate = Color(1, 0, 0.415686, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -782,6 +782,7 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Precipitacion/VBox"]
+self_modulate = Color(0.73252, 0.4, 1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Precipitacion"
@@ -794,7 +795,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Presion Atm"]
-self_modulate = Color(1, 0, 0.415686, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -844,6 +845,7 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Presion Atm/VBox"]
+self_modulate = Color(0.73252, 0.4, 1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Presion atm"
@@ -856,7 +858,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Evaporacion"]
-self_modulate = Color(0.683208, 0, 1, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -905,6 +907,7 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Evaporacion/VBox"]
+self_modulate = Color(0.4, 0.797343, 1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Evaporacion
@@ -918,7 +921,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Humedad"]
-self_modulate = Color(0.683208, 0, 1, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -967,6 +970,7 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Humedad/VBox"]
+self_modulate = Color(0.4, 0.797343, 1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Humedad"
@@ -980,7 +984,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Temperatura"]
-self_modulate = Color(0.683208, 0, 1, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1029,6 +1033,7 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Temperatura/VBox"]
+self_modulate = Color(0.4, 0.797343, 1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Temperatura"
@@ -1041,7 +1046,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Datos/Viento"]
-self_modulate = Color(0.926925, 0, 1, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1090,6 +1095,7 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Viento/VBox"]
+self_modulate = Color(0.4, 1, 0.802711, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Viento"
@@ -1202,7 +1208,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_p1ifb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_icxbt")
 
 [node name="Cerrar" type="Control" parent="Panel - Error/Bgk - Blur/Container - Btn"]
-self_modulate = Color(0.1426, 0.492693, 0.62, 1)
+self_modulate = Color(0.137255, 0.356863, 0.305882, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

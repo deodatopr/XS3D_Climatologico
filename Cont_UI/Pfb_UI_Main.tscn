@@ -97,7 +97,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es136"]
-bg_color = Color(0.207, 0.7152, 0.9, 1)
+bg_color = Color(0.137255, 0.356863, 0.305882, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -963,7 +963,7 @@ popup/item_2/text = "Error - Ult. Datos"
 popup/item_2/id = 2
 
 [node name="Sim Datos" type="NinePatchRect" parent="Menu Debug/Menu Config"]
-self_modulate = Color(0.141176, 0.494118, 0.619608, 1)
+self_modulate = Color(0.1368, 0.36, 0.30792, 0.815686)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
