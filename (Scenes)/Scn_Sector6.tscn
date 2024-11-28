@@ -22,11 +22,11 @@
 
 [node name="SECTOR 6" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_vpunx")
-orquestrator = NodePath("SHARE_SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
+orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
-[node name="SHARE_SYSTEMS & UI" parent="." instance=ExtResource("2_68nee")]
+[node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_68nee")]
 
-[node name="Camera - Drones" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 mshNavigation = NodePath("../../../[ CONTENT ]/Msh - Navigation")
 Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
@@ -37,26 +37,26 @@ light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 fly_height_min = 200.0
 
-[node name="CameraRot2" type="AudioStreamPlayer" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]/Audio/Audio - DroneSky" index="4"]
+[node name="CameraRot2" type="AudioStreamPlayer" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio/Audio - DroneSky" index="4"]
 stream = ExtResource("3_hnlpa")
 volume_db = 7.0
 pitch_scale = 0.5
 bus = &"SFX"
 
-[node name="Audio - DroneFly" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
+[node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
 audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water2"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water3")]
 
-[node name="Puntos de Interes & Baliza" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="5" node_paths=PackedStringArray("puntosInteres")]
+[node name="Puntos de Interes & Baliza" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="5" node_paths=PackedStringArray("puntosInteres")]
 puntosInteres = NodePath("../../../[ CONTENT ]/Puntos interes")
 
-[node name="Lluvia" parent="SHARE_SYSTEMS & UI/[ SYSTEMS ]" index="6" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds")]
+[node name="Lluvia" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="6" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
 lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 
-[node name="FLY" parent="SHARE_SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
+[node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
 [node name="[ CONTENT ]" type="Node" parent="."]
@@ -194,7 +194,7 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 800.0
 sky_mode = 1
 
-[editable path="SHARE_SYSTEMS & UI"]
+[editable path="SHARED SYSTEMS & UI"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain"]
