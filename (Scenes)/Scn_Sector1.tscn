@@ -133,7 +133,7 @@ lensDroplets = NodePath("DropLets/Droplets")
 rainFlyParticles = NodePath("PS - Rain Fly")
 rainSkyParticles = NodePath("PS - Rain Sky")
 minTrueno = 5
-timerTruenos = NodePath("timer - truenos")
+timerTruenos = NodePath("Timer - truenos")
 curveTrueno = ExtResource("28_nenwj")
 
 [node name="Snds - Truenos" type="AudioStreamPlayer" parent="[ ENVIRONMENT ]/Lluvia"]
@@ -174,7 +174,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="timer - truenos" type="Timer" parent="[ ENVIRONMENT ]/Lluvia"]
+[node name="Timer - truenos" type="Timer" parent="[ ENVIRONMENT ]/Lluvia"]
 
 [node name="[ CONTENT ]" type="Node" parent="."]
 
