@@ -2,28 +2,28 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2kva7lmdb47u"
-path="res://.godot/imported/Map_Mapa_Edomex.png-9ba3ca15229da34e9bf337be1c10d653.ctex"
+uid="uid://iebqo1bt7dym"
+path="res://.godot/imported/UI_Atlas_Icons.png-b431339c36fde6deb4ad984eef65f97f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cont_UI/Map_Mapa_Edomex.png"
-dest_files=["res://.godot/imported/Map_Mapa_Edomex.png-9ba3ca15229da34e9bf337be1c10d653.ctex"]
+source_file="res://Cont_UI/UI_Atlas_Icons.png"
+dest_files=["res://.godot/imported/UI_Atlas_Icons.png-b431339c36fde6deb4ad984eef65f97f.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

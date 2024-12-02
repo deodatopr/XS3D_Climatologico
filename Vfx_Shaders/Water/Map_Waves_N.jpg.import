@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2picf87gw7ha"
-path.s3tc="res://.godot/imported/Map_Waves_N.jpg-f1811b4b680cdccb033bea375ef08061.s3tc.ctex"
+path="res://.godot/imported/Map_Waves_N.jpg-f1811b4b680cdccb033bea375ef08061.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Vfx_Shaders/Water/Map_Waves_N.jpg"
-dest_files=["res://.godot/imported/Map_Waves_N.jpg-f1811b4b680cdccb033bea375ef08061.s3tc.ctex"]
+dest_files=["res://.godot/imported/Map_Waves_N.jpg-f1811b4b680cdccb033bea375ef08061.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=0

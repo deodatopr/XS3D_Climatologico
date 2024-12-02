@@ -3,30 +3,29 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djudm04t7vifd"
-path.bptc="res://.godot/imported/Sky_Rain.hdr-25164c404f9f4c95a68eac1141331139.bptc.ctex"
+path="res://.godot/imported/Sky_Rain.hdr-25164c404f9f4c95a68eac1141331139.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Cont_Models/#Shared/Skyes/Sky_Rain.hdr"
-dest_files=["res://.godot/imported/Sky_Rain.hdr-25164c404f9f4c95a68eac1141331139.bptc.ctex"]
+dest_files=["res://.godot/imported/Sky_Rain.hdr-25164c404f9f4c95a68eac1141331139.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

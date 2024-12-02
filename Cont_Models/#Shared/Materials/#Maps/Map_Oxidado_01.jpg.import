@@ -3,28 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgb4s0buo6i7w"
-path.s3tc="res://.godot/imported/Map_Oxidado_01.jpg-fe19e0f80592fc6a9a0d5c0c401a8b7d.s3tc.ctex"
+path="res://.godot/imported/Map_Oxidado_01.jpg-fe19e0f80592fc6a9a0d5c0c401a8b7d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Cont_Models/#Shared/Materials/#Maps/Map_Oxidado_01.jpg"
-dest_files=["res://.godot/imported/Map_Oxidado_01.jpg-fe19e0f80592fc6a9a0d5c0c401a8b7d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Map_Oxidado_01.jpg-fe19e0f80592fc6a9a0d5c0c401a8b7d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

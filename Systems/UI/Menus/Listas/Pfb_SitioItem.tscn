@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/UI/Menus/Listas/GDs_Perf_Sitio.gd" id="1_8nspj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_gkrbn"]
-[ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/Sprites_Atlas.png" id="2_5qgwa"]
+[ext_resource type="Texture2D" uid="uid://iebqo1bt7dym" path="res://Cont_UI/UI_Atlas_Icons.png" id="2_5qgwa"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="2_7to34"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4pugx"]

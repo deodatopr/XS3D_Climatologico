@@ -21,6 +21,30 @@ offset_bottom = 96.0
 grow_horizontal = 2
 alignment = 1
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer2"]
+visibility_layer = 0
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="Label - Description" type="Label" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "1.Project and Mesh Mats:  Must have same \"Mats Names\"
+2. Select a mesh from \"FileSystem\" to use ASSIGN
+"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/HBoxContainer2"]
+visibility_layer = 0
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -56,29 +80,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "This will clean all the automaterial assigned before."
 text = "   CLEAN   "
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer2"]
-visibility_layer = 0
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-
-[node name="Label - Description" type="Label" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(260, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "[ Project & Mesh(es) Mats ] = [ Same Mat Names ]"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/HBoxContainer2"]
-visibility_layer = 0
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
 visibility_layer = 0

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xh84cch52dbq"
-path.s3tc="res://.godot/imported/Map_Sect6_Minimap.jpg-b132ca180698632565e50e546fe260af.s3tc.ctex"
+path="res://.godot/imported/Map_Sect6_Minimap.jpg-b132ca180698632565e50e546fe260af.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Cont_Models/Sector6/Map_Sect6_Minimap.jpg"
-dest_files=["res://.godot/imported/Map_Sect6_Minimap.jpg-b132ca180698632565e50e546fe260af.s3tc.ctex"]
+dest_files=["res://.godot/imported/Map_Sect6_Minimap.jpg-b132ca180698632565e50e546fe260af.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=0
@@ -24,7 +23,7 @@ compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=false
 process/premult_alpha=false
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=512
-detect_3d/compress_to=1
+detect_3d/compress_to=0

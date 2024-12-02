@@ -3,28 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b143yrr6m8n02"
-path.s3tc="res://.godot/imported/Map_Asfalto.jpg-004dbaa9e6e35d6313d47c699c82bd48.s3tc.ctex"
+path="res://.godot/imported/Map_Asfalto.jpg-004dbaa9e6e35d6313d47c699c82bd48.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Cont_Models/#Shared/Materials/#Maps/Map_Asfalto.jpg"
-dest_files=["res://.godot/imported/Map_Asfalto.jpg-004dbaa9e6e35d6313d47c699c82bd48.s3tc.ctex"]
+dest_files=["res://.godot/imported/Map_Asfalto.jpg-004dbaa9e6e35d6313d47c699c82bd48.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=1.0
 compress/hdr_compression=1
 compress/normal_map=2
 compress/channel_pack=1
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=false
 process/premult_alpha=false
