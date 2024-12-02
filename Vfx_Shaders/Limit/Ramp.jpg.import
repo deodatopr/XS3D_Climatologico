@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dv4ieebdoxuns"
 path.s3tc="res://.godot/imported/Ramp.jpg-a5a36e0d849e3e5f791a5f2bb5367170.s3tc.ctex"
-path.etc2="res://.godot/imported/Ramp.jpg-a5a36e0d849e3e5f791a5f2bb5367170.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Vfx_Shaders/Limit/Ramp.jpg"
-dest_files=["res://.godot/imported/Ramp.jpg-a5a36e0d849e3e5f791a5f2bb5367170.s3tc.ctex", "res://.godot/imported/Ramp.jpg-a5a36e0d849e3e5f791a5f2bb5367170.etc2.ctex"]
+dest_files=["res://.godot/imported/Ramp.jpg-a5a36e0d849e3e5f791a5f2bb5367170.s3tc.ctex"]
 
 [params]
 

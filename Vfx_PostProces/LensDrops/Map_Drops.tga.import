@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkmsl3y7mtysv"
 path.bptc="res://.godot/imported/Map_Drops.tga-f8f8e43c268e0acfec7abd8a14e80a9c.bptc.ctex"
-path.astc="res://.godot/imported/Map_Drops.tga-f8f8e43c268e0acfec7abd8a14e80a9c.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Vfx_PostProces/LensDrops/Map_Drops.tga"
-dest_files=["res://.godot/imported/Map_Drops.tga-f8f8e43c268e0acfec7abd8a14e80a9c.bptc.ctex", "res://.godot/imported/Map_Drops.tga-f8f8e43c268e0acfec7abd8a14e80a9c.astc.ctex"]
+dest_files=["res://.godot/imported/Map_Drops.tga-f8f8e43c268e0acfec7abd8a14e80a9c.bptc.ctex"]
 
 [params]
 
