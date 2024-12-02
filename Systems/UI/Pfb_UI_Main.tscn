@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://y1iugd6uyl42"]
+[gd_scene load_steps=35 format=3 uid="uid://y1iugd6uyl42"]
 
 [ext_resource type="PackedScene" uid="uid://hu5k41b7gh1x" path="res://Systems/UI/Barra Info/Pfb_UI_BarraInfo.tscn" id="1_a8a45"]
 [ext_resource type="PackedScene" uid="uid://8ogd5844tnm4" path="res://Systems/UI/Menus/Pfb_MenuControles.tscn" id="1_pql5o"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cu4xkkxeuptxj" path="res://Systems/UI/Menus/Mapa/Pfb_UI_Mapa.tscn" id="4_t41nj"]
 [ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/UI/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_UI_Datos.gd" id="8_dd30f"]
+[ext_resource type="PackedScene" uid="uid://2puryj6lequo" path="res://Systems/Graficadora/Main.tscn" id="8_h16nv"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
 [ext_resource type="PackedScene" uid="uid://ddo5utgfriiew" path="res://Systems/UI/Menus/Config/Pfb_Menu_Config.tscn" id="9_cajyl"]
 [ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]
@@ -29,9 +30,9 @@ region = Rect2(7, 322, 44, 44)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r3lu1"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5kuu7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydb7v"]
 atlas = ExtResource("8_omcqt")
-region = Rect2(473, 390, 30, 30)
+region = Rect2(473, 423, 30, 31)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfcj0"]
 bg_color = Color(0.529412, 0.0588235, 1, 1)
@@ -154,7 +155,6 @@ panelDebug = NodePath("Menu Debug")
 [node name="------MENUS----------" type="Node" parent="."]
 
 [node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp", "sndUi1", "sndUiPressed") instance=ExtResource("3_g57u8")]
-visible = false
 layout_mode = 1
 offset_left = 20.0
 offset_top = -982.0
@@ -179,7 +179,6 @@ clickSnd = NodePath("../[ AUDIO ]/UI Pressed")
 focusSnd = NodePath("../[ AUDIO ]/UI Focus")
 
 [node name="Menu Datos" type="ColorRect" parent="." node_paths=PackedStringArray("barraMenus", "testBtn")]
-visible = false
 material = SubResource("ShaderMaterial_uhu7b")
 layout_mode = 1
 anchors_preset = 15
@@ -256,13 +255,18 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_v5wkr")
 
+[node name="Main" parent="Menu Datos/FrameBG" instance=ExtResource("8_h16nv")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
 [node name="Top Left Icon" type="NinePatchRect" parent="Menu Datos/FrameBG"]
 self_modulate = Color(1, 1, 1, 0.301961)
 layout_mode = 1
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 112.0
-offset_bottom = 112.0
+offset_left = 25.0
+offset_top = 23.0
+offset_right = 125.0
+offset_bottom = 123.0
 texture = SubResource("CompressedTexture2D_r3lu1")
 region_rect = Rect2(474, 40, 30, 30)
 patch_margin_left = 5
@@ -285,9 +289,10 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(15, 15)
-texture = SubResource("AtlasTexture_5kuu7")
+texture = SubResource("AtlasTexture_ydb7v")
 
 [node name="Test BUtton" type="Button" parent="Menu Datos/FrameBG"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -344,6 +349,7 @@ visible = false
 layout_mode = 1
 
 [node name="Menu Debug" type="Control" parent="." node_paths=PackedStringArray("modoDatos", "datosRandom", "lblAuto", "lblManual", "intervalo", "intervaloPerc", "precipitacion", "temperatura", "alarma", "bateria", "conexion")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -252,7 +252,7 @@ text = "Tuesday, August 13, 2024 - 00:00"
 alignment = 0
 
 [node name="PopLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 9
 
 [node name="DatePickerPanel" type="PanelContainer" parent="PopLayer"]
 unique_name_in_owner = true

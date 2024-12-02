@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=11 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="1_k6dm8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_ljvfi"]
@@ -24,15 +24,6 @@ corner_radius_bottom_left = 5
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="Gradient" id="Gradient_nc283"]
-colors = PackedColorArray(0.37, 0.37, 0.37, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n22ub"]
-gradient = SubResource("Gradient_nc283")
-width = 274
-height = 55
-fill_from = Vector2(1, 1)
-
 [sub_resource type="Gradient" id="Gradient_5ciuj"]
 colors = PackedColorArray(0.41, 0.41, 0.41, 1, 1, 1, 1, 1)
 
@@ -42,27 +33,33 @@ width = 32
 height = 32
 fill_from = Vector2(1, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnfum"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 86.0
-offset_top = 21.0
-offset_right = 86.0
-offset_bottom = 21.0
+offset_right = -245.0
+offset_bottom = -225.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_vertical_guides_ = [1747.0]
 
-[node name="GRAFICADORA" type="Node" parent="." node_paths=PackedStringArray("degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "FromDateInfo", "ToDateInfo", "SitesBttnContainer", "SiteName", "SiteSeparation", "LastUpdate", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
+[node name="GRAFICADORA" type="Control" parent="." node_paths=PackedStringArray("degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "FromDateInfo", "ToDateInfo", "SitesBttnContainer", "SiteName", "SiteSeparation", "LastUpdate", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_k6dm8")
 criticLevelColor = Color(1, 0, 0, 1)
 criticLevelRange = 16
 dangerLevelColor = Color(1, 0.614498, 0, 1)
 dangerLevelRange = 10
 safeLevelColor = Color(0, 0.110118, 1, 1)
-DebugMode = false
 degradedChart = NodePath("Info/Chart/ChartMask/Degraded Chart")
 lineChart = NodePath("Info/Chart/ChartMask/Line Chart")
 ChartBoxContainer = NodePath("Info/Chart/Chart Values Mask/ChartBoxContainer")
@@ -83,19 +80,14 @@ Info = NodePath("Info")
 ChartBackground = NodePath("Background/Chart Background")
 
 [node name="Background" type="ColorRect" parent="GRAFICADORA"]
-anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.061
-anchor_right = 0.934
-anchor_bottom = 0.853
-offset_left = -0.0400085
-offset_top = 0.119995
-offset_right = 0.719971
-offset_bottom = -0.240051
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(837, 427)
-color = Color(0.109804, 0.109804, 0.109804, 1)
+color = Color(0, 0, 0, 0.494118)
 
 [node name="Title Background" type="Control" parent="GRAFICADORA/Background"]
 layout_mode = 1
@@ -108,36 +100,22 @@ offset_bottom = 149.0
 grow_horizontal = 2
 pivot_offset = Vector2(837, 74)
 
-[node name="Degraded Title Top" type="NinePatchRect" parent="GRAFICADORA/Background/Title Background"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -837.5
-offset_right = 837.5
-offset_bottom = 79.0
-grow_horizontal = 2
-rotation = 3.14159
-pivot_offset = Vector2(837, 39)
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(484, 903, 13, 86.085)
-
 [node name="Degraded Title Down" type="NinePatchRect" parent="GRAFICADORA/Background/Title Background"]
-modulate = Color(0, 0.781802, 1, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -837.5
-offset_top = -40.0
-offset_right = 837.5
+offset_left = -794.5
+offset_top = -12.0
+offset_right = 794.5
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(837, 20)
 texture = ExtResource("1_ljvfi")
-region_rect = Rect2(484, 903, 13, 84.705)
+region_rect = Rect2(484, 937, 13, 50.705)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GRAFICADORA/Background/Title Background"]
 layout_mode = 1
@@ -600,15 +578,12 @@ region_rect = Rect2(997, 135, 21, 0.5)
 
 [node name="Info" type="Control" parent="GRAFICADORA"]
 visible = false
-layout_mode = 3
-anchor_left = 0.062
-anchor_top = 0.061
-anchor_right = 0.934
-anchor_bottom = 0.853
-offset_left = -0.0400085
-offset_top = 0.119995
-offset_right = 0.719971
-offset_bottom = -0.240051
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(837, 427)
 
 [node name="Chart" type="Control" parent="GRAFICADORA/Info"]
@@ -5722,7 +5697,7 @@ vertical_alignment = 1
 
 [node name="Loading" type="Control" parent="GRAFICADORA"]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchor_left = 0.063
 anchor_top = 0.058
 anchor_right = 0.935
@@ -5932,7 +5907,7 @@ region_rect = Rect2(472.098, 39.3565, 32.051, 31.2596)
 
 [node name="WhitoutHistory" type="Control" parent="GRAFICADORA"]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchor_left = 0.063
 anchor_top = 0.058
 anchor_right = 0.935
@@ -6037,7 +6012,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InitialChart" type="Control" parent="GRAFICADORA"]
-layout_mode = 3
+visible = false
+layout_mode = 1
 anchor_left = 0.063
 anchor_top = 0.058
 anchor_right = 0.935
@@ -6103,94 +6079,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sites" type="Control" parent="GRAFICADORA"]
-layout_mode = 3
-anchor_left = 0.062
+layout_mode = 1
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.062
 anchor_bottom = 0.5
-offset_left = -0.0400162
-offset_top = -278.95
-offset_right = 273.96
-offset_bottom = 381.05
+offset_left = 23.0
+offset_top = -228.0
+offset_right = 297.0
+offset_bottom = 374.0
 grow_vertical = 2
 
-[node name="SitesBttnContainer" type="VBoxContainer" parent="GRAFICADORA/Sites"]
-layout_mode = 0
-offset_left = 15.935
-offset_top = 106.565
-offset_right = 297.935
-offset_bottom = 638.565
-
-[node name="Sitio1Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 1"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
-[node name="Sitio2Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 2"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
-[node name="Sitio3Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 3"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
-[node name="Sitio4Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 4"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
-[node name="Sitio5Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 5"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
-[node name="Sitio6Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 6"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
-[node name="Sitio7Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 7"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
-[node name="Sitio8Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Sitio 8"
-icon = SubResource("GradientTexture2D_n22ub")
-icon_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="GRAFICADORA/Sites"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = -35.0
-offset_right = 290.0
-offset_bottom = 98.0
+layout_mode = 1
+offset_right = 284.0
+offset_bottom = 133.0
 theme_override_constants/separation = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GRAFICADORA/Sites/VBoxContainer"]
@@ -6247,18 +6149,493 @@ text = "+
 icon = SubResource("GradientTexture2D_bx524")
 icon_alignment = 1
 
+[node name="SitesBttnContainer" type="VBoxContainer" parent="GRAFICADORA/Sites"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -437.0
+offset_right = 282.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="Sitio1Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
+[node name="Sitio1Bttn2" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn2"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn2/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
+[node name="Sitio1Bttn3" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn3"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn3/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
+[node name="Sitio1Bttn4" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn4"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn4/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
+[node name="Sitio1Bttn5" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn5"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn5/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
+[node name="Sitio1Bttn6" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn6"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn6/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
+[node name="Sitio1Bttn7" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn7"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn7/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
+[node name="Sitio1Bttn8" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8/ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1
+
 [node name="HTTPRequest" type="HTTPRequest" parent="GRAFICADORA"]
 
 [connection signal="gui_input" from="GRAFICADORA/Info/Chart" to="GRAFICADORA" method="_on_chart_gui_input"]
 [connection signal="scrolling" from="GRAFICADORA/Info/Chart/ScrollInfo" to="GRAFICADORA" method="_on_h_scroll_bar_scrolling"]
 [connection signal="value_changed" from="GRAFICADORA/Info/Chart/ScrollInfo" to="GRAFICADORA" method="_on_scroll_info_value_changed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio2Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio3Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio4Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio5Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio6Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio7Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/SitesBttnContainer/Sitio8Bttn" to="GRAFICADORA" method="_on_debug_bttn_pressed"]
 [connection signal="pressed" from="GRAFICADORA/Sites/VBoxContainer/HBoxContainer3/Min Info Bttn" to="GRAFICADORA" method="_on_min_info_pressed"]
 [connection signal="pressed" from="GRAFICADORA/Sites/VBoxContainer/HBoxContainer3/More Info Bttn" to="GRAFICADORA" method="_on_more_info_bttn_pressed"]
