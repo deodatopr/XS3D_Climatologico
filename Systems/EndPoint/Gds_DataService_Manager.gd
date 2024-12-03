@@ -19,12 +19,20 @@ class_name GDs_DataService_Manager extends Node
 @export_group("Local")
 @export var crLocalEstaciones : GDs_CR_LocalSitios
 
-var estacionesFromEP : Array[GDs_Data_EP_Sitio] = []
+@export_category("ENDPOINT - Historicos")
+@export var historicos : GDs_EP_Hist
+@export var historicos_simulado : GDs_EP_Hist_Simulado
+@export var hist_URL : String
 
+var estacionesFromEP : Array[GDs_Data_EP_Sitio] = []
 var estaciones : Array[GDs_Data_Sitio] = []
+
+var dataHistoricos : Array[GDs_Data_EP_Historicos] = []
 
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
+func _ready():
+	Initialize()
 
 func Initialize():
 	SIGNALS.OnGoToSitio.connect(UpdateCurrentSitio)
@@ -35,14 +43,26 @@ func Initialize():
 	SIGNALS.OnRequestResult_Error_Data.connect(_OnFailedEP_GetAllEstaciones)
 	SIGNALS.OnRequestResult_Error_NoData.connect(_OnFailedEP_GetAllEstaciones)
 	
-	#Initialization
+	SIGNALS.OnRequestResult_Hist_Success.connect(_OnSuccessEP_Historicos)
+	SIGNALS.OnRequestResult_Hist_Error.connect(_OnFailedEP_Historicos)
+	
+	#Initialization GetAllSitios
 	endpoint.Initialize(URL,timeoutEPGetAllEstaciones,crLocalEstaciones,endpoint_Simulado,endpoint_Error)	
 	endpoint_Error.Initialize(crLocalEstaciones)
 	endpoint_Simulado.Initialize(crLocalEstaciones)
 	
+	#Initialization Historicos
+	historicos.Initialize(hist_URL)
+	
 	#Connect timer to refresh endpoint
 	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)
 
+#HACK: Test endpoint/simulados
+#func _process(delta):
+	#if Input.is_action_just_pressed('3DLook_Fov_+'):
+		#MakeRequest_Historicos(1,"2023-08-01T00:00:46", "2023-11-02T00:00:46")
+
+#region GET ALL SITIOS
 func MakeRequest_GetAllEstaciones():
 	endpoint.Request_GetAllEstaciones()
 	
@@ -90,7 +110,8 @@ func _OnSimuladoValueChange():
 	timerTicking.stop()
 	timerTicking.timeout.emit()
 	timerTicking.start(timeToRefresh)
-	
+#endregion
+
 #region [ FILL DATA ]
 func _GetDataFromEP_GetAllEstaciones():
 	#Get Data estaciones from EP | random | empty
@@ -182,4 +203,77 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 		estacionToUpdate.lloviendo = sitioEP.pcptnVal >= CONST.thrshld_pptcn_lluvia
 		
 		UpdateCurrentSitio(APPSTATE.currntIdSitio)
+#endregion
+#endregion
+
+#region HISTORICOS
+
+func MakeRequest_Historicos(_id : int, _from : String, _to : String):
+	if DEBUG.historicosSimulados:
+		var samples : int = historicos_simulado.GetSamplesFromDate(_from,_to)
+		historicos_simulado.GenerateRandomValues(samples,_from)
+	else:
+		historicos.Request(_id,_from,_to)
+
+func _OnSuccessEP_Historicos():
+	if DEBUG.historicosSimulados:
+		dataHistoricos = historicos_simulado.GetHistoricos()
+	else:
+		dataHistoricos = historicos.GetHistoricos()
+		
+	dataHistoricos = Hist_AverageValues(dataHistoricos)
+
+	
+func _OnFailedEP_Historicos():
+	dataHistoricos.clear()
+
+		
+func Hist_AverageValues(data:Array[GDs_Data_EP_Historicos])-> Array[GDs_Data_EP_Historicos]:
+	var totalInfo : int
+	
+	#promedia el valor de las muestras totales, para que se muestren maximo 52 datos en la grafica
+	var totalSamples : Array[GDs_Data_EP_Historicos] = []
+	var averageSamples : int = 0
+	#si son mas de 52 muestras y tomando que obtiene una muestra cada 15 min. 
+	#promedia en horas, si son mas en dias, si son mas en semanas, 
+	#si son mas en meses
+	if data.size() > 52.0:
+		if data.size()/4.0 > 52.0:
+			if data.size()/96.0 > 52.0:
+				if data.size()/672.0 > 52.0:
+					averageSamples = 20832
+				else:
+					averageSamples = 672
+			else:
+				averageSamples = 96
+		else:
+			averageSamples = 4
+	else:
+		totalInfo = data.size()
+
+		return data
+	
+	#recorre todos los datos para promediar segun el total de las muestras
+	var averageValues : int = 0
+	var index : int = 0
+	for value in data:
+		if index == averageSamples:
+			var NewData : GDs_Data_EP_Historicos = GDs_Data_EP_Historicos.new()
+			NewData.idSignals = value.idSignals
+			NewData.tiempo = value.tiempo
+			NewData.valor = int(float(averageValues)/float(averageSamples))
+			totalSamples.append(NewData)
+			averageValues = 0
+			index = 0
+		
+		if index < averageSamples:
+			averageValues += int(value.valor)
+			index += 1
+			
+	if totalSamples.size() <= 52:
+		totalInfo = totalSamples.size()
+	else:
+		totalInfo = 52
+
+	return totalSamples
 #endregion

@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgkudi70j4n1c"]
+[gd_scene load_steps=8 format=3 uid="uid://dgkudi70j4n1c"]
 
 [ext_resource type="Script" path="res://Systems/EndPoint/Gds_DataService_Manager.gd" id="1_mcgxr"]
 [ext_resource type="Resource" uid="uid://3nj42mys6ryu" path="res://Systems/EndPoint/Local_GetAll/CR_Local_Sitios.tres" id="2_y5d4k"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllSitios.gd" id="3_l4ktb"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllSitios_Simulado.gd" id="5_ajx6o"]
 [ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_GetAll/GDs_EP_GetAllSitios_Error.gd" id="5_fxad4"]
+[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_Historicos/GDs_EP_Hist.gd" id="6_lqyll"]
+[ext_resource type="Script" path="res://Systems/EndPoint/Endpoint_Historicos/GDs_EP_Hist_Simulado.gd" id="7_48678"]
 
-[node name="DataService" type="Node" node_paths=PackedStringArray("endpoint", "endpoint_Simulado", "endpoint_Error", "timerTicking")]
+[node name="DataService" type="Node" node_paths=PackedStringArray("endpoint", "endpoint_Simulado", "endpoint_Error", "timerTicking", "historicos", "historicos_simulado")]
 script = ExtResource("1_mcgxr")
-URL = "www.ejemplo.com"
-crLocalEstaciones = ExtResource("2_y5d4k")
 endpoint = NodePath("EP_GetAllSitios/Endpoint")
 endpoint_Simulado = NodePath("EP_GetAllSitios/Endpoint_Simulado")
 endpoint_Error = NodePath("EP_GetAllSitios/Endpoint_Error")
+URL = "https://virtualwavecontrol.com.mx/api24/VWC/app2024/DatosDinamicos?idProyecto=13"
 timerTicking = NodePath("EP_GetAllSitios/Endpoint/Timer - Ticking")
+crLocalEstaciones = ExtResource("2_y5d4k")
+historicos = NodePath("EP_Historicos/Endpoint")
+historicos_simulado = NodePath("EP_Historicos/Endpoint_Simulado")
+hist_URL = "http://w1.doomdns.com:11002/api/VWC/WebEncharcamientos23/Report"
 
 [node name="EP_GetAllSitios" type="Node" parent="."]
 
@@ -31,3 +36,13 @@ script = ExtResource("5_ajx6o")
 script = ExtResource("5_fxad4")
 
 [node name="Timer - Retry" type="Timer" parent="EP_GetAllSitios/Endpoint_Error"]
+
+[node name="EP_Historicos" type="Node" parent="."]
+
+[node name="Endpoint" type="Node" parent="EP_Historicos"]
+script = ExtResource("6_lqyll")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="EP_Historicos/Endpoint"]
+
+[node name="Endpoint_Simulado" type="Node" parent="EP_Historicos"]
+script = ExtResource("7_48678")

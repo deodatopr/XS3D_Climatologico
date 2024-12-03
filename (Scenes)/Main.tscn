@@ -43,7 +43,6 @@ sitios = {
 [node name="Find -CR_Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]
 
 [node name="DataService" parent="[ SYSTEMS ]" instance=ExtResource("5_8ipwn")]
-URL = "https://virtualwavecontrol.com.mx/api24/VWC/app2024/DatosDinamicos?idProyecto=13"
 
 [node name="[ SCENES ]" type="Node" parent="."]
 

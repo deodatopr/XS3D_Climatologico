@@ -8,3 +8,5 @@ var lLuvia : int = ENUMS.LluviaIntsdad.SinLluvia
 var temperatura : int = ENUMS.Temperatura.Normal
 var alarmas : int = ENUMS.Alarmas.Normal
 var bateria : int = ENUMS.Bateria._100
+
+var historicosSimulados : bool = true

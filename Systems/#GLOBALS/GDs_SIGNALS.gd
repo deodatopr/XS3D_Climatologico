@@ -10,6 +10,10 @@ signal OnRequestResult_Success
 signal OnRequestResult_Error_NoData
 @warning_ignore('unused_signal')
 signal OnRequestResult_Error_Data
+@warning_ignore('unused_signal')
+signal OnRequestResult_Hist_Success
+@warning_ignore('unused_signal')
+signal OnRequestResult_Hist_Error
 
 #SCENES
 @warning_ignore('unused_signal')
