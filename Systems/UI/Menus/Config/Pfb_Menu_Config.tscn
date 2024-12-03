@@ -403,6 +403,7 @@ anchor_bottom = 1.0
 offset_right = -232.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../SFX Vol/SFX Button")
 
 [node name="Master Perc" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/Master Vol"]
 layout_mode = 1
@@ -725,6 +726,7 @@ anchor_bottom = 1.0
 offset_right = -232.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_bottom = NodePath("../../Master Vol/Master Button")
 
 [node name="SFX PErc" type="Label" parent="Menu Config/MarginContainer/VBoxContainer/SFX Vol"]
 layout_mode = 1

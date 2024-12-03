@@ -46,6 +46,8 @@ signal RequestFailed
 @export var ChartBackground : Control
 @onready var http_request = $HTTPRequest
 
+
+
 const SEPARATION = 80
 
 func _ready():
@@ -150,8 +152,9 @@ func _setData(data:Array[GDs_Data]):
 		lineChart.points[i].y = lerpf(VertLenght, 0.0, data[i].valor/20.0)
 
 func _site_Pressed(_name : String, _site : int):
-	if _name.is_empty() or _site == 0:
-		return
+	#if _name.is_empty() or _site == 0:
+		#print_debug("Sitio pressed")
+		#return
 
 	#convierto en string las horas de los calendarios
 	var fromhour = FromDateInfo.Hour_Bttn_Selected.text.split(":")

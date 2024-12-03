@@ -155,6 +155,7 @@ panelDebug = NodePath("Menu Debug")
 [node name="------MENUS----------" type="Node" parent="."]
 
 [node name="Menu Sitios" parent="." node_paths=PackedStringArray("barraMenu", "popUp", "sndUi1", "sndUiPressed") instance=ExtResource("3_g57u8")]
+visible = false
 layout_mode = 1
 offset_left = 20.0
 offset_top = -982.0
@@ -255,10 +256,11 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Main" parent="Menu Datos/FrameBG" instance=ExtResource("8_h16nv")]
+[node name="Main" parent="Menu Datos/FrameBG" node_paths=PackedStringArray("barraMenus") instance=ExtResource("8_h16nv")]
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
+barraMenus = NodePath("../../../Barra menus")
 
 [node name="Top Left Icon" type="NinePatchRect" parent="Menu Datos/FrameBG"]
 self_modulate = Color(1, 1, 1, 0.301961)

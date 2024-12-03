@@ -1,22 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=24 format=3 uid="uid://2puryj6lequo"]
 
+[ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_4cunx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="1_k6dm8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_ljvfi"]
 [ext_resource type="PackedScene" uid="uid://dubkw6fn2rh5c" path="res://addons/DatePickerFiles/CalendarPop/DatePickerPanel.tscn" id="3_7aq1x"]
+[ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://Cont_UI/Theme.tres" id="5_ob3ak"]
 
 [sub_resource type="Gradient" id="Gradient_j6alb"]
-offsets = PackedFloat32Array(0.274336, 1)
-colors = PackedColorArray(0.233334, 0, 1, 0.635294, 1, 1, 1, 0)
+colors = PackedColorArray(0, 0.55, 1, 0.470588, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1bi2m"]
 gradient = SubResource("Gradient_j6alb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idfk8"]
-bg_color = Color(0.21, 0.21, 0.21, 1)
+bg_color = Color(0.1, 0.099, 0.097, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8im7"]
 content_margin_left = 35.0
 content_margin_right = 35.0
+bg_color = Color(0.596078, 0.596078, 0.603922, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -24,19 +26,78 @@ corner_radius_bottom_left = 5
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="Gradient" id="Gradient_5ciuj"]
-colors = PackedColorArray(0.41, 0.41, 0.41, 1, 1, 1, 1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iddxr"]
+atlas = ExtResource("1_ljvfi")
+region = Rect2(938, 245, 36, 53)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bx524"]
-gradient = SubResource("Gradient_5ciuj")
-width = 32
-height = 32
-fill_from = Vector2(1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfkwh"]
+atlas = ExtResource("1_ljvfi")
+region = Rect2(975, 245, 36, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv8um"]
+atlas = ExtResource("1_ljvfi")
+region = Rect2(995, 94, 27, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqbty"]
+atlas = ExtResource("1_ljvfi")
+region = Rect2(966, 94, 27, 25)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pkgo"]
+bg_color = Color(0.137255, 0.356863, 0.305882, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vomyp"]
+bg_color = Color(0.333333, 0.333333, 0.337255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dx2xv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ify8o"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnfum"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
 
-[node name="Main" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwrys"]
+bg_color = Color(1, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pipws"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q1o0"]
+atlas = ExtResource("1_ljvfi")
+region = Rect2(7, 264, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysg3a"]
+atlas = ExtResource("1_ljvfi")
+region = Rect2(370, 4, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwe8e"]
+atlas = ExtResource("1_ljvfi")
+region = Rect2(7, 264, 54, 54)
+
+[node name="Main" type="Control" node_paths=PackedStringArray("fromDate", "toDate", "sitesBtnContainer", "muestrasLess", "muestrasMore", "sitesLastBtn", "scrollBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +106,14 @@ offset_right = -245.0
 offset_bottom = -225.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_vertical_guides_ = [1747.0]
+script = ExtResource("1_4cunx")
+fromDate = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Inicio/FromDateInfo")
+toDate = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Fin/ToDateInfo")
+sitesBtnContainer = NodePath("GRAFICADORA/Sites/SitesBttnContainer")
+muestrasLess = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras -")
+muestrasMore = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras +")
+sitesLastBtn = NodePath("GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8")
+scrollBar = NodePath("GRAFICADORA/Info/Chart/ScrollInfo")
 
 [node name="GRAFICADORA" type="Control" parent="." node_paths=PackedStringArray("degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "FromDateInfo", "ToDateInfo", "SitesBttnContainer", "SiteName", "SiteSeparation", "LastUpdate", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
 layout_mode = 1
@@ -64,11 +132,11 @@ degradedChart = NodePath("Info/Chart/ChartMask/Degraded Chart")
 lineChart = NodePath("Info/Chart/ChartMask/Line Chart")
 ChartBoxContainer = NodePath("Info/Chart/Chart Values Mask/ChartBoxContainer")
 Chart = NodePath("Info/Chart")
-horChartLines = NodePath("Background/Chart Background/Containers/HorChartLines")
+horChartLines = NodePath("Info/Chart Background/Containers/HorChartLines")
 horTimeInfo = NodePath("Info/Chart/Hor Info/Time Mask/HorTimeInfo")
 ScrollInfo = NodePath("Info/Chart/ScrollInfo")
-FromDateInfo = NodePath("Sites/VBoxContainer/HBoxContainer/FromDateInfo")
-ToDateInfo = NodePath("Sites/VBoxContainer/HBoxContainer2/ToDateInfo")
+FromDateInfo = NodePath("Sites/Iputs/MarginContainer/Original/HBox Fecha Inicio/FromDateInfo")
+ToDateInfo = NodePath("Sites/Iputs/MarginContainer/Original/HBox Fecha Fin/ToDateInfo")
 SitesBttnContainer = NodePath("Sites/SitesBttnContainer")
 SiteName = NodePath("Background/Title Background/HBoxContainer/SiteName")
 SiteSeparation = NodePath("Background/Title Background/HBoxContainer/SiteSeparation")
@@ -77,7 +145,7 @@ LoadingScreen = NodePath("Loading")
 WhitoutHistory = NodePath("WhitoutHistory")
 InitialChart = NodePath("InitialChart")
 Info = NodePath("Info")
-ChartBackground = NodePath("Background/Chart Background")
+ChartBackground = NodePath("Info/Chart Background")
 
 [node name="Background" type="ColorRect" parent="GRAFICADORA"]
 layout_mode = 1
@@ -107,15 +175,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -794.5
+offset_left = -814.5
 offset_top = -12.0
-offset_right = 794.5
+offset_right = 808.5
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(837, 20)
 texture = ExtResource("1_ljvfi")
-region_rect = Rect2(484, 937, 13, 50.705)
+region_rect = Rect2(485, 937, 12, 50.705)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GRAFICADORA/Background/Title Background"]
 layout_mode = 1
@@ -134,10 +202,11 @@ alignment = 1
 
 [node name="SiteName" type="Label" parent="GRAFICADORA/Background/Title Background/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Selecciona Fecha y Sitio para graficar"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="SiteSeparation" type="Label" parent="GRAFICADORA/Background/Title Background/HBoxContainer"]
 visible = false
@@ -156,457 +225,439 @@ text = "Utima Act: 8:30 - 14/03/2024"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Chart Background" type="Control" parent="GRAFICADORA/Background"]
+[node name="Info" type="Control" parent="GRAFICADORA"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -602.5
-offset_top = -152.5
-offset_right = 739.5
-offset_bottom = 311.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 346.0
+offset_top = 164.0
+offset_right = -28.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(837, 427)
+
+[node name="Chart Background" type="Control" parent="GRAFICADORA/Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(671, 232)
 
-[node name="Containers" type="ColorRect" parent="GRAFICADORA/Background/Chart Background"]
+[node name="Containers" type="ColorRect" parent="GRAFICADORA/Info/Chart Background"]
 clip_children = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -532.915
-offset_top = -232.0
-offset_right = 722.085
-offset_bottom = 232.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(671, 232)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GRAFICADORA/Background/Chart Background/Containers"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GRAFICADORA/Info/Chart Background/Containers"]
 modulate = Color(1, 1, 1, 0.333333)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -671.0
-offset_top = -232.0
-offset_right = 671.0
-offset_bottom = 233.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(741, 250)
-theme_override_constants/separation = 111
-
-[node name="VLine2" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/VBoxContainer"]
-custom_minimum_size = Vector2(0, 2.5)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="VLine3" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/VBoxContainer"]
-custom_minimum_size = Vector2(0, 2.5)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="VLine4" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/VBoxContainer"]
-custom_minimum_size = Vector2(0, 2.5)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="VLine5" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/VBoxContainer"]
-custom_minimum_size = Vector2(0, 2.5)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="VLine6" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/VBoxContainer"]
-custom_minimum_size = Vector2(0, 2.5)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HorChartLines" type="HBoxContainer" parent="GRAFICADORA/Background/Chart Background/Containers"]
-modulate = Color(1, 1, 1, 0.333333)
-custom_minimum_size = Vector2(0, 464)
-layout_mode = 2
-offset_right = 5287.0
-offset_bottom = 464.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(0, 232)
-theme_override_constants/separation = 97
-
-[node name="HLine" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine2" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine3" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine4" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine5" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine6" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine7" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine8" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine9" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine10" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine11" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine12" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine13" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine14" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine15" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine16" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine17" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine18" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine19" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine20" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine21" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine22" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine23" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine24" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine25" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine26" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine27" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine28" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine29" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine30" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine31" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine32" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine33" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine34" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine35" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine36" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine37" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine38" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine39" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine40" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine41" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine42" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine43" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine44" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine45" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine46" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine47" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine48" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine49" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine50" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine51" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="HLine52" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers/HorChartLines"]
-custom_minimum_size = Vector2(2.5, 0)
-layout_mode = 2
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
-
-[node name="VLine2" type="NinePatchRect" parent="GRAFICADORA/Background/Chart Background/Containers"]
-modulate = Color(0, 0.0160627, 1, 1)
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -671.0
-offset_top = 224.8
-offset_right = 671.0
-offset_bottom = 231.8
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(671, 3)
-texture = ExtResource("1_ljvfi")
-region_rect = Rect2(997, 135, 21, 0.5)
-
-[node name="Info" type="Control" parent="GRAFICADORA"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(837, 427)
+pivot_offset = Vector2(741, 250)
+theme_override_constants/separation = 115
+
+[node name="VLine2" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="VLine3" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="VLine4" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="VLine5" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="VLine6" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HorChartLines" type="HBoxContainer" parent="GRAFICADORA/Info/Chart Background/Containers"]
+modulate = Color(1, 1, 1, 0.333333)
+custom_minimum_size = Vector2(0, 464)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 232)
+theme_override_constants/separation = 190
+
+[node name="HLine" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine2" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine3" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine4" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine5" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine6" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine7" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine8" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine9" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine10" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine11" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine12" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine13" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine14" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine15" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine16" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine17" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine18" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine19" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine20" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine21" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine22" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine23" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine24" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine25" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine26" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine27" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine28" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine29" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine30" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine31" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine32" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine33" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine34" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine35" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine36" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine37" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine38" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine39" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine40" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine41" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine42" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine43" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine44" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine45" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine46" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine47" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine48" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine49" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine50" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine51" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="HLine52" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
+
+[node name="VLine2" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(671, 3)
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(997, 135, 21, 0.5)
 
 [node name="Chart" type="Control" parent="GRAFICADORA/Info"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -464.465
-offset_top = -152.5
-offset_right = 790.535
-offset_bottom = 311.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(671, 232)
 
 [node name="ChartMask" type="ColorRect" parent="GRAFICADORA/Info/Chart"]
 clip_children = 1
-layout_mode = 0
-offset_top = 1.0
-offset_right = 1255.0
-offset_bottom = 464.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="Degraded Chart" type="Polygon2D" parent="GRAFICADORA/Info/Chart/ChartMask"]
@@ -617,27 +668,122 @@ polygon = PackedVector2Array(64, 250, 190, 200, 323, 34, 427, 117, 533, 117, 637
 
 [node name="Line Chart" type="Line2D" parent="GRAFICADORA/Info/Chart/ChartMask"]
 points = PackedVector2Array(64, 250, 190, 200, 323, 34, 427, 112, 533, 115, 637, 274, 743, 117, 847, 59, 953, 175, 1057, 407, 1163, 121, 1267, 272)
-width = 7.0
-default_color = Color(0, 0.835101, 1, 1)
+width = 5.0
+default_color = Color(0, 0.557249, 1, 1)
 
 [node name="ScrollInfo" type="HScrollBar" parent="GRAFICADORA/Info/Chart"]
-layout_mode = 0
-offset_top = 530.35
-offset_right = 1254.0
-offset_bottom = 560.35
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = 57.0
+offset_right = -47.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/scroll = SubResource("StyleBoxFlat_idfk8")
 theme_override_styles/grabber = SubResource("StyleBoxFlat_k8im7")
 theme_override_styles/grabber_highlight = SubResource("StyleBoxFlat_k8im7")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxFlat_k8im7")
 value = 100.0
 
+[node name="Icon" type="Control" parent="GRAFICADORA/Info/Chart/ScrollInfo"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -23.0
+offset_right = -11.0
+offset_bottom = 17.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GRAFICADORA/Info/Chart/ScrollInfo/Icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -26.5
+offset_right = 20.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_iddxr")
+
+[node name="TextureRect2" type="TextureRect" parent="GRAFICADORA/Info/Chart/ScrollInfo/Icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -26.5
+offset_right = 20.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_sfkwh")
+
+[node name="Icon2" type="Control" parent="GRAFICADORA/Info/Chart/ScrollInfo"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -20.0
+offset_right = 88.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(-1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="GRAFICADORA/Info/Chart/ScrollInfo/Icon2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -26.5
+offset_right = 20.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_iddxr")
+
+[node name="TextureRect2" type="TextureRect" parent="GRAFICADORA/Info/Chart/ScrollInfo/Icon2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -26.5
+offset_right = 20.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_sfkwh")
+
 [node name="Chart Values Mask" type="ColorRect" parent="GRAFICADORA/Info/Chart"]
 clip_children = 1
-layout_mode = 0
-offset_left = 2.0
-offset_top = -78.0
-offset_right = 1257.0
-offset_bottom = 469.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -81.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="ChartBoxContainer" type="HBoxContainer" parent="GRAFICADORA/Info/Chart/Chart Values Mask"]
@@ -648,9 +794,9 @@ anchor_top = 0.144
 anchor_right = 0.034
 anchor_bottom = 0.144
 offset_left = -42.67
-offset_top = 0.231995
-offset_right = 1895.33
-offset_bottom = 464.232
+offset_top = -2.768
+offset_right = 5159.33
+offset_bottom = 461.232
 theme_override_constants/separation = 102
 
 [node name="Value Circle" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
@@ -3494,9 +3640,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
+offset_left = -15.0
 offset_top = -224.2
-offset_right = 47.0
+offset_right = 35.0
 offset_bottom = -175.2
 grow_horizontal = 2
 grow_vertical = 2
@@ -3504,7 +3650,7 @@ pivot_offset = Vector2(47, 24)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "20"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Vert Unit2" type="Label" parent="GRAFICADORA/Info/Chart/Vert Info"]
@@ -3514,9 +3660,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
+offset_left = -15.0
 offset_top = -107.23
-offset_right = 47.0
+offset_right = 35.0
 offset_bottom = -58.23
 grow_horizontal = 2
 grow_vertical = 2
@@ -3524,7 +3670,7 @@ pivot_offset = Vector2(47, 24)
 theme_override_colors/font_color = Color(1, 0.625474, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "15"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Vert Unit3" type="Label" parent="GRAFICADORA/Info/Chart/Vert Info"]
@@ -3534,17 +3680,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = 9.33499
-offset_right = 47.0
-offset_bottom = 58.335
+offset_left = -15.0
+offset_top = 4.33502
+offset_right = 35.0
+offset_bottom = 53.335
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(47, 24)
 theme_override_colors/font_color = Color(1, 0.625474, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "10"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Vert Unit4" type="Label" parent="GRAFICADORA/Info/Chart/Vert Info"]
@@ -3554,17 +3700,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = 123.96
-offset_right = 47.0
-offset_bottom = 172.96
+offset_left = -15.0
+offset_top = 117.96
+offset_right = 35.0
+offset_bottom = 166.96
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(47, 24)
 theme_override_colors/font_color = Color(0, 0.391812, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "5"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Vert Unit5" type="Label" parent="GRAFICADORA/Info/Chart/Vert Info"]
@@ -3574,9 +3720,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
+offset_left = -15.0
 offset_top = 237.06
-offset_right = 47.0
+offset_right = 35.0
 offset_bottom = 286.06
 grow_horizontal = 2
 grow_vertical = 2
@@ -3584,35 +3730,36 @@ pivot_offset = Vector2(47, 24)
 theme_override_colors/font_color = Color(0, 0.391812, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "0"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Hor Info" type="Control" parent="GRAFICADORA/Info/Chart"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -627.535
-offset_top = 7.99997
-offset_right = 627.465
-offset_bottom = 73.0001
+offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(717, 32)
 
 [node name="Time Mask" type="ColorRect" parent="GRAFICADORA/Info/Chart/Hor Info"]
 clip_children = 1
-layout_mode = 0
-offset_right = 1255.0
-offset_bottom = 51.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HorTimeInfo" type="HBoxContainer" parent="GRAFICADORA/Info/Chart/Hor Info/Time Mask"]
-layout_mode = 0
-offset_left = 24.5
-offset_right = 5231.5
-offset_bottom = 51.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 97
 
 [node name="Hor Container" type="Control" parent="GRAFICADORA/Info/Chart/Hor Info/Time Mask/HorTimeInfo"]
@@ -6085,87 +6232,406 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 23.0
 offset_top = -228.0
-offset_right = 297.0
-offset_bottom = 374.0
+offset_right = 345.0
+offset_bottom = 353.0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GRAFICADORA/Sites"]
+[node name="Iputs" type="NinePatchRect" parent="GRAFICADORA/Sites"]
 layout_mode = 1
-offset_right = 284.0
-offset_bottom = 133.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 138.0
+grow_horizontal = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="GRAFICADORA/Sites/Iputs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 8
+
+[node name="Original" type="VBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer"]
+visible = false
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GRAFICADORA/Sites/VBoxContainer"]
+[node name="HBox Fecha Inicio" type="HBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Inicio"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wv8um")
+
+[node name="FromDateInfo" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Inicio" instance=ExtResource("3_7aq1x")]
+custom_minimum_size = Vector2(278, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GRAFICADORA/Sites/VBoxContainer/HBoxContainer"]
+[node name="HBox Fecha Fin" type="HBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "INI."
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/separation = 4
+alignment = 1
 
-[node name="FromDateInfo" parent="GRAFICADORA/Sites/VBoxContainer/HBoxContainer" instance=ExtResource("3_7aq1x")]
+[node name="TextureRect" type="TextureRect" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Fin"]
 layout_mode = 2
+texture = SubResource("AtlasTexture_uqbty")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GRAFICADORA/Sites/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="GRAFICADORA/Sites/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "FIN"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ToDateInfo" parent="GRAFICADORA/Sites/VBoxContainer/HBoxContainer2" instance=ExtResource("3_7aq1x")]
+[node name="ToDateInfo" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Fin" instance=ExtResource("3_7aq1x")]
+custom_minimum_size = Vector2(278, 0)
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="GRAFICADORA/Sites/VBoxContainer"]
+[node name="HBox Muestras" type="HBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original"]
 layout_mode = 2
+alignment = 1
 
-[node name="Label3" type="Label" parent="GRAFICADORA/Sites/VBoxContainer/HBoxContainer3"]
+[node name="Label3" type="Label" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 15
 text = "# MUESTRAS      "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Min Info Bttn" type="Button" parent="GRAFICADORA/Sites/VBoxContainer/HBoxContainer3"]
+[node name="Button - Muestras -" type="Button" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras"]
+custom_minimum_size = Vector2(38, 38)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "-
-"
-icon = SubResource("GradientTexture2D_bx524")
-icon_alignment = 1
+focus_neighbor_bottom = NodePath("../Button - Muestras +")
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_5pkgo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vomyp")
+action_mode = 0
 
-[node name="More Info Bttn" type="Button" parent="GRAFICADORA/Sites/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras -"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -41.0
+offset_right = 9.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button - Muestras +" type="Button" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras"]
+custom_minimum_size = Vector2(38, 38)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "+
-"
-icon = SubResource("GradientTexture2D_bx524")
-icon_alignment = 1
+focus_neighbor_top = NodePath("../Button - Muestras -")
+focus_neighbor_bottom = NodePath("../../../../../SitesBttnContainer/Sitio1Bttn")
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_5pkgo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vomyp")
+action_mode = 0
+
+[node name="Label" type="Label" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras +"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -39.0
+offset_right = 15.5
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dropdowns" type="VBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBox Fecha Inicio" type="HBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wv8um")
+
+[node name="Dia" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../../SitesBttnContainer/Sitio1Bttn8")
+focus_neighbor_bottom = NodePath("../Mes")
+theme = ExtResource("5_ob3ak")
+selected = 0
+allow_reselect = true
+item_count = 5
+popup/item_0/text = "Dia"
+popup/item_0/id = 1
+popup/item_1/text = "1"
+popup/item_1/id = 2
+popup/item_2/text = "2"
+popup/item_2/id = 2
+popup/item_3/text = "3"
+popup/item_3/id = 3
+popup/item_4/text = "4"
+popup/item_4/id = 4
+
+[node name="Mes" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Dia")
+focus_neighbor_bottom = NodePath("../Año")
+theme = ExtResource("5_ob3ak")
+selected = 0
+allow_reselect = true
+item_count = 10
+popup/item_0/text = "Mes"
+popup/item_0/id = 1
+popup/item_1/text = "Enero"
+popup/item_1/id = 2
+popup/item_2/text = "Febrero"
+popup/item_2/id = 2
+popup/item_3/text = "Marzo"
+popup/item_3/id = 3
+popup/item_4/text = "Abril"
+popup/item_4/id = 4
+popup/item_5/text = "Mayo"
+popup/item_5/id = 5
+popup/item_6/text = "Junio"
+popup/item_6/id = 6
+popup/item_7/text = "Julio"
+popup/item_7/id = 7
+popup/item_8/text = "Agosto"
+popup/item_8/id = 8
+popup/item_9/text = "Septiembre"
+popup/item_9/id = 9
+
+[node name="Año" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Mes")
+focus_neighbor_bottom = NodePath("../Hora")
+theme = ExtResource("5_ob3ak")
+selected = 1
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "Año"
+popup/item_0/id = 1
+popup/item_1/text = "2024"
+popup/item_1/id = 2
+popup/item_2/text = "2023"
+popup/item_2/id = 2
+popup/item_3/text = "2022"
+popup/item_3/id = 3
+
+[node name="Hora" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Año")
+focus_neighbor_bottom = NodePath("../../HBox Fecha Fin/Dia")
+theme = ExtResource("5_ob3ak")
+selected = 0
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "Hora"
+popup/item_0/id = 1
+popup/item_1/text = "00:00"
+popup/item_1/id = 2
+popup/item_2/text = "01:00"
+popup/item_2/id = 2
+popup/item_3/text = "02:00"
+popup/item_3/id = 3
+
+[node name="HBox Fecha Fin" type="HBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_uqbty")
+
+[node name="Dia" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../HBox Fecha Inicio/Hora")
+focus_neighbor_bottom = NodePath("../Mes")
+theme = ExtResource("5_ob3ak")
+selected = 0
+allow_reselect = true
+item_count = 5
+popup/item_0/text = "Dia"
+popup/item_0/id = 1
+popup/item_1/text = "1"
+popup/item_1/id = 2
+popup/item_2/text = "2"
+popup/item_2/id = 2
+popup/item_3/text = "3"
+popup/item_3/id = 3
+popup/item_4/text = "4"
+popup/item_4/id = 4
+
+[node name="Mes" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Dia")
+focus_neighbor_bottom = NodePath("../Año")
+theme = ExtResource("5_ob3ak")
+selected = 0
+allow_reselect = true
+item_count = 10
+popup/item_0/text = "Mes"
+popup/item_0/id = 1
+popup/item_1/text = "Enero"
+popup/item_1/id = 2
+popup/item_2/text = "Febrero"
+popup/item_2/id = 2
+popup/item_3/text = "Marzo"
+popup/item_3/id = 3
+popup/item_4/text = "Abril"
+popup/item_4/id = 4
+popup/item_5/text = "Mayo"
+popup/item_5/id = 5
+popup/item_6/text = "Junio"
+popup/item_6/id = 6
+popup/item_7/text = "Julio"
+popup/item_7/id = 7
+popup/item_8/text = "Agosto"
+popup/item_8/id = 8
+popup/item_9/text = "Septiembre"
+popup/item_9/id = 9
+
+[node name="Año" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Mes")
+focus_neighbor_bottom = NodePath("../Hora")
+theme = ExtResource("5_ob3ak")
+selected = 1
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "Año"
+popup/item_0/id = 1
+popup/item_1/text = "2024"
+popup/item_1/id = 2
+popup/item_2/text = "2023"
+popup/item_2/id = 2
+popup/item_3/text = "2022"
+popup/item_3/id = 3
+
+[node name="Hora" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Año")
+focus_neighbor_bottom = NodePath("../../HBox Muestras/Button - Muestras -")
+theme = ExtResource("5_ob3ak")
+selected = 0
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "Hora"
+popup/item_0/id = 1
+popup/item_1/text = "00:00"
+popup/item_1/id = 2
+popup/item_2/text = "01:00"
+popup/item_2/id = 2
+popup/item_3/text = "02:00"
+popup/item_3/id = 3
+
+[node name="HBox Muestras" type="HBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "# MUESTRAS      "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button - Muestras -" type="Button" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras"]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Button - Muestras +")
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_5pkgo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vomyp")
+action_mode = 0
+
+[node name="Label" type="Label" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras/Button - Muestras -"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -41.0
+offset_right = 9.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button - Muestras +" type="Button" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras"]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button - Muestras -")
+focus_neighbor_bottom = NodePath("../../../../../SitesBttnContainer/Sitio1Bttn")
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_5pkgo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vomyp")
+action_mode = 0
+
+[node name="Label" type="Label" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras/Button - Muestras +"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -39.0
+offset_right = 15.5
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SitesBttnContainer" type="VBoxContainer" parent="GRAFICADORA/Sites"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -437.0
-offset_right = 282.0
-offset_bottom = -5.0
+offset_top = -425.0
+grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 15
 
 [node name="Sitio1Bttn" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras +")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6185,13 +6651,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6222,9 +6690,13 @@ vertical_alignment = 1
 [node name="Sitio1Bttn2" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn2"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6244,13 +6716,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn2"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6281,9 +6755,13 @@ vertical_alignment = 1
 [node name="Sitio1Bttn3" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn3"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6303,13 +6781,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn3"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6340,9 +6820,13 @@ vertical_alignment = 1
 [node name="Sitio1Bttn4" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn4"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6362,13 +6846,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn4"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6399,9 +6885,13 @@ vertical_alignment = 1
 [node name="Sitio1Bttn5" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn5"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6421,13 +6911,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn5"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6458,9 +6950,13 @@ vertical_alignment = 1
 [node name="Sitio1Bttn6" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn6"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6480,13 +6976,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn6"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6517,9 +7015,13 @@ vertical_alignment = 1
 [node name="Sitio1Bttn7" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn7"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6539,13 +7041,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn7"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6576,9 +7080,17 @@ vertical_alignment = 1
 [node name="Sitio1Bttn8" type="Button" parent="GRAFICADORA/Sites/SitesBttnContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Dia")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nwrys")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pipws")
+toggle_mode = true
 icon_alignment = 1
 
 [node name="ID Patch" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -6598,13 +7110,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Frame" type="NinePatchRect" parent="GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6634,8 +7148,326 @@ vertical_alignment = 1
 
 [node name="HTTPRequest" type="HTTPRequest" parent="GRAFICADORA"]
 
+[node name="Cerrar" type="NinePatchRect" parent="GRAFICADORA"]
+visible = false
+self_modulate = Color(0.1368, 0.36, 0.30792, 0.815686)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.5
+offset_top = -29.0
+offset_right = 148.5
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(473, 39, 30, 31)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Lbl INfo" type="Label" parent="GRAFICADORA/Cerrar"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -21.0
+offset_right = -36.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "[ Cerrar ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Hbox" type="HBoxContainer" parent="GRAFICADORA/Cerrar"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -19.5
+offset_right = 196.0
+offset_bottom = 35.5
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="GRAFICADORA/Cerrar/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="W" type="NinePatchRect" parent="GRAFICADORA/Cerrar/Hbox"]
+custom_minimum_size = Vector2(72.485, 0)
+layout_mode = 2
+texture = ExtResource("1_ljvfi")
+region_rect = Rect2(473, 258, 34, 34)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="GRAFICADORA/Cerrar/Hbox/W"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.5
+offset_right = 11.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "ESC"
+
+[node name="_" type="Label" parent="GRAFICADORA/Cerrar/Hbox"]
+self_modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Y" type="TextureRect" parent="GRAFICADORA/Cerrar/Hbox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1q1o0")
+
+[node name="Label" type="Label" parent="GRAFICADORA/Cerrar/Hbox/Y"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="GRAFICADORA/Cerrar/Hbox"]
+visible = false
+visibility_layer = 0
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controles" type="Control" parent="GRAFICADORA/Cerrar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -46.4999
+offset_right = 203.0
+offset_bottom = 46.4999
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GRAFICADORA/Cerrar/Controles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pad" type="TextureRect" parent="GRAFICADORA/Cerrar/Controles"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_right = 79.0
+offset_bottom = 40.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ysg3a")
+
+[node name="Botones" type="Control" parent="GRAFICADORA/Cerrar/Controles"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -46.5
+offset_bottom = 46.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="X" type="TextureRect" parent="GRAFICADORA/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -36.0
+offset_right = 14.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jwe8e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GRAFICADORA/Cerrar/Controles/Botones/X"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+
+[node name="A" type="TextureRect" parent="GRAFICADORA/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -14.0
+offset_right = 36.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jwe8e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GRAFICADORA/Cerrar/Controles/Botones/A"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+
+[node name="Y" type="TextureRect" parent="GRAFICADORA/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -14.0
+offset_right = -8.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jwe8e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GRAFICADORA/Cerrar/Controles/Botones/Y"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Y
+"
+
+[node name="B" type="TextureRect" parent="GRAFICADORA/Cerrar/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 8.0
+offset_right = 14.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jwe8e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GRAFICADORA/Cerrar/Controles/Botones/B"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "B"
+
+[node name="Label" type="Label" parent="GRAFICADORA/Cerrar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 198.0
+offset_top = -11.5
+offset_right = 287.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Seleccionar"
+
+[node name="Label2" type="Label" parent="GRAFICADORA/Cerrar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = 14.0
+offset_right = 269.0
+offset_bottom = 37.0
+grow_vertical = 2
+text = "Cerrar"
+
 [connection signal="gui_input" from="GRAFICADORA/Info/Chart" to="GRAFICADORA" method="_on_chart_gui_input"]
 [connection signal="scrolling" from="GRAFICADORA/Info/Chart/ScrollInfo" to="GRAFICADORA" method="_on_h_scroll_bar_scrolling"]
 [connection signal="value_changed" from="GRAFICADORA/Info/Chart/ScrollInfo" to="GRAFICADORA" method="_on_scroll_info_value_changed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/VBoxContainer/HBoxContainer3/Min Info Bttn" to="GRAFICADORA" method="_on_min_info_pressed"]
-[connection signal="pressed" from="GRAFICADORA/Sites/VBoxContainer/HBoxContainer3/More Info Bttn" to="GRAFICADORA" method="_on_more_info_bttn_pressed"]
+[connection signal="pressed" from="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras -" to="GRAFICADORA" method="_on_min_info_pressed"]
+[connection signal="pressed" from="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras +" to="GRAFICADORA" method="_on_more_info_bttn_pressed"]
+[connection signal="pressed" from="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras/Button - Muestras -" to="GRAFICADORA" method="_on_min_info_pressed"]
+[connection signal="pressed" from="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras/Button - Muestras +" to="GRAFICADORA" method="_on_more_info_bttn_pressed"]

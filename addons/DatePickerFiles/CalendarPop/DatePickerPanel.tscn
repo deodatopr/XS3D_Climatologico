@@ -6,7 +6,17 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbgii"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2rvw6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dx2xv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.137255, 0.356863, 0.305882, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejse2"]
 
@@ -18,7 +28,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.356863, 0.490196, 0.984314, 1)
+border_color = Color(0.137255, 0.356863, 0.305882, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -220,7 +230,7 @@ corner_radius_bottom_left = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -536.0
+offset_right = -1121.0
 offset_bottom = -556.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -243,12 +253,12 @@ theme_override_colors/font_pressed_color = Color(0.309804, 0.356863, 0.427451, 1
 theme_override_colors/font_focus_color = Color(0.309804, 0.356863, 0.427451, 1)
 theme_override_colors/font_color = Color(0.309804, 0.356863, 0.427451, 1)
 theme_override_font_sizes/font_size = 14
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2rvw6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ejse2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3y842")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nf07u")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nf07u")
-text = "Tuesday, August 13, 2024 - 00:00"
+text = "Miercoles, Septiembre 23, 2024 - 00:00"
 alignment = 0
 
 [node name="PopLayer" type="CanvasLayer" parent="."]
