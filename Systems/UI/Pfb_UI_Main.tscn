@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cu4xkkxeuptxj" path="res://Systems/UI/Menus/Mapa/Pfb_UI_Mapa.tscn" id="4_t41nj"]
 [ext_resource type="PackedScene" uid="uid://dvrx7m3ppga3d" path="res://Systems/UI/Menus/PopUp_VerSitio/Pfb_PopUp_VerSitio.tscn" id="5_wvomf"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_UI_Datos.gd" id="8_dd30f"]
-[ext_resource type="PackedScene" uid="uid://2puryj6lequo" path="res://Systems/Graficadora/Main.tscn" id="8_h16nv"]
+[ext_resource type="PackedScene" uid="uid://2puryj6lequo" path="res://Systems/Graficadora/Pfb_Graficadora.tscn" id="8_h16nv"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="8_omcqt"]
 [ext_resource type="PackedScene" uid="uid://ddo5utgfriiew" path="res://Systems/UI/Menus/Config/Pfb_Menu_Config.tscn" id="9_cajyl"]
 [ext_resource type="AudioStream" uid="uid://b0otnschjgptc" path="res://Cont_Sounds/UI/Audio_UI_2.mp3" id="10_3jbcp"]

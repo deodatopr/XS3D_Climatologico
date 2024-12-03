@@ -1,10 +1,10 @@
 [gd_scene load_steps=24 format=3 uid="uid://2puryj6lequo"]
 
-[ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_4cunx"]
-[ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="1_k6dm8"]
-[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_ljvfi"]
-[ext_resource type="PackedScene" uid="uid://dubkw6fn2rh5c" path="res://addons/DatePickerFiles/CalendarPop/DatePickerPanel.tscn" id="3_7aq1x"]
-[ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://Cont_UI/Theme.tres" id="5_ob3ak"]
+[ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
+[ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="2_m0jcy"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_rhhvq"]
+[ext_resource type="PackedScene" uid="uid://dubkw6fn2rh5c" path="res://addons/DatePickerFiles/CalendarPop/DatePickerPanel.tscn" id="4_2t3fw"]
+[ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://Cont_UI/Theme.tres" id="5_7a3ej"]
 
 [sub_resource type="Gradient" id="Gradient_j6alb"]
 colors = PackedColorArray(0, 0.55, 1, 0.470588, 0, 0, 0, 0)
@@ -27,19 +27,19 @@ expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iddxr"]
-atlas = ExtResource("1_ljvfi")
+atlas = ExtResource("3_rhhvq")
 region = Rect2(938, 245, 36, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfkwh"]
-atlas = ExtResource("1_ljvfi")
+atlas = ExtResource("3_rhhvq")
 region = Rect2(975, 245, 36, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wv8um"]
-atlas = ExtResource("1_ljvfi")
+atlas = ExtResource("3_rhhvq")
 region = Rect2(995, 94, 27, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqbty"]
-atlas = ExtResource("1_ljvfi")
+atlas = ExtResource("3_rhhvq")
 region = Rect2(966, 94, 27, 25)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pkgo"]
@@ -86,18 +86,18 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pipws"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1q1o0"]
-atlas = ExtResource("1_ljvfi")
+atlas = ExtResource("3_rhhvq")
 region = Rect2(7, 264, 54, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysg3a"]
-atlas = ExtResource("1_ljvfi")
+atlas = ExtResource("3_rhhvq")
 region = Rect2(370, 4, 79, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwe8e"]
-atlas = ExtResource("1_ljvfi")
+atlas = ExtResource("3_rhhvq")
 region = Rect2(7, 264, 54, 54)
 
-[node name="Main" type="Control" node_paths=PackedStringArray("fromDate", "toDate", "sitesBtnContainer", "muestrasLess", "muestrasMore", "sitesLastBtn", "scrollBar")]
+[node name="Graficadora" type="Control" node_paths=PackedStringArray("fromDate", "toDate", "sitesBtnContainer", "muestrasLess", "muestrasMore", "sitesLastBtn", "scrollBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,7 +106,7 @@ offset_right = -245.0
 offset_bottom = -225.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4cunx")
+script = ExtResource("1_xy25b")
 fromDate = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Inicio/FromDateInfo")
 toDate = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Fin/ToDateInfo")
 sitesBtnContainer = NodePath("GRAFICADORA/Sites/SitesBttnContainer")
@@ -122,7 +122,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_k6dm8")
+script = ExtResource("2_m0jcy")
 criticLevelColor = Color(1, 0, 0, 1)
 criticLevelRange = 16
 dangerLevelColor = Color(1, 0.614498, 0, 1)
@@ -182,7 +182,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(837, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(485, 937, 12, 50.705)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GRAFICADORA/Background/Title Background"]
@@ -275,31 +275,31 @@ theme_override_constants/separation = 115
 [node name="VLine2" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2.5)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="VLine3" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2.5)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="VLine4" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2.5)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="VLine5" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2.5)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="VLine6" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/VBoxContainer"]
 custom_minimum_size = Vector2(0, 2.5)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HorChartLines" type="HBoxContainer" parent="GRAFICADORA/Info/Chart Background/Containers"]
@@ -317,313 +317,313 @@ theme_override_constants/separation = 190
 [node name="HLine" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine2" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine3" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine4" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine5" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine6" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine7" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine8" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine9" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine10" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine11" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine12" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine13" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine14" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine15" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine16" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine17" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine18" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine19" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine20" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine21" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine22" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine23" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine24" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine25" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine26" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine27" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine28" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine29" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine30" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine31" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine32" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine33" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine34" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine35" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine36" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine37" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine38" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine39" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine40" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine41" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine42" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine43" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine44" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine45" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine46" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine47" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine48" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine49" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine50" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine51" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="HLine52" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers/HorChartLines"]
 custom_minimum_size = Vector2(2.5, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)
 
 [node name="VLine2" type="NinePatchRect" parent="GRAFICADORA/Info/Chart Background/Containers"]
@@ -636,7 +636,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(671, 3)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(997, 135, 21, 0.5)
 
 [node name="Chart" type="Control" parent="GRAFICADORA/Info"]
@@ -801,7 +801,7 @@ theme_override_constants/separation = 102
 
 [node name="Value Circle" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle"]
@@ -818,7 +818,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="Center Circle" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle"]
@@ -835,7 +835,7 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle"]
@@ -862,7 +862,7 @@ vertical_alignment = 1
 
 [node name="Value Circle2" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle2"]
@@ -879,7 +879,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle2"]
@@ -918,12 +918,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(15, 15)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle3" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle3"]
@@ -940,7 +940,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle3"]
@@ -972,12 +972,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle4" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle4"]
@@ -994,7 +994,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle4"]
@@ -1026,12 +1026,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle5" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle5"]
@@ -1048,7 +1048,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle5"]
@@ -1080,12 +1080,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle6" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle6"]
@@ -1102,7 +1102,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle6"]
@@ -1134,12 +1134,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle7" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle7"]
@@ -1156,7 +1156,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle7"]
@@ -1188,12 +1188,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle8" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle8"]
@@ -1210,7 +1210,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle8"]
@@ -1242,12 +1242,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle9" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle9"]
@@ -1264,7 +1264,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle9"]
@@ -1296,12 +1296,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle10" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle10"]
@@ -1318,7 +1318,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle10"]
@@ -1350,12 +1350,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle11" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle11"]
@@ -1372,7 +1372,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle11"]
@@ -1404,12 +1404,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle12" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle12"]
@@ -1426,7 +1426,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle12"]
@@ -1458,12 +1458,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle13" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle13"]
@@ -1480,7 +1480,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle13"]
@@ -1512,12 +1512,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle14" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle14"]
@@ -1534,7 +1534,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle14"]
@@ -1566,12 +1566,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle15" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle15"]
@@ -1588,7 +1588,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle15"]
@@ -1620,12 +1620,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle16" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle16"]
@@ -1642,7 +1642,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle16"]
@@ -1674,12 +1674,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle17" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle17"]
@@ -1696,7 +1696,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle17"]
@@ -1728,12 +1728,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle18" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle18"]
@@ -1750,7 +1750,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle18"]
@@ -1782,12 +1782,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle19" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle19"]
@@ -1804,7 +1804,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle19"]
@@ -1836,12 +1836,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle20" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle20"]
@@ -1858,7 +1858,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle20"]
@@ -1890,12 +1890,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle21" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle21"]
@@ -1912,7 +1912,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle21"]
@@ -1944,12 +1944,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle22" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle22"]
@@ -1966,7 +1966,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle22"]
@@ -1998,12 +1998,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle23" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle23"]
@@ -2020,7 +2020,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle23"]
@@ -2052,12 +2052,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle24" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle24"]
@@ -2074,7 +2074,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle24"]
@@ -2106,12 +2106,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle25" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle25"]
@@ -2128,7 +2128,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle25"]
@@ -2160,12 +2160,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle26" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle26"]
@@ -2182,7 +2182,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle26"]
@@ -2214,12 +2214,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle27" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle27"]
@@ -2236,7 +2236,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle27"]
@@ -2268,12 +2268,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle28" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle28"]
@@ -2290,7 +2290,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle28"]
@@ -2322,12 +2322,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle29" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle29"]
@@ -2344,7 +2344,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle29"]
@@ -2376,12 +2376,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle30" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle30"]
@@ -2398,7 +2398,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle30"]
@@ -2430,12 +2430,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle31" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle31"]
@@ -2452,7 +2452,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle31"]
@@ -2484,12 +2484,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle32" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle32"]
@@ -2506,7 +2506,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle32"]
@@ -2538,12 +2538,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle33" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle33"]
@@ -2560,7 +2560,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle33"]
@@ -2592,12 +2592,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle34" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle34"]
@@ -2614,7 +2614,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle34"]
@@ -2646,12 +2646,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle35" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle35"]
@@ -2668,7 +2668,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle35"]
@@ -2700,12 +2700,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle36" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle36"]
@@ -2722,7 +2722,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle36"]
@@ -2754,12 +2754,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle37" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle37"]
@@ -2776,7 +2776,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle37"]
@@ -2808,12 +2808,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle38" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle38"]
@@ -2830,7 +2830,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle38"]
@@ -2862,12 +2862,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle39" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle39"]
@@ -2884,7 +2884,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle39"]
@@ -2916,12 +2916,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle40" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle40"]
@@ -2938,7 +2938,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle40"]
@@ -2970,12 +2970,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle41" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle41"]
@@ -2992,7 +2992,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle41"]
@@ -3024,12 +3024,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle42" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle42"]
@@ -3046,7 +3046,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle42"]
@@ -3078,12 +3078,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle43" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle43"]
@@ -3100,7 +3100,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle43"]
@@ -3132,12 +3132,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle44" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle44"]
@@ -3154,7 +3154,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle44"]
@@ -3186,12 +3186,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle45" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle45"]
@@ -3208,7 +3208,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle45"]
@@ -3240,12 +3240,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle46" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle46"]
@@ -3262,7 +3262,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle46"]
@@ -3294,12 +3294,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle47" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle47"]
@@ -3316,7 +3316,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle47"]
@@ -3348,12 +3348,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle48" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle48"]
@@ -3370,7 +3370,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle48"]
@@ -3402,12 +3402,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle49" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle49"]
@@ -3424,7 +3424,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle49"]
@@ -3456,12 +3456,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle50" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle50"]
@@ -3478,7 +3478,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle50"]
@@ -3510,12 +3510,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle51" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle51"]
@@ -3532,7 +3532,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle51"]
@@ -3564,12 +3564,12 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle52" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle52"]
@@ -3586,7 +3586,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="ChartValue" type="Label" parent="GRAFICADORA/Info/Chart/Chart Values Mask/ChartBoxContainer/Value Circle52"]
@@ -3618,7 +3618,7 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Vert Info" type="Control" parent="GRAFICADORA/Info/Chart"]
@@ -5878,7 +5878,7 @@ offset_top = 213.575
 offset_right = 102.5
 offset_bottom = 253.575
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle"]
@@ -5886,7 +5886,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle"]
@@ -5903,7 +5903,7 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle2" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect"]
@@ -5913,7 +5913,7 @@ offset_top = 145.445
 offset_right = 178.455
 offset_bottom = 185.445
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle2"]
@@ -5921,7 +5921,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle2"]
@@ -5938,7 +5938,7 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle3" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect"]
@@ -5948,7 +5948,7 @@ offset_top = 241.87
 offset_right = 265.2
 offset_bottom = 281.87
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle3"]
@@ -5956,7 +5956,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle3"]
@@ -5973,7 +5973,7 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Value Circle4" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect"]
@@ -5983,7 +5983,7 @@ offset_top = 70.5
 offset_right = 367.48
 offset_bottom = 110.5
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
 
 [node name="Value Circle In" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle4"]
@@ -5991,7 +5991,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GRAFICADORA/Loading/ColorRect/Value Circle4"]
@@ -6008,7 +6008,7 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
 [node name="Line2D" type="Line2D" parent="GRAFICADORA/Loading/ColorRect"]
@@ -6049,7 +6049,7 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(400, 400)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(472.098, 39.3565, 32.051, 31.2596)
 
 [node name="WhitoutHistory" type="Control" parent="GRAFICADORA"]
@@ -6135,7 +6135,7 @@ offset_bottom = 14.825
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(73, 73)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(466, 761, 44, 44)
 
 [node name="Label" type="Label" parent="GRAFICADORA/WhitoutHistory/ColorRect/NinePatchRect"]
@@ -6202,7 +6202,7 @@ offset_bottom = 72.14
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(73, 73)
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(466, 761, 44, 44)
 
 [node name="Label" type="Label" parent="GRAFICADORA/InitialChart/ColorRect/NinePatchRect"]
@@ -6242,7 +6242,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 138.0
 grow_horizontal = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -6275,7 +6275,7 @@ alignment = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_wv8um")
 
-[node name="FromDateInfo" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Inicio" instance=ExtResource("3_7aq1x")]
+[node name="FromDateInfo" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Inicio" instance=ExtResource("4_2t3fw")]
 custom_minimum_size = Vector2(278, 0)
 layout_mode = 2
 
@@ -6288,7 +6288,7 @@ alignment = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_uqbty")
 
-[node name="ToDateInfo" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Fin" instance=ExtResource("3_7aq1x")]
+[node name="ToDateInfo" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Fecha Fin" instance=ExtResource("4_2t3fw")]
 custom_minimum_size = Vector2(278, 0)
 layout_mode = 2
 
@@ -6371,30 +6371,28 @@ alignment = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_wv8um")
 
-[node name="Dia" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
+[node name="Año" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../../../../SitesBttnContainer/Sitio1Bttn8")
-focus_neighbor_bottom = NodePath("../Mes")
-theme = ExtResource("5_ob3ak")
-selected = 0
+focus_neighbor_top = NodePath("../Mes")
+focus_neighbor_bottom = NodePath("../Hora")
+theme = ExtResource("5_7a3ej")
+selected = 1
 allow_reselect = true
-item_count = 5
-popup/item_0/text = "Dia"
+item_count = 4
+popup/item_0/text = "Año"
 popup/item_0/id = 1
-popup/item_1/text = "1"
+popup/item_1/text = "2024"
 popup/item_1/id = 2
-popup/item_2/text = "2"
+popup/item_2/text = "2023"
 popup/item_2/id = 2
-popup/item_3/text = "3"
+popup/item_3/text = "2022"
 popup/item_3/id = 3
-popup/item_4/text = "4"
-popup/item_4/id = 4
 
 [node name="Mes" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Dia")
 focus_neighbor_bottom = NodePath("../Año")
-theme = ExtResource("5_ob3ak")
+theme = ExtResource("5_7a3ej")
 selected = 0
 allow_reselect = true
 item_count = 10
@@ -6419,28 +6417,30 @@ popup/item_8/id = 8
 popup/item_9/text = "Septiembre"
 popup/item_9/id = 9
 
-[node name="Año" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
+[node name="Dia" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Mes")
-focus_neighbor_bottom = NodePath("../Hora")
-theme = ExtResource("5_ob3ak")
-selected = 1
+focus_neighbor_top = NodePath("../../../../../SitesBttnContainer/Sitio1Bttn8")
+focus_neighbor_bottom = NodePath("../Mes")
+theme = ExtResource("5_7a3ej")
+selected = 0
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "Año"
+item_count = 5
+popup/item_0/text = "Dia"
 popup/item_0/id = 1
-popup/item_1/text = "2024"
+popup/item_1/text = "1"
 popup/item_1/id = 2
-popup/item_2/text = "2023"
+popup/item_2/text = "2"
 popup/item_2/id = 2
-popup/item_3/text = "2022"
+popup/item_3/text = "3"
 popup/item_3/id = 3
+popup/item_4/text = "4"
+popup/item_4/id = 4
 
 [node name="Hora" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Año")
 focus_neighbor_bottom = NodePath("../../HBox Fecha Fin/Dia")
-theme = ExtResource("5_ob3ak")
+theme = ExtResource("5_7a3ej")
 selected = 0
 allow_reselect = true
 item_count = 4
@@ -6462,30 +6462,28 @@ alignment = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_uqbty")
 
-[node name="Dia" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
+[node name="Año" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../HBox Fecha Inicio/Hora")
-focus_neighbor_bottom = NodePath("../Mes")
-theme = ExtResource("5_ob3ak")
-selected = 0
+focus_neighbor_top = NodePath("../Mes")
+focus_neighbor_bottom = NodePath("../Hora")
+theme = ExtResource("5_7a3ej")
+selected = 1
 allow_reselect = true
-item_count = 5
-popup/item_0/text = "Dia"
+item_count = 4
+popup/item_0/text = "Año"
 popup/item_0/id = 1
-popup/item_1/text = "1"
+popup/item_1/text = "2024"
 popup/item_1/id = 2
-popup/item_2/text = "2"
+popup/item_2/text = "2023"
 popup/item_2/id = 2
-popup/item_3/text = "3"
+popup/item_3/text = "2022"
 popup/item_3/id = 3
-popup/item_4/text = "4"
-popup/item_4/id = 4
 
 [node name="Mes" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Dia")
 focus_neighbor_bottom = NodePath("../Año")
-theme = ExtResource("5_ob3ak")
+theme = ExtResource("5_7a3ej")
 selected = 0
 allow_reselect = true
 item_count = 10
@@ -6510,28 +6508,30 @@ popup/item_8/id = 8
 popup/item_9/text = "Septiembre"
 popup/item_9/id = 9
 
-[node name="Año" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
+[node name="Dia" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Mes")
-focus_neighbor_bottom = NodePath("../Hora")
-theme = ExtResource("5_ob3ak")
-selected = 1
+focus_neighbor_top = NodePath("../../HBox Fecha Inicio/Hora")
+focus_neighbor_bottom = NodePath("../Mes")
+theme = ExtResource("5_7a3ej")
+selected = 0
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "Año"
+item_count = 5
+popup/item_0/text = "Dia"
 popup/item_0/id = 1
-popup/item_1/text = "2024"
+popup/item_1/text = "1"
 popup/item_1/id = 2
-popup/item_2/text = "2023"
+popup/item_2/text = "2"
 popup/item_2/id = 2
-popup/item_3/text = "2022"
+popup/item_3/text = "3"
 popup/item_3/id = 3
+popup/item_4/text = "4"
+popup/item_4/id = 4
 
 [node name="Hora" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Año")
 focus_neighbor_bottom = NodePath("../../HBox Muestras/Button - Muestras -")
-theme = ExtResource("5_ob3ak")
+theme = ExtResource("5_7a3ej")
 selected = 0
 allow_reselect = true
 item_count = 4
@@ -6666,7 +6666,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -6731,7 +6731,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -6796,7 +6796,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -6861,7 +6861,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -6926,7 +6926,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -6991,7 +6991,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -7056,7 +7056,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -7125,7 +7125,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(475, 183, 30, 30)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -7163,7 +7163,7 @@ offset_right = 148.5
 offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(473, 39, 30, 31)
 patch_margin_left = 10
 patch_margin_top = 10
@@ -7213,7 +7213,7 @@ size_flags_horizontal = 3
 [node name="W" type="NinePatchRect" parent="GRAFICADORA/Cerrar/Hbox"]
 custom_minimum_size = Vector2(72.485, 0)
 layout_mode = 2
-texture = ExtResource("1_ljvfi")
+texture = ExtResource("3_rhhvq")
 region_rect = Rect2(473, 258, 34, 34)
 patch_margin_left = 10
 patch_margin_top = 10

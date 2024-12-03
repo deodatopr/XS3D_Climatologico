@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector6.tscn" id="6_kmvln"]
 [ext_resource type="PackedScene" uid="uid://xs8scph7gqy3" path="res://(Scenes)/Scn_Sector1.tscn" id="7_kr73d"]
 
-[node name="Main" type="Node"]
+[node name="Main2" type="Node"]
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 

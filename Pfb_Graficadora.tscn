@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_wwtyq"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_UI_Datos.gd" id="2_imatw"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_1empb"]
-[ext_resource type="PackedScene" uid="uid://2puryj6lequo" path="res://Systems/Graficadora/Main.tscn" id="4_yd4wd"]
+[ext_resource type="PackedScene" uid="uid://2puryj6lequo" path="res://Systems/Graficadora/Pfb_Graficadora.tscn" id="4_yd4wd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uhu7b"]
 shader = ExtResource("1_wwtyq")
