@@ -782,9 +782,9 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Precipitacion/VBox"]
-self_modulate = Color(0.73252, 0.4, 1, 1)
+self_modulate = Color(0.4, 0.797343, 1, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "Precipitacion"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -845,9 +845,9 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Presion Atm/VBox"]
-self_modulate = Color(0.73252, 0.4, 1, 1)
+self_modulate = Color(0.4, 0.797343, 1, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "Presion atm"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -907,9 +907,9 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Evaporacion/VBox"]
-self_modulate = Color(0.4, 0.797343, 1, 1)
+self_modulate = Color(0.4, 1, 0.802711, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "Evaporacion
 "
 horizontal_alignment = 1
@@ -970,9 +970,9 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Humedad/VBox"]
-self_modulate = Color(0.4, 0.797343, 1, 1)
+self_modulate = Color(0.4, 1, 0.802711, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "Humedad"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1033,9 +1033,9 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Temperatura/VBox"]
-self_modulate = Color(0.4, 0.797343, 1, 1)
+self_modulate = Color(0.4, 1, 0.802711, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "Temperatura"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1095,9 +1095,9 @@ texture = SubResource("AtlasTexture_bi5is")
 expand_mode = 1
 
 [node name="Lbl" type="Label" parent="HBoxContainer/Datos/Viento/VBox"]
-self_modulate = Color(0.4, 1, 0.802711, 1)
+self_modulate = Color(1, 0.862752, 0.6, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "Viento"
 horizontal_alignment = 1
 vertical_alignment = 1

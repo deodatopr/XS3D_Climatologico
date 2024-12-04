@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=25 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="2_m0jcy"]
+[ext_resource type="Script" path="res://Systems/Graficadora/GDs_DropdownInit.gd" id="2_xdapj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_rhhvq"]
 [ext_resource type="PackedScene" uid="uid://dubkw6fn2rh5c" path="res://addons/DatePickerFiles/CalendarPop/DatePickerPanel.tscn" id="4_2t3fw"]
 [ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://Cont_UI/Theme.tres" id="5_7a3ej"]
@@ -114,6 +115,17 @@ muestrasLess = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox M
 muestrasMore = NodePath("GRAFICADORA/Sites/Iputs/MarginContainer/Original/HBox Muestras/Button - Muestras +")
 sitesLastBtn = NodePath("GRAFICADORA/Sites/SitesBttnContainer/Sitio1Bttn8")
 scrollBar = NodePath("GRAFICADORA/Info/Chart/ScrollInfo")
+
+[node name="DateDropdowns" type="Node" parent="." node_paths=PackedStringArray("fromYear", "toYear", "fromMonth", "toMonth", "fromDay", "toDay", "fromTime", "toTime")]
+script = ExtResource("2_xdapj")
+fromYear = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Año")
+toYear = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin/Año")
+fromMonth = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Mes")
+toMonth = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin/Mes")
+fromDay = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Dia")
+toDay = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin/Dia")
+fromTime = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Hora")
+toTime = NodePath("../GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Fin/Hora")
 
 [node name="GRAFICADORA" type="Control" parent="." node_paths=PackedStringArray("degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "FromDateInfo", "ToDateInfo", "SitesBttnContainer", "SiteName", "SiteSeparation", "LastUpdate", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
 layout_mode = 1
@@ -6360,7 +6372,7 @@ vertical_alignment = 1
 
 [node name="Dropdowns" type="VBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 
 [node name="HBox Fecha Inicio" type="HBoxContainer" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns"]
 layout_mode = 2
@@ -6376,17 +6388,8 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Mes")
 focus_neighbor_bottom = NodePath("../Hora")
 theme = ExtResource("5_7a3ej")
-selected = 1
 allow_reselect = true
-item_count = 4
-popup/item_0/text = "Año"
-popup/item_0/id = 1
-popup/item_1/text = "2024"
-popup/item_1/id = 2
-popup/item_2/text = "2023"
-popup/item_2/id = 2
-popup/item_3/text = "2022"
-popup/item_3/id = 3
+item_count = 1
 
 [node name="Mes" type="OptionButton" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
 layout_mode = 2
@@ -6467,7 +6470,6 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Mes")
 focus_neighbor_bottom = NodePath("../Hora")
 theme = ExtResource("5_7a3ej")
-selected = 1
 allow_reselect = true
 item_count = 4
 popup/item_0/text = "Año"
@@ -6556,7 +6558,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button - Muestras -" type="Button" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras"]
-custom_minimum_size = Vector2(38, 38)
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Button - Muestras +")
 mouse_default_cursor_shape = 2
@@ -6583,7 +6585,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button - Muestras +" type="Button" parent="GRAFICADORA/Sites/Iputs/MarginContainer/Dropdowns/HBox Muestras"]
-custom_minimum_size = Vector2(38, 38)
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Button - Muestras -")
 focus_neighbor_bottom = NodePath("../../../../../SitesBttnContainer/Sitio1Bttn")
