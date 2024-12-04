@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bacl4oequehqx"]
+
+[ext_resource type="Script" path="res://addons/3DAutoMap/ShaderParameter.gd" id="1_f0mlk"]
+[ext_resource type="Texture2D" uid="uid://ep02et00tl8m" path="res://addons/3DAutoMap/UI_Remove.png" id="1_yl463"]
+
+[node name="Shader Parameter" type="HBoxContainer" node_paths=PackedStringArray("ParameterName", "TextureSuff")]
+offset_right = 255.0
+offset_bottom = 28.0
+theme_override_constants/separation = 5
+script = ExtResource("1_f0mlk")
+ParameterName = NodePath("ParameterName")
+TextureSuff = NodePath("TextureSuffix")
+
+[node name="ParameterName" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "albedo_texture"
+expand_to_text_length = true
+
+[node name="TextureSuffix" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 10
+text = "_BC"
+alignment = 1
+
+[node name="RemoveParameter" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="RemoveParameter"]
+self_modulate = Color(0.554309, 0.00982367, 0.00982367, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yl463")
+
+[connection signal="pressed" from="RemoveParameter" to="." method="_on_remove_parameter_pressed"]
