@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl8fgts2b7fqv"
-path="res://.godot/imported/Map_Sec1_11.jpg-51c42335a448835d4f9dcebdc22cea56.ctex"
+path.s3tc="res://.godot/imported/Map_Sec1_11.jpg-51c42335a448835d4f9dcebdc22cea56.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Cont_Models/Sector1/Terrain/Map_Sec1_11.jpg"
-dest_files=["res://.godot/imported/Map_Sec1_11.jpg-51c42335a448835d4f9dcebdc22cea56.ctex"]
+dest_files=["res://.godot/imported/Map_Sec1_11.jpg-51c42335a448835d4f9dcebdc22cea56.s3tc.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=0
