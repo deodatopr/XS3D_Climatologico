@@ -82,7 +82,7 @@ func FindTextures(path : String, nameStruct : String):
 					if Param.TextureSuff.text == FileSplit[0] and !Textures.has(Param.TextureSuff): 
 						Suffix = Param.TextureSuff.text
 					
-				if ResourceLoader.exists(fullPath) and !Suffix.is_empty():
+				if ResourceLoader.exists(fullPath) : #and !Suffix.is_empty():
 					var newTexture = ResourceLoader.load(fullPath)
 					Textures[Suffix] = newTexture
 		

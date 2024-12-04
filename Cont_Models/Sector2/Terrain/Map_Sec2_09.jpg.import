@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvsrv2drv8tv1"
-path.s3tc="res://.godot/imported/Map_Sec2_3.jpg-bc2845126c1dda728483c8406ab411d1.s3tc.ctex"
+uid="uid://c3ar56n62bdk8"
+path.s3tc="res://.godot/imported/Map_Sec2_09.jpg-af110472a4a7a8b43a64207f537ff630.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Cont_Models/Sector2/Terrain/Map_Sec2_3.jpg"
-dest_files=["res://.godot/imported/Map_Sec2_3.jpg-bc2845126c1dda728483c8406ab411d1.s3tc.ctex"]
+source_file="res://Cont_Models/Sector2/Terrain/Map_Sec2_09.jpg"
+dest_files=["res://.godot/imported/Map_Sec2_09.jpg-af110472a4a7a8b43a64207f537ff630.s3tc.ctex"]
 
 [params]
 
