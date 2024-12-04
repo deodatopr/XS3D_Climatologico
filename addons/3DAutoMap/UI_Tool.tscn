@@ -10,7 +10,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5b2h2"]
 
-[node name="[ AUTO MAP ]" type="Control" node_paths=PackedStringArray("TabOption", "AutoMapStandard", "AutoMapShader")]
+[node name="AutoMap" type="Control" node_paths=PackedStringArray("TabOption", "AutoMapStandard", "AutoMapShader")]
 layout_mode = 3
 anchor_right = 0.234
 anchor_bottom = 0.671
