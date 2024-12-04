@@ -1,29 +1,13 @@
 extends Node
 
+@export var dataService : GDs_DataService_Manager
+
 @export var criticLevelColor : Color
 @export var criticLevelRange : int
 @export var dangerLevelColor : Color
 @export var dangerLevelRange : int
 @export var safeLevelColor : Color
 @export var safeLevelRange : int
-@export var DebugMode : bool = true
-
-var DebugSamples : int
-var VertLenght : float
-var currentCharInfo : int = 12
-var TotalInfo : int = 52
-var debugData : GDs_Debug
-var randomValues : Array[GDs_Data]
-var linesActivePool : Array[NinePatchRect]
-var ValuesActivePool : Array[NinePatchRect]
-var HrsActivePool : Array[Label]
-var DateActivePool : Array[Label]
-var endPointData : Array[GDs_Data]
-var finalSamples : Array[GDs_Data]
-var SiteID : int
-var isDragingChart : bool = false
-
-signal RequestFailed
 
 @export_group("Internal References")
 @export var degradedChart : Node2D
@@ -44,15 +28,22 @@ signal RequestFailed
 @export var InitialChart : Control
 @export var Info : Control
 @export var ChartBackground : Control
-@onready var http_request = $HTTPRequest
-
-
 
 const SEPARATION = 80
 
+var DebugSamples : int
+var VertLenght : float
+var currentCharInfo : int = 12
+var TotalInfo : int = 52
+var linesActivePool : Array[NinePatchRect]
+var ValuesActivePool : Array[NinePatchRect]
+var HrsActivePool : Array[Label]
+var DateActivePool : Array[Label]
+var finalSamples : Array[GDs_Data_EP_Historicos]
+var SiteID : int
+var isDragingChart : bool
+
 func _ready():
-	if DebugMode:
-		debugData = GDs_Debug.new()
 	#obtengo la altura de la grafica
 	VertLenght = Chart.size.y
 	
@@ -66,7 +57,6 @@ func _ready():
 	FromDateInfo.date_picker_button.pressed.connect(self._toggleCalendarBttn.bind(FromDateInfo.date_picker_button))
 	ToDateInfo.date_picker_button.pressed.connect(self._toggleCalendarBttn.bind(ToDateInfo.date_picker_button))
 	
-	http_request.request_completed.connect(_on_request_completed)
 	FromDateInfo.ConfirmDate.connect(self._date_change)
 	ToDateInfo.ConfirmDate.connect(self._date_change)
 
@@ -74,17 +64,15 @@ func _date_change():
 	_site_Pressed(SiteName.text, SiteID)
 
 func _Initialize_chart_to_zero():
-	var EmptyChart : Array[GDs_Data]
+	var EmptyChart : Array[GDs_Data_EP_Historicos]
 	for i in 51:
-		var NewData : GDs_Data = GDs_Data.new()
+		var NewData : GDs_Data_EP_Historicos = GDs_Data_EP_Historicos.new()
 		NewData.valor = 0
 		NewData.tiempo = Time.get_datetime_string_from_system()
 		EmptyChart.append(NewData)
 		
 	LastUpdate.visible = false
 	SiteSeparation.visible = false
-	finalSamples = _getSamplesAmount(EmptyChart)
-	_updateRequestData()
 
 #funcion para que los calendarios se cierren si se abre el otro y vicebersa
 func _toggleCalendarBttn(_selectedCalendar : Button):
@@ -95,27 +83,14 @@ func _toggleCalendarBttn(_selectedCalendar : Button):
 		FromDateInfo.date_picker_panel.visible = false
 		FromDateInfo.hour_picker.visible = false
 
-func _on_request_completed(_result, _response_code, _headers, body):
-	var json = JSON.parse_string(body.get_string_from_utf8())
-	endPointData.clear()
-	for data in json:
-		var rng = RandomNumberGenerator.new()
-		var newData : GDs_Data = GDs_Data.new()
-		newData.idSignals = data.IdSignal
-		newData.valor = float(rng.randi_range(0, 20))
-		newData.tiempo = data.Tiempo
-		endPointData.append(newData)
-		
-	finalSamples = _getSamplesAmount(endPointData)
-	_updateRequestData()
 
-func _setData(data:Array[GDs_Data]):
+func Graficar(_data : Array[GDs_Data_EP_Historicos]):
 	#seteo los valores de la grafica
 	for i in TotalInfo:
 		#seteo texto de la hora
-		if !data[i].tiempo.is_empty():
-			var date = data[i].tiempo.split("T")
-			var timeHrMin = data[i].tiempo.get_slice("T", 1)
+		if !_data[i].tiempo.is_empty():
+			var date = _data[i].tiempo.split("T")
+			var timeHrMin = _data[i].tiempo.get_slice("T", 1)
 			timeHrMin = timeHrMin.erase(5, 3)
 			HrsActivePool[i].text = timeHrMin
 			HrsActivePool[i].position.y = 0
@@ -126,7 +101,7 @@ func _setData(data:Array[GDs_Data]):
 			DateActivePool[i].text = "---"
 			
 		#seteo la posicion del value en y
-		ValuesActivePool[i].position.y = lerpf(VertLenght, 0.0, data[i].valor/20.0) - (ValuesActivePool[i].size.y/2)
+		ValuesActivePool[i].position.y = lerpf(VertLenght, 0.0, _data[i].valor/20.0) - (ValuesActivePool[i].size.y/2)
 		
 		#obtiene todos los nodos hijos de los circulos de los valores para poder pintarlos
 		var ValuesColor : Array[NinePatchRect] = []
@@ -136,25 +111,24 @@ func _setData(data:Array[GDs_Data]):
 				ValuesColor.append(value)
 			elif value.get_class() == "Label":
 				ValueLabel = value
-		ValueLabel.text = str(data[i].valor)
+		ValueLabel.text = str(_data[i].valor)
 		
 		#pinta todos los nodos de los colores segun el peligro
 		for value in ValuesColor:		
-			if data[i].valor >= criticLevelRange:
+			if _data[i].valor >= criticLevelRange:
 				value.modulate = criticLevelColor
-			elif data[i].valor < criticLevelRange and data[i].valor >= dangerLevelRange:
+			elif _data[i].valor < criticLevelRange and _data[i].valor >= dangerLevelRange:
 				value.modulate = dangerLevelColor
-			elif data[i].valor < dangerLevelRange and data[i].valor >= safeLevelRange:
+			elif _data[i].valor < dangerLevelRange and _data[i].valor >= safeLevelRange:
 				value.modulate = safeLevelColor
 					
 		#acomodo los puntos de la grafica, del poligono2d y de la linea2d en y
-		degradedChart.polygon[i].y = lerpf(VertLenght, 0.0, data[i].valor/20.0)
-		lineChart.points[i].y = lerpf(VertLenght, 0.0, data[i].valor/20.0)
+		degradedChart.polygon[i].y = lerpf(VertLenght, 0.0, _data[i].valor/20.0)
+		lineChart.points[i].y = lerpf(VertLenght, 0.0, _data[i].valor/20.0)
 
 func _site_Pressed(_name : String, _site : int):
-	#if _name.is_empty() or _site == 0:
-		#print_debug("Sitio pressed")
-		#return
+	if _name.is_empty() or _site == 0:
+		return
 
 	#convierto en string las horas de los calendarios
 	var fromhour = FromDateInfo.Hour_Bttn_Selected.text.split(":")
@@ -194,10 +168,10 @@ func _site_Pressed(_name : String, _site : int):
 	var fromdate : String = str(FromDateInfo.final_date_data["year"], "-", FromDateInfo.final_date_data["month"], "-", FromDateInfo.final_date_data["day"])
 	var todate : String = str(ToDateInfo.final_date_data["year"], "-", ToDateInfo.final_date_data["month"], "-", ToDateInfo.final_date_data["day"])
 	LastUpdate.text = fromhour[0] + ":" + fromhour[1] + " " + fromdate + " - " + tohour[0] + ":" + tohour[1] + " " + todate
+	
 	#revisa si las fechas y horas son iguales para salir de la funcion
 	if fromdate == todate and fromhour[0] == tohour[0]:
 		return
-	
 	
 	ChartBackground.visible = true
 	LastUpdate.visible = true
@@ -211,29 +185,12 @@ func _site_Pressed(_name : String, _site : int):
 	#cambia el nombre del sitio
 	SiteName.text = _name
 	SiteID = _site
-	
-	if DebugMode:
-		#DEBUG
-		#creo valores random con el debug, con los datos de las fechas y horas
-		DebugSamples = debugData._getSamplesFromDate(fromdate, todate, fromhour[0], tohour[0])
-		randomValues = debugData._randomValues(DebugSamples, fromdate, fromhour[0], fromhour[1])
-		finalSamples = _getSamplesAmount(randomValues)
-		_updateRequestData()
-	else:
-		var signalSite = 6000000 + _site
-		var url = "http://w1.doomdns.com:11002/api/VWC/WebEncharcamientos23/Report"
-		#var url = ""
-		var headers = ["Content-Type: application/json"]
-		var body_data = {"IdSignals": [signalSite], "FechaInicial": fromdate + "T" + fromhour[0] + ":" + fromhour[1] + ":00", "FechaFinal": todate + "T" + tohour[0] + ":" + tohour[1] + ":00"}
-		var json_body = JSON.stringify(body_data)
-		var Error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_body)
-	
-		if Error:
-			RequestFailed.emit()
+
 	ScrollInfo.value = ScrollInfo.max_value
 	
-func _updateRequestData():
+func _updateRequestData(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	_updateChartSamples()
+	
 	#si no recive valores, muestre la pantalla sin historia
 	if finalSamples.size() > 0:
 		WhitoutHistory.visible = false
@@ -244,7 +201,7 @@ func _updateRequestData():
 		await get_tree().create_timer(0.01).timeout
 		#actualizo la posicion de los valores de la grafica
 		_updateChart()
-		_setData(finalSamples)
+		Graficar(finalSamples)
 		
 		#actualiza el tamaño del contenedor de las lineas verticales, para que el scrollbar solo recorra el largo de las lineas verticales visibles
 		horChartLines.size.x = linesActivePool[TotalInfo - 1].position.x + SEPARATION
@@ -267,7 +224,7 @@ func _on_min_info_pressed():
 		await get_tree().create_timer(0.001).timeout
 		#actualizo la posicion de los valores de la grafica
 		_updateChart()
-		_setData(finalSamples)
+		Graficar(finalSamples)
 		
 		#actualiza el tamaño del contenedor de las lineas verticales, para que el scrollbar solo recorra el largo de las lineas verticales visibles
 		horChartLines.size.x = linesActivePool[TotalInfo - 1].position.x + SEPARATION
@@ -307,15 +264,6 @@ func _on_min_info_pressed():
 				invisibleRects.clear()
 				index -= 1
 				continue
-				
-			#var rect2 : Rect2
-			#rect2.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer")) + (index * 5)
-			#rect2.size = time.size
-			
-			#if !rect1.intersects(rect2):
-				#HrsActivePool[index].visible = true
-				#
-			#index -= 1
 
 func _on_more_info_bttn_pressed():
 	if !Info.visible:
@@ -330,7 +278,7 @@ func _on_more_info_bttn_pressed():
 		await get_tree().create_timer(0.001).timeout
 		#actualizo la posicion de los valores de la grafica
 		_updateChart()
-		_setData(finalSamples)
+		Graficar(finalSamples)
 		
 		#actualiza el tamaño del contenedor de las lineas verticales, para que el scrollbar solo recorra el largo de las lineas verticales visibles
 		horChartLines.size.x = linesActivePool[TotalInfo - 1].position.x + SEPARATION
@@ -396,55 +344,6 @@ func _on_h_scroll_bar_scrolling():
 	ChartBoxContainer.position.x = HorPosition
 	horTimeInfo.position.x = HorPosition + abs(HrsActivePool[0].position.x)
 
-func _getSamplesAmount(data:Array[GDs_Data])-> Array[GDs_Data]:
-	#promedia el valor de las muestras totales, para que se muestren maximo 52 datos en la grafica
-	var totalSamples : Array[GDs_Data] = []
-	var averageSameples : int = 0
-	#si son mas de 52 muestras y tomando que obtiene una muestra cada 15 min. 
-	#promedia en horas, si son mas en dias, si son mas en semanas, 
-	#si son mas en meses
-	if data.size() > 52.0:
-		if data.size()/4.0 > 52.0:
-			if data.size()/96.0 > 52.0:
-				if data.size()/672.0 > 52.0:
-					averageSameples = 20832
-				else:
-					averageSameples = 672
-			else:
-				averageSameples = 96
-		else:
-			averageSameples = 4
-	else:
-		TotalInfo = data.size()
-		if TotalInfo < currentCharInfo and TotalInfo != 0:
-			currentCharInfo = TotalInfo
-		return data
-	
-	#recorre todos los datos para promediar segun el total de las muestras
-	var averageValues : int = 0
-	var index : int = 0
-	for value in data:
-		if index == averageSameples:
-			var NewData : GDs_Data = GDs_Data.new()
-			NewData.idSignals = value.idSignals
-			NewData.tiempo = value.tiempo
-			NewData.valor = int(float(averageValues)/float(averageSameples))
-			totalSamples.append(NewData)
-			averageValues = 0
-			index = 0
-		
-		if index < averageSameples:
-			averageValues += int(value.valor)
-			index += 1
-			
-	if totalSamples.size() <= 52:
-		TotalInfo = totalSamples.size()
-	else:
-		TotalInfo = 52
-	if TotalInfo < currentCharInfo:
-		currentCharInfo = TotalInfo
-	return totalSamples
-
 func _updateChartSamples():
 	#tras actualizar el promedio de las muestras, cambia la cantidad de lineas, valores y horas que mostrara
 	var index := 0
@@ -497,5 +396,5 @@ func _on_chart_gui_input(event):
 		isDragingChart = false
 
 
-func _on_scroll_info_value_changed(_value):
+func _on_scroll_info_value_changed(_arg):
 	_on_h_scroll_bar_scrolling()

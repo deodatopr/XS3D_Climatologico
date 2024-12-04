@@ -24,7 +24,7 @@ func Request(_id : int, _dateFrom : String, _dateTo : String):
 	var json_body = JSON.stringify(body_data)
 	http_request.request(URL, headers, HTTPClient.METHOD_POST, json_body)
 
-func OnRequest_Completed(result, response_code, headers, body):
+func OnRequest_Completed(result, _response_code, _headers, body):
 	if result == HTTPRequest.RESULT_SUCCESS:
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		historicos.clear()

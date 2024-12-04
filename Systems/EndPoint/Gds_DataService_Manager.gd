@@ -31,9 +31,6 @@ var dataHistoricos : Array[GDs_Data_EP_Historicos] = []
 
 var isFirstTimeRequestGetAllEstaciones : bool = true
 
-func _ready():
-	Initialize()
-
 func Initialize():
 	SIGNALS.OnGoToSitio.connect(UpdateCurrentSitio)
 	SIGNALS.OnDebugRefresh.connect(_OnSimuladoValueChange)
@@ -228,9 +225,7 @@ func _OnFailedEP_Historicos():
 	dataHistoricos.clear()
 
 		
-func Hist_AverageValues(data:Array[GDs_Data_EP_Historicos])-> Array[GDs_Data_EP_Historicos]:
-	var totalInfo : int
-	
+func Hist_AverageValues(data:Array[GDs_Data_EP_Historicos])-> Array[GDs_Data_EP_Historicos]:	
 	#promedia el valor de las muestras totales, para que se muestren maximo 52 datos en la grafica
 	var totalSamples : Array[GDs_Data_EP_Historicos] = []
 	var averageSamples : int = 0
@@ -249,8 +244,6 @@ func Hist_AverageValues(data:Array[GDs_Data_EP_Historicos])-> Array[GDs_Data_EP_
 		else:
 			averageSamples = 4
 	else:
-		totalInfo = data.size()
-
 		return data
 	
 	#recorre todos los datos para promediar segun el total de las muestras
@@ -269,11 +262,6 @@ func Hist_AverageValues(data:Array[GDs_Data_EP_Historicos])-> Array[GDs_Data_EP_
 		if index < averageSamples:
 			averageValues += int(value.valor)
 			index += 1
-			
-	if totalSamples.size() <= 52:
-		totalInfo = totalSamples.size()
-	else:
-		totalInfo = 52
 
 	return totalSamples
 #endregion
