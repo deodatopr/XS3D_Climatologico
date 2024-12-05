@@ -206,8 +206,7 @@ func _UpdateFromEP(arrayEndPoint : Array[GDs_Data_EP_Sitio]):
 #region HISTORICOS
 func MakeRequest_Historicos(_id : int, _from : String, _to : String):
 	if DEBUG.historicosSimulados:
-		var samples : int = historicos_simulado.GetSamplesFromDate(_from,_to)
-		historicos_simulado.GenerateRandomValues(samples,_from)
+		historicos_simulado.GenerateRandomValues(_from)
 	else:
 		historicos.Request(_id,_from,_to)
 
@@ -217,7 +216,6 @@ func _OnSuccessEP_Historicos():
 	else:
 		dataHistoricos = historicos.GetHistoricos()
 	
-	dataHistoricos = Hist_AverageValues(dataHistoricos)
 	await get_tree().create_timer(.05).timeout
 	
 	SIGNALS.OnRefresh_Hist.emit()

@@ -3,8 +3,11 @@ class_name GDs_EP_Hist_Simulado  extends Node
 var arrayDatos : Array[GDs_Data_EP_Historicos] = []
 var dateValue : String
 
-func GenerateRandomValues(Samples : int, _fromDate : String):
+func GenerateRandomValues(_fromDate : String):
 	arrayDatos.clear()
+	
+	#Each 15 min a sample, 96 samples in 24 hours
+	var totalSamplesByDay : int = 96
 	
 	var year : int =  int(_fromDate.substr(0,4))
 	var month : int = int(_fromDate.substr(5,2))
@@ -12,12 +15,11 @@ func GenerateRandomValues(Samples : int, _fromDate : String):
 	var hour : int = int(_fromDate.substr(10,2))
 	var minute : int = int(_fromDate.substr(13,2))
 	
-	
-	for n in Samples:
+	for n in totalSamplesByDay:
 		var fixedMonth : String = str("0",month) if month < 10 else str(month)
 		var fixedDay : String = str("0",day) if day < 10 else str(day)
 		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
-		var fixedMinute : String = str("0",hour) if hour < 10 else str(hour)
+		var fixedMinute : String = str("0",minute) if minute < 10 else str(minute)
 		dateValue = str(year,"-",fixedMonth,"-",fixedDay,"T",fixedHour,":",fixedMinute,":00")
 		
 		var rng = RandomNumberGenerator.new()
@@ -55,35 +57,11 @@ func GenerateRandomValues(Samples : int, _fromDate : String):
 			year -= 1
 			month = 12
 	
+	#Filtrar datos de historicos para solo obtener por hora, en total 24
+	# NOTA: int(_sample.tiempo.substr(13,2)) == 0 : Comparamos los minutos solo cuando sea 0 es cuando es una hora y oslo agregar eso al array final
+	arrayDatos = arrayDatos.filter(func(_sample : GDs_Data_EP_Historicos): return int(_sample.tiempo.substr(13,2)) == 0)
+
 	SIGNALS.OnRequestResult_Hist_Success.emit()
 		
 func GetHistoricos() -> Array[GDs_Data_EP_Historicos]:
 	return arrayDatos
-
-func GetSamplesFromDate(_fromDate : String, _toDate : String)->int:
-
-	var fromHour : String = _fromDate.substr(11,2)
-	var toHour : String =  _toDate.substr(11,2)
-
-	var delimiter : String = "T"
-	
-	var indexFrom : int = _fromDate.find(delimiter)
-	var fromDate = _fromDate.substr(0,indexFrom).split("-")
-	
-	var indexTo : int = _toDate.find(delimiter)
-	var toDate = _toDate.substr(0,indexTo).split("-")
-	
-	var FinalSamples : int = 0
-	FinalSamples += abs((int(fromHour) - int(toHour))*4)
-	
-	var years = abs(int(fromDate[0]) - int(toDate[0]))
-	FinalSamples += years * 365 * 24 * 4
-	
-	var months = abs(int(fromDate[1]) - int(toDate[1]))
-	FinalSamples += months * 30 * 24 * 4
-	FinalSamples += (months/2) * 24 * 4
-	
-	var days = abs(int(fromDate[2]) - int(toDate[2]))
-	FinalSamples += days * 24 * 4
-	
-	return FinalSamples

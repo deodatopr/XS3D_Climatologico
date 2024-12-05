@@ -16,12 +16,6 @@ class_name GDs_Graficadora extends Node
 @export var inicio_Dia : OptionButton
 @export var inicio_Hora : OptionButton
 
-@export_subgroup("Dropdowns Fin")
-@export var fin_Ano : OptionButton
-@export var fin_Mes : OptionButton
-@export var fin_Dia : OptionButton
-@export var fin_Hora : OptionButton
-
 @export_subgroup("Refs Componentes")
 @export var btnGraficar : Button
 @export var degradedChart : Node2D
@@ -74,7 +68,7 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	SiteName.text = dataService.estaciones[0].nombre
 
 func _RequestGraficar():
-	_GetDatesFromDropdowns()
+	_GetDatesFromDropdown()
 	
 	if not Graficar_AreDatesValid():
 		return
@@ -86,20 +80,15 @@ func _RequestGraficar():
 	totalInfo = dataService.dataHistoricos.size()
 	Graficar(dataService.dataHistoricos)
 	
-func _GetDatesFromDropdowns():
+func _GetDatesFromDropdown():
 	var value_inicio_ano :int = int(inicio_Ano.get_item_text(inicio_Ano.selected) )
 	var value_inicio_mes :int = int(inicio_Mes.selected)
 	var value_inicio_dia :int = int(inicio_Dia.get_item_text(inicio_Dia.selected) )
 	var value_inicio_hora :int= int(inicio_Hora.get_item_text(inicio_Hora.selected).substr(1,1))
 	
-	var value_fin_ano :int = int(fin_Ano.get_item_text(fin_Ano.selected) )
-	var value_fin_mes :int = int(fin_Mes.selected)
-	var value_fin_dia :int = int(fin_Dia.get_item_text(fin_Dia.selected) )
-	var value_fin_hora :int= int(fin_Hora.get_item_text(fin_Hora.selected).substr(1,1))
-	
-	
 	dateFromStruct.Update(value_inicio_ano,value_inicio_mes,value_inicio_dia,value_inicio_hora)
-	dateToStruct.Update(value_fin_ano,value_fin_mes,value_fin_dia,value_fin_hora)
+	dateToStruct = dateFromStruct.GetDayBefore()
+	
 
 #region [ BUTTONS SIGNALS ]
 func OnBtnSitioPressed(_id : int, _name : String):
@@ -211,44 +200,12 @@ func OnBtnLessPressed():
 #region [ GRAFICAR ]
 func Graficar_AreDatesValid() -> bool:
 	var inicioDateIsValid : bool = inicio_Ano.selected != 0 and inicio_Mes.selected != 0 and inicio_Dia.selected != 0 and inicio_Hora.selected != 0
-	var finDateIsValid : bool = fin_Ano.selected != 0 and fin_Mes.selected != 0 and fin_Dia.selected != 0 and fin_Hora.selected != 0
 	
-	var dropdownsHaveValidOptions : bool = inicioDateIsValid and finDateIsValid
-	
-	if not dropdownsHaveValidOptions:
+	if not inicioDateIsValid:
 		return false
 	
-	var sameYear : bool = dateFromStruct.year == dateToStruct.year
-	var sameMonth : bool = dateFromStruct.month == dateToStruct.month
-	var sameDay : bool = dateFromStruct.day == dateToStruct.day
-	var sameHour : bool = dateFromStruct.hour == dateToStruct.hour
-	
-	var sameDates : bool = sameHour and sameDay and sameMonth and sameYear
-	
-	if sameDates:
-		return false
-	
-	#Comprueba ambas fechas y ordena para que el form sea la más antigua, en caso de que el usuario introduzca al reves fechas
-	var oldestDate : DateStruct = dateFromStruct
-	var newestDate : DateStruct = dateToStruct
-	
-	if dateFromStruct.year > dateToStruct.year:
-		oldestDate = dateToStruct
-		newestDate = dateFromStruct
-	elif dateFromStruct.month > dateToStruct.month and sameYear:
-		oldestDate = dateToStruct
-		newestDate = dateFromStruct
-	elif dateFromStruct.day > dateToStruct.day and sameMonth and sameYear:
-		oldestDate = dateToStruct
-		newestDate = dateFromStruct
-	elif dateFromStruct.hour > dateToStruct.hour and sameDay and sameMonth and sameYear:
-		oldestDate = dateToStruct
-		newestDate = dateFromStruct
 		
-	dateFromStruct = oldestDate
-	dateToStruct = newestDate
-		
-	lblDatesRange.text = str("Rango: ",oldestDate.GetDateSimplify(), " - ",newestDate.GetDateSimplify())
+	lblDatesRange.text = str("Rango: ",dateToStruct.GetDateSimplify(), " - ",dateFromStruct.GetDateSimplify())
 	
 	ChartBackground.visible = true
 	lblDatesRange.visible = true
@@ -440,7 +397,45 @@ class DateStruct:
 		return str(year,"-",fixedMonth,"-",fixedDay,"T",fixedHour,":00:00")
 		
 	func GetDateSimplify() -> String:
+		var fixedYear : String = str(year).substr(0,4)
 		var fixedMonth : String = str("0",month) if month < 10 else str(month)
 		var fixedDay : String = str("0",day) if day < 10 else str(day)
 		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
-		return str(year,"/",fixedMonth,"/",fixedDay," ",fixedHour,":","00")
+		
+		return str(fixedYear,"-",fixedMonth,"-",fixedDay," ",fixedHour,":","00")
+		
+	func GetDayBefore() -> DateStruct:
+		var fixedHour : int = hour
+		var fixedDay : int = day
+		var fixedMonth : int = month
+		var fixedYear : int = year
+		
+		fixedHour -= 1
+		
+		if fixedHour < 0:
+			fixedHour = 23
+			fixedDay -= 1
+			
+		if fixedDay == 0:
+			if fixedMonth == 3 and year%4 == 0:
+				fixedDay = 29
+				fixedMonth -= 1
+			elif fixedMonth == 3  and year%4 != 0:
+				fixedDay = 28
+				fixedMonth -= 1
+			elif fixedMonth == 1 or fixedMonth == 2 or fixedMonth == 4 or fixedMonth == 6 or fixedMonth == 8 or fixedMonth == 9 or fixedMonth == 11:
+				fixedDay = 31
+				fixedMonth -= 1
+			elif fixedMonth == 5 or fixedMonth == 7 or fixedMonth == 10 or fixedMonth == 12:
+				fixedDay = 30
+				fixedMonth -= 1
+		
+		if fixedMonth == 0:
+			fixedYear -= 1
+			fixedMonth = 12
+		
+		var dayBefore : DateStruct = DateStruct.new()
+		dayBefore.Update(fixedYear,fixedMonth,fixedDay,fixedHour)
+		
+		return dayBefore
+		
