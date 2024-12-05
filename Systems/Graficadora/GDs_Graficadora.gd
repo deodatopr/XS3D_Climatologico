@@ -295,10 +295,9 @@ func _Graficar_Valores(_data : Array[GDs_Data_EP_Historicos]):
 	#seteo los valores de la grafica
 	for i in totalInfo:
 		#seteo texto de la hora
-		if !_data[i].tiempo.is_empty():
+		if not _data[i].tiempo.is_empty():
 			var date = _data[i].tiempo.split("T")
-			var timeHrMin = _data[i].tiempo.get_slice("T", 1)
-			timeHrMin = timeHrMin.erase(5, 3)
+			var timeHrMin = _data[i].tiempo.substr(11,5)
 			hrsPool[i].text = timeHrMin
 			hrsPool[i].position.y = 0
 			datePool[i].text = date[0].erase(0, 2)
