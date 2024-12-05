@@ -59,8 +59,8 @@ var linesPool : Array[NinePatchRect]
 var valuesPool : Array[NinePatchRect]
 var hrsPool : Array[Label]
 var datePool : Array[Label]
-var siteId : int
 var isDragingChart : bool
+var siteId : int = 1
 
 func Initialize(_dataService : GDs_DataService_Manager):
 	dataService = _dataService
@@ -75,12 +75,7 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	btnLess.pressed.connect(OnBtnLessPressed)
 	btnMore.pressed.connect(OnBtnMorePressed)
 	
-	#conecto las señal de press a los botones de los sition, pasando el texto del boton que es el nombre del sitio
-	var index = 1
-	
-	#for Bttn in SitesBttnContainer.get_children():
-		#Bttn.pressed.connect(self._site_Pressed.bind(Bttn.text, index))
-		#index += 1
+	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
 
 func _RequestGraficar():
 	_GetDatesFromDropdowns()
@@ -97,22 +92,23 @@ func _RequestGraficar():
 	
 func _GetDatesFromDropdowns():
 	var value_inicio_ano :int = int(inicio_Ano.get_item_text(inicio_Ano.selected) )
-	var value_inicio_mes :int = int(inicio_Mes.get_item_text(inicio_Mes.selected) )
+	var value_inicio_mes :int = int(inicio_Mes.selected)
 	var value_inicio_dia :int = int(inicio_Dia.get_item_text(inicio_Dia.selected) )
 	var value_inicio_hora :int= int(inicio_Hora.get_item_text(inicio_Hora.selected).substr(1,1))
 	
 	var value_fin_ano :int = int(fin_Ano.get_item_text(fin_Ano.selected) )
-	var value_fin_mes :int = int(fin_Mes.get_item_text(fin_Mes.selected) )
+	var value_fin_mes :int = int(fin_Mes.selected)
 	var value_fin_dia :int = int(fin_Dia.get_item_text(fin_Dia.selected) )
 	var value_fin_hora :int= int(fin_Hora.get_item_text(fin_Hora.selected).substr(1,1))
 	
 	
 	dateFromStruct.Update(value_inicio_ano,value_inicio_mes,value_inicio_dia,value_inicio_hora)
 	dateToStruct.Update(value_fin_ano,value_fin_mes,value_fin_dia,value_fin_hora)
-	
-	
-	
+
 #region [ BUTTONS SIGNALS ]
+func OnBtnSitioPressed(_id : int):
+	siteId = _id
+	_RequestGraficar()
 	
 func OnBtnMorePressed():
 	if !Info.visible || crrntHistoricos.is_empty():
@@ -216,6 +212,14 @@ func OnBtnLessPressed():
 
 #region [ GRAFICAR ]
 func Graficar_AreDatesValid() -> bool:
+	var inicioDateIsValid : bool = inicio_Ano.selected != 0 and inicio_Mes.selected != 0 and inicio_Dia.selected != 0 and inicio_Hora.selected != 0
+	var finDateIsValid : bool = fin_Ano.selected != 0 and fin_Mes.selected != 0 and fin_Dia.selected != 0 and fin_Hora.selected != 0
+	
+	var dropdownsHaveValidOptions : bool = inicioDateIsValid and finDateIsValid
+	
+	if not dropdownsHaveValidOptions:
+		return false
+	
 	var sameYear : bool = dateFromStruct.year == dateToStruct.year
 	var sameMonth : bool = dateFromStruct.month == dateToStruct.month
 	var sameDay : bool = dateFromStruct.day == dateToStruct.day
@@ -265,6 +269,7 @@ func Graficar_AreDatesValid() -> bool:
 	return true
 
 func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
+	await get_tree().create_timer(.7).timeout
 	_Graficar_Lineas()
 	
 	#si no recive valores, muestre la pantalla sin historia

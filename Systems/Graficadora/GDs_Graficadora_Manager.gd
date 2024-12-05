@@ -8,4 +8,4 @@ class_name GDs_Graficadora_Manager extends Node
 func Initialize(_dataService : GDs_DataService_Manager, _barraMenus : GDs_BarraMenus):
 	graficadora.Initialize(_dataService)
 	graficadoraDropdowns.Initialize()
-	graficadora_UI_Interact.Initialize(_barraMenus)
+	graficadora_UI_Interact.Initialize(_dataService,_barraMenus)

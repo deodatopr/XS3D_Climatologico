@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfte6j1ntmgao"]
+
+[ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Item_BtnSitio.gd" id="1_p8ud7"]
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_ly6bd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dx2xv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ify8o"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnfum"]
+load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[node name="Pfb_Item_BtnSitio" type="Button" node_paths=PackedStringArray("idPatch", "lblId", "lblName")]
+custom_minimum_size = Vector2(322, 40)
+focus_neighbor_top = NodePath("../../Inputs/MarginContainer/Original/HBox Muestras/Button - Muestras +")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
+icon_alignment = 1
+script = ExtResource("1_p8ud7")
+idPatch = NodePath("ID Patch")
+lblId = NodePath("ID Patch/Lbl Id")
+lblName = NodePath("Lbl Name")
+
+[node name="ID Patch" type="NinePatchRect" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 43.0
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_lnfum")
+region_rect = Rect2(472, 40, 25, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Id" type="Label" parent="ID Patch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="NinePatchRect" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ly6bd")
+region_rect = Rect2(475, 183, 30, 30)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Lbl Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Campamento los Berros"
+vertical_alignment = 1

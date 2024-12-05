@@ -2,6 +2,7 @@ class_name GDs_SIGNALS
 extends Node
 
 #DATA SERVICE
+#GetAllSitios
 @warning_ignore('unused_signal')
 signal OnRefresh
 @warning_ignore('unused_signal')
@@ -10,12 +11,16 @@ signal OnRequestResult_Success
 signal OnRequestResult_Error_NoData
 @warning_ignore('unused_signal')
 signal OnRequestResult_Error_Data
+
+#Historicos
 @warning_ignore('unused_signal')
 signal OnRefresh_Hist
 @warning_ignore('unused_signal')
 signal OnRequestResult_Hist_Success
 @warning_ignore('unused_signal')
 signal OnRequestResult_Hist_Error
+@warning_ignore('unused_signal')
+signal On_BtnSitioPressed(_id : int)
 
 
 #SCENES
