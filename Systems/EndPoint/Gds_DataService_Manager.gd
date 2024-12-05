@@ -219,12 +219,15 @@ func _OnSuccessEP_Historicos():
 		dataHistoricos = historicos.GetHistoricos()
 		
 	dataHistoricos = Hist_AverageValues(dataHistoricos)
-
 	
+	await get_tree().create_timer(.05).timeout
+	
+	SIGNALS.OnRefresh_Hist.emit()
+
 func _OnFailedEP_Historicos():
 	dataHistoricos.clear()
+	SIGNALS.OnRefresh_Hist.emit()
 
-		
 func Hist_AverageValues(data:Array[GDs_Data_EP_Historicos])-> Array[GDs_Data_EP_Historicos]:	
 	#promedia el valor de las muestras totales, para que se muestren maximo 52 datos en la grafica
 	var totalSamples : Array[GDs_Data_EP_Historicos] = []

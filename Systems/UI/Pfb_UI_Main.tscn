@@ -132,7 +132,7 @@ _data = {
 "DebugBlink": SubResource("Animation_6u1q7")
 }
 
-[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("menuPerfiles", "barraMenus", "barraInfo", "menuMapa", "menuInfo", "popUp", "panelDebug")]
+[node name="Pfb_UI" type="Control" node_paths=PackedStringArray("menuPerfiles", "barraMenus", "barraInfo", "menuMapa", "graficadora", "menuInfo", "popUp", "panelDebug")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,6 +148,7 @@ menuPerfiles = NodePath("Menu Sitios")
 barraMenus = NodePath("Barra menus")
 barraInfo = NodePath("Barra Info")
 menuMapa = NodePath("Menu Mapa")
+graficadora = NodePath("Menu Datos/FrameBG/Graficadora")
 menuInfo = NodePath("Menu Info")
 popUp = NodePath("PopUP")
 panelDebug = NodePath("Menu Debug")
@@ -256,11 +257,10 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(22, 22)
 texture = SubResource("AtlasTexture_v5wkr")
 
-[node name="Main" parent="Menu Datos/FrameBG" node_paths=PackedStringArray("barraMenus") instance=ExtResource("8_h16nv")]
+[node name="Graficadora" parent="Menu Datos/FrameBG" instance=ExtResource("8_h16nv")]
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
-barraMenus = NodePath("../../../Barra menus")
 
 [node name="Top Left Icon" type="NinePatchRect" parent="Menu Datos/FrameBG"]
 self_modulate = Color(1, 1, 1, 0.301961)

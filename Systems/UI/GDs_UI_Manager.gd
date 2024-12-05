@@ -5,6 +5,7 @@ class_name GDs_UI_Manager extends Control
 @export var barraMenus:GDs_BarraMenus
 @export var barraInfo:GDs_BarraInfo
 @export var menuMapa:GDs_MenuMapa
+@export var graficadora : GDs_Graficadora_Manager
 @export var menuInfo:Control
 @export var popUp:Control
 @export var panelDebug:Control
@@ -51,6 +52,7 @@ func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly
 	vistaFly.Initialize(cam_manager)	
 	menuMapa.Initialize(dataService.estaciones,APPSTATE.currntIdSitio)
 	barraInfo.Initialize(dataService.timeToReconnect_Error)
+	graficadora.Initialize(dataService,barraMenus)
 	
 	popUp.hide()
 	panelDebug.visible = false

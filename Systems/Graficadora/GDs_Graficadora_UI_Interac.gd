@@ -1,9 +1,7 @@
-extends Control
-
-@export_group("External Refs")
-@export var barraMenus: GDs_BarraMenus
+class_name GDs_Graficadora_UI_Interact extends Node
 
 @export_group("Internal Refs")
+@export var graficadora : Control
 @export var fromDate:Control
 @export var toDate:Control
 @export var sitesBtnContainer:Control
@@ -11,9 +9,13 @@ extends Control
 @export var muestrasMore:Button
 @export var sitesLastBtn:Button
 @export var scrollBar:HScrollBar
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	visibility_changed.connect(OnVisible)
+
+var barraMenus: GDs_BarraMenus
+
+func Initialize(_barraMenus: GDs_BarraMenus):
+	barraMenus = _barraMenus
+	
+	graficadora.visibility_changed.connect(OnVisible)
 	
 	for child in sitesBtnContainer.get_children():
 		child.focus_neighbor_left = barraMenus.BtnMapa.get_path()
@@ -31,13 +33,12 @@ func _ready():
 	muestrasMore.focus_neighbor_right = barraMenus.BtnConfig.get_path()
 
 func _process(delta):
-	if not visible : return
+	if not graficadora.visible : return
 	if Input.is_action_pressed("3DMove_SpeedBoost"):
 		scrollBar.value -= delta * 20
 	if Input.is_action_pressed("3DMove_Height_+"):
 		scrollBar.value += delta * 20
 
-
 func OnVisible():
-	if visible:
+	if graficadora.visible:
 		fromDate.get_child(1).grab_focus()

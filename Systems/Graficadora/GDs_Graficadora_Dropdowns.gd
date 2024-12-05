@@ -1,4 +1,4 @@
-extends Node
+class_name GDs_Graficadora_Dropdowns extends Node
 
 @export var fromYear:OptionButton
 @export var toYear:OptionButton
@@ -10,7 +10,7 @@ extends Node
 @export var toTime:OptionButton
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func Initialize():
 	InitializeYearDropdown(fromYear)
 	InitializeYearDropdown(toYear)
 	InitializeMonthDropdown(fromMonth)
