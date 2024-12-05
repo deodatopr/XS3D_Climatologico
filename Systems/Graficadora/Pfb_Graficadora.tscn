@@ -106,13 +106,11 @@ fromMonth = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fec
 fromDay = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Dia")
 fromTime = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Hora")
 
-[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("graficadora", "sitesBtnContainer", "muestrasLess", "muestrasMore", "sitesLastBtn", "scrollBar", "btnsSitios")]
+[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("graficadora", "sitesBtnContainer", "sitesLastBtn", "scrollBar", "btnsSitios")]
 physics_interpolation_mode = 2
 script = ExtResource("1_xy25b")
 graficadora = NodePath("..")
 sitesBtnContainer = NodePath("../Content/Sites/SitesBttnContainer")
-muestrasLess = NodePath("")
-muestrasMore = NodePath("")
 sitesLastBtn = NodePath("../Content/Sites/BtnGraficar")
 scrollBar = NodePath("../Content/Info/Chart/ScrollInfo")
 btnsSitios = [NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio2"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio3"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio4"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio5"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio6"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio7"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio8")]
@@ -6253,7 +6251,7 @@ texture = SubResource("AtlasTexture_wv8um")
 [node name="Año" type="OptionButton" parent="Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
 custom_minimum_size = Vector2(52, 0)
 layout_mode = 2
-focus_neighbor_top = NodePath("../../../../../SitesBttnContainer/Pfb_Item_BtnSitio8")
+focus_neighbor_top = NodePath("../../../../../BtnGraficar")
 focus_neighbor_bottom = NodePath("../Mes")
 theme = ExtResource("5_7a3ej")
 allow_reselect = true
@@ -6310,6 +6308,7 @@ popup/item_4/id = 4
 [node name="Hora" type="OptionButton" parent="Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Dia")
+focus_neighbor_bottom = NodePath("../../../../../SitesBttnContainer/Pfb_Item_BtnSitio")
 theme = ExtResource("5_7a3ej")
 selected = 0
 allow_reselect = true
@@ -6357,7 +6356,8 @@ focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio8" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
-focus_neighbor_top = NodePath("")
+focus_neighbor_top = NodePath("../Pfb_Item_BtnSitio7")
+focus_neighbor_bottom = NodePath("../../BtnGraficar")
 
 [node name="BtnGraficar" type="Button" parent="Content/Sites"]
 custom_minimum_size = Vector2(100, 60)

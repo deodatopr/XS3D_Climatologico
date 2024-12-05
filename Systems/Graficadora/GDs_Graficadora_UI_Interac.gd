@@ -3,8 +3,6 @@ class_name GDs_Graficadora_UI_Interact extends Node
 @export_group("Internal Refs")
 @export var graficadora : Control
 @export var sitesBtnContainer:Control
-@export var muestrasLess:Button
-@export var muestrasMore:Button
 @export var sitesLastBtn:Button
 @export var scrollBar:HScrollBar
 @export var btnsSitios : Array[GDs_Graficadora_Item_BtnSitio] = []
@@ -17,11 +15,6 @@ func Initialize(_dataService : GDs_DataService_Manager,_barraMenus: GDs_BarraMen
 	for child in sitesBtnContainer.get_children():
 		child.focus_neighbor_left = barraMenus.BtnMapa.get_path()
 		child.focus_neighbor_right = barraMenus.BtnConfig.get_path()
-	
-	muestrasLess.focus_neighbor_left = barraMenus.BtnMapa.get_path()
-	muestrasLess.focus_neighbor_right = barraMenus.BtnConfig.get_path()
-	muestrasMore.focus_neighbor_left = barraMenus.BtnMapa.get_path()
-	muestrasMore.focus_neighbor_right = barraMenus.BtnConfig.get_path()
 	
 	var idx : int = 0
 	for btnSitio in btnsSitios:
