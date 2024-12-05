@@ -2,13 +2,9 @@ class_name GDs_Graficadora_Dropdowns
 extends Node
 
 @export var fromYear:OptionButton
-@export var toYear:OptionButton
 @export var fromMonth:OptionButton
-@export var toMonth:OptionButton
 @export var fromDay:OptionButton
-@export var toDay:OptionButton
 @export var fromTime:OptionButton
-@export var toTime:OptionButton
 
 # Called when the node enters the scene tree for the first time.
 func Initialize():
@@ -16,24 +12,11 @@ func Initialize():
 	fromMonth.item_selected.connect(UpdateAllDropdowns)
 	fromYear.item_selected.connect(UpdateAllDropdowns)
 	fromTime.item_selected.connect(UpdateAllDropdowns)
-	toDay.item_selected.connect(UpdateAllDropdowns)
-	toMonth.item_selected.connect(UpdateAllDropdowns)
-	toYear.item_selected.connect(UpdateAllDropdowns)
-	toTime.item_selected.connect(UpdateAllDropdowns)
 	
 	InitializeYearDropdown(fromYear)
-	InitializeYearDropdown(toYear)
 	InitializeMonthDropdown(fromMonth)
-	InitializeMonthDropdown(toMonth)
 	InitializedDayDropdown(fromDay)
-	InitializedDayDropdown(toDay)
 	InitializedTimeDropdown(fromTime)
-	InitializedTimeDropdown(toTime)
-	
-	toYear.disabled = true
-	toMonth.disabled = true
-	toDay.disabled = true
-	toTime.disabled = true
 
 func InitializeYearDropdown(yearOB:OptionButton):
 	yearOB.clear()
@@ -88,11 +71,6 @@ func UpdateAllDropdowns(arg:int):
 	UpdateFromMonthDropdown()
 	UpdateFromDayDropdown()
 	UpdateFromTimeDropdown()
-	
-	UpdateToYearDropdown()
-	UpdateToMonthDropdown()
-	UpdateToDayDropdown()
-	UpdateToTimeDropdown()
 
 func SetAllDisable(optionButton:OptionButton, _bool:bool):
 	for option in optionButton.item_count:
@@ -126,77 +104,3 @@ func UpdateFromTimeDropdown():
 	if fromDay.selected == Time.get_datetime_dict_from_system().day and fromMonth.selected == Time.get_datetime_dict_from_system().month and fromYear.get_item_text(fromYear.selected) == str(Time.get_datetime_dict_from_system().year):
 		for time in range(Time.get_datetime_dict_from_system().hour + 1,24):
 			fromTime.set_item_disabled(time ,true)
-
-
-func UpdateToYearDropdown():
-	if fromYear.selected != 0:
-		toYear.disabled = false
-		if fromYear.selected < toYear.selected:
-			toYear.select(fromYear.selected)
-	else:
-		toYear.disabled = true
-		toYear.select(0)
-
-	SetAllDisable(toYear,false)
-	for year in range(fromYear.selected + 1, toYear.item_count):
-		toYear.set_item_disabled(year,true)
-
-func UpdateToMonthDropdown():
-	if fromMonth.selected != 0:
-		toMonth.disabled = false
-		if fromMonth.selected > toMonth.selected:
-			toMonth.select(fromMonth.selected)
-	else:
-		toMonth.disabled = true
-		toMonth.select(0)
-		
-	
-	SetAllDisable(toMonth,false)
-	
-	if fromYear.selected == toYear.selected:
-		for month in range(fromMonth.selected - 1,0, -1):
-			toMonth.set_item_disabled(month,true)
-
-func UpdateToDayDropdown():
-	if fromDay.selected != 0:
-		toDay.disabled = false
-		if fromDay.selected > toDay.selected:
-			toDay.select(fromDay.selected)
-	else:
-		toDay.disabled = true
-		toDay.select(0)
-		
-	
-	SetAllDisable(toDay,false)
-	
-	#Deshabilitar opciones menores al dropdown "from"
-	if fromYear.selected == toYear.selected and fromMonth.selected == toMonth.selected:
-		for day in range(fromDay.selected - 1 , 0,-1):
-			toDay.set_item_disabled(day,true)
-	
-	#deshabilitar opciones mayores a la fecha y hora actual
-	if toMonth.selected == Time.get_datetime_dict_from_system().month and toYear.get_item_text(toYear.selected) == str(Time.get_datetime_dict_from_system().year):
-		for day in range(Time.get_datetime_dict_from_system().day + 1,32):
-			toDay.set_item_disabled(day,true)
-
-func UpdateToTimeDropdown():
-	if fromTime.selected != 0:
-		toTime.disabled = false
-		if fromTime.selected > toTime.selected:
-			toTime.select(fromTime.selected)
-	else:
-		toTime.disabled = true
-		toTime.select(0)
-	SetAllDisable(toTime,false)
-	
-	#Deshabilitar opciones menores al dropdown "from"
-	if fromYear.selected == toYear.selected and fromMonth.selected == toMonth.selected and fromDay.selected == toDay.selected:
-		for time in range(fromTime.selected,0, -1):
-			if time <= 24:
-				toTime.set_item_disabled(time,true)
-	
-	#deshabilitar opciones mayores a la fecha y hora actual
-	if toDay.selected == Time.get_datetime_dict_from_system().day and toMonth.selected == Time.get_datetime_dict_from_system().month and toYear.get_item_text(toYear.selected) == str(Time.get_datetime_dict_from_system().year):
-		for time in range(Time.get_datetime_dict_from_system().hour + 2,25):
-			if time <= 24:
-				toTime.set_item_disabled(time,true)

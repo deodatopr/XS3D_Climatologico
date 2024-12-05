@@ -24,8 +24,6 @@ class_name GDs_Graficadora extends Node
 
 @export_subgroup("Refs Componentes")
 @export var btnGraficar : Button
-@export var btnLess : Button
-@export var btnMore : Button
 @export var degradedChart : Node2D
 @export var lineChart : Node2D
 @export var ChartBoxContainer : Control
@@ -65,8 +63,6 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	dataService = _dataService
 	
 	btnGraficar.pressed.connect(_RequestGraficar)
-	btnLess.pressed.connect(OnBtnLessPressed)
-	btnMore.pressed.connect(OnBtnMorePressed)
 	
 	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
 	
