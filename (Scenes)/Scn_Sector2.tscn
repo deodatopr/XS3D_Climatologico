@@ -58,11 +58,8 @@ orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_amlfc")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
-mshNavigation = NodePath("")
-Terrains = [NodePath("")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("worldEnv", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
-msh_roads = NodePath("")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
@@ -228,4 +225,3 @@ parameters/looping = true
 [editable path="SHARED SYSTEMS & UI"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
-[editable path="[ CONTENT ]/Msh_Terrain_02"]
