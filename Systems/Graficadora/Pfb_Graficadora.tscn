@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=20 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
@@ -30,11 +30,11 @@ expand_margin_bottom = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iddxr"]
 atlas = ExtResource("3_rhhvq")
-region = Rect2(938, 245, 36, 53)
+region = Rect2(300, 206, 162, 162)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfkwh"]
 atlas = ExtResource("3_rhhvq")
-region = Rect2(975, 245, 36, 53)
+region = Rect2(478, 739, 23, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wv8um"]
 atlas = ExtResource("3_rhhvq")
@@ -52,6 +52,14 @@ region = Rect2(370, 4, 79, 80)
 atlas = ExtResource("3_rhhvq")
 region = Rect2(7, 264, 54, 54)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_run0s"]
+atlas = ExtResource("3_rhhvq")
+region = Rect2(370, 4, 79, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfo7p"]
+atlas = ExtResource("3_rhhvq")
+region = Rect2(7, 264, 54, 54)
+
 [node name="Graficadora" type="Control" node_paths=PackedStringArray("graficadora", "graficadoraDropdowns", "graficadora_UI_Interact")]
 layout_mode = 3
 anchors_preset = 15
@@ -65,6 +73,7 @@ script = ExtResource("1_cbirx")
 graficadora = NodePath("Graficadora")
 graficadoraDropdowns = NodePath("Graficadora_Dropdowns")
 graficadora_UI_Interact = NodePath("Graficadora_UI_Interact")
+metadata/_edit_vertical_guides_ = [345.0, 408.0, 1647.0]
 
 [node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "fin_Ano", "fin_Mes", "fin_Dia", "fin_Hora", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
 physics_interpolation_mode = 2
@@ -106,14 +115,20 @@ fromMonth = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fec
 fromDay = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Dia")
 fromTime = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Hora")
 
-[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("graficadora", "sitesBtnContainer", "sitesLastBtn", "scrollBar", "btnsSitios")]
+[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("firstToGrabFocus", "graficadora", "sitesBtnContainer", "sitesLastBtn", "scrollBar", "btnsSitios", "btnsGraficar", "dateYearDd", "dateMonthDd", "dateDayDd", "dateTimeDd")]
 physics_interpolation_mode = 2
 script = ExtResource("1_xy25b")
+firstToGrabFocus = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Año")
 graficadora = NodePath("..")
 sitesBtnContainer = NodePath("../Content/Sites/SitesBttnContainer")
 sitesLastBtn = NodePath("../Content/Sites/BtnGraficar")
 scrollBar = NodePath("../Content/Info/Chart/ScrollInfo")
 btnsSitios = [NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio2"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio3"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio4"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio5"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio6"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio7"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio8")]
+btnsGraficar = NodePath("../Content/Sites/BtnGraficar")
+dateYearDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Año")
+dateMonthDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Mes")
+dateDayDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Dia")
+dateTimeDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Hora")
 
 [node name="Content" type="Control" parent="."]
 layout_mode = 1
@@ -652,9 +667,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 47.0
 offset_top = 57.0
-offset_right = -47.0
+offset_right = -74.0
 offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -664,47 +678,6 @@ theme_override_styles/grabber_highlight = SubResource("StyleBoxFlat_k8im7")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxFlat_k8im7")
 value = 100.0
 
-[node name="Icon" type="Control" parent="Content/Info/Chart/ScrollInfo"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -23.0
-offset_right = -11.0
-offset_bottom = 17.0
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -26.5
-offset_right = 20.0
-offset_bottom = 26.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_iddxr")
-
-[node name="TextureRect2" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -26.5
-offset_right = 20.0
-offset_bottom = 26.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_sfkwh")
-
 [node name="Icon2" type="Control" parent="Content/Info/Chart/ScrollInfo"]
 layout_mode = 1
 anchors_preset = 6
@@ -712,42 +685,70 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 48.0
+offset_left = 1.0
 offset_top = -20.0
-offset_right = 88.0
+offset_right = 74.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
-scale = Vector2(-1, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
+[node name="Joystick" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -26.5
-offset_right = 20.0
-offset_bottom = 26.5
+offset_left = -16.5
+offset_top = -16.5
+offset_right = 16.5
+offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_iddxr")
+expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
+[node name="Label" type="Label" parent="Content/Info/Chart/ScrollInfo/Icon2/Joystick"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -26.5
-offset_right = 20.0
-offset_bottom = 26.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftArrow" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 23.0
+offset_bottom = 10.0
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(11, 10)
+texture = SubResource("AtlasTexture_sfkwh")
+
+[node name="RightArrow" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(11, 10)
 texture = SubResource("AtlasTexture_sfkwh")
 
 [node name="Chart Values Mask" type="ColorRect" parent="Content/Info/Chart"]
@@ -6213,6 +6214,7 @@ grow_vertical = 2
 theme_override_constants/separation = 25
 
 [node name="Inputs" type="NinePatchRect" parent="Content/Sites"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 texture = ExtResource("3_rhhvq")
@@ -6328,7 +6330,7 @@ theme_override_constants/separation = 15
 
 [node name="Pfb_Item_BtnSitio" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
-focus_neighbor_top = NodePath("")
+focus_neighbor_top = NodePath("../../Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Hora")
 
 [node name="Pfb_Item_BtnSitio2" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
@@ -6363,6 +6365,8 @@ focus_neighbor_bottom = NodePath("../../BtnGraficar")
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SitesBttnContainer/Pfb_Item_BtnSitio8")
+focus_neighbor_bottom = NodePath("../Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Año")
 text = "Graficar"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Content"]
@@ -6682,6 +6686,166 @@ offset_right = 269.0
 offset_bottom = 37.0
 grow_vertical = 2
 text = "Cerrar"
+
+[node name="Controles" type="Control" parent="Content"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 154.0
+offset_top = 25.0
+offset_right = 331.0
+offset_bottom = 118.0
+
+[node name="Pad" type="TextureRect" parent="Content/Controles"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -40.0
+offset_right = 79.0
+offset_bottom = 40.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_run0s")
+
+[node name="Botones" type="Control" parent="Content/Controles"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -46.5
+offset_bottom = 46.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="X" type="TextureRect" parent="Content/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -36.0
+offset_right = 14.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_tfo7p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Content/Controles/Botones/X"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+
+[node name="A" type="TextureRect" parent="Content/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -14.0
+offset_right = 36.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_tfo7p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Content/Controles/Botones/A"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+
+[node name="Y" type="TextureRect" parent="Content/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -14.0
+offset_right = -8.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_tfo7p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Content/Controles/Botones/Y"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Y
+"
+
+[node name="B" type="TextureRect" parent="Content/Controles/Botones"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 8.0
+offset_right = 14.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_tfo7p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Content/Controles/Botones/B"]
+self_modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "B"
 
 [connection signal="gui_input" from="Content/Info/Chart" to="Content" method="_on_chart_gui_input"]
 [connection signal="scrolling" from="Content/Info/Chart/ScrollInfo" to="Content" method="_on_h_scroll_bar_scrolling"]

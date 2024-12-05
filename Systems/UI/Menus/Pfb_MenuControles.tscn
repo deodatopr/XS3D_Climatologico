@@ -207,6 +207,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_4520s")
 
+[node name="Label" type="Label" parent="FrameBG/Control/Joystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "L"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Joystick2" type="TextureRect" parent="FrameBG/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -221,6 +233,18 @@ offset_bottom = 106.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_4520s")
+
+[node name="Label" type="Label" parent="FrameBG/Control/Joystick2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Botones" type="Control" parent="FrameBG/Control"]
 layout_mode = 1
