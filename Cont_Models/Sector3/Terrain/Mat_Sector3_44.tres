@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://7l7jt4h34hhi"]
+
+[ext_resource type="Shader" uid="uid://dcxkcc0fkwbws" path="res://Vfx_Shaders/Sha_Terrain.tres" id="1_2f7jw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2f7jw")

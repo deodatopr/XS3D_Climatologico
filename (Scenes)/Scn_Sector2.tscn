@@ -179,6 +179,7 @@ grow_vertical = 2
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("18_8t45r")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
@@ -206,8 +207,8 @@ visible = false
 
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
-[node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -484.349, 59.6599, 148.556)
+[node name="Punto 1" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.6583, -106.682, -30.2261)
 script = ExtResource("24_0ta2f")
 nombre = "Pin Nombre"
 
