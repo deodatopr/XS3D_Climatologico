@@ -1,0 +1,234 @@
+[gd_scene load_steps=30 format=3 uid="uid://b8hxysy5utnnt"]
+
+[ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_xdog3"]
+[ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_xswih"]
+[ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="3_a7r61"]
+[ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="4_o7w33"]
+[ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="5_vvlmv"]
+[ext_resource type="Curve" uid="uid://cpuavtle02v5x" path="res://Systems/Environment/Crv_Trueno.tres" id="6_2mgpb"]
+[ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="7_n3wps"]
+[ext_resource type="AudioStream" uid="uid://cqtj6um5qrv4d" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_2.mp3" id="8_0fho1"]
+[ext_resource type="AudioStream" uid="uid://chb2ci43uoaql" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_3.mp3" id="9_y1xsx"]
+[ext_resource type="AudioStream" uid="uid://cgqdbltf0gqgh" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_1.mp3" id="10_vxy4y"]
+[ext_resource type="AudioStream" uid="uid://dpokn0ojlkyvp" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_2.mp3" id="11_mprhr"]
+[ext_resource type="AudioStream" uid="uid://bjvttsjy5vuyi" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_3.mp3" id="12_c08xo"]
+[ext_resource type="AudioStream" uid="uid://uoyrb4ick3by" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_4.mp3" id="13_rsjfl"]
+[ext_resource type="PackedScene" uid="uid://btfh1lhko803m" path="res://Systems/Rain/Pfb_Rain.tscn" id="14_kyw60"]
+[ext_resource type="Material" uid="uid://c1nty3ig8iwmf" path="res://Vfx_PostProces/LensDrops/Mat_LensDrop.tres" id="15_gmfck"]
+[ext_resource type="Shader" path="res://Vfx_PostProces/LensDrops/PPE_UI_WaterDroplets.gdshader" id="16_namkx"]
+[ext_resource type="PackedScene" uid="uid://duwmggtrv8oco" path="res://Cont_Models/#Shared/LightBeam/Msh_LighBeam.glb" id="17_675pj"]
+[ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_06.tres" id="18_8xlcn"]
+[ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="19_8nb2l"]
+[ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="20_qffkv"]
+[ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="21_8ybfm"]
+[ext_resource type="PackedScene" uid="uid://btw2e2r31qqqs" path="res://Cont_Models/Sector3/Msh_Navigation_03.glb" id="22_jciwx"]
+[ext_resource type="PackedScene" uid="uid://ccs1c2l08eqcs" path="res://Cont_Models/Sector3/Msh_Terrain_03.glb" id="23_3t7ix"]
+[ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="24_i7lmm"]
+[ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="25_4shr5"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
+streams_count = 7
+stream_0/stream = ExtResource("7_n3wps")
+stream_1/stream = ExtResource("8_0fho1")
+stream_2/stream = ExtResource("9_y1xsx")
+stream_3/stream = ExtResource("10_vxy4y")
+stream_4/stream = ExtResource("11_mprhr")
+stream_5/stream = ExtResource("12_c08xo")
+stream_6/stream = ExtResource("13_rsjfl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5nug"]
+shader = ExtResource("16_namkx")
+shader_parameter/tile = 2.0
+shader_parameter/speed = 2.0
+shader_parameter/wiggle = 2.0
+shader_parameter/refraction = 0.05
+shader_parameter/fogginess = 0.0
+shader_parameter/drop_Radious = 0.08
+shader_parameter/drop_Strength = 10.0
+shader_parameter/trail_Strength = 20.0
+shader_parameter/layers = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
+
+[node name="SECTOR 2" type="Node3D" node_paths=PackedStringArray("orquestrator")]
+script = ExtResource("1_xdog3")
+orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
+
+[node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_xswih")]
+
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("worldEnv", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
+msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
+pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
+light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
+light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+
+[node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
+audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water")]
+
+[node name="Puntos de Interes & Baliza" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="5" node_paths=PackedStringArray("puntosInteres")]
+puntosInteres = NodePath("../../../[ CONTENT ]/Puntos interes")
+
+[node name="Lluvia" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="6" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds")]
+worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
+lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
+lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
+miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
+
+[node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
+pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
+
+[node name="[ ENVIRONMENT ]" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="[ ENVIRONMENT ]"]
+environment = ExtResource("3_a7r61")
+camera_attributes = ExtResource("4_o7w33")
+
+[node name="Light - Sun_Sky" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 94.9184, 0)
+visible = false
+light_color = Color(1, 0.948457, 0.877053, 1)
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 10.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 1000.0
+sky_mode = 1
+
+[node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(0.939693, -0.296198, 0.17101, 0, 0.5, 0.866026, -0.34202, -0.813798, 0.469846, 0, 94.9184, 0)
+light_color = Color(1, 0.926401, 0.824441, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_blur = 3.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 1500.0
+sky_mode = 1
+
+[node name="Light - Rain" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 94.9184, 0)
+visible = false
+light_energy = 0.5
+shadow_blur = 10.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 800.0
+sky_mode = 1
+
+[node name="Lluvia" type="Node" parent="[ ENVIRONMENT ]" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds", "sndsTruenos", "lensDrop", "lensDroplets", "rainFlyParticles", "rainSkyParticles", "timerTruenos")]
+script = ExtResource("5_vvlmv")
+worldEnv = NodePath("../WorldEnvironment")
+lightSunSky = NodePath("../Light - Sun_Sky")
+lightSunFly = NodePath("../Light - Sun_Fly")
+lightRain = NodePath("../Light - Rain")
+miClouds = NodePath("../../[ CONTENT ]/MI - Clouds")
+sndsTruenos = NodePath("Snds - Truenos")
+lensDrop = NodePath("Drops/LensDrop")
+lensDroplets = NodePath("DropLets/Droplets")
+rainFlyParticles = NodePath("PS - Rain Fly")
+rainSkyParticles = NodePath("PS - Rain Sky")
+minTrueno = 5
+timerTruenos = NodePath("Timer - truenos")
+curveTrueno = ExtResource("6_2mgpb")
+
+[node name="Snds - Truenos" type="AudioStreamPlayer" parent="[ ENVIRONMENT ]/Lluvia"]
+stream = SubResource("AudioStreamRandomizer_f0v3a")
+
+[node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("14_kyw60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.189, 123.135, -182.846)
+visible = false
+amount = 1000
+transform_align = 1
+
+[node name="PS - Rain Sky" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("14_kyw60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 500, 148)
+amount = 1500
+transform_align = 1
+
+[node name="Drops" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
+layer = 4
+
+[node name="LensDrop" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/Drops"]
+visible = false
+material = ExtResource("15_gmfck")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DropLets" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
+layer = 4
+
+[node name="Droplets" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/DropLets"]
+visible = false
+material = SubResource("ShaderMaterial_b5nug")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer - truenos" type="Timer" parent="[ ENVIRONMENT ]/Lluvia"]
+
+[node name="[ CONTENT ]" type="Node" parent="."]
+
+[node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("17_675pj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
+
+[node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
+surface_material_override/0 = ExtResource("18_8xlcn")
+
+[node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 125.203, -13.9504)
+
+[node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
+visible = false
+material_override = ExtResource("19_8nb2l")
+mesh = SubResource("QuadMesh_2ocno")
+
+[node name="MI - World Base" type="MeshInstance3D" parent="[ CONTENT ]"]
+transform = Transform3D(-3525.65, 0.000329311, 1.3589e-11, 0, -0.000164656, 3556.06, 0.000308222, 3766.88, 0.00015544, 16.173, -519.254, 0.361979)
+material_override = ExtResource("20_qffkv")
+mesh = SubResource("QuadMesh_k5wsg")
+
+[node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("21_8ybfm")]
+transform = Transform3D(-41.759, 0, -6.67401e-06, 0, 9.752, 0, 6.30543e-06, 0, -44.2, 3.10218, -38.2442, 3.41268)
+visible = false
+
+[node name="Msh_Navigation_03" parent="[ CONTENT ]" instance=ExtResource("22_jciwx")]
+visible = false
+
+[node name="================" type="Node" parent="[ CONTENT ]"]
+
+[node name="Msh_Terrain_03" parent="[ CONTENT ]" instance=ExtResource("23_3t7ix")]
+
+[node name="Msh_Roads" parent="[ CONTENT ]/Msh_Terrain_03" index="50"]
+visible = false
+
+[node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
+
+[node name="Punto 1" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.6583, -106.682, -30.2261)
+script = ExtResource("24_i7lmm")
+nombre = "Pin Nombre"
+
+[node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
+
+[node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
+stream = ExtResource("25_4shr5")
+volume_db = 20.0
+unit_size = 25.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[editable path="SHARED SYSTEMS & UI"]
+[editable path="[ CONTENT ]/Msh_LighBeam"]
+[editable path="[ CONTENT ]/Msh - Limit"]
+[editable path="[ CONTENT ]/Msh_Terrain_03"]
