@@ -1,11 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=21 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Dropdowns.gd" id="2_xdapj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_rhhvq"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="3_x6pol"]
-[ext_resource type="PackedScene" uid="uid://dubkw6fn2rh5c" path="res://addons/DatePickerFiles/CalendarPop/DatePickerPanel.tscn" id="4_2t3fw"]
 [ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://Cont_UI/Theme.tres" id="5_7a3ej"]
 [ext_resource type="PackedScene" uid="uid://dfte6j1ntmgao" path="res://Systems/Graficadora/Pfb_item_btn_sitio.tscn" id="8_jlxvg"]
 
@@ -131,15 +130,13 @@ toDay = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha F
 fromTime = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Inicio/Hora")
 toTime = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/HBox Fecha Fin/Hora")
 
-[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("graficadora", "fromDate", "toDate", "sitesBtnContainer", "muestrasLess", "muestrasMore", "sitesLastBtn", "scrollBar", "btnsSitios")]
+[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("graficadora", "sitesBtnContainer", "muestrasLess", "muestrasMore", "sitesLastBtn", "scrollBar", "btnsSitios")]
 physics_interpolation_mode = 2
 script = ExtResource("1_xy25b")
 graficadora = NodePath("..")
-fromDate = NodePath("../Content/Sites/Inputs/MarginContainer/Original/HBox Fecha Inicio/FromDateInfo")
-toDate = NodePath("../Content/Sites/Inputs/MarginContainer/Original/HBox Fecha Fin/ToDateInfo")
 sitesBtnContainer = NodePath("../Content/Sites/SitesBttnContainer")
-muestrasLess = NodePath("../Content/Sites/Inputs/MarginContainer/Original/HBox Muestras/Button - Muestras -")
-muestrasMore = NodePath("../Content/Sites/Inputs/MarginContainer/Original/HBox Muestras/Button - Muestras +")
+muestrasLess = NodePath("../Content/Sites/HBox Muestras/Button - Muestras -")
+muestrasMore = NodePath("../Content/Sites/HBox Muestras/Button - Muestras +")
 sitesLastBtn = NodePath("../Content/Sites/HBox Muestras/BtnGraficar")
 scrollBar = NodePath("../Content/Info/Chart/ScrollInfo")
 btnsSitios = [NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio2"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio3"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio4"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio5"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio6"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio7"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio8")]
@@ -6265,103 +6262,6 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 8
 
-[node name="Original" type="VBoxContainer" parent="Content/Sites/Inputs/MarginContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="HBox Fecha Inicio" type="HBoxContainer" parent="Content/Sites/Inputs/MarginContainer/Original"]
-layout_mode = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Fecha Inicio"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_wv8um")
-
-[node name="FromDateInfo" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Fecha Inicio" instance=ExtResource("4_2t3fw")]
-custom_minimum_size = Vector2(278, 0)
-layout_mode = 2
-
-[node name="HBox Fecha Fin" type="HBoxContainer" parent="Content/Sites/Inputs/MarginContainer/Original"]
-layout_mode = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Fecha Fin"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_uqbty")
-
-[node name="ToDateInfo" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Fecha Fin" instance=ExtResource("4_2t3fw")]
-custom_minimum_size = Vector2(278, 0)
-layout_mode = 2
-
-[node name="HBox Muestras" type="HBoxContainer" parent="Content/Sites/Inputs/MarginContainer/Original"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label3" type="Label" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Muestras"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "# MUESTRAS      "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button - Muestras -" type="Button" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Muestras"]
-custom_minimum_size = Vector2(38, 38)
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../Button - Muestras +")
-mouse_default_cursor_shape = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_5pkgo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_vomyp")
-action_mode = 0
-
-[node name="Label" type="Label" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Muestras/Button - Muestras -"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = -41.0
-offset_right = 9.0
-offset_bottom = 35.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button - Muestras +" type="Button" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Muestras"]
-custom_minimum_size = Vector2(38, 38)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Button - Muestras -")
-focus_neighbor_bottom = NodePath("../../../../../SitesBttnContainer/Pfb_Item_BtnSitio")
-mouse_default_cursor_shape = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_5pkgo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_vomyp")
-action_mode = 0
-
-[node name="Label" type="Label" parent="Content/Sites/Inputs/MarginContainer/Original/HBox Muestras/Button - Muestras +"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.5
-offset_top = -39.0
-offset_right = 15.5
-offset_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "+"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Dropdowns" type="VBoxContainer" parent="Content/Sites/Inputs/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
@@ -6627,27 +6527,35 @@ theme_override_constants/separation = 15
 
 [node name="Pfb_Item_BtnSitio" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio2" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio3" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio4" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio5" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio6" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio7" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="Pfb_Item_BtnSitio8" parent="Content/Sites/SitesBttnContainer" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
+focus_neighbor_top = NodePath("")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Content"]
 
