@@ -85,7 +85,7 @@ graficadora = NodePath("Graficadora")
 graficadoraDropdowns = NodePath("Graficadora_Dropdowns")
 graficadora_UI_Interact = NodePath("Graficadora_UI_Interact")
 
-[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "fin_Ano", "fin_Mes", "fin_Dia", "fin_Hora", "btnGraficar", "btnLess", "btnMore", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "SiteSeparation", "LastUpdate", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
+[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "fin_Ano", "fin_Mes", "fin_Dia", "fin_Hora", "btnGraficar", "btnLess", "btnMore", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
 physics_interpolation_mode = 2
 script = ExtResource("3_x6pol")
 criticLevelColor = Color(1, 0, 0, 1)
@@ -112,9 +112,8 @@ horChartLines = NodePath("../Content/Info/Chart Background/Containers/HorChartLi
 horTimeInfo = NodePath("../Content/Info/Chart/Hor Info/Time Mask/HorTimeInfo")
 ScrollInfo = NodePath("../Content/Info/Chart/ScrollInfo")
 SitesBttnContainer = NodePath("../Content/Sites/SitesBttnContainer")
-SiteName = NodePath("../Content/Background/Title Background/HBoxContainer/SiteName")
-SiteSeparation = NodePath("../Content/Background/Title Background/HBoxContainer/SiteSeparation")
-LastUpdate = NodePath("../Content/Background/Title Background/HBoxContainer/Last Update")
+SiteName = NodePath("../Content/Background/Title Background/Control/VBoxContainer/SiteName")
+lblDatesRange = NodePath("../Content/Background/Title Background/Control/VBoxContainer/Lbl - DatesRange")
 LoadingScreen = NodePath("../Content/Loading")
 WhitoutHistory = NodePath("../Content/WhitoutHistory")
 InitialChart = NodePath("../Content/InitialChart")
@@ -191,39 +190,38 @@ pivot_offset = Vector2(837, 20)
 texture = ExtResource("3_rhhvq")
 region_rect = Rect2(485, 937, 12, 50.705)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/Background/Title Background"]
+[node name="Control" type="Control" parent="Content/Background/Title Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 351.0
+offset_bottom = 136.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Background/Title Background/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -418.5
+offset_top = -57.5
+offset_right = 418.5
+offset_bottom = 57.5
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+theme_override_constants/separation = 25
 
-[node name="SiteName" type="Label" parent="Content/Background/Title Background/HBoxContainer"]
+[node name="SiteName" type="Label" parent="Content/Background/Title Background/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Selecciona Fecha y Sitio para graficar"
+text = "Nombre del sitio"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="SiteSeparation" type="Label" parent="Content/Background/Title Background/HBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = " : "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Last Update" type="Label" parent="Content/Background/Title Background/HBoxContainer"]
-visible = false
+[node name="Lbl - DatesRange" type="Label" parent="Content/Background/Title Background/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.47, 0.47, 0.47, 1)
 theme_override_font_sizes/font_size = 25

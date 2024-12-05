@@ -20,7 +20,7 @@ signal OnRequestResult_Hist_Success
 @warning_ignore('unused_signal')
 signal OnRequestResult_Hist_Error
 @warning_ignore('unused_signal')
-signal On_BtnSitioPressed(_id : int)
+signal On_BtnSitioPressed(_id : int, _name : String)
 
 
 #SCENES

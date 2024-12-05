@@ -35,8 +35,7 @@ class_name GDs_Graficadora extends Node
 @export var ScrollInfo : Control
 @export var SitesBttnContainer : Control
 @export var SiteName : Label
-@export var SiteSeparation : Label
-@export var LastUpdate : Label
+@export var lblDatesRange : Label
 @export var LoadingScreen : Control
 @export var WhitoutHistory : Control
 @export var InitialChart : Control
@@ -65,17 +64,18 @@ var siteId : int = 1
 func Initialize(_dataService : GDs_DataService_Manager):
 	dataService = _dataService
 	
-	#obtengo la altura de la grafica
-	VertLenght = Chart.size.y
-	
-	LastUpdate.visible = false
-	SiteSeparation.visible = false
-	
 	btnGraficar.pressed.connect(_RequestGraficar)
 	btnLess.pressed.connect(OnBtnLessPressed)
 	btnMore.pressed.connect(OnBtnMorePressed)
 	
 	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
+	
+	#obtengo la altura de la grafica
+	VertLenght = Chart.size.y
+	
+	lblDatesRange.visible = false
+	
+	SiteName.text = dataService.estaciones[0].nombre
 
 func _RequestGraficar():
 	_GetDatesFromDropdowns()
@@ -83,7 +83,7 @@ func _RequestGraficar():
 	if not Graficar_AreDatesValid():
 		return
 		
-	dataService.MakeRequest_Historicos(siteId,dateFromStruct.GetStringDate(),dateToStruct.GetStringDate())
+	dataService.MakeRequest_Historicos(siteId,dateFromStruct.GetDate(),dateToStruct.GetDate())
 	
 	await SIGNALS.OnRefresh_Hist
 	
@@ -106,8 +106,10 @@ func _GetDatesFromDropdowns():
 	dateToStruct.Update(value_fin_ano,value_fin_mes,value_fin_dia,value_fin_hora)
 
 #region [ BUTTONS SIGNALS ]
-func OnBtnSitioPressed(_id : int):
+func OnBtnSitioPressed(_id : int, _name : String):
 	siteId = _id
+	SiteName.text = _name
+
 	_RequestGraficar()
 	
 func OnBtnMorePressed():
@@ -250,20 +252,15 @@ func Graficar_AreDatesValid() -> bool:
 	dateFromStruct = oldestDate
 	dateToStruct = newestDate
 		
-	LastUpdate.text = str(oldestDate.GetStringDate(), " - ",newestDate.GetStringDate())
+	lblDatesRange.text = str("Rango: ",oldestDate.GetDateSimplify(), " - ",newestDate.GetDateSimplify())
 	
 	ChartBackground.visible = true
-	LastUpdate.visible = true
-	SiteSeparation.visible = true
+	lblDatesRange.visible = true
 	InitialChart.visible = false
 	Info.visible = false
 	WhitoutHistory.visible = false
 	horChartLines.visible = false
 	LoadingScreen.visible = true
-	
-	#cambia el nombre del sitio
-	SiteName.text = "SITIO NAME"
-	siteId = -1
 
 	ScrollInfo.value = ScrollInfo.max_value
 	return true
@@ -441,8 +438,14 @@ class DateStruct:
 		day = _day
 		hour = _hour
 	
-	func GetStringDate()-> String:
+	func GetDate()-> String:
 		var fixedMonth : String = str("0",month) if month < 10 else str(month)
 		var fixedDay : String = str("0",day) if day < 10 else str(day)
 		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
 		return str(year,"-",fixedMonth,"-",fixedDay,"T",fixedHour,":00:00")
+		
+	func GetDateSimplify() -> String:
+		var fixedMonth : String = str("0",month) if month < 10 else str(month)
+		var fixedDay : String = str("0",day) if day < 10 else str(day)
+		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
+		return str(year,"/",fixedMonth,"/",fixedDay," ",fixedHour,":","00")

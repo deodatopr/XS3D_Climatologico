@@ -5,13 +5,17 @@ class_name GDs_Graficadora_Item_BtnSitio extends Button
 @export var lblName : Label
 
 var id : int
+var siteName : String
 
 func Initialize(_siteColor : Color, _id : int, _name : String):
 	id = _id
+	siteName = _name
 	
 	idPatch.self_modulate = _siteColor
 	lblId.text = str(_id)
 	lblName.text = _name
 	
+	pressed.connect(OnBtnPressed)
+	
 func OnBtnPressed():
-	SIGNALS.On_BtnSitioPressed.emit(id)
+	SIGNALS.On_BtnSitioPressed.emit(id,siteName)
