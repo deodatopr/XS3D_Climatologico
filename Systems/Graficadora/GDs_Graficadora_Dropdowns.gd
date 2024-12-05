@@ -131,9 +131,12 @@ func UpdateFromTimeDropdown():
 func UpdateToYearDropdown():
 	if fromYear.selected != 0:
 		toYear.disabled = false
+		if fromYear.selected < toYear.selected:
+			toYear.select(fromYear.selected)
 	else:
 		toYear.disabled = true
-	
+		toYear.select(0)
+
 	SetAllDisable(toYear,false)
 	for year in range(fromYear.selected + 1, toYear.item_count):
 		toYear.set_item_disabled(year,true)
@@ -141,8 +144,12 @@ func UpdateToYearDropdown():
 func UpdateToMonthDropdown():
 	if fromMonth.selected != 0:
 		toMonth.disabled = false
+		if fromMonth.selected > toMonth.selected:
+			toMonth.select(fromMonth.selected)
 	else:
 		toMonth.disabled = true
+		toMonth.select(0)
+		
 	
 	SetAllDisable(toMonth,false)
 	
@@ -153,8 +160,13 @@ func UpdateToMonthDropdown():
 func UpdateToDayDropdown():
 	if fromDay.selected != 0:
 		toDay.disabled = false
+		if fromDay.selected > toDay.selected:
+			toDay.select(fromDay.selected)
 	else:
 		toDay.disabled = true
+		toDay.select(0)
+		
+	
 	SetAllDisable(toDay,false)
 	
 	#Deshabilitar opciones menores al dropdown "from"
@@ -170,8 +182,11 @@ func UpdateToDayDropdown():
 func UpdateToTimeDropdown():
 	if fromTime.selected != 0:
 		toTime.disabled = false
+		if fromTime.selected > toTime.selected:
+			toTime.select(fromTime.selected)
 	else:
 		toTime.disabled = true
+		toTime.select(0)
 	SetAllDisable(toTime,false)
 	
 	#Deshabilitar opciones menores al dropdown "from"
