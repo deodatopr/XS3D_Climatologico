@@ -62,6 +62,7 @@ func GenerateRandomValues(_fromDate : String):
 		ENUMS.EP_Historicos_Rate.halfHour: 	arrayDatos = GetArrayByHalfHour()
 		ENUMS.EP_Historicos_Rate.quarterHour: 	arrayDatos = GetArrayByQuarterHour()
 
+	arrayDatos.reverse()
 	SIGNALS.OnRequestResult_Hist_Success.emit()
 		
 func GetHistoricos() -> Array[GDs_Data_EP_Historicos]:

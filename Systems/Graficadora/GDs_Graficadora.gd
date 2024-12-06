@@ -25,7 +25,7 @@ class_name GDs_Graficadora extends Node
 @export var Chart : Control
 @export var horChartLines : Control
 @export var horTimeInfo : Control
-@export var ScrollInfo : Control
+@export var ScrollInfo : HScrollBar
 @export var SitesBttnContainer : Control
 @export var SiteName : Label
 @export var lblDatesRange : Label
@@ -60,7 +60,8 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	dataService = _dataService
 	
 	btnGraficar.pressed.connect(_RequestGraficar)
-	
+	ScrollInfo.scrolling.connect(_on_h_scroll_bar_scrolling)
+	ScrollInfo.value_changed.connect(_on_scroll_info_value_changed)
 	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
 	
 	#obtengo la altura de la grafica
@@ -115,15 +116,13 @@ func _GetDatesFromDropdown():
 func OnBtnSitioPressed(_id : int, _name : String):
 	siteId = _id
 	SiteName.text = _name
-
-	_RequestGraficar()
 	
-func OnBtnMorePressed():
+func UpdateDatesHorValues():
 	if !Info.visible || crrntHistoricos.is_empty():
 		return
+
 	#actualiza la separacion entre las lineas verticales y las horas, para mostra mas datos en pantalla
 	if currentCharInfo < totalInfo - 1:
-		currentCharInfo += 1
 		
 		horTimeInfo.add_theme_constant_override("separation", int((Chart.size.x/currentCharInfo) - 7))
 		horChartLines.add_theme_constant_override("separation", int((Chart.size.x/currentCharInfo)-7))
@@ -161,61 +160,6 @@ func OnBtnMorePressed():
 				hrsPool[index].visible = false
 				datePool[index].visible = false
 			index -= 1
-	
-func OnBtnLessPressed():
-	if !Info.visible  || crrntHistoricos.is_empty():
-		return
-	#actualiza la separacion entre las lineas verticales y las horas, para mostra menos datos en pantalla
-	if currentCharInfo != 1:
-		currentCharInfo -= 1
-	
-		horTimeInfo.add_theme_constant_override("separation", int((Chart.size.x/currentCharInfo)-7))
-		horChartLines.add_theme_constant_override("separation", int((Chart.size.x/currentCharInfo)-7))
-		#tarda un frame en acomodar la posicion de todas las barras verticales, que son las que guian los puntos de la grafica
-		await get_tree().create_timer(0.001).timeout
-		
-		#actualizo la posicion de los valores de la grafica
-		_Graficar_Puntos()
-		_Graficar_Valores(crrntHistoricos)
-		
-		#actualiza el tamaño del contenedor de las lineas verticales, para que el scrollbar solo recorra el largo de las lineas verticales visibles
-		horChartLines.size.x = linesPool[totalInfo - 1].position.x + SEPARATION
-		_on_h_scroll_bar_scrolling()
-		
-		var setFirstRect = false
-		var rect1 : Rect2
-		var rect2 : Rect2
-		var invisibleRects : Dictionary
-		var index = datePool.size() - 1
-		for time in datePool:
-				
-			if datePool[index].visible and !setFirstRect:
-				rect1.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer"))
-				rect1.size = datePool[index].size  + Vector2(5, 0)
-				setFirstRect = true
-				index -= 1
-				continue
-			else:
-				var invisibleRect : Rect2
-				invisibleRect.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer"))
-				invisibleRect.size = datePool[index].size  + Vector2(5, 0)
-				invisibleRects[invisibleRect] = index
-				index -= 1
-			
-			if datePool[index].visible and setFirstRect:
-				rect2.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer"))
-				rect2.size = datePool[index].size  + Vector2(5, 0)
-				
-				for rect in invisibleRects.keys():
-					if !rect.intersects(rect1) and !rect.intersects(rect2):
-						hrsPool[invisibleRects[rect]].visible = true
-						datePool[invisibleRects[rect]].visible = true
-						break
-						
-				rect1 = rect2
-				invisibleRects.clear()
-				index -= 1
-				continue
 #endregion
 
 #region [ GRAFICAR ]
@@ -239,8 +183,7 @@ func Graficar_AreDatesValid() -> bool:
 func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	await get_tree().create_timer(.7).timeout
 	
-	lblDatesRange.text = str("Rango: ",_arrayHistoricos[0].tiempo, " - ",_arrayHistoricos[_arrayHistoricos.size() - 1].tiempo)
-	
+	lblDatesRange.text = str("Rango:   ",UTILITIES.FormatDateGraficadoraRango(_arrayHistoricos[0].tiempo), "   -    ",UTILITIES.FormatDateGraficadoraRango(_arrayHistoricos[_arrayHistoricos.size() - 1].tiempo))
 	
 	_Graficar_Lineas()
 	
@@ -261,7 +204,8 @@ func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 		#actualiza el tamaño del contenedor de las lineas verticales, para que el scrollbar solo recorra el largo de las lineas verticales visibles
 		horChartLines.size.x = linesPool[totalInfo - 1].position.x + SEPARATION
 		_on_h_scroll_bar_scrolling()
-	
+		UpdateDatesHorValues()
+		ScrollInfo.value = 0
 	else:
 		WhitoutHistory.visible = true
 		LoadingScreen.visible = false
@@ -369,7 +313,6 @@ func _Graficar_Lineas():
 			label.get_child(1).add_theme_font_size_override("font_size", 12)
 			datePool.append(label.get_child(1))
 		index += 1
-	
 #endregion
 
 #region [ SCROLL ]
@@ -388,6 +331,7 @@ func _on_chart_gui_input(event):
 		isDragingChart = false
 
 func _on_h_scroll_bar_scrolling():
+	print("scrolling")
 	#mueve en x todos lo valores de la grafica segun el valor del scrollbar y el tamaño del contenedor de las lineas verticales
 	var HorPosition : float = (ScrollInfo.value*-(horChartLines.size.x-Chart.size.x))/ScrollInfo.max_value
 	horChartLines.position.x = HorPosition
@@ -419,12 +363,12 @@ class DateStruct:
 		return str(year,"-",fixedMonth,"-",fixedDay,"T",fixedHour,":00:00")
 	
 	func GetDateSimplify() -> String:
-		var fixedYear : String = str(year).substr(0,4)
+		var fixedYear : String = str(year).substr(2,2)
 		var fixedMonth : String = str("0",month) if month < 10 else str(month)
 		var fixedDay : String = str("0",day) if day < 10 else str(day)
 		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
 		
-		return str(fixedYear,"-",fixedMonth,"-",fixedDay," ",fixedHour,":","00")
+		return str(fixedYear,"/",fixedMonth,"/",fixedDay," ",fixedHour,":","00")
 		
 	func GetDayBefore() -> DateStruct:
 		var fixedHour : int = hour
