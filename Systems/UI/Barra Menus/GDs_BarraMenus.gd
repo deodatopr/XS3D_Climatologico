@@ -15,6 +15,7 @@ extends Node
 
 var lastOneOnFocus:=0
 var isFocusingMenu:= false
+
 func _ready():
 	BtnSitios.focus_entered.connect(OnBtnSitiosFocus)
 	BtnSitios.pressed.connect(OnBtnSitioPressed)
@@ -82,8 +83,6 @@ func GetCurrentFocus():
 	if BtnConfig.button_pressed:
 		lastOneOnFocus = 3
 
-
-
 func OnBtnSitioPressed():
 	if BtnSitios.has_focus():
 		BtnSitios.release_focus()
@@ -102,14 +101,14 @@ func OnBtnSitiosFocus():
 	BtnConfig.button_pressed = false
 	BtnSitios.button_pressed = true
 
-
-
 func OnBtnMapaPressed():
 	
 	if BtnMapa.has_focus():
+		APPSTATE.menuUIOptionIsOpened = false
 		BtnMapa.release_focus()
 		UTILITIES.TurnOffObject(menuMapa)
 	else:
+		APPSTATE.menuUIOptionIsOpened = true
 		BtnMapa.grab_focus()
 
 func OnBtnMapaFocus():
@@ -123,15 +122,13 @@ func OnBtnMapaFocus():
 	BtnConfig.button_pressed = false
 	BtnMapa.button_pressed = true
 
-
-
-
-
 func OnBtnDatosPressed():
 	if BtnDatos.has_focus():
+		APPSTATE.menuUIOptionIsOpened = false
 		BtnDatos.release_focus()
 		UTILITIES.TurnOffObject(menuDatos)
 	else:
+		APPSTATE.menuUIOptionIsOpened = true
 		BtnDatos.grab_focus()
 
 func OnBtnDatosFocus():
@@ -164,11 +161,7 @@ func OnBtnConfigFocus():
 	BtnDatos.button_pressed = false
 	BtnConfig.button_pressed = true
 
-
-
-
-
-func TurnOffAllMenus():
+func TurnOffAllMenus():	
 	UTILITIES.TurnOffObject(menuSitios)
 	UTILITIES.TurnOffObject(menuMapa)
 	UTILITIES.TurnOffObject(menuDatos)

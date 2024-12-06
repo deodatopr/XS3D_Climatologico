@@ -73,6 +73,9 @@ func UpdateValuesInRuntime():
 	mov_speed_ms *=.01
 	
 func _physics_process(delta):
+	if APPSTATE.menuUIOptionIsOpened:
+		return
+	
 	_Movement(delta)
 	_Rotation(delta)
 	_Fov(delta)

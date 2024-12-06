@@ -137,6 +137,9 @@ func GetPointOnMap(_targetPoint : Vector3) -> Vector3:
 	return Vector3.ZERO
 	
 func _input(_event):
+	if APPSTATE.menuUIOptionIsOpened:
+		return
+	
 	if Input.is_action_just_pressed('3D_ChangeCamMode'):
 		camMode = ENUMS.Cam_Mode.fly if APPSTATE.camMode == ENUMS.Cam_Mode.sky else ENUMS.Cam_Mode.sky
 		SIGNALS.OnCameraRequestChangeMode.emit(camMode)

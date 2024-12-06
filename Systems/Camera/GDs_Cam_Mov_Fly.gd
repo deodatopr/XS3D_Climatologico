@@ -63,6 +63,9 @@ func _input(event):
 		mouseMotion = event
 
 func _physics_process(delta:float):
+	if APPSTATE.menuUIOptionIsOpened:
+		return
+	
 	@warning_ignore('incompatible_ternary')
 	currentTurbo = camMng.fly_turbo if Input.is_action_pressed("3DMove_SpeedBoost") else 1
 	

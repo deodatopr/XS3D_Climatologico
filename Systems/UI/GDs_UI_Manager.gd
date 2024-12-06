@@ -23,6 +23,7 @@ func _input(event):
 			menuInfo.visible = true
 			barraMenus.StopFocusOnMenus()
 			CloseDebugPanel()
+			APPSTATE.menuUIOptionIsOpened = true
 	if event.is_action_pressed("ui_cancel"):
 		CloseInfoMenu()
 		if not APPSTATE.popUpOpened:
@@ -32,6 +33,8 @@ func _input(event):
 		if not APPSTATE.popUpOpened:
 			barraMenus.StopFocusOnMenus()
 			panelDebug.visible = !panelDebug.visible
+			APPSTATE.menuUIOptionIsOpened = panelDebug.visible
+				
 			
 	
 func Initialize(_dataService : GDs_DataService_Manager,_vistaFree : GDs_VistaFly, _cam_manager:GDs_Cam_Manager):
@@ -66,10 +69,12 @@ func ClosePanels():
 func CloseInfoMenu():
 	if menuInfo.visible:
 		menuInfo.visible = false
+		APPSTATE.menuUIOptionIsOpened = false
 
 func CloseDebugPanel():
 	if panelDebug.visible:
 		panelDebug.visible = false
+		APPSTATE.menuUIOptionIsOpened = false
 
 func DataRefresh():
 	barraInfo.OnDataRefresh()
