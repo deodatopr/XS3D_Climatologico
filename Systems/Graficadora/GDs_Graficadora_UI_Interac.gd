@@ -16,6 +16,8 @@ class_name GDs_Graficadora_UI_Interact extends Node
 var barraMenus: GDs_BarraMenus
 
 func Initialize(_dataService : GDs_DataService_Manager,_barraMenus: GDs_BarraMenus):
+	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
+	
 	graficadora.visibility_changed.connect(func x(): if graficadora.visibility_changed: firstToGrabFocus.grab_focus())
 	barraMenus = _barraMenus
 	
@@ -46,3 +48,7 @@ func _process(delta):
 		scrollBar.value -= delta * 20
 	if Input.is_action_pressed("3DMove_RotHor_+"):
 		scrollBar.value += delta * 20
+		
+func OnBtnSitioPressed(_idCurrentSitio : int, _name:String):
+	for btnSitio in btnsSitios:
+		btnSitio.CheckBtnSelected(_idCurrentSitio)

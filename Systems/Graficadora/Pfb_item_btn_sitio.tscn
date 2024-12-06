@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfte6j1ntmgao"]
+[gd_scene load_steps=7 format=3 uid="uid://dfte6j1ntmgao"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Item_BtnSitio.gd" id="1_p8ud7"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_ly6bd"]
@@ -9,10 +9,25 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+border_color = Color(0.160784, 0.341176, 0.301961, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj0a1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.160784, 0.341176, 0.301961, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+anti_aliasing_size = 0.01
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ify8o"]
 
@@ -24,7 +39,9 @@ custom_minimum_size = Vector2(322, 40)
 focus_neighbor_top = NodePath("../../Inputs/MarginContainer/Original/HBox Muestras/Button - Muestras +")
 theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tj0a1")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ify8o")
+toggle_mode = true
 icon_alignment = 1
 script = ExtResource("1_p8ud7")
 idPatch = NodePath("ID Patch")

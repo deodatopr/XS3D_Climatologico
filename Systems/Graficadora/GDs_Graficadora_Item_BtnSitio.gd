@@ -16,6 +16,9 @@ func Initialize(_siteColor : Color, _id : int, _name : String):
 	lblName.text = _name
 	
 	pressed.connect(OnBtnPressed)
-	
+
+func CheckBtnSelected(_idCurrentSitio : int):
+	button_pressed = _idCurrentSitio == id
+
 func OnBtnPressed():
 	SIGNALS.On_BtnSitioPressed.emit(id,siteName)

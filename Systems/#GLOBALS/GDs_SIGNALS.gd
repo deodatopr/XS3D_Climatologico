@@ -35,6 +35,10 @@ signal OnSitioReady
 @warning_ignore('unused_signal')
 signal OnLluviaSet(_lluvia : int)
 
+#MENUS
+@warning_ignore('unused_signal')
+signal OnBtnGraficadoraMenuPressed
+
 #CAMERA
 @warning_ignore('unused_signal')
 signal OnCameraUpdate(_isUpdating : bool)

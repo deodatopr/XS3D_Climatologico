@@ -64,6 +64,7 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	ScrollInfo.scrolling.connect(_on_h_scroll_bar_scrolling)
 	ScrollInfo.value_changed.connect(_on_scroll_info_value_changed)
 	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
+	SIGNALS.OnBtnGraficadoraMenuPressed.connect(_RequestGraficar)
 	
 	#obtengo la altura de la grafica
 	VertLenght = Chart.size.y
@@ -335,7 +336,6 @@ func _on_chart_gui_input(event):
 		isDragingChart = false
 
 func _on_h_scroll_bar_scrolling():
-	print("scrolling")
 	#mueve en x todos lo valores de la grafica segun el valor del scrollbar y el tamaño del contenedor de las lineas verticales
 	var HorPosition : float = (ScrollInfo.value*-(horChartLines.size.x-Chart.size.x))/ScrollInfo.max_value
 	horChartLines.position.x = HorPosition

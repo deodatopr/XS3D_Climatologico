@@ -130,6 +130,7 @@ func OnBtnDatosPressed():
 	else:
 		APPSTATE.menuUIOptionIsOpened = true
 		BtnDatos.grab_focus()
+		SIGNALS.OnBtnGraficadoraMenuPressed.emit()
 
 func OnBtnDatosFocus():
 	sndUi1.play()
