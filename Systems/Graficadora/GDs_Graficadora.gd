@@ -18,6 +18,7 @@ class_name GDs_Graficadora extends Node
 @export var inicio_Intervalo : OptionButton
 
 @export_subgroup("Refs Componentes")
+@export var fechaAnimPlayer : AnimationPlayer
 @export var btnGraficar : Button
 @export var degradedChart : Node2D
 @export var lineChart : Node2D
@@ -60,11 +61,12 @@ var siteId : int = -1
 func Initialize(_dataService : GDs_DataService_Manager):
 	dataService = _dataService
 	
-	btnGraficar.pressed.connect(_RequestGraficar)
+	btnGraficar.pressed.connect(_RequestGraficar.bind(true))
+	SIGNALS.OnBtnGraficadoraMenuPressed.connect(_RequestGraficar.bind(false))
+	
 	ScrollInfo.scrolling.connect(_on_h_scroll_bar_scrolling)
 	ScrollInfo.value_changed.connect(_on_scroll_info_value_changed)
 	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
-	SIGNALS.OnBtnGraficadoraMenuPressed.connect(_RequestGraficar)
 	
 	#obtengo la altura de la grafica
 	VertLenght = Chart.size.y
@@ -91,10 +93,10 @@ func _ShowChartInfo():
 	vertInfo.show()
 	ChartMaskInitial.hide()
 
-func _RequestGraficar():
+func _RequestGraficar(_isByBtn : bool):
 	_GetDatesFromDropdown()
 	
-	if not Graficar_AreDropdownsValid():
+	if not Graficar_AreInputsValid(_isByBtn):
 		return
 		
 	dataService.MakeRequest_Historicos(siteId,dateFromStruct.GetDate(),dateToStruct.GetDate())
@@ -198,11 +200,17 @@ func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 		WhitoutHistory.visible = true
 		LoadingScreen.visible = false
 		
-func Graficar_AreDropdownsValid() -> bool:
+func Graficar_AreInputsValid(_isByBtn : bool) -> bool:
 	var dropdownsValid : bool = inicio_Ano.selected != 0 and inicio_Mes.selected != 0 and inicio_Dia.selected != 0 and inicio_Hora.selected != 0 and inicio_Intervalo.selected != 0
 	var sitioIdIsValid : bool = siteId >= 0
 	
-	if not dropdownsValid or not sitioIdIsValid:
+	if not dropdownsValid:
+		if _isByBtn:
+			fechaAnimPlayer.stop()
+			fechaAnimPlayer.play("DropdownMissing")
+		return false
+		
+	if not sitioIdIsValid:
 		return false
 	
 	ChartBackground.visible = true

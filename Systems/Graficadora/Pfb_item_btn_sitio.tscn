@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfte6j1ntmgao"]
+[gd_scene load_steps=9 format=3 uid="uid://cd36h1hge4wev"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Item_BtnSitio.gd" id="1_p8ud7"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_ly6bd"]
@@ -33,6 +33,26 @@ anti_aliasing_size = 0.01
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnfum"]
 load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+
+[sub_resource type="Animation" id="Animation_hhdks"]
+resource_name = "SelectedMissing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Frame:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1), Color(0.85301, 0, 0, 1), Color(0.5, 0.5, 0.5, 1), Color(0.854902, 0, 0, 1), Color(0.5, 0.5, 0.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ompns"]
+_data = {
+"SelectedMissing": SubResource("Animation_hhdks")
+}
 
 [node name="Pfb_Item_BtnSitio" type="Button" node_paths=PackedStringArray("idPatch", "lblId", "lblName")]
 custom_minimum_size = Vector2(322, 40)
@@ -90,6 +110,12 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame"]
+root_node = NodePath("../../ID Patch")
+libraries = {
+"": SubResource("AnimationLibrary_ompns")
+}
 
 [node name="Lbl Name" type="Label" parent="."]
 layout_mode = 1
