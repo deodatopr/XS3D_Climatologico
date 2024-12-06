@@ -20,6 +20,13 @@ enum EP_RequestResult
 	Error_LastData
 }
 
+enum EP_Historicos_Rate
+{
+	hour = 1,
+	halfHour = 2,
+	quarterHour = 3
+}
+
 enum Estado
 {
 	Mexico,

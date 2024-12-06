@@ -9,3 +9,4 @@ var dataReady : bool
 var popUpOpened: bool
 var panelErrorOpened: bool
 var menuUIOptionIsOpened : bool
+var graficadoraRate : int = ENUMS.EP_Historicos_Rate.halfHour

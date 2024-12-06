@@ -54,10 +54,6 @@ func Initialize():
 	#Connect timer to refresh endpoint
 	timerTicking.timeout.connect(MakeRequest_GetAllEstaciones)
 
-#HACK: Test endpoint/simulados
-#func _process(delta):
-	#if Input.is_action_just_pressed('3DLook_Fov_+'):
-		#MakeRequest_Historicos(1,"2023-08-01T00:00:46", "2023-11-02T00:00:46")
 
 #region GET ALL SITIOS
 func MakeRequest_GetAllEstaciones():
@@ -223,44 +219,4 @@ func _OnSuccessEP_Historicos():
 func _OnFailedEP_Historicos():
 	dataHistoricos.clear()
 	SIGNALS.OnRefresh_Hist.emit()
-
-func Hist_AverageValues(data:Array[GDs_Data_EP_Historicos])-> Array[GDs_Data_EP_Historicos]:	
-	#promedia el valor de las muestras totales, para que se muestren maximo 52 datos en la grafica
-	var totalSamples : Array[GDs_Data_EP_Historicos] = []
-	var averageSamples : int = 0
-	#si son mas de 52 muestras y tomando que obtiene una muestra cada 15 min. 
-	#promedia en horas, si son mas en dias, si son mas en semanas, 
-	#si son mas en meses
-	if data.size() > 52.0:
-		if data.size()/4.0 > 52.0:
-			if data.size()/96.0 > 52.0:
-				if data.size()/672.0 > 52.0:
-					averageSamples = 20832
-				else:
-					averageSamples = 672
-			else:
-				averageSamples = 96
-		else:
-			averageSamples = 4
-	else:
-		return data
-	
-	#recorre todos los datos para promediar segun el total de las muestras
-	var averageValues : int = 0
-	var index : int = 0
-	for value in data:
-		if index == averageSamples:
-			var NewData : GDs_Data_EP_Historicos = GDs_Data_EP_Historicos.new()
-			NewData.idSignals = value.idSignals
-			NewData.tiempo = value.tiempo
-			NewData.valor = int(float(averageValues)/float(averageSamples))
-			totalSamples.append(NewData)
-			averageValues = 0
-			index = 0
-		
-		if index < averageSamples:
-			averageValues += int(value.valor)
-			index += 1
-
-	return totalSamples
 #endregion

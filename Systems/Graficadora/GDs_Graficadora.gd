@@ -10,11 +10,12 @@ class_name GDs_Graficadora extends Node
 @export var safeLevelColor : Color
 @export var safeLevelRange : int
 
-@export_subgroup("Dropdowns Inicio")
+@export_subgroup("Dropdowns")
 @export var inicio_Ano : OptionButton
 @export var inicio_Mes : OptionButton
 @export var inicio_Dia : OptionButton
 @export var inicio_Hora : OptionButton
+@export var inicio_Intervalo : OptionButton
 
 @export_subgroup("Refs Componentes")
 @export var btnGraficar : Button
@@ -84,7 +85,9 @@ func _GetDatesFromDropdown():
 	var value_inicio_ano :int = int(inicio_Ano.get_item_text(inicio_Ano.selected) )
 	var value_inicio_mes :int = int(inicio_Mes.selected)
 	var value_inicio_dia :int = int(inicio_Dia.get_item_text(inicio_Dia.selected) )
-	var value_inicio_hora :int= int(inicio_Hora.get_item_text(inicio_Hora.selected).substr(1,1))
+	var value_inicio_hora :int= int(inicio_Hora.get_item_text(inicio_Hora.selected).substr(0,2))
+	
+	APPSTATE.graficadoraRate = inicio_Intervalo.selected
 	
 	dateFromStruct.Update(value_inicio_ano,value_inicio_mes,value_inicio_dia,value_inicio_hora)
 	dateToStruct = dateFromStruct.GetDayBefore()
@@ -204,9 +207,6 @@ func Graficar_AreDatesValid() -> bool:
 	if not inicioDateIsValid:
 		return false
 	
-		
-	lblDatesRange.text = str("Rango: ",dateToStruct.GetDateSimplify(), " - ",dateFromStruct.GetDateSimplify())
-	
 	ChartBackground.visible = true
 	lblDatesRange.visible = true
 	InitialChart.visible = false
@@ -220,6 +220,10 @@ func Graficar_AreDatesValid() -> bool:
 
 func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	await get_tree().create_timer(.7).timeout
+	
+	lblDatesRange.text = str("Rango: ",_arrayHistoricos[0].tiempo, " - ",_arrayHistoricos[_arrayHistoricos.size() - 1].tiempo)
+	
+	
 	_Graficar_Lineas()
 	
 	#si no recive valores, muestre la pantalla sin historia
@@ -389,13 +393,13 @@ class DateStruct:
 		month = _month
 		day = _day
 		hour = _hour
-	
+		
 	func GetDate()-> String:
 		var fixedMonth : String = str("0",month) if month < 10 else str(month)
 		var fixedDay : String = str("0",day) if day < 10 else str(day)
 		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
 		return str(year,"-",fixedMonth,"-",fixedDay,"T",fixedHour,":00:00")
-		
+	
 	func GetDateSimplify() -> String:
 		var fixedYear : String = str(year).substr(0,4)
 		var fixedMonth : String = str("0",month) if month < 10 else str(month)

@@ -8,12 +8,12 @@ func GenerateRandomValues(_fromDate : String):
 	
 	#Each 15 min a sample, 96 samples in 24 hours
 	var totalSamplesByDay : int = 96
-	
+
 	var year : int =  int(_fromDate.substr(0,4))
 	var month : int = int(_fromDate.substr(5,2))
 	var day : int = int(_fromDate.substr(8,2))
-	var hour : int = int(_fromDate.substr(10,2))
-	var minute : int = int(_fromDate.substr(13,2))
+	var hour : int = int(_fromDate.substr(11,2))
+	var minute : int = int(_fromDate.substr(14,2))
 	
 	for n in totalSamplesByDay:
 		var fixedMonth : String = str("0",month) if month < 10 else str(month)
@@ -21,7 +21,7 @@ func GenerateRandomValues(_fromDate : String):
 		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
 		var fixedMinute : String = str("0",minute) if minute < 10 else str(minute)
 		dateValue = str(year,"-",fixedMonth,"-",fixedDay,"T",fixedHour,":",fixedMinute,":00")
-		
+
 		var rng = RandomNumberGenerator.new()
 		var NewData : GDs_Data_EP_Historicos = GDs_Data_EP_Historicos.new()
 		NewData.idSignals = 1
@@ -57,11 +57,32 @@ func GenerateRandomValues(_fromDate : String):
 			year -= 1
 			month = 12
 	
-	#Filtrar datos de historicos para solo obtener por hora, en total 24
-	# NOTA: int(_sample.tiempo.substr(13,2)) == 0 : Comparamos los minutos solo cuando sea 0 es cuando es una hora y oslo agregar eso al array final
-	arrayDatos = arrayDatos.filter(func(_sample : GDs_Data_EP_Historicos): return int(_sample.tiempo.substr(13,2)) == 0)
+	match APPSTATE.graficadoraRate:
+		ENUMS.EP_Historicos_Rate.hour: 	arrayDatos = GetArrayByHour()
+		ENUMS.EP_Historicos_Rate.halfHour: 	arrayDatos = GetArrayByHalfHour()
+		ENUMS.EP_Historicos_Rate.quarterHour: 	arrayDatos = GetArrayByQuarterHour()
 
 	SIGNALS.OnRequestResult_Hist_Success.emit()
 		
 func GetHistoricos() -> Array[GDs_Data_EP_Historicos]:
 	return arrayDatos
+	
+func GetArrayByHour() -> Array[GDs_Data_EP_Historicos]:
+	#Filtrar datos de historicos para solo obtener por hora, en total 24
+	# NOTA: int(_sample.tiempo.substr(13,2)) == 0 : Comparamos los minutos solo cuando sea 0, que es cuando es una hora y solo agregar eso al array final
+	var datosByHour : Array[GDs_Data_EP_Historicos] = arrayDatos.filter(func(_sample : GDs_Data_EP_Historicos): return int(_sample.tiempo.substr(14,2)) == 0)
+	datosByHour.resize(24)
+	return datosByHour
+	
+func GetArrayByHalfHour() -> Array[GDs_Data_EP_Historicos]:
+	#Filtrar datos de historicos para solo obtener por hora, en total 24
+	# NOTA: int(_sample.tiempo.substr(13,2)) == 30 : Comparamos los minutos solo cuando sea 30 es cuando es una hora y oslo agregar eso al array final
+	var datosByHalfHour : Array[GDs_Data_EP_Historicos] = arrayDatos.filter(func(_sample : GDs_Data_EP_Historicos): return int(_sample.tiempo.substr(14,2)) == 30 or int(_sample.tiempo.substr(14,2)) == 0)
+	datosByHalfHour.resize(24)
+	return datosByHalfHour
+	
+func GetArrayByQuarterHour() -> Array[GDs_Data_EP_Historicos]:
+	var datosByQuarterHour : Array[GDs_Data_EP_Historicos] = []
+	datosByQuarterHour = arrayDatos.duplicate()
+	datosByQuarterHour.resize(24)
+	return datosByQuarterHour
