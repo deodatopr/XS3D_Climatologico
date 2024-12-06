@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://be35a6unye71v"]
-
-[resource]
-resource_name = "Mat_Env_Roads"
-cull_mode = 2
-albedo_color = Color(1, 0.180393, 0.439215, 1)
-roughness = 0.5
