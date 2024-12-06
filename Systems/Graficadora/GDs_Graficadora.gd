@@ -25,13 +25,14 @@ class_name GDs_Graficadora extends Node
 @export var Chart : Control
 @export var horChartLines : Control
 @export var horTimeInfo : Control
+@export var vertInfo : Control
+@export var horInfo : Control
 @export var ScrollInfo : HScrollBar
 @export var SitesBttnContainer : Control
 @export var SiteName : Label
 @export var lblDatesRange : Label
 @export var LoadingScreen : Control
 @export var WhitoutHistory : Control
-@export var InitialChart : Control
 @export var Info : Control
 @export var ChartBackground : Control
 @export var ChartMaskInitial : Control
@@ -54,7 +55,7 @@ var valuesPool : Array[NinePatchRect]
 var hrsPool : Array[Label]
 var datePool : Array[Label]
 var isDragingChart : bool
-var siteId : int = 1
+var siteId : int = -1
 
 func Initialize(_dataService : GDs_DataService_Manager):
 	dataService = _dataService
@@ -69,27 +70,30 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	
 	lblDatesRange.visible = false
 	
-	SiteName.text = dataService.estaciones[0].nombre
-	
 	SiteName.text = "GRAFICADORA"
 	lblDatesRange.hide()
 	
 	degradedChart.hide()
 	lineChart.hide()
 	ChartValuesMask.hide()
+	ScrollInfo.hide()
+	horInfo.hide()
+	vertInfo.hide()
 	ChartMaskInitial.show()
 
 func _ShowChartInfo():
 	degradedChart.show()
 	lineChart.show()
 	ChartValuesMask.show()
+	ScrollInfo.show()
+	horInfo.show()
+	vertInfo.show()
 	ChartMaskInitial.hide()
-	
 
 func _RequestGraficar():
 	_GetDatesFromDropdown()
 	
-	if not Graficar_AreDatesValid():
+	if not Graficar_AreDropdownsValid():
 		return
 		
 	dataService.MakeRequest_Historicos(siteId,dateFromStruct.GetDate(),dateToStruct.GetDate())
@@ -163,23 +167,6 @@ func UpdateDatesHorValues():
 #endregion
 
 #region [ GRAFICAR ]
-func Graficar_AreDatesValid() -> bool:
-	var inicioDateIsValid : bool = inicio_Ano.selected != 0 and inicio_Mes.selected != 0 and inicio_Dia.selected != 0 and inicio_Hora.selected != 0
-	
-	if not inicioDateIsValid:
-		return false
-	
-	ChartBackground.visible = true
-	lblDatesRange.visible = true
-	InitialChart.visible = false
-	Info.visible = false
-	WhitoutHistory.visible = false
-	horChartLines.visible = false
-	LoadingScreen.visible = true
-
-	ScrollInfo.value = ScrollInfo.max_value
-	return true
-
 func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	await get_tree().create_timer(.7).timeout
 	
@@ -209,6 +196,23 @@ func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	else:
 		WhitoutHistory.visible = true
 		LoadingScreen.visible = false
+		
+func Graficar_AreDropdownsValid() -> bool:
+	var dropdownsValid : bool = inicio_Ano.selected != 0 and inicio_Mes.selected != 0 and inicio_Dia.selected != 0 and inicio_Hora.selected != 0 and inicio_Intervalo.selected != 0
+	var sitioIdIsValid : bool = siteId >= 0
+	
+	if not dropdownsValid or not sitioIdIsValid:
+		return false
+	
+	ChartBackground.visible = true
+	lblDatesRange.visible = true
+	Info.visible = false
+	WhitoutHistory.visible = false
+	horChartLines.visible = false
+	LoadingScreen.visible = true
+
+	ScrollInfo.value = ScrollInfo.max_value
+	return true
 
 func _Graficar_Valores(_data : Array[GDs_Data_EP_Historicos]):
 	#seteo los valores de la grafica
@@ -361,14 +365,6 @@ class DateStruct:
 		var fixedDay : String = str("0",day) if day < 10 else str(day)
 		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
 		return str(year,"-",fixedMonth,"-",fixedDay,"T",fixedHour,":00:00")
-	
-	func GetDateSimplify() -> String:
-		var fixedYear : String = str(year).substr(2,2)
-		var fixedMonth : String = str("0",month) if month < 10 else str(month)
-		var fixedDay : String = str("0",day) if day < 10 else str(day)
-		var fixedHour : String = str("0",hour) if hour < 10 else str(hour)
-		
-		return str(fixedYear,"/",fixedMonth,"/",fixedDay," ",fixedHour,":","00")
 		
 	func GetDayBefore() -> DateStruct:
 		var fixedHour : int = hour

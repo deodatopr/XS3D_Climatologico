@@ -140,7 +140,7 @@ graficadora_UI_Interact = NodePath("Graficadora_UI_Interact")
 metadata/_edit_vertical_guides_ = [345.0, 408.0, 1647.0]
 metadata/_edit_horizontal_guides_ = [754.0, 716.0]
 
-[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground", "ChartMaskInitial", "ChartValuesMask")]
+[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "vertInfo", "horInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "Info", "ChartBackground", "ChartMaskInitial", "ChartValuesMask")]
 physics_interpolation_mode = 2
 script = ExtResource("3_x6pol")
 criticLevelColor = Color(1, 0, 0, 1)
@@ -160,13 +160,14 @@ ChartBoxContainer = NodePath("../Content/Info/Chart/Chart Values Mask/ChartBoxCo
 Chart = NodePath("../Content/Info/Chart")
 horChartLines = NodePath("../Content/Info/Chart Background/Containers/HorChartLines")
 horTimeInfo = NodePath("../Content/Info/Chart/Hor Info/Time Mask/HorTimeInfo")
+vertInfo = NodePath("../Content/Info/Chart/Vert Info")
+horInfo = NodePath("../Content/Info/Chart/Hor Info")
 ScrollInfo = NodePath("../Content/Info/Chart/ScrollInfo")
 SitesBttnContainer = NodePath("../Content/Sites/SitesBttnContainer")
 SiteName = NodePath("../Content/Background/Title Background/Control/VBoxContainer/SiteName")
 lblDatesRange = NodePath("../Content/Background/Title Background/Control/VBoxContainer/Lbl - DatesRange")
 LoadingScreen = NodePath("../Content/Loading")
 WhitoutHistory = NodePath("../Content/WhitoutHistory")
-InitialChart = NodePath("../Content/InitialChart")
 Info = NodePath("../Content/Info")
 ChartBackground = NodePath("../Content/Info/Chart Background")
 ChartMaskInitial = NodePath("../Content/Info/Chart/ChartMaskInitial")
@@ -5016,73 +5017,6 @@ texture = ExtResource("3_rhhvq")
 region_rect = Rect2(466, 761, 44, 44)
 
 [node name="Label" type="Label" parent="Content/WhitoutHistory/ColorRect/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = -66.0
-offset_right = 74.0
-offset_bottom = 73.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(73, 73)
-theme_override_colors/font_color = Color(0.341176, 0.341176, 0.341176, 1)
-theme_override_font_sizes/font_size = 85
-text = "i"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="InitialChart" type="Control" parent="Content"]
-visible = false
-layout_mode = 1
-anchor_left = 0.063
-anchor_top = 0.058
-anchor_right = 0.935
-anchor_bottom = 0.85
-offset_left = 302.475
-offset_top = 134.528
-offset_right = 80.875
-offset_bottom = -14.4
-pivot_offset = Vector2(837, 427)
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="Content/InitialChart"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(150, 150)
-color = Color(0.08, 0.08, 0.08, 0.862745)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Content/InitialChart/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -73.86
-offset_right = 73.0
-offset_bottom = 72.14
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(73, 73)
-texture = ExtResource("3_rhhvq")
-region_rect = Rect2(466, 761, 44, 44)
-
-[node name="Label" type="Label" parent="Content/InitialChart/ColorRect/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
