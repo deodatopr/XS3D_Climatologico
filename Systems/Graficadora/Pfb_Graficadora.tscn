@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=34 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
@@ -24,7 +24,7 @@ bg_color = Color(0.1, 0.099, 0.097, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8im7"]
 content_margin_left = 35.0
 content_margin_right = 35.0
-bg_color = Color(0.596078, 0.596078, 0.603922, 1)
+bg_color = Color(0.160784, 0.341176, 0.301961, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -88,6 +88,27 @@ region = Rect2(468, 763, 42, 42)
 atlas = ExtResource("3_rhhvq")
 region = Rect2(478, 11, 15, 14)
 
+[sub_resource type="Animation" id="Animation_srfu6"]
+resource_name = "DropdownMissing"
+length = 0.99
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inputs:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1), Color(0.744392, 0, 0, 1), Color(0.5, 0.5, 0.5, 1), Color(0.745098, 0, 0, 1), Color(0.5, 0.5, 0.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_56yu2"]
+_data = {
+"DropdownMissing": SubResource("Animation_srfu6")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wv8um"]
 atlas = ExtResource("3_rhhvq")
 region = Rect2(997, 94, 23, 25)
@@ -103,6 +124,13 @@ region = Rect2(478, 647, 17, 9)
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4u6c"]
 atlas = ExtResource("3_rhhvq")
 region = Rect2(475, 7, 26, 25)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amxpe"]
+bg_color = Color(0.160784, 0.341176, 0.301961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1q1o0"]
 atlas = ExtResource("3_rhhvq")
@@ -5048,6 +5076,11 @@ offset_bottom = 360.0
 grow_vertical = 2
 theme_override_constants/separation = 10
 
+[node name="Fecha_AnimPlayer" type="AnimationPlayer" parent="Content/Sites"]
+libraries = {
+"": SubResource("AnimationLibrary_56yu2")
+}
+
 [node name="Inputs" type="NinePatchRect" parent="Content/Sites"]
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 custom_minimum_size = Vector2(0, 80)
@@ -5303,6 +5336,7 @@ layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../SitesBttnContainer/Pfb_Item_BtnSitio8")
 focus_neighbor_bottom = NodePath("../Inputs/MarginContainer/Dropdowns/Fecha/Año")
+theme_override_styles/normal = SubResource("StyleBoxFlat_amxpe")
 text = "Graficar"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Content"]
