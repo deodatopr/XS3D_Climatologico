@@ -152,7 +152,7 @@ region = Rect2(370, 4, 79, 80)
 atlas = ExtResource("3_rhhvq")
 region = Rect2(7, 264, 54, 54)
 
-[node name="Graficadora" type="Control" node_paths=PackedStringArray("graficadora", "graficadoraDropdowns", "graficadora_UI_Interact")]
+[node name="Graficadora" type="Control" node_paths=PackedStringArray("graficadora", "graficadoraDropdowns", "graficadora_UI_Interact", "graficadora_anim_loading")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,10 +165,11 @@ script = ExtResource("1_cbirx")
 graficadora = NodePath("Graficadora")
 graficadoraDropdowns = NodePath("Graficadora_Dropdowns")
 graficadora_UI_Interact = NodePath("Graficadora_UI_Interact")
+graficadora_anim_loading = NodePath("Graficadora_Anim_Loading")
 metadata/_edit_vertical_guides_ = [345.0, 408.0, 1647.0]
 metadata/_edit_horizontal_guides_ = [754.0, 716.0]
 
-[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "fechaAnimPlayer", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "vertInfo", "horInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "Info", "ChartBackground", "ChartMaskInitial", "ChartValuesMask")]
+[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "fechaAnimPlayer", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "vertInfo", "horInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "Info", "ChartBackground", "ChartMaskInitial", "ChartValuesMask", "btnsSitios")]
 physics_interpolation_mode = 2
 script = ExtResource("3_x6pol")
 criticLevelColor = Color(1, 0, 0, 1)
@@ -201,6 +202,7 @@ Info = NodePath("../Content/Info")
 ChartBackground = NodePath("../Content/Info/Chart Background")
 ChartMaskInitial = NodePath("../Content/Info/Chart/ChartMaskInitial")
 ChartValuesMask = NodePath("../Content/Info/Chart/Chart Values Mask")
+btnsSitios = [NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio2"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio3"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio4"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio5"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio6"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio7"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio8")]
 
 [node name="Graficadora_Dropdowns" type="Node" parent="." node_paths=PackedStringArray("fromYear", "fromMonth", "fromDay", "fromTime")]
 script = ExtResource("2_xdapj")
@@ -209,7 +211,7 @@ fromMonth = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Me
 fromDay = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Dia")
 fromTime = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Hora e Intervalo/Hora")
 
-[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("firstToGrabFocus", "graficadora", "sitesBtnContainer", "sitesLastBtn", "scrollBar", "btnsSitios", "btnsGraficar", "dateYearDd", "dateMonthDd", "dateDayDd", "dateTimeDd")]
+[node name="Graficadora_UI_Interact" type="Node" parent="." node_paths=PackedStringArray("firstToGrabFocus", "graficadora", "sitesBtnContainer", "sitesLastBtn", "scrollBar", "btnsGraficar", "dateYearDd", "dateMonthDd", "dateDayDd", "dateTimeDd")]
 physics_interpolation_mode = 2
 script = ExtResource("1_xy25b")
 firstToGrabFocus = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Año")
@@ -217,7 +219,6 @@ graficadora = NodePath("..")
 sitesBtnContainer = NodePath("../Content/Sites/SitesBttnContainer")
 sitesLastBtn = NodePath("../Content/Sites/BtnGraficar")
 scrollBar = NodePath("../Content/Info/Chart/ScrollInfo")
-btnsSitios = [NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio2"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio3"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio4"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio5"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio6"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio7"), NodePath("../Content/Sites/SitesBttnContainer/Pfb_Item_BtnSitio8")]
 btnsGraficar = NodePath("../Content/Sites/BtnGraficar")
 dateYearDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Año")
 dateMonthDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Mes")

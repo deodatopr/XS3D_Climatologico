@@ -6,7 +6,6 @@ class_name GDs_Graficadora_UI_Interact extends Node
 @export var sitesBtnContainer:Control
 @export var sitesLastBtn:Button
 @export var scrollBar:HScrollBar
-@export var btnsSitios : Array[GDs_Graficadora_Item_BtnSitio] = []
 @export var btnsGraficar : Button
 @export_subgroup("Date Dropdowns")
 @export var dateYearDd: OptionButton
@@ -16,8 +15,6 @@ class_name GDs_Graficadora_UI_Interact extends Node
 var barraMenus: GDs_BarraMenus
 
 func Initialize(_dataService : GDs_DataService_Manager,_barraMenus: GDs_BarraMenus):
-	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
-	
 	graficadora.visibility_changed.connect(func x(): if graficadora.visibility_changed: firstToGrabFocus.grab_focus())
 	barraMenus = _barraMenus
 	
@@ -35,12 +32,6 @@ func Initialize(_dataService : GDs_DataService_Manager,_barraMenus: GDs_BarraMen
 	dateTimeDd.focus_neighbor_right = barraMenus.BtnConfig.get_path()
 	btnsGraficar.focus_neighbor_left = barraMenus.BtnMapa.get_path()
 	btnsGraficar.focus_neighbor_right = barraMenus.BtnConfig.get_path()
-	
-	var idx : int = 0
-	for btnSitio in btnsSitios:
-		var sitio : GDs_Data_Sitio = _dataService.estaciones[idx]
-		btnSitio.Initialize(sitio.color,sitio.id,sitio.nombre)
-		idx += 1
 
 func _process(delta):
 	if not graficadora.visible : return
@@ -48,7 +39,3 @@ func _process(delta):
 		scrollBar.value -= delta * 20
 	if Input.is_action_pressed("3DMove_RotHor_+"):
 		scrollBar.value += delta * 20
-		
-func OnBtnSitioPressed(_idCurrentSitio : int, _name:String):
-	for btnSitio in btnsSitios:
-		btnSitio.CheckBtnSelected(_idCurrentSitio)
