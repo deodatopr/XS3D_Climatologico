@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=31 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
@@ -7,10 +7,13 @@
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="3_x6pol"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Anim_Loading.gd" id="5_4v3su"]
 [ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://Cont_UI/Theme.tres" id="5_7a3ej"]
-[ext_resource type="PackedScene" uid="uid://dfte6j1ntmgao" path="res://Systems/Graficadora/Pfb_item_btn_sitio.tscn" id="8_jlxvg"]
+[ext_resource type="PackedScene" path="res://Systems/Graficadora/Pfb_item_btn_sitio.tscn" id="8_jlxvg"]
 
 [sub_resource type="Gradient" id="Gradient_j6alb"]
 colors = PackedColorArray(0, 0.55, 1, 0.470588, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jdgmv"]
+gradient = SubResource("Gradient_j6alb")
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1bi2m"]
 gradient = SubResource("Gradient_j6alb")
@@ -137,7 +140,7 @@ graficadora_UI_Interact = NodePath("Graficadora_UI_Interact")
 metadata/_edit_vertical_guides_ = [345.0, 408.0, 1647.0]
 metadata/_edit_horizontal_guides_ = [754.0, 716.0]
 
-[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
+[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground", "ChartMaskInitial", "ChartValuesMask")]
 physics_interpolation_mode = 2
 script = ExtResource("3_x6pol")
 criticLevelColor = Color(1, 0, 0, 1)
@@ -166,6 +169,8 @@ WhitoutHistory = NodePath("../Content/WhitoutHistory")
 InitialChart = NodePath("../Content/InitialChart")
 Info = NodePath("../Content/Info")
 ChartBackground = NodePath("../Content/Info/Chart Background")
+ChartMaskInitial = NodePath("../Content/Info/Chart/ChartMaskInitial")
+ChartValuesMask = NodePath("../Content/Info/Chart/Chart Values Mask")
 
 [node name="Graficadora_Dropdowns" type="Node" parent="." node_paths=PackedStringArray("fromYear", "fromMonth", "fromDay", "fromTime")]
 script = ExtResource("2_xdapj")
@@ -712,7 +717,29 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(671, 232)
 
+[node name="ChartMaskInitial" type="ColorRect" parent="Content/Info/Chart"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Degraded Chart" type="Polygon2D" parent="Content/Info/Chart/ChartMaskInitial"]
+texture = SubResource("GradientTexture1D_jdgmv")
+texture_scale = Vector2(0.47, 0.47)
+texture_rotation = -1.5708
+polygon = PackedVector2Array(1237, 41, 1239, 487, 0, 487)
+
+[node name="Line Chart" type="Line2D" parent="Content/Info/Chart/ChartMaskInitial"]
+points = PackedVector2Array(0, 488, 1234, 43)
+width = 5.0
+default_color = Color(0, 0.557249, 1, 1)
+
 [node name="ChartMask" type="ColorRect" parent="Content/Info/Chart"]
+visible = false
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -5932,6 +5959,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Loading" type="Control" parent="Content"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

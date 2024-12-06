@@ -34,6 +34,8 @@ class_name GDs_Graficadora extends Node
 @export var InitialChart : Control
 @export var Info : Control
 @export var ChartBackground : Control
+@export var ChartMaskInitial : Control
+@export var ChartValuesMask : Control
 
 const SEPARATION = 80
 
@@ -67,6 +69,18 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	lblDatesRange.visible = false
 	
 	SiteName.text = dataService.estaciones[0].nombre
+	
+	degradedChart.hide()
+	lineChart.hide()
+	ChartValuesMask.hide()
+	ChartMaskInitial.show()
+
+func _ShowChartInfo():
+	degradedChart.show()
+	lineChart.show()
+	ChartValuesMask.show()
+	ChartMaskInitial.hide()
+	
 
 func _RequestGraficar():
 	_GetDatesFromDropdown()
@@ -80,6 +94,7 @@ func _RequestGraficar():
 	
 	totalInfo = dataService.dataHistoricos.size()
 	Graficar(dataService.dataHistoricos)
+	_ShowChartInfo()
 	
 func _GetDatesFromDropdown():
 	var value_inicio_ano :int = int(inicio_Ano.get_item_text(inicio_Ano.selected) )
