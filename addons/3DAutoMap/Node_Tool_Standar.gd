@@ -147,3 +147,48 @@ func _on_reset_standard_pressed():
 	SuffN.text = "_N"
 	SuffE.text = "_E"
 	SuffO.text = "_O"
+
+
+func _on_reset_materials_pressed():
+	if !BaseColor.button_pressed and !Roughness.button_pressed and !Metallic.button_pressed and !Normal.button_pressed and !Emission.button_pressed and !Occlusion.button_pressed:
+		AutoMap.WarningMessage("Select at least 1 map connection")
+		return
+		
+	window = AutoMap.RemovedTexture(true)
+	
+	if window != null:
+		window.connect("confirmed", RemoveTextures)
+		
+func RemoveTextures():
+	var fileSystemSelPath : PackedStringArray
+	fileSystemSelPath.clear()
+	fileSystemSelPath = EditorInterface.get_selected_paths()
+	
+	for path in fileSystemSelPath:
+		if path.get_extension() == "tres":
+			var santandardMaterial : StandardMaterial3D = ResourceLoader.load(path)
+			if santandardMaterial is StandardMaterial3D:
+				
+				if BaseColor.button_pressed:
+					santandardMaterial.albedo_texture = null
+					AppliedTextures += 1
+					
+				if Roughness.button_pressed:
+					santandardMaterial.roughness_texture = null
+					AppliedTextures += 1
+					
+				if Metallic.button_pressed:
+					santandardMaterial.metallic_texture = null
+					AppliedTextures += 1
+					
+				if Normal.button_pressed:
+					santandardMaterial.normal_texture = null
+					AppliedTextures += 1
+					
+				if Emission.button_pressed:
+					santandardMaterial.emission_texture = null
+					AppliedTextures += 1
+					
+				if Occlusion.button_pressed:
+					santandardMaterial.ao_texture = null
+					AppliedTextures += 1

@@ -74,10 +74,20 @@ func FormatEstado(estado:int)->String:
 	else:
 		return "MICH"
 		
+		
 func _ValueToText(_value : float) -> String:
 	if is_nan(_value):
 		return txtNoData
 	else:
 		_value = roundf(_value)
 		return str(_value)
+		
+func FormatDateGraficadoraRango(_date : String):
+	var year : String =  _date.substr(2,4)
+	var month : String = _date.substr(5,2)
+	var day : String = _date.substr(8,2)
+	var hour : String = _date.substr(11,2)
+	var minute : String = _date.substr(14,2)
+	
+	return str(year,"/",month,"/",day," ",hour,":",minute)
 #endregion

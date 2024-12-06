@@ -31,10 +31,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Standard Mat" type="Panel" parent="TabContainer" node_paths=PackedStringArray("NameTexture", "NumDigits", "Extension", "ExampleName", "ExampleDigits", "ExampleExtension", "BaseColor", "Roughness", "Metallic", "Normal", "Emission", "Occlusion", "SuffBC", "SuffR", "SuffM", "SuffN", "SuffE", "SuffO", "AutoMap")]
-visible = false
 layout_mode = 2
 script = ExtResource("2_egssx")
 NameTexture = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit")
@@ -463,7 +462,13 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "RESET"
 
+[node name="Reset Materials" type="Button" parent="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "RESET MATERIAL TEXTURES"
+
 [node name="Shader Mat" type="Panel" parent="TabContainer" node_paths=PackedStringArray("NameTexture", "NumDigits", "Extension", "ExampleName", "ExampleDigits", "ExampleExtension", "AutoMap", "ParametersContainer")]
+visible = false
 layout_mode = 2
 script = ExtResource("3_dbgss")
 NameTexture = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit")
@@ -679,11 +684,17 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "RESET"
 
+[node name="Reset parameters" type="Button" parent="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "RESET MATERIAL PARAMETERS"
+
 [connection signal="text_changed" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_name_texture_text_changed"]
 [connection signal="item_selected" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_digits_number_item_selected"]
 [connection signal="item_selected" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionButton2" to="." method="_on_extension_item_selected"]
 [connection signal="pressed" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer10/ApplyStandard" to="TabContainer/Standard Mat" method="_on_apply_standard_pressed"]
 [connection signal="pressed" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer10/ResetStandard" to="." method="_on_reset_standard_pressed"]
+[connection signal="pressed" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/Reset Materials" to="TabContainer/Standard Mat" method="_on_reset_materials_pressed"]
 [connection signal="text_changed" from="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_name_texture_text_changed"]
 [connection signal="item_selected" from="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_digits_number_item_selected"]
 [connection signal="item_selected" from="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionButton2" to="." method="_on_extension_item_selected"]
@@ -691,3 +702,4 @@ text = "RESET"
 [connection signal="pressed" from="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer/AddElement" to="TabContainer/Shader Mat" method="_on_add_parameter_pressed"]
 [connection signal="pressed" from="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/ApplyShader" to="TabContainer/Shader Mat" method="_on_apply_shader_pressed"]
 [connection signal="pressed" from="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/ResetShader" to="." method="_on_reset_standard_pressed"]
+[connection signal="pressed" from="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer/Reset parameters" to="TabContainer/Shader Mat" method="_on_reset_parameters_pressed"]
