@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=30 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Dropdowns.gd" id="2_xdapj"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="3_rhhvq"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora.gd" id="3_x6pol"]
+[ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Anim_Loading.gd" id="5_4v3su"]
 [ext_resource type="Theme" uid="uid://d0o7330ujtqc4" path="res://Cont_UI/Theme.tres" id="5_7a3ej"]
 [ext_resource type="PackedScene" path="res://Systems/Graficadora/Pfb_item_btn_sitio.tscn" id="8_jlxvg"]
 
@@ -75,6 +76,14 @@ _data = {
 "Joystick": SubResource("Animation_agobv"),
 "RESET": SubResource("Animation_ff46r")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2e2h"]
+atlas = ExtResource("3_rhhvq")
+region = Rect2(468, 763, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj2er"]
+atlas = ExtResource("3_rhhvq")
+region = Rect2(478, 11, 15, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wv8um"]
 atlas = ExtResource("3_rhhvq")
@@ -178,6 +187,16 @@ dateYearDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/A
 dateMonthDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Mes")
 dateDayDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Dia")
 dateTimeDd = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Hora e Intervalo/Hora")
+
+[node name="Graficadora_Anim_Loading" type="Node" parent="." node_paths=PackedStringArray("Line1", "Line2", "Line3", "Dot1", "Dot2", "Dot3", "Dot4")]
+script = ExtResource("5_4v3su")
+Line1 = NodePath("../Content/Loading/ColorRect/TextureProgressBar")
+Line2 = NodePath("../Content/Loading/ColorRect/TextureProgressBar2")
+Line3 = NodePath("../Content/Loading/ColorRect/TextureProgressBar3")
+Dot1 = NodePath("../Content/Loading/ColorRect/Value Circle")
+Dot2 = NodePath("../Content/Loading/ColorRect/Value Circle2")
+Dot3 = NodePath("../Content/Loading/ColorRect/Value Circle3")
+Dot4 = NodePath("../Content/Loading/ColorRect/Value Circle4")
 
 [node name="Content" type="Control" parent="."]
 layout_mode = 1
@@ -5912,17 +5931,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Loading" type="Control" parent="Content"]
-visible = false
 layout_mode = 1
-anchor_left = 0.063
-anchor_top = 0.058
-anchor_right = 0.935
-anchor_bottom = 0.85
-offset_left = -1.96
-offset_top = 3.36
-offset_right = -1.20007
-offset_bottom = 3.0
-pivot_offset = Vector2(837, 427)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -429.5
+offset_top = -212.0
+offset_right = 809.5
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Content/Loading"]
 layout_mode = 1
@@ -5938,14 +5958,14 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(200, 200)
-color = Color(0.34, 0.34, 0.34, 1)
+color = Color(0.08, 0.08, 0.08, 0.862745)
 
 [node name="Value Circle" type="NinePatchRect" parent="Content/Loading/ColorRect"]
 layout_mode = 0
-offset_left = 62.5
-offset_top = 213.575
-offset_right = 102.5
-offset_bottom = 253.575
+offset_left = 62.0
+offset_top = 213.0
+offset_right = 102.0
+offset_bottom = 253.0
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("3_rhhvq")
 region_rect = Rect2(2.5266, 195.957, 64.1449, 62.635)
@@ -5958,22 +5978,21 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("3_rhhvq")
 region_rect = Rect2(70.2333, 202.559, 52.2241, 51.9318)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Content/Loading/ColorRect/Value Circle"]
+[node name="NinePatchRect" type="TextureRect" parent="Content/Loading/ColorRect/Value Circle"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -7.5
-offset_top = -7.5
-offset_right = 7.5
-offset_bottom = 7.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 7.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("3_rhhvq")
-region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
+texture = SubResource("AtlasTexture_i2e2h")
+expand_mode = 1
 
 [node name="Value Circle2" type="NinePatchRect" parent="Content/Loading/ColorRect"]
 layout_mode = 0
@@ -6080,11 +6099,6 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("3_rhhvq")
 region_rect = Rect2(467.036, 762.283, 43.9764, 43.6321)
 
-[node name="Line2D" type="Line2D" parent="Content/Loading/ColorRect"]
-position = Vector2(-29.5, -16.425)
-points = PackedVector2Array(113.5, 247.5, 188.5, 180.5, 273.5, 276.5, 378.5, 104.5)
-width = 5.0
-
 [node name="Label" type="Label" parent="Content/Loading/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
@@ -6102,6 +6116,60 @@ pivot_offset = Vector2(80, 11)
 text = "CARGANDO GRÁFICA"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Content/Loading/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = 31.0
+offset_right = -18.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.733038
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_kj2er")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="Content/Loading/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -35.0
+offset_right = 86.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.829031
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_kj2er")
+
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="Content/Loading/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = 60.0
+offset_right = 240.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.03847
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_kj2er")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Content/Loading"]
 visible = false
