@@ -51,6 +51,38 @@ func ComfirmationWindow(NameTexture : LineEdit, NumDigits : OptionButton, Extens
 	
 	return window
 
+func RemovedTexture(standard : bool = true)->Window:
+	fileSystemSelPath.clear()
+	fileSystemSelPath = EditorInterface.get_selected_paths()
+	var MaterialsSelected : int = 0
+	
+	for path in fileSystemSelPath:
+		if path.get_extension() == "tres":
+			var SelectedMaterial = ResourceLoader.load(path)
+			if standard:
+				if SelectedMaterial is StandardMaterial3D:
+					MaterialsSelected += 1
+			else:
+				if SelectedMaterial is ShaderMaterial:
+					MaterialsSelected += 1
+	
+	if window != null:
+		window.grab_focus()
+		
+	var dialog = Label.new()
+	dialog.text = "Selected " + str(MaterialsSelected) + " Material(s)\n Do you want to removed?"
+	dialog.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	dialog.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	window = ConfirmationDialog.new()
+	window.size = Vector2i(200, 100)
+	
+	EditorInterface.popup_dialog_centered(window)
+	
+	window.add_child(dialog)
+	window.about_to_popup
+	
+	return window
+
 func WarningMessage(Message : String):
 	if window != null:
 		window.grab_focus()

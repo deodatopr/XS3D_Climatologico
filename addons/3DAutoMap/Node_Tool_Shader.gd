@@ -51,7 +51,7 @@ func AutoAssingTextures(MaterialFile : ShaderMaterial, FileName : String):
 		for Suffix in Textures.keys():
 			if Param.TextureSuff.text == Suffix:
 				AppliedTextures += 1
-				MaterialFile.set_shader_parameter(Param.ParameterName.text, Textures[Suffix])
+				MaterialFile.set_shader_parameter(Param.option_button.get_item_text(Param.option_button.get_selected_id()), Textures[Suffix])
 	
 func GetDigitsOfMaterial(MaterialName : String, NumUnits : int)->String:
 	return MaterialName.split(".")[0].right(NumUnits)
@@ -102,3 +102,35 @@ func _on_reset_standard_pressed():
 		Param.queue_free()
 	
 	ShaderParameters.clear()
+
+
+func _on_reset_parameters_pressed():
+	if ShaderParameters.size() == 0:
+		AutoMap.WarningMessage("Add at least 1 parameter")
+		return
+	
+	var validParameter : bool = false
+	for param in ShaderParameters:
+		if param.option_button.get_selected_id() != 0:
+			validParameter = true
+			
+	if !validParameter:
+		AutoMap.WarningMessage("Select at least 1 valid parameter")
+		return
+		
+	window = AutoMap.RemovedTexture(false)
+	
+	if window != null:
+		window.connect("confirmed", RemoveTextures)
+
+func RemoveTextures():
+	var fileSystemSelPath : PackedStringArray
+	fileSystemSelPath.clear()
+	fileSystemSelPath = EditorInterface.get_selected_paths()
+	
+	for path in fileSystemSelPath:
+		if path.get_extension() == "tres":
+			var shaderMaterial : ShaderMaterial = ResourceLoader.load(path)
+			if shaderMaterial is ShaderMaterial:
+				for Param in ShaderParameters:
+					shaderMaterial.set_shader_parameter(Param.option_button.get_item_text(Param.option_button.get_selected_id()), null)
