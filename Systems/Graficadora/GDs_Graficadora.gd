@@ -70,6 +70,9 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	
 	SiteName.text = dataService.estaciones[0].nombre
 	
+	SiteName.text = "GRAFICADORA"
+	lblDatesRange.hide()
+	
 	degradedChart.hide()
 	lineChart.hide()
 	ChartValuesMask.hide()
