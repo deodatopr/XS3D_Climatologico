@@ -1,4 +1,4 @@
-extends Node
+class_name GDs_Graficadora_Anim_Loading extends Node
 
 @export_group("AnimLoading")
 @export var Line1: TextureProgressBar
@@ -11,8 +11,7 @@ extends Node
 
 var loadingTween: Tween
 
-func _ready():
-	CargandoDatos()
+signal FinishedAnimLoading
 
 func CargandoDatos():	
 #------LOGO ANIMATION--------
@@ -35,10 +34,8 @@ func CargandoDatos():
 	loadingTween.tween_property(Dot4,"scale",Vector2(1,1),0.3)
 	
 	await loadingTween.finished
-	
-	await get_tree().create_timer(1).timeout
-	
-	CargandoDatos()
+	await get_tree().create_timer(.07).timeout
+	FinishedAnimLoading.emit()
 	
 	#if historicosReady:
 		#ContLoading.hide()

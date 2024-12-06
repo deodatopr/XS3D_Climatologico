@@ -38,6 +38,7 @@ class_name GDs_Graficadora extends Node
 @export var ChartBackground : Control
 @export var ChartMaskInitial : Control
 @export var ChartValuesMask : Control
+@export var btnsSitios : Array[GDs_Graficadora_Item_BtnSitio] = []
 
 const SEPARATION = 80
 
@@ -45,6 +46,7 @@ var dateFromStruct : DateStruct = DateStruct.new()
 var dateToStruct : DateStruct = DateStruct.new()
 
 var dataService : GDs_DataService_Manager
+var graf_loading : GDs_Graficadora_Anim_Loading
 
 var crrntHistoricos : Array[GDs_Data_EP_Historicos]
 
@@ -58,8 +60,9 @@ var datePool : Array[Label]
 var isDragingChart : bool
 var siteId : int = -1
 
-func Initialize(_dataService : GDs_DataService_Manager):
+func Initialize(_dataService : GDs_DataService_Manager, _graf_loading : GDs_Graficadora_Anim_Loading):
 	dataService = _dataService
+	graf_loading = _graf_loading
 	
 	btnGraficar.pressed.connect(_RequestGraficar.bind(true))
 	SIGNALS.OnBtnGraficadoraMenuPressed.connect(_RequestGraficar.bind(false))
@@ -67,6 +70,12 @@ func Initialize(_dataService : GDs_DataService_Manager):
 	ScrollInfo.scrolling.connect(_on_h_scroll_bar_scrolling)
 	ScrollInfo.value_changed.connect(_on_scroll_info_value_changed)
 	SIGNALS.On_BtnSitioPressed.connect(OnBtnSitioPressed)
+	
+	var idx : int = 0
+	for btnSitio in btnsSitios:
+		var sitio : GDs_Data_Sitio = _dataService.estaciones[idx]
+		btnSitio.Initialize(sitio.color,sitio.id,sitio.nombre)
+		idx += 1
 	
 	#obtengo la altura de la grafica
 	VertLenght = Chart.size.y
@@ -124,6 +133,9 @@ func OnBtnSitioPressed(_id : int, _name : String):
 	siteId = _id
 	SiteName.text = _name
 	
+	for btnSitio in btnsSitios:
+		btnSitio.CheckBtnSelected(_id)
+
 func UpdateDatesHorValues():
 	if !Info.visible || crrntHistoricos.is_empty():
 		return
@@ -181,12 +193,17 @@ func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	if _arrayHistoricos.size() > 0:
 		crrntHistoricos.clear()
 		crrntHistoricos = _arrayHistoricos
+		
+		await graf_loading.FinishedAnimLoading
+		
 		WhitoutHistory.visible = false
 		Info.visible = true
 		horChartLines.visible = true
 		LoadingScreen.visible = false
+		
 		#tarda un frame en acomodar la posicion de todas las barras verticales, que son las que guian los puntos de la grafica
 		await get_tree().create_timer(0.01).timeout
+		
 		#actualizo la posicion de los valores de la grafica
 		_Graficar_Puntos()
 		_Graficar_Valores(_arrayHistoricos)
@@ -211,6 +228,8 @@ func Graficar_AreInputsValid(_isByBtn : bool) -> bool:
 		return false
 		
 	if not sitioIdIsValid:
+		for btnSitio in btnsSitios:
+			btnSitio.PlayMissingSitio()
 		return false
 	
 	ChartBackground.visible = true
@@ -218,7 +237,9 @@ func Graficar_AreInputsValid(_isByBtn : bool) -> bool:
 	Info.visible = false
 	WhitoutHistory.visible = false
 	horChartLines.visible = false
+	
 	LoadingScreen.visible = true
+	graf_loading.CargandoDatos()
 
 	ScrollInfo.value = ScrollInfo.max_value
 	return true
