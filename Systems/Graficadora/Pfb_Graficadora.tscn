@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=27 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
@@ -28,6 +28,10 @@ corner_radius_bottom_left = 5
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_561a0"]
+atlas = ExtResource("3_rhhvq")
+region = Rect2(7, 264, 54, 54)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_iddxr"]
 atlas = ExtResource("3_rhhvq")
 region = Rect2(300, 206, 162, 162)
@@ -35,6 +39,42 @@ region = Rect2(300, 206, 162, 162)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfkwh"]
 atlas = ExtResource("3_rhhvq")
 region = Rect2(478, 739, 23, 20)
+
+[sub_resource type="Animation" id="Animation_agobv"]
+resource_name = "Joystick"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JoystickTop:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(24, -0.25, 0, 0.233333, -7.5, 15, -0.25, 0, 0.25, 0, 24, -0.233333, -9.5, 0.266667, -0.5, 24, -0.233334, -0.5, 0.266184, 9.5, 33, -0.25, 0, 0.25, 0, 24, -0.267149, 9.5, 0.233333, 50.5),
+"times": PackedFloat32Array(0, 0.5, 1, 3, 3.5, 4)
+}
+
+[sub_resource type="Animation" id="Animation_ff46r"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JoystickTop:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32jhg"]
+_data = {
+"Joystick": SubResource("Animation_agobv"),
+"RESET": SubResource("Animation_ff46r")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wv8um"]
 atlas = ExtResource("3_rhhvq")
@@ -86,7 +126,7 @@ graficadora = NodePath("Graficadora")
 graficadoraDropdowns = NodePath("Graficadora_Dropdowns")
 graficadora_UI_Interact = NodePath("Graficadora_UI_Interact")
 metadata/_edit_vertical_guides_ = [345.0, 408.0, 1647.0]
-metadata/_edit_horizontal_guides_ = [750.0]
+metadata/_edit_horizontal_guides_ = [754.0, 716.0]
 
 [node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "InitialChart", "Info", "ChartBackground")]
 physics_interpolation_mode = 2
@@ -697,37 +737,70 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 1.0
+offset_left = 4.0
 offset_top = -20.0
-offset_right = 74.0
+offset_right = 77.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Joystick" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
+[node name="Joystick2" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.5
-offset_top = -16.5
-offset_right = 16.5
-offset_bottom = 16.5
+offset_left = -18.5
+offset_top = -19.0
+offset_right = 19.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_561a0")
+expand_mode = 1
+
+[node name="JoystickTop" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = -32.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_561a0")
+expand_mode = 1
+
+[node name="Joystick" type="TextureRect" parent="Content/Info/Chart/ScrollInfo/Icon2/JoystickTop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_iddxr")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Content/Info/Chart/ScrollInfo/Icon2/Joystick"]
+[node name="Label" type="Label" parent="Content/Info/Chart/ScrollInfo/Icon2/JoystickTop/Joystick"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "R"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -737,8 +810,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = -2.0
 offset_top = -10.0
-offset_right = 23.0
+offset_right = 21.0
 offset_bottom = 10.0
 grow_vertical = 2
 rotation = -1.5708
@@ -753,8 +827,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -23.0
+offset_left = -19.0
 offset_top = -10.0
+offset_right = 4.0
 offset_bottom = 10.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -762,6 +837,12 @@ rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(11, 10)
 texture = SubResource("AtlasTexture_sfkwh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Content/Info/Chart/ScrollInfo/Icon2"]
+libraries = {
+"": SubResource("AnimationLibrary_32jhg")
+}
+autoplay = "Joystick"
 
 [node name="Chart Values Mask" type="ColorRect" parent="Content/Info/Chart"]
 clip_children = 1
