@@ -168,7 +168,7 @@ graficadora_UI_Interact = NodePath("Graficadora_UI_Interact")
 metadata/_edit_vertical_guides_ = [345.0, 408.0, 1647.0]
 metadata/_edit_horizontal_guides_ = [754.0, 716.0]
 
-[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "vertInfo", "horInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "Info", "ChartBackground", "ChartMaskInitial", "ChartValuesMask")]
+[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("inicio_Ano", "inicio_Mes", "inicio_Dia", "inicio_Hora", "inicio_Intervalo", "fechaAnimPlayer", "btnGraficar", "degradedChart", "lineChart", "ChartBoxContainer", "Chart", "horChartLines", "horTimeInfo", "vertInfo", "horInfo", "ScrollInfo", "SitesBttnContainer", "SiteName", "lblDatesRange", "LoadingScreen", "WhitoutHistory", "Info", "ChartBackground", "ChartMaskInitial", "ChartValuesMask")]
 physics_interpolation_mode = 2
 script = ExtResource("3_x6pol")
 criticLevelColor = Color(1, 0, 0, 1)
@@ -181,6 +181,7 @@ inicio_Mes = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/M
 inicio_Dia = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Fecha/Dia")
 inicio_Hora = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Hora e Intervalo/Hora")
 inicio_Intervalo = NodePath("../Content/Sites/Inputs/MarginContainer/Dropdowns/Hora e Intervalo/Intervalo")
+fechaAnimPlayer = NodePath("../Content/Sites/Fecha_AnimPlayer")
 btnGraficar = NodePath("../Content/Sites/BtnGraficar")
 degradedChart = NodePath("../Content/Info/Chart/ChartMask/Degraded Chart")
 lineChart = NodePath("../Content/Info/Chart/ChartMask/Line Chart")
