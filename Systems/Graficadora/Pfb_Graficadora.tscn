@@ -588,6 +588,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -596,7 +597,7 @@ mouse_filter = 2
 texture = SubResource("GradientTexture1D_jdgmv")
 texture_scale = Vector2(0.47, 0.47)
 texture_rotation = -1.5708
-polygon = PackedVector2Array(1237, 41, 1239, 487, 0, 487)
+polygon = PackedVector2Array(1237, 41, 1239, 487, 616.8, 487, 0, 487)
 
 [node name="Line Chart" type="Line2D" parent="Content/Info/Chart/ChartMaskInitial"]
 points = PackedVector2Array(0, 488, 1234, 43)

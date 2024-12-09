@@ -10,7 +10,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5b2h2"]
 
-[node name="AutoMap" type="Control" node_paths=PackedStringArray("TabOption", "AutoMapStandard", "AutoMapShader")]
+[node name="Auto Map" type="Control" node_paths=PackedStringArray("TabOption", "AutoMapStandard", "AutoMapShader")]
 layout_mode = 3
 anchor_right = 0.234
 anchor_bottom = 0.671
@@ -31,9 +31,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 1
 
 [node name="Standard Mat" type="Panel" parent="TabContainer" node_paths=PackedStringArray("NameTexture", "NumDigits", "Extension", "ExampleName", "ExampleDigits", "ExampleExtension", "BaseColor", "Roughness", "Metallic", "Normal", "Emission", "Occlusion", "SuffBC", "SuffR", "SuffM", "SuffN", "SuffE", "SuffO", "AutoMap")]
+visible = false
 layout_mode = 2
 script = ExtResource("2_egssx")
 NameTexture = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit")
@@ -460,15 +461,14 @@ custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "RESET"
+text = " RESET VALUES "
 
 [node name="Reset Materials" type="Button" parent="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "RESET MATERIAL TEXTURES"
+text = "CLEAR MATERIAL TEXTURES"
 
 [node name="Shader Mat" type="Panel" parent="TabContainer" node_paths=PackedStringArray("NameTexture", "NumDigits", "Extension", "ExampleName", "ExampleDigits", "ExampleExtension", "AutoMap", "ParametersContainer")]
-visible = false
 layout_mode = 2
 script = ExtResource("3_dbgss")
 NameTexture = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit")
@@ -682,12 +682,12 @@ custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "RESET"
+text = " RESET VALUES "
 
 [node name="Reset parameters" type="Button" parent="TabContainer/Shader Mat/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "RESET MATERIAL PARAMETERS"
+text = "CLEAR MATERIAL PARAMETERS"
 
 [connection signal="text_changed" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_name_texture_text_changed"]
 [connection signal="item_selected" from="TabContainer/Standard Mat/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_digits_number_item_selected"]

@@ -191,18 +191,14 @@ func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	
 	#si no recive valores, muestre la pantalla sin historia
 	if _arrayHistoricos.size() > 0:
+		var infoModulate : Color = Info.modulate
+		infoModulate.a = 0
+		Info.modulate = infoModulate
+		Info.visible = true
+		
 		crrntHistoricos.clear()
 		crrntHistoricos = _arrayHistoricos
 		
-		await graf_loading.FinishedAnimLoading
-		
-		WhitoutHistory.visible = false
-		Info.visible = true
-		horChartLines.visible = true
-		LoadingScreen.visible = false
-		
-		#tarda un frame en acomodar la posicion de todas las barras verticales, que son las que guian los puntos de la grafica
-		await get_tree().create_timer(0.01).timeout
 		
 		#actualizo la posicion de los valores de la grafica
 		_Graficar_Puntos()
@@ -213,6 +209,16 @@ func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 		_on_h_scroll_bar_scrolling()
 		UpdateDatesHorValues()
 		ScrollInfo.value = 0
+		
+		await graf_loading.FinishedAnimLoading
+		
+		WhitoutHistory.visible = false
+		LoadingScreen.visible = false
+		horChartLines.visible = true
+		infoModulate.a = 1
+		Info.modulate = infoModulate
+		
+
 	else:
 		WhitoutHistory.visible = true
 		LoadingScreen.visible = false
