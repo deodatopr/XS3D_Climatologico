@@ -102,5 +102,5 @@ func UpdateFromDayDropdown():
 func UpdateFromTimeDropdown():
 	SetAllDisable(fromTime,false)
 	if fromDay.selected == Time.get_datetime_dict_from_system().day and fromMonth.selected == Time.get_datetime_dict_from_system().month and fromYear.get_item_text(fromYear.selected) == str(Time.get_datetime_dict_from_system().year):
-		for time in range(Time.get_datetime_dict_from_system().hour + 1,24):
+		for time in range(Time.get_datetime_dict_from_system().hour + 2,25):
 			fromTime.set_item_disabled(time ,true)
