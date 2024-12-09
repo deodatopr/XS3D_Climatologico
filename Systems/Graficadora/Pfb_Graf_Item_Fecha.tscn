@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://pmut2eetw36n"]
+
+[node name="Hor Container" type="Control"]
+custom_minimum_size = Vector2(68.41, 40)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Hor Unit" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -25.5
+offset_right = 26.0
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 17
+text = "08:30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hor Unit2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -8.5
+offset_right = 39.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "2024-11-11"
+horizontal_alignment = 1
+vertical_alignment = 1

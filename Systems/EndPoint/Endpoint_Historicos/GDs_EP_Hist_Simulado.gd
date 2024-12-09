@@ -25,7 +25,7 @@ func GenerateRandomValues(_fromDate : String):
 		var rng = RandomNumberGenerator.new()
 		var NewData : GDs_Data_EP_Historicos = GDs_Data_EP_Historicos.new()
 		NewData.idSignals = 1
-		NewData.valor = rng.randi_range(0, 20)
+		NewData.valor = rng.randi_range(2, 20)
 		NewData.tiempo = dateValue
 		arrayDatos.append(NewData)
 		

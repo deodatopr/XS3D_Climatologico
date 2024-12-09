@@ -10,6 +10,10 @@ class_name GDs_Graficadora extends Node
 @export var safeLevelColor : Color
 @export var safeLevelRange : int
 
+@export_subgroup("Pivots")
+@export var pivotYMaxValue : Control
+@export var pivotYMinValue : Control
+
 @export_subgroup("Dropdowns")
 @export var inicio_Ano : OptionButton
 @export var inicio_Mes : OptionButton
@@ -54,7 +58,7 @@ var VertLenght : float
 var currentCharInfo : int = 12
 var totalInfo : int = 52
 var linesPool : Array[NinePatchRect]
-var valuesPool : Array[NinePatchRect]
+var valuesPool : Array[Control]
 var hrsPool : Array[Label]
 var datePool : Array[Label]
 var isDragingChart : bool
@@ -142,9 +146,6 @@ func UpdateDatesHorValues():
 
 	#actualiza la separacion entre las lineas verticales y las horas, para mostra mas datos en pantalla
 	if currentCharInfo < totalInfo - 1:
-		
-		horTimeInfo.add_theme_constant_override("separation", int((Chart.size.x/currentCharInfo) - 7))
-		horChartLines.add_theme_constant_override("separation", int((Chart.size.x/currentCharInfo)-7))
 		#tarda un frame en acomodar la posicion de todas las barras verticales, que son las que guian los puntos de la grafica
 		await get_tree().create_timer(0.001).timeout
 		#actualizo la posicion de los valores de la grafica
@@ -152,33 +153,33 @@ func UpdateDatesHorValues():
 		_Graficar_Valores(crrntHistoricos)
 		
 		#actualiza el tamaño del contenedor de las lineas verticales, para que el scrollbar solo recorra el largo de las lineas verticales visibles
-		horChartLines.size.x = linesPool[totalInfo - 1].position.x + SEPARATION
+		#horChartLines.size.x = linesPool[totalInfo - 1].position.x + SEPARATION
 		_on_h_scroll_bar_scrolling()
 		
-		var setFirstRect = false
-		var rect1 : Rect2
-		var index = datePool.size() - 1
-		for time in datePool:
-			if !datePool[index].visible:
-				index -= 1
-				continue
-			
-			if !setFirstRect:
-				rect1.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer"))
-				rect1.size = datePool[index].size  + Vector2(5, 0)
-				setFirstRect = true
-				index -= 1
-				continue
-				
-			var rect2 : Rect2
-			rect2.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer"))
-			rect2.size = datePool[index].size + Vector2(5, 0)
-			
-			if rect1.intersects(rect2):
-				setFirstRect = false
-				hrsPool[index].visible = false
-				datePool[index].visible = false
-			index -= 1
+		#var setFirstRect = false
+		#var rect1 : Rect2
+		#var index = datePool.size() - 1
+		#for time in datePool:
+			#if !datePool[index].visible:
+				#index -= 1
+				#continue
+			#
+			#if !setFirstRect:
+				#rect1.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer"))
+				#rect1.size = datePool[index].size  + Vector2(5, 0)
+				#setFirstRect = true
+				#index -= 1
+				#continue
+				#
+			#var rect2 : Rect2
+			#rect2.position.x = (index * horTimeInfo.get_theme_constant("separation", "HBoxContainer"))
+			#rect2.size = datePool[index].size + Vector2(5, 0)
+			#
+			#if rect1.intersects(rect2):
+				#setFirstRect = false
+				#hrsPool[index].visible = false
+				#datePool[index].visible = false
+			#index -= 1
 #endregion
 
 #region [ GRAFICAR ]
@@ -258,15 +259,15 @@ func _Graficar_Valores(_data : Array[GDs_Data_EP_Historicos]):
 			var date = _data[i].tiempo.split("T")
 			var timeHrMin = _data[i].tiempo.substr(11,5)
 			hrsPool[i].text = timeHrMin
-			hrsPool[i].position.y = 0
 			datePool[i].text = date[0].erase(0, 2)
-			datePool[i].position.y = 17
 		else:
 			hrsPool[i].text = "---"
 			datePool[i].text = "---"
 			
 		#seteo la posicion del value en y
-		valuesPool[i].position.y = lerpf(VertLenght, 0.0, _data[i].valor/20.0) - (valuesPool[i].size.y/2)
+		var posY01 : float = inverse_lerp(0,20,_data[i].valor)
+		valuesPool[i].position.y = 0
+		valuesPool[i].global_position.y = lerpf(pivotYMinValue.global_position.y, pivotYMaxValue.global_position.y,posY01)
 		
 		#obtiene todos los nodos hijos de los circulos de los valores para poder pintarlos
 		var ValuesColor : Array[NinePatchRect] = []
@@ -279,7 +280,7 @@ func _Graficar_Valores(_data : Array[GDs_Data_EP_Historicos]):
 		ValueLabel.text = str(_data[i].valor)
 		
 		#pinta todos los nodos de los colores segun el peligro
-		for value in ValuesColor:		
+		for value in ValuesColor:
 			if _data[i].valor >= criticLevelRange:
 				value.modulate = criticLevelColor
 			elif _data[i].valor < criticLevelRange and _data[i].valor >= dangerLevelRange:
@@ -307,8 +308,7 @@ func _Graficar_Puntos():
 				IsFirstLinePosition = false
 			points.append(Vector2(Line.position.x, 50))
 			lastLinePosition = Line.position.x
-			
-			valuesPool[index].position.x = Line.position.x
+
 			index += 1
 	
 	lineChart.points = points
@@ -332,7 +332,7 @@ func _Graficar_Lineas():
 	index = 0
 	valuesPool.clear()
 	for value in ChartBoxContainer.get_children():
-		if value.get_class() == "NinePatchRect":
+		if value.get_class() == "Control":
 			if index >= totalInfo:
 				value.visible = false
 			else:
@@ -340,23 +340,18 @@ func _Graficar_Lineas():
 				valuesPool.append(value)
 			index += 1
 	
-	index = 0
 	hrsPool.clear()
 	datePool.clear()
+	
 	for label in horTimeInfo.get_children(true):
-		if index >= totalInfo:
-			label.visible = false
-		else:
 			label.visible = true
-			label.get_child(0).add_theme_font_size_override("font_size", 17)
 			hrsPool.append(label.get_child(0))
-			label.get_child(1).add_theme_font_size_override("font_size", 12)
 			datePool.append(label.get_child(1))
-		index += 1
 #endregion
 
 #region [ SCROLL ]
 func _input(event):
+	return
 	if event is InputEventMouseMotion and isDragingChart:
 		var delta = event.relative.x
 		if delta > 0:
@@ -365,19 +360,22 @@ func _input(event):
 			ScrollInfo.value += currentCharInfo / 12.0
 
 func _on_chart_gui_input(event):
+	return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		isDragingChart = true
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 		isDragingChart = false
 
 func _on_h_scroll_bar_scrolling():
+	return
 	#mueve en x todos lo valores de la grafica segun el valor del scrollbar y el tamaño del contenedor de las lineas verticales
 	var HorPosition : float = (ScrollInfo.value*-(horChartLines.size.x-Chart.size.x))/ScrollInfo.max_value
 	horChartLines.position.x = HorPosition
 	degradedChart.position.x = HorPosition
 	lineChart.position.x = HorPosition
 	ChartBoxContainer.position.x = HorPosition
-	horTimeInfo.position.x = HorPosition + abs(hrsPool[0].position.x)
+	if hrsPool.size() > 0:
+		horTimeInfo.position.x = HorPosition + abs(hrsPool[0].position.x)
 
 func _on_scroll_info_value_changed(_arg):
 	_on_h_scroll_bar_scrolling()
