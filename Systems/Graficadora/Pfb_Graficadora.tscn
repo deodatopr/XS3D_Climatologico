@@ -149,7 +149,7 @@ criticLevelColor = Color(1, 0, 0, 1)
 criticLevelRange = 16
 dangerLevelColor = Color(1, 0.614498, 0, 1)
 dangerLevelRange = 10
-safeLevelColor = Color(0, 0.110118, 1, 1)
+safeLevelColor = Color(0, 0.444322, 1, 1)
 pivotYMaxValue = NodePath("../Content/Graphic/ScrollContainer - Graphic/Container/Pivot - PosYMaxValue")
 pivotYMinValue = NodePath("../Content/Graphic/ScrollContainer - Graphic/Container/Pivot - PosYMinValue")
 dpwnAno = NodePath("../Content/Options To Graphic/Container - Dropdowns Date/MarginContainer/Dropdowns/Fecha/Año")
@@ -459,7 +459,6 @@ region_rect = Rect2(485, 937, 12, 50.705)
 [node name="====================" type="Node" parent="Content"]
 
 [node name="Graphic Initial" type="ColorRect" parent="Content"]
-visible = false
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -478,9 +477,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -294.5
+offset_top = -286.5
 offset_right = 65.0
-offset_bottom = 253.5
+offset_bottom = 261.5
 grow_vertical = 2
 pivot_offset = Vector2(59, 303)
 theme_override_constants/separation = 80
@@ -490,7 +489,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "--"
+text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -498,7 +497,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.625474, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "--"
+text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -506,7 +505,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.625474, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "--"
+text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -514,7 +513,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.391812, 1, 1)
 theme_override_font_sizes/font_size = 25
-text = "--"
+text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -522,7 +521,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.391812, 1, 1)
 theme_override_font_sizes/font_size = 25
-text = "--"
+text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -672,7 +671,54 @@ pivot_offset = Vector2(671, 3)
 texture = ExtResource("3_rhhvq")
 region_rect = Rect2(997, 135, 21, 0.5)
 
+[node name="Items - Dates" type="HBoxContainer" parent="Content/Graphic Initial"]
+top_level = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -227.0
+offset_right = 802.0
+offset_bottom = -187.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 55
+
+[node name="FechaValue" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue2" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue3" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue4" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue5" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue6" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue7" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue8" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue9" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
+[node name="FechaValue10" parent="Content/Graphic Initial/Items - Dates" instance=ExtResource("8_auhs3")]
+layout_mode = 2
+
 [node name="Graphic" type="Control" parent="Content"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1708,8 +1754,23 @@ offset_right = 132.0
 offset_bottom = -4.0
 text = "1. INGRESAR FECHA"
 
-[node name="Lbl - 2 Selecciona Sitio" type="Label" parent="Content/Options To Graphic"]
+[node name="Control" type="Control" parent="Content/Options To Graphic"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="Lbl - 2 Selecciona Sitio" type="Label" parent="Content/Options To Graphic/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -6.5
+offset_right = 161.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "2. SELECCIONAR SITIO"
 
 [node name="Sitios" type="NinePatchRect" parent="Content/Options To Graphic"]
@@ -1786,7 +1847,7 @@ size_flags_vertical = 8
 focus_neighbor_top = NodePath("../Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio8")
 focus_neighbor_bottom = NodePath("../Container - Dropdowns Date/MarginContainer/Dropdowns/Fecha/Año")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0ba41")
-text = "Graficar"
+text = "GRAFICAR"
 
 [node name="Container - Close Inputs Help" type="NinePatchRect" parent="Content"]
 visible = false
