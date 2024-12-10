@@ -3,7 +3,6 @@ class_name GDs_Graficadora_Item_BtnSitio extends Button
 @export var idPatch : Control
 @export var lblId : Label
 @export var lblName : Label
-@export var animPlayer : AnimationPlayer
 
 
 var id : int
@@ -24,7 +23,3 @@ func CheckBtnSelected(_idCurrentSitio : int):
 
 func OnBtnPressed():
 	SIGNALS.On_BtnSitioPressed.emit(id,siteName)
-	
-func PlayMissingSitio():
-	animPlayer.stop()
-	animPlayer.play("SelectedMissing")

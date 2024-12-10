@@ -39,6 +39,7 @@ class_name GDs_Graficadora extends Node
 @export var graphicInitial : Control
 @export var graphic : Control
 @export var fechaAnimPlayer : AnimationPlayer
+@export var sitiosAnimPlayer : AnimationPlayer
 @export var joystickAnim : Control
 @export var btnsSitios : Array[GDs_Graficadora_Item_BtnSitio] = []
 
@@ -180,12 +181,12 @@ func Graficar(_arrayHistoricos : Array[GDs_Data_EP_Historicos]):
 	#si no recibe valores, muestre la pantalla sin historia
 	if _arrayHistoricos.size() > 0:
 		_Graficar_Valores(_arrayHistoricos)
-		scrollContainerGraphic.scroll_horizontal = 0
 		
 		await graf_loading.FinishedAnimLoading
 
 		_ShowPopup_Loading(false)
 		
+		scrollContainerGraphic.scroll_horizontal = 0
 		itemsPointsValues.modulate.a = 1
 		lblDatesRange.text = str("Rango:   ",UTILITIES.FormatDateGraficadoraRango(_arrayHistoricos[0].tiempo), "   -    ",UTILITIES.FormatDateGraficadoraRango(_arrayHistoricos[_arrayHistoricos.size() - 1].tiempo))
 	else:
@@ -202,8 +203,8 @@ func _Graficar_AreInputsValid(_isByBtn : bool) -> bool:
 		return false
 		
 	if not sitioIdIsValid:
-		for btnSitio in btnsSitios:
-			btnSitio.PlayMissingSitio()
+		sitiosAnimPlayer.stop()
+		sitiosAnimPlayer.play("SiteMissing")
 		return false
 	
 	popupNoHistory.visible = false

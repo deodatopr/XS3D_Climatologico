@@ -139,6 +139,7 @@ func OnBtnDatosFocus():
 	UTILITIES.TurnOffObject(menuMapa)
 	UTILITIES.TurnOffObject(menuConfig)
 	UTILITIES.TurnOnObject(menuDatos)
+	SIGNALS.OnBtnGraficadoraMenuPressed.emit()
 	BtnSitios.button_pressed = false
 	BtnMapa.button_pressed = false
 	BtnConfig.button_pressed = false
