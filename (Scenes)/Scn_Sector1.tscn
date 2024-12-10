@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://xs8scph7gqy3"]
+[gd_scene load_steps=31 format=3 uid="uid://xs8scph7gqy3"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_wyq6t"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_0qoah"]
+[ext_resource type="Texture2D" uid="uid://c8sb3bndt4ba8" path="res://Cont_Models/Sector1/Map_Sect1_Minimap.jpg" id="3_k1i1w"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="17_araxv"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="24_ndxsl"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="25_blcia"]
@@ -83,6 +84,9 @@ miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
+
+[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1"]
+map_minimap = ExtResource("3_k1i1w")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
