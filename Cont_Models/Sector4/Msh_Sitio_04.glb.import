@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dsk1fsrkgucsg"
+uid="uid://dgkqgmcdiarge"
 path="res://.godot/imported/Msh_Sitio_04.glb-06f0883ad237452a8503058de39b6053.scn"
 
 [deps]
@@ -19,16 +19,16 @@ nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
-meshes/generate_lods=false
+meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=false
-animation/import=false
+skins/use_named_skins=true
+animation/import=true
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=false
+animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
@@ -37,17 +37,13 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Water.tres"
 },
-"Mat_LightBeam": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam.tres"
-},
-"Mat_LightBeam_04": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_04.tres"
-},
 "Mat_Sitio_Asfalto": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Asfalto.tres"
+},
+"Mat_Sitio_Concreto01_Mix": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Concreto01_Mix.tres"
 },
 "Mat_Sitio_Concreto02": {
 "use_external/enabled": true,
@@ -57,17 +53,9 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Concreto03.tres"
 },
-"Mat_Sitio_Concreto03_Mix": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Concreto03_Mix.tres"
-},
 "Mat_Sitio_Concreto04": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Concreto04.tres"
-},
-"Mat_Sitio_Concreto_Mix": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Concreto_Mix.tres"
 },
 "Mat_Sitio_Enrejado": {
 "use_external/enabled": true,
@@ -81,6 +69,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Oxidado.tres"
 },
+"Mat_Sitio_Pared01": {
+"use_external/enabled": true,
+"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Pared01.tres"
+},
 "Mat_Sitio_Pared02": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Pared02.tres"
@@ -89,17 +81,9 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Pared03.tres"
 },
-"Mat_Sitio_Paredes": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Paredes.tres"
-},
 "Mat_Sitio_Piedra01": {
 "use_external/enabled": true,
 "use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Piedra01.tres"
-},
-"Mat_Sitio_Piedra01_Mix": {
-"use_external/enabled": true,
-"use_external/path": "res://Cont_Models/#Shared/Materials/Sitio/Mat_Sitio_Piedra01_Mix.tres"
 },
 "Mat_Sitio_Piedra02": {
 "use_external/enabled": true,

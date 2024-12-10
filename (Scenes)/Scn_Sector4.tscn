@@ -10,7 +10,7 @@
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="22_i6kjy"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="23_ag17m"]
 [ext_resource type="PackedScene" uid="uid://dulvv68yfkjjt" path="res://Cont_Models/Sector4/Msh_Terrain.glb" id="25_7qt5q"]
-[ext_resource type="PackedScene" uid="uid://dsk1fsrkgucsg" path="res://Cont_Models/Sector4/Msh_Sitio_04.glb" id="26_g4unq"]
+[ext_resource type="PackedScene" uid="uid://dgkqgmcdiarge" path="res://Cont_Models/Sector4/Msh_Sitio_04.glb" id="26_g4unq"]
 [ext_resource type="PackedScene" uid="uid://cpvbjd2rg70s" path="res://Cont_Models/Sector4/Msh_Navigation.glb" id="27_0vsox"]
 [ext_resource type="PackedScene" uid="uid://duwmggtrv8oco" path="res://Cont_Models/#Shared/LightBeam/Msh_LighBeam.glb" id="29_7w0wy"]
 [ext_resource type="Material" uid="uid://r62xxuey3xg1" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_04.tres" id="30_0xdf2"]
