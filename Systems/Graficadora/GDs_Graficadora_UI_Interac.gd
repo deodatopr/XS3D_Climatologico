@@ -36,6 +36,6 @@ func Initialize(_dataService : GDs_DataService_Manager,_barraMenus: GDs_BarraMen
 func _process(delta):
 	if not graficadora.visible : return
 	if Input.is_action_pressed("3DMove_RotHor_-"):
-		scrollContainerGraphic.scroll_horizontal -= delta * 20
+		scrollContainerGraphic.get_h_scroll_bar().value -= delta * 600
 	if Input.is_action_pressed("3DMove_RotHor_+"):
-		scrollContainerGraphic.scroll_horizontal += delta * 20
+		scrollContainerGraphic.get_h_scroll_bar().value += delta * 600
