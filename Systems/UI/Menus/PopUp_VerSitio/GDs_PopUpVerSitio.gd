@@ -70,6 +70,7 @@ func OnVisibleChanged():
 func OnAceptar():
 	if estacion.disponible:
 		APPSTATE.popUpOpened = false
+		APPSTATE.menuUIOptionIsOpened = false
 		SIGNALS.OnGoToSitio.emit(currentSitioId)
 		
 

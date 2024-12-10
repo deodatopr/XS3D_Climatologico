@@ -217,7 +217,7 @@ nombre = "Pin Nombre"
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5242.08, 36.709, -248.01)
 stream = ExtResource("17_araxv")
 volume_db = 20.0
 unit_size = 25.0

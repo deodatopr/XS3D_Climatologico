@@ -1,0 +1,165 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6yqphepe4a1w"]
+
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_ifu5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_561a0"]
+atlas = ExtResource("1_ifu5w")
+region = Rect2(7, 264, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iddxr"]
+atlas = ExtResource("1_ifu5w")
+region = Rect2(300, 206, 162, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfkwh"]
+atlas = ExtResource("1_ifu5w")
+region = Rect2(478, 739, 23, 20)
+
+[sub_resource type="Animation" id="Animation_agobv"]
+resource_name = "Joystick"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JoystickTop:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(24, -0.25, 0, 0.233333, -7.5, 15, -0.25, 0, 0.25, 0, 24, -0.233333, -9.5, 0.266667, -0.5, 24, -0.233334, -0.5, 0.266184, 9.5, 33, -0.25, 0, 0.25, 0, 24, -0.267149, 9.5, 0.233333, 50.5),
+"times": PackedFloat32Array(0, 0.5, 1, 3, 3.5, 4)
+}
+
+[sub_resource type="Animation" id="Animation_ff46r"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JoystickTop:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32jhg"]
+_data = {
+"Joystick": SubResource("Animation_agobv"),
+"RESET": SubResource("Animation_ff46r")
+}
+
+[node name="Icon2" type="Control"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -20.0
+offset_right = 77.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Joystick2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -19.0
+offset_right = 19.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_561a0")
+expand_mode = 1
+
+[node name="JoystickTop" type="TextureRect" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = -32.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_561a0")
+expand_mode = 1
+
+[node name="Joystick" type="TextureRect" parent="JoystickTop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_iddxr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="JoystickTop/Joystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftArrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -10.0
+offset_right = 21.0
+offset_bottom = 10.0
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(11, 10)
+texture = SubResource("AtlasTexture_sfkwh")
+
+[node name="RightArrow" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -10.0
+offset_right = 4.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(11, 10)
+texture = SubResource("AtlasTexture_sfkwh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_32jhg")
+}
+autoplay = "Joystick"

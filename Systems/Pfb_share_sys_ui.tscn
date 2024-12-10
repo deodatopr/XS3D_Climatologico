@@ -145,7 +145,7 @@ shader_parameter/sharpening = 2.0
 
 [node name="[ SYSTEMS ]" type="Node" parent="."]
 
-[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("cameraDrones", "ppeGlitch", "fly", "sky", "menu", "lluvia")]
+[node name="Orquestrator" type="Node" parent="[ SYSTEMS ]" node_paths=PackedStringArray("cameraDrones", "ppeGlitch", "fly", "sky", "menu", "lluvia", "alarmas")]
 script = ExtResource("1_cnafy")
 cameraDrones = NodePath("../Camera - Drones")
 ppeGlitch = NodePath("../PPE - Glitch")
@@ -153,6 +153,7 @@ fly = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/FLY")
 sky = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz Drones/SKY")
 menu = NodePath("../../[ PPE + UI ]/[ UI  ]/Interfaz MENUS/MENU")
 lluvia = NodePath("../Lluvia")
+alarmas = NodePath("../PPE - Alarmas")
 
 [node name="Camera - Drones" parent="[ SYSTEMS ]" node_paths=PackedStringArray("ps_rain_sky", "ps_rain_fly", "ppe_fishEye_DroneSky", "ui_ppe_sky", "ui_ppe_fly") instance=ExtResource("2_ib82i")]
 ps_rain_sky = NodePath("../Lluvia/PS - Rain Sky")

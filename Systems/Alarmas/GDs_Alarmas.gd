@@ -1,3 +1,4 @@
+class_name GDs_Alarmas
 extends Node
 
 @export var ppePresa:ColorRect
@@ -9,8 +10,9 @@ extends Node
 @export var estadoPresa:int = 0
 @export var estadoTemp:int = 0
 
-func _ready():
+func Initialize():
 	SIGNALS.OnRefresh.connect(OnRefresh)
+	OnRefresh()
 
 func _process(_delta):
 	if dbgEnable:

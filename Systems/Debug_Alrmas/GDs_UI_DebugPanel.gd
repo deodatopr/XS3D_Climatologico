@@ -58,6 +58,25 @@ func _ready() -> void:
 	bateria.disabled = DEBUG.simuladoRandom
 	conexion.disabled = DEBUG.simuladoRandom
 	
+	UpdatePanelWithDebugData()
+	
+func UpdatePanelWithDebugData():
+	#Modo datos
+	if DEBUG.modoDatos == ENUMS.ModoDatos.Endpoint:
+		modoDatos.select(0)
+	else:
+		modoDatos.select(1)
+	
+	#datosRandom
+	datosRandom.button_pressed = DEBUG.simuladoRandom
+	
+	intervalo.value = DEBUG.timeToRefresh
+	precipitacion.select(DEBUG.lLuvia)
+	temperatura.select(DEBUG.temperatura)
+	alarma.select(DEBUG.alarmas)
+	bateria.select(DEBUG.bateria)
+	conexion.select(DEBUG.requestResult)
+
 
 func OnModoDatosMouseEntered():
 	precipitacion.release_focus()
