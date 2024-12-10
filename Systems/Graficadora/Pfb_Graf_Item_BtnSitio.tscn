@@ -55,7 +55,9 @@ _data = {
 }
 
 [node name="Pfb_Item_BtnSitio" type="Button" node_paths=PackedStringArray("idPatch", "lblId", "lblName", "animPlayer")]
-custom_minimum_size = Vector2(322, 40)
+custom_minimum_size = Vector2(0, 40)
+offset_right = 375.0
+offset_bottom = 40.0
 focus_neighbor_top = NodePath("../../Inputs/MarginContainer/Original/HBox Muestras/Button - Muestras +")
 theme_override_styles/focus = SubResource("StyleBoxFlat_dx2xv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dx2xv")
