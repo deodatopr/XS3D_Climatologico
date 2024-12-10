@@ -36,7 +36,7 @@ light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 
 [node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
-audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water2"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water3")]
+audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water2"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water3"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water4"), NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water5")]
 
 [node name="Temp" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/PPE - Alarmas/Alarmas Temp" index="0"]
 visible = true
@@ -131,35 +131,57 @@ visible = false
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.304, 36.709, 167.355)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
-unit_size = 50.0
+unit_size = 20.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.948, 36.709, -1116.42)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 591.958, 36.7091, 407.687)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
-unit_size = 50.0
+unit_size = 20.0
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.157, 36.709, -1866.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558.502, 36.7089, -183.288)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
-unit_size = 50.0
+unit_size = 20.0
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Water4" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1348.77, 36.7089, 394.079)
+stream = ExtResource("15_0gwjn")
+volume_db = 15.0
+unit_size = 69.57
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[node name="Audio - Water5" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1800.35, 36.7089, 1544.87)
+stream = ExtResource("15_0gwjn")
+volume_db = 15.0
+unit_size = 69.57
+autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
 [node name="Puntos Interes" type="Node" parent="[ CONTENT ]"]
 
-[node name="Punto 1" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
+[node name="Punto 1" type="Marker3D" parent="[ CONTENT ]/Puntos Interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1371.08, -52.9959, -1763.33)
+gizmo_extents = 100.0
 script = ExtResource("21_lkc62")
-nombre = " Capilla vieja Santa Teesa Tiloxtoc"
+nombre = " Capilla vieja Santa Teresa Tiloxtoc"
 
 [node name="Punto 2" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -452.92, -84.3228, -1208.85)
@@ -188,6 +210,7 @@ nombre = "La Piedra del molino"
 
 [node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 75.0618, -17.4138, 363.612)
+visible = false
 script = ExtResource("21_lkc62")
 nombre = "Torre de vigilancia Cualtenco"
 
@@ -202,6 +225,7 @@ script = ExtResource("21_lkc62")
 nombre = "Virgen de Guadalupe"
 
 [editable path="SHARED SYSTEMS & UI"]
+[editable path="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain"]
