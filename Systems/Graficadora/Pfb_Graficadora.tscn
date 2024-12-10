@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=30 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
@@ -93,18 +93,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqnqn"]
-atlas = ExtResource("3_rhhvq")
-region = Rect2(7, 264, 54, 54)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmfv7"]
-atlas = ExtResource("3_rhhvq")
-region = Rect2(370, 4, 79, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nahfq"]
-atlas = ExtResource("3_rhhvq")
-region = Rect2(7, 264, 54, 54)
-
 [node name="Graficadora" type="Control" node_paths=PackedStringArray("graficadora", "graficadoraDropdowns", "graficadora_UI_Interact", "graficadora_anim_loading")]
 layout_mode = 3
 anchors_preset = 15
@@ -122,7 +110,7 @@ graficadora_anim_loading = NodePath("Graficadora_Anim_Loading")
 metadata/_edit_vertical_guides_ = [345.0, 408.0, 1647.0, 503.0]
 metadata/_edit_horizontal_guides_ = [754.0, 716.0, 186.0, 765.0]
 
-[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("pivotYMaxValue", "pivotYMinValue", "dpwnAno", "dpwnMes", "dpwnDia", "dpwnHora", "dpwnIntervalo", "degraded_2d", "line_2d", "itemsPointsValues", "itemsDates", "lblSiteName", "lblDatesRange", "btnGraficar", "containerNodes2d", "containerVertValuesLimits", "popupLoading", "popupNoHistory", "scrollContainerGraphic", "graphicInitial", "graphic", "fechaAnimPlayer", "btnsSitios")]
+[node name="Graficadora" type="Node" parent="." node_paths=PackedStringArray("pivotYMaxValue", "pivotYMinValue", "dpwnAno", "dpwnMes", "dpwnDia", "dpwnHora", "dpwnIntervalo", "degraded_2d", "line_2d", "itemsPointsValues", "itemsDates", "lblSiteName", "lblDatesRange", "btnGraficar", "containerNodes2d", "containerVertValuesLimits", "popupLoading", "popupNoHistory", "scrollContainerGraphic", "graphicInitial", "graphic", "fechaAnimPlayer", "joystickAnim", "btnsSitios")]
 physics_interpolation_mode = 2
 script = ExtResource("3_x6pol")
 criticLevelColor = Color(1, 0, 0, 1)
@@ -152,6 +140,7 @@ scrollContainerGraphic = NodePath("../Content/Graphic/ScrollContainer - Graphic"
 graphicInitial = NodePath("../Content/Graphic Initial")
 graphic = NodePath("../Content/Graphic")
 fechaAnimPlayer = NodePath("../Content/Options To Graphic/Fecha_AnimPlayer")
+joystickAnim = NodePath("../Content/Graphic/Joystcik anim")
 btnsSitios = [NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio"), NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio2"), NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio3"), NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio4"), NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio5"), NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio6"), NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio7"), NodePath("../Content/Options To Graphic/Items - Btns Sitios/Pfb_Item_BtnSitio8")]
 
 [node name="Graficadora_Dropdowns" type="Node" parent="." node_paths=PackedStringArray("fromYear", "fromMonth", "fromDay", "fromTime")]
@@ -717,21 +706,6 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Joystcik anim" parent="Content/Graphic" instance=ExtResource("9_njhkm")]
-layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -26.0
-offset_right = 79.0
-offset_bottom = 14.0
-grow_horizontal = 1
-grow_vertical = 0
-scale = Vector2(0.7, 0.7)
-
 [node name="ScrollContainer - Graphic" type="ScrollContainer" parent="Content/Graphic"]
 layout_mode = 1
 anchors_preset = 15
@@ -1090,6 +1064,19 @@ offset_left = 569.0
 offset_top = 514.0
 offset_right = 609.0
 offset_bottom = 521.0
+
+[node name="Joystcik anim" parent="Content/Graphic" instance=ExtResource("9_njhkm")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_top = -3.99994
+offset_bottom = 36.0001
+grow_horizontal = 1
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
 
 [node name="Popup - Loading" type="Control" parent="Content"]
 visible = false
@@ -1734,319 +1721,3 @@ focus_neighbor_top = NodePath("../Items - Btns Sitios/Pfb_Item_BtnSitio8")
 focus_neighbor_bottom = NodePath("../Container - Dropdowns Date/MarginContainer/Dropdowns/Fecha/Año")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0ba41")
 text = "Graficar"
-
-[node name="Container - Close Inputs Help" type="NinePatchRect" parent="Content"]
-visible = false
-self_modulate = Color(0.1368, 0.36, 0.30792, 0.815686)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -148.5
-offset_top = -29.0
-offset_right = 148.5
-offset_bottom = 71.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("3_rhhvq")
-region_rect = Rect2(473, 39, 30, 31)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="Lbl INfo" type="Label" parent="Content/Container - Close Inputs Help"]
-visible = false
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -21.0
-offset_right = -36.0
-offset_bottom = 21.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "[ Cerrar ]"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="Hbox" type="HBoxContainer" parent="Content/Container - Close Inputs Help"]
-visible = false
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = -19.5
-offset_right = 196.0
-offset_bottom = 35.5
-grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-theme_override_constants/separation = 10
-
-[node name="HSeparator" type="HSeparator" parent="Content/Container - Close Inputs Help/Hbox"]
-visible = false
-visibility_layer = 0
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="W" type="NinePatchRect" parent="Content/Container - Close Inputs Help/Hbox"]
-custom_minimum_size = Vector2(72.485, 0)
-layout_mode = 2
-texture = ExtResource("3_rhhvq")
-region_rect = Rect2(473, 258, 34, 34)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="Label" type="Label" parent="Content/Container - Close Inputs Help/Hbox/W"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.0
-offset_top = -11.5
-offset_right = 11.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "ESC"
-
-[node name="_" type="Label" parent="Content/Container - Close Inputs Help/Hbox"]
-self_modulate = Color(1, 1, 1, 0.490196)
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "/"
-
-[node name="Y" type="TextureRect" parent="Content/Container - Close Inputs Help/Hbox"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_qqnqn")
-
-[node name="Label" type="Label" parent="Content/Container - Close Inputs Help/Hbox/Y"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -36.0
-offset_right = 16.0
-offset_bottom = 34.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "A"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="Content/Container - Close Inputs Help/Hbox"]
-visible = false
-visibility_layer = 0
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Controles" type="Control" parent="Content/Container - Close Inputs Help"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 26.0
-offset_top = -46.4999
-offset_right = 203.0
-offset_bottom = 46.4999
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Content/Container - Close Inputs Help/Controles"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Pad" type="TextureRect" parent="Content/Container - Close Inputs Help/Controles"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -40.0
-offset_right = 79.0
-offset_bottom = 40.0
-grow_vertical = 2
-texture = SubResource("AtlasTexture_xmfv7")
-
-[node name="Botones" type="Control" parent="Content/Container - Close Inputs Help/Controles"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = -46.5
-offset_bottom = 46.5
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="X" type="TextureRect" parent="Content/Container - Close Inputs Help/Controles/Botones"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = -36.0
-offset_right = 14.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_nahfq")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Content/Container - Close Inputs Help/Controles/Botones/X"]
-self_modulate = Color(1, 1, 1, 0.313726)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "X"
-
-[node name="A" type="TextureRect" parent="Content/Container - Close Inputs Help/Controles/Botones"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -14.0
-offset_right = 36.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_nahfq")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Content/Container - Close Inputs Help/Controles/Botones/A"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "A"
-
-[node name="Y" type="TextureRect" parent="Content/Container - Close Inputs Help/Controles/Botones"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -14.0
-offset_right = -8.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_nahfq")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Content/Container - Close Inputs Help/Controles/Botones/Y"]
-self_modulate = Color(1, 1, 1, 0.313726)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Y
-"
-
-[node name="B" type="TextureRect" parent="Content/Container - Close Inputs Help/Controles/Botones"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = 8.0
-offset_right = 14.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_nahfq")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Content/Container - Close Inputs Help/Controles/Botones/B"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "B"
-
-[node name="Label" type="Label" parent="Content/Container - Close Inputs Help"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 198.0
-offset_top = -11.5
-offset_right = 287.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "Seleccionar"
-
-[node name="Label2" type="Label" parent="Content/Container - Close Inputs Help"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 180.0
-offset_top = 14.0
-offset_right = 269.0
-offset_bottom = 37.0
-grow_vertical = 2
-text = "Cerrar"

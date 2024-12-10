@@ -39,6 +39,7 @@ class_name GDs_Graficadora extends Node
 @export var graphicInitial : Control
 @export var graphic : Control
 @export var fechaAnimPlayer : AnimationPlayer
+@export var joystickAnim : Control
 @export var btnsSitios : Array[GDs_Graficadora_Item_BtnSitio] = []
 
 var dateFromStruct : DateStruct = DateStruct.new()
@@ -115,6 +116,8 @@ func _ShowPopup_Loading(_show : bool):
 		degraded_2d.hide()
 		line_2d.hide()
 		popupNoHistory.hide()
+		scrollContainerGraphic.get_h_scroll_bar().hide()
+		joystickAnim.hide()
 		lblDatesRange.text ="Rango:   --/--/-- --:--     -     --/--/-- --:--"
 	else:
 		popupLoading.hide()
@@ -124,6 +127,8 @@ func _ShowPopup_Loading(_show : bool):
 		degraded_2d.show()
 		line_2d.show()
 		itemsDates.show()
+		scrollContainerGraphic.get_h_scroll_bar().show()
+		joystickAnim.show()
 	
 func _ShowPopup_NoHistory():
 	popupNoHistory.show()
@@ -134,6 +139,7 @@ func _ShowPopup_NoHistory():
 	containerVertValuesLimits.hide()
 	degraded_2d.hide()
 	line_2d.hide()
+	joystickAnim.hide()
 	lblDatesRange.text ="Rango:   --/--/-- --:--     -     --/--/-- --:--"
 
 
