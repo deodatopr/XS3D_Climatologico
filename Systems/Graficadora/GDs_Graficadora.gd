@@ -104,8 +104,8 @@ func _ShowPopup_Loading(_show : bool):
 	dpwnAno.disabled = _show
 	dpwnMes.disabled = _show
 	dpwnDia.disabled = _show
+	dpwnHora.disabled = _show
 	dpwnIntervalo.disabled = _show
-	dpwnMes.disabled = _show
 	
 	if _show:
 		popupLoading.show()
@@ -123,6 +123,7 @@ func _ShowPopup_Loading(_show : bool):
 		containerVertValuesLimits.show()
 		degraded_2d.show()
 		line_2d.show()
+		itemsDates.show()
 	
 func _ShowPopup_NoHistory():
 	popupNoHistory.show()
