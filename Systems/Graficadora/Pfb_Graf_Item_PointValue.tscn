@@ -2,20 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_fbx1n"]
 
-[node name="Value Circle" type="Control"]
+[node name="Pfb_Graf_Item_PointValue" type="Control"]
 custom_minimum_size = Vector2(38.895, 73.92)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -19.4475
-offset_top = -54.96
-offset_right = 19.4475
-offset_bottom = 18.96
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 38.895
+offset_bottom = 73.92
 size_flags_vertical = 4
 
 [node name="Value Circle In" type="NinePatchRect" parent="."]
@@ -25,9 +17,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -19.0
+offset_top = -94.0
+offset_right = 21.0
+offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(20, 20)
@@ -58,10 +51,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.5
-offset_top = -75.0
-offset_right = 20.5
-offset_bottom = -33.0
+offset_left = -19.5
+offset_top = -129.0
+offset_right = 21.5
+offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(28, 21)

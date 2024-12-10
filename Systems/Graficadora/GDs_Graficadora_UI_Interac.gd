@@ -5,7 +5,7 @@ class_name GDs_Graficadora_UI_Interact extends Node
 @export var graficadora : Control
 @export var sitesBtnContainer:Control
 @export var sitesLastBtn:Button
-@export var scrollBar:HScrollBar
+@export var scrollContainerGraphic:ScrollContainer
 @export var btnsGraficar : Button
 @export_subgroup("Date Dropdowns")
 @export var dateYearDd: OptionButton
@@ -36,6 +36,6 @@ func Initialize(_dataService : GDs_DataService_Manager,_barraMenus: GDs_BarraMen
 func _process(delta):
 	if not graficadora.visible : return
 	if Input.is_action_pressed("3DMove_RotHor_-"):
-		scrollBar.value -= delta * 20
+		scrollContainerGraphic.scroll_horizontal -= delta * 20
 	if Input.is_action_pressed("3DMove_RotHor_+"):
-		scrollBar.value += delta * 20
+		scrollContainerGraphic.scroll_horizontal += delta * 20
