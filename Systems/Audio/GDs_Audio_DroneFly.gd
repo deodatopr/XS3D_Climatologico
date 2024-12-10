@@ -51,6 +51,9 @@ func _ready():
 	SIGNALS.OnCameraChangedMode.connect(_OnCameraChange)
 
 func _OnCameraChange(_mode : int):
+	if audios3D.size() == 0:
+		return
+	
 	if _mode == ENUMS.Cam_Mode.sky:
 		for audio in audios3D:
 			UTILITIES.TurnOffObject(audio)

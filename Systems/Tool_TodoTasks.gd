@@ -4,10 +4,8 @@
 #	Pendientes Progra
 #===========================================
 
-#	[ Pani ]
-
-# Pruebas de compilado
-# Slider no jala la primera vez con control (Posiblemente con true) 
+#Checar puntos de interes, sonidos agua, pin del sitio (Sitio 1)
+#Acomodar puntos de interes, sonidos agua, pin del sitio (Sitios 2 y 3)
 
 #===========================================
 #	TAREAS EXTRA
