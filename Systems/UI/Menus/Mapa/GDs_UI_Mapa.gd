@@ -37,7 +37,7 @@ func Initialize(_estaciones:Array[GDs_Data_Sitio], current:int):
 
 func OnVisibility():
 	if visible:
-		mapPoints[currentSitio].grab_focus()
+		mapPoints[currentSitio - 1].grab_focus() # utiliza el indice del array no el ID del sitio, por eso el -1
 
 func OnAnySitioPressed(_estacion:GDs_Data_Sitio):
 	#AUDIO

@@ -67,7 +67,7 @@ func OnModoDatosMouseEntered():
 	conexion.release_focus()
 func OnModoDatosChanged(idx:int):
 	#Servidor
-	if idx == 1:
+	if idx == 0:
 		DEBUG.modoDatos = ENUMS.ModoDatos.Endpoint
 		precipitacion.disabled = true
 		temperatura.disabled = true
@@ -90,6 +90,12 @@ func OnModoDatosChanged(idx:int):
 		lblAuto.self_modulate.a = 1.0
 		lblManual.self_modulate.a = 1.0
 		intervalo.editable = true
+		
+		if datosRandom.button_pressed:#Auto
+			OnDatosAleatoriosChanged(true)
+		else:#Manual
+			OnDatosAleatoriosChanged(false)
+			
 		SIGNALS.OnDatosSimuladosON.emit()
 	SIGNALS.OnDebugRefresh.emit()
 

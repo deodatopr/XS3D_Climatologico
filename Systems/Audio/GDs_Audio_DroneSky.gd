@@ -31,7 +31,12 @@ func _ready():
 	SIGNALS.OnCameraChangedMode.connect(OnChangeDrone)
 
 func _process(_delta):
-	if APPSTATE.camMode == ENUMS.Cam_Mode.sky:
+	if APPSTATE.menuUIOptionIsOpened:
+		MovingFadeOut()
+		WindFadeOut()
+		sndCameraRot.stop()
+		CameraFadeOut()
+	elif APPSTATE.camMode == ENUMS.Cam_Mode.sky and not APPSTATE.menuUIOptionIsOpened:
 #region Moving
 		if Input.is_action_pressed("3DMove_Forward") or Input.is_action_pressed("3DMove_Backward") or Input.is_action_pressed("3DMove_Left") or Input.is_action_pressed("3DMove_Right"):
 			if Input.is_action_pressed("3DMove_SpeedBoost") and not isBoosting:
@@ -51,7 +56,7 @@ func _process(_delta):
 			if sndMoving.playing:
 				MovingFadeOut()
 				WindFadeOut()
-				
+		
 #endregion
 #region CameraFOV
 		if Input.is_action_pressed("3DMove_Height_-") and Input.is_action_pressed("3DMove_Height_+"):
@@ -68,7 +73,6 @@ func _process(_delta):
 				CameraFadeOut()
 #endregion
 #region Camera Rotation
-
 		sndCameraRot.pitch_scale = sndCameraRotPitch
 		sndCameraRot.volume_db = sndCameraRotVolume
 		if CAM.isRotating:

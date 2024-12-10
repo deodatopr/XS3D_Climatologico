@@ -59,6 +59,10 @@ func _OnCameraChange(_mode : int):
 			UTILITIES.TurnOnObject(audio)
 
 func _process(_delta):
+	if APPSTATE.menuUIOptionIsOpened:
+		MovingFade(sndFlying,flyingStaticVolume,flyingStaticPitch,true)
+		MovingFade(sndCameraRot,flyingStaticVolume,flyingStaticPitch,true)
+	
 	if APPSTATE.camMode == ENUMS.Cam_Mode.fly:
 #region Drone
 		#MOVING SOUND
@@ -89,7 +93,6 @@ func _process(_delta):
 		else:
 			if sndCameraRot.playing:
 				MovingFade(sndCameraRot,flyingStaticVolume,flyingStaticPitch,true)
-			
 #endregion
 #region Environment
 		if CAM.height > natureMinHeight and CAM.height < natureMidPoint:

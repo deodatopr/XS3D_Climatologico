@@ -1,7 +1,7 @@
 class_name GDs_BarraMenus
 extends Node
 @export_group("Refs Externas")
-@export var menuSitios: Control
+@export var menuSitios: GDs_MenuPerfiles
 @export var menuMapa: Control
 @export var menuDatos: Control
 @export var menuConfig: Control
@@ -54,6 +54,7 @@ func FocusLastMenu():
 			BtnConfig.grab_focus()
 
 func StopFocusOnMenus():
+	menuSitios.GetCurrentFocus()
 	isFocusingMenu = false
 	GetCurrentFocus()
 	BtnSitios.release_focus()

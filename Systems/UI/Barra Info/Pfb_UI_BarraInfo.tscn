@@ -570,7 +570,7 @@ offset_right = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bm6wi")
-region_rect = Rect2(486, 916, 12, 90)
+region_rect = Rect2(485, 916, 12, 90)
 
 [node name="VBox" type="VBoxContainer" parent="HBoxContainer/Nivel/Valor Nivel"]
 layout_mode = 1
