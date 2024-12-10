@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="2_vmk6t"]
 [ext_resource type="AudioStream" uid="uid://cvrup4u3rlg0e" path="res://Cont_Sounds/Drones/DroneSky_Camera.mp3" id="3_hnlpa"]
 [ext_resource type="PackedScene" uid="uid://b3gfivu1rhllf" path="res://Cont_Models/Sector6/Msh_Terrain.glb" id="3_htqi2"]
-[ext_resource type="PackedScene" uid="uid://sehi5tl2e6k7" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
+[ext_resource type="PackedScene" uid="uid://d1e3iekr4fa6o" path="res://Cont_Models/Sector6/Msh_Sitio.glb" id="9_s7pct"]
 [ext_resource type="PackedScene" uid="uid://2fk1ttkfdobb" path="res://Cont_Models/Sector6/Msh_Navigation.glb" id="11_bbryg"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="13_de45w"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="13_enybh"]
