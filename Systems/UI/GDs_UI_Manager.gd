@@ -30,13 +30,16 @@ func _input(event):
 		if not APPSTATE.popUpOpened:
 			menuPerfiles.GetCurrentFocus()
 			barraMenus.StopFocusOnMenus()
+		if panelDebug.visible:
+			panelDebug.visible = false
+			APPSTATE.menuUIOptionIsOpened = false
 	if event.is_action_pressed("UI_Simulado"):
 		CloseInfoMenu()
 		if not APPSTATE.popUpOpened:
 			menuPerfiles.GetCurrentFocus()
 			barraMenus.StopFocusOnMenus()
-			panelDebug.visible = !panelDebug.visible
-			APPSTATE.menuUIOptionIsOpened = panelDebug.visible
+			panelDebug.visible = true
+			APPSTATE.menuUIOptionIsOpened = true
 				
 			
 	

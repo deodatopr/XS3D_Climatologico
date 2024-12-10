@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://8ogd5844tnm4"]
+[gd_scene load_steps=16 format=3 uid="uid://8ogd5844tnm4"]
 
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="1_xwbp0"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_x6xqf"]
@@ -56,14 +56,6 @@ region = Rect2(479, 616, 22, 21)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1t05"]
 atlas = ExtResource("2_x6xqf")
 region = Rect2(7, 264, 54, 54)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifned"]
-atlas = ExtResource("2_x6xqf")
-region = Rect2(8, 264, 54, 54)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f75ov"]
-atlas = ExtResource("2_x6xqf")
-region = Rect2(5, 197, 60, 60)
 
 [node name="Menu Controles - BLUR" type="ColorRect"]
 material = SubResource("ShaderMaterial_h717t")
@@ -602,9 +594,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -151.0
+offset_left = -180.0
 offset_top = -45.0
-offset_right = 37.0
+offset_right = 8.0
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -654,7 +646,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 32.0
 offset_top = -24.5
-offset_right = 139.0
+offset_right = 176.0
 offset_bottom = 24.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -682,7 +674,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
-text = "Enter
+text = "Espacio
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2299,132 +2291,3 @@ patch_margin_left = 29
 patch_margin_top = 28
 patch_margin_right = 29
 patch_margin_bottom = 29
-
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -155.0
-offset_top = 257.0
-offset_right = 156.0
-offset_bottom = 297.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -27.0
-offset_right = 54.0
-offset_bottom = 27.0
-grow_vertical = 2
-texture = SubResource("AtlasTexture_ifned")
-
-[node name="Frame" type="TextureRect" parent="Control/TextureRect"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_f75ov")
-
-[node name="TextureRect3" type="TextureRect" parent="Control/TextureRect/Frame"]
-self_modulate = Color(0.654902, 0.309804, 1, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -29.0
-offset_right = 29.0
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_f75ov")
-expand_mode = 1
-
-[node name="Icon" type="Label" parent="Control/TextureRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.5
-offset_top = -24.5
-offset_right = 9.5
-offset_bottom = 24.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "Y"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Frame" type="NinePatchRect" parent="Control"]
-self_modulate = Color(0.654902, 0.309804, 1, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -1.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_x6xqf")
-region_rect = Rect2(485, 257, 23, 35)
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="Right Patch" type="NinePatchRect" parent="Control/Frame"]
-self_modulate = Color(0.654902, 0.309804, 1, 1)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -17.0
-offset_right = -2.0
-offset_bottom = 19.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("2_x6xqf")
-region_rect = Rect2(482, 40, 22, 30)
-patch_margin_top = 5
-patch_margin_right = 10
-patch_margin_bottom = 5
-
-[node name="Label" type="Label" parent="Control/Frame"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_right = -45.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "cerrar menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true

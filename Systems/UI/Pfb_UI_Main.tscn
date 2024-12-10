@@ -108,8 +108,9 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_emkfa"]
-load_path = "res://.godot/imported/UI_Atlas.png-cb018f8149f8688122eccc175d3a5006.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jsgo"]
+atlas = ExtResource("8_omcqt")
+region = Rect2(7, 264, 54, 54)
 
 [sub_resource type="Animation" id="Animation_6u1q7"]
 resource_name = "DebugBlink"
@@ -1046,7 +1047,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 27
-text = "F12"
+text = "Esc"
 
 [node name="_" type="Label" parent="Menu Debug/Menu Config/Sim Datos/Hbox2"]
 self_modulate = Color(1, 1, 1, 0.490196)
@@ -1054,48 +1055,25 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "/"
 
-[node name="+2" type="NinePatchRect" parent="Menu Debug/Menu Config/Sim Datos/Hbox2"]
-self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
-custom_minimum_size = Vector2(65, 30)
+[node name="A" type="TextureRect" parent="Menu Debug/Menu Config/Sim Datos/Hbox2"]
 layout_mode = 2
-size_flags_vertical = 4
-texture = SubResource("CompressedTexture2D_emkfa")
-region_rect = Rect2(473, 40, 30, 30)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = SubResource("AtlasTexture_4jsgo")
 
-[node name="+" type="NinePatchRect" parent="Menu Debug/Menu Config/Sim Datos/Hbox2/+2"]
-self_modulate = Color(0.48, 0.48, 0.48, 1)
+[node name="Label" type="Label" parent="Menu Debug/Menu Config/Sim Datos/Hbox2/A"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = 3.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 16.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_omcqt")
-region_rect = Rect2(473, 258, 34, 34)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="Label" type="Label" parent="Menu Debug/Menu Config/Sim Datos/Hbox2/+2/+"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -3.5
-offset_bottom = 3.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "O"
+theme_override_font_sizes/font_size = 43
+text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
