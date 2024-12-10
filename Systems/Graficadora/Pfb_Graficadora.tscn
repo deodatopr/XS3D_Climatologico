@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://2puryj6lequo"]
+[gd_scene load_steps=36 format=3 uid="uid://2puryj6lequo"]
 
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_Manager.gd" id="1_cbirx"]
 [ext_resource type="Script" path="res://Systems/Graficadora/GDs_Graficadora_UI_Interac.gd" id="1_xy25b"]
@@ -86,6 +86,42 @@ region = Rect2(478, 647, 17, 9)
 atlas = ExtResource("3_rhhvq")
 region = Rect2(475, 7, 26, 25)
 
+[sub_resource type="Animation" id="Animation_31b64"]
+resource_name = "SiteMissing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1), Color(0.854902, 0, 0, 1), Color(0.5, 0.5, 0.5, 1), Color(0.854902, 0, 0, 1), Color(0.5, 0.5, 0.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7gmwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6s6e1"]
+_data = {
+"RESET": SubResource("Animation_7gmwq"),
+"SiteMissing": SubResource("Animation_31b64")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ba41"]
 bg_color = Color(0.160784, 0.341176, 0.301961, 1)
 corner_radius_top_left = 5
@@ -152,7 +188,7 @@ scrollContainerGraphic = NodePath("../Content/Graphic/ScrollContainer - Graphic"
 graphicInitial = NodePath("../Content/Graphic Initial")
 graphic = NodePath("../Content/Graphic")
 fechaAnimPlayer = NodePath("../Content/Options To Graphic/Fecha_AnimPlayer")
-btnsSitios = [NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio"), NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio2"), NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio3"), NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio4"), NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio5"), NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio6"), NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio7"), NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio8")]
+btnsSitios = [NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio"), NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio2"), NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio3"), NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio4"), NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio5"), NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio6"), NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio7"), NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio8")]
 
 [node name="Graficadora_Dropdowns" type="Node" parent="." node_paths=PackedStringArray("fromYear", "fromMonth", "fromDay", "fromTime")]
 script = ExtResource("2_xdapj")
@@ -166,8 +202,8 @@ physics_interpolation_mode = 2
 script = ExtResource("1_xy25b")
 firstToGrabFocus = NodePath("../Content/Options To Graphic/Container - Dropdowns Date/MarginContainer/Dropdowns/Fecha/Año")
 graficadora = NodePath("..")
-sitesBtnContainer = NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios")
-sitesLastBtn = NodePath("../Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio")
+sitesBtnContainer = NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios")
+sitesLastBtn = NodePath("../Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio")
 scrollContainerGraphic = NodePath("../Content/Graphic/ScrollContainer - Graphic")
 btnsGraficar = NodePath("../Content/Options To Graphic/BtnGraficar")
 dateYearDd = NodePath("../Content/Options To Graphic/Container - Dropdowns Date/MarginContainer/Dropdowns/Fecha/Año")
@@ -1586,7 +1622,7 @@ texture = SubResource("AtlasTexture_dat6m")
 [node name="Hora" type="OptionButton" parent="Content/Options To Graphic/Container - Dropdowns Date/MarginContainer/Dropdowns/Hora e Intervalo"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../../Fecha/Dia")
-focus_neighbor_bottom = NodePath("../../../../../NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio")
+focus_neighbor_bottom = NodePath("../../../../../Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio")
 theme = ExtResource("5_7a3ej")
 selected = 0
 allow_reselect = true
@@ -1689,7 +1725,7 @@ text = "1. INGRESAR FECHA"
 layout_mode = 2
 text = "2. SELECCIONAR SITIO"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Content/Options To Graphic"]
+[node name="Sitios" type="NinePatchRect" parent="Content/Options To Graphic"]
 self_modulate = Color(0.5, 0.5, 0.5, 1)
 clip_contents = true
 custom_minimum_size = Vector2(0, 390)
@@ -1701,7 +1737,12 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/Options To Graphic/NinePatchRect"]
+[node name="Sitios_AnimPlayer" type="AnimationPlayer" parent="Content/Options To Graphic/Sitios"]
+libraries = {
+"": SubResource("AnimationLibrary_6s6e1")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Options To Graphic/Sitios"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1713,40 +1754,40 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Items - Btns Sitios" type="VBoxContainer" parent="Content/Options To Graphic/NinePatchRect/MarginContainer"]
+[node name="Items - Btns Sitios" type="VBoxContainer" parent="Content/Options To Graphic/Sitios/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="Pfb_Item_BtnSitio" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../../Container - Dropdowns Date/MarginContainer/Dropdowns/Hora e Intervalo/Hora")
 
-[node name="Pfb_Item_BtnSitio2" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio2" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("")
 
-[node name="Pfb_Item_BtnSitio3" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio3" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("")
 
-[node name="Pfb_Item_BtnSitio4" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio4" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("")
 
-[node name="Pfb_Item_BtnSitio5" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio5" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("")
 
-[node name="Pfb_Item_BtnSitio6" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio6" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("")
 
-[node name="Pfb_Item_BtnSitio7" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio7" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("")
 
-[node name="Pfb_Item_BtnSitio8" parent="Content/Options To Graphic/NinePatchRect/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
+[node name="Pfb_Item_BtnSitio8" parent="Content/Options To Graphic/Sitios/MarginContainer/Items - Btns Sitios" instance=ExtResource("8_jlxvg")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Pfb_Item_BtnSitio7")
 focus_neighbor_bottom = NodePath("../../../../BtnGraficar")
@@ -1755,7 +1796,7 @@ focus_neighbor_bottom = NodePath("../../../../BtnGraficar")
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_vertical = 8
-focus_neighbor_top = NodePath("../NinePatchRect/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio8")
+focus_neighbor_top = NodePath("../Sitios/MarginContainer/Items - Btns Sitios/Pfb_Item_BtnSitio8")
 focus_neighbor_bottom = NodePath("../Container - Dropdowns Date/MarginContainer/Dropdowns/Fecha/Año")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0ba41")
 text = "Graficar"
