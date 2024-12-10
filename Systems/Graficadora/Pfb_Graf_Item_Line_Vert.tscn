@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcjkspcrki0h"]
+
+[ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="1_r1oyc"]
+
+[node name="Pfb_Graf_Item_Line_Vert" type="NinePatchRect"]
+custom_minimum_size = Vector2(2.5, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("1_r1oyc")
+region_rect = Rect2(971.259, 134.984, 20.2664, 0.781479)

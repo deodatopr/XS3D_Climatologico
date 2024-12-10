@@ -83,7 +83,7 @@ func _ValueToText(_value : float) -> String:
 		return str(_value)
 		
 func FormatDateGraficadoraRango(_date : String):
-	var year : String =  _date.substr(2,4)
+	var year : String =  _date.substr(2,2)
 	var month : String = _date.substr(5,2)
 	var day : String = _date.substr(8,2)
 	var hour : String = _date.substr(11,2)
