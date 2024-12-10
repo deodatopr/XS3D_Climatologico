@@ -67,7 +67,7 @@ func InitializedTimeDropdown(timeOB:OptionButton):
 	for time in 24:
 		timeOB.add_item(str(time) + ":00",time + 1)
 
-func UpdateAllDropdowns(arg:int):
+func UpdateAllDropdowns(_arg:int):
 	UpdateFromMonthDropdown()
 	UpdateFromDayDropdown()
 	UpdateFromTimeDropdown()
