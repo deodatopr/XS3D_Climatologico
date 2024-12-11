@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpgp82rtvn4n5"]
+[gd_scene load_steps=16 format=3 uid="uid://bpgp82rtvn4n5"]
 
 [ext_resource type="PackedScene" uid="uid://ddn72texoudi0" path="res://Systems/Curtain/Pfb_curtain.tscn" id="1_2h8cb"]
 [ext_resource type="Script" path="res://Systems/Curtain/GDs_Curtain.gd" id="1_22qja"]
@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://18lddgnvbqsx" path="res://(Scenes)/Scn_Sector6.tscn" id="6_kmvln"]
 [ext_resource type="PackedScene" uid="uid://xs8scph7gqy3" path="res://(Scenes)/Scn_Sector1.tscn" id="7_kr73d"]
 [ext_resource type="PackedScene" uid="uid://cbnxbjgqnnfhn" path="res://(Scenes)/Scn_Sector2.tscn" id="8_3i248"]
+[ext_resource type="PackedScene" uid="uid://bqpyxocdem254" path="res://(Scenes)/Scn_Sector5_PLACEHOLDER.tscn" id="9_5e520"]
 [ext_resource type="PackedScene" uid="uid://vj17msu6xfl0" path="res://(Scenes)/Scn_Sector3.tscn" id="9_p5nny"]
+[ext_resource type="PackedScene" uid="uid://ftmrppse1blh" path="res://(Scenes)/Scn_Sector7_PLACEHOLDER.tscn" id="11_hs4yb"]
+[ext_resource type="PackedScene" uid="uid://0k86a0rfpsg5" path="res://(Scenes)/Scn_Sector8_PLACEHOLDER.tscn" id="12_dd41x"]
 
 [node name="Main" type="Node"]
 
@@ -41,7 +44,10 @@ sitios = {
 2: ExtResource("8_3i248"),
 3: ExtResource("9_p5nny"),
 4: ExtResource("6_5288l"),
-6: ExtResource("6_kmvln")
+5: ExtResource("9_5e520"),
+6: ExtResource("6_kmvln"),
+7: ExtResource("11_hs4yb"),
+8: ExtResource("12_dd41x")
 }
 
 [node name="Find -CR_Local_Estaciones" type="Node" parent="[ SYSTEMS ]"]

@@ -1,5 +1,5 @@
 class_name GDs_Orchestrator_Main extends Node
-@export_enum("Sector1","Sector2","Sector3","Sector4","Sector6","Random") var sitioInicial: int
+@export_enum("Sector1","Sector2","Sector3","Sector4","Sector5","Sector6","Sector7","Sector8","Random") var sitioInicial: int
 @export var splash : GDs_Splash
 @export var curtain : GDs_Curtain
 @export var scenes_manager : GDs_Scenes_Manager
@@ -15,9 +15,12 @@ func _ready():
 		1: sitioToStart = 2
 		2: sitioToStart = 3
 		3: sitioToStart = 4
-		4: sitioToStart = 6
+		4: sitioToStart = 5
+		5: sitioToStart = 6
+		6: sitioToStart = 7
+		7: sitioToStart = 8
 		_: 
-			var arraySitios : Array[int] = [1,2,4,6]
+			var arraySitios : Array[int] = [1,2,4,5,6,7,8]
 			sitioToStart = arraySitios.pick_random()
 
 	
