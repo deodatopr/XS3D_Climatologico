@@ -81,7 +81,7 @@ material_override = ExtResource("23_2ha5g")
 mesh = SubResource("QuadMesh_k5wsg")
 
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("13_enybh")]
-transform = Transform3D(-36.5868, 0, -3.38757e-06, 0, 9.76607, 0, 3.19852e-06, 0, -38.7493, 18.1554, -38.2442, 18.4659)
+transform = Transform3D(-36.5868, 0, -3.38757e-06, 0, 9.76607, 0, 3.19852e-06, 0, -38.7493, 9.46646, -38.2442, 42.5175)
 
 [node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -113,18 +113,16 @@ nombre = " Escuela Primaria Ignacio Lopez Rayon"
 
 [node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1084.32, 69.6268, -1403.56)
-visible = false
 script = ExtResource("39_x4bd8")
 nombre = "Primaria Lazaro Cardenas"
 
 [node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1217.13, 69.6268, -1417.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1217.13, 55.5314, -1417.5)
 script = ExtResource("39_x4bd8")
 nombre = "Canchita El Bosque"
 
 [node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1020.99, 69.6268, -1598.05)
-visible = false
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1020.99, 52.8983, -1598.05)
 script = ExtResource("39_x4bd8")
 nombre = "Parroquia San Juanita"
 

@@ -183,18 +183,17 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("17_365if")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 60.3632, -13.4788)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("18_lah3e")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 125.203, -13.9504)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, -176.571, -13.9504)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
-visible = false
 material_override = ExtResource("19_bdwfi")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -204,7 +203,7 @@ material_override = ExtResource("20_mcrii")
 mesh = SubResource("QuadMesh_k5wsg")
 
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("21_0kang")]
-transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -43.3016, 3.10218, -38.2442, 3.41268)
+transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 17.3649, 0, 6.2142e-06, 0, -43.3016, 3.10218, -469.502, 3.41268)
 
 [node name="Msh_Navigation_03" parent="[ CONTENT ]" instance=ExtResource("22_mq7g1")]
 visible = false
@@ -216,9 +215,119 @@ visible = false
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
 [node name="Punto 1" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.6583, -106.682, -30.2261)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1707.91, -260.837, -472.279)
 script = ExtResource("24_ihx8k")
-nombre = "Pin Nombre"
+nombre = "Escuela Primaria-Nicolás Bravo"
+
+[node name="Punto 2" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1594.89, -238.319, -550.802)
+script = ExtResource("24_ihx8k")
+nombre = "Pueblo de San Nicolás Tolentino"
+
+[node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1510.2, -363.551, 237.709)
+script = ExtResource("24_ihx8k")
+nombre = "Cascada San Pedro y San Pablo Ixtapatongo"
+
+[node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -992.48, -57.712, 1154.41)
+script = ExtResource("24_ihx8k")
+nombre = "Las minas de arena"
+
+[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 581.761, -134.514, 1585.57)
+script = ExtResource("24_ihx8k")
+nombre = "IMSS Bienestar - Centro de Salud Rincón Chico"
+
+[node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 710.078, -122.059, 1728.06)
+script = ExtResource("24_ihx8k")
+nombre = "Escuela Primaria \"Margarita Maza de Juarez\""
+
+[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1057.43, -106.682, 1583.91)
+script = ExtResource("24_ihx8k")
+nombre = "Pista de Motocross"
+
+[node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 920.18, -131.416, 564.589)
+script = ExtResource("24_ihx8k")
+nombre = "Electricidad para el progreso electrónico"
+
+[node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1283.23, -125.955, 375.911)
+script = ExtResource("24_ihx8k")
+nombre = "Estadio de beisbol, José Guadarrama López"
+
+[node name="Punto 11" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1184.82, 73.3162, 847.439)
+script = ExtResource("24_ihx8k")
+nombre = "La antena"
+
+[node name="Punto 12" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1548.22, -88.9632, 481.423)
+script = ExtResource("24_ihx8k")
+nombre = "Virgen de Guadalupe"
+
+[node name="Punto 13" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1933.74, -77.0238, 421.684)
+script = ExtResource("24_ihx8k")
+nombre = "Colorines Racing Track"
+
+[node name="Punto 17" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 919.989, -137.159, 259.796)
+script = ExtResource("24_ihx8k")
+nombre = "Escuela Secundaria \"27 de Septiembre\""
+
+[node name="Punto 18" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 702.536, -145.051, 255.674)
+script = ExtResource("24_ihx8k")
+nombre = "Conalep Extensión Colorines"
+
+[node name="Punto 19" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 698.132, -135.584, 387.025)
+script = ExtResource("24_ihx8k")
+nombre = "IMSS UFM 234"
+
+[node name="Punto 21" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 568.29, -138.351, 446.177)
+script = ExtResource("24_ihx8k")
+nombre = "Iglesia Adventista del Séptimo Día Colorines"
+
+[node name="Punto 22" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 138.216, -134.206, 409.224)
+script = ExtResource("24_ihx8k")
+nombre = "Escuela Primaria José María Morelos y Pavón"
+
+[node name="Punto 23" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 153.85, -138.455, 682.816)
+script = ExtResource("24_ihx8k")
+nombre = "Campo de Futbol \"Maracana\""
+
+[node name="Punto 25" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 735.631, -148.917, -268.212)
+script = ExtResource("24_ihx8k")
+nombre = "IMSS Bienestar - CEAPS Colorines"
+
+[node name="Punto 26" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 647.35, -156.258, -242.024)
+script = ExtResource("24_ihx8k")
+nombre = "Escuela Secundaria Benemerito de las Américas"
+
+[node name="Punto 27" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 870.846, -141.377, -575.318)
+script = ExtResource("24_ihx8k")
+nombre = "Escuela Primaria 2 de Marzo"
+
+[node name="Punto 28" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1216.67, -106.682, -811.518)
+script = ExtResource("24_ihx8k")
+nombre = "Estadio de Fútbol Ël Polvorín\""
+
+[node name="Punto 29" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1949.92, -48.582, -557.234)
+script = ExtResource("24_ihx8k")
+nombre = "Telesecundaria Juan de la Barrera"
 
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 

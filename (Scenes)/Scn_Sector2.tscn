@@ -190,11 +190,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("18_8t45r")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 125.203, -13.9504)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -2.60425, -109.47, -30.5791)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
-visible = false
 material_override = ExtResource("19_16gtq")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -206,6 +205,9 @@ mesh = SubResource("QuadMesh_k5wsg")
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("21_stsw7")]
 transform = Transform3D(-41.759, 0, -6.67401e-06, 0, 9.752, 0, 6.30543e-06, 0, -44.2, 3.10218, -38.2442, 3.41268)
 
+[node name="Msh_Limit" parent="[ CONTENT ]/Msh - Limit" index="0"]
+transform = Transform3D(1.00895, 0, -1.27898e-13, 0, 1.38256, 0, -5.68434e-14, 0, 1.00296, 0, -26.1685, 0)
+
 [node name="Msh_Navigation_02" parent="[ CONTENT ]" instance=ExtResource("22_wf81l")]
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
@@ -215,9 +217,54 @@ transform = Transform3D(-41.759, 0, -6.67401e-06, 0, 9.752, 0, 6.30543e-06, 0, -
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
 [node name="Punto 1" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.6583, -106.682, -30.2261)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1879.47, -236.255, 2088.84)
 script = ExtResource("24_0ta2f")
-nombre = "Pin Nombre"
+nombre = "Rancho Tierra Santa"
+
+[node name="Punto 2" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 814.713, -150.317, 2071.81)
+script = ExtResource("24_0ta2f")
+nombre = "Escuela Primaria Leyes de Reforma"
+
+[node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 329.722, -98.5817, 1512)
+script = ExtResource("24_0ta2f")
+nombre = "Campo El Aventurero"
+
+[node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1449.96, -141.777, -15.9518)
+script = ExtResource("24_0ta2f")
+nombre = "Escuela Telesecundaria No. 0518 Nezahualcóyotl"
+
+[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 263.449, -54.3448, -1155.34)
+script = ExtResource("24_0ta2f")
+nombre = "Escuela Primaria \"Lázaro Cárdenas\""
+
+[node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.7764, -119.427, -2135.43)
+script = ExtResource("24_0ta2f")
+nombre = "Ptar San José Villa de Allende"
+
+[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2011.35, 8.00272, 397.862)
+script = ExtResource("24_0ta2f")
+nombre = "Jardín de Niños Matías de Córdova"
+
+[node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1470.2, -37.8788, -653.431)
+script = ExtResource("24_0ta2f")
+nombre = "Rancho Sánchez"
+
+[node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1945.29, -25.6381, -1057.88)
+script = ExtResource("24_0ta2f")
+nombre = "Unidad Deportiva sa Casa Blanca"
+
+[node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1643.21, -47.3302, -1295.14)
+script = ExtResource("24_0ta2f")
+nombre = "Rancho Casa Blanca"
 
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 

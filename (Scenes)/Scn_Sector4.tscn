@@ -194,17 +194,17 @@ script = ExtResource("21_lkc62")
 nombre = " Planta de Bombeo Sistema Cutzamala"
 
 [node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 658.181, -16.4113, -601.215)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 658.181, -10.5075, -601.215)
 script = ExtResource("21_lkc62")
 nombre = " Casa del Lago"
 
 [node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1210.46, 69.9905, -812.93)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1210.46, 71.5077, -812.93)
 script = ExtResource("21_lkc62")
 nombre = "Casa del Viento"
 
 [node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1581.26, -5.6043, -476.479)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1581.26, -2.37784, -476.479)
 script = ExtResource("21_lkc62")
 nombre = "Casa de la Cueva"
 
@@ -215,7 +215,6 @@ nombre = "La Piedra del molino"
 
 [node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 75.0618, -17.4138, 363.612)
-visible = false
 script = ExtResource("21_lkc62")
 nombre = "Torre de vigilancia Cualtenco"
 
@@ -225,7 +224,7 @@ script = ExtResource("21_lkc62")
 nombre = "La Boquilla"
 
 [node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 644.713, -5.68269, 959.834)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 644.506, -2.47584, 959.841)
 script = ExtResource("21_lkc62")
 nombre = "Virgen de Guadalupe"
 

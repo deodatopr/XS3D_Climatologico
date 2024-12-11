@@ -39,7 +39,7 @@ _subresources={
 },
 "Mat_Sector2_1": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_1.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_01.tres"
 },
 "Mat_Sector2_10": {
 "use_external/enabled": true,
@@ -83,7 +83,7 @@ _subresources={
 },
 "Mat_Sector2_2": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_2.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_02.tres"
 },
 "Mat_Sector2_20": {
 "use_external/enabled": true,
@@ -127,7 +127,7 @@ _subresources={
 },
 "Mat_Sector2_3": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_3.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_03.tres"
 },
 "Mat_Sector2_30": {
 "use_external/enabled": true,
@@ -171,7 +171,7 @@ _subresources={
 },
 "Mat_Sector2_4": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_4.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_04.tres"
 },
 "Mat_Sector2_40": {
 "use_external/enabled": true,
@@ -215,23 +215,23 @@ _subresources={
 },
 "Mat_Sector2_5": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_5.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_05.tres"
 },
 "Mat_Sector2_6": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_6.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_06.tres"
 },
 "Mat_Sector2_7": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_7.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_07.tres"
 },
 "Mat_Sector2_8": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_8.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_08.tres"
 },
 "Mat_Sector2_9": {
 "use_external/enabled": true,
-"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_9.tres"
+"use_external/path": "res://Cont_Models/Sector2/Terrain/Mat_Sector2_09.tres"
 }
 }
 }

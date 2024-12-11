@@ -214,9 +214,69 @@ visible = false
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
 [node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -484.349, 59.6599, 148.556)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1283.5, 59.6599, -2070.85)
 script = ExtResource("24_ndxsl")
-nombre = "Pin Nombre"
+nombre = "Preescolar El Jacal"
+
+[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1456.11, 59.6599, -1949.26)
+script = ExtResource("24_ndxsl")
+nombre = "Escuela Secundaria \"Lic. Vicente Riva Palacio\""
+
+[node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1248.22, 59.6599, -1915.06)
+script = ExtResource("24_ndxsl")
+nombre = "IMSS Bienestar - Centro de Salud El Jacal"
+
+[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -725.492, 59.6599, -1829.84)
+script = ExtResource("24_ndxsl")
+nombre = "PEMEX"
+
+[node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -656.471, 59.6599, -1152.65)
+script = ExtResource("24_ndxsl")
+nombre = "Casco de la Ex Hacienda del Salitre de Urendis "
+
+[node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1435.39, 85.8698, -1258.81)
+script = ExtResource("24_ndxsl")
+nombre = "Secundaria Simon Bolivar"
+
+[node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1528.41, 59.6599, -732.773)
+script = ExtResource("24_ndxsl")
+nombre = "San Isidro"
+
+[node name="Punto 11" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1625.04, 25.8701, -457.228)
+script = ExtResource("24_ndxsl")
+nombre = "Planta de tratamiento de aguas residuales San Isidro"
+
+[node name="Punto 12" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -733.082, 5.45816, -669.88)
+script = ExtResource("24_ndxsl")
+nombre = "Valle Escondido"
+
+[node name="Punto 13" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1450.65, 129.19, -1435.93)
+script = ExtResource("24_ndxsl")
+nombre = "Monumento Miguel Alemán"
+
+[node name="Punto 14" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1685.4, 170.549, -1158.79)
+script = ExtResource("24_ndxsl")
+nombre = "Telebachillerato Comunitario Num. 274"
+
+[node name="Punto 15" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -677.536, 59.6599, 1085.3)
+script = ExtResource("24_ndxsl")
+nombre = "UMBI"
+
+[node name="Punto 16" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1603, 41.4614, 829.226)
+script = ExtResource("24_ndxsl")
+nombre = "Iglesia de Cristo Ebenezer Espiritu Santo y Fuego San Cayetano"
 
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
