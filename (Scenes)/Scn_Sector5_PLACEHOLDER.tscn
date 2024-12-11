@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bqpyxocdem254"]
+[gd_scene load_steps=32 format=3 uid="uid://bqpyxocdem254"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_7g4tk"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_a1wfm"]
@@ -22,6 +22,8 @@
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="20_qrp4l"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="21_silru"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="22_65mo3"]
+[ext_resource type="PackedScene" uid="uid://c0dmwn7x7af4u" path="res://Cont_Models/Sector5/Msh_Navigation_05.glb" id="23_yuwgx"]
+[ext_resource type="PackedScene" uid="uid://cidh6srlccr7s" path="res://Cont_Models/Sector5/Msh_Terrain_05.glb" id="24_vqe76"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="25_hmyyn"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="26_vraij"]
 
@@ -203,11 +205,19 @@ mesh = SubResource("QuadMesh_k5wsg")
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("22_65mo3")]
 transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -43.3016, 3.10218, -38.2442, 3.41268)
 
+[node name="Msh_Limit" parent="[ CONTENT ]/Msh - Limit" index="0"]
+transform = Transform3D(1.01058, 0, 0, 0, 1, 0, 0, 0, 1.02245, 0.303417, 0.943742, 1.12348)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(2041.96, 0, 0, 0, 2041.96, 0, 0, 0, 2041.96, 0, 0, 0)
+transform = Transform3D(2041.96, 0, 0, 0, 2041.96, 0, 0, 0, 2041.96, 0, -21.3553, 0)
 mesh = SubResource("PlaneMesh_1xtdn")
 
+[node name="Msh_Navigation_05" parent="[ CONTENT ]" instance=ExtResource("23_yuwgx")]
+visible = false
+
 [node name="================" type="Node" parent="[ CONTENT ]"]
+
+[node name="Msh_Terrain_05" parent="[ CONTENT ]" instance=ExtResource("24_vqe76")]
 
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
