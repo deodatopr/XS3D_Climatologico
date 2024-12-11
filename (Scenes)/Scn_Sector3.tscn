@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://vj17msu6xfl0"]
+[gd_scene load_steps=32 format=3 uid="uid://vj17msu6xfl0"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_jfh1y"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_ww73f"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://btw2e2r31qqqs" path="res://Cont_Models/Sector3/Msh_Navigation_03.glb" id="22_mq7g1"]
 [ext_resource type="PackedScene" uid="uid://b4rkhk4urc8wu" path="res://Cont_Models/Sector3/Msh_Terrain_03.glb" id="22_xwn08"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="24_ihx8k"]
+[ext_resource type="PackedScene" uid="uid://cpydldfb35xfn" path="res://Cont_Models/Sector3/Msh_Sitio_03.glb" id="24_sosgm"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="25_2agra"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
@@ -59,9 +60,8 @@ orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_ww73f")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 mshNavigation = NodePath("../../../[ CONTENT ]/Msh_Navigation_03")
-Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain_03")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../../[ CONTENT ]/Msh_Terrain_03/Msh_Roads")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
@@ -194,6 +194,7 @@ transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225,
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
+visible = false
 material_override = ExtResource("19_bdwfi")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -209,6 +210,8 @@ transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 17.3649, 0, 6.2142e-06, 0,
 visible = false
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
+
+[node name="Msh_Sitio_03" parent="[ CONTENT ]" instance=ExtResource("24_sosgm")]
 
 [node name="Msh_Terrain_03" parent="[ CONTENT ]" instance=ExtResource("22_xwn08")]
 
