@@ -85,6 +85,7 @@ transform = Transform3D(-36.5868, 0, -3.38757e-06, 0, 9.76607, 0, 3.19852e-06, 0
 
 [node name="Msh - Navigation" parent="[ CONTENT ]" instance=ExtResource("11_bbryg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 

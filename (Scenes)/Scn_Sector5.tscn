@@ -61,8 +61,11 @@ orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_a1wfm")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("worldEnv", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+mshNavigation = NodePath("../../../[ CONTENT ]/Msh_Navigation_05")
+Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain_05")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
+msh_roads = NodePath("../../../[ CONTENT ]/Msh_Terrain_05/Msh_Roads")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
@@ -182,18 +185,17 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("18_vumuk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 150.461, 240.636, -127.958)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("19_iweio")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 125.203, -13.9504)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 135.518, 15.8075, -144.625)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
-visible = false
 material_override = ExtResource("20_qrp4l")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -203,7 +205,7 @@ material_override = ExtResource("21_silru")
 mesh = SubResource("QuadMesh_k5wsg")
 
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("22_65mo3")]
-transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -43.3016, 3.10218, -38.2442, 3.41268)
+transform = Transform3D(-41.6949, 0, -6.65079e-06, 0, 9.752, 0, 6.29575e-06, 0, -44.0463, 23.2596, -38.2442, 16.2466)
 
 [node name="Msh_Limit" parent="[ CONTENT ]/Msh - Limit" index="0"]
 transform = Transform3D(1.01711, 0, 0, 0, 1, 0, 0, 0, 1.02245, 0.385718, 0.943742, 1.12348)
@@ -222,9 +224,114 @@ visible = false
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
 [node name="Punto 1" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.6583, -106.682, -30.2261)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1809.21, 20.6095, 1805.09)
 script = ExtResource("25_hmyyn")
-nombre = "Pin Nombre"
+nombre = "Sangradera"
+
+[node name="Punto 2" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1354.34, 60.1227, -535.222)
+script = ExtResource("25_hmyyn")
+nombre = "Zona de Vista Hermosa"
+
+[node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -459.719, 53.5508, -606.748)
+script = ExtResource("25_hmyyn")
+nombre = "Oficinas del Bienestar"
+
+[node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -390.135, 43.5641, -741.839)
+script = ExtResource("25_hmyyn")
+nombre = "La Cruz"
+
+[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -460.704, 52.1313, -460.364)
+script = ExtResource("25_hmyyn")
+nombre = "Escuela Primaria José María Morelos"
+
+[node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -103.941, 10.6516, -252.424)
+script = ExtResource("25_hmyyn")
+nombre = "Parque ecológico"
+
+[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 277.943, 23.4927, -151.83)
+script = ExtResource("25_hmyyn")
+nombre = "Cabañas y restaurante Vivero"
+
+[node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 376.444, 22.4017, 21.9962)
+script = ExtResource("25_hmyyn")
+nombre = "Parque Villa Victoria"
+
+[node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 183.085, 26.763, 48.1597)
+script = ExtResource("25_hmyyn")
+nombre = "Restaurante Playa Azul"
+
+[node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 284.013, 22.8256, 141.47)
+script = ExtResource("25_hmyyn")
+nombre = "Posada Familiar Los 3 Hermanos"
+
+[node name="Punto 11" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 525.438, 17.8376, 15.2623)
+script = ExtResource("25_hmyyn")
+nombre = "Cabañas y embarcaderos La Presa"
+
+[node name="Punto 12" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 773.584, 37.0372, 473.379)
+script = ExtResource("25_hmyyn")
+nombre = "Miscelánea La Presa"
+
+[node name="Punto 13" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1074.68, 33.276, 762.578)
+script = ExtResource("25_hmyyn")
+nombre = "Servicio mecánico y eléctrico general"
+
+[node name="Punto 14" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1371.56, 21.9414, 815.341)
+script = ExtResource("25_hmyyn")
+nombre = "PEMEX"
+
+[node name="Punto 15" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1445.93, 13.1867, 689.473)
+script = ExtResource("25_hmyyn")
+nombre = "Las Palapas"
+
+[node name="Punto 16" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2002.35, 27.2301, 709.51)
+script = ExtResource("25_hmyyn")
+nombre = "Herrería, vidrios y aluminio El Vivero"
+
+[node name="Punto 17" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -52.9944, 44.4724, -1258.06)
+script = ExtResource("25_hmyyn")
+nombre = "Escuela primaria Lázaro Cárdenas"
+
+[node name="Punto 18" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55.8114, 43.0521, -1345.99)
+script = ExtResource("25_hmyyn")
+nombre = "Iglesia La Luz del Mundo"
+
+[node name="Punto 19" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 67.6588, 30.7088, -1397.68)
+script = ExtResource("25_hmyyn")
+nombre = "Iglesia Metodista Ël Divino Redentor\""
+
+[node name="Punto 20" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 128.956, 27.2945, -1461.24)
+script = ExtResource("25_hmyyn")
+nombre = "Telesecundaria Gustavo Baz Lombardo"
+
+[node name="Punto 21" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 245.351, 30.6023, -1576.32)
+script = ExtResource("25_hmyyn")
+nombre = "Jardín de niños Ignacio Ramírez"
+
+[node name="Punto 22" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 109.298, 38.881, -1670.06)
+script = ExtResource("25_hmyyn")
+nombre = "IMSS Bienestar - Centro de Salud Rural Casas Coloradas"
 
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
@@ -240,3 +347,4 @@ parameters/looping = true
 [editable path="SHARED SYSTEMS & UI"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
+[editable path="[ CONTENT ]/Msh_Terrain_05"]
