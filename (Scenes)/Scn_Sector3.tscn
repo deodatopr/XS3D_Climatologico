@@ -106,8 +106,8 @@ directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(0.939693, -0.296198, 0.17101, 0, 0.5, 0.866026, -0.34202, -0.813798, 0.469846, 0, 94.9184, 0)
-light_color = Color(1, 0.926401, 0.824441, 1)
+transform = Transform3D(0.880478, -0.410573, 0.237044, 0, 0.5, 0.866026, -0.474088, -0.762516, 0.440239, 0, 94.9184, 0)
+light_color = Color(1, 0.9375, 0.85, 1)
 light_energy = 2.0
 shadow_enabled = true
 shadow_blur = 3.0
@@ -183,14 +183,14 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("17_365if")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 60.3632, -13.4788)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 111.806, 39.1198, 120.771)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("18_lah3e")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, -176.571, -13.9504)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 111.226, -197.814, 120.299)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
