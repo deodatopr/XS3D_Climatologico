@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://btw2e2r31qqqs" path="res://Cont_Models/Sector3/Msh_Navigation_03.glb" id="22_mq7g1"]
 [ext_resource type="PackedScene" uid="uid://b4rkhk4urc8wu" path="res://Cont_Models/Sector3/Msh_Terrain_03.glb" id="22_xwn08"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="24_ihx8k"]
-[ext_resource type="PackedScene" uid="uid://cpydldfb35xfn" path="res://Cont_Models/Sector3/Msh_Sitio_03.glb" id="24_sosgm"]
+[ext_resource type="PackedScene" uid="uid://bcb3cmmufempr" path="res://Cont_Models/Sector3/Msh_Sitio_03.glb" id="24_sosgm"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="25_2agra"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
