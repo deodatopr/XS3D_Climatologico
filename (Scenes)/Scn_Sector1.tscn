@@ -189,7 +189,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.402
 surface_material_override/0 = ExtResource("40_r512w")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 125.203, -13.9504)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 112.561, -13.9504)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
@@ -213,25 +213,10 @@ visible = false
 
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
-[node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1283.5, 59.6599, -2070.85)
-script = ExtResource("24_ndxsl")
-nombre = "Preescolar El Jacal"
-
-[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1456.11, 59.6599, -1949.26)
-script = ExtResource("24_ndxsl")
-nombre = "Escuela Secundaria \"Lic. Vicente Riva Palacio\""
-
 [node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1248.22, 59.6599, -1915.06)
 script = ExtResource("24_ndxsl")
 nombre = "IMSS Bienestar - Centro de Salud El Jacal"
-
-[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -725.492, 59.6599, -1829.84)
-script = ExtResource("24_ndxsl")
-nombre = "PEMEX"
 
 [node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -656.471, 59.6599, -1152.65)
@@ -242,11 +227,6 @@ nombre = "Casco de la Ex Hacienda del Salitre de Urendis "
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1435.39, 85.8698, -1258.81)
 script = ExtResource("24_ndxsl")
 nombre = "Secundaria Simon Bolivar"
-
-[node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1528.41, 59.6599, -732.773)
-script = ExtResource("24_ndxsl")
-nombre = "San Isidro"
 
 [node name="Punto 11" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1625.04, 25.8701, -457.228)

@@ -262,11 +262,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1945.
 script = ExtResource("24_0ta2f")
 nombre = "Unidad Deportiva sa Casa Blanca"
 
-[node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1643.21, -47.3302, -1295.14)
-script = ExtResource("24_0ta2f")
-nombre = "Rancho Casa Blanca"
-
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
