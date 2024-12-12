@@ -111,6 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4854, -23.0553, 210.436)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(5819.25, 0, 0, 0, -0.000254367, 5819.25, 0, -5819.25, -0.000254367, 18.8253, 941.527, -39.2324)
+visible = false
 material_override = ExtResource("21_ilana")
 mesh = SubResource("QuadMesh_vcmnj")
 
@@ -203,10 +204,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1210.4
 script = ExtResource("21_lkc62")
 nombre = "Casa del Viento"
 
-[node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1581.26, -2.37784, -476.479)
+[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1441.66, 13.6434, -610.12)
 script = ExtResource("21_lkc62")
-nombre = "Casa de la Cueva"
+nombre = "Casa Valle del lago"
 
 [node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -879.223, -63.0837, 200.299)
@@ -227,6 +228,11 @@ nombre = "La Boquilla"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 644.506, -2.47584, 959.841)
 script = ExtResource("21_lkc62")
 nombre = "Virgen de Guadalupe"
+
+[node name="Punto 12" type="Node3D" parent="[ CONTENT ]/Puntos Interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 688.74, 105.362, -859.905)
+script = ExtResource("21_lkc62")
+nombre = "Casa Escondida"
 
 [editable path="SHARED SYSTEMS & UI"]
 [editable path="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones"]
