@@ -60,8 +60,9 @@ orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_ww73f")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 mshNavigation = NodePath("../../../[ CONTENT ]/Msh_Navigation_03")
+Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain_03")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../../[ CONTENT ]/Msh_Terrain_03/Msh_Roads")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
