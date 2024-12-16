@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://0k86a0rfpsg5"]
+[gd_scene load_steps=32 format=3 uid="uid://0k86a0rfpsg5"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_6g4ve"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_sk4rw"]
@@ -22,8 +22,10 @@
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="20_8biod"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="21_a3cl0"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="22_l4t8s"]
+[ext_resource type="PackedScene" uid="uid://ds76rkts4g4w7" path="res://Cont_Models/Sector8/Msh_Terrain_08.glb" id="23_73ppq"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="23_pu2rq"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="24_na86h"]
+[ext_resource type="PackedScene" uid="uid://b5dyjm266vbad" path="res://Cont_Models/Sector8/Msh_Navigation_08.glb" id="24_t8cdg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
 streams_count = 7
@@ -59,11 +61,8 @@ orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_sk4rw")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
-mshNavigation = NodePath("")
-Terrains = [NodePath("")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("worldEnv", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
-msh_roads = NodePath("")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
@@ -207,10 +206,15 @@ mesh = SubResource("QuadMesh_k5wsg")
 transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -43.3016, 3.10218, -38.2442, 3.41268)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(2041.96, 0, 0, 0, 2041.96, 0, 0, 0, 2041.96, 0, 0, 0)
+transform = Transform3D(2041.96, 0, 0, 0, 2041.96, 0, 0, 0, 2041.96, 0, -62.0014, 0)
 mesh = SubResource("PlaneMesh_1xtdn")
 
+[node name="Msh_Terrain_08" parent="[ CONTENT ]" instance=ExtResource("23_73ppq")]
+
 [node name="================" type="Node" parent="[ CONTENT ]"]
+
+[node name="Msh_Navigation_08" parent="[ CONTENT ]" instance=ExtResource("24_t8cdg")]
+visible = false
 
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
