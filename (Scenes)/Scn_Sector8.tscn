@@ -238,30 +238,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1915.
 script = ExtResource("23_pu2rq")
 nombre = "Alberca Quinta Isabel"
 
-[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1326.48, -2.0163, -883.405)
-script = ExtResource("23_pu2rq")
-nombre = "Monumento a Josefa Ortiz de Dominguez"
-
 [node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1155.38, -6.1816, -424.399)
 script = ExtResource("23_pu2rq")
 nombre = "Rancho \"Los Girasoles\""
 
-[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1985.31, 10.3993, -36.2552)
-script = ExtResource("23_pu2rq")
-nombre = "Campo Cuauhtemoc"
-
 [node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1920.58, 10.3993, 19.1773)
 script = ExtResource("23_pu2rq")
 nombre = "Primaria Cuauhtemoc"
-
-[node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2105.47, 12.025, 543.533)
-script = ExtResource("23_pu2rq")
-nombre = "CEDIS 161 Canasta Alimentaria"
 
 [node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2023.42, 9.95687, 813.858)
@@ -281,12 +266,7 @@ nombre = "Escuela Primaria Lic. Isidro Fabela"
 [node name="Punto 13" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 82.4942, -12.0199, 1986.4)
 script = ExtResource("23_pu2rq")
-nombre = "Primaria Antonio Gutiettez Gutierrez"
-
-[node name="Punto 14" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 376.663, -6.27289, 1320.47)
-script = ExtResource("23_pu2rq")
-nombre = "Domo Deportivo IMCUFIDEH"
+nombre = "Primaria Antonio Gutierrez Gutierrez"
 
 [node name="Punto 15" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 272.061, -6.99314, 1286.68)
@@ -297,16 +277,6 @@ nombre = "DIF Huehuetoca"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 717.346, -7.68184, 2100.92)
 script = ExtResource("23_pu2rq")
 nombre = "Plaza Cívica Bicentenario Puente Grande"
-
-[node name="Punto 17" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1704.94, 51.7397, 719.496)
-script = ExtResource("23_pu2rq")
-nombre = "Jardín de Niños Celestin Freinet"
-
-[node name="Punto 18" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1695.16, 40.8927, 853.055)
-script = ExtResource("23_pu2rq")
-nombre = "Telebachillerato Comunitario Núm 100"
 
 [node name="Punto 19" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1547.03, 42.5021, 844.959)
