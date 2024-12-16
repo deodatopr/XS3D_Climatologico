@@ -32,7 +32,11 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
-"materials": {}
+"nodes": {
+"PATH:Msh_Navigation": {
+"generate/navmesh": 2
+}
+}
 }
 gltf/naming_version=1
 gltf/embedded_image_handling=1

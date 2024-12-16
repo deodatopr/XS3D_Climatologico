@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://0k86a0rfpsg5"]
+[gd_scene load_steps=31 format=3 uid="uid://0k86a0rfpsg5"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_6g4ve"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_sk4rw"]
-[ext_resource type="Texture2D" uid="uid://bnf54yefsmxhj" path="res://Cont_Models/Sector3/Map_Sect3_Minimap.jpg" id="3_qpq1t"]
+[ext_resource type="Texture2D" uid="uid://ctrl38lj8wxjo" path="res://Cont_Models/Sector8/Map_Sect8_Minimap.jpg" id="3_dca2r"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="4_25nl5"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="5_f7nnm"]
 [ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="6_shgn6"]
@@ -53,16 +53,17 @@ shader_parameter/layers = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_1xtdn"]
-
 [node name="SECTOR 5" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_6g4ve")
 orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_sk4rw")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("worldEnv", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+mshNavigation = NodePath("../../../[ CONTENT ]/Msh_Navigation_08")
+Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain_08")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
+msh_roads = NodePath("../../../[ CONTENT ]/Msh_Terrain_08/Msh_Roads")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
@@ -85,7 +86,7 @@ miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
 [node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1"]
-map_minimap = ExtResource("3_qpq1t")
+map_minimap = ExtResource("3_dca2r")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
 
@@ -205,10 +206,6 @@ mesh = SubResource("QuadMesh_k5wsg")
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("22_l4t8s")]
 transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -43.3016, 3.10218, -38.2442, 3.41268)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(2041.96, 0, 0, 0, 2041.96, 0, 0, 0, 2041.96, 0, -62.0014, 0)
-mesh = SubResource("PlaneMesh_1xtdn")
-
 [node name="Msh_Terrain_08" parent="[ CONTENT ]" instance=ExtResource("23_73ppq")]
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
@@ -237,3 +234,4 @@ parameters/looping = true
 [editable path="SHARED SYSTEMS & UI"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
+[editable path="[ CONTENT ]/Msh_Terrain_08"]

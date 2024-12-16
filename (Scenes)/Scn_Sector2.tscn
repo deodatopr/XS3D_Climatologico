@@ -223,22 +223,22 @@ script = ExtResource("24_0ta2f")
 nombre = "Rancho Tierra Santa"
 
 [node name="Punto 2" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 814.713, -150.317, 2071.81)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 814.713, -157.222, 2071.81)
 script = ExtResource("24_0ta2f")
 nombre = "Escuela Primaria Leyes de Reforma"
 
 [node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 329.722, -98.5817, 1512)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 329.722, -101.606, 1512)
 script = ExtResource("24_0ta2f")
 nombre = "Campo El Aventurero"
 
 [node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1449.96, -141.777, -15.9518)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1449.96, -142.685, -15.9518)
 script = ExtResource("24_0ta2f")
 nombre = "Escuela Telesecundaria No. 0518 Nezahualcóyotl"
 
 [node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 263.449, -54.3448, -1155.34)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 263.449, -59.9766, -1155.34)
 script = ExtResource("24_0ta2f")
 nombre = "Escuela Primaria \"Lázaro Cárdenas\""
 
@@ -248,17 +248,17 @@ script = ExtResource("24_0ta2f")
 nombre = "Ptar San José Villa de Allende"
 
 [node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2011.35, 8.00272, 397.862)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2011.35, -7.90382, 397.862)
 script = ExtResource("24_0ta2f")
 nombre = "Jardín de Niños Matías de Córdova"
 
 [node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1470.2, -37.8788, -653.431)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1470.2, -53.6458, -653.431)
 script = ExtResource("24_0ta2f")
 nombre = "Rancho Sánchez"
 
 [node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1945.29, -25.6381, -1057.88)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1945.29, -32.4118, -1057.88)
 script = ExtResource("24_0ta2f")
 nombre = "Unidad Deportiva sa Casa Blanca"
 
