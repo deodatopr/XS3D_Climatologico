@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://0k86a0rfpsg5"]
+[gd_scene load_steps=31 format=3 uid="uid://sd1peiskb4gq"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_6g4ve"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_sk4rw"]
@@ -206,6 +206,9 @@ mesh = SubResource("QuadMesh_k5wsg")
 [node name="Msh - Limit" parent="[ CONTENT ]" instance=ExtResource("22_l4t8s")]
 transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -43.3016, 3.10218, -38.2442, 3.41268)
 
+[node name="Msh_Limit" parent="[ CONTENT ]/Msh - Limit" index="0"]
+transform = Transform3D(1.02543, 0, 0, 0, 1, 0, -9.9476e-14, 0, 1.02761, 5.49071, 0, -0.520187)
+
 [node name="Msh_Terrain_08" parent="[ CONTENT ]" instance=ExtResource("23_73ppq")]
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
@@ -216,9 +219,124 @@ visible = false
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
 [node name="Punto 1" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.6583, -106.682, -30.2261)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -617.624, -7.9864, -159.238)
 script = ExtResource("23_pu2rq")
-nombre = "Pin Nombre"
+nombre = "Parque del Lago"
+
+[node name="Punto 2" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1776.66, 5.52829, -2082.78)
+script = ExtResource("23_pu2rq")
+nombre = "Escuela Primaria Frida Kahlo"
+
+[node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1101.51, -6.86068, -1152.13)
+script = ExtResource("23_pu2rq")
+nombre = "UAEM: Unidad Académica Profesional Huehuetoca"
+
+[node name="Punto 4" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1915.06, 5.66779, -1049.75)
+script = ExtResource("23_pu2rq")
+nombre = "Alberca Quinta Isabel"
+
+[node name="Punto 5" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1326.48, -2.0163, -883.405)
+script = ExtResource("23_pu2rq")
+nombre = "Monumento a Josefa Ortiz de Dominguez"
+
+[node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1155.38, -6.1816, -424.399)
+script = ExtResource("23_pu2rq")
+nombre = "Rancho \"Los Girasoles\""
+
+[node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1985.31, 10.3993, -36.2552)
+script = ExtResource("23_pu2rq")
+nombre = "Campo Cuauhtemoc"
+
+[node name="Punto 8" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1920.58, 10.3993, 19.1773)
+script = ExtResource("23_pu2rq")
+nombre = "Primaria Cuauhtemoc"
+
+[node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2105.47, 12.025, 543.533)
+script = ExtResource("23_pu2rq")
+nombre = "CEDIS 161 Canasta Alimentaria"
+
+[node name="Punto 10" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2023.42, 9.95687, 813.858)
+script = ExtResource("23_pu2rq")
+nombre = "Acuario Neptuno Huehuetoca"
+
+[node name="Punto 11" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1094.06, -4.14225, 637.614)
+script = ExtResource("23_pu2rq")
+nombre = "Canchas del Deportivo"
+
+[node name="Punto 12" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1088.56, -1.52374, 1045.61)
+script = ExtResource("23_pu2rq")
+nombre = "Escuela Primaria Lic. Isidro Fabela"
+
+[node name="Punto 13" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 82.4942, -12.0199, 1986.4)
+script = ExtResource("23_pu2rq")
+nombre = "Primaria Antonio Gutiettez Gutierrez"
+
+[node name="Punto 14" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 376.663, -6.27289, 1320.47)
+script = ExtResource("23_pu2rq")
+nombre = "Domo Deportivo IMCUFIDEH"
+
+[node name="Punto 15" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 272.061, -6.99314, 1286.68)
+script = ExtResource("23_pu2rq")
+nombre = "DIF Huehuetoca"
+
+[node name="Punto 16" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 717.346, -7.68184, 2100.92)
+script = ExtResource("23_pu2rq")
+nombre = "Plaza Cívica Bicentenario Puente Grande"
+
+[node name="Punto 17" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1704.94, 51.7397, 719.496)
+script = ExtResource("23_pu2rq")
+nombre = "Jardín de Niños Celestin Freinet"
+
+[node name="Punto 18" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1695.16, 40.8927, 853.055)
+script = ExtResource("23_pu2rq")
+nombre = "Telebachillerato Comunitario Núm 100"
+
+[node name="Punto 19" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1547.03, 42.5021, 844.959)
+script = ExtResource("23_pu2rq")
+nombre = "Escuela Primaria Sesquicentenario"
+
+[node name="Punto 20" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 511.093, -4.91581, 780.296)
+script = ExtResource("23_pu2rq")
+nombre = "Segunda sección del Museo del Ferrocarril"
+
+[node name="Punto 21" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 325.175, -5.03806, 802.168)
+script = ExtResource("23_pu2rq")
+nombre = "Palacio Municipal de Huehuetoca"
+
+[node name="Punto 23" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 185.609, 6.32209, -1273.31)
+script = ExtResource("23_pu2rq")
+nombre = "Kinder \"Alejo Carpentier\""
+
+[node name="Punto 24" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -464.583, 1.50435, -1811.52)
+script = ExtResource("23_pu2rq")
+nombre = "Escuela Primaria \"Lic. Jacinto Ramirez Gil\""
+
+[node name="Punto 22" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1149.98, 2.99641, 228.529)
+script = ExtResource("23_pu2rq")
+nombre = "Jardín de eventos \"Los Agaves\""
 
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
