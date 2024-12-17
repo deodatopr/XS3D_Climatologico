@@ -16,6 +16,8 @@ config/tags=PackedStringArray("xsoft3d")
 run/main_scene="res://(Scenes)/Main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
+config/icon="res://Icon.png"
+config/windows_native_icon="res://Icon.ico"
 
 [audio]
 
