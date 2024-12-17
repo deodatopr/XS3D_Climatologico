@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bqpyxocdem254"]
+[gd_scene load_steps=32 format=3 uid="uid://bqpyxocdem254"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_7g4tk"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_a1wfm"]
@@ -54,16 +54,15 @@ shader_parameter/layers = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_1xtdn"]
-
 [node name="SECTOR 5" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_7g4tk")
 orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_a1wfm")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 mshNavigation = NodePath("../../../[ CONTENT ]/Msh_Navigation_05")
+Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain_05")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../../[ CONTENT ]/Msh_Terrain_05/Msh_Roads")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
@@ -185,18 +184,17 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("18_vumuk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 150.461, 240.636, -127.958)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 74.7406, 240.636, -105.242)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("19_iweio")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 135.518, 15.8075, -144.625)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 59.7976, 15.8075, -121.909)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
-visible = false
 material_override = ExtResource("20_qrp4l")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -211,16 +209,12 @@ transform = Transform3D(-41.6949, 0, -6.65079e-06, 0, 9.752, 0, 6.29575e-06, 0, 
 [node name="Msh_Limit" parent="[ CONTENT ]/Msh - Limit" index="0"]
 transform = Transform3D(1.01711, 0, 0, 0, 1, 0, 0, 0, 1.02245, 0.385718, 0.943742, 1.12348)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="[ CONTENT ]"]
-transform = Transform3D(2041.96, 0, 0, 0, 2041.96, 0, 0, 0, 2041.96, 0, -21.3553, 0)
-mesh = SubResource("PlaneMesh_1xtdn")
-
 [node name="Msh_Navigation_05" parent="[ CONTENT ]" instance=ExtResource("23_yuwgx")]
 visible = false
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
-[node name="Msh_Sitio_052" parent="[ CONTENT ]" instance=ExtResource("24_gkydt")]
+[node name="Msh_Sitio_05" parent="[ CONTENT ]" instance=ExtResource("24_gkydt")]
 
 [node name="Msh_Terrain_05" parent="[ CONTENT ]" instance=ExtResource("24_vqe76")]
 
