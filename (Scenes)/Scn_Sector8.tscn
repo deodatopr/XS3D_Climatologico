@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://sd1peiskb4gq"]
+[gd_scene load_steps=32 format=3 uid="uid://sd1peiskb4gq"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_6g4ve"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_sk4rw"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="22_l4t8s"]
 [ext_resource type="PackedScene" uid="uid://ds76rkts4g4w7" path="res://Cont_Models/Sector8/Msh_Terrain_08.glb" id="23_73ppq"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="23_pu2rq"]
+[ext_resource type="PackedScene" uid="uid://bw6g18cu0fqyk" path="res://Cont_Models/Sector8/Msh_Sitio.glb" id="24_3x58u"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="24_na86h"]
 [ext_resource type="PackedScene" uid="uid://b5dyjm266vbad" path="res://Cont_Models/Sector8/Msh_Navigation_08.glb" id="24_t8cdg"]
 
@@ -106,7 +107,7 @@ directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(0.939693, -0.296198, 0.17101, 0, 0.5, 0.866026, -0.34202, -0.813798, 0.469846, 0, 94.9184, 0)
+transform = Transform3D(0.996493, 0.0724672, -0.0418389, 0, 0.5, 0.866026, 0.0836779, -0.862988, 0.498247, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
@@ -183,18 +184,17 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("18_ohkck")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -238.364, 224.822, 13.847)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("19_o4ynw")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 125.203, -13.9504)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -253.975, -4.33911, -2.80971)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
-visible = false
 material_override = ExtResource("20_8biod")
 mesh = SubResource("QuadMesh_2ocno")
 
@@ -210,6 +210,8 @@ transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -
 transform = Transform3D(1.02543, 0, 0, 0, 1, 0, -9.9476e-14, 0, 1.02761, 5.49071, 0, -0.520187)
 
 [node name="Msh_Terrain_08" parent="[ CONTENT ]" instance=ExtResource("23_73ppq")]
+
+[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("24_3x58u")]
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
@@ -229,7 +231,7 @@ script = ExtResource("23_pu2rq")
 nombre = "Escuela Primaria Frida Kahlo"
 
 [node name="Punto 3" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1101.51, -6.86068, -1152.13)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1101.51, -3.9158, -1152.13)
 script = ExtResource("23_pu2rq")
 nombre = "UAEM: Unidad Académica Profesional Huehuetoca"
 
@@ -311,7 +313,7 @@ nombre = "Jardín de eventos \"Los Agaves\""
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274.455, -7.9828, 8.03692)
 stream = ExtResource("24_na86h")
 volume_db = 20.0
 unit_size = 25.0
