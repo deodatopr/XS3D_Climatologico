@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://sd1peiskb4gq"]
+[gd_scene load_steps=32 format=3 uid="uid://sd1peiskb4gq"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_6g4ve"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_sk4rw"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="23_pu2rq"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="24_na86h"]
 [ext_resource type="PackedScene" uid="uid://b5dyjm266vbad" path="res://Cont_Models/Sector8/Msh_Navigation_08.glb" id="24_t8cdg"]
+[ext_resource type="PackedScene" uid="uid://bw6g18cu0fqyk" path="res://Cont_Models/Sector8/Msh_Sitio.glb" id="25_wytkw"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
 streams_count = 7
@@ -53,14 +54,15 @@ shader_parameter/layers = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_k5wsg"]
 
-[node name="SECTOR 5" type="Node3D" node_paths=PackedStringArray("orquestrator")]
+[node name="SECTOR 8" type="Node3D" node_paths=PackedStringArray("orquestrator")]
 script = ExtResource("1_6g4ve")
 orquestrator = NodePath("SHARED SYSTEMS & UI/[ SYSTEMS ]/Orquestrator")
 
 [node name="SHARED SYSTEMS & UI" parent="." instance=ExtResource("2_sk4rw")]
 
-[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
+[node name="Camera - Drones" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]" index="1" node_paths=PackedStringArray("mshNavigation", "Terrains", "worldEnv", "msh_roads", "msh_limit", "pinSitio", "light_sun_sky", "light_sun_fly")]
 mshNavigation = NodePath("../../../[ CONTENT ]/Msh_Navigation_08")
+Terrains = [NodePath("../../../[ CONTENT ]/Msh_Terrain_08")]
 worldEnv = NodePath("../../../[ ENVIRONMENT ]/WorldEnvironment")
 msh_roads = NodePath("../../../[ CONTENT ]/Msh_Terrain_08/Msh_Roads")
 msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
@@ -107,7 +109,7 @@ directional_shadow_max_distance = 1000.0
 sky_mode = 1
 
 [node name="Light - Sun_Fly" type="DirectionalLight3D" parent="[ ENVIRONMENT ]"]
-transform = Transform3D(0.939693, -0.296198, 0.17101, 0, 0.5, 0.866026, -0.34202, -0.813798, 0.469846, 0, 94.9184, 0)
+transform = Transform3D(0.931056, 0.315993, -0.182438, 0, 0.5, 0.866026, 0.364877, -0.806318, 0.465528, 0, 94.9184, 0)
 light_color = Color(1, 0.926401, 0.824441, 1)
 light_energy = 2.0
 shadow_enabled = true
@@ -184,14 +186,14 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("18_ohkck")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.597, 187.595, -2.815)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("19_o4ynw")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 125.203, -13.9504)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -34.8473, -44.3797, -18.9685)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
@@ -213,10 +215,10 @@ transform = Transform3D(1.02543, 0, 0, 0, 1, 0, -9.9476e-14, 0, 1.02761, 5.49071
 [node name="=================" type="Node" parent="[ CONTENT ]"]
 
 [node name="Msh_Terrain_08" parent="[ CONTENT ]" instance=ExtResource("23_73ppq")]
-transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Msh_Navigation_08" parent="[ CONTENT ]" instance=ExtResource("24_t8cdg")]
-transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Msh_Sitio" parent="[ CONTENT ]" instance=ExtResource("25_wytkw")]
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
