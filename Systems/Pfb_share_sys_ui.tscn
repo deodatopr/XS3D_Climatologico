@@ -162,6 +162,12 @@ ppe_fishEye_DroneSky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]/PPE - FishEye/pp
 ui_ppe_sky = NodePath("../../[ PPE + UI ]/[ PPE- SKY]")
 ui_ppe_fly = NodePath("../../[ PPE + UI ]/[ PPE - FLY]")
 
+[node name="RemoteTransform_Sky" parent="[ SYSTEMS ]/Camera - Drones/MovSky/sky_cam" index="0"]
+remote_path = NodePath("../../../../Lluvia/PS - Rain Sky")
+
+[node name="RemoteTransform_Fly" parent="[ SYSTEMS ]/Camera - Drones/MovFly/fly_cam" index="1"]
+remote_path = NodePath("../../../../Lluvia/PS - Rain Fly")
+
 [node name="Audio" type="Node" parent="[ SYSTEMS ]"]
 script = ExtResource("3_ksv1a")
 
@@ -432,3 +438,5 @@ grow_vertical = 0
 
 [node name="RENDER TOOL" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("40_p53q7")]
 visible = false
+
+[editable path="[ SYSTEMS ]/Camera - Drones"]
