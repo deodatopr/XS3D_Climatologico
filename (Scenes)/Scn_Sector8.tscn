@@ -68,6 +68,8 @@ msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+fly_height_max = 600.0
+fly_height_min = 200.0
 
 [node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
 audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water")]
@@ -209,12 +211,15 @@ transform = Transform3D(-41.1548, 0, -6.53835e-06, 0, 9.752, 0, 6.2142e-06, 0, -
 [node name="Msh_Limit" parent="[ CONTENT ]/Msh - Limit" index="0"]
 transform = Transform3D(1.02543, 0, 0, 0, 1, 0, -9.9476e-14, 0, 1.02761, 5.49071, 0, -0.520187)
 
-[node name="Msh_Terrain_08" parent="[ CONTENT ]" instance=ExtResource("23_73ppq")]
+[node name="=================" type="Node" parent="[ CONTENT ]"]
 
-[node name="================" type="Node" parent="[ CONTENT ]"]
+[node name="Msh_Terrain_08" parent="[ CONTENT ]" instance=ExtResource("23_73ppq")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Msh_Navigation_08" parent="[ CONTENT ]" instance=ExtResource("24_t8cdg")]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="================" type="Node" parent="[ CONTENT ]"]
 
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
@@ -320,6 +325,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [editable path="SHARED SYSTEMS & UI"]
+[editable path="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain_08"]
