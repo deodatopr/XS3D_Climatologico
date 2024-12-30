@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_0qoah"]
 [ext_resource type="Texture2D" uid="uid://c8sb3bndt4ba8" path="res://Cont_Models/Sector1/Map_Sect1_Minimap.jpg" id="3_k1i1w"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="17_araxv"]
-[ext_resource type="Material" uid="uid://dlwcs1ta6nom1" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_01.tres" id="19_6gqtm"]
+[ext_resource type="Material" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_01.tres" id="19_6gqtm"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="24_ndxsl"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="25_blcia"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="26_3vjvv"]
@@ -38,6 +38,9 @@ proximityEdgeLimits = 0.73
 fly_height_max = 400.0
 fly_height_min = 100.0
 
+[node name="MovFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones" index="1"]
+transform = Transform3D(0.462105, 0.387283, -0.797791, 7.45058e-09, 0.899604, 0.436708, 0.886826, -0.201805, 0.415711, -602.382, 433.044, 292.902)
+
 [node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
 audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water")]
 
@@ -50,6 +53,9 @@ lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
+
+[node name="PS - Rain Fly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -602.382, 433.044, 292.902)
 
 [node name="LensDrop" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia/Drops" index="0"]
 visible = true
