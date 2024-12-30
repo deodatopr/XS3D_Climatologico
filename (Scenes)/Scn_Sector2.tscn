@@ -89,12 +89,13 @@ lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 
 [node name="PS - Rain Fly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 537.936, 203.795, -787.535)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 537.935, 203.794, -787.535)
 
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
-[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1"]
+[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1" node_paths=PackedStringArray("pinSitio")]
+pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 map_minimap = ExtResource("3_j8fpa")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]

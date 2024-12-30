@@ -94,7 +94,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.591, 189.115, 309.669)
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
-[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1"]
+[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1" node_paths=PackedStringArray("pinSitio")]
+pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 map_minimap = ExtResource("3_dca2r")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]

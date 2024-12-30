@@ -65,6 +65,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -602.167, 318.36, -99.2328)
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
+[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1" node_paths=PackedStringArray("pinSitio")]
+pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
+
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("26_yysch")]
