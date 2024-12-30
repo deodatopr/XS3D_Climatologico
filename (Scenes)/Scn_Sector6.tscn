@@ -37,6 +37,9 @@ light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 fly_height_min = 200.0
 
+[node name="MovFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones" index="1"]
+transform = Transform3D(-0.169315, 0.435703, -0.884023, 3.87441e-08, 0.896974, 0.442085, 0.985563, 0.0748512, -0.151871, -602.167, 318.36, -99.2328)
+
 [node name="CameraRot2" type="AudioStreamPlayer" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio/Audio - DroneSky" index="4"]
 stream = ExtResource("3_hnlpa")
 volume_db = 7.0
@@ -55,6 +58,9 @@ lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
+
+[node name="PS - Rain Fly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -602.167, 318.36, -99.2328)
 
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
@@ -194,6 +200,7 @@ directional_shadow_max_distance = 800.0
 sky_mode = 1
 
 [editable path="SHARED SYSTEMS & UI"]
+[editable path="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain"]

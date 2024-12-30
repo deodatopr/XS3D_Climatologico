@@ -72,6 +72,9 @@ light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 fly_height_max = 600.0
 fly_height_min = 200.0
 
+[node name="MovFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones" index="1"]
+transform = Transform3D(0.898473, 0.261409, -0.352721, 1.86265e-08, 0.803411, 0.595426, 0.43903, -0.534974, 0.721842, -192.591, 189.115, 309.669)
+
 [node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
 audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water")]
 
@@ -84,6 +87,9 @@ lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
+
+[node name="PS - Rain Fly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.591, 189.115, 309.669)
 
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")

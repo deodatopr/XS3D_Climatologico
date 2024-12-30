@@ -69,6 +69,12 @@ pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 
+[node name="MovFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones" index="1"]
+transform = Transform3D(0.96771, -0.176248, 0.180211, 4.46709e-08, 0.714925, 0.699202, -0.25207, -0.676624, 0.691839, 96.066, 189.419, 567.652)
+
+[node name="fly_cam" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones/MovFly" index="0"]
+transform = Transform3D(-0.633961, -0.251552, 0.731309, 0.540738, 0.531865, 0.651706, -0.552897, 0.808604, -0.201158, 769.202, 849.35, -847.89)
+
 [node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
 audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water")]
 
@@ -81,6 +87,9 @@ lightSunSky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
+
+[node name="PS - Rain Fly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 537.936, 203.795, -787.535)
 
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
@@ -274,6 +283,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [editable path="SHARED SYSTEMS & UI"]
+[editable path="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain_02"]
