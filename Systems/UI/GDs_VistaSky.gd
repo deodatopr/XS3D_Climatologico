@@ -18,6 +18,7 @@ func Initialize(_cam_manager : GDs_Cam_Manager):
 	cam_manager = _cam_manager
 	minimap.Initialize(cam_manager,map_minimap)
 	compass.Initialize(cam_manager, pinSitio.position, true)
+	visibility_changed.connect(OnVisibilityChanged)
 
 func _process(_delta: float) -> void:
 	@warning_ignore('narrowing_conversion')
@@ -26,3 +27,6 @@ func _process(_delta: float) -> void:
 	lblVelocidad.text = UTILITIES.FormatVelocidad(CAM.speed)
 	lblRotacion.text = UTILITIES.FormatRotacionY(CAM.rotation.y)
 	lblFov.text = UTILITIES.FormatFov(CAM.fov)
+
+func OnVisibilityChanged():
+	compass.visible = visible
