@@ -37,10 +37,10 @@ var maxPos_Y : float
 
 var rectLimits : Rect2
 	
-func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> void:
+func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3, skyCam : bool = false)-> void:
 	camManager = _camManager
-	pivotCam = _camManager.fly_pivot
-	cam = camManager.fly_cam
+	pivotCam = _camManager.fly_pivot if skyCam == false else _camManager.sky_pivot
+	cam = camManager.fly_cam if skyCam == false else camManager.sky_cam
 	posSitio = _posWorldSitio3d
 	
 	compassInitialXPosition = compass.position.x
@@ -54,7 +54,7 @@ func Initialize(_camManager : GDs_Cam_Manager, _posWorldSitio3d : Vector3)-> voi
 	
 	if not get_viewport().size_changed.is_connected(OnScreenChangeSize):
 		get_viewport().size_changed.connect(OnScreenChangeSize)
-	
+
 func OnScreenChangeSize():
 	#Screen size calculate here to avoid errors if it is maximized or minimized in runtime
 	screenSize = get_viewport().get_visible_rect().size

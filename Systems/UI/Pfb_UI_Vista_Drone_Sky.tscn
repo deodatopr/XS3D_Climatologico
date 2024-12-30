@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://djyvw3ftsu25d"]
+[gd_scene load_steps=38 format=3 uid="uid://djyvw3ftsu25d"]
 
 [ext_resource type="Script" path="res://Systems/UI/GDs_VistaSky.gd" id="1_wv2a8"]
 [ext_resource type="Texture2D" uid="uid://dlpsshgfxheun" path="res://Cont_UI/UI_Atlas.png" id="2_pmpn4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Systems/UI/Barra Menus/GDs_UI_Rotation.gd" id="4_fj5m0"]
 [ext_resource type="Script" path="res://Systems/UI/GDs_LineIndicators.gd" id="4_fvtcm"]
 [ext_resource type="Shader" path="res://Vfx_PostProces/PPE_UI_Blurring.gdshader" id="5_3vo8s"]
+[ext_resource type="PackedScene" uid="uid://drokt740jfxrh" path="res://Systems/Compass/Pfb_Compass.tscn" id="8_hwke4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lauy"]
 atlas = ExtResource("2_pmpn4")
@@ -144,7 +145,7 @@ region = Rect2(883, 138, 22, 28)
 atlas = ExtResource("2_pmpn4")
 region = Rect2(914, 147, 20, 21)
 
-[node name="Vista Sky" type="Control" node_paths=PackedStringArray("minimap", "lblAltura", "lblVelocidad", "lblRotacion", "lblFov")]
+[node name="Vista Sky" type="Control" node_paths=PackedStringArray("minimap", "compass", "lblAltura", "lblVelocidad", "lblRotacion", "lblFov")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,6 +156,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_wv2a8")
 minimap = NodePath("UI_Minimap")
+compass = NodePath("CanvasLayer/UI_Compass")
 lblAltura = NodePath("Datos/Datos/Altura/Lbl Altura")
 lblVelocidad = NodePath("Datos/Datos/Velocidad/Lbl Velocidad")
 lblRotacion = NodePath("Datos/Datos/Rotacion/Lbl Rotacion")
@@ -1369,3 +1371,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "90°
 "
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="UI_Compass" parent="CanvasLayer" instance=ExtResource("8_hwke4")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_top = 14.0
+offset_bottom = 14.0
+grow_vertical = 1
+
+[node name="CompassNorth" parent="CanvasLayer/UI_Compass" index="0"]
+visible = false
+
+[editable path="CanvasLayer/UI_Compass"]

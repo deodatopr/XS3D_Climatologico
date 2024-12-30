@@ -1,53 +1,19 @@
-[gd_scene load_steps=31 format=3 uid="uid://xs8scph7gqy3"]
+[gd_scene load_steps=17 format=3 uid="uid://xs8scph7gqy3"]
 
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_wyq6t"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_0qoah"]
 [ext_resource type="Texture2D" uid="uid://c8sb3bndt4ba8" path="res://Cont_Models/Sector1/Map_Sect1_Minimap.jpg" id="3_k1i1w"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="17_araxv"]
+[ext_resource type="Material" uid="uid://dlwcs1ta6nom1" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_01.tres" id="19_6gqtm"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="24_ndxsl"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="25_blcia"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="26_3vjvv"]
-[ext_resource type="Script" path="res://Systems/Environment/GDs_Lluvia.gd" id="27_oh2ob"]
-[ext_resource type="Curve" uid="uid://cpuavtle02v5x" path="res://Systems/Environment/Crv_Trueno.tres" id="28_nenwj"]
-[ext_resource type="AudioStream" uid="uid://cnig0ln4ocsyy" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_1.mp3" id="29_644mv"]
-[ext_resource type="AudioStream" uid="uid://cqtj6um5qrv4d" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_2.mp3" id="30_l1v2l"]
-[ext_resource type="AudioStream" uid="uid://chb2ci43uoaql" path="res://Cont_Sounds/Truenos/Lluvia_Trueno_3.mp3" id="31_bq8jr"]
-[ext_resource type="AudioStream" uid="uid://cgqdbltf0gqgh" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_1.mp3" id="32_mx05u"]
-[ext_resource type="AudioStream" uid="uid://dpokn0ojlkyvp" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_2.mp3" id="33_sokn6"]
-[ext_resource type="AudioStream" uid="uid://bjvttsjy5vuyi" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_3.mp3" id="34_2slul"]
-[ext_resource type="AudioStream" uid="uid://uoyrb4ick3by" path="res://Cont_Sounds/Truenos/Trueno_Tormnt_4.mp3" id="35_0y88g"]
-[ext_resource type="PackedScene" uid="uid://btfh1lhko803m" path="res://Systems/Rain/Pfb_Rain.tscn" id="36_wj3lc"]
-[ext_resource type="Material" uid="uid://c1nty3ig8iwmf" path="res://Vfx_PostProces/LensDrops/Mat_LensDrop.tres" id="37_dxntj"]
-[ext_resource type="Shader" path="res://Vfx_PostProces/LensDrops/PPE_UI_WaterDroplets.gdshader" id="38_lpbhg"]
 [ext_resource type="PackedScene" uid="uid://duwmggtrv8oco" path="res://Cont_Models/#Shared/LightBeam/Msh_LighBeam.glb" id="39_4xhlx"]
-[ext_resource type="Material" uid="uid://car683aybh2ye" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_06.tres" id="40_r512w"]
 [ext_resource type="Material" uid="uid://pwpr4hhnki8e" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_Clouds.tres" id="41_cqrid"]
 [ext_resource type="Material" uid="uid://b7si1rue7ycgy" path="res://Cont_Models/#Shared/Materials/Environment/Mat_Env_WorldBase.tres" id="42_sagbe"]
 [ext_resource type="PackedScene" uid="uid://c6b65o88hx6cy" path="res://Cont_Models/#Shared/Meshes/Msh_Limit.glb" id="43_dylfh"]
 [ext_resource type="PackedScene" uid="uid://b2ck2tvqnras3" path="res://Cont_Models/Sector1/Msh_Navigation_01.glb" id="44_u6pxp"]
 [ext_resource type="PackedScene" uid="uid://cim6yttn4wgpn" path="res://Cont_Models/Sector1/Msh_Terrain_01.glb" id="45_c14jl"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f0v3a"]
-streams_count = 7
-stream_0/stream = ExtResource("29_644mv")
-stream_1/stream = ExtResource("30_l1v2l")
-stream_2/stream = ExtResource("31_bq8jr")
-stream_3/stream = ExtResource("32_mx05u")
-stream_4/stream = ExtResource("33_sokn6")
-stream_5/stream = ExtResource("34_2slul")
-stream_6/stream = ExtResource("35_0y88g")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5nug"]
-shader = ExtResource("38_lpbhg")
-shader_parameter/tile = 2.0
-shader_parameter/speed = 2.0
-shader_parameter/wiggle = 2.0
-shader_parameter/refraction = 0.05
-shader_parameter/fogginess = 0.0
-shader_parameter/drop_Radious = 0.08
-shader_parameter/drop_Strength = 10.0
-shader_parameter/trail_Strength = 20.0
-shader_parameter/layers = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_2ocno"]
 
@@ -68,6 +34,9 @@ msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+proximityEdgeLimits = 0.73
+fly_height_max = 400.0
+fly_height_min = 100.0
 
 [node name="Audio - DroneFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Audio" index="2" node_paths=PackedStringArray("audios3D")]
 audios3D = [NodePath("../../../../[ CONTENT ]/Audios 3D/Audio - Water")]
@@ -82,10 +51,17 @@ lightSunFly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
 lightRain = NodePath("../../../[ ENVIRONMENT ]/Light - Rain")
 miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 
+[node name="LensDrop" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia/Drops" index="0"]
+visible = true
+
+[node name="Dripping" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Lluvia/Dripping" index="0"]
+visible = true
+
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
-[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1"]
+[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1" node_paths=PackedStringArray("pinSitio")]
+pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 map_minimap = ExtResource("3_k1i1w")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
@@ -124,69 +100,13 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 800.0
 sky_mode = 1
 
-[node name="Lluvia" type="Node" parent="[ ENVIRONMENT ]" node_paths=PackedStringArray("worldEnv", "lightSunSky", "lightSunFly", "lightRain", "miClouds", "sndsTruenos", "lensDrop", "lensDroplets", "rainFlyParticles", "rainSkyParticles", "timerTruenos")]
-script = ExtResource("27_oh2ob")
-worldEnv = NodePath("../WorldEnvironment")
-lightSunSky = NodePath("../Light - Sun_Sky")
-lightSunFly = NodePath("../Light - Sun_Fly")
-lightRain = NodePath("../Light - Rain")
-miClouds = NodePath("../../[ CONTENT ]/MI - Clouds")
-sndsTruenos = NodePath("Snds - Truenos")
-lensDrop = NodePath("Drops/LensDrop")
-lensDroplets = NodePath("DropLets/Droplets")
-rainFlyParticles = NodePath("PS - Rain Fly")
-rainSkyParticles = NodePath("PS - Rain Sky")
-minTrueno = 5
-timerTruenos = NodePath("Timer - truenos")
-curveTrueno = ExtResource("28_nenwj")
-
-[node name="Snds - Truenos" type="AudioStreamPlayer" parent="[ ENVIRONMENT ]/Lluvia"]
-stream = SubResource("AudioStreamRandomizer_f0v3a")
-
-[node name="PS - Rain Fly" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("36_wj3lc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.189, 123.135, -182.846)
-visible = false
-amount = 1000
-transform_align = 1
-
-[node name="PS - Rain Sky" parent="[ ENVIRONMENT ]/Lluvia" instance=ExtResource("36_wj3lc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 500, 148)
-amount = 1500
-transform_align = 1
-
-[node name="Drops" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
-layer = 4
-
-[node name="LensDrop" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/Drops"]
-visible = false
-material = ExtResource("37_dxntj")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DropLets" type="CanvasLayer" parent="[ ENVIRONMENT ]/Lluvia"]
-layer = 4
-
-[node name="Droplets" type="ColorRect" parent="[ ENVIRONMENT ]/Lluvia/DropLets"]
-visible = false
-material = SubResource("ShaderMaterial_b5nug")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Timer - truenos" type="Timer" parent="[ ENVIRONMENT ]/Lluvia"]
-
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("39_4xhlx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
-surface_material_override/0 = ExtResource("40_r512w")
+surface_material_override/0 = ExtResource("19_6gqtm")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 12.8225, 112.561, -13.9504)
@@ -245,6 +165,7 @@ nombre = "Monumento Miguel Alemán"
 
 [node name="Punto 14" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1685.4, 170.549, -1158.79)
+visible = false
 script = ExtResource("24_ndxsl")
 nombre = "Telebachillerato Comunitario Num. 274"
 
@@ -270,6 +191,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [editable path="SHARED SYSTEMS & UI"]
+[editable path="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones"]
 [editable path="[ CONTENT ]/Msh_LighBeam"]
 [editable path="[ CONTENT ]/Msh - Limit"]
 [editable path="[ CONTENT ]/Msh_Terrain_01"]
