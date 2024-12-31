@@ -1373,7 +1373,7 @@ text = "90°
 "
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 4
 
 [node name="UI_Compass" parent="CanvasLayer" instance=ExtResource("8_hwke4")]
 anchors_preset = 5

@@ -1,14 +1,16 @@
+
 TemVFX
 1 Sharp
 2 Lens
-3 Fish
 
 ALARMAS
 4 Calor
-4 Lluvia.
-5 Presa
+4 Presa
+4 Pines - Mas arriba del 4 ya no lo afecta el fisheye
+5 Lluvia.
 
-6 Drones
-7 Pines
-8 Menus / Render
-9 Glitch
+7 Fish
+
+8 Drones
+9 Menus / Render
+10 Glitch

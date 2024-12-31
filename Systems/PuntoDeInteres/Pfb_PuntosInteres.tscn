@@ -9,4 +9,4 @@ pfbUIPin = ExtResource("2_sdxg7")
 canvas = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 7
+layer = 5

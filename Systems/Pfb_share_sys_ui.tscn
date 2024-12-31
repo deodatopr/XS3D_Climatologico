@@ -264,7 +264,7 @@ ppeTemp = NodePath("Alarmas Temp/Temp")
 sndAlarm = NodePath("Alarma")
 
 [node name="Alarmas Presa" type="CanvasLayer" parent="[ SYSTEMS ]/PPE - Alarmas"]
-layer = 5
+layer = 4
 
 [node name="Presa" type="ColorRect" parent="[ SYSTEMS ]/PPE - Alarmas/Alarmas Presa"]
 visible = false
@@ -375,7 +375,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PPE - FishEye" type="CanvasLayer" parent="[ PPE + UI ]/[ PPE- SKY]"]
-layer = 3
+layer = 7
 
 [node name="ppe_fishEye_DroneSky" type="ColorRect" parent="[ PPE + UI ]/[ PPE- SKY]/PPE - FishEye"]
 material = SubResource("ShaderMaterial_issi1")
@@ -416,7 +416,7 @@ mouse_filter = 2
 [node name="[ UI  ]" type="Node" parent="[ PPE + UI ]"]
 
 [node name="Interfaz Drones" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 6
+layer = 8
 
 [node name="FLY" parent="[ PPE + UI ]/[ UI  ]/Interfaz Drones" instance=ExtResource("36_hoqvk")]
 
@@ -425,7 +425,7 @@ map_minimap = ExtResource("38_we8if")
 metadata/_edit_horizontal_guides_ = [125.0]
 
 [node name="Interfaz MENUS" type="CanvasLayer" parent="[ PPE + UI ]/[ UI  ]"]
-layer = 8
+layer = 9
 
 [node name="MENU" parent="[ PPE + UI ]/[ UI  ]/Interfaz MENUS" instance=ExtResource("39_y7lqb")]
 anchors_preset = 12
