@@ -85,7 +85,8 @@ miClouds = NodePath("../../../[ CONTENT ]/MI - Clouds")
 [node name="FLY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="0" node_paths=PackedStringArray("pinSitio")]
 pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 
-[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1"]
+[node name="SKY" parent="SHARED SYSTEMS & UI/[ PPE + UI ]/[ UI  ]/Interfaz Drones" index="1" node_paths=PackedStringArray("pinSitio")]
+pinSitio = NodePath("../../../../../[ CONTENT ]/Pin - Sitio")
 map_minimap = ExtResource("3_8kkr7")
 
 [node name="[ ENVIRONMENT ]" type="Node" parent="."]
