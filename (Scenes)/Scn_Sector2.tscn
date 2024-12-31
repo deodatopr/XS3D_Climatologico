@@ -68,9 +68,10 @@ msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+fly_height_min = 80.0
 
 [node name="MovFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones" index="1"]
-transform = Transform3D(-0.633962, -0.251553, 0.73131, 0.540739, 0.531866, 0.651706, -0.552898, 0.808604, -0.201158, 769.202, 849.35, -847.89)
+transform = Transform3D(-0.707108, -0.45452, 0.541675, 0, 0.766045, 0.642787, -0.707108, 0.45452, -0.541675, 769.202, 849.35, -847.89)
 
 [node name="fly_cam" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones/MovFly" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
@@ -193,14 +194,14 @@ grow_vertical = 2
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("17_j21pn")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 273.443, -13.4788)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.81, -227.74, 17.0949)
 surface_material_override/0 = ExtResource("19_uo8yi")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -2.60425, -117.264, -30.5791)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -2.60425, 39.1587, -30.5791)
 
 [node name="MI - Clouds" type="MeshInstance3D" parent="[ CONTENT ]"]
 transform = Transform3D(-5277.03, 0.000461333, 2.01655e-11, 0, -0.000230666, 5277.03, 0.000461333, 5277.03, 0.000230666, -4.95172, 874.294, 12.2401)
@@ -219,11 +220,13 @@ transform = Transform3D(-41.759, 0, -6.67401e-06, 0, 9.752, 0, 6.30543e-06, 0, -
 transform = Transform3D(1.00895, 0, -1.27898e-13, 0, 1.38256, 0, -5.68434e-14, 0, 1.00296, 0, -26.1685, 0)
 
 [node name="Msh_Navigation_02" parent="[ CONTENT ]" instance=ExtResource("22_wf81l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 157.379, 0)
 visible = false
 
 [node name="================" type="Node" parent="[ CONTENT ]"]
 
 [node name="Msh_Terrain_02" parent="[ CONTENT ]" instance=ExtResource("23_8qdtl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 157.379, 0)
 
 [node name="Puntos interes" type="Node" parent="[ CONTENT ]"]
 
@@ -255,7 +258,7 @@ nombre = "Escuela Primaria \"Lázaro Cárdenas\""
 [node name="Punto 6" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.7764, -119.427, -2135.43)
 script = ExtResource("24_0ta2f")
-nombre = "Ptar San José Villa de Allende"
+nombre = "PTAR San José Villa de Allende"
 
 [node name="Punto 7" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2011.35, -7.90382, 397.862)
@@ -270,12 +273,12 @@ nombre = "Rancho Sánchez"
 [node name="Punto 9" type="Node3D" parent="[ CONTENT ]/Puntos interes"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1945.29, -32.4118, -1057.88)
 script = ExtResource("24_0ta2f")
-nombre = "Unidad Deportiva sa Casa Blanca"
+nombre = "Unidad Deportiva la Casa Blanca"
 
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -248.01)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.172, 36.709, -13757.5)
 stream = ExtResource("25_xh4an")
 volume_db = 20.0
 unit_size = 25.0
