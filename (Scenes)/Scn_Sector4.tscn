@@ -35,6 +35,7 @@ msh_limit = NodePath("../../../[ CONTENT ]/Msh - Limit/Msh_Limit")
 pinSitio = NodePath("../../../[ CONTENT ]/Pin - Sitio")
 light_sun_sky = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Sky")
 light_sun_fly = NodePath("../../../[ ENVIRONMENT ]/Light - Sun_Fly")
+sky_turbo = 40.0
 fly_height_min = 75.0
 
 [node name="MovFly" parent="SHARED SYSTEMS & UI/[ SYSTEMS ]/Camera - Drones" index="1"]
@@ -144,7 +145,7 @@ visible = false
 [node name="Audios 3D" type="Node" parent="[ CONTENT ]"]
 
 [node name="Audio - Water" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.304, 36.709, 167.355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.304, -258.032, 167.355)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
 unit_size = 20.0
@@ -153,7 +154,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water2" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 591.958, 36.7091, 407.687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 591.958, -258.032, 407.687)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
 unit_size = 20.0
@@ -162,7 +163,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water3" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558.502, 36.7089, -183.288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558.502, -258.032, -183.288)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
 unit_size = 20.0
@@ -171,7 +172,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water4" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1348.77, 36.7089, 394.079)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1348.77, -258.032, 394.079)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
 unit_size = 69.57
@@ -180,7 +181,7 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="Audio - Water5" type="AudioStreamPlayer3D" parent="[ CONTENT ]/Audios 3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1800.35, 36.7089, 1544.87)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1800.35, -258.032, 1544.87)
 stream = ExtResource("15_0gwjn")
 volume_db = 15.0
 unit_size = 69.57
