@@ -1,14 +1,11 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://r62xxuey3xg1"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bgapea3dv0u2k"]
 
-[ext_resource type="Texture2D" uid="uid://dwbq7fjdo5u5u" path="res://Cont_Models/#Shared/LightBeam/LightBeam.png" id="1_7o4b1"]
+[ext_resource type="Shader" path="res://Cont_Models/#Shared/LightBeam/Sha_YBillboard.gdshader" id="1_mpu3a"]
+[ext_resource type="Texture2D" uid="uid://dwbq7fjdo5u5u" path="res://Cont_Models/#Shared/LightBeam/LightBeam.png" id="2_tvapd"]
 
 [resource]
-transparency = 1
-specular_mode = 2
-albedo_color = Color(0, 0, 0, 1)
-albedo_texture = ExtResource("1_7o4b1")
-emission_enabled = true
-emission = Color(1, 0.841979, 0.997366, 1)
-emission_energy_multiplier = 0.7
-disable_receive_shadows = true
-billboard_mode = 2
+render_priority = 0
+shader = ExtResource("1_mpu3a")
+shader_parameter/emmissionColor = Color(0.8, 0.696, 0.798267, 1)
+shader_parameter/energyMultiplier = 2.2
+shader_parameter/albedo = ExtResource("2_tvapd")

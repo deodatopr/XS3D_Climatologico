@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_m6hgx"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_cdep1"]
 [ext_resource type="Texture2D" uid="uid://sercn6ulr6dd" path="res://Cont_Models/Sector4/Map_Sect4_Minimap.jpg" id="3_6uh7g"]
+[ext_resource type="Material" uid="uid://bgapea3dv0u2k" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_04.tres" id="7_6ao2e"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="15_0gwjn"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="19_7t10y"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="20_oe443"]
@@ -14,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dgkqgmcdiarge" path="res://Cont_Models/Sector4/Msh_Sitio_04.glb" id="26_g4unq"]
 [ext_resource type="PackedScene" uid="uid://cpvbjd2rg70s" path="res://Cont_Models/Sector4/Msh_Navigation.glb" id="27_0vsox"]
 [ext_resource type="PackedScene" uid="uid://duwmggtrv8oco" path="res://Cont_Models/#Shared/LightBeam/Msh_LighBeam.glb" id="29_7w0wy"]
-[ext_resource type="Material" uid="uid://r62xxuey3xg1" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_04.tres" id="30_0xdf2"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_vcmnj"]
 
@@ -107,11 +107,11 @@ sky_mode = 1
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("29_7w0wy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5578, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9709, -0.641479, 217.469)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7814, -18.5579, 210.571)
-surface_material_override/0 = ExtResource("30_0xdf2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.558, 0)
+surface_material_override/0 = ExtResource("7_6ao2e")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4854, -23.0553, 210.436)

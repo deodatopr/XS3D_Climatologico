@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Systems/Sitio/GDs_Sector.gd" id="1_wyq6t"]
 [ext_resource type="PackedScene" uid="uid://ravv58lk83ts" path="res://Systems/Pfb_share_sys_ui.tscn" id="2_0qoah"]
 [ext_resource type="Texture2D" uid="uid://c8sb3bndt4ba8" path="res://Cont_Models/Sector1/Map_Sect1_Minimap.jpg" id="3_k1i1w"]
+[ext_resource type="Material" uid="uid://c8ffjhajld7h3" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_01.tres" id="7_pnvh5"]
 [ext_resource type="AudioStream" uid="uid://dmsofllgsmff2" path="res://Cont_Sounds/Sitio/Sitio_Water.mp3" id="17_araxv"]
-[ext_resource type="Material" uid="uid://dlwcs1ta6nom1" path="res://Cont_Models/#Shared/LightBeam/Mat_LightBeam_01.tres" id="19_6gqtm"]
 [ext_resource type="Script" path="res://Systems/PuntoDeInteres/GDs_PdI_WorldPin.gd" id="24_ndxsl"]
 [ext_resource type="Environment" uid="uid://d0njvq6rqh23r" path="res://Systems/Camera/Presets/Preset_Env_Fly_Sunny.tres" id="25_blcia"]
 [ext_resource type="CameraAttributesPractical" uid="uid://b6jeytnq38xvp" path="res://Systems/Camera/Presets/Preset_Cam_Fly.tres" id="26_3vjvv"]
@@ -112,10 +112,10 @@ sky_mode = 1
 [node name="[ CONTENT ]" type="Node" parent="."]
 
 [node name="Msh_LighBeam" parent="[ CONTENT ]" instance=ExtResource("39_4xhlx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.4024, 117.02, -13.4788)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4024, 117.02, -13.4788)
 
 [node name="Msh_LightBeam" parent="[ CONTENT ]/Msh_LighBeam" index="0"]
-surface_material_override/0 = ExtResource("19_6gqtm")
+surface_material_override/0 = ExtResource("7_pnvh5")
 
 [node name="Pin - Sitio" type="Node3D" parent="[ CONTENT ]"]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 13.4024, 113.624, -13.4788)

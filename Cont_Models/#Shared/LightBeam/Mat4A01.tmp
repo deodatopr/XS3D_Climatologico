@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://1fw6b4tb6rcp"]
+
+[ext_resource type="Shader" path="res://Cont_Models/#Shared/LightBeam/Sha_YBillboard.gdshader" id="1_u6egg"]
+[ext_resource type="Texture2D" uid="uid://dwbq7fjdo5u5u" path="res://Cont_Models/#Shared/LightBeam/LightBeam.png" id="2_ggjgv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_u6egg")
+shader_parameter/emmissionColor = Color(0.517537, 0.679781, 1, 1)
+shader_parameter/energyMultiplier = 2.6
+shader_parameter/albedo = ExtResource("2_ggjgv")
